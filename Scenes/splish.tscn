@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://je3j0pd8ickv"]
+
+[ext_resource type="Script" path="res://Scenes/splish.gd" id="1_34yo7"]
+[ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/SplishIdle.png" id="2_fplbu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48aad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fplbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Splish" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_34yo7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_48aad")
