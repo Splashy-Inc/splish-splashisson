@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=8 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://Scenes/splish.gd" id="1_34yo7"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/SplishIdle.png" id="2_fplbu"]
+[ext_resource type="Texture2D" uid="uid://objic60e65pa" path="res://Art/Splish/SplishWalkDownA.png" id="3_etvg6"]
+[ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/SplishWalkDownB.png" id="4_bdiwf"]
+[ext_resource type="Texture2D" uid="uid://cmh83m2yj0glw" path="res://Art/Splish/SplishWalkUpA.png" id="5_ksqji"]
+[ext_resource type="Texture2D" uid="uid://brexb1buc6y5" path="res://Art/Splish/SplishWalkUpB.png" id="6_y3bk3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_48aad"]
 animations = [{
@@ -10,8 +14,30 @@ animations = [{
 "texture": ExtResource("2_fplbu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_etvg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bdiwf")
+}],
+"loop": true,
+"name": &"walking_down",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ksqji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y3bk3")
+}],
+"loop": true,
+"name": &"walking_up",
+"speed": 4.0
 }]
 
 [node name="Splish" type="CharacterBody2D"]
@@ -20,3 +46,6 @@ script = ExtResource("1_34yo7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_48aad")
+animation = &"walking_up"
+autoplay = "idle"
+frame_progress = 0.252652
