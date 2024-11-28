@@ -1,22 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://byk8jyx3r65e2"]
 
+[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="1_tnbfu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
-[ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="3_u3wgu"]
 
 [node name="Playground" type="Node"]
 
-[node name="DummySprite" type="Sprite2D" parent="."]
-position = Vector2(510, 266)
-texture = ExtResource("3_u3wgu")
+[node name="CrewMember" parent="." node_paths=PackedStringArray("assignment_target") instance=ExtResource("1_tnbfu")]
+position = Vector2(778, 422)
+assignment_target = NodePath("../LocationTest")
 
-[node name="DummySprite2" type="Sprite2D" parent="."]
-position = Vector2(1228, 402)
-texture = ExtResource("3_u3wgu")
+[node name="CrewMember2" parent="." node_paths=PackedStringArray("assignment_target") instance=ExtResource("1_tnbfu")]
+position = Vector2(1192, 392)
+assignment_target = NodePath("../Splish")
 
-[node name="DummySprite3" type="Sprite2D" parent="."]
-position = Vector2(654, 782)
-texture = ExtResource("3_u3wgu")
+[node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
+position = Vector2(1048, 750)
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
 position = Vector2(909, 550)
@@ -24,3 +23,6 @@ position = Vector2(909, 550)
 [node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("focus_target")]
 script = ExtResource("2_gusxx")
 focus_target = NodePath("../Splish")
+
+[node name="LocationTest" type="Marker2D" parent="."]
+position = Vector2(722, 714)
