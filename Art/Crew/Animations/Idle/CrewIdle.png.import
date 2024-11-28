@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6wfhucl4xrla"
-path="res://.godot/imported/CrewBack.png-092a60c42a333bdd4c22701d79fd4aff.ctex"
+uid="uid://ykb8akgxv8rg"
+path="res://.godot/imported/CrewIdle.png-465690441dd7fcd9320317f47c647758.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Crew/CrewBack.png"
-dest_files=["res://.godot/imported/CrewBack.png-092a60c42a333bdd4c22701d79fd4aff.ctex"]
+source_file="res://Art/Crew/Animations/Idle/CrewIdle.png"
+dest_files=["res://.godot/imported/CrewIdle.png-465690441dd7fcd9320317f47c647758.ctex"]
 
 [params]
 

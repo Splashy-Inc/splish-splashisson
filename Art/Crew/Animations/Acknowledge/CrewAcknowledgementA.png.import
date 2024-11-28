@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ksiw0uvk5yl0"
-path="res://.godot/imported/CrewWalkingUpB.png-8c59e09d27cf9b0f4a9ca09108707ec0.ctex"
+uid="uid://w2vo8uxa6q1q"
+path="res://.godot/imported/CrewAcknowledgementA.png-a8b5aebe0545211ad9e5033e9e159aae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Crew/CrewWalkingUpB.png"
-dest_files=["res://.godot/imported/CrewWalkingUpB.png-8c59e09d27cf9b0f4a9ca09108707ec0.ctex"]
+source_file="res://Art/Crew/Animations/Acknowledge/CrewAcknowledgementA.png"
+dest_files=["res://.godot/imported/CrewAcknowledgementA.png-a8b5aebe0545211ad9e5033e9e159aae.ctex"]
 
 [params]
 
