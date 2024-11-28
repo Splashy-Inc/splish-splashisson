@@ -5,10 +5,9 @@ class_name Player
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-var interactables = []
+var interactables: Array[Node2D]
 
 func _physics_process(delta: float) -> void:
-
 	var direction := Input.get_vector("left", "right", "up", "down")
 	if direction:
 		if direction.y < 0:
@@ -25,6 +24,11 @@ func _physics_process(delta: float) -> void:
 		var col = get_slide_collision(i)
 		if col.get_collider() is Crew:
 			col.get_collider().push(col.get_normal().rotated(deg_to_rad(90)) * SPEED * 2)
+			
+func _unhandled_key_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("unassign"):
+		if interactables.front().has_method("set_assignment"):
+			interactables.front().set_assignment(null)
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
