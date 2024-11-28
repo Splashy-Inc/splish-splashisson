@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=4 format=3 uid="uid://djyibeaauqw2f"]
 
+[ext_resource type="Script" path="res://Scenes/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
@@ -15,6 +16,7 @@ animations = [{
 
 [node name="CrewMember" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_ci8gb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wxg80")
