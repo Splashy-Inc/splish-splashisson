@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyf706oalxb7x"
-path="res://.godot/imported/CrewAlertE.png-5b55244be4d8e55c143410c6ccb1700f.ctex"
+uid="uid://bbiqp0pdaaiv7"
+path="res://.godot/imported/CrewAlertA.png-5be7857d5756fb3747cf4fe74081b359.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Crew/CrewAlert/CrewAlertE.png"
-dest_files=["res://.godot/imported/CrewAlertE.png-5b55244be4d8e55c143410c6ccb1700f.ctex"]
+source_file="res://Art/Crew/Animations/CrewAlert/CrewAlertA.png"
+dest_files=["res://.godot/imported/CrewAlertA.png-5be7857d5756fb3747cf4fe74081b359.ctex"]
 
 [params]
 

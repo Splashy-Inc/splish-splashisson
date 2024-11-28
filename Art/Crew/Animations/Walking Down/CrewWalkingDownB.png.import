@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ykb8akgxv8rg"
-path="res://.godot/imported/CrewIdle.png-b83b3edd4c77af78a316c8d406975aa2.ctex"
+uid="uid://2sv5fbdgw45p"
+path="res://.godot/imported/CrewWalkingDownB.png-d2dedd752e94adfbc60d295728da6701.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Crew/CrewIdle.png"
-dest_files=["res://.godot/imported/CrewIdle.png-b83b3edd4c77af78a316c8d406975aa2.ctex"]
+source_file="res://Art/Crew/Animations/Walking Down/CrewWalkingDownB.png"
+dest_files=["res://.godot/imported/CrewWalkingDownB.png-d2dedd752e94adfbc60d295728da6701.ctex"]
 
 [params]
 

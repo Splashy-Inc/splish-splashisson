@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
-[ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/CrewIdle.png" id="3_u3wgu"]
+[ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="3_u3wgu"]
 
 [node name="Playground" type="Node"]
 
