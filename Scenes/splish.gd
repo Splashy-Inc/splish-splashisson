@@ -29,6 +29,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("unassign"):
 		if interactables.front().has_method("set_assignment"):
 			interactables.front().set_assignment(null)
+	if Input.is_action_just_pressed("interact"):
+		if interactables.front().has_method("set_assignment"):
+			interactables.front().set_assignment(self)
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
