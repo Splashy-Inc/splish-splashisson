@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://djyibeaauqw2f"]
+
+[ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fr6qd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CrewMember" type="CharacterBody2D"]
+motion_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wxg80")
