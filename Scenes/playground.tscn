@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://byk8jyx3r65e2"]
+[gd_scene load_steps=3 format=3 uid="uid://byk8jyx3r65e2"]
 
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
+[ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
 
 [node name="Playground" type="Node"]
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
 position = Vector2(909, 550)
+
+[node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("focus_target")]
+script = ExtResource("2_gusxx")
+focus_target = NodePath("../Splish")
