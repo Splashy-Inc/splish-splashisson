@@ -17,5 +17,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.play("idle")
 		velocity = Vector2.ZERO
-
+	
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var col = get_slide_collision(i)
+		if col.get_collider() is Crew:
+			col.get_collider().push(col.get_normal().rotated(deg_to_rad(90)) * SPEED * 2)
