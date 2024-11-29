@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dlcdttf7epi67"]
 
-[ext_resource type="Script" path="res://task.gd" id="1_6sp0n"]
+[ext_resource type="Script" path="res://Scripts/task.gd" id="1_6sp0n"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="1_cnlfs"]
 [ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="2_f7wl0"]
 [ext_resource type="Texture2D" uid="uid://bo5obq8osfcgi" path="res://Art/Tasks/Rowing/Active/CrewRowingC.png" id="3_s0mcc"]

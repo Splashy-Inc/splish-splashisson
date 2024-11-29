@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+class_name Task
+
 @export var test_assignee: Crew
 var assignee: Crew
 

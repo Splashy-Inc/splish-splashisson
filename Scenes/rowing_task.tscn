@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://cv0yjb1p5lrv2"]
+
+[ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_xesfs"]
+[ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="2_weqdi"]
+[ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="3_wl6fd"]
+[ext_resource type="Texture2D" uid="uid://bo5obq8osfcgi" path="res://Art/Tasks/Rowing/Active/CrewRowingC.png" id="4_xivnd"]
+[ext_resource type="Texture2D" uid="uid://b1shocy4oqmjh" path="res://Art/Tasks/Rowing/Active/CrewRowingD.png" id="5_7qoe5"]
+[ext_resource type="Texture2D" uid="uid://dtke3rbm58akg" path="res://Art/Tasks/Rowing/Active/CrewRowingE.png" id="6_tb3pq"]
+[ext_resource type="Texture2D" uid="uid://krj1cvda3e75" path="res://Art/Tasks/Rowing/Active/CrewRowingF.png" id="7_tw8qa"]
+[ext_resource type="Texture2D" uid="uid://cuqg7jtpxwoyn" path="res://Art/Tasks/Rowing/Active/CrewRowingG.png" id="8_koyks"]
+[ext_resource type="Texture2D" uid="uid://f3iep44kxjjs" path="res://Art/Tasks/Rowing/Active/CrewRowingH.png" id="9_577w6"]
+[ext_resource type="Texture2D" uid="uid://cj0onknodq2tu" path="res://Art/Tasks/Rowing/Active/CrewRowingI.png" id="10_0wm3e"]
+[ext_resource type="Texture2D" uid="uid://ckio7r0i8jxeb" path="res://Art/Tasks/Rowing/Active/CrewRowingJ.png" id="11_il4fw"]
+[ext_resource type="Texture2D" uid="uid://c6vh2ed4lwwia" path="res://Art/Tasks/Rowing/Active/CrewRowingK.png" id="12_t8vmi"]
+[ext_resource type="Texture2D" uid="uid://cc8bbr3amxvmc" path="res://Art/Tasks/Rowing/Idle/IdleCrewRowing.png" id="13_4684i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8te5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_weqdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wl6fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xivnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7qoe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tb3pq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tw8qa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_koyks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_577w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0wm3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_il4fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t8vmi")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_4684i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4egum"]
+height = 66.0
+
+[node name="RowingTask" type="StaticBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_xesfs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, -10)
+sprite_frames = SubResource("SpriteFrames_8te5t")
+animation = &"idle"
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4egum")
