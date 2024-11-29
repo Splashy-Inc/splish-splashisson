@@ -6,13 +6,11 @@
 
 [node name="Playground" type="Node"]
 
-[node name="CrewMember" parent="." node_paths=PackedStringArray("assignment_target") instance=ExtResource("1_tnbfu")]
+[node name="CrewMember" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(778, 422)
-assignment_target = NodePath("../LocationTest")
 
-[node name="CrewMember2" parent="." node_paths=PackedStringArray("assignment_target") instance=ExtResource("1_tnbfu")]
+[node name="CrewMember2" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(1192, 392)
-assignment_target = NodePath("../Splish")
 
 [node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(1048, 750)
