@@ -26,10 +26,11 @@ func set_worker(new_worker: Crew) -> bool:
 			$AnimatedSprite2D.play("active")
 		else:
 			return false
-	elif worker: # Null being passed in means unassigning current assignee, so show them
+	else:
 		assignee = null
-		worker.show_self()
-		$AnimatedSprite2D.play("idle")
+		if worker: # Null being passed in means unassigning current assignee, so show them
+			worker.show_self()
+			$AnimatedSprite2D.play("idle")
 	
 	worker = new_worker
 	return true
