@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kufse2g7u1ey"
-path="res://.godot/imported/SplishIdle.png-5978cb937fafc71002e1f5b1a181d3f4.ctex"
+uid="uid://d1fhwln4ofy68"
+path="res://.godot/imported/SplishPointA.png-2226f72a62ee8e84f5fa31115d091760.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Splish/SplishIdle.png"
-dest_files=["res://.godot/imported/SplishIdle.png-5978cb937fafc71002e1f5b1a181d3f4.ctex"]
+source_file="res://Art/Splish/Pointing/SplishPointA.png"
+dest_files=["res://.godot/imported/SplishPointA.png-2226f72a62ee8e84f5fa31115d091760.ctex"]
 
 [params]
 

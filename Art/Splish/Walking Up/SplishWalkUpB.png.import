@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brexb1buc6y5"
-path="res://.godot/imported/SplishWalkUpB.png-deaeadfb989efd0ca5a23aa3e7317975.ctex"
+path="res://.godot/imported/SplishWalkUpB.png-993e065c6afce6703099ba80083cb058.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Splish/SplishWalkUpB.png"
-dest_files=["res://.godot/imported/SplishWalkUpB.png-deaeadfb989efd0ca5a23aa3e7317975.ctex"]
+source_file="res://Art/Splish/Walking Up/SplishWalkUpB.png"
+dest_files=["res://.godot/imported/SplishWalkUpB.png-993e065c6afce6703099ba80083cb058.ctex"]
 
 [params]
 
