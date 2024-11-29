@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlcdttf7epi67"]
+[gd_scene load_steps=16 format=3 uid="uid://dlcdttf7epi67"]
 
+[ext_resource type="Script" path="res://task.gd" id="1_6sp0n"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="1_cnlfs"]
 [ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="2_f7wl0"]
 [ext_resource type="Texture2D" uid="uid://bo5obq8osfcgi" path="res://Art/Tasks/Rowing/Active/CrewRowingC.png" id="3_s0mcc"]
@@ -69,6 +70,7 @@ height = 66.0
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_6sp0n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(48, -10)
