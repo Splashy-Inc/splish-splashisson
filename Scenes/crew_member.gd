@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	velocity = push_velocity
 	push_velocity = Vector2.ZERO
 	
-	if $AnimatedSprite2D.animation != "alert" or not $AnimatedSprite2D.is_playing():
+	if not ($AnimatedSprite2D.animation == "alert" or $AnimatedSprite2D.animation == "acknowledge") or not $AnimatedSprite2D.is_playing():
 		if assignment_target:
 			var distance_to_assignment =  global_position.distance_to(assignment_target.global_position)
 			if distance_to_assignment > 5:
@@ -47,6 +47,7 @@ func set_assignment(new_assignment: Node2D):
 		$AnimatedSprite2D.play("alert")
 	else:
 		following = false
+		$AnimatedSprite2D.play("acknowledge")
 
 func push(push_vector: Vector2):
 	push_velocity += push_vector
