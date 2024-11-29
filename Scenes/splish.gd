@@ -73,7 +73,6 @@ func point(target_position: Vector2):
 func add_follower(new_follower: Crew):
 	new_follower.set_assignment(self)
 	followers.append(new_follower)
-	interactables.erase(new_follower)
 	point(new_follower.global_position)
 	
 func remove_follower(follower: Crew):
