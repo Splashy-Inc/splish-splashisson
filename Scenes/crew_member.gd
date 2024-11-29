@@ -57,6 +57,8 @@ func set_assignment(new_assignment: Node2D):
 	else:
 		following = false
 		$AnimatedSprite2D.play("acknowledge")
+		await $AnimatedSprite2D.animation_finished
+		$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
 
 func push(push_vector: Vector2):
 	push_velocity += push_vector
