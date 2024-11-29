@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmh83m2yj0glw"
-path="res://.godot/imported/SplishWalkUpA.png-5adb4766d1c9a14db3434b4f0ff8229e.ctex"
+uid="uid://objic60e65pa"
+path="res://.godot/imported/SplishWalkDownA.png-d27ae5a014d95e6d7b5da8c8f4e33cd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Splish/SplishWalkUpA.png"
-dest_files=["res://.godot/imported/SplishWalkUpA.png-5adb4766d1c9a14db3434b4f0ff8229e.ctex"]
+source_file="res://Art/Splish/Walking Down/SplishWalkDownA.png"
+dest_files=["res://.godot/imported/SplishWalkDownA.png-d27ae5a014d95e6d7b5da8c8f4e33cd9.ctex"]
 
 [params]
 

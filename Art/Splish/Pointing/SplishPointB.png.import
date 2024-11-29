@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtjdl0s3vvtwi"
-path="res://.godot/imported/SplishPointB.png-42c091d043dc9fd60f97013e4a0ebe33.ctex"
+path="res://.godot/imported/SplishPointB.png-a28789f2f373d9264ade460f0f862a3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Splish/SplishPointB.png"
-dest_files=["res://.godot/imported/SplishPointB.png-42c091d043dc9fd60f97013e4a0ebe33.ctex"]
+source_file="res://Art/Splish/Pointing/SplishPointB.png"
+dest_files=["res://.godot/imported/SplishPointB.png-a28789f2f373d9264ade460f0f862a3e.ctex"]
 
 [params]
 

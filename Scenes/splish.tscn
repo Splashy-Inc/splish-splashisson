@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://Scenes/splish.gd" id="1_34yo7"]
-[ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/SplishIdle.png" id="2_fplbu"]
-[ext_resource type="Texture2D" uid="uid://objic60e65pa" path="res://Art/Splish/SplishWalkDownA.png" id="3_etvg6"]
-[ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/SplishWalkDownB.png" id="4_bdiwf"]
-[ext_resource type="Texture2D" uid="uid://cmh83m2yj0glw" path="res://Art/Splish/SplishWalkUpA.png" id="5_ksqji"]
-[ext_resource type="Texture2D" uid="uid://brexb1buc6y5" path="res://Art/Splish/SplishWalkUpB.png" id="6_y3bk3"]
+[ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="2_fplbu"]
+[ext_resource type="Texture2D" uid="uid://objic60e65pa" path="res://Art/Splish/Walking Down/SplishWalkDownA.png" id="3_etvg6"]
+[ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/Walking Down/SplishWalkDownB.png" id="4_bdiwf"]
+[ext_resource type="Texture2D" uid="uid://cmh83m2yj0glw" path="res://Art/Splish/Walking Up/SplishWalkUpA.png" id="5_ksqji"]
+[ext_resource type="Texture2D" uid="uid://brexb1buc6y5" path="res://Art/Splish/Walking Up/SplishWalkUpB.png" id="6_y3bk3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_48aad"]
 animations = [{
@@ -15,6 +15,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"pointing",
 "speed": 5.0
 }, {
 "frames": [{
@@ -54,7 +59,7 @@ script = ExtResource("1_34yo7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_48aad")
-animation = &"idle"
+animation = &"pointing"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
