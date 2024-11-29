@@ -1,19 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://byk8jyx3r65e2"]
+[gd_scene load_steps=5 format=3 uid="uid://byk8jyx3r65e2"]
 
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="1_tnbfu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
+[ext_resource type="PackedScene" uid="uid://dlcdttf7epi67" path="res://task.tscn" id="4_3xjf2"]
 
 [node name="Playground" type="Node"]
 
 [node name="CrewMember" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(778, 422)
+position = Vector2(759, 375)
 
 [node name="CrewMember2" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(1192, 392)
+position = Vector2(1037, 360)
 
 [node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(1048, 750)
+position = Vector2(897, 369)
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
 position = Vector2(909, 550)
@@ -24,3 +25,10 @@ focus_target = NodePath("../Splish")
 
 [node name="LocationTest" type="Marker2D" parent="."]
 position = Vector2(722, 714)
+
+[node name="Task" parent="." instance=ExtResource("4_3xjf2")]
+position = Vector2(1049, 566)
+
+[node name="Task2" parent="." instance=ExtResource("4_3xjf2")]
+position = Vector2(736, 571)
+scale = Vector2(-1.5, 1.5)
