@@ -26,15 +26,14 @@ func _physics_process(delta: float) -> void:
 			col.get_collider().push(col.get_normal().rotated(deg_to_rad(90)) * SPEED * 2)
 			
 func _unhandled_key_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("unassign"):
-		if interactables.front().has_method("set_assignment"):
-			interactables.front().set_assignment(null)
-	if Input.is_action_just_pressed("interact"):
-		if interactables.front().has_method("set_assignment"):
-			interactables.front().set_assignment(self)
-	if Input.is_action_just_pressed("location"):
-		if interactables.front().has_method("set_assignment"):
-			interactables.front().set_assignment(place_location_marker())
+	var action_target = interactables.front()
+	if action_target and action_target.has_method("set_assignment"):
+		if Input.is_action_just_pressed("unassign"):
+			action_target.set_assignment(null)
+		if Input.is_action_just_pressed("interact"):
+			action_target.set_assignment(self)
+		if Input.is_action_just_pressed("location"):
+			action_target.set_assignment(place_location_marker())
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
