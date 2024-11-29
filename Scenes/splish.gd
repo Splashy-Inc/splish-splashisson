@@ -6,6 +6,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 var interactables: Array[Node2D]
+var followers: Array[Crew]
 
 func _physics_process(delta: float) -> void:
 	if $AnimatedSprite2D.animation != "pointing_right" or not $AnimatedSprite2D.is_playing():
@@ -34,20 +35,31 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
 			action_target = interactable
 	
-	# Set assignment accordingly
-	if action_target and action_target.has_method("set_assignment"):
-		if Input.is_action_just_pressed("unassign"):
-			action_target.set_assignment(null)
+	if action_target:
 		if Input.is_action_just_pressed("interact"):
-			action_target.set_assignment(self)
-			point(action_target.global_position)
-		if Input.is_action_just_pressed("location"):
-			action_target.set_assignment(place_location_marker())
-			point(action_target.global_position)
+			if action_target.has_method("set_assignment"):
+				add_follower(action_target)
+			elif action_target.has_method("set_assignee"):
+				if followers.is_empty():
+					print("No followers to assign to ", action_target, " !")
+				else:
+					assign_follower(followers.front(), action_target)
 		
+	if Input.is_action_just_pressed("unassign"):
+		if followers.is_empty():
+			print("No followers to unassign!")
+		else:
+			remove_follower(followers.front())
+	
+	if Input.is_action_just_pressed("location"):
+		if followers.is_empty():
+			print("No followers to assign to location!")
+		else:
+			assign_follower(followers.front(), place_location_marker())
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
-	interactables.append(body)
+	if body not in followers:
+		interactables.append(body)
 
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
@@ -61,3 +73,18 @@ func place_location_marker():
 func point(target_position: Vector2):
 	$AnimatedSprite2D.flip_h = global_position.direction_to(target_position).x < 0
 	$AnimatedSprite2D.play("pointing_right")
+	
+func add_follower(new_follower: Crew):
+	new_follower.set_assignment(self)
+	followers.append(new_follower)
+	interactables.erase(new_follower)
+	point(new_follower.global_position)
+	
+func remove_follower(follower: Crew):
+	follower.set_assignment(null)
+	followers.erase(follower)
+	
+func assign_follower(follower: Crew, new_assignment: Node2D):
+	follower.set_assignment(new_assignment)
+	point(new_assignment.global_position)
+	followers.erase(follower)
