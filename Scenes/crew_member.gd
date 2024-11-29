@@ -23,6 +23,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func set_assignment(new_assignment: Node2D):
+	if assignment_target is Marker2D:
+		assignment_target.queue_free()
 	assignment_target = new_assignment
 
 func push(push_vector: Vector2):
