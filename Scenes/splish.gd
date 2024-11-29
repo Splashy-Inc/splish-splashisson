@@ -40,13 +40,14 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			if action_target is Crew:
 				add_follower(action_target)
 			elif action_target is Task:
-				if followers.is_empty():
+				if action_target.worker:
+					add_follower(action_target.worker)
+				elif action_target.assignee:
+					print(action_target, " already assigned to ", action_target.assignee, " !")
+				elif followers.is_empty():
 					print("No followers to assign to ", action_target, " !")
 				else:
-					if action_target.assignee:
-						add_follower(action_target.assignee)
-					else:
-						assign_follower(followers.front(), action_target)
+					assign_follower(followers.front(), action_target)
 		
 	if Input.is_action_just_pressed("unassign"):
 		if followers.is_empty():
