@@ -56,11 +56,11 @@ func push(push_vector: Vector2):
 	
 func hide_self():
 	hide()
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func show_self():
 	show()
-	$CollisionShape2D.disabled = false
+	$CollisionShape2D.set_deferred("disabled", false)
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	if body == assignment_target and body.has_method("set_assignee"):
