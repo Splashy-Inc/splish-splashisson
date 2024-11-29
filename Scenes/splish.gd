@@ -89,7 +89,7 @@ func _get_action_target():
 	# TODO: Allow player to cycle through interactable targets
 	var action_target
 	for interactable in interactables:
-		if not interactable in followers:
+		if not interactable is Crew or not interactable in followers:
 			if action_target:
 				if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
 					action_target = interactable
