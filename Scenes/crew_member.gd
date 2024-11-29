@@ -40,6 +40,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func set_assignment(new_assignment: Node2D):
+	# TODO: Figure out if we want crew to immediately turn on interactable range
+	#   If we don't wait for acknowledgement animation to finish and crew is already close enough,
+	#   they will immediately start working. Might be nice for the player, TBD in playtesting.
 	$InteractableRange/CollisionShape2D.set_deferred("disabled", true)
 	
 	if new_assignment is Player:
