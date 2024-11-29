@@ -26,7 +26,14 @@ func _physics_process(delta: float) -> void:
 			col.get_collider().push(col.get_normal().rotated(deg_to_rad(90)) * SPEED * 2)
 			
 func _unhandled_key_input(event: InputEvent) -> void:
+	# Identify closest interactable as action target
+	# TODO: Allow player to cycle through interactable targets
 	var action_target = interactables.front()
+	for interactable in interactables:
+		if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
+			action_target = interactable
+	
+	# Set assignment accordingly
 	if action_target and action_target.has_method("set_assignment"):
 		if Input.is_action_just_pressed("unassign"):
 			action_target.set_assignment(null)
