@@ -21,9 +21,9 @@ position = Vector2(759, 375)
 [node name="CrewMember2" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(1037, 360)
 
-[node name="CrewMember3" parent="." node_paths=PackedStringArray("assignment_target") instance=ExtResource("1_tnbfu")]
+[node name="CrewMember3" parent="." node_paths=PackedStringArray("test_assignment") instance=ExtResource("1_tnbfu")]
 position = Vector2(897, 369)
-assignment_target = NodePath("../RowingTask2")
+test_assignment = NodePath("../RowingTask2")
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
 position = Vector2(909, 550)
