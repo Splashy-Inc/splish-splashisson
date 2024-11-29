@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=9 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://Scenes/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
+[ext_resource type="Texture2D" uid="uid://c2lcyr846pcti" path="res://Art/Crew/Animations/Walking Down/CrewWalkingDownA.png" id="3_tolw7"]
+[ext_resource type="Texture2D" uid="uid://2sv5fbdgw45p" path="res://Art/Crew/Animations/Walking Down/CrewWalkingDownB.png" id="4_orbvs"]
+[ext_resource type="Texture2D" uid="uid://d0a0o0ruvxadu" path="res://Art/Crew/Animations/Walking Up/CrewWalkingUpA.png" id="5_6joth"]
+[ext_resource type="Texture2D" uid="uid://ksiw0uvk5yl0" path="res://Art/Crew/Animations/Walking Up/CrewWalkingUpB.png" id="6_qtjgd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -10,8 +14,30 @@ animations = [{
 "texture": ExtResource("1_fr6qd")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tolw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_orbvs")
+}],
+"loop": true,
+"name": &"walking_down",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6joth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qtjgd")
+}],
+"loop": true,
+"name": &"walking_up",
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ak416"]
@@ -25,6 +51,8 @@ script = ExtResource("1_ci8gb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wxg80")
+animation = &"idle"
+frame_progress = 0.813958
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ak416")
