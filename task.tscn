@@ -59,13 +59,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4egum"]
 height = 66.0
 
 [node name="Task" type="StaticBody2D"]
+scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 0
 
@@ -73,7 +74,7 @@ collision_mask = 0
 position = Vector2(48, -10)
 sprite_frames = SubResource("SpriteFrames_8te5t")
 animation = &"idle"
-frame_progress = 0.213954
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
