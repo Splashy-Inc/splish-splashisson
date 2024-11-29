@@ -26,9 +26,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_6u4r1")
 }],
-"loop": true,
-"name": &"pointing",
-"speed": 2.0
+"loop": false,
+"name": &"pointing_right",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -67,9 +67,8 @@ script = ExtResource("1_34yo7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_48aad")
-animation = &"pointing"
+animation = &"pointing_right"
 autoplay = "idle"
-frame_progress = 0.01087
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jhbrf")
