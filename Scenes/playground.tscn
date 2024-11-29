@@ -26,8 +26,9 @@ focus_target = NodePath("../Splish")
 [node name="LocationTest" type="Marker2D" parent="."]
 position = Vector2(722, 714)
 
-[node name="Task" parent="." instance=ExtResource("4_3xjf2")]
+[node name="Task" parent="." node_paths=PackedStringArray("test_assignee") instance=ExtResource("4_3xjf2")]
 position = Vector2(1049, 566)
+test_assignee = NodePath("../CrewMember")
 
 [node name="Task2" parent="." instance=ExtResource("4_3xjf2")]
 position = Vector2(736, 571)

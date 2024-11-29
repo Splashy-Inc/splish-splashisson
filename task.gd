@@ -1,10 +1,12 @@
 extends StaticBody2D
 
+@export var test_assignee: Crew
 var assignee: Crew
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_test_assignment()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,3 +23,14 @@ func set_assignee(new_assignee: Crew):
 		$AnimatedSprite2D.play("idle")
 	
 	assignee = new_assignee
+
+func _test_assignment():
+	if test_assignee:
+		print(self, " waiting 5 seconds to assign ", test_assignee)
+		await get_tree().create_timer(5).timeout
+		set_assignee(test_assignee)
+		print(test_assignee, " assigned to ", self)
+		print(self, " waiting 5 seconds to unassign ", test_assignee)
+		await get_tree().create_timer(5).timeout
+		set_assignee(null)
+		print(test_assignee, " unassigned from ", self)
