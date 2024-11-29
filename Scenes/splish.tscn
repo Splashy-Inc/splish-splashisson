@@ -28,7 +28,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"pointing_right",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -69,6 +69,8 @@ script = ExtResource("1_34yo7")
 sprite_frames = SubResource("SpriteFrames_48aad")
 animation = &"pointing_right"
 autoplay = "idle"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jhbrf")

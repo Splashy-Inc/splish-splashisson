@@ -38,7 +38,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if action_target and action_target.has_method("set_assignment"):
 		if Input.is_action_just_pressed("unassign"):
 			action_target.set_assignment(null)
-			point(action_target.global_position)
 		if Input.is_action_just_pressed("interact"):
 			action_target.set_assignment(self)
 			point(action_target.global_position)
@@ -60,8 +59,5 @@ func place_location_marker():
 	return new_marker
 
 func point(target_position: Vector2):
-	if global_position.direction_to(target_position).x < 0:
-		$AnimatedSprite2D.flip_h = true
+	$AnimatedSprite2D.flip_h = global_position.direction_to(target_position).x < 0
 	$AnimatedSprite2D.play("pointing_right")
-	await $AnimatedSprite2D.animation_finished
-	$AnimatedSprite2D.flip_h = false
