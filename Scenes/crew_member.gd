@@ -7,6 +7,7 @@ class_name Crew
 
 const SPEED = 300.0
 var push_velocity = Vector2.ZERO
+var following = false
 
 func _physics_process(delta: float) -> void:
 	velocity = push_velocity
@@ -20,12 +21,29 @@ func _physics_process(delta: float) -> void:
 		else:
 			global_position == assignment_target.global_position
 	
+	if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
+		if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
+			$AnimatedSprite2D.play("walking_up")
+		else:
+			$AnimatedSprite2D.play("walking_down")
+	else:
+		if following and global_position.direction_to(assignment_target.global_position).y < 0:
+			$AnimatedSprite2D.play("idle_up")
+		else:
+			$AnimatedSprite2D.play("idle_down")
+	
 	move_and_slide()
 
 func set_assignment(new_assignment: Node2D):
 	if assignment_target is Marker2D:
 		assignment_target.queue_free()
+	
 	assignment_target = new_assignment
+	
+	if assignment_target is Player:
+		following = true
+	else:
+		following = false
 
 func push(push_vector: Vector2):
 	push_velocity += push_vector
