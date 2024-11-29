@@ -2,12 +2,19 @@ extends CharacterBody2D
 
 class_name Crew
 
+signal task_started
+
+@export var test_assignment: Node2D
 @export var assignment_target: Node2D
 @export var follow_distance = 70
 
 const SPEED = 300.0
 var push_velocity = Vector2.ZERO
 var following = false
+
+func _ready():
+	if test_assignment:
+		_test_assignment(test_assignment)
 
 func _physics_process(delta: float) -> void:
 	velocity = push_velocity
@@ -39,6 +46,8 @@ func _physics_process(delta: float) -> void:
 func set_assignment(new_assignment: Node2D):
 	if assignment_target is Marker2D:
 		assignment_target.queue_free()
+	elif assignment_target is Task:
+		assignment_target.set_assignee(null)
 	
 	assignment_target = new_assignment
 	
@@ -51,3 +60,28 @@ func set_assignment(new_assignment: Node2D):
 
 func push(push_vector: Vector2):
 	push_velocity += push_vector
+	
+func hide_self():
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
+
+func show_self():
+	show()
+	$CollisionShape2D.set_deferred("disabled", false)
+
+func _on_interactable_range_body_entered(body: Node2D) -> void:
+	if body == assignment_target and body.has_method("set_assignee"):
+		body.set_assignee(self)
+		task_started.emit()
+		
+
+func _test_assignment(test_target: Node2D):
+	print("Assigning test target ", test_target, " to ", self)
+	set_assignment(test_target)
+	print("Waiting for ", self, " get to assignment and interact")
+	await task_started
+	print(self, " permforming ", assignment_target, " for 5 seconds")
+	await get_tree().create_timer(5).timeout
+	print("Unassigning ", assignment_target, " from ", self)
+	assignment_target.set_assignee(null)
+	set_assignment(null)

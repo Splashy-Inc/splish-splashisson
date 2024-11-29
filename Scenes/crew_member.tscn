@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=22 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://Scenes/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -116,8 +116,12 @@ animations = [{
 radius = 19.0
 height = 66.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j4hgd"]
+radius = 33.0
+
 [node name="CrewMember" type="CharacterBody2D"]
 collision_layer = 6
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_ci8gb")
 
@@ -127,5 +131,13 @@ animation = &"idle_down"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_ak416")
+
+[node name="InteractableRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
+shape = SubResource("CircleShape2D_j4hgd")
+
+[connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
