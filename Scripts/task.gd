@@ -18,10 +18,11 @@ func _process(delta: float) -> void:
 func set_assignee(new_assignee: Crew):
 	if new_assignee: # Only allow setting assignee if not already taken
 		if assignee == null:
-			new_assignee.hide()
+			new_assignee.hide_self()
+			new_assignee.global_position = global_position
 			$AnimatedSprite2D.play("active")
 	elif assignee: # Null being passed in means unassigning current assignee, so show them
-		assignee.show()
+		assignee.show_self()
 		$AnimatedSprite2D.play("idle")
 	
 	assignee = new_assignee

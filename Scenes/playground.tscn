@@ -7,14 +7,23 @@
 
 [node name="Playground" type="Node"]
 
+[node name="RowingTask" parent="." instance=ExtResource("4_jb6lg")]
+position = Vector2(1118, 570)
+
+[node name="RowingTask2" parent="." instance=ExtResource("4_jb6lg")]
+position = Vector2(685, 579)
+rotation = -3.14159
+scale = Vector2(1.5, -1.5)
+
 [node name="CrewMember" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(759, 375)
 
 [node name="CrewMember2" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(1037, 360)
 
-[node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
+[node name="CrewMember3" parent="." node_paths=PackedStringArray("assignment_target") instance=ExtResource("1_tnbfu")]
 position = Vector2(897, 369)
+assignment_target = NodePath("../RowingTask2")
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
 position = Vector2(909, 550)
@@ -25,11 +34,3 @@ focus_target = NodePath("../Splish")
 
 [node name="LocationTest" type="Marker2D" parent="."]
 position = Vector2(722, 714)
-
-[node name="RowingTask" parent="." node_paths=PackedStringArray("test_assignee") instance=ExtResource("4_jb6lg")]
-position = Vector2(1118, 570)
-test_assignee = NodePath("../CrewMember")
-
-[node name="RowingTask2" parent="." instance=ExtResource("4_jb6lg")]
-position = Vector2(685, 579)
-scale = Vector2(-1.5, 1.5)

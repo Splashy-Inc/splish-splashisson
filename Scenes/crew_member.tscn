@@ -121,6 +121,7 @@ radius = 33.0
 
 [node name="CrewMember" type="CharacterBody2D"]
 collision_layer = 6
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_ci8gb")
 
@@ -138,3 +139,5 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_j4hgd")
+
+[connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]

@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 func set_assignment(new_assignment: Node2D):
 	if assignment_target is Marker2D:
 		assignment_target.queue_free()
+	elif assignment_target is Task:
+		assignment_target.set_assignee(null)
 	
 	assignment_target = new_assignment
 	
@@ -51,3 +53,15 @@ func set_assignment(new_assignment: Node2D):
 
 func push(push_vector: Vector2):
 	push_velocity += push_vector
+	
+func hide_self():
+	hide()
+	$CollisionShape2D.disabled = true
+
+func show_self():
+	show()
+	$CollisionShape2D.disabled = false
+
+func _on_interactable_range_body_entered(body: Node2D) -> void:
+	if body == assignment_target and body.has_method("set_assignee"):
+		body.set_assignee(self)
