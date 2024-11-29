@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var col = get_slide_collision(i)
 		if col.get_collider() is Crew:
-			col.get_collider().push(col.get_normal().rotated(deg_to_rad(90)) * SPEED * 2)
+			col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 			
 func _unhandled_key_input(event: InputEvent) -> void:
 	# Identify closest interactable as action target
