@@ -90,6 +90,7 @@ func _get_action_target():
 	var action_target
 	for interactable in interactables:
 		if not interactable is Crew or not interactable in followers:
+			# TODO: Add in prioritizing crew members over tasks since crew members can get player stuck
 			if action_target:
 				if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
 					action_target = interactable
