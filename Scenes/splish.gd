@@ -28,22 +28,19 @@ func _physics_process(delta: float) -> void:
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 			
 func _unhandled_key_input(event: InputEvent) -> void:
-	# Identify closest interactable as action target
-	# TODO: Allow player to cycle through interactable targets
-	var action_target = interactables.front()
-	for interactable in interactables:
-		if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
-			action_target = interactable
-	
-	if action_target:
-		if Input.is_action_just_pressed("interact"):
-			if action_target.has_method("set_assignment"):
-				add_follower(action_target)
-			elif action_target.has_method("set_assignee"):
-				if followers.is_empty():
-					print("No followers to assign to ", action_target, " !")
-				else:
-					assign_follower(followers.front(), action_target)
+	if Input.is_action_just_pressed("interact"):
+		var action_target = _get_action_target()
+		if action_target is Crew:
+			add_follower(action_target)
+		elif action_target is Task:
+			if action_target.worker:
+				add_follower(action_target.worker)
+			elif action_target.assignee:
+				print(action_target, " already assigned to ", action_target.assignee, " !")
+			elif followers.is_empty():
+				print("No followers to assign to ", action_target, " !")
+			else:
+				assign_follower(followers.front(), action_target)
 		
 	if Input.is_action_just_pressed("unassign"):
 		if followers.is_empty():
@@ -58,8 +55,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			assign_follower(followers.front(), place_location_marker())
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
-	if body not in followers:
-		interactables.append(body)
+	interactables.append(body)
 
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
@@ -77,7 +73,6 @@ func point(target_position: Vector2):
 func add_follower(new_follower: Crew):
 	new_follower.set_assignment(self)
 	followers.append(new_follower)
-	interactables.erase(new_follower)
 	point(new_follower.global_position)
 	
 func remove_follower(follower: Crew):
@@ -88,3 +83,18 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	follower.set_assignment(new_assignment)
 	point(new_assignment.global_position)
 	followers.erase(follower)
+	
+func _get_action_target():
+	# Identify closest interactable as action target
+	# TODO: Allow player to cycle through interactable targets
+	var action_target
+	for interactable in interactables:
+		if not interactable is Crew or not interactable in followers:
+			# TODO: Add in prioritizing crew members over tasks since crew members can get player stuck
+			if action_target:
+				if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
+					action_target = interactable
+			else:
+				action_target = interactable
+	
+	return action_target
