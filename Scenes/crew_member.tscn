@@ -120,6 +120,7 @@ height = 66.0
 radius = 34.0
 
 [node name="CrewMember" type="CharacterBody2D"]
+scale = Vector2(1.333, 1.333)
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1

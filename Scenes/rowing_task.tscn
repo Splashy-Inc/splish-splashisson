@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv0yjb1p5lrv2"]
+[gd_scene load_steps=16 format=3 uid="uid://bh2fvow0in3wk"]
 
 [ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_xesfs"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="2_weqdi"]
@@ -67,7 +67,7 @@ animations = [{
 height = 66.0
 
 [node name="RowingTask" type="StaticBody2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_xesfs")
