@@ -6,11 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://b3lpulc177saw" path="res://Art/ShipTiles/EndOfShip.png" id="2_6fiee"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
 [ext_resource type="Texture2D" uid="uid://bkw4m3qxbini7" path="res://Art/ShipTiles/MiddleShip.png" id="3_ngs1i"]
-[ext_resource type="PackedScene" path="res://Scenes/rowing_task.tscn" id="4_jb6lg"]
+[ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="4_jb6lg"]
 
 [node name="Playground" type="Node"]
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 3240.0
 texture = ExtResource("1_e04j1")
 
 [node name="Boat" type="Node2D" parent="."]
@@ -33,20 +38,20 @@ texture = ExtResource("2_6fiee")
 [node name="Tasks" type="Node2D" parent="Boat"]
 
 [node name="RowingTask" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(243, -90)
+position = Vector2(226, -90)
 
 [node name="RowingTask2" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(-243, -90)
-rotation = -3.14159
-scale = Vector2(1.5, -1.5)
+position = Vector2(225, 90)
 
 [node name="RowingTask3" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(243, 0)
+position = Vector2(-225, -90)
+rotation = -3.14159
+scale = Vector2(2, -2)
 
 [node name="RowingTask4" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(-243, 0)
+position = Vector2(-225, 90)
 rotation = -3.14159
-scale = Vector2(1.5, -1.5)
+scale = Vector2(2, -2)
 
 [node name="CrewMember" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(1010, 459)

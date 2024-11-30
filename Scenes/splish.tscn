@@ -61,6 +61,7 @@ height = 66.0
 radius = 66.0
 
 [node name="Splish" type="CharacterBody2D"]
+scale = Vector2(1.333, 1.333)
 collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_34yo7")
