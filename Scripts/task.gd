@@ -18,7 +18,7 @@ func set_assignee(new_assignee: Crew) -> bool:
 
 # This function is intended to be set when the respective crew is in range of the task to begin work
 func set_worker(new_worker: Crew) -> bool:
-	if new_worker: # Only allow setting assignee if not already taken
+	if new_worker: # Only allow setting worker if not already taken
 		if worker == null:
 			assignee = worker
 			new_worker.hide_self()
@@ -28,7 +28,7 @@ func set_worker(new_worker: Crew) -> bool:
 			return false
 	else:
 		assignee = null
-		if worker: # Null being passed in means unassigning current assignee, so show them
+		if worker: # Null being passed in means removing current worker, so show them
 			worker.show_self()
 			$AnimatedSprite2D.play("idle")
 	
