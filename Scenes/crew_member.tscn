@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=29 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://Scenes/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://cldfcbth3tayo" path="res://Art/Crew/Animations/Acknowledge/CrewAcknowledgementF.png" id="6_gdxfi"]
 [ext_resource type="Texture2D" uid="uid://ksiw0uvk5yl0" path="res://Art/Crew/Animations/Walking Up/CrewWalkingUpB.png" id="6_qtjgd"]
 [ext_resource type="Texture2D" uid="uid://6lxlmbx4eqi0" path="res://Art/Crew/Animations/Alert/CrewAlertH.png" id="7_exurq"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="19_i1ydi"]
+[ext_resource type="AudioStream" uid="uid://bj173jpryfuer" path="res://Audio/crew_alert.mp3" id="20_ovux8"]
+[ext_resource type="AudioStream" uid="uid://bx0y34nvwegsj" path="res://Audio/crew_acknowledge.mp3" id="21_mr5gk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -119,6 +122,125 @@ height = 66.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4hgd"]
 radius = 34.0
 
+[sub_resource type="Animation" id="Animation_ot4iw"]
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"alert"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 5, 6]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["FollowPlayer"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bm4pa"]
+resource_name = "new_animation"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3sbtm"]
+resource_name = "acknowledge"
+length = 0.750013
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"acknowledge"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["AcknowledgeAssignment"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_plwr3"]
+_data = {
+"RESET": SubResource("Animation_bm4pa"),
+"acknowledge": SubResource("Animation_3sbtm"),
+"alert": SubResource("Animation_ot4iw")
+}
+
 [node name="CrewMember" type="CharacterBody2D"]
 scale = Vector2(1.333, 1.333)
 collision_layer = 2
@@ -141,5 +263,18 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_j4hgd")
 disabled = true
+
+[node name="SFXManager" parent="." instance=ExtResource("19_i1ydi")]
+
+[node name="FollowPlayer" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("20_ovux8")
+
+[node name="AcknowledgeAssignment" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("21_mr5gk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_plwr3")
+}
 
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
