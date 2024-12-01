@@ -28,14 +28,14 @@ func _physics_process(delta: float) -> void:
 		
 		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
 			if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
-				$AnimatedSprite2D.play("walking_up")
+				$AnimationPlayer.play("walking_up")
 			else:
-				$AnimatedSprite2D.play("walking_down")
+				$AnimationPlayer.play("walking_down")
 		else:
 			if following and global_position.direction_to(current_assignment.global_position).y < 0:
-				$AnimatedSprite2D.play("idle_up")
+				$AnimationPlayer.play("idle_up")
 			else:
-				$AnimatedSprite2D.play("idle_down")
+				$AnimationPlayer.play("idle_down")
 	
 	move_and_slide()
 
