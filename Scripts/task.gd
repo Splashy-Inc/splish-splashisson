@@ -23,14 +23,17 @@ func set_worker(new_worker: Crew) -> bool:
 			assignee = worker
 			new_worker.hide_self()
 			new_worker.global_position = global_position
-			$AnimatedSprite2D.play("active")
+			play_animation("active")
 		else:
 			return false
 	else:
 		assignee = null
 		if worker: # Null being passed in means removing current worker, so show them
 			worker.show_self()
-			$AnimatedSprite2D.play("idle")
+			play_animation("idle")
 	
 	worker = new_worker
 	return true
+
+func play_animation(animation_name):
+	$AnimatedSprite2D.play(animation_name)

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://1ixm1gjfjpgl"]
-
-[ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_ltile"]
-
-[node name="RowingTask" type="StaticBody2D"]
-script = ExtResource("1_ltile")

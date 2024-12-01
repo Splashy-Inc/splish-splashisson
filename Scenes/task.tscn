@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlcdttf7epi67"]
+[gd_scene load_steps=16 format=3 uid="uid://br7ml3fp1bt1s"]
 
 [ext_resource type="Script" path="res://Scripts/task.gd" id="1_6sp0n"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="1_cnlfs"]
