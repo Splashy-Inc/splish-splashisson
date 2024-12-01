@@ -73,6 +73,7 @@ func point(target_position: Vector2):
 func add_follower(new_follower: Crew):
 	new_follower.set_assignment(self)
 	followers.append(new_follower)
+	$SFXManager.play("AddFollower")
 	point(new_follower.global_position)
 	
 func remove_follower(follower: Crew):
@@ -81,6 +82,7 @@ func remove_follower(follower: Crew):
 	
 func assign_follower(follower: Crew, new_assignment: Node2D):
 	follower.set_assignment(new_assignment)
+	$SFXManager.play("AssignFollower")
 	point(new_assignment.global_position)
 	followers.erase(follower)
 	
