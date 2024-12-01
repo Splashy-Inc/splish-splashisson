@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bh2fvow0in3wk"]
+[gd_scene load_steps=31 format=3 uid="uid://bh2fvow0in3wk"]
 
 [ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_xesfs"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="2_weqdi"]
@@ -89,6 +89,21 @@ stream_1/stream = ExtResource("20_vqxm8")
 stream_2/stream = ExtResource("21_lwvwt")
 stream_3/stream = ExtResource("22_v1i71")
 
+[sub_resource type="Animation" id="Animation_td5kf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
 [sub_resource type="Animation" id="Animation_upka4"]
 resource_name = "active"
 length = 4.00002
@@ -136,8 +151,8 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_td5kf"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ymwvb"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -154,7 +169,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ucpqp"]
 _data = {
 "RESET": SubResource("Animation_td5kf"),
-"active": SubResource("Animation_upka4")
+"active": SubResource("Animation_upka4"),
+"idle": SubResource("Animation_ymwvb")
 }
 
 [node name="RowingTask" type="StaticBody2D"]
@@ -183,7 +199,8 @@ attenuation = 0.375
 stream = SubResource("AudioStreamRandomizer_3ecfv")
 attenuation = 0.375
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["rowing_animation"]]
 libraries = {
 "": SubResource("AnimationLibrary_ucpqp")
 }
+autoplay = "RESET"
