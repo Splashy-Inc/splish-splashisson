@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	velocity = push_velocity
 	push_velocity = Vector2.ZERO
 	
-	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge") or not $AnimatedSprite2D.is_playing():
+	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge") or not $AnimationPlayer.is_playing():
 		if current_assignment:
 			var distance_to_assignment =  global_position.distance_to(current_assignment.global_position)
 			if distance_to_assignment > 5:
