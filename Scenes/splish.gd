@@ -9,7 +9,7 @@ var interactables: Array[Node2D]
 var followers: Array[Crew]
 
 func _physics_process(delta: float) -> void:
-	if $AnimatedSprite2D.animation != "pointing_right" or not $AnimatedSprite2D.is_playing():
+	if $AnimationPlayer.current_animation != "pointing_right" or not $AnimationPlayer.is_playing():
 		var direction := Input.get_vector("left", "right", "up", "down")
 		if direction:
 			if direction.y < 0:
@@ -68,7 +68,7 @@ func place_location_marker():
 
 func point(target_position: Vector2):
 	$AnimatedSprite2D.flip_h = global_position.direction_to(target_position).x < 0
-	$AnimatedSprite2D.play("pointing_right")
+	$AnimationPlayer.play("pointing_right")
 	
 func add_follower(new_follower: Crew):
 	new_follower.set_assignment(self)
