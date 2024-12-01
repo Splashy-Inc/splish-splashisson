@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=32 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://Scenes/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="19_i1ydi"]
 [ext_resource type="AudioStream" uid="uid://bj173jpryfuer" path="res://Audio/crew_alert.mp3" id="20_ovux8"]
 [ext_resource type="AudioStream" uid="uid://bx0y34nvwegsj" path="res://Audio/crew_acknowledge.mp3" id="21_mr5gk"]
+[ext_resource type="AudioStream" uid="uid://c4wwmhh1pltjm" path="res://Audio/boot_step2.mp3" id="22_jwcoc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -234,11 +235,71 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_x2nhf"]
+resource_name = "walking_up"
+length = 0.500025
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking_up"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_2fgx1"]
+resource_name = "walking_down"
+length = 0.500025
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walking_down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_plwr3"]
 _data = {
 "RESET": SubResource("Animation_bm4pa"),
 "acknowledge": SubResource("Animation_3sbtm"),
-"alert": SubResource("Animation_ot4iw")
+"alert": SubResource("Animation_ot4iw"),
+"walking_down": SubResource("Animation_2fgx1"),
+"walking_up": SubResource("Animation_x2nhf")
 }
 
 [node name="CrewMember" type="CharacterBody2D"]
@@ -273,6 +334,16 @@ volume_db = -5.0
 [node name="AcknowledgeAssignment" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("21_mr5gk")
 volume_db = -5.0
+
+[node name="BootStepHigh" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = ExtResource("22_jwcoc")
+volume_db = -5.0
+pitch_scale = 1.6
+
+[node name="BootStepLow" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = ExtResource("22_jwcoc")
+volume_db = -5.0
+pitch_scale = 1.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
