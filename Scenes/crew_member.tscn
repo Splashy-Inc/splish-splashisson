@@ -268,9 +268,11 @@ disabled = true
 
 [node name="FollowPlayer" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("20_ovux8")
+volume_db = -5.0
 
 [node name="AcknowledgeAssignment" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("21_mr5gk")
+volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
