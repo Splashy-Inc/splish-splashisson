@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bh2fvow0in3wk"]
+[gd_scene load_steps=27 format=3 uid="uid://bh2fvow0in3wk"]
 
 [ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_xesfs"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="2_weqdi"]
@@ -13,6 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://ckio7r0i8jxeb" path="res://Art/Tasks/Rowing/Active/CrewRowingJ.png" id="11_il4fw"]
 [ext_resource type="Texture2D" uid="uid://c6vh2ed4lwwia" path="res://Art/Tasks/Rowing/Active/CrewRowingK.png" id="12_t8vmi"]
 [ext_resource type="Texture2D" uid="uid://cc8bbr3amxvmc" path="res://Art/Tasks/Rowing/Idle/IdleCrewRowing.png" id="13_4684i"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="14_0weow"]
+[ext_resource type="AudioStream" uid="uid://cdd6ahdivrr5v" path="res://Audio/heave1.mp3" id="15_byi6y"]
+[ext_resource type="AudioStream" uid="uid://ddjlglyccqp8i" path="res://Audio/heave2.mp3" id="16_cmryo"]
+[ext_resource type="AudioStream" uid="uid://b2b4txtjo2spd" path="res://Audio/heave3.mp3" id="17_x7f8e"]
+[ext_resource type="AudioStream" uid="uid://clj7kr7wo2bie" path="res://Audio/heave4.mp3" id="18_f83f2"]
+[ext_resource type="AudioStream" uid="uid://dnj0nonrdwnoh" path="res://Audio/ho1.mp3" id="19_s4gkp"]
+[ext_resource type="AudioStream" uid="uid://cwy1efriakldk" path="res://Audio/ho2.mp3" id="20_vqxm8"]
+[ext_resource type="AudioStream" uid="uid://dtt0cy8u8g6kp" path="res://Audio/ho3.mp3" id="21_lwvwt"]
+[ext_resource type="AudioStream" uid="uid://2k6yinhs8b4q" path="res://Audio/ho4.mp3" id="22_v1i71"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8te5t"]
 animations = [{
@@ -66,6 +75,20 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4egum"]
 height = 66.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x4rre"]
+streams_count = 4
+stream_0/stream = ExtResource("15_byi6y")
+stream_1/stream = ExtResource("16_cmryo")
+stream_2/stream = ExtResource("17_x7f8e")
+stream_3/stream = ExtResource("18_f83f2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3ecfv"]
+streams_count = 4
+stream_0/stream = ExtResource("19_s4gkp")
+stream_1/stream = ExtResource("20_vqxm8")
+stream_2/stream = ExtResource("21_lwvwt")
+stream_3/stream = ExtResource("22_v1i71")
+
 [node name="RowingTask" type="StaticBody2D"]
 scale = Vector2(2, 2)
 collision_layer = 4
@@ -81,3 +104,11 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4egum")
+
+[node name="SFXManager" parent="." instance=ExtResource("14_0weow")]
+
+[node name="Heave" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_x4rre")
+
+[node name="Ho" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_3ecfv")
