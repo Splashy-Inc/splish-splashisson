@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=15 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://Scenes/splish.gd" id="1_34yo7"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="2_fplbu"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/Walking Down/SplishWalkDownB.png" id="4_bdiwf"]
 [ext_resource type="Texture2D" uid="uid://cmh83m2yj0glw" path="res://Art/Splish/Walking Up/SplishWalkUpA.png" id="5_ksqji"]
 [ext_resource type="Texture2D" uid="uid://brexb1buc6y5" path="res://Art/Splish/Walking Up/SplishWalkUpB.png" id="6_y3bk3"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="9_r3uhy"]
+[ext_resource type="AudioStream" uid="uid://dsl2r5ouyucqa" path="res://Audio/hail_grunt.mp3" id="10_2tv06"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="11_ke8qv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_48aad"]
 animations = [{
@@ -80,6 +83,14 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_nx1hd")
+
+[node name="SFXManager" parent="." instance=ExtResource("9_r3uhy")]
+
+[node name="AddFollower" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("10_2tv06")
+
+[node name="AssignFollower" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("11_ke8qv")
 
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
