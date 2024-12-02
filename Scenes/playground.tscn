@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://byk8jyx3r65e2"]
+[gd_scene load_steps=9 format=3 uid="uid://byk8jyx3r65e2"]
 
 [ext_resource type="Texture2D" uid="uid://v8dy2ved6iwm" path="res://Art/BG/WaterBackground.png" id="1_e04j1"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="1_tnbfu"]
@@ -7,6 +7,11 @@
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
 [ext_resource type="Texture2D" uid="uid://bkw4m3qxbini7" path="res://Art/ShipTiles/MiddleShip.png" id="3_ngs1i"]
 [ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="4_jb6lg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qe181"]
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Playground" type="Node"]
 
@@ -17,6 +22,22 @@ layer = -1
 offset_right = 1920.0
 offset_bottom = 3240.0
 texture = ExtResource("1_e04j1")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 84.0
+offset_top = 139.0
+offset_right = 477.0
+offset_bottom = 469.0
+text = "Controls:
+WASD - Movement
+I - Interact with crew/task
+  Crew - Assigns as follower
+  Task - Assigns follower to task
+U - Unassign follower
+O - Assign crew to player location
+
+Goal: Get all crew to row the boat!"
+label_settings = SubResource("LabelSettings_qe181")
 
 [node name="Boat" type="Node2D" parent="."]
 position = Vector2(960, 540)
@@ -61,6 +82,9 @@ position = Vector2(1003, 366)
 
 [node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(887, 427)
+
+[node name="CrewMember4" parent="." instance=ExtResource("1_tnbfu")]
+position = Vector2(890, 314)
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
 position = Vector2(909, 550)
