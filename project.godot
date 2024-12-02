@@ -13,6 +13,7 @@ config_version=5
 config/name="Splish Splashisson"
 run/main_scene="res://Scenes/playground.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://SplashySplashScreen.png"
 config/icon="res://Art/Splish/Idle/SplishIdle.png"
 
 [display]
