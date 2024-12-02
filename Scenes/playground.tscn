@@ -62,6 +62,9 @@ position = Vector2(1003, 366)
 [node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(887, 427)
 
+[node name="CrewMember4" parent="." instance=ExtResource("1_tnbfu")]
+position = Vector2(890, 314)
+
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
 position = Vector2(909, 550)
 
