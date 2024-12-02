@@ -6,7 +6,7 @@ signal task_started
 
 @export var test_assignment: Node2D
 @export var current_assignment: Node2D
-@export var follow_distance = 70
+@export var follow_distance = 100
 
 const SPEED = 300.0
 var push_velocity = Vector2.ZERO
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	velocity = push_velocity
 	push_velocity = Vector2.ZERO
 	
-	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge") or not $AnimationPlayer.is_playing():
+	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge") or not $AnimationPlayer.is_playing() and push_velocity == Vector2.ZERO:
 		if current_assignment:
 			var distance_to_assignment =  global_position.distance_to(current_assignment.global_position)
 			if distance_to_assignment > 5:
