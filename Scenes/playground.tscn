@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://byk8jyx3r65e2"]
+[gd_scene load_steps=10 format=3 uid="uid://byk8jyx3r65e2"]
 
 [ext_resource type="Texture2D" uid="uid://v8dy2ved6iwm" path="res://Art/BG/WaterBackground.png" id="1_e04j1"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="1_tnbfu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
-[ext_resource type="Texture2D" uid="uid://b3lpulc177saw" path="res://Art/ShipTiles/EndOfShip.png" id="2_6fiee"]
+[ext_resource type="Texture2D" uid="uid://bg62n7s5j2exq" path="res://Art/ShipTiles/ShipBow.png" id="2_12uad"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
-[ext_resource type="Texture2D" uid="uid://bkw4m3qxbini7" path="res://Art/ShipTiles/MiddleShip.png" id="3_ngs1i"]
+[ext_resource type="Texture2D" uid="uid://dl2iyrtq3rdcy" path="res://Art/ShipTiles/ShipMiddle.png" id="3_1cslk"]
+[ext_resource type="Texture2D" uid="uid://ct0gilfhdq48q" path="res://Art/ShipTiles/ShipStern.png" id="4_42esw"]
 [ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="4_jb6lg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe181"]
@@ -46,15 +47,14 @@ position = Vector2(960, 540)
 
 [node name="Bow" type="Sprite2D" parent="Boat/Hull"]
 position = Vector2(0, -360)
-texture = ExtResource("2_6fiee")
+texture = ExtResource("2_12uad")
 
 [node name="Deck" type="Sprite2D" parent="Boat/Hull"]
-texture = ExtResource("3_ngs1i")
+texture = ExtResource("3_1cslk")
 
 [node name="Stern" type="Sprite2D" parent="Boat/Hull"]
 position = Vector2(0, 360)
-rotation = -3.14159
-texture = ExtResource("2_6fiee")
+texture = ExtResource("4_42esw")
 
 [node name="Tasks" type="Node2D" parent="Boat"]
 
