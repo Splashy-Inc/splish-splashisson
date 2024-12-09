@@ -58,11 +58,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhbrf"]
-radius = 19.0
-height = 66.0
+height = 33.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nx1hd"]
-radius = 66.0
+radius = 33.0
 
 [sub_resource type="Animation" id="Animation_jr7t7"]
 length = 0.001
@@ -242,7 +241,6 @@ _data = {
 }
 
 [node name="Splish" type="CharacterBody2D"]
-scale = Vector2(1.333, 1.333)
 collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_34yo7")
