@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="4_jb6lg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe181"]
-font_size = 24
-outline_size = 5
+font_size = 8
+outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Playground" type="Node"]
@@ -25,10 +25,10 @@ offset_bottom = 3240.0
 texture = ExtResource("1_e04j1")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 84.0
-offset_top = 139.0
-offset_right = 477.0
-offset_bottom = 469.0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 139.0
+offset_bottom = 140.0
 text = "Controls:
 WASD - Movement
 I - Interact with crew/task
@@ -41,56 +41,56 @@ Goal: Get all crew to row the boat!"
 label_settings = SubResource("LabelSettings_qe181")
 
 [node name="Boat" type="Node2D" parent="."]
-position = Vector2(960, 540)
+position = Vector2(320, 180)
 
 [node name="Hull" type="Node2D" parent="Boat"]
 
 [node name="Bow" type="Sprite2D" parent="Boat/Hull"]
-position = Vector2(0, -360)
+position = Vector2(0, -120)
 texture = ExtResource("2_12uad")
 
 [node name="Deck" type="Sprite2D" parent="Boat/Hull"]
 texture = ExtResource("3_1cslk")
 
 [node name="Stern" type="Sprite2D" parent="Boat/Hull"]
-position = Vector2(0, 360)
+position = Vector2(0, 120)
 texture = ExtResource("4_42esw")
 
 [node name="Tasks" type="Node2D" parent="Boat"]
 
 [node name="RowingTask" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(226, -90)
+position = Vector2(75, -40)
 
 [node name="RowingTask2" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(225, 90)
+position = Vector2(75, 40)
 
 [node name="RowingTask3" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(-225, -90)
+position = Vector2(-75, -40)
 rotation = -3.14159
-scale = Vector2(2, -2)
+scale = Vector2(1, -1)
 
 [node name="RowingTask4" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(-225, 90)
+position = Vector2(-75, 40)
 rotation = -3.14159
-scale = Vector2(2, -2)
+scale = Vector2(1, -1)
 
 [node name="CrewMember" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(1010, 459)
+position = Vector2(380, 71)
 
 [node name="CrewMember2" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(1003, 366)
+position = Vector2(331, 49)
 
 [node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(887, 427)
+position = Vector2(323, 104)
 
 [node name="CrewMember4" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(890, 314)
+position = Vector2(269, 71)
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
-position = Vector2(909, 550)
+position = Vector2(316, 277)
 
 [node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("focus_target")]
-position = Vector2(960, 540)
+position = Vector2(320, 180)
 script = ExtResource("2_gusxx")
 focus_target = NodePath("../Splish")
 
