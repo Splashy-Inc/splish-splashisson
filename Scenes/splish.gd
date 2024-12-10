@@ -55,8 +55,7 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
 	if body == action_target:
-		_set_action_target(null)
-		_find_action_target()
+		_refresh_action_target()
 
 func place_location_marker():
 	var new_marker = Marker2D.new()
