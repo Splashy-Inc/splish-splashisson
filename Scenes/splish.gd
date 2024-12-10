@@ -40,12 +40,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				print("No followers to assign to ", action_target, " !")
 			else:
 				assign_follower(followers.front(), action_target)
-		
-	if Input.is_action_just_pressed("unassign"):
-		if followers.is_empty():
-			print("No followers to unassign!")
-		else:
-			remove_follower(followers.front())
 	
 	if Input.is_action_just_pressed("location"):
 		if followers.is_empty():
