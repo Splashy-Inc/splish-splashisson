@@ -88,4 +88,7 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 
 func set_highlight(is_enable: bool):
 	is_selected = is_enable
-	$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
+	reset_highlight()
+
+func reset_highlight():
+	$AnimatedSprite2D.material.set_shader_parameter("on", is_selected)
