@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 			if col.get_collider() is Crew:
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 			
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		var action_target = _get_action_target()
 		if action_target is Crew:
