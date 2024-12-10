@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkw4m3qxbini7"
-path="res://.godot/imported/MiddleShip.png-609b0c21e6168bf5c78223c0712c57c9.ctex"
+uid="uid://dl2iyrtq3rdcy"
+path="res://.godot/imported/ShipMiddle.png-7743b045e55acbd2674a367255967ef1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ShipTiles/MiddleShip.png"
-dest_files=["res://.godot/imported/MiddleShip.png-609b0c21e6168bf5c78223c0712c57c9.ctex"]
+source_file="res://Art/ShipTiles/ShipMiddle.png"
+dest_files=["res://.godot/imported/ShipMiddle.png-7743b045e55acbd2674a367255967ef1.ctex"]
 
 [params]
 

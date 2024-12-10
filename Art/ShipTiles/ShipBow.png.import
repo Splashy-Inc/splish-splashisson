@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3lpulc177saw"
-path="res://.godot/imported/EndOfShip.png-101545c02276a0d1c35a52ee4afc230d.ctex"
+uid="uid://bg62n7s5j2exq"
+path="res://.godot/imported/ShipBow.png-bc769154a9a300f6a3fff1a90cf4b181.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/ShipTiles/EndOfShip.png"
-dest_files=["res://.godot/imported/EndOfShip.png-101545c02276a0d1c35a52ee4afc230d.ctex"]
+source_file="res://Art/ShipTiles/ShipBow.png"
+dest_files=["res://.godot/imported/ShipBow.png-bc769154a9a300f6a3fff1a90cf4b181.ctex"]
 
 [params]
 
