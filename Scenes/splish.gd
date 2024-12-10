@@ -91,6 +91,7 @@ func _find_action_target():
 	# Identify closest interactable as action target
 	# TODO: Allow player to cycle through interactable targets
 	for interactable in interactables:
+		# Don't target empty task if you don't have any followers to assign
 		if interactable is Task and (not interactable.worker and followers.is_empty()):
 			continue
 		
