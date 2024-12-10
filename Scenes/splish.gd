@@ -74,8 +74,7 @@ func add_follower(new_follower: Crew):
 	$SFXManager.play("AddFollower")
 	point(new_follower.global_position)
 	if action_target == new_follower:
-		_set_action_target(null)
-		_find_action_target()
+		_refresh_action_target()
 	
 func remove_follower(follower: Crew):
 	follower.set_assignment(null)
@@ -86,12 +85,16 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	$SFXManager.play("AssignFollower")
 	point(new_assignment.global_position)
 	followers.erase(follower)
-	_find_action_target()
+	if action_target == new_assignment:
+		_refresh_action_target()
 	
 func _find_action_target():
 	# Identify closest interactable as action target
 	# TODO: Allow player to cycle through interactable targets
 	for interactable in interactables:
+		if interactable is Task and (not interactable.worker and followers.is_empty()):
+			continue
+		
 		if not interactable is Crew or not interactable in followers:
 			# TODO: Add in prioritizing crew members over tasks since crew members can get player stuck
 			if action_target:
@@ -99,8 +102,6 @@ func _find_action_target():
 					_set_action_target(interactable)
 			else:
 				_set_action_target(interactable)
-		
-		
 
 func _set_action_target(new_target):
 	if action_target and action_target.has_method("set_highlight"):
@@ -109,3 +110,7 @@ func _set_action_target(new_target):
 		new_target.set_highlight(true)
 	
 	action_target = new_target
+
+func _refresh_action_target():
+	_set_action_target(null)
+	_find_action_target()
