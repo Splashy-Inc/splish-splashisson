@@ -5,6 +5,8 @@ class_name Task
 var assignee: Crew
 var worker: Crew
 
+var is_selected
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -37,3 +39,10 @@ func set_worker(new_worker: Crew) -> bool:
 
 func play_animation(animation_name):
 	$AnimatedSprite2D.play(animation_name)
+	
+func set_highlight(is_enable: bool):
+	is_selected = is_enable
+	if $AnimatedSprite2D.material:
+		$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
+	else:
+		print(self, " has no highlight material to activate.")

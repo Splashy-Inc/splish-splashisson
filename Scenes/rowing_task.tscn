@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://bh2fvow0in3wk"]
+[gd_scene load_steps=32 format=3 uid="uid://bh2fvow0in3wk"]
 
 [ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_xesfs"]
+[ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_5fo2r"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="2_weqdi"]
 [ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="3_wl6fd"]
 [ext_resource type="Texture2D" uid="uid://bo5obq8osfcgi" path="res://Art/Tasks/Rowing/Active/CrewRowingC.png" id="4_xivnd"]
@@ -179,6 +180,7 @@ collision_mask = 0
 script = ExtResource("1_xesfs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_5fo2r")
 position = Vector2(48, -10)
 sprite_frames = SubResource("SpriteFrames_8te5t")
 animation = &"idle"
