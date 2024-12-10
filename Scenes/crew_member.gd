@@ -12,6 +12,8 @@ const SPEED = 150.0
 var push_velocity = Vector2.ZERO
 var following = false
 
+var is_selected = false
+
 func _physics_process(delta: float) -> void:
 	velocity = push_velocity
 	push_velocity = Vector2.ZERO
@@ -83,3 +85,7 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 			task_started.emit()
 		else:
 			set_assignment(null) # TODO: Create cancel/fail animation and function to cancel/fail assignment
+
+func set_highlight(is_enable: bool):
+	is_selected = is_enable
+	$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)

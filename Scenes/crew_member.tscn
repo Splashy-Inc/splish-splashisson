@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://c4wwmhh1pltjm" path="res://Audio/boot_step2.mp3" id="22_jwcoc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eiupo"]
+resource_local_to_scene = true
 shader = ExtResource("2_7racv")
 shader_parameter/line_color = Color(0, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
