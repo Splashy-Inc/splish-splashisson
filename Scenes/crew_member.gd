@@ -6,9 +6,9 @@ signal task_started
 
 @export var test_assignment: Node2D
 @export var current_assignment: Node2D
-@export var follow_distance = 100
+@export var follow_distance = 40
 
-const SPEED = 300.0
+const SPEED = 150.0
 var push_velocity = Vector2.ZERO
 var following = false
 
