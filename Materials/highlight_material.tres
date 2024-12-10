@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cf3tuv5aidq14"]
+
+[ext_resource type="Shader" path="res://Scripts/highlight.gdshader" id="1_brkgf"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_brkgf")
+shader_parameter/line_color = Color(0, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/on = false
