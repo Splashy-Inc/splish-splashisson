@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://byk8jyx3r65e2"]
+[gd_scene load_steps=7 format=3 uid="uid://byk8jyx3r65e2"]
 
 [ext_resource type="Texture2D" uid="uid://v8dy2ved6iwm" path="res://Art/BG/WaterBackground.png" id="1_e04j1"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="1_tnbfu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
-[ext_resource type="Texture2D" uid="uid://bg62n7s5j2exq" path="res://Art/ShipTiles/ShipBow.png" id="2_12uad"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
-[ext_resource type="Texture2D" uid="uid://dl2iyrtq3rdcy" path="res://Art/ShipTiles/ShipMiddle.png" id="3_1cslk"]
-[ext_resource type="Texture2D" uid="uid://ct0gilfhdq48q" path="res://Art/ShipTiles/ShipStern.png" id="4_42esw"]
-[ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="4_jb6lg"]
+[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="2_twya3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe181"]
 line_spacing = 1.0
@@ -38,39 +35,8 @@ O - Assign crew to player location
 Goal: Get all crew to row the boat!"
 label_settings = SubResource("LabelSettings_qe181")
 
-[node name="Boat" type="Node2D" parent="."]
+[node name="Boat" parent="." instance=ExtResource("2_twya3")]
 position = Vector2(320, 180)
-
-[node name="Hull" type="Node2D" parent="Boat"]
-
-[node name="Bow" type="Sprite2D" parent="Boat/Hull"]
-position = Vector2(0, -120)
-texture = ExtResource("2_12uad")
-
-[node name="Deck" type="Sprite2D" parent="Boat/Hull"]
-texture = ExtResource("3_1cslk")
-
-[node name="Stern" type="Sprite2D" parent="Boat/Hull"]
-position = Vector2(0, 120)
-texture = ExtResource("4_42esw")
-
-[node name="Tasks" type="Node2D" parent="Boat"]
-
-[node name="RowingTask" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(75, -40)
-
-[node name="RowingTask2" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(75, 40)
-
-[node name="RowingTask3" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(-75, -40)
-rotation = -3.14159
-scale = Vector2(1, -1)
-
-[node name="RowingTask4" parent="Boat/Tasks" instance=ExtResource("4_jb6lg")]
-position = Vector2(-75, 40)
-rotation = -3.14159
-scale = Vector2(1, -1)
 
 [node name="CrewMember" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(380, 71)
