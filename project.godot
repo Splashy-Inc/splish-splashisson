@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 
 rowing_animation=""
 
+[gui]
+
+theme/custom_font="res://Art/Font/m5x7.ttf"
+
 [input]
 
 up={
