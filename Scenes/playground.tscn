@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="4_jb6lg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe181"]
-font_size = 8
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
+line_spacing = 1.0
 
 [node name="Playground" type="Node"]
 
