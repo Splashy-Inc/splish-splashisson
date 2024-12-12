@@ -2,7 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://bg62n7s5j2exq" path="res://Art/ShipTiles/ShipBow.png" id="1_45f1j"]
 
-[node name="Bow" type="Node2D"]
+[node name="Bow" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_45f1j")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 1
+polygon = PackedVector2Array(-120, 60, -120, 13, -77, -25, -27, -49, 28, -49, 77, -25, 120, 14, 120, 60, 105, 60, 105, 11, 69, -20, 27, -39, -27, -39, -71, -19, -105, 11, -105, 60)

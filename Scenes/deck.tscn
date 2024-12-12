@@ -20,10 +20,12 @@ tasks = Array[int]([0, 0, 0, 0])
 texture = ExtResource("1_146gp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 position = Vector2(-113, 0)
 shape = SubResource("RectangleShape2D_pi8fu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+z_index = 1
 position = Vector2(112.5, 0)
 shape = SubResource("RectangleShape2D_tyg2r")
 
@@ -34,23 +36,19 @@ position = Vector2(-75, -40)
 scale = Vector2(-1, 1)
 
 [node name="RowingTask" parent="Tasks/TopLeftSlot" instance=ExtResource("2_lgf02")]
-visible = false
 
 [node name="TopRightSlot" type="Node2D" parent="Tasks"]
 position = Vector2(75, -40)
 
 [node name="RowingTask" parent="Tasks/TopRightSlot" instance=ExtResource("2_lgf02")]
-visible = false
 
 [node name="BottomLeftSlot" type="Node2D" parent="Tasks"]
 position = Vector2(-75, 40)
 scale = Vector2(-1, 1)
 
 [node name="RowingTask" parent="Tasks/BottomLeftSlot" instance=ExtResource("2_lgf02")]
-visible = false
 
 [node name="BottomRightSlot" type="Node2D" parent="Tasks"]
 position = Vector2(75, 40)
 
 [node name="RowingTask" parent="Tasks/BottomRightSlot" instance=ExtResource("2_lgf02")]
-visible = false
