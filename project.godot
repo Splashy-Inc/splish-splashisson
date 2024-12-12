@@ -17,6 +17,10 @@ boot_splash/image="res://SplashySplashScreen.png"
 boot_splash/fullsize=false
 config/icon="res://Art/Splish/Idle/SplishIdle.png"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [display]
 
 window/size/viewport_width=640

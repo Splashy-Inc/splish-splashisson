@@ -1,11 +1,11 @@
 extends Node2D
 
-@export var tasks: Array[PackedScene]
+@export var tasks: Array[Globals.Task_type]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for task in tasks:
-		var new_task = task.instantiate()
+		var new_task = Globals.generate_task(task)
 		if new_task is Task:
 			for slot in $Tasks.get_children():
 				if slot.get_children().is_empty():
@@ -13,11 +13,11 @@ func _ready() -> void:
 					new_task = null
 					break
 			if new_task:
-				print("Unable to assign ", task, " to a slot. They may all be full: ", $Tasks.get_children())
+				print("Unable to assign ", task, " to a slot. They may all be full. Freeing orphan node: ", $Tasks.get_children())
+				new_task.free()
 		else:
-			print("Scene in task array is not a Task type scene, skipping this one: ", new_task)
-		
-
+			print("Scene in task array is not a Task type scene, skipping this one and freeing orphan node: ", new_task)
+			new_task.free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
