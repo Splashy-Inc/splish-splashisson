@@ -41,17 +41,11 @@ position = Vector2(320, 180)
 [node name="CrewMember" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(380, 71)
 
-[node name="CrewMember2" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(331, 49)
-
-[node name="CrewMember3" parent="." instance=ExtResource("1_tnbfu")]
-position = Vector2(323, 104)
-
 [node name="CrewMember4" parent="." instance=ExtResource("1_tnbfu")]
 position = Vector2(269, 71)
 
 [node name="Splish" parent="." instance=ExtResource("1_vcfar")]
-position = Vector2(316, 277)
+position = Vector2(320, 201)
 
 [node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)
