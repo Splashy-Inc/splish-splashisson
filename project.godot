@@ -17,6 +17,10 @@ boot_splash/image="res://SplashySplashScreen.png"
 boot_splash/fullsize=false
 config/icon="res://Art/Splish/Idle/SplishIdle.png"
 
+[autoload]
+
+Globals="*res://Scripts/globals.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -73,6 +77,7 @@ location={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Crew"
 2d_physics/layer_3="Interactable"
+2d_physics/layer_4="Boundaries"
 
 [rendering]
 

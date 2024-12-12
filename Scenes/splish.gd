@@ -11,7 +11,7 @@ var action_target: Node2D
 
 func _physics_process(delta: float) -> void:
 	if $AnimationPlayer.current_animation != "pointing_right" or not $AnimationPlayer.is_playing():
-		var direction := Input.get_vector("left", "right", "up", "down")
+		var direction := Input.get_vector("left", "right", "up", "down").normalized()
 		if direction:
 			if direction.y < 0:
 				$AnimationPlayer.play("walking_up")
