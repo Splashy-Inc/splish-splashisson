@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 
 func _generate_boat():
 	# Generate each deck segment
+	# TODO: Update to generate with more than 1 deck segment
 	var deck_tasks_to_place = deck_tasks
 	for i in deck_length:
 		var new_deck_segment = deck_scene.instantiate()
