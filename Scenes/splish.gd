@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 			
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact"):
+	if event.is_action_pressed("interact"):
 		if action_target is Crew:
 			add_follower(action_target)
 		elif action_target is Task:
@@ -42,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				assign_follower(followers.front(), action_target)
 	
-	if Input.is_action_just_pressed("location"):
+	if event.is_action_pressed("location"):
 		if followers.is_empty():
 			print("No followers to assign to location!")
 		else:
