@@ -18,6 +18,8 @@ position = Vector2(0, -120)
 
 [node name="DeckSlot" type="Node2D" parent="."]
 
+[node name="Deck" parent="DeckSlot" instance=ExtResource("2_kxpgr")]
+
 [node name="SternSlot" type="Node2D" parent="."]
 position = Vector2(0, 120)
 

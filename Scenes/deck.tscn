@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccika7v5l27ew"]
+[gd_scene load_steps=4 format=3 uid="uid://ccika7v5l27ew"]
 
 [ext_resource type="Texture2D" uid="uid://dl2iyrtq3rdcy" path="res://Art/ShipTiles/ShipMiddle.png" id="1_146gp"]
 [ext_resource type="Script" path="res://Scenes/deck.gd" id="1_u6t8r"]
+[ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="2_lgf02"]
 
 [node name="Deck" type="Node2D"]
 script = ExtResource("1_u6t8r")
@@ -16,12 +17,20 @@ texture = ExtResource("1_146gp")
 position = Vector2(-75, -40)
 scale = Vector2(-1, 1)
 
+[node name="RowingTask" parent="Tasks/TopLeftSlot" instance=ExtResource("2_lgf02")]
+
 [node name="TopRightSlot" type="Node2D" parent="Tasks"]
 position = Vector2(75, -40)
+
+[node name="RowingTask" parent="Tasks/TopRightSlot" instance=ExtResource("2_lgf02")]
 
 [node name="BottomLeftSlot" type="Node2D" parent="Tasks"]
 position = Vector2(-75, 40)
 scale = Vector2(-1, 1)
 
+[node name="RowingTask" parent="Tasks/BottomLeftSlot" instance=ExtResource("2_lgf02")]
+
 [node name="BottomRightSlot" type="Node2D" parent="Tasks"]
 position = Vector2(75, 40)
+
+[node name="RowingTask" parent="Tasks/BottomRightSlot" instance=ExtResource("2_lgf02")]
