@@ -19,7 +19,7 @@ config/icon="res://Art/Splish/Idle/SplishIdle.png"
 
 [autoload]
 
-Globals="*res://globals.gd"
+Globals="*res://Scripts/globals.gd"
 
 [display]
 

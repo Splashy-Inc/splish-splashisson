@@ -5,7 +5,9 @@ class_name Task
 var assignee: Crew
 var worker: Crew
 
-var is_selected
+var is_active = false
+
+var is_selected = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,14 +27,14 @@ func set_worker(new_worker: Crew) -> bool:
 			assignee = worker
 			new_worker.hide_self()
 			new_worker.global_position = global_position
-			play_animation("active")
+			toggle_active(true)
 		else:
 			return false
 	else:
 		assignee = null
 		if worker: # Null being passed in means removing current worker, so show them
 			worker.show_self()
-			play_animation("idle")
+			toggle_active(false)
 	
 	worker = new_worker
 	return true
@@ -46,3 +48,10 @@ func set_highlight(is_enable: bool):
 		$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
 	else:
 		print(self, " has no highlight material to activate.")
+
+func toggle_active(set_active: bool):
+	is_active = set_active
+	if is_active:
+		play_animation("active")
+	else:
+		play_animation("idle")

@@ -9,6 +9,8 @@ class_name Boat
 # Tasks that should be filled into the deck segments
 @export var deck_tasks: Array[Globals.Task_type]
 
+var speed = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_generate_boat()
@@ -33,3 +35,9 @@ func _generate_boat():
 		deck_tasks_to_place = deck_tasks_to_place.slice(4)
 		new_deck_segment.initialize(tasks)
 		$DeckSlot.add_child(new_deck_segment)
+
+func change_speed(change: int):
+	speed += change
+	if speed < 0:
+		speed = 0
+	Globals.update_boat_speed(speed)
