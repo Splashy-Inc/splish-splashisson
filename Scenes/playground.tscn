@@ -24,18 +24,24 @@ texture = ExtResource("1_e04j1")
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 7.0
 offset_top = 8.0
-offset_right = 139.0
-offset_bottom = 140.0
-text = "Controls:
-WASD - Movement
-I - Interact with crew/task
-  Crew - Assigns as follower
-  Task - Assigns follower to task
-U - Unassign follower
-O - Assign crew to player location
+offset_right = 193.0
+offset_bottom = 175.0
+text = "----Controls----
+WASD
+  Movement
+
+Left-click / Controller \"A\"
+  Interact with crew/task
+    Crew - Take follower
+    Task - Assigns follower
+
+Right-click / Controller \"B\"
+  Assign crew to player location
+---------------
 
 Goal: Get all crew to row the boat!"
 label_settings = SubResource("LabelSettings_qe181")
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 z_index = 1
