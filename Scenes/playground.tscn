@@ -86,3 +86,6 @@ position = Vector2(273, 270)
 
 [node name="Puddle2" parent="Obstacles" instance=ExtResource("7_qljs6")]
 position = Vector2(384, 272)
+
+[node name="Puddle3" parent="Obstacles" instance=ExtResource("7_qljs6")]
+position = Vector2(273, 300)

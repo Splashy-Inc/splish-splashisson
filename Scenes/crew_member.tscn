@@ -422,4 +422,8 @@ libraries = {
 }
 autoplay = "idle_down"
 
+[node name="BailingTimer" type="Timer" parent="."]
+
+[connection signal="assignment_started" from="." to="." method="_on_assignment_started"]
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
+[connection signal="timeout" from="BailingTimer" to="." method="_on_bailing_timer_timeout"]

@@ -2,6 +2,8 @@ extends Task
 
 class_name Puddle
 
+signal died
+
 enum Stage {
 	SMALL,
 	MEDIUM,
@@ -41,15 +43,14 @@ func decrease_stage():
 		_set_stage()
 
 func die():
-	worker.stop_bailing()
-	worker.set_assignment(null)
+	remove_from_group("puddle")
+	died.emit()
 	queue_free()
 
 func set_worker(new_worker: Crew) -> bool:
 	if new_worker: # Only allow setting worker if not already taken
 		if worker == null:
 			assignee = worker
-			new_worker.start_bailing()
 		else:
 			return false
 	else:

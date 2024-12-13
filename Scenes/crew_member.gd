@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Crew
 
-signal task_started
+signal assignment_started
 
 @export var test_assignment: Node2D
 @export var current_assignment: Node2D
@@ -82,7 +82,7 @@ func show_self():
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	if body == current_assignment and body is Task:
 		if body.set_worker(self):
-			task_started.emit()
+			assignment_started.emit()
 		else:
 			set_assignment(null) # TODO: Create cancel/fail animation and function to cancel/fail assignment
 
@@ -94,11 +94,33 @@ func reset_highlight():
 	$AnimatedSprite2D.material.set_shader_parameter("on", is_selected)
 
 func start_bailing():
-	$BailingTimer.start()
+	if current_assignment is Puddle:
+		current_assignment.died.connect(_on_assigned_puddle_died)
+		$BailingTimer.start()
 	
 func stop_bailing():
-	$BailingTimer.stop()
+	if current_assignment is Puddle:
+		var puddles = get_tree().get_nodes_in_group("puddle")
+		if puddles.is_empty():
+			set_assignment(null)
+		else:
+			var closest_puddle = puddles.front()
+			for puddle in puddles:
+				if global_position.distance_to(puddle.global_position) < global_position.distance_to(closest_puddle.global_position):
+					closest_puddle = puddle
+			set_assignment(closest_puddle)
+			if global_position.distance_to(closest_puddle.global_position) < $InteractableRange/CollisionShape2D.shape.radius:
+				assignment_started.emit()
+		$BailingTimer.stop()
+		
 
 func _on_bailing_timer_timeout() -> void:
 	if current_assignment is Puddle:
 		current_assignment.decrease_stage()
+		
+func _on_assigned_puddle_died():
+	stop_bailing()
+
+func _on_assignment_started() -> void:
+	if current_assignment is Puddle:
+		start_bailing()
