@@ -57,6 +57,8 @@ func set_assignment(new_assignment: Node2D):
 		$AnimationPlayer.play("alert")
 	else:
 		if new_assignment is Task:
+			if new_assignment is Puddle:
+				new_assignment.died.connect(_on_assigned_puddle_died)
 			if new_assignment.set_assignee(self):
 				$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
 			else:
@@ -100,7 +102,6 @@ func reset_highlight():
 
 func start_bailing():
 	if current_assignment is Puddle:
-		current_assignment.died.connect(_on_assigned_puddle_died)
 		$BailingTimer.start()
 	
 func stop_bailing():

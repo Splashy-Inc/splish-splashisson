@@ -58,14 +58,9 @@ func die():
 	died.emit()
 	queue_free()
 
+# Override assignee and worker setters since we want multiple to be able to work on a puddle at a time
+func set_assignee(new_assignee: Crew) -> bool:
+	return true
+
 func set_worker(new_worker: Crew) -> bool:
-	if new_worker: # Only allow setting worker if not already taken
-		if worker == null:
-			assignee = worker
-		else:
-			return false
-	else:
-		assignee = null
-	
-	worker = new_worker
 	return true
