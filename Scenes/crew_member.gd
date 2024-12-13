@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	velocity = push_velocity
 	push_velocity = Vector2.ZERO
 	
-	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge") or not $AnimationPlayer.is_playing():
+	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge" or $AnimationPlayer.current_animation == "bail_water") or not $AnimationPlayer.is_playing():
 		if current_assignment:
 			var distance_to_assignment = global_position.distance_to(current_assignment.global_position)
 			if current_assignment is Task:
@@ -102,10 +102,11 @@ func reset_highlight():
 
 func start_bailing():
 	if current_assignment is Puddle:
-		$BailingTimer.start()
+		$AnimationPlayer.play("bail_water")
 	
 func stop_bailing():
 	if current_assignment is Puddle:
+		$AnimationPlayer.play("idle_down")
 		var puddles = get_tree().get_nodes_in_group("puddle")
 		if puddles.is_empty():
 			set_assignment(null)
@@ -117,10 +118,8 @@ func stop_bailing():
 			set_assignment(closest_puddle)
 			if global_position.distance_to(closest_puddle.global_position) < $InteractableRange/CollisionShape2D.shape.radius:
 				assignment_started.emit()
-		$BailingTimer.stop()
-		
 
-func _on_bailing_timer_timeout() -> void:
+func _bail_puddle() -> void:
 	if current_assignment is Puddle:
 		current_assignment.decrease_stage()
 		
