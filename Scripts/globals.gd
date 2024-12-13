@@ -1,6 +1,7 @@
 extends Node
 
 signal speed_updated
+signal boat_ready
 
 var boat_speed = 0
 var boat: Boat
@@ -23,6 +24,10 @@ func _process(delta: float) -> void:
 
 func generate_task(type: Task_type) -> Task:
 	return task_dict[type].duplicate().instantiate()
+
+func set_boat(new_boat: Boat):
+	boat = new_boat
+	boat_ready.emit()
 
 func update_boat_speed(speed: int):
 	boat_speed = speed
