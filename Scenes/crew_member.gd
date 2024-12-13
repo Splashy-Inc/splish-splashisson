@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Crew
 
-signal task_started
+signal assignment_started
 
 @export var test_assignment: Node2D
 @export var current_assignment: Node2D
@@ -20,13 +20,18 @@ func _physics_process(delta: float) -> void:
 	
 	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge") or not $AnimationPlayer.is_playing():
 		if current_assignment:
-			var distance_to_assignment =  global_position.distance_to(current_assignment.global_position)
-			if distance_to_assignment > 5:
-				var direction = global_position.direction_to(current_assignment.global_position)
-				if (current_assignment is not Player) or (distance_to_assignment > follow_distance):
+			var distance_to_assignment = global_position.distance_to(current_assignment.global_position)
+			if current_assignment is Task:
+				if distance_to_assignment >= current_assignment.interaction_radius:
+					var direction = global_position.direction_to(current_assignment.global_position)
 					velocity += direction * SPEED
 			else:
-				global_position == current_assignment.global_position
+				if distance_to_assignment > 5:
+					var direction = global_position.direction_to(current_assignment.global_position)
+					if (current_assignment is not Player) or (distance_to_assignment > follow_distance):
+						velocity += direction * SPEED
+				else:
+					global_position == current_assignment.global_position
 		
 		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
 			if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
@@ -52,6 +57,8 @@ func set_assignment(new_assignment: Node2D):
 		$AnimationPlayer.play("alert")
 	else:
 		if new_assignment is Task:
+			if new_assignment is Puddle:
+				new_assignment.died.connect(_on_assigned_puddle_died)
 			if new_assignment.set_assignee(self):
 				$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
 			else:
@@ -82,7 +89,7 @@ func show_self():
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	if body == current_assignment and body is Task:
 		if body.set_worker(self):
-			task_started.emit()
+			assignment_started.emit()
 		else:
 			set_assignment(null) # TODO: Create cancel/fail animation and function to cancel/fail assignment
 
@@ -92,3 +99,34 @@ func set_highlight(is_enable: bool):
 
 func reset_highlight():
 	$AnimatedSprite2D.material.set_shader_parameter("on", is_selected)
+
+func start_bailing():
+	if current_assignment is Puddle:
+		$BailingTimer.start()
+	
+func stop_bailing():
+	if current_assignment is Puddle:
+		var puddles = get_tree().get_nodes_in_group("puddle")
+		if puddles.is_empty():
+			set_assignment(null)
+		else:
+			var closest_puddle = puddles.front()
+			for puddle in puddles:
+				if global_position.distance_to(puddle.global_position) < global_position.distance_to(closest_puddle.global_position):
+					closest_puddle = puddle
+			set_assignment(closest_puddle)
+			if global_position.distance_to(closest_puddle.global_position) < $InteractableRange/CollisionShape2D.shape.radius:
+				assignment_started.emit()
+		$BailingTimer.stop()
+		
+
+func _on_bailing_timer_timeout() -> void:
+	if current_assignment is Puddle:
+		current_assignment.decrease_stage()
+		
+func _on_assigned_puddle_died():
+	stop_bailing()
+
+func _on_assignment_started() -> void:
+	if current_assignment is Puddle:
+		start_bailing()

@@ -38,6 +38,4 @@ func _generate_boat():
 
 func change_speed(change: int):
 	speed += change
-	if speed < 0:
-		speed = 0
 	Globals.update_boat_speed(speed)
