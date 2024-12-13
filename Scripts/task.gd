@@ -8,6 +8,7 @@ var worker: Crew
 var is_active = false
 
 var is_selected = false
+@export var interaction_radius: int
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

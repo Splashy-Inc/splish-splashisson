@@ -40,6 +40,7 @@ size = Vector2(24, 24)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ninmo")
+interaction_radius = 24
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_wa86k")

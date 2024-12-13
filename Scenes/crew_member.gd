@@ -20,13 +20,18 @@ func _physics_process(delta: float) -> void:
 	
 	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge") or not $AnimationPlayer.is_playing():
 		if current_assignment:
-			var distance_to_assignment =  global_position.distance_to(current_assignment.global_position)
-			if distance_to_assignment > 5:
-				var direction = global_position.direction_to(current_assignment.global_position)
-				if (current_assignment is not Player) or (distance_to_assignment > follow_distance):
+			var distance_to_assignment = global_position.distance_to(current_assignment.global_position)
+			if current_assignment is Task:
+				if distance_to_assignment >= current_assignment.interaction_radius:
+					var direction = global_position.direction_to(current_assignment.global_position)
 					velocity += direction * SPEED
 			else:
-				global_position == current_assignment.global_position
+				if distance_to_assignment > 5:
+					var direction = global_position.direction_to(current_assignment.global_position)
+					if (current_assignment is not Player) or (distance_to_assignment > follow_distance):
+						velocity += direction * SPEED
+				else:
+					global_position == current_assignment.global_position
 		
 		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
 			if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
