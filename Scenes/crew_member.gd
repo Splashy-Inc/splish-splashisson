@@ -92,3 +92,13 @@ func set_highlight(is_enable: bool):
 
 func reset_highlight():
 	$AnimatedSprite2D.material.set_shader_parameter("on", is_selected)
+
+func start_bailing():
+	$BailingTimer.start()
+	
+func stop_bailing():
+	$BailingTimer.stop()
+
+func _on_bailing_timer_timeout() -> void:
+	if current_assignment is Puddle:
+		current_assignment.decrease_stage()
