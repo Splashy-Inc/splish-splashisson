@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://c4xec2ylsa6d7"]
+[gd_scene load_steps=26 format=3 uid="uid://c4xec2ylsa6d7"]
 
+[ext_resource type="Script" path="res://Scenes/leak.gd" id="1_4ykgf"]
 [ext_resource type="Texture2D" uid="uid://u8r6eec7wpgv" path="res://Art/Leak/LeakH.png" id="1_unkym"]
 [ext_resource type="Texture2D" uid="uid://djseaj8ncqp0d" path="res://Art/Leak/LeakL.png" id="2_5105n"]
 [ext_resource type="Texture2D" uid="uid://e5k5iq6yaver" path="res://Art/Leak/LeakG.png" id="3_fe2xs"]
@@ -84,6 +85,9 @@ animations = [{
 "name": &"start",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p2vv"]
+size = Vector2(32, 22)
 
 [sub_resource type="Animation" id="Animation_6p51l"]
 resource_name = "start"
@@ -199,6 +203,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_die"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y5cdd"]
 _data = {
@@ -241,12 +259,18 @@ states/start/node = SubResource("AnimationNodeAnimation_kfqgv")
 states/start/position = Vector2(346, 100)
 transitions = ["Start", "start", SubResource("AnimationNodeStateMachineTransition_fyktv"), "start", "active", SubResource("AnimationNodeStateMachineTransition_hdtsh"), "active", "end", SubResource("AnimationNodeStateMachineTransition_tw351"), "end", "End", SubResource("AnimationNodeStateMachineTransition_vbovt")]
 
-[node name="Leak" type="Node2D"]
+[node name="Leak" type="StaticBody2D"]
+script = ExtResource("1_4ykgf")
+interaction_radius = 12
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_kn724")
 animation = &"end"
 frame = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6p2vv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
