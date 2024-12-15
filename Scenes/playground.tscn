@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="2_twya3"]
-[ext_resource type="PackedScene" uid="uid://b3860lvbbt8q5" path="res://Scenes/puddle.tscn" id="7_qljs6"]
+[ext_resource type="PackedScene" uid="uid://c4xec2ylsa6d7" path="res://Scenes/leak.tscn" id="7_vcuby"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe181"]
 line_spacing = 1.0
@@ -81,13 +81,7 @@ position = Vector2(722, 714)
 
 [node name="Obstacles" type="Node" parent="."]
 
-[node name="Puddle" parent="Obstacles" instance=ExtResource("7_qljs6")]
-position = Vector2(273, 270)
-
-[node name="Puddle2" parent="Obstacles" instance=ExtResource("7_qljs6")]
-position = Vector2(384, 272)
-
-[node name="Puddle3" parent="Obstacles" instance=ExtResource("7_qljs6")]
-position = Vector2(273, 300)
+[node name="Leak" parent="Obstacles" instance=ExtResource("7_vcuby")]
+position = Vector2(231, 257)
 
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]
