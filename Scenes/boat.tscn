@@ -24,3 +24,9 @@ position = Vector2(0, -120)
 position = Vector2(0, 120)
 
 [node name="Stern" parent="SternSlot" instance=ExtResource("3_701t0")]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Puddles" type="Node2D" parent="Obstacles"]
+
+[node name="Leaks" type="Node2D" parent="Obstacles"]

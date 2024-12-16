@@ -34,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ratk"]
-size = Vector2(24, 24)
+size = Vector2(32, 32)
 
 [node name="Puddle" type="StaticBody2D" groups=["puddle"]]
 collision_layer = 4
@@ -45,7 +45,7 @@ interaction_radius = 24
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_wa86k")
 sprite_frames = SubResource("SpriteFrames_2wk1l")
-animation = &"large"
+animation = &"small"
 autoplay = "small"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

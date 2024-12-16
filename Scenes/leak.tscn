@@ -117,6 +117,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_start_puddle_timer"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_d11gk"]
 resource_name = "active"
@@ -260,16 +274,20 @@ states/start/position = Vector2(346, 100)
 transitions = ["Start", "start", SubResource("AnimationNodeStateMachineTransition_fyktv"), "start", "active", SubResource("AnimationNodeStateMachineTransition_hdtsh"), "active", "end", SubResource("AnimationNodeStateMachineTransition_tw351"), "end", "End", SubResource("AnimationNodeStateMachineTransition_vbovt")]
 
 [node name="Leak" type="StaticBody2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_4ykgf")
-interaction_radius = 12
+interaction_radius = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(16, -5)
 sprite_frames = SubResource("SpriteFrames_kn724")
 animation = &"end"
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_6p2vv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -283,3 +301,11 @@ tree_root = SubResource("AnimationNodeStateMachine_thc46")
 advance_expression_base_node = NodePath("../AnimationPlayer")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_patched = false
+
+[node name="PuddleTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="PuddleSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 11)
+
+[connection signal="timeout" from="PuddleTimer" to="." method="_on_puddle_timer_timeout"]

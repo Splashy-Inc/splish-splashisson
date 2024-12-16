@@ -12,7 +12,7 @@ enum Stage {
 
 const SPEED_CHANGE = -50
 
-var stage = Stage.LARGE
+var stage = Stage.SMALL
 
 var affecting_speed = false
 
@@ -42,7 +42,6 @@ func increase_stage():
 	if stage < Stage.LARGE:
 		stage += 1
 		_set_stage()
-	# TODO: Else, spread
 
 func decrease_stage():
 	if stage <= Stage.SMALL:
