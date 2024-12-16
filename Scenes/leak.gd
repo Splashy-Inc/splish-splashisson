@@ -49,8 +49,21 @@ func _start_puddle_timer():
 	$PuddleTimer.start()
 
 func _on_puddle_timer_timeout() -> void:
-	#if not current_puddle or current_puddle.stage >= Puddle.Stage.LARGE:
-	if not current_puddle:
-		current_puddle = Globals.boat.spawn_puddle($PuddleSpawnPoint.global_position)
+	if not current_puddle or current_puddle.stage >= Puddle.Stage.LARGE:
+		_get_new_puddle()
 	else:
 		current_puddle.increase_stage()
+		
+func _get_new_puddle():
+	var puddles = get_tree().get_nodes_in_group("puddle")
+	if current_puddle:
+		puddles.erase(current_puddle)
+	
+	if puddles.is_empty():
+		current_puddle = Globals.boat.spawn_puddle($PuddleSpawnPoint.global_position)
+	else:
+		var closest_puddle = puddles.front()
+		for puddle in puddles:
+			if puddle.stage < Puddle.Stage.LARGE and $PuddleSpawnPoint.global_position.distance_to(puddle.global_position) < $PuddleSpawnPoint.global_position.distance_to(closest_puddle.global_position):
+				closest_puddle = puddle
+		current_puddle = closest_puddle
