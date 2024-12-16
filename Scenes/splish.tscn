@@ -241,7 +241,8 @@ _data = {
 }
 
 [node name="Splish" type="CharacterBody2D"]
-collision_mask = 6
+z_index = 3
+collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_34yo7")
 
