@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://c4xec2ylsa6d7"]
+[gd_scene load_steps=27 format=3 uid="uid://c4xec2ylsa6d7"]
 
 [ext_resource type="Script" path="res://Scenes/leak.gd" id="1_4ykgf"]
 [ext_resource type="Texture2D" uid="uid://u8r6eec7wpgv" path="res://Art/Leak/LeakH.png" id="1_unkym"]
+[ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_7wtkj"]
 [ext_resource type="Texture2D" uid="uid://djseaj8ncqp0d" path="res://Art/Leak/LeakL.png" id="2_5105n"]
 [ext_resource type="Texture2D" uid="uid://e5k5iq6yaver" path="res://Art/Leak/LeakG.png" id="3_fe2xs"]
 [ext_resource type="Texture2D" uid="uid://cghrfhbx6j0nv" path="res://Art/Leak/LeakF.png" id="4_ae6kl"]
@@ -281,6 +282,7 @@ script = ExtResource("1_4ykgf")
 interaction_radius = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_7wtkj")
 position = Vector2(16, -5)
 sprite_frames = SubResource("SpriteFrames_kn724")
 animation = &"end"
