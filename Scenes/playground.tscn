@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://byk8jyx3r65e2"]
+[gd_scene load_steps=8 format=3 uid="uid://byk8jyx3r65e2"]
 
 [ext_resource type="Script" path="res://Scenes/playground.gd" id="1_bs7od"]
 [ext_resource type="Texture2D" uid="uid://v8dy2ved6iwm" path="res://Art/BG/WaterBackground.png" id="1_e04j1"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="2_twya3"]
-[ext_resource type="PackedScene" uid="uid://b3860lvbbt8q5" path="res://Scenes/puddle.tscn" id="7_qljs6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe181"]
 line_spacing = 1.0
@@ -76,18 +75,6 @@ position = Vector2(320, 180)
 script = ExtResource("2_gusxx")
 focus_target = NodePath("../Splish")
 
-[node name="LocationTest" type="Marker2D" parent="."]
-position = Vector2(722, 714)
-
 [node name="Obstacles" type="Node" parent="."]
-
-[node name="Puddle" parent="Obstacles" instance=ExtResource("7_qljs6")]
-position = Vector2(273, 270)
-
-[node name="Puddle2" parent="Obstacles" instance=ExtResource("7_qljs6")]
-position = Vector2(384, 272)
-
-[node name="Puddle3" parent="Obstacles" instance=ExtResource("7_qljs6")]
-position = Vector2(273, 300)
 
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]

@@ -22,3 +22,6 @@ func clear_cargo():
 	for cur_cargo in $CargoSlot.get_children():
 		$CargoSlot.remove_child(cur_cargo)
 	cargo = null
+
+func is_point_in_play_space(point: Vector2):
+	return Geometry2D.is_point_in_polygon(point-$PlaySpace/CollisionPolygon2D.global_position, $PlaySpace/CollisionPolygon2D.polygon)

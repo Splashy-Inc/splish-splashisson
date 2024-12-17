@@ -34,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ratk"]
-size = Vector2(24, 24)
+size = Vector2(32, 32)
 
 [node name="Puddle" type="StaticBody2D" groups=["puddle"]]
 collision_layer = 4
@@ -45,8 +45,43 @@ interaction_radius = 24
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_wa86k")
 sprite_frames = SubResource("SpriteFrames_2wk1l")
-animation = &"large"
+animation = &"small"
 autoplay = "small"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8ratk")
+
+[node name="SelfSpace" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelfSpace"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[node name="NeighborSpawnPoints" type="Node2D" parent="."]
+
+[node name="Top" type="Marker2D" parent="NeighborSpawnPoints"]
+position = Vector2(0, -32)
+
+[node name="Polygon2D" type="Polygon2D" parent="NeighborSpawnPoints/Top"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+
+[node name="Bottom" type="Marker2D" parent="NeighborSpawnPoints"]
+position = Vector2(0, 32)
+
+[node name="Polygon2D" type="Polygon2D" parent="NeighborSpawnPoints/Bottom"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+
+[node name="Right" type="Marker2D" parent="NeighborSpawnPoints"]
+position = Vector2(32, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="NeighborSpawnPoints/Right"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+
+[node name="Left" type="Marker2D" parent="NeighborSpawnPoints"]
+position = Vector2(-32, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="NeighborSpawnPoints/Left"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)

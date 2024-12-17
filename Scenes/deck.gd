@@ -3,9 +3,11 @@ extends StaticBody2D
 class_name Deck
 
 @export var tasks: Array[Globals.Task_type]
+var spawn_boundary: Rect2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawn_boundary = $SpawnArea/CollisionShape2D.shape.get_rect()
 	_set_up_tasks()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,3 +43,18 @@ func clear_deck():
 			if task is Task:
 				task.set_worker(null)
 			task.free()
+
+func spawn_leak():
+	var new_leak = Globals.generate_task(Globals.Task_type.LEAK)
+	new_leak.global_position = Vector2(randi_range(spawn_boundary.position.x, spawn_boundary.position.x + spawn_boundary.size.x), randi_range(spawn_boundary.position.y, spawn_boundary.position.y + spawn_boundary.size.y))
+	if new_leak.global_position.x > (spawn_boundary.position.x + spawn_boundary.size.x/2):
+		new_leak.scale.x *= -1
+	Globals.boat.add_obstacle(new_leak)
+
+func spawn_puddle(spawn_point: Vector2) -> Puddle:
+	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE)
+	Globals.boat.add_obstacle(new_puddle)
+	return new_puddle.spawn(spawn_point)
+
+func is_point_in_play_space(point: Vector2):
+	return Geometry2D.is_point_in_polygon(point-$PlayArea/CollisionPolygon2D.global_position, $PlayArea/CollisionPolygon2D.polygon)

@@ -596,5 +596,10 @@ libraries = {
 }
 autoplay = "idle_down"
 
+[node name="LeakPatchTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="assignment_started" from="." to="." method="_on_assignment_started"]
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
+[connection signal="timeout" from="LeakPatchTimer" to="." method="_on_leak_patch_timer_timeout"]
