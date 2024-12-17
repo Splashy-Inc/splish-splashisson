@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ptto4146phwg"]
 
-[ext_resource type="PackedScene" uid="uid://c0wkpqqx3mqf0" path="res://Scenes/bow.tscn" id="1_17osx"]
+[ext_resource type="PackedScene" uid="uid://bg0meusunoosr" path="res://Scenes/bow.tscn" id="1_17osx"]
 [ext_resource type="Script" path="res://Scenes/boat.gd" id="1_c5j0p"]
 [ext_resource type="PackedScene" uid="uid://ccika7v5l27ew" path="res://Scenes/deck.tscn" id="2_kxpgr"]
-[ext_resource type="PackedScene" uid="uid://rdtpfywwpj45" path="res://Scenes/stern.tscn" id="3_701t0"]
+[ext_resource type="PackedScene" uid="uid://dmy5awjreptlw" path="res://Scenes/stern.tscn" id="3_701t0"]
 
 [node name="Boat" type="Node2D"]
 script = ExtResource("1_c5j0p")

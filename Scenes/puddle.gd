@@ -10,45 +10,76 @@ enum Stage {
 	LARGE,
 }
 
-const SPEED_CHANGE = -50
+var stage_thresholds = {
+	Stage.SMALL: PUDDLE_CAPACITY * 1/3,
+	Stage.MEDIUM: PUDDLE_CAPACITY * 2/3,
+	Stage.LARGE: PUDDLE_CAPACITY,
+}
 
+const SPREAD_AMOUNT = 120 # Number divisble by 3 then 4 then 2 and still a whole number, for spreading mechanic ease
+const PUDDLE_CAPACITY = SPREAD_AMOUNT * 3 # 3 stages, so capacity should be 3x max spread amount 
+const SPEED_CHANGE = -50
+const PUDDLE_SIZE = Vector2(32,32)
+
+var puddle_amount = 0
+var overflow = 0
 var stage = Stage.SMALL
 
 var affecting_speed = false
 
+# Store neighbor puddle states here
+		#[top]
+#[left] [self] [right]
+	  #[bottom]
+var neighbor_puddles = {
+	"top": {"puddle": null, "spawn_point": null},
+	"bottom": {"puddle": null, "spawn_point": null},
+	"right": {"puddle": null, "spawn_point": null},
+	"left": {"puddle": null, "spawn_point": null},
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if not Globals.boat:
-		Globals.boat_ready.connect(_set_stage)
+		Globals.boat_ready.connect(_update_stage)
 	else:
-		_set_stage()
+		_update_stage()
+	
+	_set_neighbor_spawn_points()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func _set_stage():
-	match stage:
-		Stage.SMALL:
-			$AnimatedSprite2D.play("small")
-		Stage.MEDIUM:
-			$AnimatedSprite2D.play("medium")
-		Stage.LARGE:
-			$AnimatedSprite2D.play("large")
+func _update_stage():
+	if puddle_amount < 0:
+		die()
+	elif puddle_amount <= stage_thresholds[Stage.SMALL]:
+		stage = Stage.SMALL
+		$AnimatedSprite2D.play("small")
+	elif puddle_amount <= stage_thresholds[Stage.MEDIUM]:
+		stage = Stage.MEDIUM
+		$AnimatedSprite2D.play("medium")
+	else:
+		stage = Stage.LARGE
+		$AnimatedSprite2D.play("large")
+		if not affecting_speed:
 			affecting_speed = true
 			Globals.boat.change_speed(SPEED_CHANGE)
+		
+		# Spread if the latest update is higher than puddle capacity
+		overflow = puddle_amount - PUDDLE_CAPACITY
+		if overflow > 0:
+			puddle_amount = PUDDLE_CAPACITY
+			spread(overflow, self)
 
 func increase_stage():
-	if stage < Stage.LARGE:
-		stage += 1
-		_set_stage()
+	puddle_amount += SPREAD_AMOUNT
+	_update_stage()
 
 func decrease_stage():
-	if stage <= Stage.SMALL:
-		die()
-	else:
-		stage -= 1
-		_set_stage()
+	puddle_amount -= SPREAD_AMOUNT
+	_update_stage()
 
 func die():
 	if affecting_speed:
@@ -63,3 +94,82 @@ func set_assignee(new_assignee: Crew) -> bool:
 
 func set_worker(new_worker: Crew) -> bool:
 	return true
+
+# Attempt to spread in this pattern
+	#[1]
+#[4] [0] [2]
+	#[3]
+# Split spread amount to each 
+func spread(amount: int, source: Puddle):
+	if amount >= neighbor_puddles.size():
+		if stage < Stage.LARGE:
+			puddle_amount += amount
+			_update_stage()
+		else:
+			_update_neighbor_puddles()
+			for neighbor in neighbor_puddles.values():
+				if neighbor["puddle"] and neighbor["puddle"] != source:
+					neighbor["puddle"].spread(amount/neighbor_puddles.size(), self)
+				else:
+					neighbor["puddle"] = Globals.boat.spawn_puddle(neighbor["spawn_point"])
+
+func spawn(spawn_point: Vector2) -> Puddle:
+	global_position = spawn_point
+	var spawn_point_occupant = _check_spawn_space_occupied(self)
+	if spawn_point_occupant:
+		print_debug("Not spawning ", self, " at ", spawn_point, ". Already occupied by ", spawn_point_occupant)
+		queue_free()
+	else:
+		_set_neighbor_spawn_points()
+		spawn_point_occupant = self
+	
+	_update_neighbor_puddles()
+	
+	return spawn_point_occupant
+	
+func _set_neighbor_spawn_points():
+	neighbor_puddles["top"]["spawn_point"] = $NeighborSpawnPoints/Top.global_position
+	neighbor_puddles["bottom"]["spawn_point"] = $NeighborSpawnPoints/Bottom.global_position
+	neighbor_puddles["right"]["spawn_point"] = $NeighborSpawnPoints/Right.global_position
+	neighbor_puddles["left"]["spawn_point"] = $NeighborSpawnPoints/Left.global_position
+
+func _check_spawn_space_occupied(spawning_puddle: Puddle) -> Puddle:
+	var puddles = get_tree().get_nodes_in_group("puddle")
+	puddles.erase(self)
+	
+	# Check if attempted self space already overlaps with a puddle
+	for puddle in puddles:
+		if not Geometry2D.intersect_polygons(puddle.get_self_polygon(), get_self_polygon()).is_empty():
+			return puddle
+			break
+	
+	return null
+	
+func is_point_in_self(point: Vector2):
+	return Geometry2D.is_point_in_polygon(point-$SelfSpace/CollisionPolygon2D.global_position, $SelfSpace/CollisionPolygon2D.polygon)
+
+func _update_neighbor_puddles():
+	for neighbor in neighbor_puddles.values():
+		neighbor["puddle"] = null
+	
+	var puddles = get_tree().get_nodes_in_group("puddle")
+	puddles.erase(self)
+	
+	for puddle in puddles:
+		var puddle_polygon = puddle.get_self_polygon()
+		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Top/Polygon2D.polygon, $NeighborSpawnPoints/Top/Polygon2D.global_position)).is_empty():
+			neighbor_puddles["top"]["puddle"] = puddle
+		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Bottom/Polygon2D.polygon, $NeighborSpawnPoints/Bottom/Polygon2D.global_position)).is_empty():
+			neighbor_puddles["bottom"]["puddle"] = puddle
+		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Right/Polygon2D.polygon, $NeighborSpawnPoints/Right/Polygon2D.global_position)).is_empty():
+			neighbor_puddles["right"]["puddle"] = puddle
+		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Left/Polygon2D.polygon, $NeighborSpawnPoints/Left/Polygon2D.global_position)).is_empty():
+			neighbor_puddles["left"]["puddle"] = puddle
+
+func get_self_polygon():
+	return _shift_polygon($SelfSpace/CollisionPolygon2D.polygon, global_position)
+
+func _shift_polygon(polygon: PackedVector2Array, point: Vector2):
+	for i in polygon.size():
+		polygon.set(i, polygon[i] + point)
+	return polygon

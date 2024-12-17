@@ -51,8 +51,10 @@ func spawn_leak():
 		new_leak.scale.x *= -1
 	Globals.boat.add_obstacle(new_leak)
 
-func spawn_puddle(spawn_point: Vector2):
+func spawn_puddle(spawn_point: Vector2) -> Puddle:
 	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE)
 	Globals.boat.add_obstacle(new_puddle)
-	new_puddle.global_position = spawn_point
-	return new_puddle
+	return new_puddle.spawn(spawn_point)
+
+func is_point_in_play_space(point: Vector2):
+	return Geometry2D.is_point_in_polygon(point-$PlayArea/CollisionPolygon2D.global_position, $PlayArea/CollisionPolygon2D.polygon)

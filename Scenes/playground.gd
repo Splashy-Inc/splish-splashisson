@@ -15,3 +15,4 @@ func _boat_speed_updated():
 func _on_boat_ready() -> void:
 	Globals.set_boat($Boat)
 	Globals.boat.spawn_leak()
+	Globals.boat.spawn_leak()
