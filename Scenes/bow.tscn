@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0wkpqqx3mqf0"]
+[gd_scene load_steps=4 format=3 uid="uid://bg0meusunoosr"]
 
 [ext_resource type="Script" path="res://Scenes/boat_end.gd" id="1_6fuim"]
 [ext_resource type="Texture2D" uid="uid://bg62n7s5j2exq" path="res://Art/ShipTiles/ShipBow.png" id="1_45f1j"]
@@ -20,3 +20,8 @@ polygon = PackedVector2Array(-120, 60, -120, 13, -77, -25, -27, -49, 28, -49, 77
 [node name="CargoSlot" type="Node2D" parent="."]
 
 [node name="CrewMember" parent="CargoSlot" instance=ExtResource("2_0nha6")]
+
+[node name="PlaySpace" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlaySpace"]
+polygon = PackedVector2Array(-105, 60, -105, 11, 105, 11, 105, 60)

@@ -39,3 +39,34 @@ func _generate_boat():
 func change_speed(change: int):
 	speed += change
 	Globals.update_boat_speed(speed)
+
+func spawn_leak():
+	$DeckSlot.get_children().front().spawn_leak()
+
+func spawn_puddle(spawn_point: Vector2):
+	if is_point_in_boat(spawn_point):
+		return $DeckSlot.get_children().front().spawn_puddle(spawn_point)
+	
+	return null
+	
+func add_obstacle(new_obstacle: Node2D):
+	if new_obstacle is Puddle:
+		$Obstacles/Puddles.add_child(new_obstacle)
+	elif new_obstacle is Leak:
+		$Obstacles/Leaks.add_child(new_obstacle)
+	else:
+		$Obstacles.add_child(new_obstacle)
+		
+func is_point_in_boat(point: Vector2):
+	var bow = $BowSlot/Bow
+	var stern = $SternSlot/Stern
+	var decks = $DeckSlot.get_children()
+	
+	if bow.is_point_in_play_space(point) or stern.is_point_in_play_space(point):
+		return true
+	
+	for deck in decks:
+		if deck.is_point_in_play_space(point):
+			return true
+	
+	return false

@@ -8,10 +8,14 @@ var boat: Boat
 
 enum Task_type {
 	ROWING,
+	LEAK,
+	PUDDLE,
 }
 
 var task_dict = {
 	Task_type.ROWING: load("res://Scenes/rowing_task.tscn"),
+	Task_type.LEAK: load("res://Scenes/leak.tscn"),
+	Task_type.PUDDLE: load("res://Scenes/puddle.tscn"),
 }
 
 # Called when the node enters the scene tree for the first time.

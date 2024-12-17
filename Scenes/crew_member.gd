@@ -57,8 +57,8 @@ func set_assignment(new_assignment: Node2D):
 		$AnimationPlayer.play("alert")
 	else:
 		if new_assignment is Task:
-			if new_assignment is Puddle:
-				new_assignment.died.connect(_on_assigned_puddle_died)
+			if new_assignment is Puddle or new_assignment is Leak:
+				new_assignment.died.connect(_on_assignment_died)
 			if new_assignment.set_assignee(self):
 				$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
 			else:
@@ -123,9 +123,22 @@ func _bail_puddle() -> void:
 	if current_assignment is Puddle:
 		current_assignment.decrease_stage()
 		
-func _on_assigned_puddle_died():
-	stop_bailing()
+func _on_assignment_died():
+	if current_assignment is Puddle:
+		stop_bailing()
+	elif current_assignment is Leak:
+		set_assignment(null)
+	
+func start_patching():
+	if current_assignment is Leak:
+		$LeakPatchTimer.start()
 
 func _on_assignment_started() -> void:
 	if current_assignment is Puddle:
 		start_bailing()
+	elif current_assignment is Leak:
+		start_patching()
+
+func _on_leak_patch_timer_timeout() -> void:
+	if current_assignment is Leak:
+		current_assignment.patch()
