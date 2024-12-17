@@ -28,7 +28,7 @@ var stage = Stage.SMALL
 var affecting_speed = false
 
 # Store neighbor puddle states here
-		#[top]
+	   #[top]
 #[left] [self] [right]
 	  #[bottom]
 var neighbor_puddles = {
@@ -45,7 +45,7 @@ func _ready() -> void:
 	else:
 		_update_stage()
 	
-	_set_neighbor_spawn_points()
+	_update_neighbor_spawn_points()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -120,14 +120,14 @@ func spawn(spawn_point: Vector2) -> Puddle:
 		print_debug("Not spawning ", self, " at ", spawn_point, ". Already occupied by ", spawn_point_occupant)
 		queue_free()
 	else:
-		_set_neighbor_spawn_points()
+		_update_neighbor_spawn_points()
 		spawn_point_occupant = self
 	
 	_update_neighbor_puddles()
 	
 	return spawn_point_occupant
 	
-func _set_neighbor_spawn_points():
+func _update_neighbor_spawn_points():
 	neighbor_puddles["top"]["spawn_point"] = $NeighborSpawnPoints/Top.global_position
 	neighbor_puddles["bottom"]["spawn_point"] = $NeighborSpawnPoints/Bottom.global_position
 	neighbor_puddles["right"]["spawn_point"] = $NeighborSpawnPoints/Right.global_position
@@ -144,9 +144,6 @@ func _check_spawn_space_occupied(spawning_puddle: Puddle) -> Puddle:
 			break
 	
 	return null
-	
-func is_point_in_self(point: Vector2):
-	return Geometry2D.is_point_in_polygon(point-$SelfSpace/CollisionPolygon2D.global_position, $SelfSpace/CollisionPolygon2D.polygon)
 
 func _update_neighbor_puddles():
 	for neighbor in neighbor_puddles.values():

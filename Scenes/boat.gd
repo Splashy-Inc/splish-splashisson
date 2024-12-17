@@ -65,7 +65,6 @@ func is_point_in_boat(point: Vector2):
 	if bow.is_point_in_play_space(point) or stern.is_point_in_play_space(point):
 		return true
 	
-	# Check if point already overlaps with a puddle
 	for deck in decks:
 		if deck.is_point_in_play_space(point):
 			return true
