@@ -141,8 +141,8 @@ func stop_patching():
 			assignment_started.emit()
 
 func _patch_leak() -> void:
-	if current_assignment is Puddle:
-		current_assignment.decrease_stage()
+	if current_assignment is Leak:
+		current_assignment.patch()
 
 func _on_assignment_started() -> void:
 	if current_assignment is Puddle:
@@ -150,10 +150,6 @@ func _on_assignment_started() -> void:
 	elif current_assignment is Leak:
 		start_patching()
 
-func _on_leak_patch_timer_timeout() -> void:
-	if current_assignment is Leak:
-		current_assignment.patch()
-		
 func _get_closest(nodes: Array) -> Node2D:
 	if nodes.is_empty():
 		return null

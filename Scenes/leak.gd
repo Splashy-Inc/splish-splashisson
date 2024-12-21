@@ -10,7 +10,7 @@ var current_puddle: Puddle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,6 +44,9 @@ func patch():
 func _die():
 	remove_from_group("leak")
 	died.emit()
+	if is_patched:
+		await $AnimationTree.animation_finished
+		
 	queue_free()
 	
 func _start_puddle_timer():
