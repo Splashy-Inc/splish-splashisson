@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4xec2ylsa6d7"]
+[gd_scene load_steps=27 format=3 uid="uid://bkt3la4dqahgh"]
 
 [ext_resource type="Script" path="res://Scenes/leak.gd" id="1_4ykgf"]
 [ext_resource type="Texture2D" uid="uid://u8r6eec7wpgv" path="res://Art/Leak/LeakH.png" id="1_unkym"]
@@ -274,7 +274,7 @@ states/start/node = SubResource("AnimationNodeAnimation_kfqgv")
 states/start/position = Vector2(346, 100)
 transitions = ["Start", "start", SubResource("AnimationNodeStateMachineTransition_fyktv"), "start", "active", SubResource("AnimationNodeStateMachineTransition_hdtsh"), "active", "end", SubResource("AnimationNodeStateMachineTransition_tw351"), "end", "End", SubResource("AnimationNodeStateMachineTransition_vbovt")]
 
-[node name="Leak" type="StaticBody2D"]
+[node name="Leak" type="StaticBody2D" groups=["leak"]]
 z_index = 1
 collision_layer = 4
 collision_mask = 0

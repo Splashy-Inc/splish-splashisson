@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	velocity = push_velocity
 	push_velocity = Vector2.ZERO
 	
-	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge" or $AnimationPlayer.current_animation == "bail_water") or not $AnimationPlayer.is_playing():
+	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge" or $AnimationPlayer.current_animation == "bail_water" or $AnimationPlayer.current_animation == "patch_leak") or not $AnimationPlayer.is_playing():
 		if current_assignment:
 			var distance_to_assignment = global_position.distance_to(current_assignment.global_position)
 			if current_assignment is Task:
@@ -107,17 +107,13 @@ func start_bailing():
 func stop_bailing():
 	if current_assignment is Puddle:
 		$AnimationPlayer.play("idle_down")
-		var puddles = get_tree().get_nodes_in_group("puddle")
-		if puddles.is_empty():
-			set_assignment(null)
-		else:
-			var closest_puddle = puddles.front()
-			for puddle in puddles:
-				if global_position.distance_to(puddle.global_position) < global_position.distance_to(closest_puddle.global_position):
-					closest_puddle = puddle
-			set_assignment(closest_puddle)
-			if global_position.distance_to(closest_puddle.global_position) < $InteractableRange/CollisionShape2D.shape.radius:
-				assignment_started.emit()
+		var closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
+		
+		set_assignment(closest_puddle)
+		
+		if closest_puddle and global_position.distance_to(closest_puddle.global_position) < $InteractableRange/CollisionShape2D.shape.radius:
+			assignment_started.emit()
+		
 
 func _bail_puddle() -> void:
 	if current_assignment is Puddle:
@@ -127,11 +123,26 @@ func _on_assignment_died():
 	if current_assignment is Puddle:
 		stop_bailing()
 	elif current_assignment is Leak:
-		set_assignment(null)
+		stop_patching()
 	
 func start_patching():
 	if current_assignment is Leak:
 		$LeakPatchTimer.start()
+		$AnimationPlayer.play("patch_leak")
+		
+func stop_patching():
+	if current_assignment is Leak:
+		$AnimationPlayer.play("idle_down")
+		var closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
+		
+		set_assignment(closest_leak)
+		
+		if closest_leak and global_position.distance_to(closest_leak.global_position) < $InteractableRange/CollisionShape2D.shape.radius:
+			assignment_started.emit()
+
+func _patch_leak() -> void:
+	if current_assignment is Puddle:
+		current_assignment.decrease_stage()
 
 func _on_assignment_started() -> void:
 	if current_assignment is Puddle:
@@ -142,3 +153,13 @@ func _on_assignment_started() -> void:
 func _on_leak_patch_timer_timeout() -> void:
 	if current_assignment is Leak:
 		current_assignment.patch()
+		
+func _get_closest(nodes: Array) -> Node2D:
+	if nodes.is_empty():
+		return null
+	else:
+		var closest_node = nodes.front()
+		for node in nodes:
+			if global_position.distance_to(node.global_position) < global_position.distance_to(closest_node.global_position):
+				closest_node = node
+		return closest_node

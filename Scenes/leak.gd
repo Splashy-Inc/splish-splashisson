@@ -42,6 +42,7 @@ func patch():
 	set_worker(null)
 
 func _die():
+	remove_from_group("leak")
 	died.emit()
 	queue_free()
 	
