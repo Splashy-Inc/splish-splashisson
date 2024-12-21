@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdye7kawr76gv"
-path="res://.godot/imported/PatchLeakC.png-442a2949c4553c6da5d12a742195fcd5.ctex"
+uid="uid://bvbobmv3hhyfr"
+path="res://.godot/imported/PatchLeakF.png-79911ae1e41fc4498f0afd4775b3179a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Crew/Animations/Patch Leak/PatchLeakC.png"
-dest_files=["res://.godot/imported/PatchLeakC.png-442a2949c4553c6da5d12a742195fcd5.ctex"]
+source_file="res://Art/Crew/Animations/PatchingLeak/PatchLeakF.png"
+dest_files=["res://.godot/imported/PatchLeakF.png-79911ae1e41fc4498f0afd4775b3179a.ctex"]
 
 [params]
 
