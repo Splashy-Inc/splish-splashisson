@@ -38,6 +38,7 @@ func set_worker(new_worker: Crew) -> bool:
 
 func patch():
 	is_patched = true
+	$PuddleTimer.stop()
 	$AnimationTree.set("parameters/conditions/is_patched", true)
 	set_worker(null)
 
