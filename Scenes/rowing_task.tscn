@@ -175,6 +175,7 @@ _data = {
 }
 
 [node name="RowingTask" type="StaticBody2D"]
+scale = Vector2(1, -1)
 collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_xesfs")
