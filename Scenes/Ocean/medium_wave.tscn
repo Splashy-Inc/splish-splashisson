@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=3 uid="uid://c57ouj4dasw0q"]
+
+[ext_resource type="Texture2D" uid="uid://c36c2cu6wjmiy" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2A.png" id="1_3e5no"]
+[ext_resource type="Texture2D" uid="uid://d3oc0ue8bxvsl" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2B.png" id="2_o4gci"]
+[ext_resource type="Texture2D" uid="uid://dntli17qpv5vt" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2C.png" id="3_ypbpv"]
+[ext_resource type="Texture2D" uid="uid://cotvhebjkuoe0" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2D.png" id="4_ce6jg"]
+[ext_resource type="Texture2D" uid="uid://bdwae2kh7r236" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2E.png" id="5_ysfgd"]
+[ext_resource type="Texture2D" uid="uid://c4c5vpt30hd8b" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2F.png" id="6_dipwa"]
+[ext_resource type="Texture2D" uid="uid://bwgeeybbxreny" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2G.png" id="7_vc0ff"]
+[ext_resource type="Texture2D" uid="uid://d27cjnatouylk" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2H.png" id="8_8xdsd"]
+[ext_resource type="Texture2D" uid="uid://bfrumdy8g8nol" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2I.png" id="9_irpuy"]
+[ext_resource type="Texture2D" uid="uid://dbukbupeyxog1" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2J.png" id="10_p1r3s"]
+[ext_resource type="Texture2D" uid="uid://x1bpfnulkqxs" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2K.png" id="11_0ceiy"]
+[ext_resource type="Texture2D" uid="uid://dvq2xsqbghnn7" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2L.png" id="12_54anc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qg3gn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3e5no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o4gci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ypbpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ce6jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ysfgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dipwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vc0ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8xdsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_irpuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_p1r3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0ceiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_54anc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MediumWave" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_qg3gn")
+frame_progress = 0.212021
