@@ -1,67 +1,86 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv0x4vv0fkbd2"]
+[gd_scene load_steps=5 format=3 uid="uid://dv0x4vv0fkbd2"]
 
 [ext_resource type="PackedScene" uid="uid://bmh1kxtyjicuu" path="res://Scenes/Ocean/bubbles.tscn" id="1_7nfhj"]
 [ext_resource type="Script" path="res://Scenes/Ocean/ocean.gd" id="1_h5cl7"]
 [ext_resource type="PackedScene" uid="uid://dsdqndjddqni5" path="res://Scenes/Ocean/small_wave.tscn" id="2_x1tu8"]
+[ext_resource type="PackedScene" uid="uid://c57ouj4dasw0q" path="res://Scenes/Ocean/medium_wave.tscn" id="3_g35jv"]
 
-[node name="Ocean" type="Parallax2D"]
-repeat_size = Vector2(0, 720)
-follow_viewport = false
-ignore_camera_scroll = true
-screen_offset = Vector2(-320, 360)
+[node name="ParallaxOcean" type="Parallax2D"]
+scroll_offset = Vector2(320, 0)
+repeat_size = Vector2(0, 1080)
 script = ExtResource("1_h5cl7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -640.0
 offset_top = -360.0
 offset_right = 640.0
-offset_bottom = 360.0
+offset_bottom = 720.0
 color = Color(0.447059, 0.662745, 0.745098, 1)
 
-[node name="SmallWave" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(-235, -79)
-scale = Vector2(0.5, 0.5)
-frame_progress = 0.327919
-
 [node name="SmallWave4" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(-236, 286)
+position = Vector2(-193, 286)
 scale = Vector2(0.5, 0.5)
-frame_progress = 0.720328
+frame_progress = 0.731793
 
 [node name="SmallWave2" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(-357, -251)
+position = Vector2(-198, -123)
 scale = Vector2(0.5, 0.5)
-frame_progress = 0.57733
+frame_progress = 0.700932
+
+[node name="SmallWave11" parent="." instance=ExtResource("2_x1tu8")]
+position = Vector2(-270, 587)
+scale = Vector2(0.5, 0.5)
+frame_progress = 0.19205
 
 [node name="SmallWave3" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(-360, 170)
+position = Vector2(-256, 76)
 scale = Vector2(0.5, 0.5)
-frame_progress = 0.611902
+frame_progress = 0.654768
 
 [node name="Bubbles3" parent="." instance=ExtResource("1_7nfhj")]
-position = Vector2(-367, 4)
-frame_progress = 0.157055
-
-[node name="SmallWave5" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(409, -81)
-scale = Vector2(0.5, 0.5)
-frame_progress = 0.720252
+position = Vector2(-271, 420)
+frame_progress = 0.654288
 
 [node name="SmallWave6" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(408, 284)
+position = Vector2(275, 322)
 scale = Vector2(0.5, 0.5)
-frame_progress = 0.904809
+frame_progress = 0.680104
 
 [node name="SmallWave7" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(287, -253)
+position = Vector2(242, -253)
 scale = Vector2(0.5, 0.5)
-frame_progress = 0.446557
+frame_progress = 0.384967
 
 [node name="SmallWave8" parent="." instance=ExtResource("2_x1tu8")]
-position = Vector2(274, 32)
+position = Vector2(229, 32)
 scale = Vector2(0.5, 0.5)
-frame_progress = 0.566007
+frame_progress = 0.341856
 
-[node name="Bubbles4" parent="." instance=ExtResource("1_7nfhj")]
-position = Vector2(246, 206)
-frame_progress = 0.587681
+[node name="SmallWave14" parent="." instance=ExtResource("2_x1tu8")]
+position = Vector2(278, 655)
+scale = Vector2(0.5, 0.5)
+frame_progress = 0.519883
+
+[node name="Bubbles6" parent="." instance=ExtResource("1_7nfhj")]
+position = Vector2(178, -134)
+frame_progress = 0.460798
+
+[node name="MediumWave2" parent="." instance=ExtResource("3_g35jv")]
+position = Vector2(419, 112)
+frame_progress = 0.978774
+
+[node name="MediumWave4" parent="." instance=ExtResource("3_g35jv")]
+position = Vector2(394, 523)
+frame_progress = 0.558138
+
+[node name="MediumWave5" parent="." instance=ExtResource("3_g35jv")]
+position = Vector2(-375, -294)
+rotation = -3.14159
+scale = Vector2(1, -1)
+frame_progress = 0.115913
+
+[node name="MediumWave7" parent="." instance=ExtResource("3_g35jv")]
+position = Vector2(-420, 193)
+rotation = -3.14159
+scale = Vector2(1, -1)
+frame_progress = 0.380607
