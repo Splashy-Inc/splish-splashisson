@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmh1kxtyjicuu"]
+[gd_scene load_steps=14 format=3 uid="uid://bmh1kxtyjicuu"]
 
 [ext_resource type="Texture2D" uid="uid://ccijtlajaa65j" path="res://Art/Ocean/Ocean/Bubble/BubbleA .png" id="1_qd2is"]
 [ext_resource type="Texture2D" uid="uid://bgpaoibwyd7o6" path="res://Art/Ocean/Ocean/Bubble/BubbleB.png" id="2_8llfl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dvow3rd7siru7" path="res://Art/Ocean/Ocean/Bubble/BubbleI.png" id="9_iokyh"]
 [ext_resource type="Texture2D" uid="uid://kab4xhjfailu" path="res://Art/Ocean/Ocean/Bubble/BubbleJ.png" id="10_a2eoo"]
 [ext_resource type="Texture2D" uid="uid://capken2x17w2s" path="res://Art/Ocean/Ocean/Bubble/BubbleK.png" id="11_50s13"]
+[ext_resource type="Script" path="res://Scenes/Ocean/ocean_animation.gd" id="12_b61uq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ln5vk"]
 animations = [{
@@ -69,4 +70,5 @@ animations = [{
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ln5vk")
 autoplay = "default"
-frame_progress = 0.652442
+frame_progress = 0.38991
+script = ExtResource("12_b61uq")

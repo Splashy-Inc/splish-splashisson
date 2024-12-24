@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://piconrw3mcsj"]
+[gd_scene load_steps=14 format=3 uid="uid://piconrw3mcsj"]
 
 [ext_resource type="Texture2D" uid="uid://bthlufs3smv7j" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigA.png" id="1_ehjfi"]
 [ext_resource type="Texture2D" uid="uid://blw0hskkrpx1g" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigB.png" id="2_18x4k"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bh2xya03ul33k" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigI.png" id="9_adp0m"]
 [ext_resource type="Texture2D" uid="uid://def7lfobkl72o" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigJ.png" id="10_bpama"]
 [ext_resource type="Texture2D" uid="uid://dcgcypy8uyl0b" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigK.png" id="11_utu3x"]
+[ext_resource type="Script" path="res://Scenes/Ocean/ocean_animation.gd" id="12_qssx8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cxds1"]
 animations = [{
@@ -56,3 +57,4 @@ animations = [{
 [node name="BigWave" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_cxds1")
 frame_progress = 0.584985
+script = ExtResource("12_qssx8")

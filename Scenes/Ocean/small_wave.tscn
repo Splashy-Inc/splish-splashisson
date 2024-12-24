@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsdqndjddqni5"]
+[gd_scene load_steps=15 format=3 uid="uid://dsdqndjddqni5"]
 
 [ext_resource type="Texture2D" uid="uid://bx56tg31u3ku5" path="res://Art/Ocean/Ocean/Wave/Wave1/WaveA.png" id="1_mh0u5"]
 [ext_resource type="Texture2D" uid="uid://bgdv4v40l0v08" path="res://Art/Ocean/Ocean/Wave/Wave1/WaveB.png" id="2_vsl1p"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://blgu1xf8hhiv8" path="res://Art/Ocean/Ocean/Wave/Wave1/WaveJ.png" id="10_ml4b0"]
 [ext_resource type="Texture2D" uid="uid://bvuwsp6jpeofc" path="res://Art/Ocean/Ocean/Wave/Wave1/WaveK.png" id="11_gh8k8"]
 [ext_resource type="Texture2D" uid="uid://837mva2t3yq4" path="res://Art/Ocean/Ocean/Wave/Wave1/WaveL.png" id="12_vsbyg"]
+[ext_resource type="Script" path="res://Scenes/Ocean/ocean_animation.gd" id="13_plh7d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nnrb"]
 animations = [{
@@ -61,3 +62,4 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_6nnrb")
 autoplay = "default"
 frame_progress = 0.698609
+script = ExtResource("13_plh7d")
