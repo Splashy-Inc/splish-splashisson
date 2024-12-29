@@ -34,6 +34,7 @@ window/stretch/mode="viewport"
 rowing_animation=""
 puddle=""
 leak=""
+rowing_task=""
 
 [gui]
 

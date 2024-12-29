@@ -1,4 +1,4 @@
-extends Task
+extends Obstacle
 
 class_name Leak
 

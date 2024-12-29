@@ -1,4 +1,4 @@
-extends Task
+extends Obstacle
 
 class_name Puddle
 
@@ -113,37 +113,20 @@ func spread(amount: int, source: Puddle):
 				else:
 					neighbor["puddle"] = Globals.boat.spawn_puddle(neighbor["spawn_point"])
 
-func spawn(spawn_point: Vector2) -> Puddle:
-	global_position = spawn_point
-	var spawn_point_occupant = _check_spawn_space_occupied(self)
-	if spawn_point_occupant:
-		print_debug("Not spawning ", self, " at ", spawn_point, ". Already occupied by ", spawn_point_occupant)
-		queue_free()
-	else:
+func spawn(spawn_point: Vector2):
+	var spawn_occupant = _spawn("puddle", spawn_point)
+	if spawn_occupant == self:
 		_update_neighbor_spawn_points()
-		spawn_point_occupant = self
-	
+		
 	_update_neighbor_puddles()
 	
-	return spawn_point_occupant
+	return spawn_occupant
 	
 func _update_neighbor_spawn_points():
 	neighbor_puddles["top"]["spawn_point"] = $NeighborSpawnPoints/Top.global_position
 	neighbor_puddles["bottom"]["spawn_point"] = $NeighborSpawnPoints/Bottom.global_position
 	neighbor_puddles["right"]["spawn_point"] = $NeighborSpawnPoints/Right.global_position
 	neighbor_puddles["left"]["spawn_point"] = $NeighborSpawnPoints/Left.global_position
-
-func _check_spawn_space_occupied(spawning_puddle: Puddle) -> Puddle:
-	var puddles = get_tree().get_nodes_in_group("puddle")
-	puddles.erase(self)
-	
-	# Check if attempted self space already overlaps with a puddle
-	for puddle in puddles:
-		if not Geometry2D.intersect_polygons(puddle.get_self_polygon(), get_self_polygon()).is_empty():
-			return puddle
-			break
-	
-	return null
 
 func _update_neighbor_puddles():
 	for neighbor in neighbor_puddles.values():
@@ -162,11 +145,3 @@ func _update_neighbor_puddles():
 			neighbor_puddles["right"]["puddle"] = puddle
 		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Left/Polygon2D.polygon, $NeighborSpawnPoints/Left/Polygon2D.global_position)).is_empty():
 			neighbor_puddles["left"]["puddle"] = puddle
-
-func get_self_polygon():
-	return _shift_polygon($SelfSpace/CollisionPolygon2D.polygon, global_position)
-
-func _shift_polygon(polygon: PackedVector2Array, point: Vector2):
-	for i in polygon.size():
-		polygon.set(i, polygon[i] + point)
-	return polygon

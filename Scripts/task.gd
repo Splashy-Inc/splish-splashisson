@@ -56,3 +56,11 @@ func toggle_active(set_active: bool):
 		play_animation("active")
 	else:
 		play_animation("idle")
+
+func get_self_polygon():
+	return _shift_polygon($SelfSpace/CollisionPolygon2D.polygon, global_position)
+
+func _shift_polygon(polygon: PackedVector2Array, point: Vector2):
+	for i in polygon.size():
+		polygon.set(i, polygon[i] + point)
+	return polygon
