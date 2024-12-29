@@ -23,7 +23,7 @@ offset_top = 8.0
 offset_right = 193.0
 offset_bottom = 175.0
 text = "----Controls----
-WASD
+WASD / Controller L-Stick
   Movement
 
 Left-click / Controller \"A\"
