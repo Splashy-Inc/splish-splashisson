@@ -63,6 +63,7 @@ func set_assignment(new_assignment: Node2D):
 				$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
 			else:
 				print(self, " unable to set self as assignee of ", new_assignment)
+				current_assignment = null
 				return
 		
 		following = false
