@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 			if col.get_collider() is Crew:
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 			
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		if action_target is Crew:
 			add_follower(action_target)
