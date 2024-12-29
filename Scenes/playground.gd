@@ -17,4 +17,5 @@ func _on_boat_ready() -> void:
 
 
 func _on_leak_spawn_timer_timeout() -> void:
-	pass # Replace with function body.
+	if get_tree().get_nodes_in_group("leak").size() < 3:
+		Globals.boat.spawn_leak()
