@@ -1,4 +1,4 @@
-extends Task
+extends Obstacle
 
 class_name Leak
 
@@ -25,16 +25,20 @@ func set_assignee(new_assignee: Crew) -> bool:
 
 # This function is intended to be set when the respective crew is in range of the task to begin work
 func set_worker(new_worker: Crew) -> bool:
-	if new_worker: # Only allow setting worker if not already taken
-		if worker == null:
-			assignee = worker
+	if not is_patched:
+		if new_worker: # Only allow setting worker if not already taken
+			if worker == null:
+				assignee = worker
+			else:
+				return false
 		else:
-			return false
-	else:
-		assignee = null
-	
-	worker = new_worker
-	return true
+			if worker:
+				worker.set_highlight(false)
+			assignee = null
+		
+		worker = new_worker
+		return true
+	return false
 
 func patch():
 	is_patched = true
@@ -63,3 +67,12 @@ func _on_puddle_timer_timeout() -> void:
 		
 func _on_current_puddle_died():
 	current_puddle = null
+	
+func set_highlight(is_enable: bool):
+	is_selected = is_enable
+	if worker:
+		worker.set_highlight(is_enable)
+	if $AnimatedSprite2D.material:
+		$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
+	else:
+		print(self, " has no highlight material to activate.")

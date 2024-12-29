@@ -63,15 +63,17 @@ func set_assignment(new_assignment: Node2D):
 				$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
 			else:
 				print(self, " unable to set self as assignee of ", new_assignment)
+				current_assignment = null
 				return
 		
 		following = false
 		$AnimationPlayer.play("acknowledge")
 	
-	if current_assignment is Marker2D:
-		current_assignment.queue_free()
-	elif current_assignment is Task:
-		current_assignment.set_worker(null)
+	if current_assignment:
+		if current_assignment is Marker2D:
+			current_assignment.queue_free()
+		elif current_assignment is Task:
+			current_assignment.set_worker(null)
 	
 	current_assignment = new_assignment
 
@@ -120,10 +122,13 @@ func _bail_puddle() -> void:
 		current_assignment.decrease_stage()
 		
 func _on_assignment_died():
-	if current_assignment is Puddle:
-		stop_bailing()
-	elif current_assignment is Leak:
-		stop_patching()
+	if current_assignment != null:
+		if current_assignment is Puddle:
+			stop_bailing()
+		elif current_assignment is Leak:
+			stop_patching()
+	else:
+		set_assignment(null)
 	
 func start_patching():
 	if current_assignment is Leak:
@@ -141,7 +146,7 @@ func stop_patching():
 			assignment_started.emit()
 
 func _patch_leak() -> void:
-	if current_assignment is Leak:
+	if current_assignment and current_assignment is Leak:
 		current_assignment.patch()
 
 func _on_assignment_started() -> void:

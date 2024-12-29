@@ -23,7 +23,7 @@ offset_top = 8.0
 offset_right = 193.0
 offset_bottom = 175.0
 text = "----Controls----
-WASD
+WASD / Controller L-Stick
   Movement
 
 Left-click / Controller \"A\"
@@ -73,4 +73,9 @@ focus_target = NodePath("../Splish")
 
 [node name="Obstacles" type="Node" parent="."]
 
+[node name="LeakSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]
+[connection signal="timeout" from="LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
