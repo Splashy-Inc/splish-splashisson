@@ -146,7 +146,7 @@ func stop_patching():
 			assignment_started.emit()
 
 func _patch_leak() -> void:
-	if current_assignment is Leak:
+	if current_assignment and current_assignment is Leak:
 		current_assignment.patch()
 
 func _on_assignment_started() -> void:
