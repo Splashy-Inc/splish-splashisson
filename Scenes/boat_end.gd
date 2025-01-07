@@ -1,21 +1,23 @@
 extends StaticBody2D
 
 # TODO: Make this all work with cargo class once that is created
-@export var cargo: Node2D
+@export var cargo: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_cargo(cargo)
+	if cargo:
+		set_cargo(cargo)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func set_cargo(new_cargo):
+func set_cargo(updated_cargo):
 	clear_cargo()
 	if $CargoSlot.get_children().is_empty():
-		cargo = new_cargo
-		$CargoSlot.add_child(cargo)
+		cargo = updated_cargo
+		var new_cargo = cargo.instantiate()
+		$CargoSlot.add_child(new_cargo)
 		print("New cargo for ", self, ": ", cargo)
 
 func clear_cargo():

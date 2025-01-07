@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" path="res://Scenes/boat_end.gd" id="1_0cbxb"]
 [ext_resource type="Texture2D" uid="uid://ct0gilfhdq48q" path="res://Art/ShipTiles/ShipStern.png" id="1_kfflb"]
-[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="3_nqwn3"]
+[ext_resource type="PackedScene" uid="uid://ctc55by1vnaav" path="res://cargo.tscn" id="3_k4mrn"]
 
-[node name="Stern" type="StaticBody2D" node_paths=PackedStringArray("cargo")]
+[node name="Stern" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_0cbxb")
-cargo = NodePath("CargoSlot/CrewMember")
+cargo = Object(StaticBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":36,"collision_mask":0,"collision_priority":1.0,"input_pickable":false,"physics_material_override":null,"constant_linear_velocity":Vector2(0, 0),"constant_angular_velocity":0.0,"script":Resource("res://cargo.gd"),"meat_scene":Resource("res://meat.tscn"),"cargo_type":1)
+
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kfflb")
@@ -19,8 +20,9 @@ rotation = 3.14159
 polygon = PackedVector2Array(-120, 60, -120, 13, -77, -25, -27, -49, 28, -49, 77, -25, 120, 14, 120, 60, 105, 60, 105, 11, 69, -20, 27, -39, -27, -39, -71, -19, -105, 11, -105, 60)
 
 [node name="CargoSlot" type="Node2D" parent="."]
+position = Vector2(0, -11)
 
-[node name="CrewMember" parent="CargoSlot" instance=ExtResource("3_nqwn3")]
+[node name="Cargo" parent="CargoSlot" instance=ExtResource("3_k4mrn")]
 
 [node name="PlaySpace" type="Area2D" parent="."]
 
