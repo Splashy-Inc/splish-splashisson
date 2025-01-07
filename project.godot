@@ -20,6 +20,7 @@ config/icon="res://Art/Splish/Idle/SplishIdle.png"
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
+Utils="*res://Scripts/utils.gd"
 
 [display]
 
@@ -35,6 +36,7 @@ rowing_animation=""
 puddle=""
 leak=""
 rowing_task=""
+cargo=""
 
 [gui]
 
@@ -92,6 +94,7 @@ location={
 2d_physics/layer_3="Interactable"
 2d_physics/layer_4="Boundaries"
 2d_physics/layer_5="Puddles"
+2d_physics/layer_6="Cargo"
 
 [rendering]
 

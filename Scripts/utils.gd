@@ -1,16 +1,16 @@
 extends Node
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func _on_boat_ready() -> void:
-	Globals.set_boat($Boat)
-
-func _on_leak_spawn_timer_timeout() -> void:
-	if get_tree().get_nodes_in_group("leak").size() < 3:
-		Globals.boat.spawn_leak()
+func shift_polygon(polygon: PackedVector2Array, point: Vector2):
+	for i in polygon.size():
+		polygon.set(i, polygon[i] + point)
+	return polygon

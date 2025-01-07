@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://kriuduxnhk54"]
+
+[ext_resource type="Texture2D" uid="uid://8ld8yvec0wq6" path="res://Art/Cargo/Ham/Ham1.png" id="1_67w08"]
+[ext_resource type="Script" path="res://Scripts/condition_segment.gd" id="2_ri7i0"]
+
+[node name="ConditionSegment" type="TextureProgressBar"]
+offset_right = 26.0
+offset_bottom = 16.0
+min_value = 20.0
+step = 0.1
+value = 100.0
+texture_under = ExtResource("1_67w08")
+texture_progress = ExtResource("1_67w08")
+tint_under = Color(0, 0, 0, 1)
+script = ExtResource("2_ri7i0")
