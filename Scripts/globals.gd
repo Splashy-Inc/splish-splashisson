@@ -2,8 +2,10 @@ extends Node
 
 signal speed_updated
 signal boat_ready
+signal cargo_condition_updated
 
 var boat_speed = 0
+var cargo_condition = 0
 var boat: Boat
 
 enum Task_type {
@@ -35,4 +37,8 @@ func set_boat(new_boat: Boat):
 
 func update_boat_speed(speed: int):
 	boat_speed = speed
-	speed_updated.emit()
+	speed_updated.emit(speed)
+	
+func update_cargo_condition(condition: int):
+	cargo_condition = condition
+	cargo_condition_updated.emit(condition)

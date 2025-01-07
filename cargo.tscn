@@ -1,16 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctc55by1vnaav"]
+[gd_scene load_steps=5 format=3 uid="uid://ctc55by1vnaav"]
 
 [ext_resource type="Texture2D" uid="uid://bs1w40vwiefj1" path="res://Art/Cargo/Pallet.png" id="1_ou45g"]
 [ext_resource type="Script" path="res://cargo.gd" id="1_w1e3a"]
 [ext_resource type="PackedScene" uid="uid://dsnr7g2gkv5ie" path="res://meat.tscn" id="2_uwi3r"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_21m0j"]
-size = Vector2(75, 80)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_7kyn7"]
 radius = 33.0
 
-[node name="Cargo" type="StaticBody2D"]
+[node name="Cargo" type="Area2D" groups=["cargo"]]
 collision_layer = 36
 collision_mask = 0
 script = ExtResource("1_w1e3a")
@@ -21,9 +18,9 @@ cargo_type = 1
 position = Vector2(1, -1)
 texture = ExtResource("1_ou45g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_21m0j")
+polygon = PackedVector2Array(-38, -40, 37, -40, 37, 40, -38, 40)
 
 [node name="StackArea" type="StaticBody2D" parent="."]
 collision_layer = 8
@@ -33,3 +30,8 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_7kyn7")
 
 [node name="Items" type="Node2D" parent="."]
+
+[node name="DamageTickTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="DamageTickTimer" to="." method="_on_damage_tick_timer_timeout"]

@@ -3,6 +3,8 @@ extends Obstacle
 class_name Puddle
 
 signal died
+signal large_reached
+signal large_reversed
 
 enum Stage {
 	SMALL,
@@ -52,6 +54,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _update_stage():
+	var old_stage = stage
 	if puddle_amount < 0:
 		die()
 	elif puddle_amount <= stage_thresholds[Stage.SMALL]:
@@ -72,6 +75,12 @@ func _update_stage():
 		if overflow > 0:
 			puddle_amount = PUDDLE_CAPACITY
 			spread(overflow, self)
+	
+	if old_stage != stage:
+		if stage == Stage.LARGE:
+			large_reached.emit()
+		elif old_stage == Stage.LARGE:
+			large_reversed.emit()
 
 func increase_stage():
 	puddle_amount += SPREAD_AMOUNT
@@ -85,6 +94,8 @@ func die():
 	if affecting_speed:
 		Globals.boat.change_speed(-SPEED_CHANGE)
 	remove_from_group("puddle")
+	if stage == Stage.LARGE:
+		large_reversed.emit()
 	died.emit()
 	queue_free()
 
@@ -117,6 +128,9 @@ func spawn(spawn_point: Vector2):
 	var spawn_occupant = _spawn("puddle", spawn_point)
 	if spawn_occupant == self:
 		_update_neighbor_spawn_points()
+		var cargo_check_occupant = _check_spawn_space_occupied("cargo")
+		if cargo_check_occupant is Cargo:
+			cargo_check_occupant.add_threat(self)
 		
 	_update_neighbor_puddles()
 	
@@ -137,11 +151,11 @@ func _update_neighbor_puddles():
 	
 	for puddle in puddles:
 		var puddle_polygon = puddle.get_self_polygon()
-		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Top/Polygon2D.polygon, $NeighborSpawnPoints/Top/Polygon2D.global_position)).is_empty():
+		if not Geometry2D.intersect_polygons(puddle_polygon, Utils.shift_polygon($NeighborSpawnPoints/Top/Polygon2D.polygon, $NeighborSpawnPoints/Top/Polygon2D.global_position)).is_empty():
 			neighbor_puddles["top"]["puddle"] = puddle
-		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Bottom/Polygon2D.polygon, $NeighborSpawnPoints/Bottom/Polygon2D.global_position)).is_empty():
+		if not Geometry2D.intersect_polygons(puddle_polygon, Utils.shift_polygon($NeighborSpawnPoints/Bottom/Polygon2D.polygon, $NeighborSpawnPoints/Bottom/Polygon2D.global_position)).is_empty():
 			neighbor_puddles["bottom"]["puddle"] = puddle
-		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Right/Polygon2D.polygon, $NeighborSpawnPoints/Right/Polygon2D.global_position)).is_empty():
+		if not Geometry2D.intersect_polygons(puddle_polygon, Utils.shift_polygon($NeighborSpawnPoints/Right/Polygon2D.polygon, $NeighborSpawnPoints/Right/Polygon2D.global_position)).is_empty():
 			neighbor_puddles["right"]["puddle"] = puddle
-		if not Geometry2D.intersect_polygons(puddle_polygon, _shift_polygon($NeighborSpawnPoints/Left/Polygon2D.polygon, $NeighborSpawnPoints/Left/Polygon2D.global_position)).is_empty():
+		if not Geometry2D.intersect_polygons(puddle_polygon, Utils.shift_polygon($NeighborSpawnPoints/Left/Polygon2D.polygon, $NeighborSpawnPoints/Left/Polygon2D.global_position)).is_empty():
 			neighbor_puddles["left"]["puddle"] = puddle

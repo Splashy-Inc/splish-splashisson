@@ -37,7 +37,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="Puddle" type="StaticBody2D" groups=["puddle"]]
-collision_layer = 4
+collision_layer = 20
 collision_mask = 0
 script = ExtResource("1_ninmo")
 interaction_radius = 24
@@ -52,6 +52,8 @@ autoplay = "small"
 shape = SubResource("RectangleShape2D_8ratk")
 
 [node name="SelfSpace" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelfSpace"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -85,3 +87,5 @@ position = Vector2(-32, 0)
 [node name="Polygon2D" type="Polygon2D" parent="NeighborSpawnPoints/Left"]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+
+[connection signal="body_entered" from="SelfSpace" to="." method="_on_self_space_body_entered"]
