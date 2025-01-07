@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgh348ybeuo0m"]
+
+[ext_resource type="PackedScene" uid="uid://kriuduxnhk54" path="res://Scenes/condition_segment.tscn" id="1_hgmqq"]
+[ext_resource type="Script" path="res://Scripts/boat_info_panel.gd" id="1_tdy62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgwm0"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 0.345098)
+
+[node name="BoatInfoPanel" type="PanelContainer"]
+offset_left = 512.0
+offset_right = 640.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bgwm0")
+script = ExtResource("1_tdy62")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Boat speed: "
+
+[node name="BoatSpeedLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Cargo" type="VBoxContainer" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/Cargo"]
+layout_mode = 2
+text = "Cargo"
+horizontal_alignment = 1
+
+[node name="ConditionBar" type="HFlowContainer" parent="VBoxContainer/Cargo"]
+layout_mode = 2
+alignment = 1
+
+[node name="ConditionSegment" parent="VBoxContainer/Cargo/ConditionBar" instance=ExtResource("1_hgmqq")]
+layout_mode = 2

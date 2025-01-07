@@ -118,7 +118,7 @@ func stop_bailing():
 		
 
 func _bail_puddle() -> void:
-	if current_assignment is Puddle:
+	if current_assignment and current_assignment is Puddle:
 		current_assignment.decrease_stage()
 		
 func _on_assignment_died():

@@ -6,53 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="2_cmo3h"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="2_twya3"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_qe181"]
-line_spacing = 1.0
+[ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="3_75gk2"]
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_bs7od")
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 7.0
-offset_top = 8.0
-offset_right = 193.0
-offset_bottom = 175.0
-text = "----Controls----
-WASD / Controller L-Stick
-  Movement
-
-Left-click / Controller \"A\"
-  Interact with crew/task
-    Crew - Take follower
-    Task - Assigns follower
-
-Right-click / Controller \"B\"
-  Assign crew to player location
----------------
-
-Goal: Get all crew to row the boat!"
-label_settings = SubResource("LabelSettings_qe181")
-autowrap_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-z_index = 1
-offset_left = 494.0
-offset_top = 1.0
-offset_right = 534.0
-offset_bottom = 41.0
-
-[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
-text = "Boat speed: "
-
-[node name="Label3" type="Label" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
-text = "0"
+[node name="HUD" parent="." instance=ExtResource("3_75gk2")]
 
 [node name="Boat" parent="." instance=ExtResource("2_twya3")]
 position = Vector2(320, 180)

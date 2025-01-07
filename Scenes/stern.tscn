@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/boat_end.gd" id="1_0cbxb"]
 [ext_resource type="Texture2D" uid="uid://ct0gilfhdq48q" path="res://Art/ShipTiles/ShipStern.png" id="1_kfflb"]
-[ext_resource type="PackedScene" uid="uid://ctc55by1vnaav" path="res://cargo.tscn" id="3_k4mrn"]
+[ext_resource type="PackedScene" uid="uid://ctc55by1vnaav" path="res://Scenes/cargo.tscn" id="3_k4mrn"]
 
 [node name="Stern" type="StaticBody2D"]
 collision_layer = 8

@@ -2,6 +2,8 @@ extends Node2D
 
 class_name CargoItem
 
+@export var health: int
+
 signal died
 
 # Called when the node enters the scene tree for the first time.
@@ -15,3 +17,6 @@ func _process(delta: float) -> void:
 func die():
 	died.emit()
 	queue_free()
+
+func get_sprite_texture():
+	return $Sprite2D.texture

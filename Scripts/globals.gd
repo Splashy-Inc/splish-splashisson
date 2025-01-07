@@ -3,9 +3,17 @@ extends Node
 signal speed_updated
 signal boat_ready
 signal cargo_condition_updated
+signal cargo_items_updated
 
 var boat_speed = 0
-var cargo_condition = 0
+
+var cargo_info = {
+	"max_condition": 0,
+	"condition": 0,
+	"max_items": 0,
+	"item_health": 0,
+	"item_texture": CompressedTexture2D.new().load("res://Art/Cargo/Ham/Ham1.png"),
+}
 var boat: Boat
 
 enum Task_type {
@@ -39,6 +47,13 @@ func update_boat_speed(speed: int):
 	boat_speed = speed
 	speed_updated.emit(speed)
 	
-func update_cargo_condition(condition: int):
-	cargo_condition = condition
-	cargo_condition_updated.emit(condition)
+func update_cargo_condition(condition: int, max_condition: int):
+	cargo_info["max_condition"] = max_condition
+	cargo_info["condition"] = condition
+	cargo_condition_updated.emit(cargo_info["max_condition"], cargo_info["condition"])
+	
+func update_cargo_items(num_items: int, item_health: int, item_texture: CompressedTexture2D):
+	cargo_info["max_items"] = num_items
+	cargo_info["item_health"] = item_health
+	cargo_info["item_texture"] = item_texture
+	cargo_items_updated.emit(cargo_info)

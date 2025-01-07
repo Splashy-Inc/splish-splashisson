@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://co8iy1he6fkwa"]
+
+[ext_resource type="PackedScene" uid="uid://kriuduxnhk54" path="res://Scenes/condition_segment.tscn" id="1_8wum5"]
+[ext_resource type="PackedScene" uid="uid://cgh348ybeuo0m" path="res://Scenes/boat_info_panel.tscn" id="2_h3l0c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qe181"]
+line_spacing = 1.0
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 193.0
+offset_bottom = 175.0
+text = "----Controls----
+WASD / Controller L-Stick
+  Movement
+
+Left-click / Controller \"A\"
+  Interact with crew/task
+    Crew - Take follower
+    Task - Assigns follower
+
+Right-click / Controller \"B\"
+  Assign crew to player location
+---------------
+
+Goal: Get all crew to row the boat!"
+label_settings = SubResource("LabelSettings_qe181")
+autowrap_mode = 2
+
+[node name="BoatInfoPanel" parent="." instance=ExtResource("2_h3l0c")]
+condition_segment_scene = ExtResource("1_8wum5")
