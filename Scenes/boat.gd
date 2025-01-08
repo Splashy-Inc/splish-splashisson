@@ -10,14 +10,20 @@ class_name Boat
 @export var deck_tasks: Array[Globals.Task_type]
 
 var speed = 0
+var max_speed = 0
+var drag = 10
+var stopped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_generate_boat()
+	get_max_speed()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if stopped and speed >= 0:
+		speed = clamp(speed - ceil(drag * delta), 0, max_speed)
+		Globals.update_boat_speed(speed)
 
 func _generate_boat():
 	# Clear current deck segments
@@ -39,8 +45,9 @@ func _generate_boat():
 	change_speed(0)
 
 func change_speed(change: int):
-	speed += change
-	Globals.update_boat_speed(speed)
+	if not stopped:
+		speed += change
+		Globals.update_boat_speed(speed)
 
 func spawn_leak():
 	$DeckSlot.get_children().front().spawn_leak()
@@ -72,3 +79,13 @@ func is_point_in_boat(point: Vector2):
 			return true
 	
 	return false
+
+func get_max_speed():
+	var rowing_tasks = []
+	for deck in $DeckSlot.get_children():
+		rowing_tasks.append_array(deck.get_rowing_tasks())
+	max_speed = rowing_tasks.front().SPEED_CHANGE * rowing_tasks.size()
+	return max_speed
+
+func stop():
+	stopped = true

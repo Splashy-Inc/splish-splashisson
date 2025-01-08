@@ -4,10 +4,12 @@ class_name Deck
 
 @export var tasks: Array[Globals.Task_type]
 var spawn_boundary: Rect2
+var task_slots: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_boundary = $SpawnArea/CollisionShape2D.shape.get_rect()
+	task_slots = $TaskSlots
 	_set_up_tasks()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +18,6 @@ func _process(delta: float) -> void:
 
 func initialize(tasks_to_place: Array[Globals.Task_type]):
 	tasks = tasks_to_place
-	_set_up_tasks()
 	
 func _set_up_tasks():
 	clear_deck()
@@ -24,7 +25,7 @@ func _set_up_tasks():
 	for task in tasks:
 		var new_task = Globals.generate_task(task)
 		if new_task is Task:
-			for slot in $Tasks.get_children():
+			for slot in task_slots.get_children():
 				if slot.get_children().is_empty():
 					slot.add_child(new_task)
 					new_task = null
@@ -38,11 +39,12 @@ func _set_up_tasks():
 
 func clear_deck():
 	# Clear tasks
-	for slot in $Tasks.get_children():
-		for task in slot.get_children():
-			if task is Task:
-				task.set_worker(null)
-			task.free()
+	if task_slots:
+		for slot in task_slots.get_children():
+			for task in slot.get_children():
+				if task is Task:
+					task.set_worker(null)
+				task.free()
 
 func spawn_leak():
 	var new_leak = Globals.generate_task(Globals.Task_type.LEAK)
@@ -61,3 +63,12 @@ func spawn_puddle(spawn_point: Vector2) -> Puddle:
 
 func is_point_in_play_space(point: Vector2):
 	return Geometry2D.is_point_in_polygon(point-$PlayArea/CollisionPolygon2D.global_position, $PlayArea/CollisionPolygon2D.polygon)
+
+func get_rowing_tasks():
+	var rowing_tasks = []
+	for slot in task_slots.get_children():
+		for task in slot.get_children():
+			if task is RowingTask:
+				rowing_tasks.append(task)
+	
+	return rowing_tasks

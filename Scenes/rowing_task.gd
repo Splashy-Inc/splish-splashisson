@@ -1,5 +1,7 @@
 extends Task
 
+class_name RowingTask
+
 const SPEED_CHANGE = 100
 
 func play_animation(animation_name):	
