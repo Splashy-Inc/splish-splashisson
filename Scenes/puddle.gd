@@ -28,6 +28,8 @@ var overflow = 0
 var stage = Stage.SMALL
 
 var affecting_speed = false
+var is_dead = false
+var assignees: Array[Crew]
 
 # Store neighbor puddle states here
 	   #[top]
@@ -97,14 +99,18 @@ func die():
 	if stage == Stage.LARGE:
 		large_reversed.emit()
 	died.emit()
+	is_dead = true
+	_remove_assignees()
 	queue_free()
 
 # Override assignee and worker setters since we want multiple to be able to work on a puddle at a time
 func set_assignee(new_assignee: Crew) -> bool:
-	return true
+	if not is_dead:
+		assignees.append(new_assignee)
+	return not is_dead
 
 func set_worker(new_worker: Crew) -> bool:
-	return true
+	return not is_dead
 
 # Attempt to spread in this pattern
 	#[1]
@@ -159,3 +165,8 @@ func _update_neighbor_puddles():
 			neighbor_puddles["right"]["puddle"] = puddle
 		if not Geometry2D.intersect_polygons(puddle_polygon, Utils.shift_polygon($NeighborSpawnPoints/Left/Polygon2D.polygon, $NeighborSpawnPoints/Left/Polygon2D.global_position)).is_empty():
 			neighbor_puddles["left"]["puddle"] = puddle
+
+func _remove_assignees():
+	for assignee in assignees:
+		if assignee.current_assignment == self:
+			assignee.set_assignment(null)

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfsxn0iyywxs5"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_stx43"]
+[ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="2_lnmp3"]
+[ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="3_nmge5"]
+[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="4_64cm4"]
+[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="5_pjrgm"]
+[ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="6_peku6"]
+[ext_resource type="Script" path="res://Scenes/game_camera.gd" id="7_r4a8d"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_stx43")
+minimum_seconds = 30
+
+[node name="Ocean" parent="." instance=ExtResource("2_lnmp3")]
+
+[node name="HUD" parent="." instance=ExtResource("3_nmge5")]
+
+[node name="Boat" parent="." instance=ExtResource("4_64cm4")]
+position = Vector2(320, 180)
+
+[node name="CrewMember" parent="." instance=ExtResource("5_pjrgm")]
+position = Vector2(380, 71)
+
+[node name="CrewMember2" parent="." instance=ExtResource("5_pjrgm")]
+position = Vector2(297, 52)
+
+[node name="CrewMember3" parent="." instance=ExtResource("5_pjrgm")]
+position = Vector2(342, 51)
+
+[node name="CrewMember4" parent="." instance=ExtResource("5_pjrgm")]
+position = Vector2(269, 71)
+
+[node name="Splish" parent="." instance=ExtResource("6_peku6")]
+position = Vector2(320, 201)
+
+[node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("focus_target")]
+position = Vector2(320, 180)
+script = ExtResource("7_r4a8d")
+focus_target = NodePath("../Splish")
+
+[node name="Obstacles" type="Node" parent="."]
+
+[connection signal="ready" from="Boat" to="." method="_on_boat_ready"]

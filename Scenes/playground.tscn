@@ -10,10 +10,12 @@
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_bs7od")
+minimum_seconds = 30
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
 [node name="HUD" parent="." instance=ExtResource("3_75gk2")]
+hide_controls = false
 
 [node name="Boat" parent="." instance=ExtResource("2_twya3")]
 position = Vector2(320, 180)
@@ -44,5 +46,6 @@ focus_target = NodePath("../Splish")
 wait_time = 5.0
 autostart = true
 
+[connection signal="completed" from="." to="." method="_on_completed"]
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

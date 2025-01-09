@@ -44,27 +44,27 @@ shape = SubResource("RectangleShape2D_cgofq")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayArea"]
 polygon = PackedVector2Array(-105, -60, 105, -60, 105, 60, -105, 60)
 
-[node name="Tasks" type="Node2D" parent="."]
+[node name="TaskSlots" type="Node2D" parent="."]
 z_index = 1
 
-[node name="TopLeftSlot" type="Node2D" parent="Tasks"]
+[node name="TopLeftSlot" type="Node2D" parent="TaskSlots"]
 position = Vector2(-75, -40)
 scale = Vector2(-1, 1)
 
-[node name="RowingTask" parent="Tasks/TopLeftSlot" instance=ExtResource("2_lgf02")]
+[node name="RowingTask" parent="TaskSlots/TopLeftSlot" instance=ExtResource("2_lgf02")]
 
-[node name="TopRightSlot" type="Node2D" parent="Tasks"]
+[node name="TopRightSlot" type="Node2D" parent="TaskSlots"]
 position = Vector2(75, -40)
 
-[node name="RowingTask" parent="Tasks/TopRightSlot" instance=ExtResource("2_lgf02")]
+[node name="RowingTask" parent="TaskSlots/TopRightSlot" instance=ExtResource("2_lgf02")]
 
-[node name="BottomLeftSlot" type="Node2D" parent="Tasks"]
+[node name="BottomLeftSlot" type="Node2D" parent="TaskSlots"]
 position = Vector2(-75, 40)
 scale = Vector2(-1, 1)
 
-[node name="RowingTask" parent="Tasks/BottomLeftSlot" instance=ExtResource("2_lgf02")]
+[node name="RowingTask" parent="TaskSlots/BottomLeftSlot" instance=ExtResource("2_lgf02")]
 
-[node name="BottomRightSlot" type="Node2D" parent="Tasks"]
+[node name="BottomRightSlot" type="Node2D" parent="TaskSlots"]
 position = Vector2(75, 40)
 
-[node name="RowingTask" parent="Tasks/BottomRightSlot" instance=ExtResource("2_lgf02")]
+[node name="RowingTask" parent="TaskSlots/BottomRightSlot" instance=ExtResource("2_lgf02")]

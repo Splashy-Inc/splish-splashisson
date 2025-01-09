@@ -17,11 +17,14 @@ var max_condition = 0
 var condition = 0
 var threats = []
 
+var level_complete = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_spawn_cargo()
 	_update_condition(max_condition)
 	_set_item_info()
+	Globals.level_completed.connect(_on_level_completed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -69,12 +72,13 @@ func get_self_polygon():
 	return Utils.shift_polygon($CollisionPolygon2D.polygon, global_position)
 
 func _on_damage_tick_timer_timeout() -> void:
-	if threats.is_empty():
-		var remainder = condition % item_health
-		if remainder > 0:
-			_update_condition(clamp(item_health - (condition % item_health), 0, item_health))
-	else:
-		_update_condition(-threats.size())
+	if not level_complete:
+		if threats.is_empty():
+			var remainder = condition % item_health
+			if remainder > 0:
+				_update_condition(clamp(item_health - (condition % item_health), 0, item_health))
+		else:
+			_update_condition(-threats.size())
 
 func _update_condition(change: int):
 	if change < 0 and condition % item_health > 0 and condition % item_health <= abs(change):
@@ -84,3 +88,8 @@ func _update_condition(change: int):
 
 func _set_item_info():
 	Globals.update_cargo_items(num_items, item_health, item_texture)
+
+func _on_level_completed():
+	level_complete = true
+	$DamageTickTimer.stop()
+	

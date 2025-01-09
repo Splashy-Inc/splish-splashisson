@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://joi30yc7yge6"]
+
+[ext_resource type="StyleBox" uid="uid://bcsxb6cfbis3y" path="res://Styles/boat_info_panel.tres" id="1_cplw3"]
+[ext_resource type="Script" path="res://Scripts/clock.gd" id="2_u0j56"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3tc66"]
+line_spacing = 0.0
+
+[node name="Clock" type="PanelContainer"]
+offset_right = 30.0
+offset_bottom = 13.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("1_cplw3")
+
+[node name="ElapsedTime" type="Label" parent="."]
+layout_mode = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_3tc66")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_u0j56")
+
+[node name="Timer" type="Timer" parent="ElapsedTime"]
+
+[connection signal="timeout" from="ElapsedTime/Timer" to="ElapsedTime" method="_on_timer_timeout"]

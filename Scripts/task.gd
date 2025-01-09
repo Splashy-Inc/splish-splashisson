@@ -10,6 +10,11 @@ var is_active = false
 var is_selected = false
 @export var interaction_radius: int
 
+var level_completed = false
+
+func _ready():
+	Globals.level_completed.connect(_on_level_completed)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -59,3 +64,10 @@ func toggle_active(set_active: bool):
 
 func get_self_polygon():
 	return Utils.shift_polygon($SelfSpace/CollisionPolygon2D.polygon, global_position)
+	
+func _on_level_completed():
+	level_completed = true
+	stop()
+
+func stop():
+	pass
