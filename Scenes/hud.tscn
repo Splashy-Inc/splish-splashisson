@@ -30,7 +30,7 @@ Right-click / Controller \"B\"
   Assign crew to player location
 ---------------
 
-Goal: Get all crew to row the boat!"
+Goal: Get to the end of the level!"
 label_settings = SubResource("LabelSettings_qe181")
 autowrap_mode = 2
 
