@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Boat
 
+signal stopped
+
 # Number of deck segments
 @export var deck_length: int
 @export var deck_scene: PackedScene
@@ -12,7 +14,7 @@ class_name Boat
 var speed = 0
 var max_speed = 0
 var drag = 10
-var stopped = false
+var is_stopped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,8 +23,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if stopped and speed >= 0:
-		speed = clamp(speed - ceil(drag * delta), 0, max_speed)
+	if is_stopped and speed >= 0:
+		speed = clamp(speed - ceil(drag * delta), 0, max_speed/3)
 		Globals.update_boat_speed(speed)
 
 func _generate_boat():
@@ -45,7 +47,7 @@ func _generate_boat():
 	change_speed(0)
 
 func change_speed(change: int):
-	if not stopped:
+	if not is_stopped:
 		speed += change
 		Globals.update_boat_speed(speed)
 
@@ -88,4 +90,5 @@ func get_max_speed():
 	return max_speed
 
 func stop():
-	stopped = true
+	is_stopped = true
+	stopped.emit()

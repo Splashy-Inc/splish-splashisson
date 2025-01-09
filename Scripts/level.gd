@@ -2,6 +2,8 @@ extends Node
 
 class_name Level
 
+signal completed
+
 var progress = 0
 @export var minimum_seconds: int
 var length = 0
@@ -24,6 +26,8 @@ func _process(delta: float) -> void:
 			finished = true
 			boat.stop()
 			print("Win!")
+			completed.emit()
+		Globals.update_level_progress_percent(clamp(progress/length, 0.0, 1.0))
 
 func _on_boat_ready() -> void:
 	boat = $Boat
@@ -31,8 +35,3 @@ func _on_boat_ready() -> void:
 
 func _boat_speed_updated(speed: int):
 	boat_speed = clamp(speed, 0, max_boat_speed)
-
-func _on_leak_spawn_timer_timeout() -> void:
-	if get_tree().get_nodes_in_group("leak").size() < 3:
-		pass
-		Globals.boat.spawn_leak()

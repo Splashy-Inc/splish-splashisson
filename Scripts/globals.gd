@@ -4,17 +4,22 @@ signal speed_updated
 signal boat_ready
 signal cargo_condition_updated
 signal cargo_items_updated
+signal level_progress_percent_updated
+signal level_ready
+signal level_completed
 
+var boat: Boat
 var boat_speed = 0
+var level
+var level_progress_percent = 0.0
 
 var cargo_info = {
 	"max_condition": 0,
 	"condition": 0,
 	"max_items": 0,
 	"item_health": 0,
-	"item_texture": CompressedTexture2D.new().load("res://Art/Cargo/Ham/Ham1.png"),
+	"item_texture": CompressedTexture2D.new(),
 }
-var boat: Boat
 
 enum Task_type {
 	ROWING,
@@ -41,7 +46,12 @@ func generate_task(type: Task_type) -> Task:
 
 func set_boat(new_boat: Boat):
 	boat = new_boat
-	boat_ready.emit()
+	boat_ready.emit(boat)
+
+func set_level(new_level: Level):
+	level = new_level
+	level.completed.connect(_on_level_completed)
+	level_ready.emit()
 
 func update_boat_speed(speed: int):
 	boat_speed = speed
@@ -57,3 +67,12 @@ func update_cargo_items(num_items: int, item_health: int, item_texture: Compress
 	cargo_info["item_health"] = item_health
 	cargo_info["item_texture"] = item_texture
 	cargo_items_updated.emit(cargo_info)
+
+func update_level_progress_percent(percent: float):
+	level_progress_percent = percent
+	level_progress_percent_updated.emit(level_progress_percent)
+	if level_progress_percent >= 1:
+		level_completed.emit()
+		
+func _on_level_completed():
+	level_completed.emit(level)

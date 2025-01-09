@@ -10,7 +10,7 @@
 
 [node name="Level" type="Node"]
 script = ExtResource("1_stx43")
-minimum_seconds = 10
+minimum_seconds = 30
 
 [node name="Ocean" parent="." instance=ExtResource("2_lnmp3")]
 
@@ -41,9 +41,4 @@ focus_target = NodePath("../Splish")
 
 [node name="Obstacles" type="Node" parent="."]
 
-[node name="LeakSpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]
-[connection signal="timeout" from="LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
