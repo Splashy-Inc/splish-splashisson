@@ -56,18 +56,20 @@ func set_assignment(new_assignment: Node2D):
 		following = true
 		$AnimationPlayer.play("alert")
 	else:
-		if new_assignment is Task:
-			if new_assignment is Puddle or new_assignment is Leak:
-				new_assignment.died.connect(_on_assignment_died)
-			if new_assignment.set_assignee(self):
-				$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
-			else:
-				print(self, " unable to set self as assignee of ", new_assignment)
-				current_assignment = null
-				return
-		
 		following = false
-		$AnimationPlayer.play("acknowledge")
+		if new_assignment is Cargo:
+			pass
+		else:
+			if new_assignment is Task:
+				if new_assignment is Puddle or new_assignment is Leak:
+					new_assignment.died.connect(_on_assignment_died)
+				if new_assignment.set_assignee(self):
+					$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
+				else:
+					print(self, " unable to set self as assignee of ", new_assignment)
+					current_assignment = null
+					return
+			$AnimationPlayer.play("acknowledge")
 	
 	if current_assignment:
 		if current_assignment is Marker2D:
@@ -164,3 +166,7 @@ func _get_closest(nodes: Array) -> Node2D:
 			if global_position.distance_to(node.global_position) < global_position.distance_to(closest_node.global_position):
 				closest_node = node
 		return closest_node
+
+func _on_distraction_timer_timeout() -> void:
+	print(self, " is distracted, going for cargo: ", get_tree().get_nodes_in_group("cargo").front())
+	set_assignment(get_tree().get_nodes_in_group("cargo").front())
