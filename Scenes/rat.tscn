@@ -1,0 +1,101 @@
+[gd_scene load_steps=16 format=3 uid="uid://c70vjir2dc7r5"]
+
+[ext_resource type="Script" path="res://Scripts/rat.gd" id="1_cvs5m"]
+[ext_resource type="Texture2D" uid="uid://c82fkosfxo1kg" path="res://Art/Rat/RatDead/RatDeadA.png" id="2_nqypc"]
+[ext_resource type="Texture2D" uid="uid://dw8niig2iqeyh" path="res://Art/Rat/RatDead/RatDeadB.png" id="3_yvk86"]
+[ext_resource type="Texture2D" uid="uid://bpopd62dscek3" path="res://Art/Rat/RatDead/RatDeadC.png" id="4_dg4g8"]
+[ext_resource type="Texture2D" uid="uid://2gc7wldiryj4" path="res://Art/Rat/RatDead/RatDeadD.png" id="5_stud0"]
+[ext_resource type="Texture2D" uid="uid://bd4q48gw7kwfw" path="res://Art/Rat/RatDead/RatDeadE.png" id="6_3va6k"]
+[ext_resource type="Texture2D" uid="uid://iyhdx7bl21jj" path="res://Art/Rat/RatEat/RatEatA.png" id="7_xcr8t"]
+[ext_resource type="Texture2D" uid="uid://457mraiygchr" path="res://Art/Rat/RatEat/RatEatB.png" id="8_6ugau"]
+[ext_resource type="Texture2D" uid="uid://b4gng3kejx6ae" path="res://Art/Rat/RatEat/RatEatC.png" id="9_b6yo2"]
+[ext_resource type="Texture2D" uid="uid://dq84sxomwsufq" path="res://Art/Rat/RatIdle.png" id="10_qtsmf"]
+[ext_resource type="Texture2D" uid="uid://bxpfi86lkxu8y" path="res://Art/Rat/RatMove/RatMoveB.png" id="11_yot7h"]
+[ext_resource type="Texture2D" uid="uid://byumm8peoeqeh" path="res://Art/Rat/RatMove/RatMoveA.png" id="12_nkkln"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7ori"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nqypc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yvk86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dg4g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_stud0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3va6k")
+}],
+"loop": false,
+"name": &"die",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_xcr8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6ugau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b6yo2")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_qtsmf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_yot7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nkkln")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mkuk"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fw22"]
+radius = 6.0
+
+[node name="Rat" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_cvs5m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_f7ori")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_5mkuk")
+
+[node name="InteractableRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
+shape = SubResource("CircleShape2D_8fw22")
+
+[connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
+[connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
