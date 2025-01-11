@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 class_name Cargo
 
@@ -57,6 +57,11 @@ func add_threat(body: Node2D):
 		body.died.connect(_on_threat_died.bind(body))
 		body.large_reached.connect(_on_large_puddle_reached.bind(body))
 		body.large_reversed.connect(_on_large_puddle_reversed.bind(body))
+	else:
+		threats.append(body)
+	
+func remove_threat(body: Node2D):
+	threats.erase(body)
 
 func _on_threat_died(threat: Node2D):
 	if threat is Puddle:
@@ -66,7 +71,7 @@ func _on_large_puddle_reached(puddle: Puddle):
 	threats.append(puddle)
 
 func _on_large_puddle_reversed(puddle: Puddle):
-	threats.erase(puddle)
+	remove_threat(puddle)
 
 func get_self_polygon():
 	return Utils.shift_polygon($CollisionPolygon2D.polygon, global_position)

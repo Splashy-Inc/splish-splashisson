@@ -14,37 +14,94 @@ var following = false
 
 var is_selected = false
 
+enum State {
+	IDLE,
+	MOVING,
+	ALERTED,
+	ACKNOWLEDGING,
+	ROWING,
+	BAILING,
+	PATCHING,
+	DISTRACTED,
+}
+
+var state = State.IDLE
+
 func _physics_process(delta: float) -> void:
-	velocity = push_velocity
+	if state != State.DISTRACTED:
+		velocity = push_velocity
 	push_velocity = Vector2.ZERO
 	
-	if not ($AnimationPlayer.current_animation == "alert" or $AnimationPlayer.current_animation == "acknowledge" or $AnimationPlayer.current_animation == "bail_water" or $AnimationPlayer.current_animation == "patch_leak") or not $AnimationPlayer.is_playing():
-		if current_assignment:
-			var distance_to_assignment = global_position.distance_to(current_assignment.global_position)
-			if current_assignment is Task:
-				if distance_to_assignment >= current_assignment.interaction_radius:
-					var direction = global_position.direction_to(current_assignment.global_position)
-					velocity += direction * SPEED
-			else:
-				if distance_to_assignment > 5:
-					var direction = global_position.direction_to(current_assignment.global_position)
-					if (current_assignment is not Player) or (distance_to_assignment > follow_distance):
-						velocity += direction * SPEED
-				else:
-					global_position == current_assignment.global_position
-		
-		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
-			if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
-				$AnimationPlayer.play("walking_up")
-			else:
-				$AnimationPlayer.play("walking_down")
-		else:
-			if following and global_position.direction_to(current_assignment.global_position).y < 0:
-				$AnimationPlayer.play("idle_up")
-			else:
-				$AnimationPlayer.play("idle_down")
+	match state:
+		State.IDLE:
+			_move_state(delta)
+		State.MOVING:
+			_move_state(delta)
+		State.ALERTED:
+			_alert_state()
+		State.ACKNOWLEDGING:
+			_acknowledge_state()
+		State.ROWING:
+			_rowing_state()
+		State.BAILING:
+			_bail_state()
+		State.PATCHING:
+			_patch_state()
+		State.DISTRACTED:
+			_distract_state()
 	
 	move_and_slide()
+
+func _move_state(delta: float):
+	if current_assignment:
+		var distance_to_assignment = global_position.distance_to(current_assignment.global_position)
+		if current_assignment is Task:
+			if distance_to_assignment >= current_assignment.interaction_radius:
+				var direction = global_position.direction_to(current_assignment.global_position)
+				velocity += direction * SPEED
+		else:
+			if distance_to_assignment > 5:
+				var direction = global_position.direction_to(current_assignment.global_position)
+				if (current_assignment is not Player) or (distance_to_assignment > follow_distance):
+					velocity += direction * SPEED
+			else:
+				global_position == current_assignment.global_position
+	
+	if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
+		state = State.MOVING
+		if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
+			$AnimationPlayer.play("walking_up")
+		else:
+			$AnimationPlayer.play("walking_down")
+	else:
+		state = State.IDLE
+		if following and global_position.direction_to(current_assignment.global_position).y < 0:
+			$AnimationPlayer.play("idle_up")
+		else:
+			$AnimationPlayer.play("idle_down")
+
+func _alert_state():
+	$AnimationPlayer.play("alert")
+
+func _acknowledge_state():
+	$AnimationPlayer.play("acknowledge")
+
+func _rowing_state():
+	$AnimationPlayer.play("idle_down")
+
+func _bail_state():
+	$AnimationPlayer.play("bail_water")
+
+func _patch_state():
+	$AnimationPlayer.play("patch_leak")
+
+func _distract_state():
+	if current_assignment is Cargo:
+		if current_assignment.cargo_type == Cargo.Cargo_type.MEAT:
+			$AnimationPlayer.play("eating")
+
+func _on_animation_finished():
+	state = State.IDLE
 
 func set_assignment(new_assignment: Node2D):
 	# TODO: Figure out if we want crew to immediately turn on interactable range
@@ -52,28 +109,38 @@ func set_assignment(new_assignment: Node2D):
 	#   they will immediately start working. Might be nice for the player, TBD in playtesting.
 	$InteractableRange/CollisionShape2D.set_deferred("disabled", true)
 	
-	if new_assignment is Player:
+	state = State.IDLE
+	$IdleDistractionTimer.stop()
+	$RowingDistractionTimer.stop()
+	
+	if new_assignment == null or new_assignment is Marker2D:
+		$IdleDistractionTimer.start()
+	elif new_assignment is Player:
 		following = true
-		$AnimationPlayer.play("alert")
+		state = State.ALERTED
 	else:
-		if new_assignment is Task:
-			if new_assignment is Puddle or new_assignment is Leak:
-				new_assignment.died.connect(_on_assignment_died)
-			if new_assignment.set_assignee(self):
-				$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
-			else:
-				print(self, " unable to set self as assignee of ", new_assignment)
-				current_assignment = null
-				return
-		
 		following = false
-		$AnimationPlayer.play("acknowledge")
+		if new_assignment is Cargo:
+			$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
+		else:
+			if new_assignment is Task:
+				if new_assignment is Puddle or new_assignment is Leak:
+					new_assignment.died.connect(_on_assignment_died)
+				if new_assignment.set_assignee(self):
+					$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
+				else:
+					print(self, " unable to set self as assignee of ", new_assignment)
+					current_assignment = null
+					return
+			state = State.ACKNOWLEDGING
 	
 	if current_assignment:
 		if current_assignment is Marker2D:
 			current_assignment.queue_free()
 		elif current_assignment is Task:
 			current_assignment.set_worker(null)
+		elif current_assignment is Cargo:
+			current_assignment.remove_threat(self)
 	
 	current_assignment = new_assignment
 
@@ -94,6 +161,9 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 			assignment_started.emit()
 		else:
 			set_assignment(null) # TODO: Create cancel/fail animation and function to cancel/fail assignment
+	elif body == current_assignment and body is Cargo and state != State.DISTRACTED:
+		state = State.DISTRACTED
+		body.add_threat(self)
 
 func set_highlight(is_enable: bool):
 	is_selected = is_enable
@@ -102,13 +172,17 @@ func set_highlight(is_enable: bool):
 func reset_highlight():
 	$AnimatedSprite2D.material.set_shader_parameter("on", is_selected)
 
+func start_rowing():
+	state = State.ROWING
+	$RowingDistractionTimer.start()
+
 func start_bailing():
 	if current_assignment is Puddle:
-		$AnimationPlayer.play("bail_water")
+		state = State.BAILING
 	
 func stop_bailing():
+	state = State.IDLE
 	if current_assignment is Puddle:
-		$AnimationPlayer.play("idle_down")
 		var closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
 		
 		set_assignment(closest_puddle)
@@ -132,12 +206,12 @@ func _on_assignment_died():
 	
 func start_patching():
 	if current_assignment is Leak:
+		state = State.PATCHING
 		$LeakPatchTimer.start()
-		$AnimationPlayer.play("patch_leak")
 		
 func stop_patching():
+	state = State.IDLE
 	if current_assignment is Leak:
-		$AnimationPlayer.play("idle_down")
 		var closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
 		
 		set_assignment(closest_leak)
@@ -150,7 +224,9 @@ func _patch_leak() -> void:
 		current_assignment.patch()
 
 func _on_assignment_started() -> void:
-	if current_assignment is Puddle:
+	if current_assignment is RowingTask:
+		start_rowing()
+	elif current_assignment is Puddle:
 		start_bailing()
 	elif current_assignment is Leak:
 		start_patching()
@@ -164,3 +240,7 @@ func _get_closest(nodes: Array) -> Node2D:
 			if global_position.distance_to(node.global_position) < global_position.distance_to(closest_node.global_position):
 				closest_node = node
 		return closest_node
+
+func _on_distraction_timer_timeout() -> void:
+	print(self, " is distracted, going for cargo: ", get_tree().get_nodes_in_group("cargo").front())
+	set_assignment(get_tree().get_nodes_in_group("cargo").front())

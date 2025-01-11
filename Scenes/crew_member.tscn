@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=69 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://Scenes/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -29,13 +29,21 @@
 [ext_resource type="Texture2D" uid="uid://2s17htd0j4ll" path="res://Art/Crew/Animations/BailingWater/BailG.png" id="20_5aq8c"]
 [ext_resource type="AudioStream" uid="uid://bj173jpryfuer" path="res://Audio/crew_alert.mp3" id="20_ovux8"]
 [ext_resource type="AudioStream" uid="uid://bx0y34nvwegsj" path="res://Audio/crew_acknowledge.mp3" id="21_mr5gk"]
+[ext_resource type="Texture2D" uid="uid://7p5r7vxju7t6" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamA.png" id="21_sqb4g"]
+[ext_resource type="Texture2D" uid="uid://dj77u1l8t7mqc" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamB.png" id="22_63o8g"]
 [ext_resource type="AudioStream" uid="uid://c4wwmhh1pltjm" path="res://Audio/boot_step2.mp3" id="22_jwcoc"]
 [ext_resource type="Texture2D" uid="uid://cdye7kawr76gv" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakC.png" id="23_4eo14"]
+[ext_resource type="Texture2D" uid="uid://gmwkr3dg0xbu" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamC.png" id="23_7eqfr"]
+[ext_resource type="Texture2D" uid="uid://dyrujptxbyox4" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamD.png" id="24_7tycb"]
 [ext_resource type="Texture2D" uid="uid://cx3qgwj2vnwhd" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakD.png" id="24_61j12"]
 [ext_resource type="Texture2D" uid="uid://b41f7x4jh5auh" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakE.png" id="25_1cbpn"]
+[ext_resource type="Texture2D" uid="uid://18ikm8wjkpcd" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamE.png" id="25_ufeav"]
 [ext_resource type="Texture2D" uid="uid://bvbobmv3hhyfr" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakF.png" id="26_1snwl"]
+[ext_resource type="Texture2D" uid="uid://dqeyxretq2bsy" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamF.png" id="26_vpafs"]
 [ext_resource type="Texture2D" uid="uid://jj50j6dppaoe" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakG.png" id="27_ep367"]
+[ext_resource type="Texture2D" uid="uid://bmuiujus0rwp" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamG.png" id="27_irv2q"]
 [ext_resource type="Texture2D" uid="uid://bqrli65g8ra7f" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakH.png" id="28_73qoo"]
+[ext_resource type="Texture2D" uid="uid://bxwqkhrf36uu7" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamH.png" id="28_m88c6"]
 [ext_resource type="Texture2D" uid="uid://b6nel85eogr1v" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakI.png" id="29_hdsnq"]
 [ext_resource type="Texture2D" uid="uid://c0gme2eeouc6t" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakJ.png" id="30_xrmfg"]
 [ext_resource type="Texture2D" uid="uid://c6nrrg7d3qhue" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakK.png" id="31_ydoax"]
@@ -126,6 +134,35 @@ animations = [{
 "loop": true,
 "name": &"bail_water",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_sqb4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_63o8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7eqfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_7tycb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ufeav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_vpafs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_irv2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_m88c6")
+}],
+"loop": true,
+"name": &"eating",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -319,6 +356,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_animation_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ot4iw"]
 step = 0.125
@@ -371,6 +422,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_animation_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_nkw25"]
@@ -649,12 +714,43 @@ tracks/3/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_aagtk"]
+resource_name = "eating"
+length = 1.60002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eating"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_plwr3"]
 _data = {
 "RESET": SubResource("Animation_bm4pa"),
 "acknowledge": SubResource("Animation_3sbtm"),
 "alert": SubResource("Animation_ot4iw"),
 "bail_water": SubResource("Animation_nkw25"),
+"eating": SubResource("Animation_aagtk"),
 "idle_down": SubResource("Animation_df2kf"),
 "idle_up": SubResource("Animation_yrpeu"),
 "patch_leak": SubResource("Animation_d7hms"),
@@ -680,7 +776,7 @@ shape = SubResource("CapsuleShape2D_ak416")
 
 [node name="InteractableRange" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_j4hgd")
@@ -714,5 +810,15 @@ autoplay = "idle_down"
 wait_time = 3.0
 one_shot = true
 
+[node name="IdleDistractionTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RowingDistractionTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
 [connection signal="assignment_started" from="." to="." method="_on_assignment_started"]
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
+[connection signal="timeout" from="IdleDistractionTimer" to="." method="_on_distraction_timer_timeout"]
+[connection signal="timeout" from="RowingDistractionTimer" to="." method="_on_distraction_timer_timeout"]
