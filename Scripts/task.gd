@@ -32,7 +32,10 @@ func set_worker(new_worker: Crew) -> bool:
 		if worker == null:
 			assignee = worker
 			new_worker.hide_self()
-			new_worker.global_position = global_position
+			if $DismountPoint:
+				new_worker.global_position = $DismountPoint.global_position
+			else:
+				new_worker.global_position = global_position
 			toggle_active(true)
 		else:
 			return false

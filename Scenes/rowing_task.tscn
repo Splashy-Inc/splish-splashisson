@@ -241,3 +241,6 @@ autoplay = "RESET"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelfSpace"]
 polygon = PackedVector2Array(33, 10, -31, 10, -31, -10, 33, -10)
+
+[node name="DismountPoint" type="Marker2D" parent="."]
+position = Vector2(-45, 0)

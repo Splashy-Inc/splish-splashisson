@@ -84,3 +84,6 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4egum")
+
+[node name="DismountPoint" type="Marker2D" parent="."]
+position = Vector2(-45, 0)
