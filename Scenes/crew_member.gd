@@ -19,6 +19,7 @@ enum State {
 	BAILING,
 	PATCHING,
 	DISTRACTED,
+	ATTACKING,
 }
 
 var state = State.IDLE
@@ -51,6 +52,8 @@ func _physics_process(delta: float) -> void:
 			_patch_state()
 		State.DISTRACTED:
 			_distract_state()
+		State.ATTACKING:
+			_attack_state()
 	
 	move_and_slide()
 
@@ -104,6 +107,12 @@ func _distract_state():
 	if current_assignment is Cargo:
 		if current_assignment.cargo_type == Cargo.Cargo_type.MEAT:
 			$AnimationPlayer.play("eating")
+
+func _attack_state():
+	if current_assignment is Rat:
+		if $AttackTimer.is_stopped():
+			$AttackTimer.start()
+		$AnimationPlayer.play("stomping")
 
 func _on_animation_finished():
 	state = State.IDLE
@@ -193,7 +202,7 @@ func stop_bailing():
 		set_assignment(closest_puddle)
 		
 		if closest_puddle and _check_in_range(closest_puddle):
-			start_bailing()
+			_start_assignment()
 		
 
 func _bail_puddle() -> void:
@@ -246,8 +255,7 @@ func _start_assignment() -> bool:
 	elif current_assignment is Leak:
 		return start_patching()
 	elif current_assignment is Rat:
-		current_assignment.die()
-		set_assignment(null)
+		state = State.ATTACKING
 		return true
 	
 	set_assignment(null) # TODO: Create cancel/fail animation and function to cancel/fail assignment
@@ -271,3 +279,10 @@ func _check_in_range(node: Node2D):
 	if node and (node in interactables or global_position.distance_to(node.global_position) < interaction_distance):
 		return true
 	return false
+
+func _on_attack_timer_timeout() -> void:
+	if current_assignment.has_method("die"):
+		current_assignment.die()
+		set_assignment(null)
+	else:
+		print(current_assignment, " cannot die. Attacking does nothing.")
