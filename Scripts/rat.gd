@@ -20,10 +20,14 @@ var target: Node2D
 @export var interaction_radius: int
 var is_selected = false
 
+var worker: Node2D
+var assignee: Node2D
+
 func _ready():
 	target_closest_cargo()
 
 func _physics_process(delta: float) -> void:
+	velocity = Vector2.ZERO
 	match state:
 		State.IDLE:
 			_move_state(delta)
@@ -35,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			_death_state()
 
 func _move_state(delta: float):
-	if target:
+	if target and worker == null:
 		var direction = global_position.direction_to(target.global_position)
 		velocity = direction * SPEED
 		_set_state(State.MOVING)
@@ -95,7 +99,7 @@ func _set_state(new_state: State):
 		state = new_state
 
 func is_targetable() -> bool:
-	if state != State.DEAD:
+	if state != State.DEAD and not assignee:
 		return true
 	return false
 
@@ -112,3 +116,16 @@ func _deposit_loot():
 		if loot is CargoItem:
 			loot.die()
 	target_closest_cargo()
+
+func set_worker(new_worker: Node2D):
+	if not worker or not new_worker:
+		worker = new_worker
+		set_assignee(worker)
+		return true
+	return false
+
+func set_assignee(new_assignee: Node2D):
+	if not assignee or not new_assignee:
+		assignee = new_assignee
+		return true
+	return false

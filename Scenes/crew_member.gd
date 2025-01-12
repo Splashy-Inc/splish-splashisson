@@ -133,16 +133,11 @@ func set_assignment(new_assignment: Node2D):
 		$IdleDistractionTimer.start()
 	elif new_assignment is Player:
 		state = State.ALERTED
-	#elif new_assignment is Cargo:
-		#$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
 	else:
-		if new_assignment is Task:
+		if new_assignment is Task or new_assignment is Rat:
 			if new_assignment is Puddle or new_assignment is Leak:
 				new_assignment.died.connect(_on_assignment_died)
-			if new_assignment.set_assignee(self):
-				pass
-				#$InteractableRange/CollisionShape2D.set_deferred("disabled", false)
-			else:
+			if not new_assignment.set_assignee(self):
 				print(self, " unable to set self as assignee of ", new_assignment)
 				current_assignment = null
 				return
@@ -151,7 +146,7 @@ func set_assignment(new_assignment: Node2D):
 	if current_assignment:
 		if current_assignment is Marker2D:
 			current_assignment.queue_free()
-		elif current_assignment is Task:
+		elif current_assignment is Task or current_assignment is Rat:
 			current_assignment.set_worker(null)
 		elif current_assignment is Cargo:
 			current_assignment.remove_threat(self)
@@ -256,6 +251,7 @@ func _start_assignment() -> bool:
 	elif current_assignment is Leak:
 		return start_patching()
 	elif current_assignment is Rat:
+		current_assignment.set_worker(self)
 		state = State.ATTACKING
 		return true
 	
