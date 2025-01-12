@@ -184,10 +184,6 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_8fw22")
 
-[node name="TempDeathTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ndqge")
