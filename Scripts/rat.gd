@@ -100,9 +100,9 @@ func is_targetable() -> bool:
 
 func _on_cargo_steal_timer_timeout() -> void:
 	if target is Cargo:
-		var new_loot = target.remove_item()
-		new_loot.reparent($LootSlot, false)
-		new_loot.position = Vector2.ZERO
+		var new_loot = target.move_item($LootSlot)
+		if new_loot:
+			new_loot.position = Vector2.ZERO
 		target = hole
 		_set_state(State.IDLE)
 

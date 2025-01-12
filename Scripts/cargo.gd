@@ -89,9 +89,11 @@ func _on_damage_tick_timer_timeout() -> void:
 			_update_condition(-threats.size())
 
 func _update_condition(change: int):
-	if change < 0 and condition % item_health > 0 and condition % item_health <= abs(change):
-		$Items.get_children().front().die()
 	condition = clamp(condition + change, 0, max_condition)
+	var item_count_diff = ceili(float(condition) / item_health) - $Items.get_child_count()
+	if item_count_diff < 0:
+		for i in abs(item_count_diff):
+			get_item().die()
 	Globals.update_cargo_condition(condition, max_condition)
 
 func _set_item_info():
@@ -101,14 +103,24 @@ func _on_level_completed():
 	level_complete = true
 	$DamageTickTimer.stop()
 	
-func remove_item():
-	var item = $Items.get_children().front()
-	return item
+func get_item():
+	return $Items.get_children().front()
 
 func add_item(item: CargoItem):
 	if item:
 		item.reparent($Items, false)
 		item.global_position = _get_item_spawn_point($StackArea/CollisionShape2D.global_position, $StackArea/CollisionShape2D.shape.radius)
+		_update_condition(item_health)
+
+func move_item(destination: Node2D):
+	if destination:
+		var item = get_item()
+		if item:
+			item.reparent(destination)
+			item.global_position = destination.global_position
+			_update_condition(-item_health)
+			return item
+	return null
 
 func _get_item_spawn_point(spawn_origin, spawn_radius):
 	var spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
