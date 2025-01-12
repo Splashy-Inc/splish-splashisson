@@ -21,6 +21,9 @@ var followers: Array[Crew]
 
 var action_target: Node2D
 
+func _process(delta: float) -> void:
+	_find_action_target()
+
 func _physics_process(delta: float) -> void:
 	if $AnimationPlayer.current_animation != "pointing_right" or not $AnimationPlayer.is_playing():
 		var direction := Input.get_vector("left", "right", "up", "down").normalized()
