@@ -2,6 +2,18 @@ extends CharacterBody2D
 
 class_name Player
 
+# Higher number takes higher priority
+enum Selection_priority {
+	NONE,
+	CREW,
+	TASK,
+	ROWING,
+	OBSTACLE,
+	PUDDLE,
+	LEAK,
+	RAT,
+}
+
 const SPEED = 150.0
 
 var interactables: Array[Node2D]
@@ -146,17 +158,17 @@ func _compare_target_priority(target_1: Node, target_2: Node) -> Node:
 # TODO: Figure out a better way to do this
 func _get_target_priority(node: Node):
 	if node is Rat:
-		return 7
+		return Selection_priority.RAT
 	elif node is Leak:
-		return 6
+		return Selection_priority.LEAK
 	elif node is Puddle:
-		return 5
+		return Selection_priority.PUDDLE
 	elif node is Obstacle:
-		return 4
+		return Selection_priority.OBSTACLE
 	elif node is RowingTask:
-		return 3
+		return Selection_priority.ROWING
 	elif node is Task:
-		return 2
+		return Selection_priority.TASK
 	elif node is Crew:
-		return 1
-	return 0
+		return Selection_priority.CREW
+	return Selection_priority.NONE
