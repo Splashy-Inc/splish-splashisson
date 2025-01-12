@@ -74,6 +74,7 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 		_set_state(State.IDLE)
 
 func die():
+	$CargoStealTimer.stop()
 	for item in $LootSlot.get_children():
 		if item is CargoItem:
 			item.return_to_cargo()
