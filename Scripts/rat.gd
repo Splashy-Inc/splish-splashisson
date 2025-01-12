@@ -15,7 +15,7 @@ enum State {
 
 var state = State.IDLE
 
-var target: Cargo
+var target: Node2D
 @export var hole: StaticBody2D
 @export var interaction_radius: int
 var is_selected = false
@@ -62,17 +62,21 @@ func target_closest_cargo():
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	if body == target and state != State.DEAD:
-		target.add_threat(self)
-		_set_state(State.ATTACKING)
+		if target is Cargo:
+			$CargoStealTimer.start()
+			_set_state(State.ATTACKING)
+		if target == hole:
+			_deposit_loot()
 
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	if body == target and state != State.DEAD:
-		target.remove_threat(self)
+		$CargoStealTimer.stop()
 		_set_state(State.IDLE)
 
 func die():
-	if target:
-		target.remove_threat(self)
+	for item in $LootSlot.get_children():
+		if item is CargoItem:
+			item.return_to_cargo()
 	_set_state(State.DEAD)
 
 func _die():
@@ -93,3 +97,17 @@ func is_targetable() -> bool:
 	if state != State.DEAD:
 		return true
 	return false
+
+func _on_cargo_steal_timer_timeout() -> void:
+	if target is Cargo:
+		var new_loot = target.remove_item()
+		new_loot.reparent($LootSlot, false)
+		new_loot.position = Vector2.ZERO
+		target = hole
+		_set_state(State.IDLE)
+
+func _deposit_loot():
+	for loot in $LootSlot.get_children():
+		if loot is CargoItem:
+			loot.die()
+	target_closest_cargo()

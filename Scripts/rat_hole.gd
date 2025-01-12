@@ -5,6 +5,7 @@ extends Obstacle
 func _spawn_rat():
 	var new_rat = rat_scene.instantiate()
 	new_rat.died.connect(_on_rat_died.bind(new_rat))
+	new_rat.hole = self
 	add_child(new_rat)
 	$SpawnTimer.stop()
 

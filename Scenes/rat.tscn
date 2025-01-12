@@ -166,6 +166,9 @@ collision_mask = 8
 script = ExtResource("1_cvs5m")
 interaction_radius = 12
 
+[node name="LootSlot" type="Marker2D" parent="."]
+position = Vector2(0, -4)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_onx3l")
 position = Vector2(0, -9)
@@ -179,7 +182,7 @@ shape = SubResource("CircleShape2D_5mkuk")
 
 [node name="InteractableRange" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 32
+collision_mask = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_8fw22")
@@ -189,5 +192,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ndqge")
 }
 
+[node name="CargoStealTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
+[connection signal="timeout" from="CargoStealTimer" to="." method="_on_cargo_steal_timer_timeout"]

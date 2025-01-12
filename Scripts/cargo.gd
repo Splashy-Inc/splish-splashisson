@@ -37,10 +37,9 @@ func _spawn_cargo():
 				var spawn_origin = $StackArea/CollisionShape2D.global_position
 				var spawn_radius = $StackArea/CollisionShape2D.shape.radius
 				for i in num_items:
-					var spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
-					while spawn_point.distance_to(spawn_origin) > spawn_radius * .9:
-						spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
+					var spawn_point = _get_item_spawn_point(spawn_origin, spawn_radius)
 					var new_cargo = meat_scene.instantiate()
+					new_cargo.initialize(self)
 					if item_health <= 0:
 						item_health = new_cargo.health
 						max_condition = num_items * item_health
@@ -91,7 +90,7 @@ func _on_damage_tick_timer_timeout() -> void:
 
 func _update_condition(change: int):
 	if change < 0 and condition % item_health > 0 and condition % item_health <= abs(change):
-		$Items.get_children().front().queue_free()
+		$Items.get_children().front().die()
 	condition = clamp(condition + change, 0, max_condition)
 	Globals.update_cargo_condition(condition, max_condition)
 
@@ -102,3 +101,17 @@ func _on_level_completed():
 	level_complete = true
 	$DamageTickTimer.stop()
 	
+func remove_item():
+	var item = $Items.get_children().front()
+	return item
+
+func add_item(item: CargoItem):
+	if item:
+		item.reparent($Items, false)
+		item.global_position = _get_item_spawn_point($StackArea/CollisionShape2D.global_position, $StackArea/CollisionShape2D.shape.radius)
+
+func _get_item_spawn_point(spawn_origin, spawn_radius):
+	var spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
+	while spawn_point.distance_to(spawn_origin) > spawn_radius * .9:
+		spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
+	return spawn_point
