@@ -22,7 +22,7 @@ func _on_speed_updated(speed: int):
 		#	in order to prevent ocean scroll from jumping to a very fast speed at start of slowdown
 		set_autoscroll(Vector2(0, clamp(speed/15, 0, 400)))
 	else:
-		set_autoscroll(Vector2(0, clamp(speed/5, 0, 400)))
+		set_autoscroll(Vector2(0, clamp(speed/Globals.PARALLAX_SCROLL_FACTOR, 0, 400)))
 	scroll_offset.y = cur_position.y
 
 func _on_boat_ready(boat: Boat):

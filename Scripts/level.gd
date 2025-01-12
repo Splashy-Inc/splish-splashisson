@@ -4,6 +4,8 @@ class_name Level
 
 signal completed
 
+var dock_scene = load("res://Scenes/dock.tscn")
+
 var progress = 0
 @export var minimum_seconds: int
 var length = 0
@@ -35,3 +37,8 @@ func _on_boat_ready() -> void:
 
 func _boat_speed_updated(speed: int):
 	boat_speed = clamp(speed, 0, max_boat_speed)
+
+func spawn_dock(spawn_point: Vector2):
+	var new_dock = dock_scene.instantiate()
+	add_child(new_dock)
+	new_dock.global_position = spawn_point

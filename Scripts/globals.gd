@@ -8,6 +8,8 @@ signal level_progress_percent_updated
 signal level_ready
 signal level_completed
 
+const PARALLAX_SCROLL_FACTOR = 5
+
 var boat: Boat
 var boat_speed = 0
 var level

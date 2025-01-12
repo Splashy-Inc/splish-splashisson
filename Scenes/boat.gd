@@ -15,6 +15,7 @@ var speed = 0
 var max_speed = 0
 var drag = 10
 var is_stopped = false
+var length: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,6 +44,8 @@ func _generate_boat():
 		deck_tasks_to_place = deck_tasks_to_place.slice(4)
 		new_deck_segment.initialize(tasks)
 		$DeckSlot.add_child(new_deck_segment)
+	
+	length = $BowSlot.global_position.distance_to($SternSlot.global_position) + get_viewport_rect().size.y
 	
 	change_speed(0)
 
