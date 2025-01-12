@@ -37,10 +37,9 @@ func _spawn_cargo():
 				var spawn_origin = $StackArea/CollisionShape2D.global_position
 				var spawn_radius = $StackArea/CollisionShape2D.shape.radius
 				for i in num_items:
-					var spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
-					while spawn_point.distance_to(spawn_origin) > spawn_radius * .9:
-						spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
+					var spawn_point = _get_item_spawn_point(spawn_origin, spawn_radius)
 					var new_cargo = meat_scene.instantiate()
+					new_cargo.initialize(self)
 					if item_health <= 0:
 						item_health = new_cargo.health
 						max_condition = num_items * item_health
@@ -57,11 +56,15 @@ func add_threat(body: Node2D):
 		body.died.connect(_on_threat_died.bind(body))
 		body.large_reached.connect(_on_large_puddle_reached.bind(body))
 		body.large_reversed.connect(_on_large_puddle_reversed.bind(body))
+		return true
 	else:
 		threats.append(body)
+		return true
+	return false
 	
 func remove_threat(body: Node2D):
 	threats.erase(body)
+	return true
 
 func _on_threat_died(threat: Node2D):
 	if threat is Puddle:
@@ -86,9 +89,10 @@ func _on_damage_tick_timer_timeout() -> void:
 			_update_condition(-threats.size())
 
 func _update_condition(change: int):
-	if change < 0 and condition % item_health > 0 and condition % item_health <= abs(change):
-		$Items.get_children().front().queue_free()
 	condition = clamp(condition + change, 0, max_condition)
+	var item_count_diff = clamp($Items.get_child_count() - ceili(float(condition) / item_health), 0, num_items)
+	for i in item_count_diff:
+		get_item().die()
 	Globals.update_cargo_condition(condition, max_condition)
 
 func _set_item_info():
@@ -98,3 +102,27 @@ func _on_level_completed():
 	level_complete = true
 	$DamageTickTimer.stop()
 	
+func get_item():
+	return $Items.get_children().front()
+
+func add_item(item: CargoItem):
+	if item:
+		item.reparent($Items, false)
+		item.global_position = _get_item_spawn_point($StackArea/CollisionShape2D.global_position, $StackArea/CollisionShape2D.shape.radius)
+		_update_condition(item_health)
+
+func move_item(destination: Node2D):
+	if destination:
+		var item = get_item()
+		if item:
+			item.reparent(destination)
+			item.global_position = destination.global_position
+			_update_condition(-item_health)
+			return item
+	return null
+
+func _get_item_spawn_point(spawn_origin, spawn_radius):
+	var spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
+	while spawn_point.distance_to(spawn_origin) > spawn_radius * .9:
+		spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
+	return spawn_point
