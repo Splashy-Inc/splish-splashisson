@@ -119,11 +119,6 @@ func _on_animation_finished():
 	state = State.IDLE
 
 func set_assignment(new_assignment: Node2D):
-	# TODO: Figure out if we want crew to immediately turn on interactable range
-	#   If we don't wait for acknowledgement animation to finish and crew is already close enough,
-	#   they will immediately start working. Might be nice for the player, TBD in playtesting.
-	#$InteractableRange/CollisionShape2D.set_deferred("disabled", true)
-	
 	state = State.IDLE
 	$IdleDistractionTimer.stop()
 	$RowingDistractionTimer.stop()
@@ -146,8 +141,11 @@ func set_assignment(new_assignment: Node2D):
 	if current_assignment:
 		if current_assignment is Marker2D:
 			current_assignment.queue_free()
-		elif current_assignment is Task or current_assignment is Rat:
+		elif current_assignment is Task:
 			current_assignment.set_worker(null)
+		elif current_assignment is Rat:
+			current_assignment.set_worker(null)
+			$AttackTimer.stop()
 		elif current_assignment is Cargo:
 			current_assignment.remove_threat(self)
 	
@@ -241,6 +239,12 @@ func start_distraction():
 		return true
 	return false
 
+func start_stomping_rat():
+	if current_assignment is Rat and current_assignment.set_worker(self):
+		state = State.ATTACKING
+		return true
+	return false
+
 func _start_assignment() -> bool:
 	if current_assignment is Cargo and state != State.DISTRACTED:
 		return start_distraction()
@@ -251,9 +255,7 @@ func _start_assignment() -> bool:
 	elif current_assignment is Leak:
 		return start_patching()
 	elif current_assignment is Rat:
-		current_assignment.set_worker(self)
-		state = State.ATTACKING
-		return true
+		return start_stomping_rat()
 	
 	set_assignment(null) # TODO: Create cancel/fail animation and function to cancel/fail assignment
 	return false
