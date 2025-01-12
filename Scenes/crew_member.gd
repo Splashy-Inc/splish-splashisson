@@ -10,16 +10,17 @@ var push_velocity = Vector2.ZERO
 
 var is_selected = false
 
+# State order is used in selection priority, highest value being what takes precedence
 enum State {
-	IDLE,
-	MOVING,
 	ALERTED,
 	ACKNOWLEDGING,
-	ROWING,
+	MOVING, # Don't want to easily interrupt crew on their way to tasks
+	ATTACKING, # Often times, attacking is dealing with very important cargo threat
 	BAILING,
 	PATCHING,
+	ROWING,
+	IDLE,
 	DISTRACTED,
-	ATTACKING,
 }
 
 var state = State.IDLE

@@ -98,14 +98,21 @@ func _find_action_target():
 		# Don't target empty task if you don't have any followers to assign
 		if interactable is Rat and followers.is_empty():
 			continue
-		if interactable is Task and (not interactable.worker and followers.is_empty()):
-			continue
+		if interactable is Task:
+			if interactable.worker:
+				if not interactable is RowingTask:
+					interactable = interactable.worker
+			elif followers.is_empty():
+				continue
 		
 		if not interactable is Crew or not interactable in followers:
-			# TODO: Add in prioritizing crew members over tasks since crew members can get player stuck
 			if action_target:
-				if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
-					_set_action_target(interactable)
+				var priority_target = _compare_target_priority(action_target, interactable)
+				if priority_target:
+					_set_action_target(priority_target)
+				else:
+					if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
+						_set_action_target(interactable)
 			else:
 				_set_action_target(interactable)
 
@@ -120,3 +127,36 @@ func _set_action_target(new_target):
 func _refresh_action_target():
 	_set_action_target(null)
 	_find_action_target()
+
+func _compare_target_priority(target_1: Node, target_2: Node) -> Node:
+	var target_1_priority = _get_target_priority(target_1)
+	var target_2_priority = _get_target_priority(target_2)
+	
+	if target_2_priority > target_1_priority:
+		return target_2
+	elif target_2_priority == target_1_priority:
+		if target_1 is Crew and target_2 is Crew:
+			if target_1.state > target_2.state:
+				return target_1
+			elif target_1.state < target_2.state:
+				return target_2
+		return null
+	return target_1
+
+# TODO: Figure out a better way to do this
+func _get_target_priority(node: Node):
+	if node is Rat:
+		return 7
+	elif node is Leak:
+		return 6
+	elif node is Puddle:
+		return 5
+	elif node is Obstacle:
+		return 4
+	elif node is RowingTask:
+		return 3
+	elif node is Task:
+		return 2
+	elif node is Crew:
+		return 1
+	return 0
