@@ -15,3 +15,6 @@ func _on_spawn_timer_timeout() -> void:
 func _on_rat_died(rat: Rat):
 	remove_child(rat)
 	$SpawnTimer.start()
+
+func is_targetable():
+	return false
