@@ -90,10 +90,9 @@ func _on_damage_tick_timer_timeout() -> void:
 
 func _update_condition(change: int):
 	condition = clamp(condition + change, 0, max_condition)
-	var item_count_diff = ceili(float(condition) / item_health) - $Items.get_child_count()
-	if item_count_diff < 0:
-		for i in abs(item_count_diff):
-			get_item().die()
+	var item_count_diff = clamp($Items.get_child_count() - ceili(float(condition) / item_health), 0, num_items)
+	for i in item_count_diff:
+		get_item().die()
 	Globals.update_cargo_condition(condition, max_condition)
 
 func _set_item_info():
