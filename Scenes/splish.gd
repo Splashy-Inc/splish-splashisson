@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-# Higher number takes higher priority
+# Higher value number takes higher priority
 enum Selection_priority {
 	NONE,
 	CREW,
