@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c70vjir2dc7r5"]
+[gd_scene load_steps=17 format=3 uid="uid://c70vjir2dc7r5"]
 
 [ext_resource type="Script" path="res://Scripts/rat.gd" id="1_cvs5m"]
 [ext_resource type="Texture2D" uid="uid://c82fkosfxo1kg" path="res://Art/Rat/RatDead/RatDeadA.png" id="2_nqypc"]
+[ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_onx3l"]
 [ext_resource type="Texture2D" uid="uid://dw8niig2iqeyh" path="res://Art/Rat/RatDead/RatDeadB.png" id="3_yvk86"]
 [ext_resource type="Texture2D" uid="uid://bpopd62dscek3" path="res://Art/Rat/RatDead/RatDeadC.png" id="4_dg4g8"]
 [ext_resource type="Texture2D" uid="uid://2gc7wldiryj4" path="res://Art/Rat/RatDead/RatDeadD.png" id="5_stud0"]
@@ -75,15 +76,17 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fw22"]
 radius = 6.0
 
-[node name="Rat" type="CharacterBody2D"]
+[node name="Rat" type="CharacterBody2D" groups=["destructable"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_cvs5m")
+interaction_radius = 24
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_onx3l")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_f7ori")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

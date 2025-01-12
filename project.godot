@@ -37,6 +37,7 @@ puddle=""
 leak=""
 rowing_task=""
 cargo=""
+destructable=""
 
 [gui]
 

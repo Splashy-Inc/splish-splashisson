@@ -41,6 +41,8 @@ func _input(event: InputEvent) -> void:
 				print("No followers to assign to ", action_target, " !")
 			else:
 				assign_follower(followers.front(), action_target)
+		elif action_target is Rat:
+			assign_follower(followers.front(), action_target)
 	
 	if event.is_action_pressed("location"):
 		if followers.is_empty():
@@ -89,9 +91,13 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	
 func _find_action_target():
 	# Identify closest interactable as action target
-	# TODO: Allow player to cycle through interactable targets
+	# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
 	for interactable in interactables:
+		if interactable.has_method("is_targetable") and not interactable.is_targetable():
+			continue
 		# Don't target empty task if you don't have any followers to assign
+		if interactable is Rat and followers.is_empty():
+			continue
 		if interactable is Task and (not interactable.worker and followers.is_empty()):
 			continue
 		

@@ -57,11 +57,15 @@ func add_threat(body: Node2D):
 		body.died.connect(_on_threat_died.bind(body))
 		body.large_reached.connect(_on_large_puddle_reached.bind(body))
 		body.large_reversed.connect(_on_large_puddle_reversed.bind(body))
+		return true
 	else:
 		threats.append(body)
+		return true
+	return false
 	
 func remove_threat(body: Node2D):
 	threats.erase(body)
+	return true
 
 func _on_threat_died(threat: Node2D):
 	if threat is Puddle:
