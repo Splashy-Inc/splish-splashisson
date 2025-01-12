@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Rat
 
+signal died
+
 const SPEED = 50.0
 
 enum State {
@@ -48,8 +50,8 @@ func _attack_state():
 	$AnimatedSprite2D.play("eat")
 
 func _death_state():
-	if not $AnimatedSprite2D.animation == "die":
-		$AnimatedSprite2D.play("die")
+	if $AnimationPlayer.current_animation != "die":
+		$AnimationPlayer.play("die")
 
 func target_closest_cargo():
 	for cargo in get_tree().get_nodes_in_group("cargo"):
@@ -72,6 +74,9 @@ func die():
 	if target:
 		target.remove_threat(self)
 	_set_state(State.DEAD)
+
+func _die():
+	died.emit()
 
 func set_highlight(is_enable: bool):
 	is_selected = is_enable and is_targetable()

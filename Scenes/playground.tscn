@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="3_75gk2"]
-[ext_resource type="PackedScene" uid="uid://c70vjir2dc7r5" path="res://Scenes/rat.tscn" id="8_scokh"]
+[ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_gg0jf"]
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_bs7od")
@@ -43,8 +43,8 @@ focus_target = NodePath("../Splish")
 
 [node name="Obstacles" type="Node" parent="."]
 
-[node name="Rat" parent="Obstacles" instance=ExtResource("8_scokh")]
-position = Vector2(318, 106)
+[node name="RatHole" parent="Obstacles" instance=ExtResource("8_gg0jf")]
+position = Vector2(320, 34)
 
 [node name="LeakSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
