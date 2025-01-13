@@ -6,3 +6,4 @@ func _on_leak_spawn_timer_timeout() -> void:
 
 func _on_completed() -> void:
 	$LeakSpawnTimer.stop()
+	$Obstacles/RatHole.die()
