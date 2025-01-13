@@ -2,7 +2,7 @@ extends Task
 
 class_name RowingTask
 
-const SPEED_CHANGE = 100
+const SPEED_CHANGE = 20
 
 func play_animation(animation_name):
 	if animation_name == "active" and level_completed:

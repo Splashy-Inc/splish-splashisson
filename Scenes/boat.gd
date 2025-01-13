@@ -13,9 +13,9 @@ signal stopped
 
 var speed = 0
 var max_speed = 0
-var drag = 10
 var is_stopped = false
 var length: int
+var end_dock: Dock
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,9 +24,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var new_speed = 0
 	if is_stopped and speed >= 0:
-		speed = clamp(speed - ceil(drag * delta), 0, max_speed/3)
-		Globals.update_boat_speed(speed)
+		if speed > 1:
+			new_speed = clamp(abs(global_position.y - end_dock.global_position.y), 1, speed)
+		else:
+			new_speed = 0
+			end_dock.global_position.y = global_position.y
+		if new_speed != speed:
+			speed = int(new_speed)
+			Globals.update_boat_speed(speed)
 
 func _generate_boat():
 	# Clear current deck segments
@@ -92,6 +99,7 @@ func get_max_speed():
 	max_speed = rowing_tasks.front().SPEED_CHANGE * rowing_tasks.size()
 	return max_speed
 
-func stop():
+func stop(dock: Dock):
+	end_dock = dock
 	is_stopped = true
 	stopped.emit()

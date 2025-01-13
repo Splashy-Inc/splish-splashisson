@@ -14,11 +14,18 @@ var boat_speed = 0
 var boat: Boat
 var finished = false
 
+var end_dock: Dock
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	max_boat_speed = boat.get_max_speed()
 	length = max_boat_speed * minimum_seconds
 	Globals.speed_updated.connect(_boat_speed_updated)
+	
+	# Spawn the end dock
+	var viewport_rect = get_viewport().get_visible_rect()
+	var dock_spawn_point = Vector2(viewport_rect.size.x, boat.global_position.y - length - boat.max_speed)
+	end_dock = spawn_dock(dock_spawn_point)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,7 +33,7 @@ func _process(delta: float) -> void:
 		progress += boat_speed * delta
 		if progress >= length:
 			finished = true
-			boat.stop()
+			boat.stop(end_dock)
 			print("Win!")
 			completed.emit()
 		Globals.update_level_progress_percent(clamp(progress/length, 0.0, 1.0))
@@ -42,3 +49,4 @@ func spawn_dock(spawn_point: Vector2):
 	var new_dock = dock_scene.instantiate()
 	add_child(new_dock)
 	new_dock.global_position = spawn_point
+	return new_dock
