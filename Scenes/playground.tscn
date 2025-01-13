@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://byk8jyx3r65e2"]
+[gd_scene load_steps=10 format=3 uid="uid://byk8jyx3r65e2"]
 
 [ext_resource type="Script" path="res://Scenes/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="1_tnbfu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="3_75gk2"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_gg0jf"]
+[ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_teo1b"]
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_bs7od")
@@ -49,6 +50,10 @@ position = Vector2(320, 34)
 [node name="LeakSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_teo1b")]
+position = Vector2(640, 180)
+boat = NodePath("../Boat")
 
 [connection signal="completed" from="." to="." method="_on_completed"]
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]

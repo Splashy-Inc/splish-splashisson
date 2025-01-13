@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfsxn0iyywxs5"]
+[gd_scene load_steps=9 format=3 uid="uid://cfsxn0iyywxs5"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_stx43"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="2_lnmp3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="5_pjrgm"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="6_peku6"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="7_r4a8d"]
+[ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_b63j4"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_stx43")
@@ -40,5 +41,9 @@ script = ExtResource("7_r4a8d")
 focus_target = NodePath("../Splish")
 
 [node name="Obstacles" type="Node" parent="."]
+
+[node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_b63j4")]
+position = Vector2(640, 180)
+boat = NodePath("../Boat")
 
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]

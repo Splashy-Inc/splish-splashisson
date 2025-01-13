@@ -20,7 +20,7 @@ var stage_thresholds = {
 
 const SPREAD_AMOUNT = 120 # Number divisble by 3 then 4 then 2 and still a whole number, for spreading mechanic ease
 const PUDDLE_CAPACITY = SPREAD_AMOUNT * 3 # 3 stages, so capacity should be 3x max spread amount 
-const SPEED_CHANGE = -50
+const SPEED_CHANGE = -10
 const PUDDLE_SIZE = Vector2(32,32)
 
 var puddle_amount = 0
