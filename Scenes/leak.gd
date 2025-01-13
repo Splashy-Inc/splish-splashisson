@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func set_assignee(new_assignee: Crew) -> bool:
-	if assignee:
+	if new_assignee and assignee:
 		return false
 	else:
 		assignee = new_assignee

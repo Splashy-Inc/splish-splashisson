@@ -2,12 +2,27 @@ extends CharacterBody2D
 
 class_name Player
 
+# Higher value number takes higher priority
+enum Selection_priority {
+	NONE,
+	CREW,
+	TASK,
+	ROWING,
+	OBSTACLE,
+	PUDDLE,
+	LEAK,
+	RAT,
+}
+
 const SPEED = 150.0
 
 var interactables: Array[Node2D]
 var followers: Array[Crew]
 
 var action_target: Node2D
+
+func _process(delta: float) -> void:
+	_find_action_target()
 
 func _physics_process(delta: float) -> void:
 	if $AnimationPlayer.current_animation != "pointing_right" or not $AnimationPlayer.is_playing():
@@ -41,6 +56,8 @@ func _input(event: InputEvent) -> void:
 				print("No followers to assign to ", action_target, " !")
 			else:
 				assign_follower(followers.front(), action_target)
+		elif action_target is Rat:
+			assign_follower(followers.front(), action_target)
 	
 	if event.is_action_pressed("location"):
 		if followers.is_empty():
@@ -89,17 +106,28 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	
 func _find_action_target():
 	# Identify closest interactable as action target
-	# TODO: Allow player to cycle through interactable targets
+	# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
 	for interactable in interactables:
-		# Don't target empty task if you don't have any followers to assign
-		if interactable is Task and (not interactable.worker and followers.is_empty()):
+		if interactable.has_method("is_targetable") and not interactable.is_targetable():
 			continue
+		# Don't target empty task if you don't have any followers to assign
+		if interactable is Rat and followers.is_empty():
+			continue
+		if interactable is Task:
+			if interactable.worker:
+				if not interactable is RowingTask:
+					interactable = interactable.worker
+			elif followers.is_empty():
+				continue
 		
 		if not interactable is Crew or not interactable in followers:
-			# TODO: Add in prioritizing crew members over tasks since crew members can get player stuck
 			if action_target:
-				if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
-					_set_action_target(interactable)
+				var priority_target = _compare_target_priority(action_target, interactable)
+				if priority_target:
+					_set_action_target(priority_target)
+				else:
+					if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
+						_set_action_target(interactable)
 			else:
 				_set_action_target(interactable)
 
@@ -114,3 +142,36 @@ func _set_action_target(new_target):
 func _refresh_action_target():
 	_set_action_target(null)
 	_find_action_target()
+
+func _compare_target_priority(target_1: Node, target_2: Node) -> Node:
+	var target_1_priority = _get_target_priority(target_1)
+	var target_2_priority = _get_target_priority(target_2)
+	
+	if target_2_priority > target_1_priority:
+		return target_2
+	elif target_2_priority == target_1_priority:
+		if target_1 is Crew and target_2 is Crew:
+			if target_1.state > target_2.state:
+				return target_1
+			elif target_1.state < target_2.state:
+				return target_2
+		return null
+	return target_1
+
+# TODO: Figure out a better way to do this
+func _get_target_priority(node: Node):
+	if node is Rat:
+		return Selection_priority.RAT
+	elif node is Leak:
+		return Selection_priority.LEAK
+	elif node is Puddle:
+		return Selection_priority.PUDDLE
+	elif node is Obstacle:
+		return Selection_priority.OBSTACLE
+	elif node is RowingTask:
+		return Selection_priority.ROWING
+	elif node is Task:
+		return Selection_priority.TASK
+	elif node is Crew:
+		return Selection_priority.CREW
+	return Selection_priority.NONE
