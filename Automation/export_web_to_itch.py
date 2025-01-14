@@ -2,6 +2,8 @@
 
 import subprocess
 import shutil
+from pathlib import Path
+import sys
 
 godot_project_path = ".."
 export_directory = "Exports/WebFiles"
@@ -22,10 +24,15 @@ itch_game = input("Enter the game on the itch.io account to update with the uplo
 
 if itch_account == "":
     print("Blank itch.io account entered, please run this script again.")
+    sys.exit(1)
 if itch_game == "":
     print("Blank itch.io game entered, please run this script again.")
+    sys.exit(1)
 
 itch_upload_path = itch_account + "/" + itch_game + ":" + export_profile
+
+
+Path(export_path).mkdir(parents=True, exist_ok=True)
 
 print("Attempting to export ", export_profile, " from ", godot_project_path, " to ", export_path, " as ", export_file_name)
 
