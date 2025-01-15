@@ -1,0 +1,112 @@
+[gd_scene load_steps=19 format=3 uid="uid://cs3hpuql1pmvv"]
+
+[ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="1_pq5gj"]
+[ext_resource type="Texture2D" uid="uid://dfq12wbj0docl" path="res://Art/Merchants/Splish64/Splish64A.png" id="2_hp3md"]
+[ext_resource type="Texture2D" uid="uid://cujsk5igii0ps" path="res://Art/Merchants/Shrimp/ShrimpA.png" id="3_03tfe"]
+[ext_resource type="Texture2D" uid="uid://yhyoenx2o5mh" path="res://Art/Merchants/Splish64/Splish64B.png" id="3_fiqkg"]
+[ext_resource type="Texture2D" uid="uid://bxdow1v0jmkqm" path="res://Art/Merchants/Splish64/Splish64C.png" id="4_c0q1b"]
+[ext_resource type="Texture2D" uid="uid://c8c8tcppjaq00" path="res://Art/Merchants/Shrimp/ShrimpB.png" id="4_ea1ps"]
+[ext_resource type="Texture2D" uid="uid://bct3a05r62c5s" path="res://Art/Merchants/Shrimp/ShrimpC.png" id="5_tljg4"]
+[ext_resource type="Texture2D" uid="uid://bwvdnyr687gt" path="res://Art/Merchants/Splish64/Splish64D.png" id="5_ws611"]
+[ext_resource type="Texture2D" uid="uid://bvmxb6remxqh3" path="res://Art/Merchants/Shrimp/ShrimpF.png" id="6_pr1xm"]
+[ext_resource type="Texture2D" uid="uid://dvenakhqi302i" path="res://Art/Merchants/Shrimp/ShrimpG.png" id="7_y5xcq"]
+[ext_resource type="Texture2D" uid="uid://b0sc36v6gogr8" path="res://Art/Merchants/Shrimp/ShrimpE.png" id="8_1330p"]
+[ext_resource type="Texture2D" uid="uid://b0qmxub5loykh" path="res://Art/Merchants/Shrimp/ShrimpD.png" id="9_3pwsa"]
+[ext_resource type="Texture2D" uid="uid://bkbdqi2cnlcdi" path="res://Art/Merchants/Shrimp/ShrimpH.png" id="10_m6r5r"]
+[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="11_47g8d"]
+[ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="15_txwe4"]
+[ext_resource type="Texture2D" uid="uid://o1cugesk8vp1" path="res://Art/Merchants/Shrimp/ShrimpLowQuality.png" id="16_mstjd"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_xmi54"]
+frames = 6
+frame_0/texture = ExtResource("2_hp3md")
+frame_1/texture = ExtResource("3_fiqkg")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("2_hp3md")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_c0q1b")
+frame_3/duration = 0.25
+frame_4/texture = ExtResource("2_hp3md")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("5_ws611")
+frame_5/duration = 0.5
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ff27w"]
+frames = 9
+frame_0/texture = ExtResource("3_03tfe")
+frame_1/texture = ExtResource("4_ea1ps")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("5_tljg4")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("6_pr1xm")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("7_y5xcq")
+frame_4/duration = 0.5
+frame_5/texture = ExtResource("3_03tfe")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("8_1330p")
+frame_6/duration = 0.5
+frame_7/texture = ExtResource("9_3pwsa")
+frame_7/duration = 0.5
+frame_8/texture = ExtResource("10_m6r5r")
+frame_8/duration = 1.0
+
+[node name="Cutscene" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_pq5gj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_top = 270.0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SplishPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Splish" type="TextureRect" parent="HBoxContainer/SplishPanel"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_xmi54")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "If it isn't Splish Splashisson! Remeber how you owe me that favor?
+I need a shipment of food brought to the next port. It should be an easy delivery this time...
+I'll have my lackeys load it on the ship and you can be on your way."
+autowrap_mode = 2
+
+[node name="MerchantPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Merchant" type="TextureRect" parent="HBoxContainer/MerchantPanel"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_ff27w")
+stretch_mode = 3
+
+[node name="Boat" parent="." instance=ExtResource("11_47g8d")]
+position = Vector2(211, 142)
+scale = Vector2(0.15, 0.15)
+
+[node name="Cargo" parent="Boat/SternSlot/Stern/CargoSlot" index="0"]
+cargo_type = 0
+
+[node name="SplishIdle" type="Sprite2D" parent="Boat"]
+position = Vector2(226.667, 5.05447e-05)
+texture = ExtResource("15_txwe4")
+
+[node name="ShrimpLowQuality" type="Sprite2D" parent="Boat"]
+position = Vector2(273.333, 0)
+texture = ExtResource("16_mstjd")
+
+[editable path="Boat"]
+[editable path="Boat/SternSlot/Stern"]
+[editable path="Boat/SternSlot/Stern/CargoSlot/Cargo"]

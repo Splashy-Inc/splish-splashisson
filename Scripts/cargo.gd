@@ -81,7 +81,7 @@ func get_self_polygon():
 
 func _on_damage_tick_timer_timeout() -> void:
 	if not level_complete:
-		if threats.is_empty():
+		if threats.is_empty() and item_health:
 			var remainder = condition % item_health
 			if remainder > 0:
 				_update_condition(clamp(item_health - (condition % item_health), 0, item_health))
