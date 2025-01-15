@@ -23,6 +23,8 @@ var is_selected = false
 var worker: Node2D
 var assignee: Node2D
 
+@export var health = 3
+
 func _ready():
 	$SFXManager.play("Squeak")
 	target_closest_cargo()
@@ -84,12 +86,16 @@ func die():
 		if item is CargoItem:
 			item.return_to_cargo()
 	_set_state(State.DEAD)
+	died.emit()
 
 func _die():
-	died.emit()
+	queue_free()
 	
-func _on_hit():
+func on_hit():
 	$SFXManager.play("Hit")
+	health -= 1
+	if health <= 0:
+		die()
 
 func set_highlight(is_enable: bool):
 	is_selected = is_enable and is_targetable()
@@ -126,7 +132,6 @@ func set_worker(new_worker: Node2D):
 	if not worker or not new_worker:
 		worker = new_worker
 		set_assignee(worker)
-		_on_hit()
 		return true
 	return false
 
