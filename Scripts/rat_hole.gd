@@ -13,7 +13,6 @@ func _on_spawn_timer_timeout() -> void:
 	_spawn_rat()
 
 func _on_rat_died(rat: Rat):
-	remove_child(rat)
 	if $SpawnTimer:
 		$SpawnTimer.start()
 
