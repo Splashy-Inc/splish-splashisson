@@ -111,8 +111,6 @@ func _distract_state():
 
 func _attack_state():
 	if current_assignment is Rat:
-		if $AttackTimer.is_stopped():
-			$AttackTimer.start()
 		$AnimationPlayer.play("stomping")
 
 func _on_animation_finished():
@@ -130,7 +128,7 @@ func set_assignment(new_assignment: Node2D):
 		state = State.ALERTED
 	else:
 		if new_assignment is Task or new_assignment is Rat:
-			if new_assignment is Puddle or new_assignment is Leak:
+			if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat:
 				new_assignment.died.connect(_on_assignment_died)
 			if not new_assignment.set_assignee(self):
 				print(self, " unable to set self as assignee of ", new_assignment)
@@ -145,7 +143,6 @@ func set_assignment(new_assignment: Node2D):
 			current_assignment.set_worker(null)
 		elif current_assignment is Rat:
 			current_assignment.set_worker(null)
-			$AttackTimer.stop()
 		elif current_assignment is Cargo:
 			current_assignment.remove_threat(self)
 	
@@ -207,10 +204,11 @@ func _on_assignment_died():
 	if current_assignment != null:
 		if current_assignment is Puddle:
 			stop_bailing()
+			return
 		elif current_assignment is Leak:
 			stop_patching()
-	else:
-		set_assignment(null)
+			return
+	set_assignment(null)
 	
 func start_patching():
 	if current_assignment is Leak and current_assignment.set_worker(self):
@@ -279,9 +277,10 @@ func _check_in_range(node: Node2D):
 		return true
 	return false
 
-func _on_attack_timer_timeout() -> void:
-	if current_assignment.has_method("die"):
-		current_assignment.die()
-		set_assignment(null)
-	else:
-		print(current_assignment, " cannot die. Attacking does nothing.")
+func stomp():
+	$SFXManager.play("Stomp")
+	_attack_target(current_assignment)
+
+func _attack_target(target: Node2D):
+	if target and target.has_method("on_hit"):
+		target.on_hit()
