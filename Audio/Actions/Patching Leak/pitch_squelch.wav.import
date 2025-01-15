@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhcjwsj73g2rg"
+path="res://.godot/imported/pitch_squelch.wav-f6b784884c01ea2b1455aac517e19af4.sample"
+
+[deps]
+
+source_file="res://Audio/Actions/Patching Leak/pitch_squelch.wav"
+dest_files=["res://.godot/imported/pitch_squelch.wav-f6b784884c01ea2b1455aac517e19af4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

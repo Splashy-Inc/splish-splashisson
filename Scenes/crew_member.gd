@@ -102,7 +102,10 @@ func _bail_state():
 	$AnimationPlayer.play("bail_water")
 
 func _patch_state():
-	$AnimationPlayer.play("patch_leak")
+	# TODO: Fix issue where tries to replay animation after patching leak, causing first frame to play
+	# This would be fixed by using an animation tree with a state machine
+	if $AnimationPlayer.current_animation != "patch_leak":
+		$AnimationPlayer.play("patch_leak")
 
 func _distract_state():
 	if current_assignment is Cargo:
