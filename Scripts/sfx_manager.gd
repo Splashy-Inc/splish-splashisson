@@ -1,4 +1,14 @@
-extends Node
+extends Node2D
+
+@export var attenuation: float
+
+func _ready():
+	# Maximum diagonal that the player can see
+	var max_distance = get_viewport_rect().size.length()
+	for child in get_children():
+		if child is AudioStreamPlayer2D:
+			child.max_distance = max_distance
+			child.attenuation = attenuation
 
 func play(sound_name: String):
 		if sound_name:

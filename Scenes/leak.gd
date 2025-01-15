@@ -76,3 +76,6 @@ func set_highlight(is_enable: bool):
 		$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
 	else:
 		print(self, " has no highlight material to activate.")
+		
+func _start_leak():
+	$SFXManager.play("Active")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bkt3la4dqahgh"]
+[gd_scene load_steps=29 format=3 uid="uid://bkt3la4dqahgh"]
 
 [ext_resource type="Script" path="res://Scenes/leak.gd" id="1_4ykgf"]
 [ext_resource type="Texture2D" uid="uid://u8r6eec7wpgv" path="res://Art/Leak/LeakH.png" id="1_unkym"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bhjgutwp72jnh" path="res://Art/Leak/LeakC.png" id="7_ut3nk"]
 [ext_resource type="Texture2D" uid="uid://cbfyvldqkv6xf" path="res://Art/Leak/LeakB.png" id="8_4dheh"]
 [ext_resource type="Texture2D" uid="uid://bcw2nn1y7uuup" path="res://Art/Leak/LeakA.png" id="9_j3e5d"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="12_klpg4"]
+[ext_resource type="AudioStream" uid="uid://qndvaeowcfaq" path="res://Audio/Leak/water_leak.ogg" id="13_b7rxi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kn724"]
 animations = [{
@@ -225,9 +227,12 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_start_leak"
+}, {
 "args": [],
 "method": &"_start_puddle_timer"
 }]
@@ -314,5 +319,11 @@ position = Vector2(32, 11)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelfSpace"]
 polygon = PackedVector2Array(0, -11, 32, -11, 32, 11, 0, 11)
+
+[node name="SFXManager" parent="." instance=ExtResource("12_klpg4")]
+
+[node name="Active" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = ExtResource("13_b7rxi")
+volume_db = -5.0
 
 [connection signal="timeout" from="PuddleTimer" to="." method="_on_puddle_timer_timeout"]
