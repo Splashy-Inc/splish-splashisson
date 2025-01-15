@@ -289,5 +289,8 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
