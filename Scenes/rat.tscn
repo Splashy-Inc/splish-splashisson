@@ -274,7 +274,6 @@ bus = &"Rats"
 
 [node name="Eat" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("15_8mswm")
-volume_db = -5.0
 pitch_scale = 1.7
 bus = &"Rats"
 
