@@ -58,7 +58,7 @@ func _generate_boat():
 
 func change_speed(change: int):
 	if not is_stopped:
-		speed += change
+		speed = clamp(speed + change, 0, max_speed)
 		Globals.update_boat_speed(speed)
 
 func spawn_leak():
