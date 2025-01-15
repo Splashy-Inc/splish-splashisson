@@ -24,6 +24,7 @@ var worker: Node2D
 var assignee: Node2D
 
 func _ready():
+	$SFXManager.play("Squeak")
 	target_closest_cargo()
 
 func _physics_process(delta: float) -> void:
@@ -51,7 +52,7 @@ func _move_state(delta: float):
 	move_and_slide()
 
 func _attack_state():
-	$AnimatedSprite2D.play("eat")
+	$AnimationPlayer.play("eat")
 
 func _death_state():
 	if $AnimationPlayer.current_animation != "die":
@@ -86,6 +87,9 @@ func die():
 
 func _die():
 	died.emit()
+	
+func _on_hit():
+	$SFXManager.play("Hit")
 
 func set_highlight(is_enable: bool):
 	is_selected = is_enable and is_targetable()
@@ -108,6 +112,7 @@ func _on_cargo_steal_timer_timeout() -> void:
 		var new_loot = target.move_item($LootSlot)
 		if new_loot:
 			new_loot.position = Vector2.ZERO
+			$SFXManager.play("Squeak")
 		target = hole
 		_set_state(State.IDLE)
 
@@ -121,6 +126,7 @@ func set_worker(new_worker: Node2D):
 	if not worker or not new_worker:
 		worker = new_worker
 		set_assignee(worker)
+		_on_hit()
 		return true
 	return false
 
