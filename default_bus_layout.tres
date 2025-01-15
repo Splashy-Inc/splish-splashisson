@@ -1,6 +1,7 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://ig8iafx3kjns"]
 
 [resource]
+bus/0/send = &"Bailing"
 bus/1/name = &"Rats"
 bus/1/solo = false
 bus/1/mute = false
