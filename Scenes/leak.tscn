@@ -325,5 +325,6 @@ polygon = PackedVector2Array(0, -11, 32, -11, 32, 11, 0, 11)
 [node name="Active" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("13_b7rxi")
 volume_db = -5.0
+bus = &"Leaks"
 
 [connection signal="timeout" from="PuddleTimer" to="." method="_on_puddle_timer_timeout"]
