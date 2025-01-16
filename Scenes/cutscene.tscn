@@ -82,7 +82,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
-text = "If it isn't Splish Splashisson! Remeber how you owe me that favor?
+text = "If it isn't Splish Splashisson! Remember how you owe me that favor?
 I need a shipment of food brought to the next port. It should be an easy delivery this time...
 I'll have my lackeys load it on the ship and you can be on your way."
 autowrap_mode = 2
