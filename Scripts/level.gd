@@ -50,3 +50,11 @@ func spawn_dock(spawn_point: Vector2):
 	add_child(new_dock)
 	new_dock.global_position = spawn_point
 	return new_dock
+
+func _on_leak_spawn_timer_timeout() -> void:
+	if get_tree().get_nodes_in_group("leak").size() < 3:
+		Globals.boat.spawn_leak()
+
+func _on_completed() -> void:
+	$Obstacles/LeakSpawnTimer.stop()
+	$Obstacles/RatHole.die()

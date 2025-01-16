@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfsxn0iyywxs5"]
+[gd_scene load_steps=10 format=3 uid="uid://cfsxn0iyywxs5"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_stx43"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="2_lnmp3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="6_peku6"]
 [ext_resource type="Script" path="res://Scenes/game_camera.gd" id="7_r4a8d"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_b63j4"]
+[ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_mfs7h"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_stx43")
@@ -42,8 +43,17 @@ focus_target = NodePath("../Splish")
 
 [node name="Obstacles" type="Node" parent="."]
 
+[node name="RatHole" parent="Obstacles" instance=ExtResource("8_mfs7h")]
+position = Vector2(320, 34)
+
+[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
+wait_time = 5.0
+autostart = true
+
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_b63j4")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
+[connection signal="completed" from="." to="." method="_on_completed"]
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]
+[connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

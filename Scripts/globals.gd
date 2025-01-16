@@ -10,7 +10,7 @@ signal level_completed
 
 var boat: Boat
 var boat_speed = 0
-var level
+var level: Level
 var level_progress_percent = 0.0
 
 var cargo_info = {

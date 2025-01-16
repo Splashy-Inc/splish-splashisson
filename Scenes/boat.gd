@@ -12,6 +12,7 @@ signal stopped
 @export var deck_tasks: Array[Globals.Task_type]
 
 var speed = 0
+var total_speed = 0
 var max_speed = 0
 var is_stopped = false
 var length: int
@@ -58,7 +59,8 @@ func _generate_boat():
 
 func change_speed(change: int):
 	if not is_stopped:
-		speed = clamp(speed + change, 0, max_speed)
+		total_speed += change
+		speed = clamp(total_speed, 0, max_speed)
 		Globals.update_boat_speed(speed)
 
 func spawn_leak():
