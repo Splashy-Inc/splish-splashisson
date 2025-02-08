@@ -12,12 +12,14 @@ var length = 0
 var max_boat_speed = 0
 var boat_speed = 0
 var boat: Boat
+@export var boat_length := 1
 var finished = false
 
 var end_dock: Dock
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	boat.set_deck_length(boat_length)
 	max_boat_speed = boat.get_max_speed()
 	length = max_boat_speed * minimum_seconds
 	Globals.speed_updated.connect(_boat_speed_updated)
@@ -50,3 +52,11 @@ func spawn_dock(spawn_point: Vector2):
 	add_child(new_dock)
 	new_dock.global_position = spawn_point
 	return new_dock
+
+func _on_leak_spawn_timer_timeout() -> void:
+	if get_tree().get_nodes_in_group("leak").size() < 3:
+		Globals.boat.spawn_leak()
+
+func _on_completed() -> void:
+	$Obstacles/LeakSpawnTimer.stop()
+	$Obstacles/RatHole.die()

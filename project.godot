@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Splish Splashisson"
-run/main_scene="res://Scenes/playground.tscn"
+run/main_scene="res://Scenes/screen_manager.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://SplashySplashScreen.png"
 boot_splash/fullsize=false

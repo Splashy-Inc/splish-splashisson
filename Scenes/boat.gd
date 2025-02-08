@@ -12,6 +12,7 @@ signal stopped
 @export var deck_tasks: Array[Globals.Task_type]
 
 var speed = 0
+var total_speed = 0
 var max_speed = 0
 var is_stopped = false
 var length: int
@@ -45,6 +46,7 @@ func _generate_boat():
 	# Generate each deck segment
 	# TODO: Update to generate with more than 1 deck segment
 	var deck_tasks_to_place = deck_tasks
+	deck_length = 1
 	for i in deck_length:
 		var new_deck_segment = deck_scene.instantiate()
 		var tasks = deck_tasks_to_place.slice(0, 4)
@@ -55,10 +57,15 @@ func _generate_boat():
 	length = $BowSlot.global_position.distance_to($SternSlot.global_position) + get_viewport_rect().size.y
 	
 	change_speed(0)
+	
+func set_deck_length(new_length: int):
+	deck_length = new_length
+	_generate_boat()
 
 func change_speed(change: int):
 	if not is_stopped:
-		speed = clamp(speed + change, 0, max_speed)
+		total_speed += change
+		speed = clamp(total_speed, 0, max_speed)
 		Globals.update_boat_speed(speed)
 
 func spawn_leak():
