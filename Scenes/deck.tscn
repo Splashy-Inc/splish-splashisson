@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccika7v5l27ew"]
+[gd_scene load_steps=7 format=3 uid="uid://ccika7v5l27ew"]
 
 [ext_resource type="Texture2D" uid="uid://dl2iyrtq3rdcy" path="res://Art/ShipTiles/ShipMiddle.png" id="1_146gp"]
 [ext_resource type="Script" path="res://Scenes/deck.gd" id="1_u6t8r"]
@@ -12,9 +12,6 @@ size = Vector2(15, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgofq"]
 size = Vector2(224, 160)
-
-[sub_resource type="TileSet" id="TileSet_op5cl"]
-tile_size = Vector2i(32, 32)
 
 [node name="Deck" type="StaticBody2D"]
 collision_layer = 8
@@ -71,6 +68,3 @@ scale = Vector2(-1, 1)
 position = Vector2(82, 40)
 
 [node name="RowingTask" parent="TaskSlots/BottomRightSlot" instance=ExtResource("2_lgf02")]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_op5cl")
