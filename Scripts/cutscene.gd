@@ -4,11 +4,12 @@ class_name Cutscene
 
 signal start_pressed
 
+@export var boat_length := 1
 @export var level_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$Boat.set_deck_length(boat_length)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
