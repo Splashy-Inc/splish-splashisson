@@ -12,7 +12,7 @@ deck_scene = ExtResource("2_kxpgr")
 deck_tasks = Array[int]([0, 0, 0, 0])
 
 [node name="BowSlot" type="Node2D" parent="."]
-position = Vector2(0, -120)
+position = Vector2(0, -142)
 
 [node name="Bow" parent="BowSlot" instance=ExtResource("1_17osx")]
 
@@ -21,7 +21,7 @@ position = Vector2(0, -120)
 [node name="Deck" parent="DeckSlot" instance=ExtResource("2_kxpgr")]
 
 [node name="SternSlot" type="Node2D" parent="."]
-position = Vector2(0, 120)
+position = Vector2(0, 142)
 
 [node name="Stern" parent="SternSlot" instance=ExtResource("3_701t0")]
 

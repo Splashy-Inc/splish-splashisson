@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://bh2fvow0in3wk" path="res://Scenes/rowing_task.tscn" id="2_lgf02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi8fu"]
-size = Vector2(14, 120)
+size = Vector2(15, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tyg2r"]
-size = Vector2(14.5, 120)
+size = Vector2(15, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgofq"]
-size = Vector2(210, 120)
+size = Vector2(224, 160)
 
 [node name="Deck" type="StaticBody2D"]
 collision_layer = 8
@@ -24,12 +24,12 @@ texture = ExtResource("1_146gp")
 
 [node name="LeftWall" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(-112, 0)
+position = Vector2(-120, 0)
 shape = SubResource("RectangleShape2D_pi8fu")
 
 [node name="RightWall" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(112.25, 0)
+position = Vector2(120, 0)
 shape = SubResource("RectangleShape2D_tyg2r")
 
 [node name="SpawnArea" type="Area2D" parent="."]
@@ -42,29 +42,29 @@ shape = SubResource("RectangleShape2D_cgofq")
 [node name="PlayArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayArea"]
-polygon = PackedVector2Array(-105, -60, 105, -60, 105, 60, -105, 60)
+polygon = PackedVector2Array(-112, -80, 112, -80, 112, 80, -112, 80)
 
 [node name="TaskSlots" type="Node2D" parent="."]
 z_index = 1
 
 [node name="TopLeftSlot" type="Node2D" parent="TaskSlots"]
-position = Vector2(-75, -40)
+position = Vector2(-82, -40)
 scale = Vector2(-1, 1)
 
 [node name="RowingTask" parent="TaskSlots/TopLeftSlot" instance=ExtResource("2_lgf02")]
 
 [node name="TopRightSlot" type="Node2D" parent="TaskSlots"]
-position = Vector2(75, -40)
+position = Vector2(82, -40)
 
 [node name="RowingTask" parent="TaskSlots/TopRightSlot" instance=ExtResource("2_lgf02")]
 
 [node name="BottomLeftSlot" type="Node2D" parent="TaskSlots"]
-position = Vector2(-75, 40)
+position = Vector2(-82, 40)
 scale = Vector2(-1, 1)
 
 [node name="RowingTask" parent="TaskSlots/BottomLeftSlot" instance=ExtResource("2_lgf02")]
 
 [node name="BottomRightSlot" type="Node2D" parent="TaskSlots"]
-position = Vector2(75, 40)
+position = Vector2(82, 40)
 
 [node name="RowingTask" parent="TaskSlots/BottomRightSlot" instance=ExtResource("2_lgf02")]
