@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bevd7w3pl7sal"]
+
+[ext_resource type="PackedScene" uid="uid://beut40fxoji5o" path="res://Scenes/task_slot.tscn" id="1_5trjl"]
+[ext_resource type="Script" path="res://Scripts/play_grid.gd" id="2_hkb4n"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5b04q"]
+resource_name = "TaskSlots"
+scenes/3/scene = ExtResource("1_5trjl")
+scenes/3/display_placeholder = ExtResource("1_5trjl")
+
+[sub_resource type="TileSet" id="TileSet_4jfd3"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_5b04q")
+
+[node name="PlayGrid" type="TileMapLayer"]
+tile_set = SubResource("TileSet_4jfd3")
+script = ExtResource("2_hkb4n")
