@@ -30,3 +30,6 @@ position = Vector2(0, 142)
 [node name="Puddles" type="Node2D" parent="Obstacles"]
 
 [node name="Leaks" type="Node2D" parent="Obstacles"]
+
+[connection signal="cargo_set_up" from="BowSlot/Bow" to="." method="_on_bow_cargo_set_up"]
+[connection signal="cargo_set_up" from="SternSlot/Stern" to="." method="_on_stern_cargo_set_up"]

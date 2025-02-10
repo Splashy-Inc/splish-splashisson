@@ -8,7 +8,6 @@ signal set_up
 # Number of deck segments
 @export var deck_length: int
 @export var deck_scene: PackedScene
-var deck_segments_setup_left = deck_length
 
 # Tasks that should be filled into the deck segments
 @export var deck_tasks: Array[Globals.Task_type]
@@ -19,6 +18,12 @@ var max_speed = 0
 var is_stopped = false
 var length: int
 var end_dock: Dock
+
+var setup_checklist = {
+	"bow": 1,
+	"deck": deck_length,
+	"stern": 1,
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,7 +53,7 @@ func _generate_boat():
 	# TODO: Update to generate with more than 1 deck segment
 	var deck_tasks_to_place = deck_tasks
 	deck_length = 1
-	deck_segments_setup_left = deck_length
+	setup_checklist["deck"] = deck_length
 	for i in deck_length:
 		var new_deck_segment = deck_scene.instantiate()
 		if new_deck_segment is Deck:
@@ -64,6 +69,7 @@ func _generate_boat():
 	
 func set_deck_length(new_length: int):
 	deck_length = new_length
+	setup_checklist["deck"] = deck_length
 	_generate_boat()
 
 func change_speed(change: int):
@@ -117,7 +123,21 @@ func stop(dock: Dock):
 	stopped.emit()
 	
 func _on_deck_segment_tasks_set_up():
-	deck_segments_setup_left -= 1
-	if deck_segments_setup_left <= 0:
+	setup_checklist["deck"] -= 1
+	if setup_checklist["deck"] <= 0:
+		_check_set_up()
+
+func _on_bow_cargo_set_up() -> void:
+	setup_checklist["bow"] -= 1
+	if setup_checklist["bow"] <= 0:
+		_check_set_up()
+
+func _on_stern_cargo_set_up() -> void:
+	setup_checklist["stern"] -= 1
+	if setup_checklist["stern"] <= 0:
+		_check_set_up()
+
+func _check_set_up():
+	if setup_checklist["bow"] <= 0 and setup_checklist["stern"] <= 0 and setup_checklist["deck"] <= 0:
 		get_max_speed()
 		set_up.emit()

@@ -9,7 +9,7 @@ class_name TaskSlot
 func _ready() -> void:
 	set_task_type(type)
 
-func set_task_type(new_type = Globals.Task_type):
+func set_task_type(new_type: Globals.Task_type):
 	if is_left:
 		if new_type == Globals.Task_type.ROWING_RIGHT:
 			new_type = Globals.Task_type.ROWING_LEFT

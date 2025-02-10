@@ -114,8 +114,8 @@ text = "Press any button to continue"
 position = Vector2(211, 142)
 scale = Vector2(0.15, 0.15)
 
-[node name="Cargo" parent="Boat/SternSlot/Stern/CargoSlot" index="0"]
-cargo_type = 0
+[node name="Stern" parent="Boat/SternSlot" index="0"]
+cargo_list = Array[int]([0])
 
 [node name="SplishIdle" type="Sprite2D" parent="Boat"]
 position = Vector2(226.667, 5.05447e-05)
@@ -129,4 +129,3 @@ texture = ExtResource("16_mstjd")
 
 [editable path="Boat"]
 [editable path="Boat/SternSlot/Stern"]
-[editable path="Boat/SternSlot/Stern/CargoSlot/Cargo"]
