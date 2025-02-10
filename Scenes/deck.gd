@@ -70,3 +70,6 @@ func get_rowing_tasks():
 				rowing_tasks.append(task)
 	
 	return rowing_tasks
+
+func get_play_grid_origin():
+	return $PlayGrid.global_position

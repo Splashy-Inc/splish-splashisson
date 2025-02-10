@@ -25,6 +25,8 @@ var setup_checklist = {
 	"stern": 1,
 }
 
+var playable_cells: Array[Vector2i]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_generate_boat()
@@ -140,4 +142,5 @@ func _on_stern_cargo_set_up() -> void:
 func _check_set_up():
 	if setup_checklist["bow"] <= 0 and setup_checklist["stern"] <= 0 and setup_checklist["deck"] <= 0:
 		get_max_speed()
+		$PlayGrid.global_position = $BowSlot/Bow.get_play_grid_origin()
 		set_up.emit()

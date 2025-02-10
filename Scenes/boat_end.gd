@@ -39,3 +39,6 @@ func clear_cargo():
 
 func is_point_in_play_space(point: Vector2):
 	return Geometry2D.is_point_in_polygon(point-$PlaySpace/CollisionPolygon2D.global_position, $PlaySpace/CollisionPolygon2D.polygon)
+
+func get_play_grid_origin():
+	return $PlayGrid.global_position
