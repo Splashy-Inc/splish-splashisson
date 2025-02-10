@@ -13,7 +13,6 @@ collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_w1e3a")
 meat_scene = ExtResource("2_uwi3r")
-cargo_type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -1)

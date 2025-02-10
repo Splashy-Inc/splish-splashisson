@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_b63j4"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_mfs7h"]
 
-[node name="Level" type="Node"]
+[node name="Level" type="Node" node_paths=PackedStringArray("boat")]
 script = ExtResource("1_stx43")
 minimum_seconds = 30
+boat = NodePath("Boat")
 
 [node name="Ocean" parent="." instance=ExtResource("2_lnmp3")]
 
@@ -55,5 +56,5 @@ position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
 [connection signal="completed" from="." to="." method="_on_completed"]
-[connection signal="ready" from="Boat" to="." method="_on_boat_ready"]
+[connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

@@ -22,16 +22,21 @@ var cargo_info = {
 }
 
 enum Task_type {
-	ROWING,
+	NONE,
+	ROWING_RIGHT,
+	ROWING_LEFT,
 	LEAK,
 	PUDDLE,
 }
 
 var task_dict = {
-	Task_type.ROWING: load("res://Scenes/rowing_task.tscn"),
+	Task_type.ROWING_RIGHT: load("res://Scenes/rowing_task_right.tscn"),
+	Task_type.ROWING_LEFT: load("res://Scenes/rowing_task_left.tscn"),
 	Task_type.LEAK: load("res://Scenes/leak.tscn"),
 	Task_type.PUDDLE: load("res://Scenes/puddle.tscn"),
 }
+
+var cargo_scene := load("res://Scenes/cargo.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,7 +47,14 @@ func _process(delta: float) -> void:
 	pass
 
 func generate_task(type: Task_type) -> Task:
-	return task_dict[type].duplicate().instantiate()
+	if type != Task_type.NONE:
+		return task_dict[type].duplicate().instantiate()
+	else:
+		return null
+
+func generate_cargo() -> Cargo:
+	return cargo_scene.duplicate().instantiate()
+
 
 func set_boat(new_boat: Boat):
 	boat = new_boat

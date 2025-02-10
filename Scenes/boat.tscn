@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ptto4146phwg"]
+[gd_scene load_steps=6 format=3 uid="uid://ptto4146phwg"]
 
 [ext_resource type="PackedScene" uid="uid://bg0meusunoosr" path="res://Scenes/bow.tscn" id="1_17osx"]
 [ext_resource type="Script" path="res://Scenes/boat.gd" id="1_c5j0p"]
 [ext_resource type="PackedScene" uid="uid://ccika7v5l27ew" path="res://Scenes/deck.tscn" id="2_kxpgr"]
 [ext_resource type="PackedScene" uid="uid://dmy5awjreptlw" path="res://Scenes/stern.tscn" id="3_701t0"]
+[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://Scenes/play_grid.tscn" id="5_6ih3t"]
 
 [node name="Boat" type="Node2D"]
 script = ExtResource("1_c5j0p")
 deck_length = 1
 deck_scene = ExtResource("2_kxpgr")
-deck_tasks = Array[int]([0, 0, 0, 0])
+deck_tasks = Array[int]([1, 1, 2, 2])
 
 [node name="BowSlot" type="Node2D" parent="."]
 position = Vector2(0, -142)
@@ -30,3 +31,9 @@ position = Vector2(0, 142)
 [node name="Puddles" type="Node2D" parent="Obstacles"]
 
 [node name="Leaks" type="Node2D" parent="Obstacles"]
+
+[node name="PlayGrid" parent="." instance=ExtResource("5_6ih3t")]
+position = Vector2(-112, -176)
+
+[connection signal="cargo_set_up" from="BowSlot/Bow" to="." method="_on_bow_cargo_set_up"]
+[connection signal="cargo_set_up" from="SternSlot/Stern" to="." method="_on_stern_cargo_set_up"]

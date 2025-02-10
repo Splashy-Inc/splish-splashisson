@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://bevd7w3pl7sal"]
+
+[ext_resource type="PackedScene" uid="uid://beut40fxoji5o" path="res://Scenes/task_slot.tscn" id="1_5trjl"]
+[ext_resource type="PackedScene" uid="uid://djdh6doehj7v0" path="res://Scenes/cargo_slot.tscn" id="2_dftv2"]
+[ext_resource type="Script" path="res://Scripts/play_grid.gd" id="2_hkb4n"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5b04q"]
+resource_name = "TaskSlots"
+scenes/3/scene = ExtResource("1_5trjl")
+scenes/3/display_placeholder = ExtResource("1_5trjl")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_befmc"]
+resource_name = "CargoSlots"
+scenes/1/scene = ExtResource("2_dftv2")
+scenes/1/display_placeholder = ExtResource("2_dftv2")
+
+[sub_resource type="TileSet" id="TileSet_4jfd3"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_5b04q")
+sources/1 = SubResource("TileSetScenesCollectionSource_befmc")
+
+[node name="PlayGrid" type="TileMapLayer"]
+tile_set = SubResource("TileSet_4jfd3")
+script = ExtResource("2_hkb4n")
