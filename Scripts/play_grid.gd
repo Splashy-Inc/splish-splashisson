@@ -23,3 +23,24 @@ func get_cargo_slots() -> Array[CargoSlot]:
 		if child is CargoSlot:
 			cargo_slots.append(child)
 	return cargo_slots
+
+func spawn_leak(spawn_point: Vector2):
+	var new_leak = Globals.generate_task(Globals.Task_type.LEAK)
+	if new_leak is Leak:
+		Globals.boat.add_obstacle(new_leak)
+		var spawned_leak = new_leak.spawn(center_point_in_cell(spawn_point))
+		if spawned_leak == new_leak:
+			if new_leak.global_position.x > Globals.boat.global_position.x:
+				new_leak.scale.x *= -1
+			return true
+		else:
+			return false
+
+func spawn_puddle(spawn_point: Vector2) -> Puddle:
+	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE)
+	Globals.boat.add_obstacle(new_puddle)
+	return new_puddle.spawn(center_point_in_cell(spawn_point))
+
+# Point must be global, not local
+func center_point_in_cell(point: Vector2):
+	return to_global(map_to_local(local_to_map(to_local(point))))

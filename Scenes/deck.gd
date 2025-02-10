@@ -44,21 +44,6 @@ func clear_deck():
 	for slot in task_slots:
 		slot.clear()
 
-func spawn_leak():
-	var new_leak = Globals.generate_task(Globals.Task_type.LEAK)
-	Globals.boat.add_obstacle(new_leak)
-	var spawned_leak = new_leak.spawn(Vector2(randi_range(spawn_boundary.position.x + global_position.x, spawn_boundary.position.x + spawn_boundary.size.x + global_position.x), randi_range(spawn_boundary.position.y + global_position.y, spawn_boundary.position.y + spawn_boundary.size.y + global_position.y)))
-	if spawned_leak == new_leak:
-		if new_leak.global_position.x > (spawn_boundary.position.x + global_position.x + spawn_boundary.size.x/2):
-			new_leak.scale.x *= -1
-	else:
-		spawn_leak()
-
-func spawn_puddle(spawn_point: Vector2) -> Puddle:
-	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE)
-	Globals.boat.add_obstacle(new_puddle)
-	return new_puddle.spawn(spawn_point)
-
 func is_point_in_play_space(point: Vector2):
 	return Geometry2D.is_point_in_polygon(point-$PlayArea/CollisionPolygon2D.global_position, $PlayArea/CollisionPolygon2D.polygon)
 
