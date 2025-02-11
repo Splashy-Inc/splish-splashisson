@@ -79,3 +79,9 @@ func set_highlight(is_enable: bool):
 		
 func _start_leak():
 	$SFXManager.play("Active")
+
+func spawn(spawn_point: Vector2):
+	var spawn_occupant = _spawn("impassable", spawn_point)
+	if spawn_occupant == self:
+		spawn_occupant = _spawn("leak", spawn_point)
+	return spawn_occupant

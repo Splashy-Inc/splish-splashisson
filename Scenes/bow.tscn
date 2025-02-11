@@ -22,7 +22,7 @@ position = Vector2(0, 11)
 [node name="PlaySpace" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlaySpace"]
-polygon = PackedVector2Array(-112, 62, -112, -2, -80, -2, -80, -34, 80, -34, 80, -2, 112, -2, 112, 62)
+polygon = PackedVector2Array(-112, 62, -112, -2, 112, -2, 112, 62)
 
 [node name="PlayGrid" parent="." instance=ExtResource("3_obwje")]
 position = Vector2(-112, -34)

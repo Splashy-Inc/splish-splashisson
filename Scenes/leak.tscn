@@ -90,7 +90,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6p2vv"]
-size = Vector2(32, 22)
+size = Vector2(32, 32)
 
 [sub_resource type="Animation" id="Animation_udslj"]
 length = 0.001
@@ -288,13 +288,12 @@ interaction_radius = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_7wtkj")
-position = Vector2(16, -5)
+position = Vector2(14, -10)
 sprite_frames = SubResource("SpriteFrames_kn724")
 animation = &"end"
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_6p2vv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -313,14 +312,16 @@ parameters/conditions/is_patched = false
 wait_time = 3.0
 
 [node name="PuddleSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(32, 11)
+position = Vector2(32, 0)
 
 [node name="SelfSpace" type="Area2D" parent="."]
+position = Vector2(-16, 5)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelfSpace"]
-polygon = PackedVector2Array(0, -11, 32, -11, 32, 11, 0, 11)
+polygon = PackedVector2Array(0, -21, 32, -21, 32, 11, 0, 11)
 
 [node name="SFXManager" parent="." instance=ExtResource("12_klpg4")]
+position = Vector2(0, -5)
 
 [node name="Active" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("13_b7rxi")

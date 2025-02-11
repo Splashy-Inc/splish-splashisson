@@ -38,6 +38,7 @@ leak=""
 rowing_task=""
 cargo=""
 destructable=""
+impassable=""
 
 [gui]
 
