@@ -203,7 +203,7 @@ _data = {
 "stop": SubResource("Animation_66pub")
 }
 
-[node name="RowingTaskRight" type="StaticBody2D" groups=["rowing_task"]]
+[node name="RowingTaskRight" type="StaticBody2D" groups=["impassable", "rowing_task"]]
 z_index = 1
 scale = Vector2(1, -1)
 collision_layer = 12
