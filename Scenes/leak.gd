@@ -57,16 +57,7 @@ func _on_puddle_timer_timeout() -> void:
 		
 func _on_current_puddle_died():
 	current_puddle = null
-	
-#func set_highlight(is_enable: bool):
-	#is_selected = is_enable
-	#if worker:
-		#worker.set_highlight(is_enable)
-	#if $AnimatedSprite2D.material:
-		#$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
-	#else:
-		#print(self, " has no highlight material to activate.")
-		
+
 func _start_leak():
 	$SFXManager.play("Active")
 
