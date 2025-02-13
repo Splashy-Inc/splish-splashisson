@@ -30,6 +30,7 @@ var interactables = []
 
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
+	$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
 
 func _physics_process(delta: float) -> void:
 	if state != State.DISTRACTED:
