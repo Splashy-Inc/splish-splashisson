@@ -19,10 +19,12 @@ const SPEED = 150.0
 var interactables: Array[Node2D]
 var followers: Array[Crew]
 
+var selection_target: Node2D
 var action_target: Node2D
 
 func _process(delta: float) -> void:
 	_find_action_target()
+	_find_selection_target()
 
 func _physics_process(delta: float) -> void:
 	if $AnimationPlayer.current_animation != "pointing_right" or not $AnimationPlayer.is_playing():
@@ -44,9 +46,16 @@ func _physics_process(delta: float) -> void:
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 			
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
-		if action_target is Crew:
-			add_follower(action_target)
+	if event.is_action_released("select"):
+		if selection_target is Crew:
+			add_follower(selection_target)
+		elif selection_target is Task or selection_target is Rat:
+			if selection_target.worker:
+				add_follower(selection_target.worker)
+	
+	if event.is_action_released("act"):
+		if followers.is_empty():
+			print("No followers to assign!")
 		elif action_target is Task:
 			if action_target.worker:
 				add_follower(action_target.worker)
@@ -58,21 +67,16 @@ func _input(event: InputEvent) -> void:
 				assign_follower(followers.front(), action_target)
 		elif action_target is Rat:
 			assign_follower(followers.front(), action_target)
-	
-	if event.is_action_pressed("location"):
-		if followers.is_empty():
-			print("No followers to assign to location!")
-		else:
-			assign_follower(followers.front(), place_location_marker())
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
 	_find_action_target()
+	_find_selection_target()
 
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
-	if body == action_target:
-		_refresh_action_target()
+	if body == action_target or body == selection_target:
+		_refresh_targets()
 
 func place_location_marker():
 	var new_marker = Marker2D.new()
@@ -89,8 +93,7 @@ func add_follower(new_follower: Crew):
 	followers.append(new_follower)
 	$SFXManager.play("AddFollower")
 	point(new_follower.global_position)
-	if action_target == new_follower:
-		_refresh_action_target()
+	_refresh_targets()
 	
 func remove_follower(follower: Crew):
 	follower.set_assignment(null)
@@ -101,35 +104,45 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	$SFXManager.play("AssignFollower")
 	point(new_assignment.global_position)
 	followers.erase(follower)
-	if action_target == new_assignment:
-		_refresh_action_target()
-	
+	_refresh_targets()
+
 func _find_action_target():
-	# Identify closest interactable as action target
-	# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
-	for interactable in interactables:
-		if interactable.has_method("is_targetable") and not interactable.is_targetable():
-			continue
-		# Don't target empty task if you don't have any followers to assign
-		if interactable is Rat and followers.is_empty():
-			continue
-		if interactable is Task:
-			if interactable.worker:
-				if not interactable is RowingTask:
-					interactable = interactable.worker
-			elif followers.is_empty():
-				continue
+	# Don't select action targets if you have no followers
+	# Remove this check in https://github.com/Splashy-Inc/splish-splashisson/issues/164
+	if not followers.is_empty():
+		# Identify closest interactable as action target (not selectable or fully assigned task)
+		# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
+		var selectables = get_tree().get_nodes_in_group("selectable")
 		
-		if not interactable is Crew or not interactable in followers:
+		for interactable in interactables:
+			if interactable in selectables:
+				continue
+			if interactable.has_method("is_targetable") and not interactable.is_targetable():
+				continue
+			
 			if action_target:
 				var priority_target = _compare_target_priority(action_target, interactable)
 				if priority_target:
 					_set_action_target(priority_target)
-				else:
-					if action_target.global_position.distance_to(global_position) > interactable.global_position.distance_to(global_position):
-						_set_action_target(interactable)
 			else:
 				_set_action_target(interactable)
+
+func _find_selection_target():
+	# Identify closest interactable as selection target (selectable or fully assigned task)
+	# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
+	var selectables = get_tree().get_nodes_in_group("selectable")
+	
+	for interactable in interactables:
+		if not interactable in selectables or (interactable is Crew and interactable in followers):
+			continue
+		
+		if selection_target:
+			var priority_target = _compare_target_priority(selection_target, interactable)
+			if priority_target:
+				_set_selection_target(priority_target)
+		else:
+			_set_selection_target(interactable)
+
 
 func _set_action_target(new_target):
 	if action_target and action_target.has_method("set_highlight"):
@@ -139,9 +152,19 @@ func _set_action_target(new_target):
 	
 	action_target = new_target
 
-func _refresh_action_target():
+func _set_selection_target(new_target):
+	if selection_target and selection_target.has_method("set_highlight"):
+		selection_target.set_highlight(false)
+	if new_target and new_target.has_method("set_highlight"):
+		new_target.set_highlight(true)
+	
+	selection_target = new_target
+
+func _refresh_targets():
 	_set_action_target(null)
 	_find_action_target()
+	_set_selection_target(null)
+	_find_selection_target()
 
 func _compare_target_priority(target_1: Node, target_2: Node) -> Node:
 	var target_1_priority = _get_target_priority(target_1)
@@ -155,7 +178,8 @@ func _compare_target_priority(target_1: Node, target_2: Node) -> Node:
 				return target_1
 			elif target_1.state < target_2.state:
 				return target_2
-		return null
+		if target_1.global_position.distance_to(global_position) > target_2.global_position.distance_to(global_position):
+			return target_2
 	return target_1
 
 # TODO: Figure out a better way to do this

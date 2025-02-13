@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func set_assignee(new_assignee: Crew) -> bool:
-	if new_assignee and assignee:
+	if is_patched or (new_assignee and assignee):
 		return false
 	else:
 		assignee = new_assignee
@@ -25,20 +25,10 @@ func set_assignee(new_assignee: Crew) -> bool:
 
 # This function is intended to be set when the respective crew is in range of the task to begin work
 func set_worker(new_worker: Crew) -> bool:
-	if not is_patched:
-		if new_worker: # Only allow setting worker if not already taken
-			if worker == null:
-				assignee = worker
-			else:
-				return false
-		else:
-			if worker:
-				worker.set_highlight(false)
-			assignee = null
-		
-		worker = new_worker
-		return true
-	return false
+	if new_worker and new_worker != assignee:
+		return false
+	worker = new_worker
+	return true
 
 func patch():
 	is_patched = true
@@ -68,14 +58,14 @@ func _on_puddle_timer_timeout() -> void:
 func _on_current_puddle_died():
 	current_puddle = null
 	
-func set_highlight(is_enable: bool):
-	is_selected = is_enable
-	if worker:
-		worker.set_highlight(is_enable)
-	if $AnimatedSprite2D.material:
-		$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
-	else:
-		print(self, " has no highlight material to activate.")
+#func set_highlight(is_enable: bool):
+	#is_selected = is_enable
+	#if worker:
+		#worker.set_highlight(is_enable)
+	#if $AnimatedSprite2D.material:
+		#$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
+	#else:
+		#print(self, " has no highlight material to activate.")
 		
 func _start_leak():
 	$SFXManager.play("Active")
@@ -85,3 +75,6 @@ func spawn(spawn_point: Vector2):
 	if spawn_occupant == self:
 		spawn_occupant = _spawn("leak", spawn_point)
 	return spawn_occupant
+
+func is_targetable():
+	return not (is_patched or assignee)

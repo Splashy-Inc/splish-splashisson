@@ -139,17 +139,20 @@ func set_assignment(new_assignment: Node2D):
 				return
 		state = State.ACKNOWLEDGING
 	
-	if current_assignment:
-		if current_assignment is Marker2D:
-			current_assignment.queue_free()
-		elif current_assignment is Task:
-			current_assignment.set_worker(null)
-		elif current_assignment is Rat:
-			current_assignment.set_worker(null)
-		elif current_assignment is Cargo:
-			current_assignment.remove_threat(self)
-	
+	var old_assignment = current_assignment
 	current_assignment = new_assignment
+	
+	if old_assignment:
+		if old_assignment is Marker2D:
+			old_assignment.queue_free()
+		elif old_assignment is Task:
+			old_assignment.set_worker(null)
+		elif old_assignment is Rat:
+			old_assignment.set_worker(null)
+		elif old_assignment is Cargo:
+			old_assignment.remove_threat(self)
+	
+
 
 func push(push_vector: Vector2):
 	push_velocity += push_vector

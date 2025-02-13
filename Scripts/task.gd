@@ -26,8 +26,11 @@ func set_assignee(new_assignee: Crew) -> bool:
 		assignee = new_assignee
 		return true
 
+func set_worker(new_worker: Crew):
+	return _set_worker(new_worker)
+
 # This function is intended to be set when the respective crew is in range of the task to begin work
-func set_worker(new_worker: Crew) -> bool:
+func _set_worker(new_worker: Crew) -> bool:
 	if new_worker: # Only allow setting worker if not already taken
 		if worker == null:
 			assignee = worker
