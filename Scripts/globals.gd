@@ -40,6 +40,8 @@ var cargo_scene := load("res://Scenes/cargo.tscn")
 
 var action_color := Color(1, 0.741, 0.196)
 var crew_select_color := Color(0, 0.843, 0.196)
+var disabled_modulate := Color(1, 1, 1, 0.498)
+var modulate_reset := Color(1, 1, 1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -87,7 +89,7 @@ func update_level_progress_percent(percent: float):
 	level_progress_percent = percent
 	level_progress_percent_updated.emit(level_progress_percent)
 	if level_progress_percent >= 1:
-		level_completed.emit()
+		level_completed.emit(level)
 		
 func _on_level_completed():
 	level_completed.emit(level)

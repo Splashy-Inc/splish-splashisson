@@ -20,14 +20,12 @@ var stage_thresholds = {
 
 const SPREAD_AMOUNT = 120 # Number divisble by 3 then 4 then 2 and still a whole number, for spreading mechanic ease
 const PUDDLE_CAPACITY = SPREAD_AMOUNT * 3 # 3 stages, so capacity should be 3x max spread amount 
-const SPEED_CHANGE = -10
 const PUDDLE_SIZE = Vector2(32,32)
 
 var puddle_amount = 0
 var overflow = 0
 var stage = Stage.SMALL
 
-var affecting_speed = false
 var is_dead = false
 var assignees: Array[Crew]
 
@@ -68,9 +66,6 @@ func _update_stage():
 	else:
 		stage = Stage.LARGE
 		$AnimatedSprite2D.play("large")
-		if not affecting_speed:
-			affecting_speed = true
-			Globals.boat.change_speed(SPEED_CHANGE)
 		
 		# Spread if the latest update is higher than puddle capacity
 		overflow = puddle_amount - PUDDLE_CAPACITY
@@ -93,8 +88,6 @@ func decrease_stage():
 	_update_stage()
 
 func die():
-	if affecting_speed:
-		Globals.boat.change_speed(-SPEED_CHANGE)
 	remove_from_group("puddle")
 	if stage == Stage.LARGE:
 		large_reversed.emit()
@@ -134,15 +127,19 @@ func spawn(spawn_point: Vector2):
 	var spawn_occupant = _spawn("puddle", spawn_point)
 	if spawn_occupant == self:
 		_update_neighbor_spawn_points()
-		var cargo_check_occupant = _check_spawn_space_occupied("cargo")
-		if cargo_check_occupant is Cargo:
-			if global_position == cargo_check_occupant.global_position:
+		var effect_check_occupant = _check_spawn_space_occupied("cargo")
+		if effect_check_occupant is Cargo:
+			if global_position == effect_check_occupant.global_position:
 				stage = Stage.LARGE
 				spread(SPREAD_AMOUNT, self)
 				queue_free()
 				return null
 			else:
-				cargo_check_occupant.add_threat(self)
+				effect_check_occupant.add_threat(self)
+		else:
+			effect_check_occupant = _check_spawn_space_occupied("rowing_task")
+			if effect_check_occupant is RowingTask:
+				effect_check_occupant.add_threat(self)
 		
 	_update_neighbor_puddles()
 	

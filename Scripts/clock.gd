@@ -39,6 +39,6 @@ func _update_time():
 
 	text = min_str + ":" + sec_str
 	
-func _on_level_completed():
+func _on_level_completed(level: Level):
 	$Timer.stop()
 	finish_seconds = total_seconds

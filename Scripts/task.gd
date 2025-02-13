@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	pass
 
 func set_assignee(new_assignee: Crew) -> bool:
-	if assignee:
+	if new_assignee and assignee:
 		return false
 	else:
 		assignee = new_assignee
@@ -31,9 +31,13 @@ func set_worker(new_worker: Crew):
 
 # This function is intended to be set when the respective crew is in range of the task to begin work
 func _set_worker(new_worker: Crew) -> bool:
-	if new_worker: # Only allow setting worker if not already taken
+	if not new_worker:
+		set_assignee(new_worker)
+		if worker: # Null being passed in means removing current worker, so show them
+			worker.show_self()
+			toggle_active(false)
+	elif new_worker == assignee: # Only allow setting worker if not already taken
 		if worker == null:
-			assignee = worker
 			new_worker.hide_self()
 			if $DismountPoint:
 				new_worker.global_position = $DismountPoint.global_position
@@ -42,11 +46,6 @@ func _set_worker(new_worker: Crew) -> bool:
 			toggle_active(true)
 		else:
 			return false
-	else:
-		assignee = null
-		if worker: # Null being passed in means removing current worker, so show them
-			worker.show_self()
-			toggle_active(false)
 	
 	worker = new_worker
 	return true
@@ -71,7 +70,7 @@ func toggle_active(set_active: bool):
 func get_self_polygon():
 	return Utils.shift_polygon($SelfSpace/CollisionPolygon2D.polygon, global_position)
 	
-func _on_level_completed():
+func _on_level_completed(level: Level):
 	level_completed = true
 	stop()
 
