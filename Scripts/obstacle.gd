@@ -3,7 +3,7 @@ extends Task
 class_name Obstacle
 
 func spawn(spawn_point: Vector2):
-	return _spawn("rowing_task", spawn_point)
+	return _spawn("impassable", spawn_point)
 
 func _spawn(group: String, spawn_point: Vector2):
 	global_position = spawn_point

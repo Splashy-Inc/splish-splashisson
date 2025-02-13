@@ -7,13 +7,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7kyn7"]
 radius = 33.0
 
-[node name="Cargo" type="StaticBody2D" groups=["cargo"]]
+[node name="Cargo" type="StaticBody2D" groups=["cargo", "impassable"]]
 z_index = 1
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_w1e3a")
 meat_scene = ExtResource("2_uwi3r")
-cargo_type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -1)

@@ -47,7 +47,7 @@ focus_target = NodePath("../Splish")
 [node name="RatHole" parent="Obstacles" instance=ExtResource("8_gg0jf")]
 position = Vector2(320, 34)
 
-[node name="LeakSpawnTimer" type="Timer" parent="."]
+[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
 wait_time = 5.0
 autostart = true
 
@@ -57,4 +57,4 @@ boat = NodePath("../Boat")
 
 [connection signal="completed" from="." to="." method="_on_completed"]
 [connection signal="ready" from="Boat" to="." method="_on_boat_ready"]
-[connection signal="timeout" from="LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
+[connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

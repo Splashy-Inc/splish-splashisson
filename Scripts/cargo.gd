@@ -21,16 +21,22 @@ var level_complete = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_spawn_cargo()
-	_update_condition(max_condition)
-	_set_item_info()
 	Globals.level_completed.connect(_on_level_completed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func initialize(new_type: Cargo_type, new_num_items: int):
+	cargo_type = new_type
+	num_items = new_num_items
+	_spawn_cargo()
+	_update_condition(max_condition)
+	_set_item_info()
 
 func _spawn_cargo():
+	clear()
+	
 	match cargo_type:
 		Cargo_type.MEAT:
 			if $StackArea/CollisionShape2D.shape is CircleShape2D:
@@ -126,3 +132,7 @@ func _get_item_spawn_point(spawn_origin, spawn_radius):
 	while spawn_point.distance_to(spawn_origin) > spawn_radius * .9:
 		spawn_point = spawn_origin + Vector2(randi_range(-spawn_radius, spawn_radius), randi_range(-spawn_radius, spawn_radius))
 	return spawn_point
+
+func clear():
+	for item in $Items.get_children():
+		item.queue_free()

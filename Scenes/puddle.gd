@@ -136,7 +136,13 @@ func spawn(spawn_point: Vector2):
 		_update_neighbor_spawn_points()
 		var cargo_check_occupant = _check_spawn_space_occupied("cargo")
 		if cargo_check_occupant is Cargo:
-			cargo_check_occupant.add_threat(self)
+			if global_position == cargo_check_occupant.global_position:
+				stage = Stage.LARGE
+				spread(SPREAD_AMOUNT, self)
+				queue_free()
+				return null
+			else:
+				cargo_check_occupant.add_threat(self)
 		
 	_update_neighbor_puddles()
 	

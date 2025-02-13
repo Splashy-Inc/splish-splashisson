@@ -39,3 +39,14 @@ func toggle_active(set_active: bool):
 func stop():
 	if $AnimationPlayer.current_animation == "active":
 		play_animation("stop")
+
+func set_worker(new_worker: Crew):
+	if new_worker:
+		add_to_group("selectable")
+		$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
+	else:
+		remove_from_group("selectable")
+		$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.action_color)
+	
+	return _set_worker(new_worker)
+	

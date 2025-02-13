@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg0meusunoosr"]
+[gd_scene load_steps=4 format=3 uid="uid://bg0meusunoosr"]
 
 [ext_resource type="Script" path="res://Scenes/boat_end.gd" id="1_6fuim"]
 [ext_resource type="Texture2D" uid="uid://bg62n7s5j2exq" path="res://Art/ShipTiles/ShipBow.png" id="1_45f1j"]
+[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://Scenes/play_grid.tscn" id="3_obwje"]
 
 [node name="Bow" type="StaticBody2D"]
 collision_layer = 8
@@ -13,7 +14,7 @@ texture = ExtResource("1_45f1j")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 z_index = 1
-polygon = PackedVector2Array(-120, 60, -120, 13, -77, -25, -27, -49, 28, -49, 77, -25, 120, 14, 120, 60, 105, 60, 105, 11, 69, -20, 27, -39, -27, -39, -71, -19, -105, 11, -105, 60)
+polygon = PackedVector2Array(-127, 62, -127, 0, -84, -38, -35, -62, 35, -62, 83, -39, 127, 0, 127, 62, 112, 62, 112, -2, 80, -30, 34, -52, -34, -52, -80, -30, -112, -2, -112, 62)
 
 [node name="CargoSlot" type="Node2D" parent="."]
 position = Vector2(0, 11)
@@ -21,4 +22,7 @@ position = Vector2(0, 11)
 [node name="PlaySpace" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlaySpace"]
-polygon = PackedVector2Array(-105, 60, -105, 11, 105, 11, 105, 60)
+polygon = PackedVector2Array(-112, 62, -112, -2, 112, -2, 112, 62)
+
+[node name="PlayGrid" parent="." instance=ExtResource("3_obwje")]
+position = Vector2(-112, -34)
