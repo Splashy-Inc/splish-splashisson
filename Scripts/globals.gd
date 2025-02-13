@@ -38,6 +38,9 @@ var task_dict = {
 
 var cargo_scene := load("res://Scenes/cargo.tscn")
 
+var action_color := Color(1, 0.741, 0.196)
+var crew_select_color := Color(0, 0.843, 0.196)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
