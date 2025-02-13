@@ -49,7 +49,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("select"):
 		if selection_target is Crew:
 			add_follower(selection_target)
-		elif selection_target is Task or selection_target is Rat:
+		elif selection_target is Task:
 			if selection_target.worker:
 				add_follower(selection_target.worker)
 	
