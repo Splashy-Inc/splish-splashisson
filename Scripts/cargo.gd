@@ -104,7 +104,7 @@ func _update_condition(change: int):
 func _set_item_info():
 	Globals.update_cargo_items(num_items, item_health, item_texture)
 
-func _on_level_completed():
+func _on_level_completed(level: Level):
 	level_complete = true
 	$DamageTickTimer.stop()
 	
