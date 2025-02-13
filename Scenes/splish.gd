@@ -46,14 +46,14 @@ func _physics_process(delta: float) -> void:
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 			
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("select"):
+	if event.is_action_pressed("select"):
 		if selection_target is Crew:
 			add_follower(selection_target)
 		elif selection_target is Task or selection_target is Rat:
 			if selection_target.worker:
 				add_follower(selection_target.worker)
 	
-	if event.is_action_released("act"):
+	if event.is_action_pressed("act"):
 		if followers.is_empty():
 			print("No followers to assign!")
 		elif action_target is Task:
