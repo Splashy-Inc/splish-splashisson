@@ -128,15 +128,18 @@ func _deposit_loot():
 			loot.die()
 	target_closest_cargo()
 
-func set_worker(new_worker: Node2D):
-	if not worker or not new_worker:
-		worker = new_worker
-		set_assignee(worker)
-		return true
-	return false
-
-func set_assignee(new_assignee: Node2D):
-	if not assignee or not new_assignee:
+func set_assignee(new_assignee: Crew) -> bool:
+	if new_assignee and assignee:
+		return false
+	else:
 		assignee = new_assignee
 		return true
-	return false
+
+# This function is intended to be set when the respective crew is in range of the task to begin work
+func set_worker(new_worker: Crew) -> bool:
+	if not new_worker:
+		set_assignee(new_worker)
+	elif new_worker != assignee:
+		return false
+	worker = new_worker
+	return true

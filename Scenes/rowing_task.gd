@@ -4,6 +4,10 @@ class_name RowingTask
 
 const SPEED_CHANGE = 20
 
+var disabled := false
+
+var threats := []
+
 func play_animation(animation_name):
 	if animation_name == "active" and level_completed:
 		animation_name = "stop"
@@ -49,4 +53,24 @@ func set_worker(new_worker: Crew):
 		$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.action_color)
 	
 	return _set_worker(new_worker)
-	
+
+func add_threat(body: Node2D):
+	if body is Puddle:
+		body.died.connect(_on_threat_died.bind(body))
+	threats.append(body)
+	modulate = Globals.disabled_modulate
+	if assignee:
+		assignee.set_assignment(null)
+	return true
+
+func remove_threat(body: Node2D):
+	threats.erase(body)
+	if threats.is_empty():
+		modulate = Globals.modulate_reset
+	return true
+
+func _on_threat_died(threat: Node2D):
+	remove_threat(threat)
+
+func is_targetable() -> bool:
+	return threats.is_empty() and not assignee
