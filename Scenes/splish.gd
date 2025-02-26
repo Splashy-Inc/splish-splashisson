@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Worker
 
 class_name Player
 
@@ -14,9 +14,6 @@ enum Selection_priority {
 	RAT,
 }
 
-const SPEED = 150.0
-
-var interactables: Array[Node2D]
 var followers: Array[Crew]
 
 var selection_target: Node2D
@@ -27,6 +24,24 @@ func _process(delta: float) -> void:
 	_find_selection_target()
 
 func _physics_process(delta: float) -> void:
+	match state:
+		State.IDLE:
+			_idle_state(delta)
+		State.MOVING:
+			_move_state(delta)
+		State.ROWING:
+			_rowing_state()
+		State.BAILING:
+			_bail_state()
+		State.PATCHING:
+			_patch_state()
+		State.ATTACKING:
+			_attack_state()
+
+func _idle_state(delta: float):
+	_move_state(delta)
+
+func _move_state(delta: float):
 	if $AnimationPlayer.current_animation != "pointing_right" or not $AnimationPlayer.is_playing():
 		var direction := Input.get_vector("left", "right", "up", "down").normalized()
 		if direction:
@@ -44,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			var col = get_slide_collision(i)
 			if col.get_collider() is Crew:
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
-			
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("select"):
 		if selection_target is Crew:
@@ -52,21 +67,22 @@ func _input(event: InputEvent) -> void:
 		elif selection_target is Task:
 			if selection_target.worker:
 				add_follower(selection_target.worker)
+		return
 	
 	if event.is_action_pressed("act"):
-		if followers.is_empty():
-			print("No followers to assign!")
-		elif action_target is Task:
-			if action_target.worker:
-				add_follower(action_target.worker)
-			elif action_target.assignee:
+		if action_target is Task:
+			if action_target.assignee:
 				print(action_target, " already assigned to ", action_target.assignee, " !")
-			elif followers.is_empty():
-				print("No followers to assign to ", action_target, " !")
-			else:
+			elif not followers.is_empty():
 				assign_follower(followers.front(), action_target)
 		elif action_target is Rat:
 			assign_follower(followers.front(), action_target)
+		set_assignment(action_target)
+		return
+	
+	if event.is_action_released("act") and current_assignment:
+		set_assignment(null)
+		return
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
@@ -107,25 +123,22 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	_refresh_targets()
 
 func _find_action_target():
-	# Don't select action targets if you have no followers
-	# Remove this check in https://github.com/Splashy-Inc/splish-splashisson/issues/164
-	if not followers.is_empty():
-		# Identify closest interactable as action target (not selectable or fully assigned task)
-		# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
-		var selectables = get_tree().get_nodes_in_group("selectable")
+	# Identify closest interactable as action target (not selectable or fully assigned task)
+	# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
+	var selectables = get_tree().get_nodes_in_group("selectable")
+	
+	for interactable in interactables:
+		if interactable in selectables:
+			continue
+		if interactable.has_method("is_targetable") and not interactable.is_targetable():
+			continue
 		
-		for interactable in interactables:
-			if interactable in selectables:
-				continue
-			if interactable.has_method("is_targetable") and not interactable.is_targetable():
-				continue
-			
-			if action_target:
-				var priority_target = _compare_target_priority(action_target, interactable)
-				if priority_target:
-					_set_action_target(priority_target)
-			else:
-				_set_action_target(interactable)
+		if action_target:
+			var priority_target = _compare_target_priority(action_target, interactable)
+			if priority_target:
+				_set_action_target(priority_target)
+		else:
+			_set_action_target(interactable)
 
 func _find_selection_target():
 	# Identify closest interactable as selection target (selectable or fully assigned task)
@@ -199,3 +212,32 @@ func _get_target_priority(node: Node):
 	elif node is Crew:
 		return Selection_priority.CREW
 	return Selection_priority.NONE
+
+func set_assignment(new_assignment: Node2D):
+	state = State.IDLE
+	
+	if new_assignment is Task or new_assignment is Rat:
+		if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat:
+			new_assignment.died.connect(_on_assignment_died)
+		if not new_assignment.set_assignee(self):
+			print(self, " unable to set self as assignee of ", new_assignment)
+			current_assignment = null
+			return
+	
+	_set_assignment(new_assignment)
+	if current_assignment:
+		_start_assignment()
+
+func stop_bailing():
+	state = State.IDLE
+	if current_assignment is Puddle:
+		var closest_puddle = _get_closest(_get_puddles())
+		
+		set_assignment(closest_puddle)
+
+func _get_puddles() -> Array:
+	var puddles = []
+	for interactable in interactables:
+		if interactable is Puddle:
+			puddles.append(interactable)
+	return puddles
