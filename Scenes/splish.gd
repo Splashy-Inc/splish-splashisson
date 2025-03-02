@@ -20,7 +20,8 @@ var selection_target: Node2D
 var action_target: Node2D
 
 func _process(delta: float) -> void:
-	_find_action_target()
+	if not current_assignment and Input.is_action_pressed("act"):
+		_find_action_target()
 	_find_selection_target()
 
 func _physics_process(delta: float) -> void:
@@ -86,7 +87,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
-	_find_action_target()
+	if not current_assignment:
+		_find_action_target()
 	_find_selection_target()
 
 func _on_interactable_range_body_exited(body: Node2D) -> void:
@@ -174,8 +176,9 @@ func _set_selection_target(new_target):
 	selection_target = new_target
 
 func _refresh_targets():
-	_set_action_target(null)
-	_find_action_target()
+	if not current_assignment:
+		_set_action_target(null)
+		_find_action_target()
 	_set_selection_target(null)
 	_find_selection_target()
 
@@ -227,6 +230,7 @@ func set_assignment(new_assignment: Node2D):
 	_set_assignment(new_assignment)
 	if current_assignment:
 		_start_assignment()
+		_set_action_target(current_assignment)
 
 func stop_bailing():
 	state = State.IDLE
@@ -236,6 +240,7 @@ func stop_bailing():
 		set_assignment(closest_puddle)
 
 func _get_puddles() -> Array:
+	
 	var puddles = []
 	for interactable in interactables:
 		if interactable is Puddle:

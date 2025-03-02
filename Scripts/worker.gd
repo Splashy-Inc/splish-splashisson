@@ -96,7 +96,8 @@ func _rowing_state():
 	$AnimationPlayer.play("idle_down")
 
 func _bail_state():
-	$AnimationPlayer.play("bail_water")
+	if not $AnimationPlayer.current_animation == "bail_water" or not $AnimationPlayer.is_playing():
+		$AnimationPlayer.play("bail_water")
 
 func _patch_state():
 	# TODO: Fix issue where tries to replay animation after patching leak, causing first frame to play
@@ -187,6 +188,7 @@ func _bail_puddle() -> void:
 		
 func _on_assignment_died():
 	if current_assignment != null:
+		interactables.erase(current_assignment)
 		if current_assignment is Puddle:
 			stop_bailing()
 			return
