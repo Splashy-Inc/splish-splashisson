@@ -25,6 +25,8 @@ func _process(delta: float) -> void:
 	_find_selection_target()
 
 func _physics_process(delta: float) -> void:
+	velocity = Vector2.ZERO
+	
 	match state:
 		State.IDLE:
 			_idle_state(delta)
@@ -240,7 +242,6 @@ func stop_bailing():
 		set_assignment(closest_puddle)
 
 func _get_puddles() -> Array:
-	
 	var puddles = []
 	for interactable in interactables:
 		if interactable is Puddle:

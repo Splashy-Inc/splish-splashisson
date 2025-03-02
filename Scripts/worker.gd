@@ -98,12 +98,14 @@ func _rowing_state():
 func _bail_state():
 	if current_assignment is Puddle and (not $AnimationPlayer.current_animation == "bail_water" or not $AnimationPlayer.is_playing()):
 		$AnimationPlayer.play("bail_water")
+	move_and_slide()
 
 func _patch_state():
 	# TODO: Fix issue where tries to replay animation after patching leak, causing first frame to play
 	# This would be fixed by using an animation tree with a state machine
 	if $AnimationPlayer.current_animation != "patch_leak":
 		$AnimationPlayer.play("patch_leak")
+	move_and_slide()
 
 func _distract_state():
 	if current_assignment is Cargo:
@@ -113,6 +115,7 @@ func _distract_state():
 func _attack_state():
 	if current_assignment is Rat:
 		$AnimationPlayer.play("stomping")
+	move_and_slide()
 
 func _on_animation_finished():
 	state = State.IDLE
