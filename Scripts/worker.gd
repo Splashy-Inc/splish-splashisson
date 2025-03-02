@@ -96,7 +96,7 @@ func _rowing_state():
 	$AnimationPlayer.play("idle_down")
 
 func _bail_state():
-	if not $AnimationPlayer.current_animation == "bail_water" or not $AnimationPlayer.is_playing():
+	if current_assignment is Puddle and (not $AnimationPlayer.current_animation == "bail_water" or not $AnimationPlayer.is_playing()):
 		$AnimationPlayer.play("bail_water")
 
 func _patch_state():
@@ -167,7 +167,6 @@ func start_rowing():
 
 func start_bailing():
 	if current_assignment is Puddle and current_assignment.set_worker(self):
-		print("Started bailing")
 		state = State.BAILING
 		return true
 	return false
