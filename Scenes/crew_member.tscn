@@ -64,6 +64,7 @@
 [ext_resource type="AudioStream" uid="uid://uac7k4tadqyl" path="res://Audio/Actions/Bailing/throwing_water.wav" id="62_woguw"]
 [ext_resource type="AudioStream" uid="uid://b83mes7o5r3r5" path="res://Audio/Actions/Eating/munch_2.wav" id="63_uy82o"]
 [ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="64_600am"]
+[ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="65_k7ads"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -654,64 +655,6 @@ tracks/1/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_1m7mc"]
-resource_name = "stomping"
-length = 0.750025
-loop_mode = 1
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"stomping"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1, 2, 0]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["Stomp"],
-"method": &"play"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stomp"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_2fgx1"]
 resource_name = "walking_down"
 length = 0.500025
@@ -840,7 +783,7 @@ _data = {
 "idle_down": SubResource("Animation_df2kf"),
 "idle_up": SubResource("Animation_yrpeu"),
 "patch_leak": ExtResource("64_600am"),
-"stomping": SubResource("Animation_1m7mc"),
+"stomping": ExtResource("65_k7ads"),
 "walking_down": SubResource("Animation_2fgx1"),
 "walking_up": SubResource("Animation_x2nhf")
 }
