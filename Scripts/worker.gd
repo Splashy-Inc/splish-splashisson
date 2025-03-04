@@ -164,7 +164,8 @@ func reset_highlight():
 func start_rowing():
 	if current_assignment is RowingTask and current_assignment.set_worker(self):
 		state = State.ROWING
-		$RowingDistractionTimer.start()
+		if $RowingDistractionTimer:
+			$RowingDistractionTimer.start()
 		return true
 	return false
 

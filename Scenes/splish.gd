@@ -260,3 +260,6 @@ func _get_leaks() -> Array:
 		if interactable is Leak:
 			leaks.append(interactable)
 	return leaks
+
+func _rowing_state():
+	$AnimationPlayer.play("idle")

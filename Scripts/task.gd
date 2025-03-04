@@ -39,10 +39,11 @@ func _set_worker(new_worker: Worker) -> bool:
 	elif new_worker == assignee: # Only allow setting worker if not already taken
 		if worker == null:
 			new_worker.hide_self()
-			if $DismountPoint:
-				new_worker.global_position = $DismountPoint.global_position
-			else:
-				new_worker.global_position = global_position
+			if not new_worker is Player:
+				if $DismountPoint:
+					new_worker.global_position = $DismountPoint.global_position
+				else:
+					new_worker.global_position = global_position
 			toggle_active(true)
 		else:
 			return false
@@ -63,7 +64,10 @@ func set_highlight(is_enable: bool):
 func toggle_active(set_active: bool):
 	is_active = set_active
 	if is_active:
-		play_animation("active")
+		if assignee is Player:
+			play_animation("active_player")
+		else:
+			play_animation("active")
 	else:
 		play_animation("idle")
 
