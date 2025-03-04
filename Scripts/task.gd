@@ -2,8 +2,8 @@ extends StaticBody2D
 
 class_name Task
 
-var assignee: Crew
-var worker: Crew
+var assignee: Worker
+var worker: Worker
 
 var is_active = false
 
@@ -19,18 +19,18 @@ func _ready():
 func _process(delta: float) -> void:
 	pass
 
-func set_assignee(new_assignee: Crew) -> bool:
+func set_assignee(new_assignee: Worker) -> bool:
 	if new_assignee and assignee:
 		return false
 	else:
 		assignee = new_assignee
 		return true
 
-func set_worker(new_worker: Crew):
+func set_worker(new_worker: Worker):
 	return _set_worker(new_worker)
 
-# This function is intended to be set when the respective crew is in range of the task to begin work
-func _set_worker(new_worker: Crew) -> bool:
+# This function is intended to be set when the respective worker is in range of the task to begin work
+func _set_worker(new_worker: Worker) -> bool:
 	if not new_worker:
 		set_assignee(new_worker)
 		if worker: # Null being passed in means removing current worker, so show them
@@ -39,10 +39,11 @@ func _set_worker(new_worker: Crew) -> bool:
 	elif new_worker == assignee: # Only allow setting worker if not already taken
 		if worker == null:
 			new_worker.hide_self()
-			if $DismountPoint:
-				new_worker.global_position = $DismountPoint.global_position
-			else:
-				new_worker.global_position = global_position
+			if not new_worker is Player:
+				if $DismountPoint:
+					new_worker.global_position = $DismountPoint.global_position
+				else:
+					new_worker.global_position = global_position
 			toggle_active(true)
 		else:
 			return false
@@ -63,7 +64,10 @@ func set_highlight(is_enable: bool):
 func toggle_active(set_active: bool):
 	is_active = set_active
 	if is_active:
-		play_animation("active")
+		if assignee is Player:
+			play_animation("active_player")
+		else:
+			play_animation("active")
 	else:
 		play_animation("idle")
 

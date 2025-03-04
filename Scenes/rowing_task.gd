@@ -9,16 +9,19 @@ var disabled := false
 var threats := []
 
 func play_animation(animation_name):
-	if animation_name == "active" and level_completed:
-		animation_name = "stop"
+	if level_completed:
+		if  animation_name == "active":
+			animation_name = "stop"
+		if  animation_name == "active_player":
+			animation_name = "stop_player"
 	
 	$AnimationPlayer.play(animation_name)
 	for node in get_tree().get_nodes_in_group("rowing_animation"):
-		if animation_name == "stop":
-			if node is AnimationPlayer and node.current_animation == "stop" and node != $AnimationPlayer:
+		if animation_name == "stop" or animation_name == "stop_player":
+			if node is AnimationPlayer and (node.current_animation == "stop" or node.current_animation == "stop_player") and node != $AnimationPlayer:
 				$AnimationPlayer.seek(node.current_animation_position, true, true)
 				break
-			elif node is AnimationPlayer and node.current_animation == "active" and node != $AnimationPlayer:
+			elif node is AnimationPlayer and (node.current_animation == "active" or node.current_animation == "active_player") and node != $AnimationPlayer:
 				# The calculations below are very specific to how the rowing animation if laid out
 				# An changes to either the rowing animation will need to be considered here, respectively
 				var anim_position = fmod(node.current_animation_position, 2.0)
@@ -27,14 +30,17 @@ func play_animation(animation_name):
 				$AnimationPlayer.seek(anim_position, true, true)
 				break
 		else:
-			if node is AnimationPlayer and node.current_animation == "active" and node != $AnimationPlayer:
+			if node is AnimationPlayer and (node.current_animation == "active" or node.current_animation == "active_player") and node != $AnimationPlayer:
 				$AnimationPlayer.seek(node.current_animation_position, true, true)
 				break
 
 func toggle_active(set_active: bool):
 	is_active = set_active
 	if is_active:
-		play_animation("active")
+		if assignee is Player:
+			play_animation("active_player")
+		else:
+			play_animation("active")
 		Globals.boat.change_speed(SPEED_CHANGE)
 	else:
 		play_animation("idle")
@@ -43,8 +49,10 @@ func toggle_active(set_active: bool):
 func stop():
 	if $AnimationPlayer.current_animation == "active":
 		play_animation("stop")
+	if $AnimationPlayer.current_animation == "active_player":
+		play_animation("stop_player")
 
-func set_worker(new_worker: Crew):
+func set_worker(new_worker: Worker):
 	if new_worker:
 		add_to_group("selectable")
 		$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
