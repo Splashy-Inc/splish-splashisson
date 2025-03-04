@@ -44,7 +44,7 @@ func stop():
 	if $AnimationPlayer.current_animation == "active":
 		play_animation("stop")
 
-func set_worker(new_worker: Crew):
+func set_worker(new_worker: Worker):
 	if new_worker:
 		add_to_group("selectable")
 		$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)

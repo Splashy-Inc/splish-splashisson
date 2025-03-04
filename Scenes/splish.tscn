@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=50 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://Scenes/splish.gd" id="1_34yo7"]
 [ext_resource type="Texture2D" uid="uid://dv2xu7gwyylr4" path="res://Art/Splish/BailingWater/BailG.png" id="2_605ja"]
@@ -17,9 +17,27 @@
 [ext_resource type="Texture2D" uid="uid://cxmjwulkb3rnq" path="res://Art/Splish/BailingWater/BailF.png" id="8_vlu8v"]
 [ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="9_r3uhy"]
 [ext_resource type="AudioStream" uid="uid://dsl2r5ouyucqa" path="res://Audio/hail_grunt.mp3" id="10_2tv06"]
+[ext_resource type="Texture2D" uid="uid://00p4gjp3ldo1" path="res://Art/Splish/PatchingLeak/PatchLeakC.png" id="10_pdqt8"]
+[ext_resource type="Texture2D" uid="uid://wb5t653y5ese" path="res://Art/Splish/PatchingLeak/PatchLeakD.png" id="11_ewod2"]
 [ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="11_ke8qv"]
 [ext_resource type="AudioStream" uid="uid://c4wwmhh1pltjm" path="res://Audio/boot_step2.mp3" id="12_4oj1e"]
+[ext_resource type="Texture2D" uid="uid://b78mvvf5fel26" path="res://Art/Splish/PatchingLeak/PatchLeakE.png" id="12_g6f3r"]
+[ext_resource type="Texture2D" uid="uid://yhieyongi168" path="res://Art/Splish/PatchingLeak/PatchLeakF.png" id="13_n3dog"]
+[ext_resource type="Texture2D" uid="uid://dgtuwrnav5rqg" path="res://Art/Splish/PatchingLeak/PatchLeakG.png" id="14_bvxsk"]
+[ext_resource type="Texture2D" uid="uid://dp5ysc5cbcn18" path="res://Art/Splish/PatchingLeak/PatchLeakH.png" id="15_prk4k"]
+[ext_resource type="Texture2D" uid="uid://d02ykb3r6b7kx" path="res://Art/Splish/PatchingLeak/PatchLeakI.png" id="16_gar54"]
+[ext_resource type="Texture2D" uid="uid://cbnfyqfa27wdf" path="res://Art/Splish/PatchingLeak/PatchLeakJ.png" id="17_0rc8d"]
+[ext_resource type="Texture2D" uid="uid://bwy3fqdvi8a7c" path="res://Art/Splish/PatchingLeak/PatchLeakK.png" id="18_4d5iv"]
+[ext_resource type="Texture2D" uid="uid://bwcfkkmlts0mt" path="res://Art/Splish/PatchingLeak/PatchLeakL.png" id="19_kg61x"]
+[ext_resource type="Texture2D" uid="uid://dtmx468vlvdwg" path="res://Art/Splish/PatchingLeak/PatchLeakN.png" id="20_6ewwh"]
 [ext_resource type="AudioStream" uid="uid://uac7k4tadqyl" path="res://Audio/Actions/Bailing/throwing_water.wav" id="20_xmxqh"]
+[ext_resource type="Texture2D" uid="uid://dbil00ncrch4d" path="res://Art/Splish/PatchingLeak/PatchLeakQ.png" id="21_3f6sq"]
+[ext_resource type="Texture2D" uid="uid://c1k22ctoifxec" path="res://Art/Splish/PatchingLeak/PatchLeakR.png" id="22_x4fpe"]
+[ext_resource type="Texture2D" uid="uid://c3qck2uluqntd" path="res://Art/Splish/PatchingLeak/PatchLeakS.png" id="23_m1syj"]
+[ext_resource type="Texture2D" uid="uid://3i5rmp8gcsd" path="res://Art/Splish/PatchingLeak/PatchLeakT.png" id="24_gbv7q"]
+[ext_resource type="AudioStream" uid="uid://dhcjwsj73g2rg" path="res://Audio/Actions/Patching Leak/pitch_squelch.wav" id="36_4tf4w"]
+[ext_resource type="AudioStream" uid="uid://dbfvukmpq1mei" path="res://Audio/Actions/Patching Leak/pitch_squelch_2.wav" id="37_q0330"]
+[ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="38_tcamb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_48aad"]
 animations = [{
@@ -55,6 +73,59 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_pdqt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ewod2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g6f3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n3dog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bvxsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_prk4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gar54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0rc8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4d5iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kg61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pdqt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_6ewwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_3f6sq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_x4fpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_m1syj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_gbv7q")
+}],
+"loop": true,
+"name": &"patch_leak",
 "speed": 5.0
 }, {
 "frames": [{
@@ -96,6 +167,11 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nx1hd"]
 radius = 28.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kjkt1"]
+streams_count = 2
+stream_0/stream = ExtResource("36_4tf4w")
+stream_1/stream = ExtResource("37_q0330")
 
 [sub_resource type="Animation" id="Animation_jr7t7"]
 length = 0.001
@@ -364,6 +440,7 @@ _data = {
 "RESET": SubResource("Animation_jr7t7"),
 "bail_water": SubResource("Animation_m7eue"),
 "idle": SubResource("Animation_0g00q"),
+"patch_leak": ExtResource("38_tcamb"),
 "pointing_right": SubResource("Animation_t3dpn"),
 "walking_down": SubResource("Animation_uhby7"),
 "walking_up": SubResource("Animation_y4fll")
@@ -415,6 +492,11 @@ pitch_scale = 1.2
 [node name="ThrowWater" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("20_xmxqh")
 
+[node name="Patching" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_kjkt1")
+volume_db = 9.0
+pitch_scale = 0.7
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_iikno")
@@ -423,6 +505,10 @@ autoplay = "idle"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="LeakPatchTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]

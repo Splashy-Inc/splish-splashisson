@@ -16,15 +16,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func set_assignee(new_assignee: Crew) -> bool:
+func set_assignee(new_assignee: Worker) -> bool:
 	if is_patched or (new_assignee and assignee):
 		return false
 	else:
 		assignee = new_assignee
 		return true
 
-# This function is intended to be set when the respective crew is in range of the task to begin work
-func set_worker(new_worker: Crew) -> bool:
+# This function is intended to be set when the respective worker is in range of the task to begin work
+func set_worker(new_worker: Worker) -> bool:
 	if not new_worker:
 		set_assignee(new_worker)
 	elif new_worker != assignee:

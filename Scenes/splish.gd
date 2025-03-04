@@ -246,3 +246,17 @@ func _get_puddles() -> Array:
 		if interactable is Puddle:
 			puddles.append(interactable)
 	return puddles
+
+func stop_patching():
+	state = State.IDLE
+	if current_assignment is Leak:
+		var closest_leak = _get_closest(_get_leaks())
+		
+		set_assignment(closest_leak)
+
+func _get_leaks() -> Array:
+	var leaks = []
+	for interactable in interactables:
+		if interactable is Leak:
+			leaks.append(interactable)
+	return leaks
