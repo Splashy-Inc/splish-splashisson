@@ -73,14 +73,13 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("act"):
-		if action_target is Task:
+		if action_target is Task or action_target is Rat:
 			if action_target.assignee:
 				print(action_target, " already assigned to ", action_target.assignee, " !")
 			elif not followers.is_empty():
 				assign_follower(followers.front(), action_target)
-		elif action_target is Rat:
-			assign_follower(followers.front(), action_target)
-		set_assignment(action_target)
+			else:
+				set_assignment(action_target)
 		return
 	
 	if event.is_action_released("act") and current_assignment:
