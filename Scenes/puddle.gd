@@ -27,7 +27,7 @@ var overflow = 0
 var stage = Stage.SMALL
 
 var is_dead = false
-var assignees: Array[Crew]
+var assignees: Array[Worker]
 
 # Store neighbor puddle states here
 	   #[top]
@@ -97,12 +97,12 @@ func die():
 	queue_free()
 
 # Override assignee and worker setters since we want multiple to be able to work on a puddle at a time
-func set_assignee(new_assignee: Crew) -> bool:
+func set_assignee(new_assignee: Worker) -> bool:
 	if not is_dead:
 		assignees.append(new_assignee)
 	return not is_dead
 
-func set_worker(new_worker: Crew) -> bool:
+func set_worker(new_worker: Worker) -> bool:
 	return not is_dead
 
 # Attempt to spread in this pattern
