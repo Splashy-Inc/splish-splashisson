@@ -126,6 +126,9 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	_refresh_targets()
 
 func _find_action_target():
+	if not action_target in interactables:
+		_set_action_target(null)
+	
 	# Identify closest interactable as action target (not selectable or fully assigned task)
 	# TODO: https://github.com/Splashy-Inc/splish-splashisson/issues/165
 	var selectables = get_tree().get_nodes_in_group("selectable")
