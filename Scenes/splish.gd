@@ -154,6 +154,9 @@ func _find_selection_target():
 	for interactable in interactables:
 		if not interactable in selectables or (interactable is Crew and interactable in followers):
 			continue
+		if interactable is Task:
+			if interactable.assignee is Player:
+				continue
 		
 		if selection_target:
 			var priority_target = _compare_target_priority(selection_target, interactable)
@@ -234,7 +237,10 @@ func set_assignment(new_assignment: Node2D):
 	_set_assignment(new_assignment)
 	if current_assignment:
 		_start_assignment()
-		_set_action_target(current_assignment)
+		if current_assignment is RowingTask:
+			_set_action_target(null)
+		else:
+			_set_action_target(current_assignment)
 
 func stop_bailing():
 	state = State.IDLE
