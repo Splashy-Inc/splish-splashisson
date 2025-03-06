@@ -109,7 +109,7 @@ func _set_state(new_state: State):
 		state = new_state
 
 func is_targetable() -> bool:
-	if state != State.DEAD and not assignee:
+	if state != State.DEAD and (not assignee or assignee is Player):
 		return true
 	return false
 

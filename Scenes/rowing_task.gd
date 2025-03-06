@@ -54,8 +54,9 @@ func stop():
 
 func set_worker(new_worker: Worker):
 	if new_worker:
-		add_to_group("selectable")
-		$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
+		if not new_worker is Player:
+			add_to_group("selectable")
+			$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
 	else:
 		remove_from_group("selectable")
 		$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.action_color)
