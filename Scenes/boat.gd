@@ -8,6 +8,9 @@ signal set_up
 # Number of deck segments
 @export var deck_length: int
 @export var deck_scene: PackedScene
+@onready var bow_slot: Node2D = $NavigationRegion2D/BowSlot
+@onready var deck_slot: Node2D = $NavigationRegion2D/DeckSlot
+@onready var stern_slot: Node2D = $NavigationRegion2D/SternSlot
 
 # Tasks that should be filled into the deck segments
 @export var deck_tasks: Array[Globals.Task_type]
@@ -46,7 +49,7 @@ func _process(delta: float) -> void:
 
 func _generate_boat():
 	# Clear current deck segments
-	for segment in $DeckSlot.get_children():
+	for segment in deck_slot.get_children():
 		if segment is Deck:
 			segment.clear_deck()
 		segment.free()
@@ -63,9 +66,9 @@ func _generate_boat():
 			var tasks = deck_tasks_to_place.slice(0, 4)
 			deck_tasks_to_place = deck_tasks_to_place.slice(4)
 			new_deck_segment.initialize(tasks)
-			$DeckSlot.add_child(new_deck_segment)
+			deck_slot.add_child(new_deck_segment)
 	
-	length = $BowSlot.global_position.distance_to($SternSlot.global_position) + get_viewport_rect().size.y
+	length = bow_slot.global_position.distance_to(stern_slot.global_position) + get_viewport_rect().size.y
 	
 	change_speed(0)
 	
@@ -94,16 +97,16 @@ func spawn_puddle(spawn_point: Vector2):
 	
 func add_obstacle(new_obstacle: Node2D):
 	if new_obstacle is Puddle:
-		$Obstacles/Puddles.add_child(new_obstacle)
+		$NavigationRegion2D/Obstacles/Puddles.add_child(new_obstacle)
 	elif new_obstacle is Leak:
-		$Obstacles/Leaks.add_child(new_obstacle)
+		$NavigationRegion2D/Obstacles/Leaks.add_child(new_obstacle)
 	else:
-		$Obstacles.add_child(new_obstacle)
+		$NavigationRegion2D/Obstacles.add_child(new_obstacle)
 		
 func is_point_in_boat(point: Vector2):
-	var bow = $BowSlot/Bow
-	var stern = $SternSlot/Stern
-	var decks = $DeckSlot.get_children()
+	var bow = bow_slot.get_children().front()
+	var stern = stern_slot.get_children().front()
+	var decks = deck_slot.get_children()
 	
 	if bow.is_point_in_play_space(point) or stern.is_point_in_play_space(point):
 		return true
@@ -116,7 +119,7 @@ func is_point_in_boat(point: Vector2):
 
 func get_max_speed():
 	var rowing_tasks = []
-	for deck in $DeckSlot.get_children():
+	for deck in deck_slot.get_children():
 		rowing_tasks.append_array(deck.get_rowing_tasks())
 	if not rowing_tasks.is_empty():
 		max_speed = rowing_tasks.front().SPEED_CHANGE * rowing_tasks.size()
@@ -145,5 +148,6 @@ func _on_stern_cargo_set_up() -> void:
 func _check_set_up():
 	if setup_checklist["bow"] <= 0 and setup_checklist["stern"] <= 0 and setup_checklist["deck"] <= 0:
 		get_max_speed()
-		$PlayGrid.global_position = $BowSlot/Bow.get_play_grid_origin()
+		$PlayGrid.global_position = bow_slot.get_children().front().get_play_grid_origin()
+		$NavigationRegion2D.bake_navigation_polygon()
 		set_up.emit()

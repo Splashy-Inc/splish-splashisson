@@ -866,6 +866,8 @@ one_shot = true
 wait_time = 30.0
 one_shot = true
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
 [connection signal="timeout" from="IdleDistractionTimer" to="." method="_on_distraction_timer_timeout"]

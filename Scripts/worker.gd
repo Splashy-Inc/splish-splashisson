@@ -77,7 +77,7 @@ func _move_state(delta: float):
 			_start_assignment()
 	else:
 		if current_assignment:
-			var direction = global_position.direction_to(current_assignment.global_position)
+			var direction = _get_direction()
 			velocity += direction * SPEED
 		
 		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
@@ -85,6 +85,9 @@ func _move_state(delta: float):
 				$AnimationPlayer.play("walking_up")
 			else:
 				$AnimationPlayer.play("walking_down")
+
+func _get_direction() -> Vector2:
+	return global_position.direction_to(current_assignment.global_position)
 
 func _alert_state():
 	$AnimationPlayer.play("alert")
