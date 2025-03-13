@@ -22,22 +22,26 @@ boat = NodePath("Boat")
 [node name="Boat" parent="." instance=ExtResource("4_64cm4")]
 position = Vector2(320, 180)
 
-[node name="CrewMember" parent="." instance=ExtResource("5_pjrgm")]
+[node name="People" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+
+[node name="CrewMember" parent="People" instance=ExtResource("5_pjrgm")]
 position = Vector2(380, 47)
 
-[node name="CrewMember2" parent="." instance=ExtResource("5_pjrgm")]
+[node name="CrewMember2" parent="People" instance=ExtResource("5_pjrgm")]
 position = Vector2(297, 28)
 
-[node name="CrewMember3" parent="." instance=ExtResource("5_pjrgm")]
+[node name="CrewMember3" parent="People" instance=ExtResource("5_pjrgm")]
 position = Vector2(342, 27)
 
-[node name="CrewMember4" parent="." instance=ExtResource("5_pjrgm")]
+[node name="CrewMember4" parent="People" instance=ExtResource("5_pjrgm")]
 position = Vector2(269, 47)
 
-[node name="Splish" parent="." instance=ExtResource("6_peku6")]
+[node name="Splish" parent="People" instance=ExtResource("6_peku6")]
 position = Vector2(320, 201)
 
-[node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("focus_target")]
+[node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)
 script = ExtResource("7_r4a8d")
 focus_target = NodePath("../Splish")
