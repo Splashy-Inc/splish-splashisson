@@ -1,18 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4wvqqv3o4i48"]
+[gd_scene load_steps=11 format=3 uid="uid://b4wvqqv3o4i48"]
 
 [ext_resource type="Script" path="res://Scripts/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="1_tnbfu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="1_vcfar"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="2_cmo3h"]
+[ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://Scenes/Cutscenes/cutscene.tscn" id="2_gf3xw"]
 [ext_resource type="Script" path="res://Scripts/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="3_75gk2"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_gg0jf"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_teo1b"]
 
-[node name="Playground" type="Node"]
+[node name="Playground" type="Node" node_paths=PackedStringArray("boat")]
 script = ExtResource("1_bs7od")
+next_scene = ExtResource("2_gf3xw")
 dock_scene = ExtResource("8_teo1b")
+minimum_seconds = 10
+boat = NodePath("Boat")
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 

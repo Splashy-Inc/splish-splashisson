@@ -4,6 +4,8 @@ class_name Level
 
 signal completed
 
+@export var next_scene: PackedScene
+
 @export var dock_scene: PackedScene
 
 var progress = 0
