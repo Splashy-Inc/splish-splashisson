@@ -12,6 +12,7 @@
 
 [node name="Level" type="Node" node_paths=PackedStringArray("boat")]
 script = ExtResource("1_stx43")
+dock_scene = ExtResource("8_b63j4")
 minimum_seconds = 30
 boat = NodePath("Boat")
 

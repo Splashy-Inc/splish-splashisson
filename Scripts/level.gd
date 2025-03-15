@@ -4,7 +4,7 @@ class_name Level
 
 signal completed
 
-var dock_scene = load("res://Scenes/dock.tscn")
+@export var dock_scene: PackedScene
 
 var progress = 0
 @export var minimum_seconds: int

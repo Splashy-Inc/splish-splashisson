@@ -12,6 +12,7 @@
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_bs7od")
+dock_scene = ExtResource("8_teo1b")
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
