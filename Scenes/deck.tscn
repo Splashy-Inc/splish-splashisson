@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccika7v5l27ew"]
 
 [ext_resource type="Texture2D" uid="uid://dl2iyrtq3rdcy" path="res://Art/ShipTiles/ShipMiddle.png" id="1_146gp"]
-[ext_resource type="Script" path="res://Scenes/deck.gd" id="1_u6t8r"]
+[ext_resource type="Script" path="res://Scripts/deck.gd" id="1_u6t8r"]
 [ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://Scenes/play_grid.tscn" id="4_ds1m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi8fu"]

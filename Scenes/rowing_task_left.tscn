@@ -1,6 +1,6 @@
 [gd_scene load_steps=44 format=3 uid="uid://u5juiu6qbxnd"]
 
-[ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_xu50v"]
+[ext_resource type="Script" path="res://Scripts/rowing_task.gd" id="1_xu50v"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_6rxet"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="3_uruf0"]
 [ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="4_s3h66"]

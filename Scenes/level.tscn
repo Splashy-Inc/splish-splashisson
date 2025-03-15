@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="4_64cm4"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="5_pjrgm"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="6_peku6"]
-[ext_resource type="Script" path="res://Scenes/game_camera.gd" id="7_r4a8d"]
+[ext_resource type="Script" path="res://Scripts/game_camera.gd" id="7_r4a8d"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_b63j4"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_mfs7h"]
 
