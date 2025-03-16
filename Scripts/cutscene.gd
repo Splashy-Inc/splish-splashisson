@@ -26,4 +26,4 @@ func _input(event: InputEvent) -> void:
 		_on_continue_pressed()
 
 func _on_continue_pressed() -> void:
-	start_pressed.emit()
+	start_pressed.emit(level_scene)

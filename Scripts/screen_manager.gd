@@ -75,7 +75,7 @@ func _on_level_completed():
 			_on_start_cutscene()
 		elif next_scene is Level:
 			level_scene = level.next_scene
-			_on_start_level()
+			_on_start_level(null)
 	#_pause_play()
 	#hud.show_win_screen()
 	
@@ -91,7 +91,9 @@ func _set_level(new_level_scene: PackedScene):
 	level_scene = new_level_scene
 	#Globals.cur_level = level_scene
 
-func _on_start_level():
+func _on_start_level(new_level_scene: PackedScene):
+	if new_level_scene:
+		level_scene = new_level_scene
 	_restart_level()
 	if cutscene:
 		cutscene.queue_free()

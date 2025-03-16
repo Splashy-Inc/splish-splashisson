@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=11 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_42opa"]
+[ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://Scenes/Cutscenes/cutscene.tscn" id="2_fsg7x"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="2_ow1x7"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="3_6em2h"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="4_wasst"]
@@ -10,8 +11,12 @@
 [ext_resource type="Script" path="res://Scripts/game_camera.gd" id="8_ds0cc"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="9_s2lfu"]
 
-[node name="Tutorial" type="Node"]
+[node name="Tutorial" type="Node" node_paths=PackedStringArray("boat")]
 script = ExtResource("1_42opa")
+next_scene = ExtResource("2_fsg7x")
+dock_scene = ExtResource("2_ow1x7")
+minimum_seconds = 10
+boat = NodePath("Boat")
 
 [node name="Ocean" parent="." instance=ExtResource("3_6em2h")]
 
