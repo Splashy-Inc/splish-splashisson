@@ -62,23 +62,23 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ltj1g")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="DialogBox" type="HBoxContainer" parent="."]
 offset_top = 270.0
 offset_right = 640.0
 offset_bottom = 360.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="SplishPanel" type="PanelContainer" parent="HBoxContainer"]
+[node name="SplishPanel" type="PanelContainer" parent="DialogBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Splish" type="TextureRect" parent="HBoxContainer/SplishPanel"]
+[node name="Splish" type="TextureRect" parent="DialogBox/SplishPanel"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_xmi54")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="DialogBox"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -87,11 +87,11 @@ I need a shipment of food brought to the next port. It should be an easy deliver
 I'll have my lackeys load it on the ship and you can be on your way."
 autowrap_mode = 2
 
-[node name="MerchantPanel" type="PanelContainer" parent="HBoxContainer"]
+[node name="MerchantPanel" type="PanelContainer" parent="DialogBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Merchant" type="TextureRect" parent="HBoxContainer/MerchantPanel"]
+[node name="Merchant" type="TextureRect" parent="DialogBox/MerchantPanel"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_ff27w")
 stretch_mode = 3
@@ -102,13 +102,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -81.5
-offset_top = -116.0
-offset_right = 81.5
-offset_bottom = -95.0
+offset_left = -30.0
+offset_top = -117.0
+offset_right = 30.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Press any button to continue"
+text = "Continue"
 
 [node name="Boat" parent="." instance=ExtResource("16_ylnku")]
 position = Vector2(211, 142)

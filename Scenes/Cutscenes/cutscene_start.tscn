@@ -25,22 +25,22 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_8q681")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="DialogBox" type="HBoxContainer" parent="."]
 offset_top = 270.0
 offset_right = 640.0
 offset_bottom = 360.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="SplishPanel" type="PanelContainer" parent="HBoxContainer"]
+[node name="SplishPanel" type="PanelContainer" parent="DialogBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DialogSection" type="VBoxContainer" parent="HBoxContainer"]
+[node name="DialogSection" type="VBoxContainer" parent="DialogBox"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="HBoxContainer/DialogSection"]
+[node name="Label" type="Label" parent="DialogBox/DialogSection"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -50,24 +50,24 @@ Do you want a refresher on how to play?"
 label_settings = SubResource("LabelSettings_0hwnk")
 autowrap_mode = 2
 
-[node name="OptionButtons" type="HBoxContainer" parent="HBoxContainer/DialogSection"]
+[node name="OptionButtons" type="HBoxContainer" parent="DialogBox/DialogSection"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Tutorial" type="Button" parent="HBoxContainer/DialogSection/OptionButtons"]
+[node name="Tutorial" type="Button" parent="DialogBox/DialogSection/OptionButtons"]
 layout_mode = 2
 text = "Yes (tutorial)"
 
-[node name="Start" type="Button" parent="HBoxContainer/DialogSection/OptionButtons"]
+[node name="Start" type="Button" parent="DialogBox/DialogSection/OptionButtons"]
 layout_mode = 2
 text = "No (level 1)"
 
-[node name="MerchantPanel" type="PanelContainer" parent="HBoxContainer"]
+[node name="MerchantPanel" type="PanelContainer" parent="DialogBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Merchant" type="TextureRect" parent="HBoxContainer/MerchantPanel"]
+[node name="Merchant" type="TextureRect" parent="DialogBox/MerchantPanel"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_kpbx5")
 expand_mode = 3
@@ -82,7 +82,7 @@ scale = Vector2(0.15, 0.15)
 position = Vector2(226.667, 5.05447e-05)
 texture = ExtResource("9_6n3k4")
 
-[connection signal="pressed" from="HBoxContainer/DialogSection/OptionButtons/Tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="HBoxContainer/DialogSection/OptionButtons/Start" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="DialogBox/DialogSection/OptionButtons/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="DialogBox/DialogSection/OptionButtons/Start" to="." method="_on_continue_pressed"]
 
 [editable path="Boat"]

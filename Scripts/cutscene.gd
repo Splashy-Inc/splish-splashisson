@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton or event is InputEventJoypadButton or event is InputEventKey:
+	if event is InputEventJoypadButton:
 		_on_continue_pressed()
 
 func _on_continue_pressed() -> void:
