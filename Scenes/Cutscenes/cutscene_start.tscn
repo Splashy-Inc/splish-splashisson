@@ -1,33 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://4qwgetiar50v"]
+[gd_scene load_steps=10 format=3 uid="uid://4qwgetiar50v"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene_start.gd" id="1_0jjtp"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="2_8q681"]
 [ext_resource type="PackedScene" uid="uid://q6gx1xcbys3g" path="res://Scenes/tutorial.tscn" id="2_mi8w7"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://Scenes/level.tscn" id="3_hpspq"]
-[ext_resource type="Texture2D" uid="uid://dfq12wbj0docl" path="res://Art/Merchants/Splish64/Splish64A.png" id="3_k78yf"]
-[ext_resource type="Texture2D" uid="uid://yhyoenx2o5mh" path="res://Art/Merchants/Splish64/Splish64B.png" id="4_tpht4"]
-[ext_resource type="Texture2D" uid="uid://bxdow1v0jmkqm" path="res://Art/Merchants/Splish64/Splish64C.png" id="5_bg4nt"]
-[ext_resource type="Texture2D" uid="uid://bwvdnyr687gt" path="res://Art/Merchants/Splish64/Splish64D.png" id="6_ncfek"]
 [ext_resource type="Texture2D" uid="uid://ctd4seyb8y3re" path="res://Art/Splashy/SplashyViking.png" id="7_yxadq"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="8_dy7yb"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="9_6n3k4"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_xmi54"]
-frames = 6
-frame_0/texture = ExtResource("3_k78yf")
-frame_1/texture = ExtResource("4_tpht4")
-frame_1/duration = 0.5
-frame_2/texture = ExtResource("3_k78yf")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("5_bg4nt")
-frame_3/duration = 0.25
-frame_4/texture = ExtResource("3_k78yf")
-frame_4/duration = 1.0
-frame_5/texture = ExtResource("6_ncfek")
-frame_5/duration = 0.5
-
 [sub_resource type="LabelSettings" id="LabelSettings_0hwnk"]
 line_spacing = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpbx5"]
+atlas = ExtResource("7_yxadq")
+region = Rect2(175, 94, 100, 90)
 
 [node name="StartCutscene" type="Node"]
 script = ExtResource("1_0jjtp")
@@ -50,12 +36,6 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Splish" type="TextureRect" parent="HBoxContainer/SplishPanel"]
-visible = false
-layout_mode = 2
-texture = SubResource("AnimatedTexture_xmi54")
-stretch_mode = 3
-
 [node name="DialogSection" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 6
@@ -64,7 +44,7 @@ theme_override_constants/separation = 6
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 1
-text = "Hey, Splashy here! Before you jump into things, I want to offer to show you how to play.
+text = "Hey, Splashy here! Before you jump into things, I want to offer to show you a tutorial.
 
 Do you want a refresher on how to play?"
 label_settings = SubResource("LabelSettings_0hwnk")
@@ -89,7 +69,7 @@ size_flags_horizontal = 3
 
 [node name="Merchant" type="TextureRect" parent="HBoxContainer/MerchantPanel"]
 layout_mode = 2
-texture = ExtResource("7_yxadq")
+texture = SubResource("AtlasTexture_kpbx5")
 expand_mode = 3
 stretch_mode = 4
 flip_h = true
