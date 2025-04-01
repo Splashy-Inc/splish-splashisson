@@ -60,5 +60,7 @@ func _on_leak_spawn_timer_timeout() -> void:
 		Globals.boat.spawn_leak()
 
 func _on_completed() -> void:
-	$Obstacles/LeakSpawnTimer.stop()
-	$Obstacles/RatHole.die()
+	if $Obstacles/LeakSpawnTimer:
+		$Obstacles/LeakSpawnTimer.stop()
+	if $Obstacles/RatHole:
+		$Obstacles/RatHole.die()
