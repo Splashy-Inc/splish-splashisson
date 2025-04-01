@@ -15,6 +15,7 @@ func get_task_slots() -> Array[TaskSlot]:
 	for child in get_children():
 		if child is TaskSlot:
 			task_slots.append(child)
+	task_slots.sort_custom(_sort_slots)
 	return task_slots
 
 func get_cargo_slots() -> Array[CargoSlot]:
@@ -44,3 +45,11 @@ func spawn_puddle(spawn_point: Vector2) -> Puddle:
 # Point must be global, not local
 func center_point_in_cell(point: Vector2):
 	return to_global(map_to_local(local_to_map(to_local(point))))
+
+func _sort_slots(a: TaskSlot, b: TaskSlot):
+	if a.global_position.y == b.global_position.y: # Same row
+		if a.global_position.x > b.global_position.x: # A is to the right of B, should be later in list
+			return true
+	elif a.global_position.y < b.global_position.y: # A is below B, should be later in list
+		return true
+	return false
