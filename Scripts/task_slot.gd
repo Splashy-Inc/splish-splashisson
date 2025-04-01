@@ -12,9 +12,9 @@ func _ready() -> void:
 func set_task_type(new_type: Globals.Task_type):
 	if is_left:
 		if new_type == Globals.Task_type.ROWING_RIGHT:
-			return false
+			new_type = Globals.Task_type.ROWING_LEFT
 	elif new_type == Globals.Task_type.ROWING_LEFT:
-		return false 
+		new_type = Globals.Task_type.ROWING_RIGHT
 	
 	if type != new_type:
 		type = new_type
@@ -28,6 +28,8 @@ func set_task_type(new_type: Globals.Task_type):
 			if new_task:
 				new_task.free()
 			return false
+	else:
+		return true
 
 func clear():
 	for child in get_children():
