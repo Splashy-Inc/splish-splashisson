@@ -48,7 +48,7 @@ func center_point_in_cell(point: Vector2):
 
 func _sort_slots(a: TaskSlot, b: TaskSlot):
 	if a.global_position.y == b.global_position.y: # Same row
-		if a.global_position.x > b.global_position.x: # A is to the right of B, should be later in list
+		if a.global_position.x < b.global_position.x: # A is to the right of B, should be later in list
 			return true
 	elif a.global_position.y < b.global_position.y: # A is below B, should be later in list
 		return true
