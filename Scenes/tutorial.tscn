@@ -23,7 +23,7 @@ boat = NodePath("Boat")
 
 [node name="Boat" parent="." instance=ExtResource("5_yg4ik")]
 position = Vector2(320, 180)
-deck_tasks = Array[int]([1, 2, 0, 0])
+deck_tasks = Array[int]([2, 1, 0, 0, 0])
 
 [node name="People" type="Node2D" parent="."]
 z_index = 1
