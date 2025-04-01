@@ -29,13 +29,15 @@ func _set_up_tasks():
 	
 	clear_deck()
 	# Generate and place new tasks
-	for task in tasks:
-		for slot in task_slots:
+	var temp_tasks_list = tasks.duplicate()
+	
+	for slot in task_slots:
+		for task in temp_tasks_list:
 			if slot.set_task_type(task):
-				task = Globals.Task_type.NONE
+				temp_tasks_list.erase(task)
 				break
-		if task != Globals.Task_type.NONE:
-			print("Unable to assign ", Globals.Task_type.keys()[task], " to a slot. There may not be enough slots.")
+		if slot.type != Globals.Task_type.NONE:
+			print("Unable to assign anything to slot ", slot, ". There may not be a task that can go there.")
 	
 	tasks_set_up.emit()
 
