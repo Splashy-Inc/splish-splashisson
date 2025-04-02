@@ -1,25 +1,43 @@
-[gd_scene load_steps=10 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=17 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_42opa"]
+[ext_resource type="Script" path="res://dialog_data.gd" id="2_6sa47"]
 [ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://Scenes/Cutscenes/cutscene.tscn" id="2_fsg7x"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="2_ow1x7"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="3_6em2h"]
+[ext_resource type="Resource" uid="uid://oldvcmnehasr" path="res://Dialogs/Tutorial/tutorial_overview_dialog.tres" id="3_vuwa0"]
+[ext_resource type="Resource" uid="uid://eh8pyhctavex" path="res://Dialogs/Tutorial/tutorial_movement_dialog.tres" id="4_6hufv"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="4_wasst"]
+[ext_resource type="Resource" uid="uid://dvhmx2x12ies6" path="res://Dialogs/Tutorial/tutorial_select_dialog.tres" id="5_s5i7o"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="5_yg4ik"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="6_2hybe"]
+[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://Scenes/dialog_box.tscn" id="6_o4p2q"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="7_wap1k"]
+[ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="7_xx2yn"]
 [ext_resource type="Script" path="res://Scripts/game_camera.gd" id="8_ds0cc"]
 
-[node name="Tutorial" type="Node" node_paths=PackedStringArray("boat")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
+size = Vector2(257, 49)
+
+[node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "boat")]
 script = ExtResource("1_42opa")
+dialog_files = Array[ExtResource("2_6sa47")]([ExtResource("3_vuwa0"), ExtResource("4_6hufv"), ExtResource("5_s5i7o")])
 next_scene = ExtResource("2_fsg7x")
 dock_scene = ExtResource("2_ow1x7")
+player = NodePath("People/Splish")
 minimum_seconds = 10
 boat = NodePath("Boat")
 
 [node name="Ocean" parent="." instance=ExtResource("3_6em2h")]
 
 [node name="HUD" parent="." instance=ExtResource("4_wasst")]
+
+[node name="DialogBox" parent="HUD" instance=ExtResource("6_o4p2q")]
+left_texture = null
+right_texture = ExtResource("7_xx2yn")
+
+[node name="RightTexture" parent="HUD/DialogBox/HBoxContainer/RightPanel" index="0"]
+flip_h = true
 
 [node name="Boat" parent="." instance=ExtResource("5_yg4ik")]
 position = Vector2(320, 180)
@@ -48,9 +66,23 @@ position = Vector2(259, 224)
 [node name="PuddleSpawnPoint" type="Marker2D" parent="Obstacles"]
 position = Vector2(362.408, 131.011)
 
+[node name="DialogTriggers" type="Node" parent="."]
+
+[node name="MovementStage" type="Area2D" parent="DialogTriggers"]
+position = Vector2(324, 11)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogTriggers/MovementStage"]
+shape = SubResource("RectangleShape2D_qexjr")
+
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("2_ow1x7")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
 [connection signal="completed" from="." to="." method="_on_completed"]
+[connection signal="dialog_ended" from="HUD/DialogBox" to="." method="_on_dialog_ended"]
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
+[connection signal="body_entered" from="DialogTriggers/MovementStage" to="." method="_on_movement_stage_body_entered"]
+
+[editable path="HUD/DialogBox"]

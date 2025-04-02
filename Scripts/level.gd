@@ -8,6 +8,8 @@ signal completed
 
 @export var dock_scene: PackedScene
 
+@export var player: Player
+
 var progress = 0
 @export var minimum_seconds: int
 var length = 0
@@ -22,6 +24,10 @@ var end_dock: Dock
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	boat.set_deck_length(boat_length)
+	_level_ready()
+	
+func _level_ready():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

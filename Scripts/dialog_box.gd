@@ -1,5 +1,7 @@
 extends PanelContainer
 
+class_name DialogBox
+
 signal dialog_ended
 
 @export var left_texture: Texture2D
@@ -59,3 +61,8 @@ func _show_end_buttons():
 		dialog_button.hide()
 		for button in end_buttons:
 			button.show()
+			
+func set_dialog_data(new_dialog_data: DialogData):
+	dialog_data = new_dialog_data
+	cur_dialog_position = -1
+	advance_dialog()
