@@ -4,19 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="2_8q681"]
 [ext_resource type="PackedScene" uid="uid://q6gx1xcbys3g" path="res://Scenes/tutorial.tscn" id="2_mi8w7"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://Scenes/level.tscn" id="3_hpspq"]
-[ext_resource type="Texture2D" uid="uid://ctd4seyb8y3re" path="res://Art/Splashy/SplashyViking.png" id="7_yxadq"]
+[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://Scenes/dialog_box.tscn" id="5_ryrfn"]
+[ext_resource type="PackedScene" uid="uid://cqw3k8ogffvua" path="res://Scenes/dialog_button.tscn" id="6_x1khm"]
+[ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="6_xooul"]
+[ext_resource type="Resource" uid="uid://cavw65m6hlnw3" path="res://Dialogs/start_cutscene_dialog_data.tres" id="7_4jhag"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="8_dy7yb"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="9_6n3k4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i8xw"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_0hwnk"]
-line_spacing = 2.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpbx5"]
-atlas = ExtResource("7_yxadq")
-region = Rect2(175, 94, 100, 90)
 
 [node name="StartCutscene" type="Node"]
 script = ExtResource("1_0jjtp")
@@ -28,66 +21,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_8q681")
 
-[node name="DialogBox" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(640, 90)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -90.0
-offset_right = 320.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4i8xw")
+[node name="DialogBox" parent="." node_paths=PackedStringArray("end_buttons") instance=ExtResource("5_ryrfn")]
+left_texture = null
+right_texture = ExtResource("6_xooul")
+dialog_data = ExtResource("7_4jhag")
+end_buttons = [NodePath("TutorialButton"), NodePath("SkipButton")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogBox"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
+[node name="RightTexture" parent="DialogBox/HBoxContainer/RightPanel" index="0"]
+flip_h = true
 
-[node name="SplishPanel" type="PanelContainer" parent="DialogBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DialogSection" type="VBoxContainer" parent="DialogBox/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="Label" type="Label" parent="DialogBox/HBoxContainer/DialogSection"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_vertical = 1
-text = "Hey, Splashy here! Before you jump into things, I want to offer to show you a tutorial.
-
-Do you want a refresher on how to play?"
-label_settings = SubResource("LabelSettings_0hwnk")
-autowrap_mode = 2
-
-[node name="OptionButtons" type="HBoxContainer" parent="DialogBox/HBoxContainer/DialogSection"]
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Tutorial" type="Button" parent="DialogBox/HBoxContainer/DialogSection/OptionButtons"]
+[node name="TutorialButton" parent="DialogBox" instance=ExtResource("6_x1khm")]
 layout_mode = 2
 text = "Yes (tutorial)"
+action_type = 1
 
-[node name="Start" type="Button" parent="DialogBox/HBoxContainer/DialogSection/OptionButtons"]
+[node name="SkipButton" parent="DialogBox" instance=ExtResource("6_x1khm")]
 layout_mode = 2
-text = "No (level 1)"
-
-[node name="MerchantPanel" type="PanelContainer" parent="DialogBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Merchant" type="TextureRect" parent="DialogBox/HBoxContainer/MerchantPanel"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_kpbx5")
-expand_mode = 3
-stretch_mode = 4
-flip_h = true
+text = "No  (skip)"
+action_type = 1
 
 [node name="Boat" parent="." instance=ExtResource("8_dy7yb")]
 position = Vector2(211, 142)
@@ -97,7 +48,9 @@ scale = Vector2(0.15, 0.15)
 position = Vector2(226.667, 5.05447e-05)
 texture = ExtResource("9_6n3k4")
 
-[connection signal="pressed" from="DialogBox/HBoxContainer/DialogSection/OptionButtons/Tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="DialogBox/HBoxContainer/DialogSection/OptionButtons/Start" to="." method="_on_continue_pressed"]
+[connection signal="dialog_ended" from="DialogBox" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="DialogBox/TutorialButton" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="DialogBox/SkipButton" to="." method="_on_continue_pressed"]
 
+[editable path="DialogBox"]
 [editable path="Boat"]

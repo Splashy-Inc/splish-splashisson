@@ -1,60 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://cs3hpuql1pmvv"]
+[gd_scene load_steps=8 format=3 uid="uid://cs3hpuql1pmvv"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_q7fsr"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://Scenes/level.tscn" id="2_lp0n3"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="3_ltj1g"]
-[ext_resource type="Texture2D" uid="uid://dfq12wbj0docl" path="res://Art/Merchants/Splish64/Splish64A.png" id="4_4gpsp"]
-[ext_resource type="Texture2D" uid="uid://yhyoenx2o5mh" path="res://Art/Merchants/Splish64/Splish64B.png" id="5_hwnm8"]
-[ext_resource type="Texture2D" uid="uid://bxdow1v0jmkqm" path="res://Art/Merchants/Splish64/Splish64C.png" id="6_ykgo5"]
-[ext_resource type="Texture2D" uid="uid://bwvdnyr687gt" path="res://Art/Merchants/Splish64/Splish64D.png" id="7_kidjp"]
-[ext_resource type="Texture2D" uid="uid://cujsk5igii0ps" path="res://Art/Merchants/Shrimp/ShrimpA.png" id="8_yfg3j"]
-[ext_resource type="Texture2D" uid="uid://c8c8tcppjaq00" path="res://Art/Merchants/Shrimp/ShrimpB.png" id="9_t8rxt"]
-[ext_resource type="Texture2D" uid="uid://bct3a05r62c5s" path="res://Art/Merchants/Shrimp/ShrimpC.png" id="10_6iiw7"]
-[ext_resource type="Texture2D" uid="uid://bvmxb6remxqh3" path="res://Art/Merchants/Shrimp/ShrimpF.png" id="11_lu271"]
-[ext_resource type="Texture2D" uid="uid://dvenakhqi302i" path="res://Art/Merchants/Shrimp/ShrimpG.png" id="12_pek8a"]
-[ext_resource type="Texture2D" uid="uid://b0sc36v6gogr8" path="res://Art/Merchants/Shrimp/ShrimpE.png" id="13_jcu30"]
-[ext_resource type="Texture2D" uid="uid://b0qmxub5loykh" path="res://Art/Merchants/Shrimp/ShrimpD.png" id="14_f3cii"]
-[ext_resource type="Texture2D" uid="uid://bkbdqi2cnlcdi" path="res://Art/Merchants/Shrimp/ShrimpH.png" id="15_2ywcx"]
+[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://Scenes/dialog_box.tscn" id="4_xvmpv"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="16_ylnku"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="17_yxxjt"]
 [ext_resource type="Texture2D" uid="uid://o1cugesk8vp1" path="res://Art/Merchants/Shrimp/ShrimpLowQuality.png" id="18_8peca"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_263dt"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_xmi54"]
-frames = 6
-frame_0/texture = ExtResource("4_4gpsp")
-frame_1/texture = ExtResource("5_hwnm8")
-frame_1/duration = 0.5
-frame_2/texture = ExtResource("4_4gpsp")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("6_ykgo5")
-frame_3/duration = 0.25
-frame_4/texture = ExtResource("4_4gpsp")
-frame_4/duration = 1.0
-frame_5/texture = ExtResource("7_kidjp")
-frame_5/duration = 0.5
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_ff27w"]
-frames = 9
-frame_0/texture = ExtResource("8_yfg3j")
-frame_1/texture = ExtResource("9_t8rxt")
-frame_1/duration = 0.5
-frame_2/texture = ExtResource("10_6iiw7")
-frame_2/duration = 0.5
-frame_3/texture = ExtResource("11_lu271")
-frame_3/duration = 0.5
-frame_4/texture = ExtResource("12_pek8a")
-frame_4/duration = 0.5
-frame_5/texture = ExtResource("8_yfg3j")
-frame_5/duration = 1.0
-frame_6/texture = ExtResource("13_jcu30")
-frame_6/duration = 0.5
-frame_7/texture = ExtResource("14_f3cii")
-frame_7/duration = 0.5
-frame_8/texture = ExtResource("15_2ywcx")
-frame_8/duration = 1.0
 
 [node name="Cutscene" type="Node"]
 script = ExtResource("1_q7fsr")
@@ -65,65 +17,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ltj1g")
 
-[node name="DialogBox" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(640, 90)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -90.0
-offset_right = 320.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_263dt")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogBox"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="SplishPanel" type="PanelContainer" parent="DialogBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Splish" type="TextureRect" parent="DialogBox/HBoxContainer/SplishPanel"]
-layout_mode = 2
-texture = SubResource("AnimatedTexture_xmi54")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="DialogBox/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_vertical = 1
-text = "If it isn't Splish Splashisson! Remember how you owe me that favor?
-I need a shipment of food brought to the next port. It should be an easy delivery this time...
-I'll have my lackeys load it on the ship and you can be on your way."
-autowrap_mode = 2
-
-[node name="MerchantPanel" type="PanelContainer" parent="DialogBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Merchant" type="TextureRect" parent="DialogBox/HBoxContainer/MerchantPanel"]
-layout_mode = 2
-texture = SubResource("AnimatedTexture_ff27w")
-stretch_mode = 3
-
-[node name="Continue" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -117.0
-offset_right = 30.0
-offset_bottom = -96.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Continue"
+[node name="DialogBox" parent="." instance=ExtResource("4_xvmpv")]
 
 [node name="Boat" parent="." instance=ExtResource("16_ylnku")]
 position = Vector2(211, 142)
@@ -137,6 +31,6 @@ texture = ExtResource("17_yxxjt")
 position = Vector2(273.333, 0)
 texture = ExtResource("18_8peca")
 
-[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="dialog_ended" from="DialogBox" to="." method="_on_continue_pressed"]
 
 [editable path="Boat"]
