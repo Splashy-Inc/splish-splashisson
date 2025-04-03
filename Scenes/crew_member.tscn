@@ -788,7 +788,7 @@ _data = {
 "walking_up": SubResource("Animation_x2nhf")
 }
 
-[node name="CrewMember" type="CharacterBody2D" groups=["selectable"]]
+[node name="CrewMember" type="CharacterBody2D" groups=["crew", "selectable"]]
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1

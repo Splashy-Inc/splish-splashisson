@@ -7,7 +7,6 @@
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5b04q"]
 resource_name = "TaskSlots"
 scenes/3/scene = ExtResource("1_5trjl")
-scenes/3/display_placeholder = ExtResource("1_5trjl")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_befmc"]
 resource_name = "CargoSlots"

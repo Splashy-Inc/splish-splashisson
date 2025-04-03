@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=18 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://dialog_data.gd" id="2_6sa47"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://dvhmx2x12ies6" path="res://Dialogs/Tutorial/tutorial_select_dialog.tres" id="5_s5i7o"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="5_yg4ik"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="6_2hybe"]
+[ext_resource type="Resource" uid="uid://c6n07tf1oeitf" path="res://Dialogs/Tutorial/tutorial_assign_dialog.tres" id="6_a6ib3"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://Scenes/dialog_box.tscn" id="6_o4p2q"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="7_wap1k"]
 [ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="7_xx2yn"]
@@ -21,7 +22,7 @@ size = Vector2(257, 49)
 
 [node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "boat")]
 script = ExtResource("1_42opa")
-dialog_files = Array[ExtResource("2_6sa47")]([ExtResource("3_vuwa0"), ExtResource("4_6hufv"), ExtResource("5_s5i7o")])
+dialog_files = Array[ExtResource("2_6sa47")]([ExtResource("3_vuwa0"), ExtResource("4_6hufv"), ExtResource("5_s5i7o"), ExtResource("6_a6ib3")])
 next_scene = ExtResource("2_fsg7x")
 dock_scene = ExtResource("2_ow1x7")
 player = NodePath("People/Splish")
@@ -33,6 +34,7 @@ boat = NodePath("Boat")
 [node name="HUD" parent="." instance=ExtResource("4_wasst")]
 
 [node name="DialogBox" parent="HUD" instance=ExtResource("6_o4p2q")]
+visible = false
 left_texture = null
 right_texture = ExtResource("7_xx2yn")
 
@@ -61,7 +63,7 @@ focus_target = NodePath("../Splish")
 [node name="Obstacles" type="Node" parent="."]
 
 [node name="LeakSpawnPoint" type="Marker2D" parent="Obstacles"]
-position = Vector2(259, 224)
+position = Vector2(410, 92)
 
 [node name="PuddleSpawnPoint" type="Marker2D" parent="Obstacles"]
 position = Vector2(362.408, 131.011)

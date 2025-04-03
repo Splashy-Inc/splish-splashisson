@@ -82,4 +82,4 @@ func _on_threat_died(threat: Node2D):
 	remove_threat(threat)
 
 func is_targetable() -> bool:
-	return threats.is_empty() and not assignee
+	return threats.is_empty() and not assignee and is_in_group("actionable")

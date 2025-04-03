@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_rgj6f")
-label = "Movement"
+label = "Select"
 dialog_text = Array[String](["You moved! Good job?", "Next, let's tell your crew what to do!", "Crew will just stand around or continue working until you get their attention.", "To get a crew member's attention, move close to them until they highlight green, then LEFT-CLICK on mouse or PRESS A on controller", "Give that a shot."])

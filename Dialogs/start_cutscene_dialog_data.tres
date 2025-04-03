@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_ryqk6")
+label = ""
 dialog_text = Array[String](["Hey, Splashy here!", "Before you jump into things, I want to offer to show you a tutorial.", "Do you want a refresher on how to play?"])

@@ -19,6 +19,8 @@ var followers: Array[Crew]
 var selection_target: Node2D
 var action_target: Node2D
 
+var targeting_group_blacklist : Array[StringName]
+
 func _process(delta: float) -> void:
 	if not current_assignment and Input.is_action_pressed("act"):
 		_find_action_target()
@@ -134,9 +136,17 @@ func _find_action_target():
 	var selectables = get_tree().get_nodes_in_group("selectable")
 	
 	for interactable in interactables:
+		var skip = false
+		for group in targeting_group_blacklist:
+			if interactable.is_in_group(group):
+				skip = true
+				break
 		if interactable in selectables:
-			continue
+			skip = true
 		if interactable.has_method("is_targetable") and not interactable.is_targetable():
+			skip = true
+		
+		if skip:
 			continue
 		
 		if action_target:
@@ -152,11 +162,19 @@ func _find_selection_target():
 	var selectables = get_tree().get_nodes_in_group("selectable")
 	
 	for interactable in interactables:
+		var skip = false
+		for group in targeting_group_blacklist:
+			if interactable.is_in_group(group):
+				skip = true
+				break
 		if not interactable in selectables or (interactable is Crew and interactable in followers):
-			continue
+			skip = true
 		if interactable is Task:
 			if interactable.assignee is Player:
-				continue
+				skip = true
+		
+		if skip:
+			continue
 		
 		if selection_target:
 			var priority_target = _compare_target_priority(selection_target, interactable)
