@@ -29,6 +29,10 @@ func _ready() -> void:
 		button.reparent(dialog_button_section)
 	_hide_end_buttons()
 
+func _process(delta: float) -> void:
+	if Globals.joypad_connected and dialog_button.visible and not dialog_button.has_focus():
+		dialog_button.grab_focus()
+
 func advance_dialog():
 	var next_line = _get_next_line()
 	if next_line:
@@ -61,6 +65,7 @@ func _show_end_buttons():
 		dialog_button.hide()
 		for button in end_buttons:
 			button.show()
+		end_buttons.front().grab_focus()
 			
 func set_dialog_data(new_dialog_data: DialogData):
 	dialog_data = new_dialog_data

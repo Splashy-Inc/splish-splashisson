@@ -33,9 +33,9 @@ func spawn_leak(spawn_point: Vector2):
 		if spawned_leak == new_leak:
 			if new_leak.global_position.x > Globals.boat.global_position.x:
 				new_leak.scale.x *= -1
-			return true
+			return new_leak
 		else:
-			return false
+			return null
 
 func spawn_puddle(spawn_point: Vector2) -> Puddle:
 	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE)

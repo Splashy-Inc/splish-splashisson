@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_21qg2")
+label = ""
 dialog_text = Array[String](["If it isn't Splish Splashisson! Remember how you owe me that favor?", "I need a shipment of food brought to the next port. It should be an easy delivery this time...", "I'll have my lackeys load it on the ship and you can be on your way."])

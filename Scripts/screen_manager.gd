@@ -105,4 +105,12 @@ func _on_start_cutscene():
 	cutscene = cutscene_scene.instantiate()
 	add_child(cutscene)
 	cutscene.start_pressed.connect(_on_start_level)
+	if cutscene is TutorialCutscene:
+		cutscene.tutorial_skipped.connect(_on_tutorial_skipped.bind(cutscene))
 	_set_level(cutscene.level_scene)
+
+func _on_tutorial_skipped(tutorial_cutscene: TutorialCutscene):
+	if tutorial_cutscene.level_1_cutscene:
+		cutscene_scene = tutorial_cutscene.level_1_cutscene
+		_on_start_cutscene()
+		tutorial_cutscene.queue_free()

@@ -36,8 +36,7 @@ func _process(delta: float) -> void:
 		if progress >= length:
 			finished = true
 			boat.stop(end_dock)
-			print("Win!")
-			completed.emit()
+			_on_finished()
 		Globals.update_level_progress_percent(clamp(progress/length, 0.0, 1.0))
 
 func _level_process(delta: float):
@@ -70,8 +69,10 @@ func _on_leak_spawn_timer_timeout() -> void:
 	if get_tree().get_nodes_in_group("leak").size() < 3:
 		Globals.boat.spawn_leak()
 
-func _on_completed() -> void:
+func _on_finished():
 	if $Obstacles/LeakSpawnTimer:
 		$Obstacles/LeakSpawnTimer.stop()
 	if $Obstacles/RatHole:
 		$Obstacles/RatHole.die()
+	print("Win!")
+	completed.emit()

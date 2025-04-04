@@ -1,6 +1,11 @@
 extends Cutscene
 
+class_name TutorialCutscene
+
+signal tutorial_skipped
+
 @export var tutorial_scene: PackedScene
+@export var level_1_cutscene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,3 +21,6 @@ func _input(event: InputEvent) -> void:
 
 func _on_tutorial_pressed() -> void:
 	start_pressed.emit(tutorial_scene)
+
+func _on_skip_button_pressed() -> void:
+	tutorial_skipped.emit()

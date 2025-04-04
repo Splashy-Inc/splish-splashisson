@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://7cb47q8j6xwg"]
+
+[ext_resource type="Script" path="res://dialog_data.gd" id="1_ug4ud"]
+
+[resource]
+script = ExtResource("1_ug4ud")
+label = "Complete"
+dialog_text = Array[String](["Well, you made it to the end of the tutorial mission. Good luck out there!"])

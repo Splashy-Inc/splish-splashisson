@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://cwvc1pc3mparo"]
+
+[ext_resource type="Script" path="res://dialog_data.gd" id="1_lfvm1"]
+
+[resource]
+script = ExtResource("1_lfvm1")
+label = "Rats"
+dialog_text = Array[String](["A rat hole has appeared!", "Rats will spawn from there, so you need to keep an eye on that.", "Rats will head straight for your cargo and attempt to steal pieces of it.", "Someone has to stomp rats to \"get rid of\" them. Make that happen with either yourself or your crew.", "Or just let them take your cargo, your choice...", "You'll have to stomp at least one before we move on."])

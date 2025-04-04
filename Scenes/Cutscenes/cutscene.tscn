@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs3hpuql1pmvv"]
+[gd_scene load_steps=9 format=3 uid="uid://cs3hpuql1pmvv"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_q7fsr"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://Scenes/level.tscn" id="2_lp0n3"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="3_ltj1g"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://Scenes/dialog_box.tscn" id="4_xvmpv"]
+[ext_resource type="Resource" uid="uid://du25auqomcjd8" path="res://Dialogs/level_1_cutscene_dialog_data.tres" id="5_40sgp"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="16_ylnku"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="17_yxxjt"]
 [ext_resource type="Texture2D" uid="uid://o1cugesk8vp1" path="res://Art/Merchants/Shrimp/ShrimpLowQuality.png" id="18_8peca"]
@@ -18,6 +19,7 @@ offset_bottom = 40.0
 texture = ExtResource("3_ltj1g")
 
 [node name="DialogBox" parent="." instance=ExtResource("4_xvmpv")]
+dialog_data = ExtResource("5_40sgp")
 
 [node name="Boat" parent="." instance=ExtResource("16_ylnku")]
 position = Vector2(211, 142)

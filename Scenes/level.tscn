@@ -60,6 +60,5 @@ autostart = true
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
-[connection signal="completed" from="." to="." method="_on_completed"]
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

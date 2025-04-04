@@ -42,10 +42,11 @@ var action_color := Color(1, 0.741, 0.196)
 var crew_select_color := Color(0, 0.843, 0.196)
 var disabled_modulate := Color(1, 1, 1, 0.498)
 var modulate_reset := Color(1, 1, 1)
+var joypad_connected := Input.get_connected_joypads().size() > 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -93,3 +94,6 @@ func update_level_progress_percent(percent: float):
 		
 func _on_level_completed():
 	level_completed.emit(level)
+
+func _on_joy_connection_changed():
+	joypad_connected = Input.get_connected_joypads().size() > 0
