@@ -25,6 +25,7 @@ const PUDDLE_SIZE = Vector2(32,32)
 var puddle_amount = 0
 var overflow = 0
 var stage = Stage.SMALL
+var can_spread = true
 
 var is_dead = false
 var assignees: Array[Worker]
@@ -111,17 +112,18 @@ func set_worker(new_worker: Worker) -> bool:
 	#[3]
 # Split spread amount to each 
 func spread(amount: int, source: Puddle):
-	if amount >= neighbor_puddles.size():
-		if stage < Stage.LARGE:
-			puddle_amount += amount
-			_update_stage()
-		else:
-			_update_neighbor_puddles()
-			for neighbor in neighbor_puddles.values():
-				if neighbor["puddle"] and neighbor["puddle"] != source:
-					neighbor["puddle"].spread(amount/neighbor_puddles.size(), self)
-				else:
-					neighbor["puddle"] = Globals.boat.spawn_puddle(neighbor["spawn_point"])
+	if can_spread:
+		if amount >= neighbor_puddles.size():
+			if stage < Stage.LARGE:
+				puddle_amount += amount
+				_update_stage()
+			else:
+				_update_neighbor_puddles()
+				for neighbor in neighbor_puddles.values():
+					if neighbor["puddle"] and neighbor["puddle"] != source:
+						neighbor["puddle"].spread(amount/neighbor_puddles.size(), self)
+					else:
+						neighbor["puddle"] = Globals.boat.spawn_puddle(neighbor["spawn_point"])
 
 func spawn(spawn_point: Vector2):
 	var spawn_occupant = _spawn("puddle", spawn_point)

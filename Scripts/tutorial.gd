@@ -51,6 +51,8 @@ var stages := {
 }
 
 var stage := "Overview"
+var tutorial_leak: Leak
+var tutorial_puddle: Puddle
 
 func _level_ready():
 	crew_member.idle_distraction_timer.set_paused(true)
@@ -65,6 +67,10 @@ func _level_process(delta: float):
 		"Select":
 			if len(splish.followers) > 0:
 				_show_next_dialog()
+		"Assign":
+			if not tutorial_puddle and tutorial_leak and tutorial_leak.current_puddle:
+				tutorial_puddle = tutorial_leak.current_puddle
+				tutorial_puddle.can_spread = false
 		"Act":
 			if len(puddle_spawn_point.get_children()) <= 0:
 				_show_next_dialog()
@@ -99,14 +105,16 @@ func _show_next_dialog():
 				var new_leak = boat.spawn_leak(leak_spawn_point.global_position)
 				if new_leak and new_leak is Leak:
 					new_leak.died.connect(_on_leak_patched)
+					tutorial_leak = new_leak
 			"Act":
 				splish.targeting_group_blacklist.append("crew")
 				splish.targeting_group_blacklist.erase("puddle")
 				var new_puddle = boat.spawn_puddle(puddle_spawn_point.global_position)
-				if new_puddle and new_puddle is Puddle:
-					new_puddle.spread(Puddle.PUDDLE_CAPACITY + Puddle.SPREAD_AMOUNT, new_puddle)
-					for puddle in get_tree().get_nodes_in_group("puddle"):
-						puddle.reparent(puddle_spawn_point, true)
+				for puddle in get_tree().get_nodes_in_group("puddle"):
+					puddle.reparent(puddle_spawn_point, true)
+					if puddle != new_puddle and puddle is Puddle:
+						while puddle.stage != Puddle.Stage.LARGE:
+							puddle.increase_stage()
 			"Rats":
 				rat_hole.show()
 				splish.targeting_group_blacklist.erase("crew")
@@ -122,6 +130,8 @@ func _show_next_dialog():
 				crew_member.set_assignment(null)
 				splish.input_disabled = true
 			"Distraction_2":
+				crew_member.idle_distraction_timer.stop()
+				crew_member.idle_distraction_timer.wait_time = 5.0
 				splish.targeting_group_blacklist.clear()
 
 func _on_dialog_ended() -> void:
@@ -135,6 +145,7 @@ func _on_dialog_ended() -> void:
 			splish.add_follower(crew_member)
 		"Distraction_1":
 			crew_member.idle_distraction_timer.set_paused(false)
+			crew_member.idle_distraction_timer.start(1.0)
 		"Wrap_up":
 			rat_hole.spawn_timer.set_paused(false)
 			leak_spawn_timer.set_paused(false)
