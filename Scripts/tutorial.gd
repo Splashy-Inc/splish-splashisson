@@ -130,6 +130,8 @@ func _show_next_dialog():
 				crew_member.set_assignment(null)
 				splish.input_disabled = true
 			"Distraction_2":
+				crew_member.idle_distraction_timer.stop()
+				crew_member.idle_distraction_timer.wait_time = 5.0
 				splish.targeting_group_blacklist.clear()
 
 func _on_dialog_ended() -> void:
@@ -143,6 +145,7 @@ func _on_dialog_ended() -> void:
 			splish.add_follower(crew_member)
 		"Distraction_1":
 			crew_member.idle_distraction_timer.set_paused(false)
+			crew_member.idle_distraction_timer.start(1.0)
 		"Wrap_up":
 			rat_hole.spawn_timer.set_paused(false)
 			leak_spawn_timer.set_paused(false)
