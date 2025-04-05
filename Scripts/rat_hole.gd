@@ -6,8 +6,6 @@ class_name RatHole
 
 @onready var spawn_timer: Timer = $SpawnTimer
 
-var rat = null
-
 func spawn_rat():
 	if get_tree().get_node_count_in_group("rat_hole") > get_tree().get_node_count_in_group("rat"):
 		var new_rat = rat_scene.instantiate()
