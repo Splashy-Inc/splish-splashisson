@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://je3j0pd8ickv"]
 
-[ext_resource type="Script" path="res://Scenes/splish.gd" id="1_34yo7"]
+[ext_resource type="Script" path="res://Scripts/splish.gd" id="1_34yo7"]
 [ext_resource type="Texture2D" uid="uid://dv2xu7gwyylr4" path="res://Art/Splish/BailingWater/BailG.png" id="2_605ja"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="2_fplbu"]
 [ext_resource type="Texture2D" uid="uid://dqr781k77ceq6" path="res://Art/Splish/BailingWater/BailA.png" id="3_82va4"]
@@ -467,7 +467,6 @@ _data = {
 }
 
 [node name="Splish" type="CharacterBody2D"]
-z_index = 3
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_34yo7")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://eh8pyhctavex"]
+
+[ext_resource type="Script" path="res://dialog_data.gd" id="1_rg5jm"]
+
+[resource]
+script = ExtResource("1_rg5jm")
+label = "Movement"
+dialog_text = Array[String](["Let's talk about movement..", "To move around, use WASD on keyboard or LEFT STICK on controller.", "Walk to the front (bow) of the boat to get the next lesson."])

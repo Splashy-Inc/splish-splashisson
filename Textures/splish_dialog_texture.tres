@@ -1,0 +1,20 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://bx4xmpbupc8kg"]
+
+[ext_resource type="Texture2D" uid="uid://dfq12wbj0docl" path="res://Art/Merchants/Splish64/Splish64A.png" id="1_boryb"]
+[ext_resource type="Texture2D" uid="uid://yhyoenx2o5mh" path="res://Art/Merchants/Splish64/Splish64B.png" id="2_uxs8k"]
+[ext_resource type="Texture2D" uid="uid://bxdow1v0jmkqm" path="res://Art/Merchants/Splish64/Splish64C.png" id="3_lwciw"]
+[ext_resource type="Texture2D" uid="uid://bwvdnyr687gt" path="res://Art/Merchants/Splish64/Splish64D.png" id="4_gt1p3"]
+
+[resource]
+frames = 6
+frame_0/texture = ExtResource("1_boryb")
+frame_1/texture = ExtResource("2_uxs8k")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("1_boryb")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("3_lwciw")
+frame_3/duration = 0.25
+frame_4/texture = ExtResource("1_boryb")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("4_gt1p3")
+frame_5/duration = 0.5

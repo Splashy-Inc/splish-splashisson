@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://dugy1a2kbetet"]
+
+[ext_resource type="Script" path="res://dialog_data.gd" id="1_t3ywt"]
+
+[resource]
+script = ExtResource("1_t3ywt")
+label = "Distraction_1"
+dialog_text = Array[String](["That's it for actions! Well done.", "Be warned! Your crew will get distracted if left without a task for 5 seconds, or after rowing for 30.", "When distracted, crew will head over to the cargo and start taking some for themselves, damaging it.", "To stop them, simply get their attention! If you stop crew before they damage a full unit of cargo, it will be restored.", "You will be unable to do anything until this crew member gets distracted then I'll let you get their attention."])

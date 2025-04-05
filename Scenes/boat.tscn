@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ptto4146phwg"]
 
 [ext_resource type="PackedScene" uid="uid://bg0meusunoosr" path="res://Scenes/bow.tscn" id="1_17osx"]
-[ext_resource type="Script" path="res://Scenes/boat.gd" id="1_c5j0p"]
+[ext_resource type="Script" path="res://Scripts/boat.gd" id="1_c5j0p"]
 [ext_resource type="PackedScene" uid="uid://ccika7v5l27ew" path="res://Scenes/deck.tscn" id="2_kxpgr"]
 [ext_resource type="PackedScene" uid="uid://dmy5awjreptlw" path="res://Scenes/stern.tscn" id="3_701t0"]
 [ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://Scenes/play_grid.tscn" id="5_6ih3t"]

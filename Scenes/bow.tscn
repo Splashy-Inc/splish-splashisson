@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bg0meusunoosr"]
 
-[ext_resource type="Script" path="res://Scenes/boat_end.gd" id="1_6fuim"]
+[ext_resource type="Script" path="res://Scripts/boat_end.gd" id="1_6fuim"]
 [ext_resource type="Texture2D" uid="uid://bg62n7s5j2exq" path="res://Art/ShipTiles/ShipBow.png" id="1_45f1j"]
 [ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://Scenes/play_grid.tscn" id="3_obwje"]
 

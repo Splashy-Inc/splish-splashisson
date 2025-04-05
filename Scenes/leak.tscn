@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://bkt3la4dqahgh"]
 
-[ext_resource type="Script" path="res://Scenes/leak.gd" id="1_4ykgf"]
+[ext_resource type="Script" path="res://Scripts/leak.gd" id="1_4ykgf"]
 [ext_resource type="Texture2D" uid="uid://u8r6eec7wpgv" path="res://Art/Leak/LeakH.png" id="1_unkym"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_7wtkj"]
 [ext_resource type="Texture2D" uid="uid://djseaj8ncqp0d" path="res://Art/Leak/LeakL.png" id="2_5105n"]

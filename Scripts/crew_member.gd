@@ -3,6 +3,7 @@ extends Worker
 class_name Crew
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var idle_distraction_timer: Timer = $IdleDistractionTimer
 
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
@@ -49,3 +50,9 @@ func _get_direction() -> Vector2:
 	else:
 		direction = global_position.direction_to(current_assignment.global_position)
 	return direction
+
+func is_targetable():
+	if is_in_group("selectable"):
+		return true
+	else:
+		return false

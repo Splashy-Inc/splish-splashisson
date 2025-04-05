@@ -1,6 +1,6 @@
 [gd_scene load_steps=81 format=3 uid="uid://djyibeaauqw2f"]
 
-[ext_resource type="Script" path="res://Scenes/crew_member.gd" id="1_ci8gb"]
+[ext_resource type="Script" path="res://Scripts/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
 [ext_resource type="Texture2D" uid="uid://kgf4cug4cngo" path="res://Art/Crew/Animations/Acknowledge/CrewAcknowledgementB.png" id="2_1tejp"]
 [ext_resource type="Texture2D" uid="uid://qahnafwsgcov" path="res://Art/Crew/Animations/Alert/CrewAlertB.png" id="2_4d6of"]
@@ -788,8 +788,7 @@ _data = {
 "walking_up": SubResource("Animation_x2nhf")
 }
 
-[node name="CrewMember" type="CharacterBody2D" groups=["selectable"]]
-z_index = 2
+[node name="CrewMember" type="CharacterBody2D" groups=["crew", "selectable"]]
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1

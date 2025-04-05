@@ -4,7 +4,11 @@ class_name Level
 
 signal completed
 
-var dock_scene = load("res://Scenes/dock.tscn")
+@export var next_scene: PackedScene
+
+@export var dock_scene: PackedScene
+
+@export var player: Player
 
 var progress = 0
 @export var minimum_seconds: int
@@ -20,17 +24,23 @@ var end_dock: Dock
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	boat.set_deck_length(boat_length)
+	
+func _level_ready():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	_level_process(delta)
 	if not finished:
 		progress += boat_speed * delta
 		if progress >= length:
 			finished = true
 			boat.stop(end_dock)
-			print("Win!")
-			completed.emit()
+			_on_finished()
 		Globals.update_level_progress_percent(clamp(progress/length, 0.0, 1.0))
+
+func _level_process(delta: float):
+	pass
 
 func _on_boat_ready() -> void:
 	max_boat_speed = boat.get_max_speed()
@@ -43,6 +53,8 @@ func _on_boat_ready() -> void:
 	end_dock = spawn_dock(dock_spawn_point)
 	
 	Globals.set_boat(boat)
+	
+	_level_ready()
 
 func _boat_speed_updated(speed: int):
 	boat_speed = clamp(speed, 0, max_boat_speed)
@@ -57,6 +69,10 @@ func _on_leak_spawn_timer_timeout() -> void:
 	if get_tree().get_nodes_in_group("leak").size() < 3:
 		Globals.boat.spawn_leak()
 
-func _on_completed() -> void:
-	$Obstacles/LeakSpawnTimer.stop()
-	$Obstacles/RatHole.die()
+func _on_finished():
+	if $Obstacles/LeakSpawnTimer:
+		$Obstacles/LeakSpawnTimer.stop()
+	if $Obstacles/RatHole:
+		$Obstacles/RatHole.die()
+	print("Win!")
+	completed.emit()
