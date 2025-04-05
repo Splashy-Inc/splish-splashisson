@@ -74,7 +74,7 @@ focus_target = NodePath("../Splish")
 position = Vector2(411, 109)
 
 [node name="PuddleSpawnPoint" type="Marker2D" parent="Obstacles"]
-position = Vector2(384, 111)
+position = Vector2(382, 137)
 
 [node name="RatHole" parent="Obstacles" instance=ExtResource("18_ax4w7")]
 position = Vector2(320, 8)
