@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dbukbupeyxog1" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2J.png" id="10_p1r3s"]
 [ext_resource type="Texture2D" uid="uid://x1bpfnulkqxs" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2K.png" id="11_0ceiy"]
 [ext_resource type="Texture2D" uid="uid://dvq2xsqbghnn7" path="res://Art/Ocean/Ocean/Wave/Wave2/Wave2L.png" id="12_54anc"]
-[ext_resource type="Script" path="res://Scenes/Ocean/ocean_animation.gd" id="13_qeyjs"]
+[ext_resource type="Script" path="res://Scripts/ocean_animation.gd" id="13_qeyjs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qg3gn"]
 animations = [{

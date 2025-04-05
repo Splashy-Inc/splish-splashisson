@@ -12,10 +12,7 @@ var game_ended = false
 func _ready():
 	#hud = $HUD
 	if cutscene_scene and not cutscene:
-		cutscene = cutscene_scene.instantiate()
-		add_child(cutscene)
-		cutscene.start_pressed.connect(_on_start_level)
-		_set_level(cutscene.level_scene)
+		_on_start_cutscene()
 	#show_main_menu()
 
 #func _resume_play(mouse_mode: int):
@@ -49,6 +46,7 @@ func _restart_level():
 	game_ended = false
 	if level:
 		level.free()
+		level = null
 	
 	var new_level = level_scene.instantiate()
 	add_child(new_level)
@@ -70,6 +68,14 @@ func _restart_level():
 
 func _on_level_completed():
 	game_ended = true
+	if level.next_scene:
+		var next_scene = level.next_scene.instantiate()
+		if next_scene is Cutscene:
+			cutscene_scene = level.next_scene
+			_on_start_cutscene()
+		elif next_scene is Level:
+			level_scene = level.next_scene
+			_on_start_level(null)
 	#_pause_play()
 	#hud.show_win_screen()
 	
@@ -85,6 +91,26 @@ func _set_level(new_level_scene: PackedScene):
 	level_scene = new_level_scene
 	#Globals.cur_level = level_scene
 
-func _on_start_level():
+func _on_start_level(new_level_scene: PackedScene):
+	if new_level_scene:
+		level_scene = new_level_scene
 	_restart_level()
-	cutscene.queue_free()
+	if cutscene:
+		cutscene.queue_free()
+
+func _on_start_cutscene():
+	if level:
+		level.queue_free()
+		level = null
+	cutscene = cutscene_scene.instantiate()
+	add_child(cutscene)
+	cutscene.start_pressed.connect(_on_start_level)
+	if cutscene is TutorialCutscene:
+		cutscene.tutorial_skipped.connect(_on_tutorial_skipped.bind(cutscene))
+	_set_level(cutscene.level_scene)
+
+func _on_tutorial_skipped(tutorial_cutscene: TutorialCutscene):
+	if tutorial_cutscene.level_1_cutscene:
+		cutscene_scene = tutorial_cutscene.level_1_cutscene
+		_on_start_cutscene()
+		tutorial_cutscene.queue_free()

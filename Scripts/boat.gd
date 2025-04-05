@@ -83,12 +83,16 @@ func change_speed(change: int):
 		speed = clamp(total_speed, 0, max_speed)
 		Globals.update_boat_speed(speed)
 
-func spawn_leak():
-	var spawn_point = $PlayGrid.global_position + Vector2(randi_range(0,300), randi_range(0,length))
+func spawn_leak(spawn_point: Vector2 = Vector2.ZERO):
+	if spawn_point == Vector2.ZERO:
+		spawn_point = $PlayGrid.global_position + Vector2(randi_range(0,300), randi_range(0,length))
 	while not is_point_in_boat(spawn_point):
 		spawn_point = $PlayGrid.global_position + Vector2(randi_range(0,300), randi_range(0,length))
-	if not $PlayGrid.spawn_leak(spawn_point):
-		spawn_leak()
+	var new_leak = $PlayGrid.spawn_leak(spawn_point)
+	if not new_leak:
+		return spawn_leak()
+	else:
+		return new_leak
 
 func spawn_puddle(spawn_point: Vector2):
 	if is_point_in_boat(spawn_point):

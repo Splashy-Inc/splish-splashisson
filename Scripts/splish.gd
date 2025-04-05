@@ -19,6 +19,10 @@ var followers: Array[Crew]
 var selection_target: Node2D
 var action_target: Node2D
 
+var targeting_group_blacklist : Array[StringName]
+
+var input_disabled = false
+
 func _process(delta: float) -> void:
 	if not current_assignment and Input.is_action_pressed("act"):
 		_find_action_target()
@@ -46,7 +50,9 @@ func _idle_state(delta: float):
 
 func _move_state(delta: float):
 	if $AnimationPlayer.current_animation != "pointing_right" or not $AnimationPlayer.is_playing():
-		var direction := Input.get_vector("left", "right", "up", "down").normalized()
+		var direction := Vector2.ZERO
+		if not input_disabled:
+			direction = Input.get_vector("left", "right", "up", "down").normalized()
 		if direction:
 			if direction.y < 0:
 				$AnimationPlayer.play("walking_up")
@@ -64,27 +70,28 @@ func _move_state(delta: float):
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("select"):
-		if selection_target is Crew:
-			add_follower(selection_target)
-		elif selection_target is Task:
-			if selection_target.worker:
-				add_follower(selection_target.worker)
-		return
-	
-	if event.is_action_pressed("act"):
-		if action_target is Task or action_target is Rat:
-			if action_target.assignee:
-				print(action_target, " already assigned to ", action_target.assignee, " !")
-			elif not followers.is_empty():
-				assign_follower(followers.front(), action_target)
-			else:
-				set_assignment(action_target)
-		return
-	
-	if event.is_action_released("act") and current_assignment:
-		set_assignment(null)
-		return
+	if not input_disabled:
+		if event.is_action_pressed("select"):
+			if selection_target is Crew:
+				add_follower(selection_target)
+			elif selection_target is Task:
+				if selection_target.worker:
+					add_follower(selection_target.worker)
+			return
+		
+		if event.is_action_pressed("act"):
+			if action_target is Task or action_target is Rat:
+				if action_target.assignee:
+					print(action_target, " already assigned to ", action_target.assignee, " !")
+				elif not followers.is_empty():
+					assign_follower(followers.front(), action_target)
+				else:
+					set_assignment(action_target)
+			return
+		
+		if event.is_action_released("act") and current_assignment:
+			set_assignment(null)
+			return
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
@@ -134,9 +141,17 @@ func _find_action_target():
 	var selectables = get_tree().get_nodes_in_group("selectable")
 	
 	for interactable in interactables:
+		var skip = false
+		for group in targeting_group_blacklist:
+			if interactable.is_in_group(group):
+				skip = true
+				break
 		if interactable in selectables:
-			continue
+			skip = true
 		if interactable.has_method("is_targetable") and not interactable.is_targetable():
+			skip = true
+		
+		if skip:
 			continue
 		
 		if action_target:
@@ -152,11 +167,19 @@ func _find_selection_target():
 	var selectables = get_tree().get_nodes_in_group("selectable")
 	
 	for interactable in interactables:
+		var skip = false
+		for group in targeting_group_blacklist:
+			if interactable.is_in_group(group):
+				skip = true
+				break
 		if not interactable in selectables or (interactable is Crew and interactable in followers):
-			continue
+			skip = true
 		if interactable is Task:
 			if interactable.assignee is Player:
-				continue
+				skip = true
+		
+		if skip:
+			continue
 		
 		if selection_target:
 			var priority_target = _compare_target_priority(selection_target, interactable)

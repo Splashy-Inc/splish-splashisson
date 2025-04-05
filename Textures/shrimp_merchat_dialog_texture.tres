@@ -1,0 +1,30 @@
+[gd_resource type="AnimatedTexture" load_steps=9 format=3 uid="uid://bh7hha73l5725"]
+
+[ext_resource type="Texture2D" uid="uid://cujsk5igii0ps" path="res://Art/Merchants/Shrimp/ShrimpA.png" id="1_24sps"]
+[ext_resource type="Texture2D" uid="uid://c8c8tcppjaq00" path="res://Art/Merchants/Shrimp/ShrimpB.png" id="2_o6og3"]
+[ext_resource type="Texture2D" uid="uid://bct3a05r62c5s" path="res://Art/Merchants/Shrimp/ShrimpC.png" id="3_d5e08"]
+[ext_resource type="Texture2D" uid="uid://bvmxb6remxqh3" path="res://Art/Merchants/Shrimp/ShrimpF.png" id="4_dexkp"]
+[ext_resource type="Texture2D" uid="uid://dvenakhqi302i" path="res://Art/Merchants/Shrimp/ShrimpG.png" id="5_2y8ft"]
+[ext_resource type="Texture2D" uid="uid://b0sc36v6gogr8" path="res://Art/Merchants/Shrimp/ShrimpE.png" id="6_oyqor"]
+[ext_resource type="Texture2D" uid="uid://b0qmxub5loykh" path="res://Art/Merchants/Shrimp/ShrimpD.png" id="7_mpbl6"]
+[ext_resource type="Texture2D" uid="uid://bkbdqi2cnlcdi" path="res://Art/Merchants/Shrimp/ShrimpH.png" id="8_v0u2k"]
+
+[resource]
+frames = 9
+frame_0/texture = ExtResource("1_24sps")
+frame_1/texture = ExtResource("2_o6og3")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("3_d5e08")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("4_dexkp")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("5_2y8ft")
+frame_4/duration = 0.5
+frame_5/texture = ExtResource("1_24sps")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("6_oyqor")
+frame_6/duration = 0.5
+frame_7/texture = ExtResource("7_mpbl6")
+frame_7/duration = 0.5
+frame_8/texture = ExtResource("8_v0u2k")
+frame_8/duration = 1.0

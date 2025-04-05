@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="4_64cm4"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="5_pjrgm"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="6_peku6"]
-[ext_resource type="Script" path="res://Scenes/game_camera.gd" id="7_r4a8d"]
+[ext_resource type="Script" path="res://Scripts/game_camera.gd" id="7_r4a8d"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_b63j4"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_mfs7h"]
 
 [node name="Level" type="Node" node_paths=PackedStringArray("boat")]
 script = ExtResource("1_stx43")
+dock_scene = ExtResource("8_b63j4")
 minimum_seconds = 30
 boat = NodePath("Boat")
 
@@ -59,6 +60,5 @@ autostart = true
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
-[connection signal="completed" from="." to="." method="_on_completed"]
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

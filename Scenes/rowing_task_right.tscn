@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://bh2fvow0in3wk"]
 
-[ext_resource type="Script" path="res://Scenes/rowing_task.gd" id="1_8m1hv"]
+[ext_resource type="Script" path="res://Scripts/rowing_task.gd" id="1_8m1hv"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_ca2dx"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="3_23uh3"]
 [ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="4_4xevn"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://dtt0cy8u8g6kp" path="res://Audio/ho3.mp3" id="22_gtt20"]
 [ext_resource type="Texture2D" uid="uid://cnxh4iw8wgy44" path="res://Art/Tasks/Rowing/SplishActive/SplishRowingK.png" id="23_awcoh"]
 [ext_resource type="AudioStream" uid="uid://2k6yinhs8b4q" path="res://Audio/ho4.mp3" id="23_x6rnt"]
+[ext_resource type="Animation" uid="uid://crsp5x4im7uta" path="res://stop_player.res" id="34_2357h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8te5t"]
 animations = [{
@@ -200,49 +201,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ymwvb"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-
-[sub_resource type="Animation" id="Animation_66pub"]
-resource_name = "stop"
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"active"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.203148, 0.403148, 0.603148, 0.801574, 1.00157, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.79843, 4.99843),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5]
-}
-
 [sub_resource type="Animation" id="Animation_a3rvw"]
 resource_name = "active_player"
 length = 4.00002
@@ -290,8 +248,23 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_k80gr"]
-resource_name = "stop_player"
+[sub_resource type="Animation" id="Animation_ymwvb"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_66pub"]
+resource_name = "stop"
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -303,7 +276,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"active_player"]
+"values": [&"active"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -325,7 +298,7 @@ _data = {
 "active_player": SubResource("Animation_a3rvw"),
 "idle": SubResource("Animation_ymwvb"),
 "stop": SubResource("Animation_66pub"),
-"stop_player": SubResource("Animation_k80gr")
+"stop_player": ExtResource("34_2357h")
 }
 
 [node name="RowingTaskRight" type="StaticBody2D" groups=["impassable", "rowing_task"]]

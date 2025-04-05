@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://o32tg5wc7qkp"]
+
+[ext_resource type="Script" path="res://dialog_data.gd" id="1_0kwks"]
+
+[resource]
+script = ExtResource("1_0kwks")
+label = "Rowing"
+dialog_text = Array[String](["Nice! You really ruined that rat's day.", ".............", "Aaaanyway. The final action to go over is rowing!", "You and the crew can row the boat to advance toward the end dock - the cargo's delivery destination.", "Assign your crew member to one rowing station and get on the other one yourself.", "I'll let you row until you get about 25% of the way."])

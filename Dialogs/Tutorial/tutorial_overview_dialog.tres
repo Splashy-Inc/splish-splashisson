@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://oldvcmnehasr"]
+
+[ext_resource type="Script" path="res://dialog_data.gd" id="1_b4fe3"]
+
+[resource]
+script = ExtResource("1_b4fe3")
+label = "Overview"
+dialog_text = Array[String](["Welcome to your boat! A little small, but it'll get better.", "Let's start with an overview of your goal.", "Your goal is to deliver cargo as fast as possible, in the best condition possible.", "Rowing moves you toward the end dock. Cargo can be damaged by various threats.", "You and your crew can resolve tasks and threats to keep things moving smoothly!"])
