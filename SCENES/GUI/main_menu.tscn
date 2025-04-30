@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://k7ghjsy8g1k0"]
+
+[ext_resource type="Script" path="res://SCRIPTS/main_menu.gd" id="1_vkagb"]
+[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_y3ir5"]
+
+[node name="MainMenu" type="Control"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vkagb")
+
+[node name="MenuContent" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 311.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="MenuContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Game Title
+"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="MenuContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Game Subtitle"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("2_y3ir5")
+text = "Play"
+
+[node name="ControlsButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("2_y3ir5")
+text = "Controls"
+
+[node name="QuitButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("2_y3ir5")
+text = "Quit"
+
+[connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

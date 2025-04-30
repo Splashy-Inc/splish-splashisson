@@ -10,6 +10,8 @@ signal completed
 
 @export var player: Player
 
+@export var dialog_box: DialogBox
+
 var progress = 0
 @export var minimum_seconds: int
 var length = 0
@@ -76,3 +78,13 @@ func _on_finished():
 		$Obstacles/RatHole.die()
 	print("Win!")
 	completed.emit()
+
+func pause_play():
+	process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	if dialog_box:
+		dialog_box.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+
+func resume_play(new_mouse_mode: int = Input.MOUSE_MODE_VISIBLE):
+	process_mode = ProcessMode.PROCESS_MODE_INHERIT
+	if dialog_box:
+		dialog_box.process_mode = ProcessMode.PROCESS_MODE_ALWAYS

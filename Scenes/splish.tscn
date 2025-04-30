@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://je3j0pd8ickv"]
 
-[ext_resource type="Script" path="res://Scripts/splish.gd" id="1_34yo7"]
+[ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Texture2D" uid="uid://dv2xu7gwyylr4" path="res://Art/Splish/BailingWater/BailG.png" id="2_605ja"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="2_fplbu"]
 [ext_resource type="Texture2D" uid="uid://dqr781k77ceq6" path="res://Art/Splish/BailingWater/BailA.png" id="3_82va4"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://brexb1buc6y5" path="res://Art/Splish/Walking Up/SplishWalkUpB.png" id="6_y3bk3"]
 [ext_resource type="Texture2D" uid="uid://dy85egcjabti0" path="res://Art/Splish/BailingWater/BailE.png" id="7_8d6j1"]
 [ext_resource type="Texture2D" uid="uid://cxmjwulkb3rnq" path="res://Art/Splish/BailingWater/BailF.png" id="8_vlu8v"]
-[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="9_r3uhy"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="9_r3uhy"]
 [ext_resource type="AudioStream" uid="uid://dsl2r5ouyucqa" path="res://Audio/hail_grunt.mp3" id="10_2tv06"]
 [ext_resource type="Texture2D" uid="uid://00p4gjp3ldo1" path="res://Art/Splish/PatchingLeak/PatchLeakC.png" id="10_pdqt8"]
 [ext_resource type="Texture2D" uid="uid://wb5t653y5ese" path="res://Art/Splish/PatchingLeak/PatchLeakD.png" id="11_ewod2"]

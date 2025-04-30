@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://c70vjir2dc7r5"]
 
-[ext_resource type="Script" path="res://Scripts/rat.gd" id="1_cvs5m"]
+[ext_resource type="Script" path="res://SCRIPTS/rat.gd" id="1_cvs5m"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_onx3l"]
 [ext_resource type="Texture2D" uid="uid://dw8niig2iqeyh" path="res://Art/Rat/RatDead/RatDeadB.png" id="3_yvk86"]
 [ext_resource type="Texture2D" uid="uid://bpopd62dscek3" path="res://Art/Rat/RatDead/RatDeadC.png" id="4_dg4g8"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dq84sxomwsufq" path="res://Art/Rat/RatIdle.png" id="10_qtsmf"]
 [ext_resource type="Texture2D" uid="uid://bxpfi86lkxu8y" path="res://Art/Rat/RatMove/RatMoveB.png" id="11_yot7h"]
 [ext_resource type="Texture2D" uid="uid://byumm8peoeqeh" path="res://Art/Rat/RatMove/RatMoveA.png" id="12_nkkln"]
-[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="13_dps88"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="13_dps88"]
 [ext_resource type="AudioStream" uid="uid://dgkbgmnkcj2m6" path="res://Audio/Rat/rat_squeek.mp3" id="14_lqgkb"]
 [ext_resource type="AudioStream" uid="uid://dq8kbxsxk1nps" path="res://Audio/Rat/rat_eat.mp3" id="15_8mswm"]
 [ext_resource type="AudioStream" uid="uid://pku6334frbc6" path="res://Audio/Rat/rat_hit_1.mp3" id="16_1ulmn"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dv0x4vv0fkbd2"]
 
-[ext_resource type="PackedScene" uid="uid://bmh1kxtyjicuu" path="res://Scenes/Ocean/bubbles.tscn" id="1_7nfhj"]
-[ext_resource type="Script" path="res://Scripts/ocean.gd" id="1_h5cl7"]
-[ext_resource type="PackedScene" uid="uid://dsdqndjddqni5" path="res://Scenes/Ocean/small_wave.tscn" id="2_x1tu8"]
-[ext_resource type="PackedScene" uid="uid://c57ouj4dasw0q" path="res://Scenes/Ocean/medium_wave.tscn" id="3_g35jv"]
+[ext_resource type="PackedScene" uid="uid://bmh1kxtyjicuu" path="res://SCENES/Ocean/bubbles.tscn" id="1_7nfhj"]
+[ext_resource type="Script" path="res://SCRIPTS/ocean.gd" id="1_h5cl7"]
+[ext_resource type="PackedScene" uid="uid://dsdqndjddqni5" path="res://SCENES/Ocean/small_wave.tscn" id="2_x1tu8"]
+[ext_resource type="PackedScene" uid="uid://c57ouj4dasw0q" path="res://SCENES/Ocean/medium_wave.tscn" id="3_g35jv"]
 
 [node name="ParallaxOcean" type="Parallax2D"]
 scroll_offset = Vector2(320, 0)

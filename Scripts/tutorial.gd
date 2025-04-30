@@ -4,8 +4,7 @@ class_name Tutorial
 
 @export var dialog_files: Array[DialogData]
 
-@onready var dialog_box: DialogBox = $HUD/DialogBox
-@onready var hud: HUD = $HUD
+@onready var level_ui: LevelUI = $LevelUI
 @onready var movement_stage_area: Area2D = $DialogTriggers/MovementStage
 @onready var crew_member: Crew = $People/CrewMember
 @onready var splish: Player = $People/Splish
@@ -88,14 +87,14 @@ func _level_process(delta: float):
 				_show_next_dialog()
 
 func _show_next_dialog():
-	if not dialog_files.is_empty():
+	if dialog_box and not dialog_files.is_empty():
 		player.input_disabled = true
 		dialog_box.show()
 		dialog_box.set_dialog_data(dialog_files.pop_front())
 		stage = dialog_box.dialog_data.label
 		
 		if dialog_box.dialog_data.label in stages.keys():
-			hud.set_objective(stages[dialog_box.dialog_data.label]["objective"])
+			level_ui.set_objective(stages[dialog_box.dialog_data.label]["objective"])
 		
 		match dialog_box.dialog_data.label:
 			"Select":

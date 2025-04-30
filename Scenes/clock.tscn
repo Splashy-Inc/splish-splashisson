@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://joi30yc7yge6"]
 
 [ext_resource type="StyleBox" uid="uid://bcsxb6cfbis3y" path="res://Styles/boat_info_panel.tres" id="1_cplw3"]
-[ext_resource type="Script" path="res://Scripts/clock.gd" id="2_u0j56"]
+[ext_resource type="Script" path="res://SCRIPTS/clock.gd" id="2_u0j56"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3tc66"]
 line_spacing = 0.0

@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://v65h1k4msxhb"]
+
+[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="1_mm3s4"]
+[ext_resource type="Script" path="res://SCRIPTS/win_screen.gd" id="1_ypahy"]
+
+[node name="WinScreen" type="Control"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ypahy")
+
+[node name="MenuContent" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Title" type="Label" parent="MenuContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "You win!"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("1_mm3s4")
+text = "Main Menu"
+
+[node name="RestartButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("1_mm3s4")
+text = "Restart Level"
+
+[node name="QuitButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("1_mm3s4")
+text = "Quit"
+
+[connection signal="pressed" from="MenuContent/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
