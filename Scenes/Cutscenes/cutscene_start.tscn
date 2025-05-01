@@ -12,11 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="8_dy7yb"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="9_6n3k4"]
 
-[node name="StartCutscene" type="Node"]
+[node name="StartCutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_0jjtp")
 tutorial_scene = ExtResource("2_mi8w7")
 level_1_cutscene = ExtResource("3_gol2h")
 level_scene = ExtResource("3_hpspq")
+dialog_box = NodePath("DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0

@@ -9,9 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="17_yxxjt"]
 [ext_resource type="Texture2D" uid="uid://o1cugesk8vp1" path="res://Art/Merchants/Shrimp/ShrimpLowQuality.png" id="18_8peca"]
 
-[node name="Cutscene" type="Node"]
+[node name="Cutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_q7fsr")
 level_scene = ExtResource("2_lp0n3")
+dialog_box = NodePath("DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0

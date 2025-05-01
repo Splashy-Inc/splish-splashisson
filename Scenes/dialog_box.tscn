@@ -81,3 +81,4 @@ texture = ExtResource("3_wnvek")
 stretch_mode = 3
 
 [connection signal="pressed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="advance_dialog"]
+[connection signal="visibility_changed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="_on_dialog_button_visibility_changed"]

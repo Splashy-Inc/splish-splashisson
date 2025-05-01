@@ -11,5 +11,5 @@ func _process(delta):
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
-	if visible and event is InputEventKey:
+	if visible and (event is InputEventKey or event.is_action_pressed("pause")):
 		exited.emit()

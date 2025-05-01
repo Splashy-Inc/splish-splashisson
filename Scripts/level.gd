@@ -88,3 +88,4 @@ func resume_play(new_mouse_mode: int = Input.MOUSE_MODE_VISIBLE):
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT
 	if dialog_box:
 		dialog_box.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
+		dialog_box.update_view()

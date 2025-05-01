@@ -22,14 +22,14 @@ func _process(delta):
 func _resume_play(mouse_mode: int = Input.MOUSE_MODE_VISIBLE):
 	paused = false
 	hud.hide_menus()
-	if level and level.has_method("resume_play"):
-		level.resume_play(mouse_mode)
+	if cur_screen and cur_screen.has_method("resume_play"):
+		cur_screen.resume_play(mouse_mode)
 
 func _pause_play():
 	paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if level and level.has_method("pause_play"):
-		level.pause_play()
+	if cur_screen and cur_screen.has_method("pause_play"):
+		cur_screen.pause_play()
 
 func show_main_menu():
 	_pause_play()

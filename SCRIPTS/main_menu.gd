@@ -2,6 +2,8 @@ extends Control
 
 signal button_pressed
 
+@onready var play_button: Button = $MenuContent/MenuButtons/PlayButton
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -21,3 +23,8 @@ func _on_quit_button_pressed():
 
 func _on_level_select_button_pressed():
 	button_pressed.emit("Level")
+
+
+func _on_play_button_visibility_changed() -> void:
+	if Globals.joypad_connected and visible:
+		play_button.grab_focus()

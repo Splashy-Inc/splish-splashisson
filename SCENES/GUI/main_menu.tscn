@@ -60,5 +60,6 @@ theme_override_styles/normal = ExtResource("2_y3ir5")
 text = "Quit"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="visibility_changed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_visibility_changed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
