@@ -76,7 +76,7 @@ func _on_finished():
 		$Obstacles/LeakSpawnTimer.stop()
 	if $Obstacles/RatHole:
 		$Obstacles/RatHole.die()
-	print("Win!")
+	player.input_disabled = true
 	completed.emit()
 
 func pause_play():

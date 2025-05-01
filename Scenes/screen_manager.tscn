@@ -12,6 +12,7 @@ start_scene = ExtResource("2_sg3ki")
 layer = 2
 
 [connection signal="main_menu_pressed" from="HUD" to="." method="_on_main_menu_pressed"]
+[connection signal="next_pressed" from="HUD" to="." method="_on_next_pressed"]
 [connection signal="play_pressed" from="HUD" to="." method="_on_play_pressed"]
 [connection signal="quit_pressed" from="HUD" to="." method="_on_quit_pressed"]
 [connection signal="restart_pressed" from="HUD" to="." method="_on_restart_pressed"]

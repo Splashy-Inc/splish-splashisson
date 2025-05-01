@@ -116,16 +116,8 @@ func _on_main_menu_pressed() -> void:
 
 func _on_level_completed():
 	game_ended = true
-	if level.next_scene:
-		var next_scene = level.next_scene.instantiate()
-		if next_scene is Cutscene:
-			cutscene_scene = level.next_scene
-			_on_start_cutscene()
-		elif next_scene is Level:
-			level_scene = level.next_scene
-			_on_start_level(null)
 	#_pause_play()
-	#hud.show_win_screen()
+	hud.show_win_screen()
 	
 func _on_tutorial_completed():
 	game_ended = true
@@ -166,3 +158,14 @@ func _clear_screens():
 		cutscene.queue_free()
 		cutscene = null
 	cur_screen = null
+
+func _on_next_pressed() -> void:
+	if level.next_scene:
+		var next_scene = level.next_scene.instantiate()
+		if next_scene is Cutscene:
+			cutscene_scene = level.next_scene
+			_on_start_cutscene()
+		elif next_scene is Level:
+			level_scene = level.next_scene
+			_on_start_level(null)
+	hud.hide_menus()

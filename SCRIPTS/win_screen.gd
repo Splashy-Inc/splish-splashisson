@@ -2,7 +2,7 @@ extends Control
 
 signal button_pressed
 
-@onready var main_menu_button: Button = $MenuContent/MenuButtons/MainMenuButton
+@onready var next_level_button: Button = $MenuContent/MenuButtons/NextLevelButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,15 +12,15 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_main_menu_button_pressed():
-	button_pressed.emit("Main menu")
+func _on_next_level_button_pressed():
+	button_pressed.emit("Next")
 
 func _on_restart_button_pressed():
 	button_pressed.emit("Restart")
 
-func _on_quit_button_pressed():
-	button_pressed.emit("Quit")
+func _on_main_menu_button_pressed():
+	button_pressed.emit("Main menu")
 
-func _on_main_menu_button_visibility_changed() -> void:
+func _on_next_level_button_visibility_changed() -> void:
 	if Globals.joypad_connected and visible:
-		main_menu_button.grab_focus()
+		next_level_button.grab_focus()

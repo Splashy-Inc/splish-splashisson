@@ -3,6 +3,7 @@ extends CanvasLayer
 class_name HUD
 
 signal play_pressed
+signal next_pressed
 signal restart_pressed
 signal quit_pressed
 signal main_menu_pressed
@@ -94,6 +95,8 @@ func _on_game_menu_button_pressed(type: String):
 	match type:
 		"Play":
 			play_pressed.emit()
+		"Next":
+			next_pressed.emit()
 		"Restart":
 			restart_pressed.emit()
 		"Controls":
