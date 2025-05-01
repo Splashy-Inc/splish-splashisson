@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://qotgv1kx4jwd"]
 
-[ext_resource type="Script" path="res://Scripts/rat_hole.gd" id="1_h4sya"]
-[ext_resource type="PackedScene" uid="uid://c70vjir2dc7r5" path="res://Scenes/rat.tscn" id="2_a6hdb"]
+[ext_resource type="Script" path="res://SCRIPTS/rat_hole.gd" id="1_h4sya"]
+[ext_resource type="PackedScene" uid="uid://c70vjir2dc7r5" path="res://SCENES/rat.tscn" id="2_a6hdb"]
 [ext_resource type="Texture2D" uid="uid://b25l71e15uqxp" path="res://Art/Rat/RatHole.png" id="2_rmglx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xbgtr"]

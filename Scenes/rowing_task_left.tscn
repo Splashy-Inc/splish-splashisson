@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://u5juiu6qbxnd"]
 
-[ext_resource type="Script" path="res://Scripts/rowing_task.gd" id="1_xu50v"]
+[ext_resource type="Script" path="res://SCRIPTS/rowing_task.gd" id="1_xu50v"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_6rxet"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="3_uruf0"]
 [ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="4_s3h66"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c6vh2ed4lwwia" path="res://Art/Tasks/Rowing/Active/CrewRowingK.png" id="13_fvjg8"]
 [ext_resource type="Texture2D" uid="uid://bjphjvkbrm1iu" path="res://Art/Tasks/Rowing/SplishActive/SplishRowingA.png" id="14_iedni"]
 [ext_resource type="Texture2D" uid="uid://cc8bbr3amxvmc" path="res://Art/Tasks/Rowing/Idle/IdleCrewRowing.png" id="14_omvsw"]
-[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="15_0wuf8"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="15_0wuf8"]
 [ext_resource type="Texture2D" uid="uid://b607vlbhcyv52" path="res://Art/Tasks/Rowing/SplishActive/SplishRowingB.png" id="15_k734y"]
 [ext_resource type="Texture2D" uid="uid://bgp140xc0dow1" path="res://Art/Tasks/Rowing/SplishActive/SplishRowingC.png" id="16_gmor1"]
 [ext_resource type="AudioStream" uid="uid://cdd6ahdivrr5v" path="res://Audio/heave1.mp3" id="16_mxc4x"]

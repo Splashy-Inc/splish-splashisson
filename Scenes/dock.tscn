@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cb85ltydhxs13"]
 
 [ext_resource type="Texture2D" uid="uid://bap56cnlcvi8w" path="res://Art/Dock/Dock.png" id="1_mlbo8"]
-[ext_resource type="Script" path="res://Scripts/dock.gd" id="1_y86b2"]
+[ext_resource type="Script" path="res://SCRIPTS/dock.gd" id="1_y86b2"]
 
 [node name="Dock" type="Node2D"]
 script = ExtResource("1_y86b2")

@@ -1,17 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://cs3hpuql1pmvv"]
 
-[ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_q7fsr"]
-[ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://Scenes/level.tscn" id="2_lp0n3"]
+[ext_resource type="Script" path="res://SCRIPTS/cutscene.gd" id="1_q7fsr"]
+[ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="2_lp0n3"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="3_ltj1g"]
-[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://Scenes/dialog_box.tscn" id="4_xvmpv"]
+[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="4_xvmpv"]
 [ext_resource type="Resource" uid="uid://du25auqomcjd8" path="res://Dialogs/level_1_cutscene_dialog_data.tres" id="5_40sgp"]
-[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="16_ylnku"]
+[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="16_ylnku"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="17_yxxjt"]
 [ext_resource type="Texture2D" uid="uid://o1cugesk8vp1" path="res://Art/Merchants/Shrimp/ShrimpLowQuality.png" id="18_8peca"]
 
-[node name="Cutscene" type="Node"]
+[node name="Cutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_q7fsr")
 level_scene = ExtResource("2_lp0n3")
+dialog_box = NodePath("DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0

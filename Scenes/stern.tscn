@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmy5awjreptlw"]
 
-[ext_resource type="Script" path="res://Scripts/boat_end.gd" id="1_0cbxb"]
+[ext_resource type="Script" path="res://SCRIPTS/boat_end.gd" id="1_0cbxb"]
 [ext_resource type="Texture2D" uid="uid://ct0gilfhdq48q" path="res://Art/ShipTiles/ShipStern.png" id="1_kfflb"]
-[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://Scenes/play_grid.tscn" id="4_sgco4"]
+[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="4_sgco4"]
 
 [node name="Stern" type="StaticBody2D"]
 collision_layer = 8

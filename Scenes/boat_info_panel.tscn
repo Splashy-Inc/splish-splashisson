@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgh348ybeuo0m"]
 
-[ext_resource type="PackedScene" uid="uid://kriuduxnhk54" path="res://Scenes/condition_segment.tscn" id="1_hgmqq"]
+[ext_resource type="PackedScene" uid="uid://kriuduxnhk54" path="res://SCENES/condition_segment.tscn" id="1_hgmqq"]
 [ext_resource type="StyleBox" uid="uid://bcsxb6cfbis3y" path="res://Styles/boat_info_panel.tres" id="1_mn1td"]
-[ext_resource type="Script" path="res://Scripts/boat_info_panel.gd" id="1_tdy62"]
+[ext_resource type="Script" path="res://SCRIPTS/boat_info_panel.gd" id="1_tdy62"]
 
 [node name="BoatInfoPanel" type="PanelContainer"]
 offset_right = 60.0

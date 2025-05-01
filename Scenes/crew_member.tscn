@@ -1,6 +1,6 @@
 [gd_scene load_steps=81 format=3 uid="uid://djyibeaauqw2f"]
 
-[ext_resource type="Script" path="res://Scripts/crew_member.gd" id="1_ci8gb"]
+[ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
 [ext_resource type="Texture2D" uid="uid://kgf4cug4cngo" path="res://Art/Crew/Animations/Acknowledge/CrewAcknowledgementB.png" id="2_1tejp"]
 [ext_resource type="Texture2D" uid="uid://qahnafwsgcov" path="res://Art/Crew/Animations/Alert/CrewAlertB.png" id="2_4d6of"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bigscjo382k8" path="res://Art/Crew/Animations/BailingWater/BailC.png" id="16_gewym"]
 [ext_resource type="Texture2D" uid="uid://b31c2dkv5f40v" path="res://Art/Crew/Animations/BailingWater/BailD.png" id="17_unnxc"]
 [ext_resource type="Texture2D" uid="uid://bupfk030054q8" path="res://Art/Crew/Animations/BailingWater/BailE.png" id="18_txkh8"]
-[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="19_i1ydi"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="19_i1ydi"]
 [ext_resource type="Texture2D" uid="uid://tnj7f5ndwr0w" path="res://Art/Crew/Animations/BailingWater/BailF.png" id="19_v8a5m"]
 [ext_resource type="Texture2D" uid="uid://2s17htd0j4ll" path="res://Art/Crew/Animations/BailingWater/BailG.png" id="20_5aq8c"]
 [ext_resource type="AudioStream" uid="uid://bj173jpryfuer" path="res://Audio/crew_alert.mp3" id="20_ovux8"]

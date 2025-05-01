@@ -1,22 +1,23 @@
 [gd_scene load_steps=12 format=3 uid="uid://4qwgetiar50v"]
 
-[ext_resource type="Script" path="res://Scripts/cutscene_start.gd" id="1_0jjtp"]
+[ext_resource type="Script" path="res://SCRIPTS/cutscene_start.gd" id="1_0jjtp"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="2_8q681"]
-[ext_resource type="PackedScene" uid="uid://q6gx1xcbys3g" path="res://Scenes/tutorial.tscn" id="2_mi8w7"]
-[ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://Scenes/Cutscenes/cutscene.tscn" id="3_gol2h"]
-[ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://Scenes/level.tscn" id="3_hpspq"]
-[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://Scenes/dialog_box.tscn" id="5_ryrfn"]
-[ext_resource type="PackedScene" uid="uid://cqw3k8ogffvua" path="res://Scenes/dialog_button.tscn" id="6_x1khm"]
+[ext_resource type="PackedScene" uid="uid://q6gx1xcbys3g" path="res://SCENES/tutorial.tscn" id="2_mi8w7"]
+[ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://SCENES/Cutscenes/cutscene.tscn" id="3_gol2h"]
+[ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="3_hpspq"]
+[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="5_ryrfn"]
+[ext_resource type="PackedScene" uid="uid://cqw3k8ogffvua" path="res://SCENES/dialog_button.tscn" id="6_x1khm"]
 [ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="6_xooul"]
 [ext_resource type="Resource" uid="uid://cavw65m6hlnw3" path="res://Dialogs/start_cutscene_dialog_data.tres" id="7_4jhag"]
-[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="8_dy7yb"]
+[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="8_dy7yb"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="9_6n3k4"]
 
-[node name="StartCutscene" type="Node"]
+[node name="StartCutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_0jjtp")
 tutorial_scene = ExtResource("2_mi8w7")
 level_1_cutscene = ExtResource("3_gol2h")
 level_scene = ExtResource("3_hpspq")
+dialog_box = NodePath("DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0

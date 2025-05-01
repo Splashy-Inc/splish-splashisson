@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ptto4146phwg"]
 
-[ext_resource type="PackedScene" uid="uid://bg0meusunoosr" path="res://Scenes/bow.tscn" id="1_17osx"]
-[ext_resource type="Script" path="res://Scripts/boat.gd" id="1_c5j0p"]
-[ext_resource type="PackedScene" uid="uid://ccika7v5l27ew" path="res://Scenes/deck.tscn" id="2_kxpgr"]
-[ext_resource type="PackedScene" uid="uid://dmy5awjreptlw" path="res://Scenes/stern.tscn" id="3_701t0"]
-[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://Scenes/play_grid.tscn" id="5_6ih3t"]
+[ext_resource type="PackedScene" uid="uid://bg0meusunoosr" path="res://SCENES/bow.tscn" id="1_17osx"]
+[ext_resource type="Script" path="res://SCRIPTS/boat.gd" id="1_c5j0p"]
+[ext_resource type="PackedScene" uid="uid://ccika7v5l27ew" path="res://SCENES/deck.tscn" id="2_kxpgr"]
+[ext_resource type="PackedScene" uid="uid://dmy5awjreptlw" path="res://SCENES/stern.tscn" id="3_701t0"]
+[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="5_6ih3t"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fso07"]
 vertices = PackedVector2Array(90.6328, 188.391, 134.773, 148.453, 134.969, 250.961, -137, -120.148, -137, -90, -137.5, -90, -143.813, 250.031, -137.5, 90, -137, 90, -137, 146.438, -90.6328, 188.391, 37.2813, 214, -37.2813, 214, 102, -70, 102.5, -70, 102.5, 70, 102, 70, -102, 70, -102.5, 70, -102.5, -70, -102, -70, -74.4063, -163.578, -31.7422, -184, 31.7422, -184, 74.4063, -163.578, 102, -139.453, -102, -139.453, -74.4063, 163.578, 102, 139.453, 74.4063, 163.578, 31.7422, 184, -31.7422, 184, -102, 139.453, -89.6094, -188.391, -136.5, -146.938, -135.172, -219.102, 134.023, -221.891, 134.156, -149, 88.5781, -189.406, 37.2734, -214, -37.3203, -214)

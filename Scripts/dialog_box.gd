@@ -30,8 +30,7 @@ func _ready() -> void:
 	_hide_end_buttons()
 
 func _process(delta: float) -> void:
-	if Globals.joypad_connected and dialog_button.visible and not dialog_button.has_focus():
-		dialog_button.grab_focus()
+	pass
 
 func advance_dialog():
 	var next_line = _get_next_line()
@@ -71,3 +70,12 @@ func set_dialog_data(new_dialog_data: DialogData):
 	dialog_data = new_dialog_data
 	cur_dialog_position = -1
 	advance_dialog()
+
+func _on_dialog_button_visibility_changed() -> void:
+	update_view()
+
+func update_view():
+	if Globals.joypad_connected and visible:
+		if not is_node_ready():
+			await ready
+		dialog_button.grab_focus()

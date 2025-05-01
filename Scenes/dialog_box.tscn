@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwr6cg26cwtpw"]
 
-[ext_resource type="Script" path="res://Scripts/dialog_box.gd" id="1_q81u0"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_box.gd" id="1_q81u0"]
 [ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="2_0m27t"]
 [ext_resource type="Texture2D" uid="uid://bh7hha73l5725" path="res://Textures/shrimp_merchat_dialog_texture.tres" id="3_wnvek"]
 [ext_resource type="Resource" uid="uid://oldvcmnehasr" path="res://Dialogs/Tutorial/tutorial_overview_dialog.tres" id="4_coa1i"]
-[ext_resource type="PackedScene" uid="uid://cqw3k8ogffvua" path="res://Scenes/dialog_button.tscn" id="5_gvo3j"]
+[ext_resource type="PackedScene" uid="uid://cqw3k8ogffvua" path="res://SCENES/dialog_button.tscn" id="5_gvo3j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_263dt"]
 bg_color = Color(0, 0, 0, 1)
@@ -81,3 +81,4 @@ texture = ExtResource("3_wnvek")
 stretch_mode = 3
 
 [connection signal="pressed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="advance_dialog"]
+[connection signal="visibility_changed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="_on_dialog_button_visibility_changed"]

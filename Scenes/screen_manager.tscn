@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0c07p4xfekmd"]
+[gd_scene load_steps=4 format=3 uid="uid://d0c07p4xfekmd"]
 
-[ext_resource type="Script" path="res://Scripts/screen_manager.gd" id="1_tbvcx"]
-[ext_resource type="PackedScene" uid="uid://4qwgetiar50v" path="res://Scenes/Cutscenes/cutscene_start.tscn" id="2_sg3ki"]
+[ext_resource type="Script" path="res://SCRIPTS/screen_manager.gd" id="1_tbvcx"]
+[ext_resource type="PackedScene" uid="uid://4qwgetiar50v" path="res://SCENES/Cutscenes/cutscene_start.tscn" id="2_sg3ki"]
+[ext_resource type="PackedScene" uid="uid://dp3emmjd4oc5b" path="res://SCENES/GUI/hud.tscn" id="3_3hcl3"]
 
 [node name="ScreenManager" type="Node"]
 script = ExtResource("1_tbvcx")
-cutscene_scene = ExtResource("2_sg3ki")
+start_scene = ExtResource("2_sg3ki")
+
+[node name="HUD" parent="." instance=ExtResource("3_3hcl3")]
+layer = 2
+
+[connection signal="main_menu_pressed" from="HUD" to="." method="_on_main_menu_pressed"]
+[connection signal="next_pressed" from="HUD" to="." method="_on_next_pressed"]
+[connection signal="play_pressed" from="HUD" to="." method="_on_play_pressed"]
+[connection signal="quit_pressed" from="HUD" to="." method="_on_quit_pressed"]
+[connection signal="restart_pressed" from="HUD" to="." method="_on_restart_pressed"]

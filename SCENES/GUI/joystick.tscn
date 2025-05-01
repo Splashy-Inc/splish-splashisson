@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://doayqux8rw3nv"]
+
+[ext_resource type="Script" path="res://SCRIPTS/joystick.gd" id="1_s7tu6"]
+[ext_resource type="Texture2D" uid="uid://bsnl2lvtbxral" path="res://ASSETS/Art/joystick/Joystick.png" id="2_dpt66"]
+[ext_resource type="Texture2D" uid="uid://dkujl704yentj" path="res://ASSETS/Art/joystick/JoystickRing.png" id="3_3odyg"]
+[ext_resource type="Script" path="res://SCRIPTS/knob.gd" id="4_toli6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rcby"]
+radius = 60.0
+
+[node name="joystick" type="Node2D"]
+script = ExtResource("1_s7tu6")
+
+[node name="Ring" type="Sprite2D" parent="."]
+texture = ExtResource("3_3odyg")
+
+[node name="Knob" type="Sprite2D" parent="."]
+texture = ExtResource("2_dpt66")
+script = ExtResource("4_toli6")
+
+[node name="Button" type="TouchScreenButton" parent="."]
+shape = SubResource("CircleShape2D_6rcby")
+
+[connection signal="pressed" from="Button" to="Knob" method="_on_button_button_down"]
+[connection signal="released" from="Button" to="Knob" method="_on_button_button_up"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://bkt3la4dqahgh"]
 
-[ext_resource type="Script" path="res://Scripts/leak.gd" id="1_4ykgf"]
+[ext_resource type="Script" path="res://SCRIPTS/leak.gd" id="1_4ykgf"]
 [ext_resource type="Texture2D" uid="uid://u8r6eec7wpgv" path="res://Art/Leak/LeakH.png" id="1_unkym"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_7wtkj"]
 [ext_resource type="Texture2D" uid="uid://djseaj8ncqp0d" path="res://Art/Leak/LeakL.png" id="2_5105n"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bhjgutwp72jnh" path="res://Art/Leak/LeakC.png" id="7_ut3nk"]
 [ext_resource type="Texture2D" uid="uid://cbfyvldqkv6xf" path="res://Art/Leak/LeakB.png" id="8_4dheh"]
 [ext_resource type="Texture2D" uid="uid://bcw2nn1y7uuup" path="res://Art/Leak/LeakA.png" id="9_j3e5d"]
-[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://Scenes/sfx_manager.tscn" id="12_klpg4"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="12_klpg4"]
 [ext_resource type="AudioStream" uid="uid://qndvaeowcfaq" path="res://Audio/Leak/water_leak.ogg" id="13_b7rxi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kn724"]

@@ -1,18 +1,19 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfsxn0iyywxs5"]
 
-[ext_resource type="Script" path="res://Scripts/level.gd" id="1_stx43"]
-[ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://Scenes/Ocean/ocean.tscn" id="2_lnmp3"]
-[ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://Scenes/hud.tscn" id="3_nmge5"]
-[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://Scenes/boat.tscn" id="4_64cm4"]
-[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://Scenes/crew_member.tscn" id="5_pjrgm"]
-[ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://Scenes/splish.tscn" id="6_peku6"]
-[ext_resource type="Script" path="res://Scripts/game_camera.gd" id="7_r4a8d"]
-[ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://Scenes/dock.tscn" id="8_b63j4"]
-[ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://Scenes/rat_hole.tscn" id="8_mfs7h"]
+[ext_resource type="Script" path="res://SCRIPTS/level.gd" id="1_stx43"]
+[ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="2_lnmp3"]
+[ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_nmge5"]
+[ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="4_64cm4"]
+[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://SCENES/crew_member.tscn" id="5_pjrgm"]
+[ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="6_peku6"]
+[ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="7_r4a8d"]
+[ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_b63j4"]
+[ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="8_mfs7h"]
 
-[node name="Level" type="Node" node_paths=PackedStringArray("boat")]
+[node name="Level" type="Node" node_paths=PackedStringArray("player", "boat")]
 script = ExtResource("1_stx43")
 dock_scene = ExtResource("8_b63j4")
+player = NodePath("People/Splish")
 minimum_seconds = 30
 boat = NodePath("Boat")
 

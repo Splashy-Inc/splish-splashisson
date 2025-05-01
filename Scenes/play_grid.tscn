@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bevd7w3pl7sal"]
 
-[ext_resource type="PackedScene" uid="uid://beut40fxoji5o" path="res://Scenes/task_slot.tscn" id="1_5trjl"]
-[ext_resource type="PackedScene" uid="uid://djdh6doehj7v0" path="res://Scenes/cargo_slot.tscn" id="2_dftv2"]
-[ext_resource type="Script" path="res://Scripts/play_grid.gd" id="2_hkb4n"]
+[ext_resource type="PackedScene" uid="uid://beut40fxoji5o" path="res://SCENES/task_slot.tscn" id="1_5trjl"]
+[ext_resource type="PackedScene" uid="uid://djdh6doehj7v0" path="res://SCENES/cargo_slot.tscn" id="2_dftv2"]
+[ext_resource type="Script" path="res://SCRIPTS/play_grid.gd" id="2_hkb4n"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5b04q"]
 resource_name = "TaskSlots"
