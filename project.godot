@@ -43,6 +43,7 @@ selectable=""
 crew=""
 rat=""
 rat_hole=""
+player=""
 
 [gui]
 

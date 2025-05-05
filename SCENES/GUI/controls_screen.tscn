@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6tdu4r5v8bbs"]
+[gd_scene load_steps=8 format=3 uid="uid://c6tdu4r5v8bbs"]
 
 [ext_resource type="Script" path="res://SCRIPTS/controls_screen.gd" id="1_tvbxo"]
 [ext_resource type="Script" path="res://SCRIPTS/controls_tab_container.gd" id="2_pnoft"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwyni"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6gwa"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [node name="HowToPlayScreen" type="Control"]
 custom_minimum_size = Vector2(640, 360)
@@ -500,10 +503,13 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="KeyPressPrompt" type="Label" parent="ScreenRows"]
+[node name="BackButton" type="Button" parent="ScreenRows"]
+custom_minimum_size = Vector2(41, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Press any key to exit"
-horizontal_alignment = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_v6gwa")
+text = "Back"
 
 [connection signal="visibility_changed" from="ScreenRows/PlayerControl/ControlsTabContainer" to="ScreenRows/PlayerControl/ControlsTabContainer" method="_on_visibility_changed"]
+[connection signal="pressed" from="ScreenRows/BackButton" to="." method="_on_back_button_pressed"]

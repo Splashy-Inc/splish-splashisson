@@ -1,17 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://b77mh17y84d50"]
+[gd_scene load_steps=8 format=3 uid="uid://b77mh17y84d50"]
 
 [ext_resource type="Script" path="res://SCRIPTS/mobile_controls.gd" id="1_qatij"]
 [ext_resource type="PackedScene" uid="uid://doayqux8rw3nv" path="res://SCENES/GUI/joystick.tscn" id="1_x3fcn"]
-[ext_resource type="Texture2D" uid="uid://b4n6irf1jephl" path="res://icon.svg" id="3_tmh5b"]
+[ext_resource type="Material" uid="uid://dn2283qqvndii" path="res://Materials/highlight_button_material.tres" id="3_cqpno"]
 
-[sub_resource type="Gradient" id="Gradient_6dmps"]
+[sub_resource type="Gradient" id="Gradient_ssdxj"]
+offsets = PackedFloat32Array(0, 0.012987, 0.0194805, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.818182, 0.574332, 0, 1, 0.826555, 0.580209, 0, 1, 1, 0.701961, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_trene"]
-gradient = SubResource("Gradient_6dmps")
-width = 128
-height = 128
-fill_from = Vector2(0.100917, 0.146789)
-fill_to = Vector2(1, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qg7bi"]
+gradient = SubResource("Gradient_ssdxj")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_3wtnm"]
+offsets = PackedFloat32Array(0, 0.00649351, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.551948, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3kold"]
+gradient = SubResource("Gradient_3wtnm")
+fill_from = Vector2(0, 1)
 
 [node name="MobileControls" type="Control"]
 layout_mode = 3
@@ -31,8 +39,14 @@ script = ExtResource("1_qatij")
 [node name="Joystick" parent="." instance=ExtResource("1_x3fcn")]
 position = Vector2(80, 280)
 
-[node name="Button1" type="TouchScreenButton" parent="."]
-position = Vector2(528, 248)
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("3_tmh5b")
-texture_pressed = SubResource("GradientTexture2D_trene")
+[node name="ActButton" type="TouchScreenButton" parent="."]
+material = ExtResource("3_cqpno")
+position = Vector2(544, 184)
+texture_normal = SubResource("GradientTexture2D_qg7bi")
+action = "act"
+
+[node name="SelectButton" type="TouchScreenButton" parent="."]
+material = ExtResource("3_cqpno")
+position = Vector2(512, 264)
+texture_normal = SubResource("GradientTexture2D_3kold")
+action = "select"

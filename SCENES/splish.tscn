@@ -466,7 +466,7 @@ _data = {
 "walking_up": SubResource("Animation_y4fll")
 }
 
-[node name="Splish" type="CharacterBody2D"]
+[node name="Splish" type="CharacterBody2D" groups=["player"]]
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_34yo7")

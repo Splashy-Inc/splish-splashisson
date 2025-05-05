@@ -21,7 +21,7 @@ boat = NodePath("Boat")
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
-[node name="HUD" parent="." instance=ExtResource("3_75gk2")]
+[node name="LevelUI" parent="." instance=ExtResource("3_75gk2")]
 
 [node name="Boat" parent="." instance=ExtResource("2_twya3")]
 position = Vector2(320, 180)

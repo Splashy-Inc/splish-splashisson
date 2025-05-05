@@ -18,7 +18,7 @@ func _on_visibility_changed() -> void:
 	update_view()
 
 func update_view():
-	if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+	if Globals.is_mobile:
 		current_tab = Tabs.MOBILE
 	elif Globals.joypad_connected:
 		current_tab = Tabs.CONTROLLER
