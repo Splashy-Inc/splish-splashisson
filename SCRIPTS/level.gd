@@ -23,9 +23,12 @@ var finished = false
 
 var end_dock: Dock
 
+var level_stats := LevelStats.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	boat.set_deck_length(boat_length)
+	level_stats.length_seconds = minimum_seconds
 	
 func _level_ready():
 	pass
@@ -89,3 +92,6 @@ func resume_play(new_mouse_mode: int = Input.MOUSE_MODE_VISIBLE):
 	if dialog_box:
 		dialog_box.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 		dialog_box.update_view()
+
+func set_finish_seconds(finish_seconds: int):
+	level_stats.finish_seconds = finish_seconds

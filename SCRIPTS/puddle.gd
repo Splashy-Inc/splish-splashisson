@@ -43,6 +43,8 @@ var neighbor_puddles = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawned.connect(Globals._on_puddle_spawned)
+	died.connect(Globals._on_puddle_fixed)
 	if not Globals.boat:
 		Globals.boat_ready.connect(_update_stage)
 	else:
@@ -142,6 +144,7 @@ func spawn(spawn_point: Vector2):
 			effect_check_occupant = _check_spawn_space_occupied("rowing_task")
 			if effect_check_occupant is RowingTask:
 				effect_check_occupant.add_threat(self)
+		spawned.emit()
 		
 	_update_neighbor_puddles()
 	

@@ -23,6 +23,80 @@ theme_override_font_sizes/font_size = 36
 text = "You win!"
 horizontal_alignment = 1
 
+[node name="LevelStats" type="VBoxContainer" parent="MenuContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TimeStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/TimeStats"]
+layout_mode = 2
+text = "Voyage time: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/TimeStats"]
+layout_mode = 2
+text = "0:00"
+
+[node name="PercentageLabel" type="Label" parent="MenuContent/LevelStats/TimeStats"]
+layout_mode = 2
+text = "(Avg. Speed 100%)"
+
+[node name="CargoStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/CargoStats"]
+layout_mode = 2
+text = "Cargo condition: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/CargoStats"]
+layout_mode = 2
+text = "100%"
+
+[node name="SuccessStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/SuccessStats"]
+layout_mode = 2
+text = "Success rating:"
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/SuccessStats"]
+layout_mode = 2
+text = "100%"
+
+[node name="PuddleStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/PuddleStats"]
+layout_mode = 2
+text = "Puddles bailed: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/PuddleStats"]
+layout_mode = 2
+text = "0/0"
+
+[node name="LeakStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/LeakStats"]
+layout_mode = 2
+text = "Leaks patched: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/LeakStats"]
+layout_mode = 2
+text = "0/0"
+
+[node name="RatStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/RatStats"]
+layout_mode = 2
+text = "Rats stomped: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/RatStats"]
+layout_mode = 2
+text = "0/0"
+
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
 layout_mode = 2
 size_flags_horizontal = 4

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Rat
 
+signal spawned
 signal died
 
 const SPEED = 50.0
@@ -26,6 +27,8 @@ var assignee: Node2D
 @export var health = 3
 
 func _ready():
+	Globals._on_rat_spawned()
+	died.connect(Globals._on_rat_fixed)
 	$SFXManager.play("Squeak")
 	target_closest_cargo()
 
