@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccika7v5l27ew"]
+
+[ext_resource type="Texture2D" uid="uid://dl2iyrtq3rdcy" path="res://Art/ShipTiles/ShipMiddle.png" id="1_146gp"]
+[ext_resource type="Script" path="res://SCRIPTS/deck.gd" id="1_u6t8r"]
+[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="4_ds1m8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi8fu"]
+size = Vector2(15, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tyg2r"]
+size = Vector2(15, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgofq"]
+size = Vector2(224, 160)
+
+[node name="Deck" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_u6t8r")
+tasks = Array[int]([0, 0, 0, 0])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_146gp")
+
+[node name="LeftWall" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-120, 0)
+shape = SubResource("RectangleShape2D_pi8fu")
+
+[node name="RightWall" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(120, 0)
+shape = SubResource("RectangleShape2D_tyg2r")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+shape = SubResource("RectangleShape2D_cgofq")
+
+[node name="PlayArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayArea"]
+polygon = PackedVector2Array(-112, -80, 112, -80, 112, 80, -112, 80)
+
+[node name="PlayGrid" parent="." instance=ExtResource("4_ds1m8")]
+position = Vector2(-112, -80)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 6, 0, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 6, 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmy5awjreptlw"]
+
+[ext_resource type="Script" path="res://SCRIPTS/boat_end.gd" id="1_0cbxb"]
+[ext_resource type="Texture2D" uid="uid://ct0gilfhdq48q" path="res://Art/ShipTiles/ShipStern.png" id="1_kfflb"]
+[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="4_sgco4"]
+
+[node name="Stern" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_0cbxb")
+cargo_list = Array[int]([1])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kfflb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 1
+rotation = 3.14159
+polygon = PackedVector2Array(-127, 61.9997, -127, -0.000321968, -84.9999, -38.0002, -34.9998, -62.0001, 35.0002, -61.9999, 85.0001, -37.9998, 127, 0.000321968, 127, 62.0003, 112, 62.0003, 112, -1.99972, 80.0001, -29.9998, 34.0001, -51.9999, -33.9999, -52.0001, -79.9999, -30.0002, -112, -2.00028, -112, 61.9997)
+
+[node name="PlaySpace" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlaySpace"]
+polygon = PackedVector2Array(-112, -62, -112, 2, 112, 2, 112, -62)
+
+[node name="PlayGrid" parent="." instance=ExtResource("4_sgco4")]
+position = Vector2(-112, -62)
+tile_map_data = PackedByteArray(0, 0, 3, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0)

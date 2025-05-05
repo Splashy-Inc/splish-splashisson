@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsnr7g2gkv5ie"]
+
+[ext_resource type="Script" path="res://SCRIPTS/cargo_item.gd" id="1_f8d7r"]
+[ext_resource type="Texture2D" uid="uid://8ld8yvec0wq6" path="res://Art/Cargo/Ham/Ham1.png" id="2_u0x3v"]
+
+[node name="Meat" type="Node2D"]
+script = ExtResource("1_f8d7r")
+health = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u0x3v")

@@ -1,0 +1,97 @@
+extends Node
+
+class_name Level
+
+signal completed
+
+@export var next_scene: PackedScene
+
+@export var dock_scene: PackedScene
+
+@export var player: Player
+
+@export var dialog_box: DialogBox
+
+var progress = 0
+@export var minimum_seconds: int
+var length = 0
+var max_boat_speed = 0
+var boat_speed = 0
+@export var boat: Boat
+@export var boat_length := 1
+var finished = false
+
+var end_dock: Dock
+
+var level_stats := LevelStats.new()
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	boat.set_deck_length(boat_length)
+	level_stats.length_seconds = minimum_seconds
+	
+func _level_ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	_level_process(delta)
+	if not finished:
+		progress += boat_speed * delta
+		if progress >= length:
+			finished = true
+			boat.stop(end_dock)
+			_on_finished()
+		Globals.update_level_progress_percent(clamp(progress/length, 0.0, 1.0))
+
+func _level_process(delta: float):
+	pass
+
+func _on_boat_ready() -> void:
+	max_boat_speed = boat.get_max_speed()
+	length = max_boat_speed * minimum_seconds
+	Globals.speed_updated.connect(_boat_speed_updated)
+	
+	# Spawn the end dock
+	var viewport_rect = get_viewport().get_visible_rect()
+	var dock_spawn_point = Vector2(viewport_rect.size.x, boat.global_position.y - length - boat.max_speed)
+	end_dock = spawn_dock(dock_spawn_point)
+	
+	Globals.set_boat(boat)
+	
+	_level_ready()
+
+func _boat_speed_updated(speed: int):
+	boat_speed = clamp(speed, 0, max_boat_speed)
+
+func spawn_dock(spawn_point: Vector2):
+	var new_dock = dock_scene.instantiate()
+	add_child(new_dock)
+	new_dock.global_position = spawn_point
+	return new_dock
+
+func _on_leak_spawn_timer_timeout() -> void:
+	if get_tree().get_nodes_in_group("leak").size() < 3:
+		Globals.boat.spawn_leak()
+
+func _on_finished():
+	if $Obstacles/LeakSpawnTimer:
+		$Obstacles/LeakSpawnTimer.stop()
+	if $Obstacles/RatHole:
+		$Obstacles/RatHole.die()
+	player.input_disabled = true
+	completed.emit()
+
+func pause_play():
+	process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	if dialog_box:
+		dialog_box.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+
+func resume_play(new_mouse_mode: int = Input.MOUSE_MODE_VISIBLE):
+	process_mode = ProcessMode.PROCESS_MODE_INHERIT
+	if dialog_box:
+		dialog_box.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
+		dialog_box.update_view()
+
+func set_finish_seconds(finish_seconds: int):
+	level_stats.finish_seconds = finish_seconds

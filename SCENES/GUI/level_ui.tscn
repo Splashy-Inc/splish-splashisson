@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://co8iy1he6fkwa"]
+
+[ext_resource type="Script" path="res://SCRIPTS/level_ui.gd" id="1_7ovrs"]
+[ext_resource type="PackedScene" uid="uid://jh82vu0m4gbb" path="res://SCENES/progress_panel.tscn" id="2_7tkj7"]
+[ext_resource type="PackedScene" uid="uid://cgh348ybeuo0m" path="res://SCENES/boat_info_panel.tscn" id="3_og3d6"]
+[ext_resource type="PackedScene" uid="uid://kriuduxnhk54" path="res://SCENES/condition_segment.tscn" id="4_op2fg"]
+[ext_resource type="PackedScene" uid="uid://joi30yc7yge6" path="res://SCENES/clock.tscn" id="5_lajsh"]
+[ext_resource type="PackedScene" uid="uid://b77mh17y84d50" path="res://SCENES/GUI/mobile_controls.tscn" id="6_ip6vt"]
+
+[node name="LevelUI" type="CanvasLayer"]
+script = ExtResource("1_7ovrs")
+
+[node name="Objective" type="HBoxContainer" parent="."]
+offset_left = 93.0
+offset_top = 2.0
+offset_right = 170.0
+offset_bottom = 15.0
+
+[node name="ObjectiveTitle" type="Label" parent="Objective"]
+layout_mode = 2
+text = "Objective:"
+
+[node name="Objective Label" type="Label" parent="Objective"]
+layout_mode = 2
+text = "None"
+
+[node name="ProgressPanel" parent="." instance=ExtResource("2_7tkj7")]
+offset_left = 5.0
+offset_top = 185.0
+offset_right = 185.0
+offset_bottom = 265.0
+
+[node name="BoatInfoPanel" parent="." instance=ExtResource("3_og3d6")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 38.0
+grow_horizontal = 0
+condition_segment_scene = ExtResource("4_op2fg")
+
+[node name="StopwatchPanel" parent="." instance=ExtResource("5_lajsh")]
+offset_left = 29.0
+offset_top = 188.0
+offset_right = 59.0
+offset_bottom = 201.0
+
+[node name="MobileControls" parent="." instance=ExtResource("6_ip6vt")]
