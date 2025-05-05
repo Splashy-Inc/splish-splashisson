@@ -53,6 +53,8 @@ func _move_state(delta: float):
 		var direction := Vector2.ZERO
 		if not input_disabled:
 			direction = Input.get_vector("left", "right", "up", "down").normalized()
+			if direction == Vector2.ZERO and Globals.joystick:
+				direction = Globals.joystick.direction.normalized()
 		if direction:
 			if direction.y < 0:
 				$AnimationPlayer.play("walking_up")
@@ -70,7 +72,7 @@ func _move_state(delta: float):
 				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
 
 func _input(event: InputEvent) -> void:
-	if not input_disabled:
+	if not input_disabled and not (Globals.is_mobile and event is InputEventMouse):
 		if event.is_action_pressed("select"):
 			if selection_target is Crew:
 				add_follower(selection_target)

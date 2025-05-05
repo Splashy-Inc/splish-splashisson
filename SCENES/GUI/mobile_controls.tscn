@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b77mh17y84d50"]
+[gd_scene load_steps=7 format=3 uid="uid://b77mh17y84d50"]
 
 [ext_resource type="Script" path="res://SCRIPTS/mobile_controls.gd" id="1_qatij"]
 [ext_resource type="PackedScene" uid="uid://doayqux8rw3nv" path="res://SCENES/GUI/joystick.tscn" id="1_x3fcn"]
-[ext_resource type="Texture2D" uid="uid://b4n6irf1jephl" path="res://icon.svg" id="3_tmh5b"]
 
-[sub_resource type="Gradient" id="Gradient_6dmps"]
+[sub_resource type="Gradient" id="Gradient_ssdxj"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_trene"]
-gradient = SubResource("Gradient_6dmps")
-width = 128
-height = 128
-fill_from = Vector2(0.100917, 0.146789)
-fill_to = Vector2(1, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qg7bi"]
+gradient = SubResource("Gradient_ssdxj")
+fill_from = Vector2(0.669725, 0.353211)
+fill_to = Vector2(0.298165, 0.83945)
+
+[sub_resource type="Gradient" id="Gradient_3wtnm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3kold"]
+gradient = SubResource("Gradient_3wtnm")
+fill_from = Vector2(0.518349, 0.504587)
+fill_to = Vector2(0.894495, 0.243119)
 
 [node name="MobileControls" type="Control"]
 layout_mode = 3
@@ -32,7 +36,11 @@ script = ExtResource("1_qatij")
 position = Vector2(80, 280)
 
 [node name="Button1" type="TouchScreenButton" parent="."]
-position = Vector2(528, 248)
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("3_tmh5b")
-texture_pressed = SubResource("GradientTexture2D_trene")
+position = Vector2(544, 184)
+texture_normal = SubResource("GradientTexture2D_qg7bi")
+action = "act"
+
+[node name="Button2" type="TouchScreenButton" parent="."]
+position = Vector2(512, 264)
+texture_normal = SubResource("GradientTexture2D_3kold")
+action = "select"

@@ -43,11 +43,15 @@ var crew_select_color := Color(0, 0.843, 0.196)
 var disabled_modulate := Color(1, 1, 1, 0.498)
 var modulate_reset := Color(1, 1, 1)
 var joypad_connected := false
+var joystick : JoyStick
+var is_mobile = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	joypad_connected = Input.get_connected_joypads().size() > 0
+	if OS.has_feature("mobile") or OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		is_mobile = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
