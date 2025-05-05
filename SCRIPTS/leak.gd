@@ -10,7 +10,8 @@ var current_puddle: Puddle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	spawned.connect(Globals._on_leak_spawned)
+	died.connect(Globals._on_leak_fixed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -67,6 +68,8 @@ func spawn(spawn_point: Vector2):
 	var spawn_occupant = _spawn("impassable", spawn_point)
 	if spawn_occupant == self:
 		spawn_occupant = _spawn("leak", spawn_point)
+		if spawn_occupant == self:
+			spawned.emit()
 	return spawn_occupant
 
 func is_targetable():

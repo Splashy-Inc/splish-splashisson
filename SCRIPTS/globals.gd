@@ -62,7 +62,6 @@ func generate_task(type: Task_type) -> Task:
 func generate_cargo() -> Cargo:
 	return cargo_scene.duplicate().instantiate()
 
-
 func set_boat(new_boat: Boat):
 	boat = new_boat
 	boat_ready.emit(boat)
@@ -79,6 +78,9 @@ func update_boat_speed(speed: int):
 func update_cargo_condition(condition: int, max_condition: int):
 	cargo_info["max_condition"] = max_condition
 	cargo_info["condition"] = condition
+	if level:
+		level.level_stats.cargo_finish_condition = cargo_info["condition"]
+		level.level_stats.cargo_max_condition = cargo_info["max_condition"]
 	cargo_condition_updated.emit(cargo_info["max_condition"], cargo_info["condition"])
 	
 func update_cargo_items(num_items: int, item_health: int, item_texture: CompressedTexture2D):
@@ -98,3 +100,21 @@ func _on_level_completed():
 
 func _on_joy_connection_changed(device, connected):
 	joypad_connected = Input.get_connected_joypads().size() > 0
+
+func _on_puddle_spawned():
+	level.level_stats.puddles_spawned += 1
+	
+func _on_puddle_fixed():
+	level.level_stats.puddles_fixed += 1
+
+func _on_leak_spawned():
+	level.level_stats.leaks_spawned += 1
+	
+func _on_leak_fixed():
+	level.level_stats.leaks_fixed += 1
+	
+func _on_rat_spawned():
+	level.level_stats.rats_spawned += 1
+	
+func _on_rat_fixed():
+	level.level_stats.rats_fixed += 1

@@ -12,7 +12,7 @@ signal main_menu_pressed
 @onready var menu_back_ground: ColorRect = $MenuScreens/MenuBackGround
 @onready var main_menu: Control = $MenuScreens/MainMenu
 @onready var controls_screen: Control = $MenuScreens/ControlsScreen
-@onready var win_screen: Control = $MenuScreens/WinScreen
+@onready var win_screen: WinScreen = $MenuScreens/WinScreen
 @onready var loss_screen: Control = $MenuScreens/LossScreen
 @onready var pause_menu: Control = $MenuScreens/PauseMenu
 
@@ -83,6 +83,7 @@ func show_win_screen():
 	cur_menu = Menus.WIN
 	_clear_menu()
 	show_menu_screens()
+	win_screen.set_finish_stats(Globals.level.level_stats)
 	win_screen.show()
 
 func show_loss_screen():

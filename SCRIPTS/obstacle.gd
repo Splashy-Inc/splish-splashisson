@@ -2,8 +2,13 @@ extends Task
 
 class_name Obstacle
 
+signal spawned
+
 func spawn(spawn_point: Vector2):
-	return _spawn("impassable", spawn_point)
+	var spawn_point_occupant = _spawn("impassable", spawn_point)
+	if spawn_point_occupant == self:
+		spawned.emit()
+	return spawn_point_occupant
 
 func _spawn(group: String, spawn_point: Vector2):
 	global_position = spawn_point
