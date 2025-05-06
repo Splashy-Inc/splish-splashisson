@@ -72,8 +72,9 @@ func set_boat(new_boat: Boat):
 
 func set_level(new_level: Level):
 	level = new_level
-	level.completed.connect(_on_level_completed)
-	level_ready.emit()
+	if level:
+		level.completed.connect(_on_level_completed)
+		level_ready.emit()
 
 func update_boat_speed(speed: int):
 	boat_speed = speed
