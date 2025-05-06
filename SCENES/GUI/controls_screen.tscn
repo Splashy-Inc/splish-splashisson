@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6tdu4r5v8bbs"]
+[gd_scene load_steps=9 format=3 uid="uid://c6tdu4r5v8bbs"]
 
 [ext_resource type="Script" path="res://SCRIPTS/controls_screen.gd" id="1_tvbxo"]
 [ext_resource type="Script" path="res://SCRIPTS/controls_tab_container.gd" id="2_pnoft"]
 [ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_tn6xa"]
 [ext_resource type="Texture2D" uid="uid://bwbvw6rtb7rfw" path="res://Art/Joystick/Joystick.png" id="3_1l55u"]
+[ext_resource type="Texture2D" uid="uid://cw0fyxj6elaof" path="res://Art/arrow_basic_white.png" id="4_6dj2e"]
 [ext_resource type="Texture2D" uid="uid://blv1irm4nr8dn" path="res://icon.svg" id="4_lo2b3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwyni"]
@@ -278,8 +279,11 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("2_tn6xa")
-text = "▲"
 horizontal_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3/ControlValue2"]
+layout_mode = 0
+texture = ExtResource("4_6dj2e")
 
 [node name="ControlValue3" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3"]
 custom_minimum_size = Vector2(24, 24)
@@ -292,8 +296,23 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("2_tn6xa")
-text = "◀"
 horizontal_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3/ControlValue4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = 12.0
+offset_right = 12.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+texture = ExtResource("4_6dj2e")
 
 [node name="ControlValue5" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3"]
 custom_minimum_size = Vector2(24, 24)
@@ -306,8 +325,14 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("2_tn6xa")
-text = "▶"
 horizontal_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3/ControlValue6"]
+offset_left = 24.0
+offset_right = 48.0
+offset_bottom = 24.0
+rotation = 1.5708
+texture = ExtResource("4_6dj2e")
 
 [node name="ControlValue7" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3"]
 custom_minimum_size = Vector2(24, 24)
@@ -320,8 +345,15 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("2_tn6xa")
-text = "▼"
 horizontal_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3/ControlValue8"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 48.0
+offset_bottom = 48.0
+rotation = 3.14159
+texture = ExtResource("4_6dj2e")
 
 [node name="ControlValue9" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid3"]
 custom_minimum_size = Vector2(24, 24)
