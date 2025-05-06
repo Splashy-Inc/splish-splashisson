@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://co8iy1he6fkwa"]
+[gd_scene load_steps=8 format=3 uid="uid://co8iy1he6fkwa"]
 
 [ext_resource type="Script" path="res://SCRIPTS/level_ui.gd" id="1_7ovrs"]
 [ext_resource type="PackedScene" uid="uid://jh82vu0m4gbb" path="res://SCENES/progress_panel.tscn" id="2_7tkj7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kriuduxnhk54" path="res://SCENES/condition_segment.tscn" id="4_op2fg"]
 [ext_resource type="PackedScene" uid="uid://joi30yc7yge6" path="res://SCENES/clock.tscn" id="5_lajsh"]
 [ext_resource type="PackedScene" uid="uid://b77mh17y84d50" path="res://SCENES/GUI/mobile_controls.tscn" id="6_ip6vt"]
+[ext_resource type="PackedScene" uid="uid://l63bub3q0j7s" path="res://SCENES/GUI/pause_button.tscn" id="7_vln1g"]
 
 [node name="LevelUI" type="CanvasLayer"]
 script = ExtResource("1_7ovrs")
@@ -48,3 +49,16 @@ offset_right = 59.0
 offset_bottom = 201.0
 
 [node name="MobileControls" parent="." instance=ExtResource("6_ip6vt")]
+
+[node name="PauseButton" parent="." instance=ExtResource("7_vln1g")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -37.0
+offset_right = 19.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
