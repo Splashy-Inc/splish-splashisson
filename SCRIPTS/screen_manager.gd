@@ -158,6 +158,7 @@ func _clear_screens():
 		cutscene.queue_free()
 		cutscene = null
 	cur_screen = null
+	Globals.set_level(null)
 
 func _on_next_pressed() -> void:
 	if level.next_scene:

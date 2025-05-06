@@ -29,7 +29,10 @@ func set_finish_stats(new_level_stats: LevelStats):
 
 func update_finish_stats():
 	time_value.text = StopWatch.time_string_from_seconds(level_stats.finish_seconds)
-	percentage_label.text = "(Avg. Speed " + str(level_stats.calculate_speed_percentage() * 100).substr(0,4) + "%)"
+	if level_stats.calculate_speed_percentage() < 1:
+		percentage_label.text = "(Avg. Speed " + str(level_stats.calculate_speed_percentage() * 100).substr(0,4) + "%)"
+	else:
+		percentage_label.text = "(Avg. Speed " + str(level_stats.calculate_speed_percentage() * 100).substr(0,3) + "%)"
 	cargo_value.text = str(level_stats.calculate_cargo_percentage()* 100).substr(0,4) + "%"
 	success_value.text = str(level_stats.calculate_success_percentage() * 100).substr(0,4) + "%"
 	puddle_value.text = str(level_stats.puddles_fixed) + "/" + str(level_stats.puddles_spawned)
