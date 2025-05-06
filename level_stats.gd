@@ -22,7 +22,7 @@ const CARGO_SUCCESS_WEIGHT = 1.0
 const WEIGHT_TOTAL = SPEED_SUCCESS_WEIGHT + CARGO_SUCCESS_WEIGHT
 
 func calculate_speed_percentage():
-	speed_percentage = finish_seconds / (length_seconds * speed_success_modifier)
+	speed_percentage = (length_seconds / speed_success_modifier) / finish_seconds
 	return speed_percentage
 	
 func calculate_cargo_percentage():
