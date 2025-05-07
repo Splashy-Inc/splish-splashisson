@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://c6n07tf1oeitf"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=3 format=3 uid="uid://c6n07tf1oeitf"]
 
-[ext_resource type="Script" path="res://dialog_data.gd" id="1_ef08g"]
+[ext_resource type="JSON" path="res://Dialogs/Tutorial/tutorial_assign_dialog.json" id="1_23v6b"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="1_ef08g"]
 
 [resource]
 script = ExtResource("1_ef08g")
 label = "Assign"
+variable_regex_patterns = ["<.+>"]
 dialog_text = Array[String](["A leak has sprung! Leaks will fill the boat with water, so need to be dealt with.", "Water in the boat will show up as puddles, which will damage cargo or disable rowing stations.", "To fix the leak, assign the crew member to patch it.", "Walk over to the leak until it highlights ORANGE, then RIGHT-CLICK on mouse or B-BUTTON on controller"])
+dialog_text_json = ExtResource("1_23v6b")

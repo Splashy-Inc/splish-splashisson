@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="ControlsData" load_steps=2 format=3 uid="uid://iptm0ix3u1ak"]
+
+[ext_resource type="Script" path="res://SCRIPTS/controls_data.gd" id="1_sy4ms"]
+
+[resource]
+script = ExtResource("1_sy4ms")
+keyboard_and_mouse = {
+"act": {
+"text": "R-CLICK",
+"variable": "<act>"
+},
+"movement": {
+"text": "WASD",
+"variable": "<movement>"
+},
+"select": {
+"text": "L-CLICK",
+"variable": "<select>"
+}
+}
+keyboard_only = {
+"act": {
+"text": "O",
+"variable": "<act>"
+},
+"movement": {
+"text": "WASD",
+"variable": "<movement>"
+},
+"select": {
+"text": "I",
+"variable": "<select>"
+}
+}
+controller = {
+"act": {
+"text": "B",
+"variable": "<act>"
+},
+"movement": {
+"text": "L-STICK",
+"variable": "<movement>"
+},
+"select": {
+"text": "A",
+"variable": "<select>"
+}
+}
+mobile = {
+"act": {
+"text": "ORANGE BUTTON",
+"variable": "<act>"
+},
+"movement": {
+"text": "JOYSTICK",
+"variable": "<movement>"
+},
+"select": {
+"text": "GREEN BUTTON",
+"variable": "<select>"
+}
+}

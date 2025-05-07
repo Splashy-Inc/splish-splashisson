@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://dvhmx2x12ies6"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=3 format=3 uid="uid://dvhmx2x12ies6"]
 
-[ext_resource type="Script" path="res://dialog_data.gd" id="1_rgj6f"]
+[ext_resource type="JSON" path="res://Dialogs/Tutorial/tutorial_select_dialog.json" id="1_654wq"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="1_rgj6f"]
 
 [resource]
 script = ExtResource("1_rgj6f")
 label = "Select"
+variable_regex_patterns = ["<.+>"]
 dialog_text = Array[String](["You moved! Good job?", "Next, let's tell your crew what to do!", "Crew will just stand around or continue working until you get their attention.", "To get a crew member's attention, move close to them until they highlight GREEN, then press LEFT-CLICK on mouse or PRESS A on controller", "Give that a shot."])
+dialog_text_json = ExtResource("1_654wq")

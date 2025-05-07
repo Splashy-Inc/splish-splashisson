@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://dc8dw6q2tuwc0"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=3 format=3 uid="uid://dc8dw6q2tuwc0"]
 
-[ext_resource type="Script" path="res://dialog_data.gd" id="1_4debd"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="1_4debd"]
+[ext_resource type="JSON" path="res://Dialogs/Tutorial/tutorial_wrap_up_dialog.json" id="1_8h807"]
 
 [resource]
 script = ExtResource("1_4debd")
 label = "Wrap_up"
+variable_regex_patterns = ["<.+>"]
 dialog_text = Array[String](["And that's it! You now know everything (for now) about how this all works!", "Go ahead and row the rest of the way. I'll make things spawn and behave like usual missions, so you can get a taste of what's to come!"])
+dialog_text_json = ExtResource("1_8h807")
