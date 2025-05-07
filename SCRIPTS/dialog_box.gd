@@ -48,7 +48,7 @@ func _get_next_line():
 	return null
 
 func _set_dialog_text(new_text: String):
-	dialog_text_node.text = Utils.replace_string_variables(new_text)
+	dialog_text_node.text = Utils.replace_control_string_variables(new_text)
 
 func _on_dialog_button_pressed(button: DialogButton):
 	if button.action_type == DialogButton.Dialog_button_action_type.ADVANCE:
