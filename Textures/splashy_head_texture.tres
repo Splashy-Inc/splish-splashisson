@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://da0m05d2wamyj"]
+
+[ext_resource type="Texture2D" uid="uid://ctd4seyb8y3re" path="res://Art/Splashy/SplashyViking.png" id="1_nsp1c"]
+
+[resource]
+atlas = ExtResource("1_nsp1c")
+region = Rect2(175, 94, 100, 90)

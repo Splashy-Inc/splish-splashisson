@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://ptto4146phwg"]
+
+[ext_resource type="PackedScene" uid="uid://bg0meusunoosr" path="res://SCENES/bow.tscn" id="1_17osx"]
+[ext_resource type="Script" path="res://SCRIPTS/boat.gd" id="1_c5j0p"]
+[ext_resource type="PackedScene" uid="uid://ccika7v5l27ew" path="res://SCENES/deck.tscn" id="2_kxpgr"]
+[ext_resource type="PackedScene" uid="uid://dmy5awjreptlw" path="res://SCENES/stern.tscn" id="3_701t0"]
+[ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="5_6ih3t"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fso07"]
+vertices = PackedVector2Array(90.6328, 188.391, 134.773, 148.453, 134.969, 250.961, -137, -120.148, -137, -90, -137.5, -90, -143.813, 250.031, -137.5, 90, -137, 90, -137, 146.438, -90.6328, 188.391, 37.2813, 214, -37.2813, 214, 102, -70, 102.5, -70, 102.5, 70, 102, 70, -102, 70, -102.5, 70, -102.5, -70, -102, -70, -74.4063, -163.578, -31.7422, -184, 31.7422, -184, 74.4063, -163.578, 102, -139.453, -102, -139.453, -74.4063, 163.578, 102, 139.453, 74.4063, 163.578, 31.7422, 184, -31.7422, 184, -102, 139.453, -89.6094, -188.391, -136.5, -146.938, -135.172, -219.102, 134.023, -221.891, 134.156, -149, 88.5781, -189.406, 37.2734, -214, -37.3203, -214)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 3, 5), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 8, 9, 6), PackedInt32Array(6, 9, 10), PackedInt32Array(11, 0, 2), PackedInt32Array(11, 2, 6, 12), PackedInt32Array(6, 10, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 22, 23, 24, 25, 13, 20, 26), PackedInt32Array(27, 17, 20, 16, 28, 29, 30, 31), PackedInt32Array(27, 32, 17), PackedInt32Array(20, 13, 16), PackedInt32Array(33, 34, 35), PackedInt32Array(36, 37, 38), PackedInt32Array(36, 38, 39), PackedInt32Array(35, 36, 39, 40), PackedInt32Array(35, 40, 33)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-145, -229, 144, -232, 145, 261, -154, 260)])
+agent_radius = 0.0
+
+[node name="Boat" type="Node2D"]
+script = ExtResource("1_c5j0p")
+deck_length = 1
+deck_scene = ExtResource("2_kxpgr")
+deck_tasks = Array[int]([1, 1, 2, 2])
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_fso07")
+
+[node name="BowSlot" type="Node2D" parent="NavigationRegion2D"]
+position = Vector2(0, -142)
+
+[node name="Bow" parent="NavigationRegion2D/BowSlot" instance=ExtResource("1_17osx")]
+
+[node name="DeckSlot" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Deck" parent="NavigationRegion2D/DeckSlot" instance=ExtResource("2_kxpgr")]
+
+[node name="SternSlot" type="Node2D" parent="NavigationRegion2D"]
+position = Vector2(0, 142)
+
+[node name="Stern" parent="NavigationRegion2D/SternSlot" instance=ExtResource("3_701t0")]
+
+[node name="Obstacles" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Puddles" type="Node2D" parent="NavigationRegion2D/Obstacles"]
+
+[node name="Leaks" type="Node2D" parent="NavigationRegion2D/Obstacles"]
+
+[node name="PlayGrid" parent="." instance=ExtResource("5_6ih3t")]
+position = Vector2(-112, -176)
+
+[connection signal="cargo_set_up" from="NavigationRegion2D/BowSlot/Bow" to="." method="_on_bow_cargo_set_up"]
+[connection signal="cargo_set_up" from="NavigationRegion2D/SternSlot/Stern" to="." method="_on_stern_cargo_set_up"]

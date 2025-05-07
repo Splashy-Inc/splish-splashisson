@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://piconrw3mcsj"]
+
+[ext_resource type="Texture2D" uid="uid://bthlufs3smv7j" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigA.png" id="1_ehjfi"]
+[ext_resource type="Texture2D" uid="uid://blw0hskkrpx1g" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigB.png" id="2_18x4k"]
+[ext_resource type="Texture2D" uid="uid://xcjq4mmgl73r" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigC.png" id="3_51jrn"]
+[ext_resource type="Texture2D" uid="uid://wldkb6q4noh" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigD.png" id="4_c0m82"]
+[ext_resource type="Texture2D" uid="uid://dyevgdi8lvuth" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigE.png" id="5_supjn"]
+[ext_resource type="Texture2D" uid="uid://brcircsrpcdug" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigF.png" id="6_fg1ul"]
+[ext_resource type="Texture2D" uid="uid://b2u2a2ah8l52k" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigG.png" id="7_25psi"]
+[ext_resource type="Texture2D" uid="uid://bkchjpj4g6d41" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigH.png" id="8_7jffn"]
+[ext_resource type="Texture2D" uid="uid://bh2xya03ul33k" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigI.png" id="9_adp0m"]
+[ext_resource type="Texture2D" uid="uid://def7lfobkl72o" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigJ.png" id="10_bpama"]
+[ext_resource type="Texture2D" uid="uid://dcgcypy8uyl0b" path="res://Art/Ocean/Ocean/Wave/WaveBig/WaveBigK.png" id="11_utu3x"]
+[ext_resource type="Script" path="res://SCRIPTS/ocean_animation.gd" id="12_qssx8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxds1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ehjfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_18x4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_51jrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c0m82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_supjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fg1ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_25psi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7jffn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_adp0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bpama")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_utu3x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BigWave" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_cxds1")
+frame_progress = 0.584985
+script = ExtResource("12_qssx8")

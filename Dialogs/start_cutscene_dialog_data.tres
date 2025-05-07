@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://cavw65m6hlnw3"]
+
+[ext_resource type="Script" path="res://dialog_data.gd" id="1_ryqk6"]
+
+[resource]
+script = ExtResource("1_ryqk6")
+label = ""
+dialog_text = Array[String](["Hey, Splashy here!", "Before you jump into things, I want to offer to show you a tutorial.", "Do you want a refresher on how to play?"])
