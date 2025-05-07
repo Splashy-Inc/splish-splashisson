@@ -1,6 +1,8 @@
 # Splish Splashisson: A Splashy Saga
 Repo for all the code/assets used in developing the game Splish Splashisson
 
+Play the latest release here: https://splashy-inc.itch.io/splish-splashisson
+
 MVP Project can be found here: https://github.com/orgs/Splashy-Inc/projects/5
 
 ## Game Design Document
