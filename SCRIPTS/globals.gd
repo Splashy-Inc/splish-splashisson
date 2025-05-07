@@ -66,10 +66,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		cur_controls = controls_data.controller
-	elif event is InputEventKey or event is InputEventMouse:
-		cur_controls = controls_data.keyboard_and_mouse
+	if not is_mobile:
+		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+			cur_controls = controls_data.controller
+		elif event is InputEventKey or event is InputEventMouse:
+			cur_controls = controls_data.keyboard_and_mouse
 
 func generate_task(type: Task_type) -> Task:
 	if type != Task_type.NONE:
