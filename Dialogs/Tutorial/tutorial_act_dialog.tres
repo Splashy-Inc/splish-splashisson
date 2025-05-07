@@ -7,5 +7,4 @@
 script = ExtResource("1_gmy1a")
 label = "Act"
 variable_regex_patterns = ["<.+>"]
-dialog_text = Array[String](["The leak left behind some water, and I also tossed a little more in there to make a point!", "Puddles will spread if allowed to get too big, so make sure to keep them under control by bailing them.", "Puddles won't slow the boat down directly, but will disable rowing stations, slowing progress.", "Notice that the right (starboard) side rowing station is disabled, indicated by turning transparent.", "This time, instead of making the crew do the work, do the task yourself!", "Walk over to the puddle until it highlights ORANGE, then HOLD RIGHT-CLICK on mouse or B-BUTTON on controller."])
 dialog_text_json = ExtResource("1_iduoo")
