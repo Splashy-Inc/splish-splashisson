@@ -3,9 +3,18 @@ extends Resource
 class_name ControlsData
 
 const AVAILABLE_CONTROLS := {
-	"movement": "",
-	"select": "",
-	"act": "",
+	"movement": {
+		"variable": "<movement>", 
+		"text": "",
+		},
+	"select": {
+		"variable": "<select>", 
+		"text": "",
+		},
+	"act": {
+		"variable": "<act>", 
+		"text": "",
+		},
 }
 
 @export var keyboard_and_mouse := AVAILABLE_CONTROLS

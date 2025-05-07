@@ -5,22 +5,58 @@
 [resource]
 script = ExtResource("1_sy4ms")
 keyboard_and_mouse = {
-"act": "R-CLICK",
-"movement": "WASD",
-"select": "L-CLICK"
+"act": {
+"text": "R-CLICK",
+"variable": "<act>"
+},
+"movement": {
+"text": "WASD",
+"variable": "<movement>"
+},
+"select": {
+"text": "L-CLICK",
+"variable": "<select>"
+}
 }
 keyboard_only = {
-"act": "O",
-"movement": "WASD",
-"select": "I"
+"act": {
+"text": "O",
+"variable": "<act>"
+},
+"movement": {
+"text": "WASD",
+"variable": "<movement>"
+},
+"select": {
+"text": "I",
+"variable": "<select>"
+}
 }
 controller = {
-"act": "B",
-"movement": "L-STICK",
-"select": "A"
+"act": {
+"text": "B",
+"variable": "<act>"
+},
+"movement": {
+"text": "L-STICK",
+"variable": "<movement>"
+},
+"select": {
+"text": "A",
+"variable": "<select>"
+}
 }
 mobile = {
-"act": "ORANGE BUTTON",
-"movement": "JOYSTICK",
-"select": "GREEN BUTTON"
+"act": {
+"text": "ORANGE BUTTON",
+"variable": "<act>"
+},
+"movement": {
+"text": "JOYSTICK",
+"variable": "<movement>"
+},
+"select": {
+"text": "GREEN BUTTON",
+"variable": "<select>"
+}
 }

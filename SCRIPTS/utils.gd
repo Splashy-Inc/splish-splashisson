@@ -14,3 +14,12 @@ func shift_polygon(polygon: PackedVector2Array, point: Vector2):
 	for i in polygon.size():
 		polygon.set(i, polygon[i] + point)
 	return polygon
+
+func replace_control_string_variables(string: String):
+	var regex = RegEx.new()
+	
+	for control in Globals.cur_controls.values():
+		regex.compile(control["variable"])
+		string = regex.sub(string, control["text"], true)
+	
+	return string

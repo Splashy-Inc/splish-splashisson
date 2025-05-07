@@ -43,11 +43,12 @@ func _get_next_line():
 	cur_dialog_position += 1
 	if dialog_data.dialog_text_json:
 		if cur_dialog_position < len(dialog_data.dialog_text_json.data["dialog_lines"]):
-			return dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position]
+			var next_line = dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position]
+			return next_line
 	return null
 
 func _set_dialog_text(new_text: String):
-	dialog_text_node.text = new_text
+	dialog_text_node.text = Utils.replace_string_variables(new_text)
 
 func _on_dialog_button_pressed(button: DialogButton):
 	if button.action_type == DialogButton.Dialog_button_action_type.ADVANCE:
