@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
-[ext_resource type="Script" path="res://dialog_data.gd" id="2_6sa47"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_6sa47"]
 [ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://SCENES/Cutscenes/cutscene.tscn" id="2_fsg7x"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="2_ow1x7"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="3_6em2h"]

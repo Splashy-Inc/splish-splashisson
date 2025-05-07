@@ -38,6 +38,9 @@ var task_dict = {
 
 var cargo_scene := load("res://SCENES/cargo.tscn")
 
+var controls_data := load("res://controls_data.tres") as ControlsData
+var cur_controls := ControlsData.AVAILABLE_CONTROLS
+
 var action_color := Color(1, 0.741, 0.196)
 var crew_select_color := Color(0, 0.843, 0.196)
 var disabled_modulate := Color(1, 1, 1, 0.498)
@@ -52,10 +55,22 @@ func _ready() -> void:
 	joypad_connected = Input.get_connected_joypads().size() > 0
 	if OS.has_feature("mobile") or OS.has_feature("web_android") or OS.has_feature("web_ios"):
 		is_mobile = true
+		cur_controls = controls_data.mobile
+	elif joypad_connected:
+		cur_controls = controls_data.controller
+	else:
+		cur_controls = controls_data.keyboard_and_mouse
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _input(event: InputEvent) -> void:
+	if not is_mobile:
+		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+			cur_controls = controls_data.controller
+		elif event is InputEventKey or event is InputEventMouse:
+			cur_controls = controls_data.keyboard_and_mouse
 
 func generate_task(type: Task_type) -> Task:
 	if type != Task_type.NONE:
