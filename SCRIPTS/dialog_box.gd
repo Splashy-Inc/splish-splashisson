@@ -22,8 +22,8 @@ func _ready() -> void:
 	left_texture_node.texture = left_texture
 	right_texture_node.texture = right_texture
 		
-	if dialog_data and not dialog_data.dialog_text.is_empty():
-		_set_dialog_text(dialog_data.dialog_text[cur_dialog_position])
+	if dialog_data and dialog_data.dialog_text_json:
+		_set_dialog_text(dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position])
 	
 	for button in end_buttons:
 		button.reparent(dialog_button_section)
@@ -41,8 +41,9 @@ func advance_dialog():
 
 func _get_next_line():
 	cur_dialog_position += 1
-	if cur_dialog_position < len(dialog_data.dialog_text):
-		return dialog_data.dialog_text[cur_dialog_position]
+	if dialog_data.dialog_text_json:
+		if cur_dialog_position < len(dialog_data.dialog_text_json.data["dialog_lines"]):
+			return dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position]
 	return null
 
 func _set_dialog_text(new_text: String):

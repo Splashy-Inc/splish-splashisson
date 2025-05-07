@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ControlsData" load_steps=2 format=3 uid="uid://iptm0ix3u1ak"]
+
+[ext_resource type="Script" path="res://SCRIPTS/controls_data.gd" id="1_sy4ms"]
+
+[resource]
+script = ExtResource("1_sy4ms")
+keyboard_and_mouse = {
+"act": "R-CLICK",
+"movement": "WASD",
+"select": "L-CLICK"
+}
+keyboard_only = {
+"act": "O",
+"movement": "WASD",
+"select": "I"
+}
+controller = {
+"act": "B",
+"movement": "L-STICK",
+"select": "A"
+}
+mobile = {
+"act": "ORANGE BUTTON",
+"movement": "JOYSTICK",
+"select": "GREEN BUTTON"
+}

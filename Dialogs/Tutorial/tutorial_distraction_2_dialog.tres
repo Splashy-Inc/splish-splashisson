@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=2 format=3 uid="uid://sf3jgfa2uafl"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=3 format=3 uid="uid://sf3jgfa2uafl"]
 
-[ext_resource type="Script" path="res://dialog_data.gd" id="1_c4its"]
+[ext_resource type="JSON" path="res://Dialogs/Tutorial/tutorial_distraction_2_dialog.json" id="1_2lmag"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="1_c4its"]
 
 [resource]
 script = ExtResource("1_c4its")
 label = "Distraction_2"
+variable_regex_patterns = ["<.+>"]
 dialog_text = Array[String](["Ok, go get their attention now."])
+dialog_text_json = ExtResource("1_2lmag")

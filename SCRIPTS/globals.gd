@@ -38,6 +38,8 @@ var task_dict = {
 
 var cargo_scene := load("res://SCENES/cargo.tscn")
 
+var controls_json := load("res://controls_json.tres")
+
 var action_color := Color(1, 0.741, 0.196)
 var crew_select_color := Color(0, 0.843, 0.196)
 var disabled_modulate := Color(1, 1, 1, 0.498)
