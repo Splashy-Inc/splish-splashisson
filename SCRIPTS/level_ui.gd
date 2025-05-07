@@ -7,6 +7,7 @@ class_name LevelUI
 @onready var objective: HBoxContainer = $Objective
 @onready var objective_label: Label = $"Objective/Objective Label"
 @onready var mobile_controls: MobileControls = $MobileControls
+@onready var pause_button: Button = $PauseButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
@@ -20,8 +21,10 @@ func _ready() -> void:
 	
 	if Globals.is_mobile:
 		mobile_controls.show()
+		pause_button.show()
 	else:
 		mobile_controls.hide()
+		pause_button.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
