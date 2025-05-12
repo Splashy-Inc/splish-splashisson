@@ -10,7 +10,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yre5a"]
 shader = ExtResource("2_d35q1")
 shader_parameter/scroll = Vector2(0.05, 0.05)
-shader_parameter/distortion_strength = 0.2
 shader_parameter/NumDivisions = 128
 shader_parameter/TextureMap = ExtResource("3_nixjc")
 
