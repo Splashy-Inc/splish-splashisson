@@ -1,16 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv0x4vv0fkbd2"]
+[gd_scene load_steps=7 format=3 uid="uid://dv0x4vv0fkbd2"]
 
 [ext_resource type="PackedScene" uid="uid://bmh1kxtyjicuu" path="res://SCENES/Ocean/bubbles.tscn" id="1_7nfhj"]
 [ext_resource type="Script" path="res://SCRIPTS/ocean.gd" id="1_h5cl7"]
+[ext_resource type="Shader" uid="uid://bf5vpjyd2wk5i" path="res://SCENES/Ocean/ocean.tres" id="2_sr02u"]
 [ext_resource type="PackedScene" uid="uid://dsdqndjddqni5" path="res://SCENES/Ocean/small_wave.tscn" id="2_x1tu8"]
 [ext_resource type="PackedScene" uid="uid://c57ouj4dasw0q" path="res://SCENES/Ocean/medium_wave.tscn" id="3_g35jv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yre5a"]
+shader = ExtResource("2_sr02u")
 
 [node name="ParallaxOcean" type="Parallax2D"]
 scroll_offset = Vector2(320, 0)
 repeat_size = Vector2(0, 1080)
 script = ExtResource("1_h5cl7")
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 720.0
+color = Color(0.246559, 0.476877, 0.705902, 1)
+
 [node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yre5a")
 offset_left = -640.0
 offset_top = -360.0
 offset_right = 640.0
