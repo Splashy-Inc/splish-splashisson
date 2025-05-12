@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv0x4vv0fkbd2"]
+[gd_scene load_steps=8 format=3 uid="uid://dv0x4vv0fkbd2"]
 
 [ext_resource type="PackedScene" uid="uid://bmh1kxtyjicuu" path="res://SCENES/Ocean/bubbles.tscn" id="1_7nfhj"]
 [ext_resource type="Script" path="res://SCRIPTS/ocean.gd" id="1_h5cl7"]
+[ext_resource type="Shader" path="res://SCENES/Ocean/ocean.gdshader" id="2_d35q1"]
 [ext_resource type="PackedScene" uid="uid://dsdqndjddqni5" path="res://SCENES/Ocean/small_wave.tscn" id="2_x1tu8"]
 [ext_resource type="PackedScene" uid="uid://c57ouj4dasw0q" path="res://SCENES/Ocean/medium_wave.tscn" id="3_g35jv"]
+[ext_resource type="Texture2D" uid="uid://bavciayi5qwtd" path="res://SCENES/Ocean/ocean_noise.tres" id="3_nixjc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yre5a"]
+shader = ExtResource("2_d35q1")
+shader_parameter/scroll = Vector2(0.05, 0.05)
+shader_parameter/NumDivisions = 128
+shader_parameter/TextureMap = ExtResource("3_nixjc")
 
 [node name="ParallaxOcean" type="Parallax2D"]
 scroll_offset = Vector2(320, 0)
@@ -11,6 +19,7 @@ repeat_size = Vector2(0, 1080)
 script = ExtResource("1_h5cl7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yre5a")
 offset_left = -640.0
 offset_top = -360.0
 offset_right = 640.0
