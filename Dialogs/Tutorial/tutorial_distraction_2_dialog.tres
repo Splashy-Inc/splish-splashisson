@@ -6,6 +6,4 @@
 [resource]
 script = ExtResource("1_c4its")
 label = "Distraction_2"
-variable_regex_patterns = ["<.+>"]
-dialog_text = Array[String](["Ok, go get their attention now."])
 dialog_text_json = ExtResource("1_2lmag")

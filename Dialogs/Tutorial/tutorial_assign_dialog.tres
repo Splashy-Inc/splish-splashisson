@@ -6,6 +6,4 @@
 [resource]
 script = ExtResource("1_ef08g")
 label = "Assign"
-variable_regex_patterns = ["<.+>"]
-dialog_text = Array[String](["A leak has sprung! Leaks will fill the boat with water, so need to be dealt with.", "Water in the boat will show up as puddles, which will damage cargo or disable rowing stations.", "To fix the leak, assign the crew member to patch it.", "Walk over to the leak until it highlights ORANGE, then RIGHT-CLICK on mouse or B-BUTTON on controller"])
 dialog_text_json = ExtResource("1_23v6b")

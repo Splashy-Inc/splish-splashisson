@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs3hpuql1pmvv"]
+[gd_scene load_steps=11 format=3 uid="uid://cs3hpuql1pmvv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/cutscene.gd" id="1_q7fsr"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="2_lp0n3"]
-[ext_resource type="Material" uid="uid://ce7o3ejvsjat7" path="res://SCENES/Cutscenes/cutscene_ocean_material.tres" id="3_egvar"]
+[ext_resource type="Material" uid="uid://8qyyjypf2djy" path="res://SCENES/Cutscenes/cutscene_ocean_material.tres" id="3_egvar"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="3_ltj1g"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="4_xvmpv"]
 [ext_resource type="Resource" uid="uid://du25auqomcjd8" path="res://Dialogs/level_1_cutscene_dialog_data.tres" id="5_40sgp"]
+[ext_resource type="AudioStream" uid="uid://bxgyjqcbw7ruh" path="res://Audio/crowd.ogg" id="9_aekk5"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="16_ylnku"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="17_yxxjt"]
 [ext_resource type="Texture2D" uid="uid://o1cugesk8vp1" path="res://Art/Merchants/Shrimp/ShrimpLowQuality.png" id="18_8peca"]
@@ -35,6 +36,11 @@ texture = ExtResource("17_yxxjt")
 [node name="ShrimpLowQuality" type="Sprite2D" parent="Boat"]
 position = Vector2(273.333, 0)
 texture = ExtResource("18_8peca")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_aekk5")
+volume_db = -1.651
+autoplay = true
 
 [connection signal="dialog_ended" from="DialogBox" to="." method="_on_continue_pressed"]
 

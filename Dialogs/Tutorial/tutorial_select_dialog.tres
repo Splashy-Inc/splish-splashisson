@@ -6,6 +6,4 @@
 [resource]
 script = ExtResource("1_rgj6f")
 label = "Select"
-variable_regex_patterns = ["<.+>"]
-dialog_text = Array[String](["You moved! Good job?", "Next, let's tell your crew what to do!", "Crew will just stand around or continue working until you get their attention.", "To get a crew member's attention, move close to them until they highlight GREEN, then press LEFT-CLICK on mouse or PRESS A on controller", "Give that a shot."])
 dialog_text_json = ExtResource("1_654wq")
