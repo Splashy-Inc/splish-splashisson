@@ -13,6 +13,11 @@ void fragment()
 	// the centre of the "pixel"
 	vec2 st = (vec2(ivec2( UV * float(NumDivisions) ))+0.5)/float(NumDivisions);
 	vec4 noise_col = texture(TextureMap, st + scroll * sin(TIME)/2.0);
+	vec4 original_col = texture(TEXTURE, UV);
+	
 	// set the output
-	COLOR = noise_col;  
+	if(original_col.a > 0.0)
+	{
+	COLOR = mix(original_col, noise_col, 0.7);  
+	}
 }
