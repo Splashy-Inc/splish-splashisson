@@ -18,11 +18,5 @@ func _process(delta: float) -> void:
 			player = new_player
 			break
 	if player:
-		if player.selection_target:
-			select_button.modulate = Globals.modulate_reset
-		else:
-			select_button.modulate = Globals.disabled_modulate
-		if player.action_target:
-			act_button.modulate = Globals.modulate_reset
-		else:
-			act_button.modulate = Globals.disabled_modulate
+		select_button.material.set_shader_parameter("on", player.selection_target and not select_button.is_pressed())
+		act_button.material.set_shader_parameter("on", player.action_target and not act_button.is_pressed())

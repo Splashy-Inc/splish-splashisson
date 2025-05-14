@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs3hpuql1pmvv"]
+[gd_scene load_steps=10 format=3 uid="uid://cs3hpuql1pmvv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/cutscene.gd" id="1_q7fsr"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="2_lp0n3"]
+[ext_resource type="Material" uid="uid://ce7o3ejvsjat7" path="res://SCENES/Cutscenes/cutscene_ocean_material.tres" id="3_egvar"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="3_ltj1g"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="4_xvmpv"]
 [ext_resource type="Resource" uid="uid://du25auqomcjd8" path="res://Dialogs/level_1_cutscene_dialog_data.tres" id="5_40sgp"]
@@ -15,6 +16,7 @@ level_scene = ExtResource("2_lp0n3")
 dialog_box = NodePath("DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
+material = ExtResource("3_egvar")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ltj1g")
