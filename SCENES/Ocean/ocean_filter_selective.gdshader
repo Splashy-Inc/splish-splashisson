@@ -17,8 +17,9 @@ void fragment()
 	vec4 original_col = texture(TEXTURE, UV);
 	
 	// set the output
-	if(original_col == target_color)
+	// Compare colors while accounting for floating point comparison
+	if(length(original_col - target_color) < .0001)
 	{
-	COLOR = mix(original_col, noise_col, 0.7);  
+		COLOR = mix(original_col, noise_col, 0.7);  
 	}
 }
