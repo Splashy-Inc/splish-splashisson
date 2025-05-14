@@ -18,6 +18,8 @@ func _ready() -> void:
 			boat_length = temp_level.boat_length
 			temp_level.queue_free()
 	$Boat.set_deck_length(boat_length)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

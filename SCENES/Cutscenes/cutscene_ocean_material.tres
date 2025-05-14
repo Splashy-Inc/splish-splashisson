@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ce7o3ejvsjat7"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://8qyyjypf2djy"]
 
 [ext_resource type="Shader" path="res://SCENES/Ocean/ocean_filter_selective.gdshader" id="1_jt35a"]
-[ext_resource type="Texture2D" uid="uid://cud4eum35p1rw" path="res://SCENES/Cutscenes/ocean_noise_cutscene.tres" id="2_x46f1"]
+[ext_resource type="Texture2D" uid="uid://yf2str336tq6" path="res://SCENES/Cutscenes/ocean_noise_cutscene.tres" id="2_x46f1"]
 
 [resource]
 shader = ExtResource("1_jt35a")
