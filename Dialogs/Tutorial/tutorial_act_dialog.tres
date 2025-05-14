@@ -6,5 +6,4 @@
 [resource]
 script = ExtResource("1_gmy1a")
 label = "Act"
-variable_regex_patterns = ["<.+>"]
 dialog_text_json = ExtResource("1_iduoo")

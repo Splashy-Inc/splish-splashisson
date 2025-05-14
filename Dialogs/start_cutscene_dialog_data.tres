@@ -6,6 +6,4 @@
 [resource]
 script = ExtResource("1_ryqk6")
 label = ""
-variable_regex_patterns = ["<.+>"]
-dialog_text = Array[String](["Hey, Splashy here!", "Before you jump into things, I want to offer to show you a tutorial.", "Do you want a refresher on how to play?"])
 dialog_text_json = ExtResource("1_rqlm4")
