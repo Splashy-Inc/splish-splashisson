@@ -1,15 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6tdu4r5v8bbs"]
+[gd_scene load_steps=12 format=3 uid="uid://c6tdu4r5v8bbs"]
 
 [ext_resource type="Script" path="res://SCRIPTS/controls_screen.gd" id="1_tvbxo"]
 [ext_resource type="Script" path="res://SCRIPTS/controls_tab_container.gd" id="2_pnoft"]
 [ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_tn6xa"]
 [ext_resource type="Texture2D" uid="uid://bwbvw6rtb7rfw" path="res://Art/Joystick/Joystick.png" id="3_1l55u"]
 [ext_resource type="Texture2D" uid="uid://cw0fyxj6elaof" path="res://Art/arrow_basic_white.png" id="4_6dj2e"]
-[ext_resource type="Texture2D" uid="uid://fh6q5k86ns7o" path="res://SCENES/GUI/select_placeholder_texture.tres" id="6_71ahq"]
-[ext_resource type="Texture2D" uid="uid://dbmbxutwsytn5" path="res://SCENES/GUI/act_placeholder_texture.tres" id="7_f68fb"]
+[ext_resource type="Shader" path="res://SCRIPTS/highlight.gdshader" id="6_igdal"]
+[ext_resource type="Texture2D" uid="uid://roowlcj4e6pk" path="res://Art/Joystick/Button.png" id="7_sobi0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwyni"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hhyt"]
+shader = ExtResource("6_igdal")
+shader_parameter/line_color = Color(0, 0.843, 0.196, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/on = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2mqb"]
+shader = ExtResource("6_igdal")
+shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/on = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6gwa"]
 bg_color = Color(0.254902, 0.254902, 0.254902, 1)
@@ -514,10 +526,11 @@ theme_override_font_sizes/font_size = 16
 text = "Select"
 
 [node name="TextureRect2" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+material = SubResource("ShaderMaterial_5hhyt")
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("6_71ahq")
+texture = ExtResource("7_sobi0")
 expand_mode = 3
 stretch_mode = 4
 
@@ -527,10 +540,11 @@ theme_override_font_sizes/font_size = 16
 text = "Act"
 
 [node name="TextureRect3" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+material = SubResource("ShaderMaterial_x2mqb")
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("7_f68fb")
+texture = ExtResource("7_sobi0")
 expand_mode = 3
 stretch_mode = 4
 

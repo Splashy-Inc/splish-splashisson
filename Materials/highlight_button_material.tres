@@ -5,6 +5,6 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_4ke0q")
-shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 1.0
-shader_parameter/on = null
+shader_parameter/on = false
