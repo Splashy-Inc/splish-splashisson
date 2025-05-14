@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://ce7o3ejvsjat7"]
+
+[ext_resource type="Shader" path="res://SCENES/Ocean/ocean_filter_selective.gdshader" id="1_jt35a"]
+
+[sub_resource type="Gradient" id="Gradient_fbbp6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.65625, 0.817708)
+colors = PackedColorArray(0.321569, 0.513726, 0.666667, 1, 0.473948, 0.795856, 0.819516, 1, 0.764706, 0.964706, 0.972549, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i0cbc"]
+noise_type = 2
+frequency = 0.0525
+fractal_type = 2
+fractal_gain = 0.015
+cellular_distance_function = 1
+domain_warp_fractal_octaves = 1
+domain_warp_fractal_lacunarity = 5.175
+domain_warp_fractal_gain = 1.52
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h4ign"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_fbbp6")
+noise = SubResource("FastNoiseLite_i0cbc")
+
+[resource]
+shader = ExtResource("1_jt35a")
+shader_parameter/scroll = Vector2(0.02, 0.01)
+shader_parameter/NumDivisions = 256
+shader_parameter/target_color = Color(0.447059, 0.662745, 0.745098, 1)
+shader_parameter/TextureMap = SubResource("NoiseTexture2D_h4ign")
