@@ -1,10 +1,28 @@
 {
 	"dialog_lines": [
-		"Nice! You really ruined that rat's day.",
-		".............",
-		"Aaaanyway. The final action to go over is rowing!",
-		"You and the crew can row the boat to advance toward the end dock - the cargo's delivery destination.",
-		"Assign your crew member to one rowing station and get on the other one yourself.",
-		"I'll let you row until you get about 25% of the way."
+		{
+			"line": "Nice! You really ruined that rat's day.",
+			"speaker": 1,
+		},
+		{
+			"line": ".............",
+			"speaker": 1,
+		},
+		{
+			"line": "Aaaanyway. The final action to go over is rowing!",
+			"speaker": 1,
+		},
+		{
+			"line": "You and the crew can row the boat to advance toward the end dock - the cargo's delivery destination.",
+			"speaker": 1,
+		},
+		{
+			"line": "Assign your crew member to one rowing station and get on the other one yourself.",
+			"speaker": 1,
+		},
+		{
+			"line": "I'll let you row until you get about 25% of the way.",
+			"speaker": 1,
+		},
 	]
 }

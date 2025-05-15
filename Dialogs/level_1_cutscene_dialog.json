@@ -1,7 +1,16 @@
 {
 	"dialog_lines": [
-		"If it isn't Splish Splashisson! Remember how you owe me that favor?", 
-		"I need a shipment of food brought to the next port. It should be an easy delivery this time...", 
-		"I'll have my lackeys load it on the ship and you can be on your way."
+		{
+			"line": "If it isn't Splish Splashisson! Remember how you owe me that favor?", 
+			"speaker": 1,
+		},
+		{
+			"line": "I need a shipment of food brought to the next port. It should be an easy delivery this time...", 
+			"speaker": 1,
+		},
+		{
+			"line": "I'll have my lackeys load it on the ship and you can be on your way.",
+			"speaker": 1,
+		},
 	]
 }

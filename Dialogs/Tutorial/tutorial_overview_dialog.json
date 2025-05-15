@@ -1,9 +1,24 @@
 {
 	"dialog_lines": [
-		"Welcome to your boat! A little small, but it'll get better.", 
-		"Let's start with an overview of your goal.", 
-		"Your goal is to deliver cargo as fast as possible, in the best condition possible.", 
-		"Rowing moves you toward the end dock. Cargo can be damaged by various threats.", 
-		"You and your crew can resolve tasks and threats to keep things moving smoothly!"
+		{
+			"line": "Welcome to your boat! A little small, but it'll get better.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Let's start with an overview of your goal.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Your goal is to deliver cargo as fast as possible, in the best condition possible.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Rowing moves you toward the end dock. Cargo can be damaged by various threats.", 
+			"speaker": 1,
+		},
+		{
+			"line": "You and your crew can resolve tasks and threats to keep things moving smoothly!",
+			"speaker": 1,
+		},
 	]
 }

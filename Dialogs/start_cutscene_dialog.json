@@ -1,5 +1,16 @@
 {
 	"dialog_lines": [
-		"Hey, Splashy here!", "Before you jump into things, I want to offer to show you a tutorial.", "Do you want a refresher on how to play?"
+		{
+			"line": "Hey, Splashy here!", 
+			"speaker": 1,
+		},
+		{
+			"line": "Before you jump into things, I want to offer to show you a tutorial.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Do you want a refresher on how to play?",
+			"speaker": 1,
+		},
 	]
 }

@@ -1,8 +1,20 @@
 {
 	"dialog_lines": [
-		"A leak has sprung! Leaks will fill the boat with water, so need to be dealt with.",
-		"Water in the boat will show up as puddles, which will damage cargo or disable rowing stations.",
-		"To fix the leak, assign the crew member to patch it.",
-		"Walk over to the leak until it highlights ORANGE, then press <act>"
+		{
+			"line": "A leak has sprung! Leaks will fill the boat with water, so need to be dealt with.",
+			"speaker": 1,
+		},
+		{
+			"line": "Water in the boat will show up as puddles, which will damage cargo or disable rowing stations.",
+			"speaker": 1,
+		},
+		{
+			"line": "To fix the leak, assign the crew member to patch it.",
+			"speaker": 1,
+		},
+		{
+			"line": "Walk over to the leak until it highlights ORANGE, then press <act>",
+			"speaker": 1,
+		},
 	]
 }
