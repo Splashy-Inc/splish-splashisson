@@ -6,6 +6,4 @@
 [resource]
 script = ExtResource("1_4debd")
 label = "Wrap_up"
-variable_regex_patterns = ["<.+>"]
-dialog_text = Array[String](["And that's it! You now know everything (for now) about how this all works!", "Go ahead and row the rest of the way. I'll make things spawn and behave like usual missions, so you can get a taste of what's to come!"])
 dialog_text_json = ExtResource("1_8h807")

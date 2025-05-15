@@ -4,6 +4,7 @@ var level_scene: PackedScene
 var cutscene_scene: PackedScene
 @export var start_scene: PackedScene
 
+@onready var sfx_manager: SFXManager = $SFXManager
 @onready var hud: HUD = $HUD
 var cutscene: Cutscene
 var level: Level
@@ -14,6 +15,7 @@ var cur_screen
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	show_main_menu()
+	sfx_manager.play("MainTheme")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

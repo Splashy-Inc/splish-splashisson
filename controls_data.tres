@@ -6,7 +6,7 @@
 script = ExtResource("1_sy4ms")
 keyboard_and_mouse = {
 "act": {
-"text": "R-CLICK",
+"text": "RIGHT-CLICK",
 "variable": "<act>"
 },
 "movement": {
@@ -14,7 +14,7 @@ keyboard_and_mouse = {
 "variable": "<movement>"
 },
 "select": {
-"text": "L-CLICK",
+"text": "LEFT-CLICK",
 "variable": "<select>"
 }
 }
@@ -38,7 +38,7 @@ controller = {
 "variable": "<act>"
 },
 "movement": {
-"text": "L-STICK",
+"text": "LEFT-STICK",
 "variable": "<movement>"
 },
 "select": {

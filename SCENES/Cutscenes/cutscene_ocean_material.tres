@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://8qyyjypf2djy"]
+
+[ext_resource type="Shader" path="res://SCENES/Ocean/ocean_filter_selective.gdshader" id="1_jt35a"]
+[ext_resource type="Texture2D" uid="uid://yf2str336tq6" path="res://SCENES/Cutscenes/ocean_noise_cutscene.tres" id="2_x46f1"]
+
+[resource]
+shader = ExtResource("1_jt35a")
+shader_parameter/scroll = Vector2(0.02, 0.01)
+shader_parameter/NumDivisions = 256
+shader_parameter/target_color = Color(0.447059, 0.662745, 0.745098, 1)
+shader_parameter/TextureMap = ExtResource("2_x46f1")

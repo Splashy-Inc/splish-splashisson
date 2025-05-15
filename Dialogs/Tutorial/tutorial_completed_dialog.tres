@@ -6,6 +6,4 @@
 [resource]
 script = ExtResource("1_ug4ud")
 label = "Complete"
-variable_regex_patterns = ["<.+>"]
-dialog_text = Array[String](["Well, you made it to the end of the tutorial mission. Good luck out there!"])
 dialog_text_json = ExtResource("1_hcoqx")

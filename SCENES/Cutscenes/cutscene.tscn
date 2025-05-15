@@ -1,13 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs3hpuql1pmvv"]
+[gd_scene load_steps=18 format=3 uid="uid://cs3hpuql1pmvv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/cutscene.gd" id="1_q7fsr"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="2_lp0n3"]
+[ext_resource type="Material" uid="uid://8qyyjypf2djy" path="res://SCENES/Cutscenes/cutscene_ocean_material.tres" id="3_egvar"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="3_ltj1g"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="4_xvmpv"]
 [ext_resource type="Resource" uid="uid://du25auqomcjd8" path="res://Dialogs/level_1_cutscene_dialog_data.tres" id="5_40sgp"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="6_6kicq"]
+[ext_resource type="AudioStream" uid="uid://bha8sf627tah0" path="res://Audio/Shrimp/shrimp_voice_1.ogg" id="7_62ad8"]
+[ext_resource type="AudioStream" uid="uid://be62rbdui7voc" path="res://Audio/Shrimp/shrimp_voice_2.ogg" id="8_1nwsh"]
+[ext_resource type="AudioStream" uid="uid://bxgyjqcbw7ruh" path="res://Audio/crowd.ogg" id="9_aekk5"]
+[ext_resource type="AudioStream" uid="uid://dbk876lewi1od" path="res://Audio/Shrimp/shrimp_voice_3.ogg" id="9_s52bs"]
+[ext_resource type="AudioStream" uid="uid://dxfx0c4foce17" path="res://Audio/Shrimp/shrimp_voice_4.ogg" id="10_6c3cc"]
+[ext_resource type="AudioStream" uid="uid://g7mrru42k27p" path="res://Audio/Shrimp/shrimp_voice_5.ogg" id="11_wwxe6"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="16_ylnku"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="17_yxxjt"]
 [ext_resource type="Texture2D" uid="uid://o1cugesk8vp1" path="res://Art/Merchants/Shrimp/ShrimpLowQuality.png" id="18_8peca"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gacm0"]
+streams_count = 5
+stream_0/stream = ExtResource("7_62ad8")
+stream_1/stream = ExtResource("8_1nwsh")
+stream_2/stream = ExtResource("9_s52bs")
+stream_3/stream = ExtResource("10_6c3cc")
+stream_4/stream = ExtResource("11_wwxe6")
 
 [node name="Cutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_q7fsr")
@@ -15,11 +31,13 @@ level_scene = ExtResource("2_lp0n3")
 dialog_box = NodePath("DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
+material = ExtResource("3_egvar")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ltj1g")
 
 [node name="DialogBox" parent="." instance=ExtResource("4_xvmpv")]
+speaker_sounds = Array[AudioStream]([ExtResource("6_6kicq"), SubResource("AudioStreamRandomizer_gacm0")])
 dialog_data = ExtResource("5_40sgp")
 
 [node name="Boat" parent="." instance=ExtResource("16_ylnku")]
@@ -33,6 +51,11 @@ texture = ExtResource("17_yxxjt")
 [node name="ShrimpLowQuality" type="Sprite2D" parent="Boat"]
 position = Vector2(273.333, 0)
 texture = ExtResource("18_8peca")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_aekk5")
+volume_db = -1.651
+autoplay = true
 
 [connection signal="dialog_ended" from="DialogBox" to="." method="_on_continue_pressed"]
 

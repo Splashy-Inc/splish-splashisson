@@ -1,5 +1,8 @@
 {
 	"dialog_lines": [
-		"Well, you made it to the end of the tutorial mission. Good luck out there!"
+		{
+			"line": "Well, you made it to the end of the tutorial mission. Good luck out there!",
+			"speaker": 1,
+		},
 	]
 }

@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name SFXManager
+
 @export var attenuation: float
 
 func _ready():

@@ -1,17 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwr6cg26cwtpw"]
+[gd_scene load_steps=15 format=3 uid="uid://cwr6cg26cwtpw"]
 
 [ext_resource type="Script" path="res://SCRIPTS/dialog_box.gd" id="1_q81u0"]
 [ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="2_0m27t"]
 [ext_resource type="Texture2D" uid="uid://bh7hha73l5725" path="res://Textures/shrimp_merchat_dialog_texture.tres" id="3_wnvek"]
 [ext_resource type="Resource" uid="uid://oldvcmnehasr" path="res://Dialogs/Tutorial/tutorial_overview_dialog.tres" id="4_coa1i"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="4_fp6v0"]
+[ext_resource type="AudioStream" uid="uid://bha8sf627tah0" path="res://Audio/Shrimp/shrimp_voice_1.ogg" id="5_0unna"]
 [ext_resource type="PackedScene" uid="uid://cqw3k8ogffvua" path="res://SCENES/dialog_button.tscn" id="5_gvo3j"]
+[ext_resource type="AudioStream" uid="uid://be62rbdui7voc" path="res://Audio/Shrimp/shrimp_voice_2.ogg" id="6_prl8o"]
+[ext_resource type="AudioStream" uid="uid://dbk876lewi1od" path="res://Audio/Shrimp/shrimp_voice_3.ogg" id="7_lp4fu"]
+[ext_resource type="AudioStream" uid="uid://dxfx0c4foce17" path="res://Audio/Shrimp/shrimp_voice_4.ogg" id="8_wrbd4"]
+[ext_resource type="AudioStream" uid="uid://g7mrru42k27p" path="res://Audio/Shrimp/shrimp_voice_5.ogg" id="9_ithf6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_263dt"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qv8rp"]
+streams_count = 5
+stream_0/stream = ExtResource("5_0unna")
+stream_1/stream = ExtResource("6_prl8o")
+stream_2/stream = ExtResource("7_lp4fu")
+stream_3/stream = ExtResource("8_wrbd4")
+stream_4/stream = ExtResource("9_ithf6")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmsiy"]
 
-[node name="DialogBox" type="PanelContainer"]
+[node name="DialogBox" type="PanelContainer" node_paths=PackedStringArray("dialog_sound_players")]
 process_mode = 3
 custom_minimum_size = Vector2(640, 90)
 anchors_preset = 7
@@ -28,6 +42,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_263dt")
 script = ExtResource("1_q81u0")
 left_texture = ExtResource("2_0m27t")
 right_texture = ExtResource("3_wnvek")
+speaker_sounds = Array[AudioStream]([ExtResource("4_fp6v0"), SubResource("AudioStreamRandomizer_qv8rp")])
+dialog_sound_players = [NodePath("HBoxContainer/LeftPanel/LeftSound"), NodePath("HBoxContainer/RightPanel/RightSound")]
 dialog_data = ExtResource("4_coa1i")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -42,6 +58,9 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("2_0m27t")
 stretch_mode = 3
+
+[node name="LeftSound" type="AudioStreamPlayer" parent="HBoxContainer/LeftPanel"]
+volume_db = -10.0
 
 [node name="TextArea" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -79,6 +98,8 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("3_wnvek")
 stretch_mode = 3
+
+[node name="RightSound" type="AudioStreamPlayer" parent="HBoxContainer/RightPanel"]
 
 [connection signal="pressed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="advance_dialog"]
 [connection signal="visibility_changed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="_on_dialog_button_visibility_changed"]

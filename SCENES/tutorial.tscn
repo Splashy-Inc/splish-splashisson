@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=29 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_6sa47"]
@@ -24,6 +24,14 @@
 [ext_resource type="Resource" uid="uid://dc8dw6q2tuwc0" path="res://Dialogs/Tutorial/tutorial_wrap_up_dialog.tres" id="12_etkdc"]
 [ext_resource type="Resource" uid="uid://7cb47q8j6xwg" path="res://Dialogs/Tutorial/tutorial_completed_dialog.tres" id="13_natgs"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="18_ax4w7"]
+[ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="20_mkeck"]
+
+[sub_resource type="AudioStream" id="AudioStream_ce5gk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qgyqk"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("20_mkeck")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
 size = Vector2(257, 49)
@@ -46,6 +54,7 @@ boat = NodePath("Boat")
 visible = false
 left_texture = null
 right_texture = ExtResource("7_xx2yn")
+speaker_sounds = Array[AudioStream]([SubResource("AudioStream_ce5gk"), SubResource("AudioStreamRandomizer_qgyqk")])
 
 [node name="RightTexture" parent="LevelUI/DialogBox/HBoxContainer/RightPanel" index="0"]
 flip_h = true

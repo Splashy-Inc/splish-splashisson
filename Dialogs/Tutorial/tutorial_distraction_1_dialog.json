@@ -1,9 +1,24 @@
 {
 	"dialog_lines": [
-		"That's it for actions! Well done.",
-		"Be warned! Your crew will get distracted if left without a task for 5 seconds, or after rowing for 30.",
-		"When distracted, crew will head over to the cargo and start taking some for themselves, damaging it.",
-		"To stop them, simply get their attention! If you stop crew before they damage a full unit of cargo, it will be restored.",
-		"You will be unable to do anything until this crew member gets distracted then I'll let you get their attention."
+		{
+			"line": "That's it for actions! Well done.",
+			"speaker": 1,
+		},
+		{
+			"line": "Be warned! Your crew will get distracted if left without a task for 5 seconds, or after rowing for 30.",
+			"speaker": 1,
+		},
+		{
+			"line": "When distracted, crew will head over to the cargo and start taking some for themselves, damaging it.",
+			"speaker": 1,
+		},
+		{
+			"line": "To stop them, simply get their attention! If you stop crew before they damage a full unit of cargo, it will be restored.",
+			"speaker": 1,
+		},
+		{
+			"line": "You will be unable to do anything until this crew member gets distracted then I'll let you get their attention.",
+			"speaker": 1,
+		},
 	]
 }
