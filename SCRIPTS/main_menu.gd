@@ -31,4 +31,6 @@ func _on_level_select_button_pressed():
 
 func _on_play_button_visibility_changed() -> void:
 	if Globals.joypad_connected and visible:
+		if not is_node_ready():
+			await ready
 		play_button.grab_focus()
