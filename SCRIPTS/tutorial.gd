@@ -18,28 +18,28 @@ var stages := {
 		"objective": "None"
 	},
 	"Movement": {
-		"objective": "Move to the bow (WASD or LEFT-STICK)"
+		"objective": "Move to the bow (<movement>)"
 	},
 	"Select": {
-		"objective": "Select a nearby crew member (LEFT-CLICK or A-BUTTON)"
+		"objective": "Select a nearby crew member (<select>)"
 	},
 	"Assign": {
-		"objective": "Assign crew member to patch the leak (RIGHT-CLICK or B-BUTTON)"
+		"objective": "Assign crew member to patch the leak (<act>)"
 	},
 	"Act": {
-		"objective": "Bail all puddles yourself (HOLD RIGHT-CLICK or B-BUTTON)"
+		"objective": "Bail all puddles yourself (HOLD <act>)"
 	},
 	"Rats": {
-		"objective": "Stomp the rat, or tell your crew to do it (RIGHT-CLICK or B-BUTTON)"
+		"objective": "Stomp the rat, or tell your crew to do it (<act>)"
 	},
 	"Rowing": {
-		"objective": "Row 25% of the way to the end dock (RIGHT-CLICK or B-BUTTON)"
+		"objective": "Row 25% of the way to the end dock (<act>)"
 	},
 	"Distraction_1": {
 		"objective": "Wait for crew member to get distracted"
 	},
 	"Distraction_2": {
-		"objective": "Stop distracted crew from damaging cargo (LEFT-CLICK or A-BUTTON)"
+		"objective": "Stop distracted crew from damaging cargo (<select>)"
 	},
 	"Wrap_up": {
 		"objective": "Row the boat to the end dock"
@@ -94,7 +94,7 @@ func _show_next_dialog():
 		stage = dialog_box.dialog_data.label
 		
 		if dialog_box.dialog_data.label in stages.keys():
-			level_ui.set_objective(stages[dialog_box.dialog_data.label]["objective"])
+			level_ui.set_objective(Utils.replace_control_string_variables(stages[dialog_box.dialog_data.label]["objective"]))
 		
 		match dialog_box.dialog_data.label:
 			"Select":

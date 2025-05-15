@@ -96,6 +96,18 @@ position = Vector2(319, 175)
 scale = Vector2(1.175, 1.25556)
 texture = ExtResource("1_kuhpu")
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(20, 0)
+repeat_times = 30
+limit_begin = Vector2(640, -360)
+limit_end = Vector2(640, 360)
+
+[node name="Clouds" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(337, 155)
+scale = Vector2(0.925, 0.925)
+texture = ExtResource("4_5dny2")
+
 [node name="Water" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sjkog")
 position = Vector2(320, 198)
@@ -118,15 +130,3 @@ libraries = {
 "": SubResource("AnimationLibrary_u28qv")
 }
 autoplay = "new_animation"
-
-[node name="Parallax2D" type="Parallax2D" parent="."]
-repeat_size = Vector2(640, 0)
-autoscroll = Vector2(20, 0)
-repeat_times = 30
-limit_begin = Vector2(640, -360)
-limit_end = Vector2(640, 360)
-
-[node name="Clouds" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(337, 155)
-scale = Vector2(0.925, 0.925)
-texture = ExtResource("4_5dny2")
