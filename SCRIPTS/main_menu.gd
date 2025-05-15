@@ -9,7 +9,7 @@ signal button_pressed
 func _ready():
 	if not Globals.is_node_ready():
 		await Globals.ready
-	if Globals.is_mobile:
+	if Globals.is_mobile or OS.has_feature("web"):
 		quit_button.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +30,7 @@ func _on_level_select_button_pressed():
 
 
 func _on_play_button_visibility_changed() -> void:
-	if Globals.joypad_connected and visible:
+	if visible:
 		if not is_node_ready():
 			await ready
 		play_button.grab_focus()

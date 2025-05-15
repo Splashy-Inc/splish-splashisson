@@ -3,18 +3,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/main_menu.gd" id="1_vkagb"]
 [ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_w1mmc"]
 [ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_y3ir5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jrxt"]
-bg_color = Color(0.0639683, 0.0832955, 0.102613, 0.701961)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.916994, 0.932066, 0.947408, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource type="StyleBox" uid="uid://cj6q1og1u06dh" path="res://SCENES/GUI/button_hover.tres" id="3_shsu8"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(640, 360)
@@ -64,9 +53,11 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_bottom = NodePath("../ControlsButton")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_3jrxt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3jrxt")
+theme_override_styles/focus = ExtResource("3_shsu8")
+theme_override_styles/hover = ExtResource("3_shsu8")
+theme_override_styles/pressed = ExtResource("3_shsu8")
 theme_override_styles/normal = ExtResource("2_y3ir5")
 text = "Play"
 
@@ -74,9 +65,12 @@ text = "Play"
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_3jrxt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3jrxt")
+theme_override_styles/focus = ExtResource("3_shsu8")
+theme_override_styles/hover = ExtResource("3_shsu8")
+theme_override_styles/pressed = ExtResource("3_shsu8")
 theme_override_styles/normal = ExtResource("2_y3ir5")
 text = "Controls"
 
@@ -85,8 +79,9 @@ custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_3jrxt")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3jrxt")
+theme_override_styles/focus = ExtResource("3_shsu8")
+theme_override_styles/hover = ExtResource("3_shsu8")
+theme_override_styles/pressed = ExtResource("3_shsu8")
 theme_override_styles/normal = ExtResource("2_y3ir5")
 text = "Quit"
 
