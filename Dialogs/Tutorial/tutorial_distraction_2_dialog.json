@@ -1,5 +1,8 @@
 {
 	"dialog_lines": [
-		"Ok, go get their attention now."
+		{
+			"line": "Ok, go get their attention now.",
+			"speaker": 1,
+		},
 	]
 }

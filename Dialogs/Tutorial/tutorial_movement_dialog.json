@@ -1,7 +1,16 @@
 {
 	"dialog_lines": [
-		"Let's talk about movement...",
-		"To move around, use <movement>.",
-		"Walk to the front (bow) of the boat to get the next lesson."
+		{
+			"line": "Let's talk about movement...",
+			"speaker": 1,
+		},
+		{
+			"line": "To move around, use <movement>.",
+			"speaker": 1,
+		},
+		{
+			"line": "Walk to the front (bow) of the boat to get the next lesson.",
+			"speaker": 1,
+		},
 	]
 }

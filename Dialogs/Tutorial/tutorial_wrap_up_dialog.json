@@ -1,6 +1,12 @@
 {
 	"dialog_lines": [
-		"And that's it! You now know everything (for now) about how this all works!",
-		"Go ahead and row the rest of the way. I'll make things spawn and behave like usual missions, so you can get a taste of what's to come!"
+		{
+			"line": "And that's it! You now know everything (for now) about how this all works!",
+			"speaker": 1,
+		},
+		{
+			"line": "Go ahead and row the rest of the way. I'll make things spawn and behave like usual missions, so you can get a taste of what's to come!",
+			"speaker": 1,
+		},
 	]
 }
