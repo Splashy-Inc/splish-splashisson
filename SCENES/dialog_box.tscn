@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwr6cg26cwtpw"]
+[gd_scene load_steps=15 format=3 uid="uid://cwr6cg26cwtpw"]
 
 [ext_resource type="Script" path="res://SCRIPTS/dialog_box.gd" id="1_q81u0"]
 [ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="2_0m27t"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://dbk876lewi1od" path="res://Audio/Shrimp/shrimp_voice_3.ogg" id="7_lp4fu"]
 [ext_resource type="AudioStream" uid="uid://dxfx0c4foce17" path="res://Audio/Shrimp/shrimp_voice_4.ogg" id="8_wrbd4"]
 [ext_resource type="AudioStream" uid="uid://g7mrru42k27p" path="res://Audio/Shrimp/shrimp_voice_5.ogg" id="9_ithf6"]
-[ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="12_cvahw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_263dt"]
 bg_color = Color(0, 0, 0, 1)
@@ -61,7 +60,6 @@ texture = ExtResource("2_0m27t")
 stretch_mode = 3
 
 [node name="LeftSound" type="AudioStreamPlayer" parent="HBoxContainer/LeftPanel"]
-stream = ExtResource("4_fp6v0")
 volume_db = -10.0
 
 [node name="TextArea" type="VBoxContainer" parent="HBoxContainer"]
@@ -102,7 +100,6 @@ texture = ExtResource("3_wnvek")
 stretch_mode = 3
 
 [node name="RightSound" type="AudioStreamPlayer" parent="HBoxContainer/RightPanel"]
-stream = ExtResource("12_cvahw")
 
 [connection signal="pressed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="advance_dialog"]
 [connection signal="visibility_changed" from="HBoxContainer/TextArea/DialogButtonSection/DialogButton" to="." method="_on_dialog_button_visibility_changed"]
