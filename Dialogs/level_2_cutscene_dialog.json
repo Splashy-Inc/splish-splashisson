@@ -1,0 +1,16 @@
+{
+	"dialog_lines": [
+		{
+			"line": "Thanks for making that delivery! We're even now.", 
+			"speaker": 1,
+		},
+		{
+			"line": "My usual crew is tied up with other jobs and you did get the last job done. Think you can handle another delivery?", 
+			"speaker": 1,
+		},
+		{
+			"line": "This time we have some furs for the Squid market. Help me with this and I'll upgrade your ship and get you some more crew!",
+			"speaker": 1,
+		},
+	]
+}

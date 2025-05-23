@@ -71,25 +71,28 @@ func _restart_level():
 	game_ended = false
 	_clear_screens()
 	
-	# Calling duplicate() here as a workaround to this issue: https://github.com/godotengine/godot/issues/96181
-	var new_level = level_scene.instantiate().duplicate()
-	add_child(new_level)
-	new_level.completed.connect(_on_level_completed)
-	
-	for sig in new_level.get_signal_list():
-		match sig["name"]:
-			"lost":
-				new_level.lost.connect(_on_level_lost)
-			"won":
-				new_level.won.connect(_on_level_won)
-			#"tutorial_completed":
-				#new_level.tutorial_completed.connect(_on_tutorial_won)
-	
-	level = new_level
-	Globals.set_level(level)
-	cur_screen = level
-	
-	#_resume_play(Input.MOUSE_MODE_CAPTURED)
+	if level_scene:
+		# Calling duplicate() here as a workaround to this issue: https://github.com/godotengine/godot/issues/96181
+		var new_level = level_scene.instantiate().duplicate()
+		add_child(new_level)
+		new_level.completed.connect(_on_level_completed)
+		
+		for sig in new_level.get_signal_list():
+			match sig["name"]:
+				"lost":
+					new_level.lost.connect(_on_level_lost)
+				"won":
+					new_level.won.connect(_on_level_won)
+				#"tutorial_completed":
+					#new_level.tutorial_completed.connect(_on_tutorial_won)
+		
+		level = new_level
+		Globals.set_level(level)
+		cur_screen = level
+		
+		#_resume_play(Input.MOUSE_MODE_CAPTURED)
+	else:
+		show_main_menu()
 
 func _on_restart_pressed():
 	if cur_screen is Cutscene:

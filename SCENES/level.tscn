@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfsxn0iyywxs5"]
+[gd_scene load_steps=11 format=3 uid="uid://cfsxn0iyywxs5"]
 
 [ext_resource type="Script" path="res://SCRIPTS/level.gd" id="1_stx43"]
+[ext_resource type="PackedScene" uid="uid://c4mny4y4qth5c" path="res://SCENES/Cutscenes/cutscene_2.tscn" id="2_fp8r7"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="2_lnmp3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_nmge5"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="4_64cm4"]
@@ -12,6 +13,7 @@
 
 [node name="Level" type="Node" node_paths=PackedStringArray("player", "boat")]
 script = ExtResource("1_stx43")
+next_scene = ExtResource("2_fp8r7")
 dock_scene = ExtResource("8_b63j4")
 player = NodePath("People/Splish")
 minimum_seconds = 30
