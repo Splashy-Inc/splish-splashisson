@@ -103,7 +103,7 @@ func update_cargo_condition(condition: int, max_condition: int):
 		level.level_stats.cargo_max_condition = cargo_info["max_condition"]
 	cargo_condition_updated.emit(cargo_info["max_condition"], cargo_info["condition"])
 	
-func update_cargo_items(num_items: int, item_health: int, item_texture: CompressedTexture2D):
+func update_cargo_items(num_items: int, item_health: int, item_texture: Texture2D):
 	cargo_info["max_items"] = num_items
 	cargo_info["item_health"] = item_health
 	cargo_info["item_texture"] = item_texture

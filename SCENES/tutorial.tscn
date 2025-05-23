@@ -45,6 +45,7 @@ player = NodePath("People/Splish")
 dialog_box = NodePath("LevelUI/DialogBox")
 minimum_seconds = 40
 boat = NodePath("Boat")
+cargo_type = 1
 
 [node name="Ocean" parent="." instance=ExtResource("3_6em2h")]
 

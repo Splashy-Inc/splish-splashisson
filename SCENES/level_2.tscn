@@ -16,6 +16,7 @@ dock_scene = ExtResource("3_4pxwd")
 player = NodePath("People/Splish")
 minimum_seconds = 30
 boat = NodePath("Boat")
+cargo_type = 2
 
 [node name="Ocean" parent="." instance=ExtResource("4_f1fhx")]
 

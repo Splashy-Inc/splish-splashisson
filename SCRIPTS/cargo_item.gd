@@ -2,14 +2,18 @@ extends Node2D
 
 class_name CargoItem
 
-@export var health: int
+@export var cargo_types: Array[CargoItemData]
+@export var cur_data: CargoItemData
+
+@onready var sprite: Sprite2D = $Sprite2D
+
 var host_cargo: Cargo
 
 signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -17,13 +21,25 @@ func _process(delta: float) -> void:
 
 func initialize(cargo: Cargo):
 	host_cargo = cargo
+	if not is_node_ready():
+		await ready
+	for cargo_type_data in cargo_types:
+		if cargo_type_data.type == host_cargo.cargo_type:
+			cur_data = cargo_type_data
+	sprite.texture = get_sprite_texture()
 
 func die():
 	died.emit()
 	queue_free()
 
 func get_sprite_texture():
-	return $Sprite2D.texture
+	return cur_data.texture
+
+func get_health():
+	return cur_data.health
+
+func get_type():
+	return cur_data.type
 
 func return_to_cargo():
 	if host_cargo:

@@ -5,14 +5,16 @@ class_name Cargo
 enum Cargo_type {
 	NONE,
 	MEAT,
+	FUR,
 }
+@onready var items: Node2D = $Items
 
-@export var meat_scene: PackedScene
+@export var cargo_item_scene: PackedScene
 
 @export var cargo_type: Cargo_type
 var num_items = 10
 var item_health = 0
-var item_texture: CompressedTexture2D
+var item_texture: Texture2D
 var max_condition = 0
 var condition = 0
 var threats = []
@@ -28,31 +30,31 @@ func _process(delta: float) -> void:
 	pass
 	
 func initialize(new_type: Cargo_type, new_num_items: int):
+	if not is_node_ready():
+		await ready
 	cargo_type = new_type
 	num_items = new_num_items
-	_spawn_cargo()
+	await _spawn_cargo()
 	_update_condition(max_condition)
 	_set_item_info()
 
 func _spawn_cargo():
 	clear()
-	
-	match cargo_type:
-		Cargo_type.MEAT:
-			if $StackArea/CollisionShape2D.shape is CircleShape2D:
-				var spawn_origin = $StackArea/CollisionShape2D.global_position
-				var spawn_radius = $StackArea/CollisionShape2D.shape.radius
-				for i in num_items:
-					var spawn_point = _get_item_spawn_point(spawn_origin, spawn_radius)
-					var new_cargo = meat_scene.instantiate()
-					new_cargo.initialize(self)
-					if item_health <= 0:
-						item_health = new_cargo.health
-						max_condition = num_items * item_health
-						item_texture = new_cargo.get_sprite_texture()
-					$Items.add_child(new_cargo)
-					new_cargo.died.connect(_cargo_item_died.bind(new_cargo))
-					new_cargo.global_position = spawn_point
+	if $StackArea/CollisionShape2D.shape is CircleShape2D:
+		var spawn_origin = $StackArea/CollisionShape2D.global_position
+		var spawn_radius = $StackArea/CollisionShape2D.shape.radius * global_scale.x
+		for i in num_items:
+			var spawn_point = _get_item_spawn_point(spawn_origin, spawn_radius)
+			var new_cargo = cargo_item_scene.instantiate() as CargoItem
+			new_cargo.initialize(self)
+			items.add_child(new_cargo)
+			new_cargo.died.connect(_cargo_item_died.bind(new_cargo))
+			new_cargo.global_position = spawn_point
+		if item_health <= 0:
+			var item = items.get_children().front()
+			item_health = item.get_health()
+			max_condition = num_items * item_health
+			item_texture = item.get_sprite_texture()
 
 func _cargo_item_died(item: CargoItem):
 	print("Irreparable damage to cargo: ", item)
@@ -96,7 +98,7 @@ func _on_damage_tick_timer_timeout() -> void:
 
 func _update_condition(change: int):
 	condition = clamp(condition + change, 0, max_condition)
-	var item_count_diff = clamp($Items.get_child_count() - ceili(float(condition) / item_health), 0, num_items)
+	var item_count_diff = clamp(items.get_child_count() - ceili(float(condition) / item_health), 0, num_items)
 	for i in item_count_diff:
 		get_item().die()
 	Globals.update_cargo_condition(condition, max_condition)
@@ -109,11 +111,11 @@ func _on_level_completed(level: Level):
 	$DamageTickTimer.stop()
 	
 func get_item():
-	return $Items.get_children().front()
+	return items.get_children().front()
 
 func add_item(item: CargoItem):
 	if item:
-		item.reparent($Items, false)
+		item.reparent(items, false)
 		item.global_position = _get_item_spawn_point($StackArea/CollisionShape2D.global_position, $StackArea/CollisionShape2D.shape.radius)
 		_update_condition(item_health)
 
@@ -134,5 +136,5 @@ func _get_item_spawn_point(spawn_origin, spawn_radius):
 	return spawn_point
 
 func clear():
-	for item in $Items.get_children():
+	for item in items.get_children():
 		item.queue_free()
