@@ -33,6 +33,7 @@ dialog_text_json = ExtResource("12_mumyv")
 
 [node name="Cutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_q7fsr")
+boat_length = 1
 level_scene = ExtResource("2_lp0n3")
 dialog_box = NodePath("DialogBox")
 
@@ -49,6 +50,7 @@ dialog_data = SubResource("Resource_l4urc")
 [node name="Boat" parent="." instance=ExtResource("16_ylnku")]
 position = Vector2(211, 142)
 scale = Vector2(0.15, 0.15)
+cargo_list = Array[int]([1])
 
 [node name="SplishIdle" type="Sprite2D" parent="Boat"]
 position = Vector2(226.667, 5.05447e-05)
