@@ -9,11 +9,14 @@ signal set_up
 @export var deck_length: int
 @export var deck_scene: PackedScene
 @onready var bow_slot: Node2D = $NavigationRegion2D/BowSlot
+@onready var bow: BoatEnd = $NavigationRegion2D/BowSlot/Bow
 @onready var deck_slot: Node2D = $NavigationRegion2D/DeckSlot
 @onready var stern_slot: Node2D = $NavigationRegion2D/SternSlot
+@onready var stern: BoatEnd = $NavigationRegion2D/SternSlot/Stern
 
 # Tasks that should be filled into the deck segments
 @export var deck_tasks: Array[Globals.Task_type]
+@export var cargo_list: Array[Cargo.Cargo_type]
 
 var speed = 0
 var total_speed = 0
@@ -32,6 +35,7 @@ var playable_cells: Array[Vector2i]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(cargo_list)
 	_generate_boat()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,8 +72,19 @@ func _generate_boat():
 			new_deck_segment.initialize(tasks)
 			deck_slot.add_child(new_deck_segment)
 	
-	length = bow_slot.global_position.distance_to(stern_slot.global_position) + get_viewport_rect().size.y
+	var temp_cargo_list := cargo_list.duplicate()
+	if temp_cargo_list.is_empty():
+		stern.set_cargo(Cargo.Cargo_type.NONE)
+		bow.set_cargo(Cargo.Cargo_type.NONE)
+	else:
+		stern.set_cargo(temp_cargo_list.front())
+		temp_cargo_list.pop_front()
+		if temp_cargo_list.is_empty():
+			bow.set_cargo(Cargo.Cargo_type.NONE)
+		else:
+			bow.set_cargo(temp_cargo_list.front())
 	
+	length = bow_slot.global_position.distance_to(stern_slot.global_position) + get_viewport_rect().size.y
 	change_speed(0)
 	
 func set_deck_length(new_length: int):

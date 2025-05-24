@@ -19,7 +19,6 @@ var max_boat_speed = 0
 var boat_speed = 0
 @export var boat: Boat
 @export var boat_length := 1
-@export var cargo_type: Cargo.Cargo_type
 var finished = false
 
 var end_dock: Dock

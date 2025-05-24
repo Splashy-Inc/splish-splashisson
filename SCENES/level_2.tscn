@@ -16,7 +16,6 @@ dock_scene = ExtResource("3_4pxwd")
 player = NodePath("People/Splish")
 minimum_seconds = 30
 boat = NodePath("Boat")
-cargo_type = 2
 
 [node name="Ocean" parent="." instance=ExtResource("4_f1fhx")]
 
@@ -24,6 +23,7 @@ cargo_type = 2
 
 [node name="Boat" parent="." instance=ExtResource("6_bs64v")]
 position = Vector2(320, 180)
+cargo_list = Array[int]([2])
 
 [node name="People" type="Node2D" parent="."]
 z_index = 1
