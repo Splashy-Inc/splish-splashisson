@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsnr7g2gkv5ie"]
+[gd_scene load_steps=10 format=3 uid="uid://dsnr7g2gkv5ie"]
 
 [ext_resource type="Script" path="res://SCRIPTS/cargo_item.gd" id="1_f8d7r"]
 [ext_resource type="Script" path="res://SCRIPTS/cargo_item_data.gd" id="2_nh6nw"]
 [ext_resource type="Texture2D" uid="uid://8ld8yvec0wq6" path="res://Art/Cargo/Ham/Ham1.png" id="2_u0x3v"]
+[ext_resource type="Texture2D" uid="uid://councby7th2kt" path="res://Art/Cargo/Furs/Fur1.png" id="4_2xdhh"]
 
 [sub_resource type="Resource" id="Resource_ddop4"]
 script = ExtResource("2_nh6nw")
@@ -10,20 +11,11 @@ type = 1
 health = 30
 texture = ExtResource("2_u0x3v")
 
-[sub_resource type="Gradient" id="Gradient_yj321"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.638306, 0.403271, 0.218068, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gxkoh"]
-gradient = SubResource("Gradient_yj321")
-width = 16
-height = 16
-
 [sub_resource type="Resource" id="Resource_5qanm"]
 script = ExtResource("2_nh6nw")
 type = 2
 health = 50
-texture = SubResource("GradientTexture2D_gxkoh")
+texture = ExtResource("4_2xdhh")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_odnm3"]
 size = Vector2(16, 16)
@@ -31,7 +23,7 @@ size = Vector2(16, 16)
 [sub_resource type="Resource" id="Resource_uyp3d"]
 script = ExtResource("2_nh6nw")
 type = 0
-health = 10
+health = 30
 texture = SubResource("PlaceholderTexture2D_odnm3")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0kxb5"]
