@@ -66,8 +66,9 @@ flip_h = true
 position = Vector2(320, 180)
 deck_tasks = Array[int]([2, 1, 0, 0, 0])
 cargo_list = Array[int]([1])
+generate_crew = false
 
-[node name="People" type="Node2D" parent="."]
+[node name="People" type="Node2D" parent="." groups=["people"]]
 z_index = 1
 y_sort_enabled = true
 
@@ -75,7 +76,7 @@ y_sort_enabled = true
 position = Vector2(320, 78)
 
 [node name="Splish" parent="People" instance=ExtResource("7_wap1k")]
-position = Vector2(320, 201)
+position = Vector2(320, 180)
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)

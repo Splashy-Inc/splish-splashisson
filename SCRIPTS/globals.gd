@@ -37,6 +37,7 @@ var task_dict = {
 }
 
 var cargo_scene := load("res://SCENES/cargo.tscn")
+var crew_scene := load("res://SCENES/crew_member.tscn")
 
 var controls_data := load("res://controls_data.tres") as ControlsData
 var cur_controls := ControlsData.AVAILABLE_CONTROLS
@@ -80,10 +81,14 @@ func generate_task(type: Task_type) -> Task:
 
 func generate_cargo() -> Cargo:
 	return cargo_scene.duplicate().instantiate()
+	
+func generate_crew() -> Crew:
+	return crew_scene.duplicate().instantiate()
 
 func set_boat(new_boat: Boat):
-	boat = new_boat
-	boat_ready.emit(boat)
+	if boat != new_boat:
+		boat = new_boat
+		boat_ready.emit(boat)
 
 func set_level(new_level: Level):
 	level = new_level

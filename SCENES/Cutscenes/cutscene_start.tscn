@@ -25,6 +25,7 @@ stream_0/stream = ExtResource("9_xuxal")
 script = ExtResource("1_0jjtp")
 tutorial_scene = ExtResource("2_mi8w7")
 level_1_cutscene = ExtResource("3_gol2h")
+boat_length = 1
 level_scene = ExtResource("3_hpspq")
 dialog_box = NodePath("DialogBox")
 

@@ -8,6 +8,20 @@ var disabled := false
 
 var threats := []
 
+@onready var dismount_point: Marker2D = $DismountPoint
+
+func spawn_crew():
+	if not (Globals.boat and Globals.boat.is_node_ready()):
+		await Globals.boat_ready
+	if get_tree().get_node_count_in_group("crew") < Globals.boat.deck_length * 4:
+		var new_crew = Globals.generate_crew()
+		var people_container = get_tree().get_first_node_in_group("people")
+		if people_container:
+			people_container.add_child(new_crew)
+		else:
+			Globals.boat.add_child(new_crew)
+		new_crew.global_position = dismount_point.global_position
+
 func play_animation(animation_name):
 	if level_completed:
 		if  animation_name == "active":

@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=10 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
-[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://SCENES/crew_member.tscn" id="1_tnbfu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="2_cmo3h"]
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="2_gusxx"]
@@ -28,24 +27,12 @@ boat_length = 2
 position = Vector2(320, 180)
 cargo_list = Array[int]([1])
 
-[node name="People" type="Node2D" parent="."]
+[node name="People" type="Node2D" parent="." groups=["people"]]
 z_index = 1
 y_sort_enabled = true
 
-[node name="CrewMember" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(380, 47)
-
-[node name="CrewMember2" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(297, 28)
-
-[node name="CrewMember3" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(342, 27)
-
-[node name="CrewMember4" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(269, 47)
-
 [node name="Splish" parent="People" instance=ExtResource("1_vcfar")]
-position = Vector2(320, 201)
+position = Vector2(320, 180)
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)

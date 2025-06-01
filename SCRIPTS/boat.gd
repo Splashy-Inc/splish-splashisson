@@ -17,6 +17,7 @@ signal set_up
 # Tasks that should be filled into the deck segments
 @export var deck_tasks: Array[Globals.Task_type]
 @export var cargo_list: Array[Cargo.Cargo_type]
+@export var generate_crew := true
 
 var speed = 0
 var total_speed = 0
@@ -35,7 +36,7 @@ var playable_cells: Array[Vector2i]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_generate_boat()
+	call_deferred("_generate_boat")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,12 +51,15 @@ func _process(delta: float) -> void:
 			speed = int(new_speed)
 			Globals.update_boat_speed(speed)
 
-func _generate_boat():
+func _generate_boat():	
 	# Clear current deck segments
 	for segment in deck_slot.get_children():
 		if segment is Deck:
 			segment.clear_deck()
 		segment.free()
+	
+	for crew in get_tree().get_nodes_in_group("crew"):
+		crew.queue_free()
 	
 	# Generate each deck segment and offset
 	var deck_tasks_to_place = deck_tasks
@@ -108,10 +112,14 @@ func _generate_boat():
 	length = bow_slot.global_position.distance_to(stern_slot.global_position) + get_viewport_rect().size.y
 	change_speed(0)
 	
+	for rowing_task in get_tree().get_nodes_in_group("rowing_task"):
+		if rowing_task is RowingTask:
+			rowing_task.spawn_crew()
+
 func set_deck_length(new_length: int):
 	deck_length = new_length
 	setup_checklist["deck"] = deck_length
-	_generate_boat()
+	call_deferred("_generate_boat")
 
 func change_speed(change: int):
 	if not is_stopped:

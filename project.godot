@@ -52,6 +52,7 @@ crew=""
 rat=""
 rat_hole=""
 player=""
+people=""
 
 [gui]
 
