@@ -12,6 +12,8 @@ signal completed
 
 @export var dialog_box: DialogBox
 
+@export var weather: Weather
+
 var progress = 0
 @export var minimum_seconds: int
 var length = 0
@@ -29,6 +31,10 @@ var level_stats := LevelStats.new()
 func _ready() -> void:
 	boat.set_deck_length(boat_length)
 	level_stats.length_seconds = minimum_seconds
+	if not weather:
+		print("No weather node assigned, make sure to add one to the level if weather is needed!")
+	else:
+		weather.rain_ticked.connect(_on_rain_ticked)
 	
 func _level_ready():
 	pass
@@ -95,3 +101,6 @@ func resume_play(new_mouse_mode: int = Input.MOUSE_MODE_VISIBLE):
 
 func set_finish_seconds(finish_seconds: int):
 	level_stats.finish_seconds = finish_seconds
+
+func _on_rain_ticked():
+	boat.spawn_puddle()

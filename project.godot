@@ -30,6 +30,14 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://Art/": "pink",
+"res://SCENES/": "green",
+"res://SCRIPTS/": "red"
+}
+
 [global_group]
 
 rowing_animation=""

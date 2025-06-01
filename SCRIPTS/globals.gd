@@ -122,19 +122,25 @@ func _on_joy_connection_changed(device, connected):
 	joypad_connected = Input.get_connected_joypads().size() > 0
 
 func _on_puddle_spawned():
-	level.level_stats.puddles_spawned += 1
+	if level:
+		level.level_stats.puddles_spawned += 1
 	
 func _on_puddle_fixed():
-	level.level_stats.puddles_fixed += 1
+	if level:
+		level.level_stats.puddles_fixed += 1
 
 func _on_leak_spawned():
-	level.level_stats.leaks_spawned += 1
+	if level:
+		level.level_stats.leaks_spawned += 1
 	
 func _on_leak_fixed():
-	level.level_stats.leaks_fixed += 1
+	if level:
+		level.level_stats.leaks_fixed += 1
 	
 func _on_rat_spawned():
-	level.level_stats.rats_spawned += 1
+	if level:
+		level.level_stats.rats_spawned += 1
 	
 func _on_rat_fixed():
-	level.level_stats.rats_fixed += 1
+	if level:
+		level.level_stats.rats_fixed += 1

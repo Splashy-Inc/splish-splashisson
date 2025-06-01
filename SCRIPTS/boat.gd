@@ -100,19 +100,26 @@ func change_speed(change: int):
 
 func spawn_leak(spawn_point: Vector2 = Vector2.ZERO):
 	if spawn_point == Vector2.ZERO:
-		spawn_point = $PlayGrid.global_position + Vector2(randi_range(0,300), randi_range(0,length))
+		spawn_point = get_spawn_point()
 	while not is_point_in_boat(spawn_point):
-		spawn_point = $PlayGrid.global_position + Vector2(randi_range(0,300), randi_range(0,length))
+		spawn_point = get_spawn_point()
 	var new_leak = $PlayGrid.spawn_leak(spawn_point)
 	if not new_leak:
 		return spawn_leak()
 	else:
 		return new_leak
 
-func spawn_puddle(spawn_point: Vector2):
+func spawn_puddle(spawn_point: Vector2 = Vector2.ZERO):
+	if spawn_point == Vector2.ZERO:
+		spawn_point = get_spawn_point()
+		while not is_point_in_boat(spawn_point):
+			spawn_point = get_spawn_point()
 	if is_point_in_boat(spawn_point):
 		return $PlayGrid.spawn_puddle(spawn_point)
 	return null
+
+func get_spawn_point():
+	return $PlayGrid.global_position + Vector2(randi_range(0,300), randi_range(0,length))
 	
 func add_obstacle(new_obstacle: Node2D):
 	if new_obstacle is Puddle:
