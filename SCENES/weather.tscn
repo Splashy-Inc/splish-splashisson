@@ -23,4 +23,9 @@ wait_time = 2.0
 texture = SubResource("GradientTexture2D_fxc34")
 centered = false
 
+[node name="LightningTimer" type="Timer" parent="Storm"]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="Storm/RainTimer" to="." method="_on_rain_timer_timeout"]
+[connection signal="timeout" from="Storm/LightningTimer" to="." method="_on_lightning_timer_timeout"]
