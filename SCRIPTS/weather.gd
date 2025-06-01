@@ -14,6 +14,7 @@ enum Type {
 @onready var storm: Node2D = $Storm
 @onready var rain_timer: Timer = $Storm/RainTimer
 @onready var lightning_timer: Timer = $Storm/LightningTimer
+@onready var lightning_animation_player: AnimationPlayer = $Storm/Lightning/AnimationPlayer
 
 const LIGHTNING_MAX_TIME := 8
 
@@ -41,4 +42,4 @@ func _on_rain_timer_timeout() -> void:
 
 func _on_lightning_timer_timeout() -> void:
 	lightning_timer.start(randi_range(3, LIGHTNING_MAX_TIME))
-	print("LIGHTNING!")
+	lightning_animation_player.play("flash")
