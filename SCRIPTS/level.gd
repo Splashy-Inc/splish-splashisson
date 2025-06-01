@@ -32,7 +32,7 @@ func _ready() -> void:
 	boat.set_deck_length(boat_length)
 	level_stats.length_seconds = minimum_seconds
 	if not weather:
-		print("No weather node assigned, make sure to add one to the level if waether is needed!")
+		print("No weather node assigned, make sure to add one to the level if weather is needed!")
 	else:
 		weather.rain_ticked.connect(_on_rain_ticked)
 	
