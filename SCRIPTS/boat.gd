@@ -35,7 +35,6 @@ var playable_cells: Array[Vector2i]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(cargo_list)
 	_generate_boat()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,20 +57,42 @@ func _generate_boat():
 			segment.clear_deck()
 		segment.free()
 	
-	# Generate each deck segment
-	# TODO: Update to generate with more than 1 deck segment
+	# Generate each deck segment and offset
 	var deck_tasks_to_place = deck_tasks
-	deck_length = 1
 	setup_checklist["deck"] = deck_length
+	var y_offset := 0
 	for i in deck_length:
-		var new_deck_segment = deck_scene.instantiate()
+		var new_deck_segment = deck_scene.instantiate() as Deck
 		if new_deck_segment is Deck:
 			new_deck_segment.tasks_set_up.connect(_on_deck_segment_tasks_set_up)
 			var tasks = deck_tasks_to_place.slice(0, 4)
 			deck_tasks_to_place = deck_tasks_to_place.slice(4)
 			new_deck_segment.initialize(tasks)
 			deck_slot.add_child(new_deck_segment)
+			
+			if deck_length % 2 == 1: # Odd number of deck segments
+				# Offset each segment by a whole deck segment, increasing every even segment
+				# The first segment does not recieve any offset since it remains centered
+				if i % 2 == 1:
+					y_offset += new_deck_segment.get_size().y
+			else: # Even number of deck segments
+				# Offset each segment by a while segement, increasing every odd segment, 
+				# The first 2 segments get a half segment offset
+				if i % 2 == 0:
+					if i < 1:
+						y_offset += new_deck_segment.get_size().y/2
+					else:
+						y_offset += new_deck_segment.get_size().y
+			
+			# Alternate bow and stern, to keep things centered
+			new_deck_segment.position.y = cos(i * PI) * y_offset * global_scale.y
 	
+	# Offset boat ends
+	y_offset += stern.get_size().y
+	stern_slot.position.y = y_offset
+	bow_slot.position.y = -y_offset
+	
+	# Set the cargo
 	var temp_cargo_list := cargo_list.duplicate()
 	if temp_cargo_list.is_empty():
 		stern.set_cargo(Cargo.Cargo_type.NONE)

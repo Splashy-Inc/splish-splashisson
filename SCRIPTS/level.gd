@@ -21,6 +21,7 @@ var max_boat_speed = 0
 var boat_speed = 0
 @export var boat: Boat
 @export var boat_length := 1
+@export var task_list: Array[Globals.Task_type]
 var finished = false
 
 var end_dock: Dock
@@ -29,6 +30,11 @@ var level_stats := LevelStats.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# If no task list, autofill with rowing tasks
+	if task_list.is_empty():
+		for i in boat_length * 4:
+			task_list.append(Globals.Task_type.ROWING_RIGHT)
+	boat.deck_tasks = task_list
 	boat.set_deck_length(boat_length)
 	level_stats.length_seconds = minimum_seconds
 	if not weather:

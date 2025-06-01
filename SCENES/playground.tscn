@@ -18,6 +18,7 @@ player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 30
 boat = NodePath("Boat")
+boat_length = 2
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
@@ -65,7 +66,6 @@ position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
 [node name="Weather" parent="." instance=ExtResource("10_66vyk")]
-type = 1
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

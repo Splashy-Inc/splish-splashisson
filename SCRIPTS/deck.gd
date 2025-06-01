@@ -8,6 +8,7 @@ signal tasks_set_up
 var spawn_boundary: Rect2
 var task_slots : Array[TaskSlot]
 
+@onready var sprite: Sprite2D = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -60,3 +61,6 @@ func get_rowing_tasks():
 
 func get_play_grid_origin():
 	return $PlayGrid.global_position
+	
+func get_size():
+	return sprite.get_rect().size
