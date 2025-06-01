@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=30 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_6sa47"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://7cb47q8j6xwg" path="res://Dialogs/Tutorial/tutorial_completed_dialog.tres" id="13_natgs"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="18_ax4w7"]
 [ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="20_mkeck"]
+[ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="26_th1uk"]
 
 [sub_resource type="AudioStream" id="AudioStream_ce5gk"]
 
@@ -107,6 +108,8 @@ shape = SubResource("RectangleShape2D_qexjr")
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("2_ow1x7")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
+
+[node name="Weather" parent="." instance=ExtResource("26_th1uk")]
 
 [connection signal="dialog_ended" from="LevelUI/DialogBox" to="." method="_on_dialog_ended"]
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]

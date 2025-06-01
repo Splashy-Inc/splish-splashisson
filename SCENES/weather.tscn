@@ -84,6 +84,7 @@ _data = {
 script = ExtResource("1_x7unc")
 
 [node name="Storm" type="Node2D" parent="."]
+visible = false
 
 [node name="RainTimer" type="Timer" parent="Storm"]
 wait_time = 2.0

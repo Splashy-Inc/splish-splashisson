@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfsxn0iyywxs5"]
+[gd_scene load_steps=12 format=3 uid="uid://cfsxn0iyywxs5"]
 
 [ext_resource type="Script" path="res://SCRIPTS/level.gd" id="1_stx43"]
 [ext_resource type="PackedScene" uid="uid://c4mny4y4qth5c" path="res://SCENES/Cutscenes/cutscene_2.tscn" id="2_fp8r7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="7_r4a8d"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_b63j4"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="8_mfs7h"]
+[ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="11_p3ae6"]
 
 [node name="Level" type="Node" node_paths=PackedStringArray("player", "boat")]
 script = ExtResource("1_stx43")
@@ -63,6 +64,8 @@ autostart = true
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_b63j4")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
+
+[node name="Weather" parent="." instance=ExtResource("11_p3ae6")]
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
