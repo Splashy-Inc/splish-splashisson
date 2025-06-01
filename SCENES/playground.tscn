@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=11 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://SCENES/crew_member.tscn" id="1_tnbfu"]
@@ -9,11 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="8_gg0jf"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_teo1b"]
+[ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
 
-[node name="Playground" type="Node" node_paths=PackedStringArray("player", "boat")]
+[node name="Playground" type="Node" node_paths=PackedStringArray("player", "weather", "boat")]
 script = ExtResource("1_bs7od")
 dock_scene = ExtResource("8_teo1b")
 player = NodePath("People/Splish")
+weather = NodePath("Weather")
 minimum_seconds = 30
 boat = NodePath("Boat")
 
@@ -61,6 +63,9 @@ autostart = true
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_teo1b")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
+
+[node name="Weather" parent="." instance=ExtResource("10_66vyk")]
+type = 1
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
