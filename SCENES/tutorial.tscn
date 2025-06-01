@@ -37,15 +37,17 @@ stream_0/stream = ExtResource("20_mkeck")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
 size = Vector2(257, 49)
 
-[node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "dialog_box", "boat")]
+[node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "dialog_box", "weather", "boat")]
 script = ExtResource("1_42opa")
 dialog_files = Array[ExtResource("2_6sa47")]([ExtResource("3_vuwa0"), ExtResource("4_6hufv"), ExtResource("5_s5i7o"), ExtResource("6_a6ib3"), ExtResource("7_k8oav"), ExtResource("8_sq6qd"), ExtResource("9_wuwxa"), ExtResource("10_h8six"), ExtResource("11_bcqxx"), ExtResource("12_etkdc"), ExtResource("13_natgs")])
 next_scene = ExtResource("2_fsg7x")
 dock_scene = ExtResource("2_ow1x7")
 player = NodePath("People/Splish")
 dialog_box = NodePath("LevelUI/DialogBox")
+weather = NodePath("Weather")
 minimum_seconds = 40
 boat = NodePath("Boat")
+task_list = Array[int]([1, 2])
 
 [node name="Ocean" parent="." instance=ExtResource("3_6em2h")]
 
