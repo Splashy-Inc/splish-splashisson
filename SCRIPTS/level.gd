@@ -68,6 +68,9 @@ func _on_boat_ready() -> void:
 	# Spawn the end dock
 	var viewport_rect = get_viewport().get_visible_rect()
 	var dock_spawn_point = Vector2(viewport_rect.size.x, boat.global_position.y - length - boat.max_speed)
+	if end_dock:
+		end_dock.queue_free()
+		end_dock = null
 	end_dock = spawn_dock(dock_spawn_point)
 	
 	Globals.set_boat(boat)

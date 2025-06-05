@@ -17,7 +17,7 @@ player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 30
 boat = NodePath("Boat")
-boat_length = 2
+boat_length = 4
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
