@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 func initialize(tasks_to_place: Array[Globals.Task_type]):
 	tasks = tasks_to_place
+	_set_up_tasks()
 	
 func _set_up_tasks():
 	task_slots = $PlayGrid.get_task_slots()
@@ -50,13 +51,12 @@ func clear_deck():
 func is_point_in_play_space(point: Vector2):
 	return Geometry2D.is_point_in_polygon(point-$PlayArea/CollisionPolygon2D.global_position, $PlayArea/CollisionPolygon2D.polygon)
 
-func get_rowing_tasks():
-	var rowing_tasks = []
+func get_rowing_tasks() -> Array[RowingTask]:
+	var rowing_tasks: Array[RowingTask]
 	for slot in task_slots:
 		for task in slot.get_children():
 			if task is RowingTask:
 				rowing_tasks.append(task)
-	
 	return rowing_tasks
 
 func get_play_grid_origin():

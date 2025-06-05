@@ -59,6 +59,7 @@ action_type = 1
 position = Vector2(211, 142)
 scale = Vector2(0.15, 0.15)
 cargo_list = Array[int]([1])
+generate_crew = false
 
 [node name="SplishIdle" type="Sprite2D" parent="Boat"]
 position = Vector2(226.667, 5.05447e-05)

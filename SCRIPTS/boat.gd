@@ -13,11 +13,13 @@ signal set_up
 @onready var deck_slot: Node2D = $NavigationRegion2D/DeckSlot
 @onready var stern_slot: Node2D = $NavigationRegion2D/SternSlot
 @onready var stern: BoatEnd = $NavigationRegion2D/SternSlot/Stern
+@onready var crew_container: Node = $Crew
 
 # Tasks that should be filled into the deck segments
 @export var deck_tasks: Array[Globals.Task_type]
 @export var cargo_list: Array[Cargo.Cargo_type]
 @export var generate_crew := true
+var rowing_tasks: Array[RowingTask]
 
 var speed = 0
 var total_speed = 0
@@ -36,7 +38,7 @@ var playable_cells: Array[Vector2i]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	call_deferred("_generate_boat")
+	initialize()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -51,29 +53,31 @@ func _process(delta: float) -> void:
 			speed = int(new_speed)
 			Globals.update_boat_speed(speed)
 
-func _generate_boat():	
+func initialize(new_deck_length: int = 1, ):
+	set_deck_length(new_deck_length)
+	_generate_boat()
+
+func _generate_boat():
 	# Clear current deck segments
 	for segment in deck_slot.get_children():
 		if segment is Deck:
 			segment.clear_deck()
 		segment.free()
 	
-	for crew in get_tree().get_nodes_in_group("crew"):
-		crew.queue_free()
+	setup_checklist = {
+		"bow": 1,
+		"deck": deck_length,
+		"stern": 1,
+	}
 	
 	# Generate each deck segment and offset
 	var deck_tasks_to_place = deck_tasks
-	setup_checklist["deck"] = deck_length
 	var y_offset := 0
+	var deck_size_y := 0
 	for i in deck_length:
 		var new_deck_segment = deck_scene.instantiate() as Deck
 		if new_deck_segment is Deck:
-			new_deck_segment.tasks_set_up.connect(_on_deck_segment_tasks_set_up)
-			var tasks = deck_tasks_to_place.slice(0, 4)
-			deck_tasks_to_place = deck_tasks_to_place.slice(4)
-			new_deck_segment.initialize(tasks)
 			deck_slot.add_child(new_deck_segment)
-			
 			if deck_length % 2 == 1: # Odd number of deck segments
 				# Offset each segment by a whole deck segment, increasing every even segment
 				# The first segment does not recieve any offset since it remains centered
@@ -90,9 +94,18 @@ func _generate_boat():
 			
 			# Alternate bow and stern, to keep things centered
 			new_deck_segment.position.y = cos(i * PI) * y_offset * global_scale.y
+			
+			# With deck segments placed, then set up tasks
+			new_deck_segment.tasks_set_up.connect(_on_deck_segment_tasks_set_up)
+			var tasks = deck_tasks_to_place.slice(0, 4)
+			deck_tasks_to_place = deck_tasks_to_place.slice(4)
+			new_deck_segment.initialize(tasks)
+			
+			if deck_size_y == 0:
+				deck_size_y = new_deck_segment.get_size().y
 	
 	# Offset boat ends
-	y_offset += stern.get_size().y
+	y_offset += stern.get_size().y/2 + deck_size_y/2
 	stern_slot.position.y = y_offset
 	bow_slot.position.y = -y_offset
 	
@@ -111,15 +124,10 @@ func _generate_boat():
 	
 	length = bow_slot.global_position.distance_to(stern_slot.global_position) + get_viewport_rect().size.y
 	change_speed(0)
-	
-	for rowing_task in get_tree().get_nodes_in_group("rowing_task"):
-		if rowing_task is RowingTask:
-			rowing_task.spawn_crew()
 
 func set_deck_length(new_length: int):
 	deck_length = new_length
 	setup_checklist["deck"] = deck_length
-	call_deferred("_generate_boat")
 
 func change_speed(change: int):
 	if not is_stopped:
@@ -205,4 +213,21 @@ func _check_set_up():
 		get_max_speed()
 		$PlayGrid.global_position = bow_slot.get_children().front().get_play_grid_origin()
 		$NavigationRegion2D.bake_navigation_polygon()
+		if generate_crew:
+			_generate_crew()
 		set_up.emit()
+
+func _generate_crew():
+	for crew in crew_container.get_children():
+		if crew is Crew:
+			crew.set_assignment(null)
+		crew.queue_free()
+	
+	for deck_segment in deck_slot.get_children():
+		if deck_segment is Deck:
+			var rowing_tasks = deck_segment.get_rowing_tasks() as Array[RowingTask]
+			for rowing_task in rowing_tasks:
+				var new_crew = Globals.generate_crew() as Crew
+				crew_container.add_child(new_crew)
+				new_crew.global_position = rowing_task.dismount_point.global_position
+				new_crew.set_assignment(rowing_task)

@@ -53,6 +53,8 @@ rat=""
 rat_hole=""
 player=""
 people=""
+boat=""
+weather=""
 
 [gui]
 

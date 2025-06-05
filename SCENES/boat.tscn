@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="5_6ih3t"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fso07"]
-vertices = PackedVector2Array(90.6328, 188.391, 134.773, 148.453, 134.969, 250.961, -137, -120.148, -137, -90, -137.5, -90, -143.813, 250.031, -137.5, 90, -137, 90, -137, 146.438, -90.6328, 188.391, 37.2813, 214, -37.2813, 214, 102, -70, 102.5, -70, 102.5, 70, 102, 70, -102, 70, -102.5, 70, -102.5, -70, -102, -70, -74.4063, -163.578, -31.7422, -184, 31.7422, -184, 74.4063, -163.578, 102, -139.453, -102, -139.453, -74.4063, 163.578, 102, 139.453, 74.4063, 163.578, 31.7422, 184, -31.7422, 184, -102, 139.453, -89.6094, -188.391, -136.5, -146.938, -135.172, -219.102, 134.023, -221.891, 134.156, -149, 88.5781, -189.406, 37.2734, -214, -37.3203, -214)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 3, 5), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 8, 9, 6), PackedInt32Array(6, 9, 10), PackedInt32Array(11, 0, 2), PackedInt32Array(11, 2, 6, 12), PackedInt32Array(6, 10, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 22, 23, 24, 25, 13, 20, 26), PackedInt32Array(27, 17, 20, 16, 28, 29, 30, 31), PackedInt32Array(27, 32, 17), PackedInt32Array(20, 13, 16), PackedInt32Array(33, 34, 35), PackedInt32Array(36, 37, 38), PackedInt32Array(36, 38, 39), PackedInt32Array(35, 36, 39, 40), PackedInt32Array(35, 40, 33)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-145, -229, 144, -232, 145, 261, -154, 260)])
+vertices = PackedVector2Array(112, -80, 112.5, -80, 112.5, 80, 112, 80, -112, 80, -112.5, 80, -112.5, -80, -112, -80, -80, -172, -34, -194, 34, -194, 80, -172, 112, -144, -112, -144, -80, 172, 112, 144, 80, 172, 34, 194, -34, 194, -112, 144, 127.5, 80, 148, -685, 173, 783, 127, 142, 127.5, -80, 127, -80, 127, -142, 83, -181, 35, -204, -156, -679, -35, -204, -127, -142, -127, -80, -127.5, -80, -127.5, 80, -127, 80, -127, 142, -166, 747, 127, 80, 85, 180, 35, 204, -35, 204, -84, -180, -85, 180)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12, 0, 7, 13), PackedInt32Array(14, 4, 7, 3, 15, 16, 17, 18), PackedInt32Array(14, 19, 4), PackedInt32Array(7, 0, 3), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(21, 20, 24), PackedInt32Array(24, 25, 26, 21), PackedInt32Array(21, 26, 27), PackedInt32Array(21, 27, 28, 29), PackedInt32Array(29, 28, 30), PackedInt32Array(31, 32, 33), PackedInt32Array(34, 35, 36, 37), PackedInt32Array(23, 38, 20), PackedInt32Array(39, 23, 22), PackedInt32Array(40, 39, 22, 37), PackedInt32Array(41, 40, 37), PackedInt32Array(29, 30, 42), PackedInt32Array(43, 41, 37), PackedInt32Array(29, 42, 31), PackedInt32Array(37, 29, 31, 33), PackedInt32Array(37, 33, 34), PackedInt32Array(37, 36, 43)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-156, -679, 148, -685, 173, 783, -166, 747)])
 agent_radius = 0.0
 
-[node name="Boat" type="Node2D"]
+[node name="Boat" type="Node2D" groups=["boat"]]
 script = ExtResource("1_c5j0p")
 deck_length = 1
 deck_scene = ExtResource("2_kxpgr")
@@ -42,8 +42,11 @@ position = Vector2(0, 142)
 
 [node name="Leaks" type="Node2D" parent="NavigationRegion2D/Obstacles"]
 
+[node name="Crew" type="Node" parent="."]
+
 [node name="PlayGrid" parent="." instance=ExtResource("5_6ih3t")]
 position = Vector2(-112, -176)
 
 [connection signal="cargo_set_up" from="NavigationRegion2D/BowSlot/Bow" to="." method="_on_bow_cargo_set_up"]
+[connection signal="tasks_set_up" from="NavigationRegion2D/DeckSlot/Deck" to="." method="_on_deck_segment_tasks_set_up"]
 [connection signal="cargo_set_up" from="NavigationRegion2D/SternSlot/Stern" to="." method="_on_stern_cargo_set_up"]
