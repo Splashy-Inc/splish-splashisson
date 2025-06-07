@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://q6gx1xcbys3g" path="res://SCENES/tutorial.tscn" id="2_mi8w7"]
 [ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://SCENES/Cutscenes/cutscene.tscn" id="3_gol2h"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="3_hpspq"]
-[ext_resource type="Material" path="res://SCENES/Cutscenes/cutscene_ocean_material.tres" id="5_6cgnb"]
+[ext_resource type="Material" uid="uid://8qyyjypf2djy" path="res://SCENES/Cutscenes/cutscene_ocean_material.tres" id="5_6cgnb"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="5_ryrfn"]
 [ext_resource type="PackedScene" uid="uid://cqw3k8ogffvua" path="res://SCENES/dialog_button.tscn" id="6_x1khm"]
 [ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="6_xooul"]

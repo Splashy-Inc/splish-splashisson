@@ -15,9 +15,9 @@ script = ExtResource("1_bs7od")
 dock_scene = ExtResource("8_teo1b")
 player = NodePath("People/Splish")
 weather = NodePath("Weather")
-minimum_seconds = 30
+minimum_seconds = 10
 boat = NodePath("Boat")
-boat_length = 4
+boat_length = 5
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
@@ -28,8 +28,6 @@ position = Vector2(320, 180)
 cargo_list = Array[int]([1])
 
 [node name="People" type="Node2D" parent="." groups=["people"]]
-z_index = 1
-y_sort_enabled = true
 
 [node name="Splish" parent="People" instance=ExtResource("1_vcfar")]
 position = Vector2(320, 180)

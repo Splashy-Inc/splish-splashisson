@@ -230,4 +230,12 @@ func _generate_crew():
 				var new_crew = Globals.generate_crew() as Crew
 				crew_container.add_child(new_crew)
 				new_crew.global_position = rowing_task.dismount_point.global_position
-				new_crew.set_assignment(rowing_task)
+				_set_crew_assignment(new_crew, rowing_task)
+
+# Workaround to weird issue where having the automatic assignment happen too quickly
+#	caused the rowing stop animation to not play properly
+# Waiting for nodes to be ready didn't seem to work...
+func _set_crew_assignment(crew: Crew, assignment: Task):
+	await get_tree().create_timer(.5).timeout
+	if is_instance_valid(crew):
+		crew.set_assignment(assignment)

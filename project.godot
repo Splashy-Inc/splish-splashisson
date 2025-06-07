@@ -17,6 +17,10 @@ boot_splash/image="res://SplashySplashScreen.png"
 boot_splash/fullsize=false
 config/icon="res://Art/Splish/Idle/SplishIdle.png"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 Globals="*res://SCRIPTS/globals.gd"
