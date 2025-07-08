@@ -27,6 +27,15 @@ boat_length = 5
 position = Vector2(320, 180)
 cargo_list = Array[int]([1])
 
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="RatHole" parent="Obstacles" instance=ExtResource("8_gg0jf")]
+position = Vector2(320, 10)
+
+[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
+wait_time = 5.0
+autostart = true
+
 [node name="People" type="Node2D" parent="." groups=["people"]]
 
 [node name="Splish" parent="People" instance=ExtResource("1_vcfar")]
@@ -36,15 +45,6 @@ position = Vector2(320, 180)
 position = Vector2(320, 180)
 script = ExtResource("2_gusxx")
 focus_target = NodePath("../Splish")
-
-[node name="Obstacles" type="Node" parent="."]
-
-[node name="RatHole" parent="Obstacles" instance=ExtResource("8_gg0jf")]
-position = Vector2(320, 10)
-
-[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
-wait_time = 5.0
-autostart = true
 
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_teo1b")]
 position = Vector2(640, 180)

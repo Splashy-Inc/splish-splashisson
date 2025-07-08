@@ -2,7 +2,8 @@ extends Level
 
 class_name Tutorial
 
-@export var dialog_files: Array[DialogData]
+@export var original_dialog_files: Array[DialogData]
+var dialog_files: Array[DialogData]
 
 @onready var level_ui: LevelUI = $LevelUI
 @onready var movement_stage_area: Area2D = $DialogTriggers/MovementStage
@@ -54,11 +55,12 @@ var tutorial_leak: Leak
 var tutorial_puddle: Puddle
 
 func _level_ready():
+	dialog_files = original_dialog_files.duplicate(true)
 	crew_member.idle_distraction_timer.set_paused(true)
 	rat_hole.spawn_timer.set_paused(true)
 	leak_spawn_timer.set_paused(true)
 	rat_hole.hide()
-	splish.targeting_group_blacklist.append_array(["crew", "leak", "puddle", "rat", "rowing_task"])
+	splish.targeting_group_blacklist = ["crew", "leak", "puddle", "rat", "rowing_task"]
 	_show_next_dialog()
 
 func _level_process(delta: float):
