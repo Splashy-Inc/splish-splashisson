@@ -155,8 +155,23 @@ func spawn_puddle(spawn_point: Vector2 = Vector2.ZERO):
 		return $PlayGrid.spawn_puddle(spawn_point)
 	return null
 
+func spawn_rat_hole(spawn_point: Vector2 = Vector2.ZERO):
+	if spawn_point == Vector2.ZERO:
+		spawn_point = get_spawn_point()
+	
+	for cargo in get_tree().get_nodes_in_group("cargo"):
+		while not (is_point_in_boat(spawn_point) and spawn_point.distance_to(cargo.global_position) < length and spawn_point.distance_to(cargo.global_position) > 256):
+			spawn_point = get_spawn_point()
+		
+		print(spawn_point, " ", spawn_point.distance_to(cargo.global_position), " ", length)
+	var new_rat_hole = $PlayGrid.spawn_rat_hole(spawn_point)
+	if not new_rat_hole:
+		return spawn_rat_hole()
+	else:
+		return new_rat_hole
+
 func get_spawn_point():
-	return $PlayGrid.global_position + Vector2(randi_range(0,300), randi_range(0,length))
+	return $PlayGrid.global_position + Vector2(randi_range(0,220), randi_range(0,length))
 	
 func add_obstacle(new_obstacle: Node2D):
 	if new_obstacle is Puddle:

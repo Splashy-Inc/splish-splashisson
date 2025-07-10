@@ -36,6 +36,8 @@ var task_dict = {
 	Task_type.PUDDLE: load("res://SCENES/puddle.tscn"),
 }
 
+var rat_hole_scene := load("res://SCENES/rat_hole.tscn")
+
 var cargo_scene := load("res://SCENES/cargo.tscn")
 var crew_scene := load("res://SCENES/crew_member.tscn")
 
@@ -78,6 +80,9 @@ func generate_task(type: Task_type) -> Task:
 		return task_dict[type].duplicate().instantiate()
 	else:
 		return null
+
+func generate_rat_hole() -> RatHole:
+	return rat_hole_scene.duplicate().instantiate()
 
 func generate_cargo() -> Cargo:
 	return cargo_scene.duplicate().instantiate()

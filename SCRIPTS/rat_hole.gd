@@ -28,6 +28,16 @@ func _on_rat_died(rat: Rat):
 func is_targetable():
 	return false
 
+func spawn(spawn_point: Vector2):
+	var spawn_occupant = _spawn("impassable", spawn_point)
+	if spawn_occupant == self:
+		spawn_occupant = _spawn("rat_hole", spawn_point)
+		if spawn_occupant == self:
+			spawn_occupant = _spawn("cargo", spawn_point)
+			if spawn_occupant == self:
+				spawned.emit()
+	return spawn_occupant
+
 func die():
 	for child in get_children():
 		if child is Rat:

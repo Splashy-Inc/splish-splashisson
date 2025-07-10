@@ -42,7 +42,7 @@ func _ready() -> void:
 		print("No weather node assigned, make sure to add one to the level if weather is needed!")
 	else:
 		weather.rain_ticked.connect(_on_rain_ticked)
-	
+
 func _level_ready():
 	pass
 
@@ -93,8 +93,9 @@ func _on_leak_spawn_timer_timeout() -> void:
 func _on_finished():
 	if $Obstacles/LeakSpawnTimer:
 		$Obstacles/LeakSpawnTimer.stop()
-	if $Obstacles/RatHole:
-		$Obstacles/RatHole.die()
+	for rat_hole in get_tree().get_nodes_in_group("rat_hole"):
+		if rat_hole is RatHole:
+			rat_hole.die()
 	player.input_disabled = true
 	completed.emit()
 
