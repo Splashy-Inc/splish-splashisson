@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=9 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
-[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://SCENES/crew_member.tscn" id="1_tnbfu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="2_cmo3h"]
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
-[ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="8_gg0jf"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_teo1b"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
 
@@ -16,8 +14,10 @@ script = ExtResource("1_bs7od")
 dock_scene = ExtResource("8_teo1b")
 player = NodePath("People/Splish")
 weather = NodePath("Weather")
-minimum_seconds = 30
+minimum_seconds = 20
 boat = NodePath("Boat")
+boat_length = 5
+generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
@@ -27,45 +27,27 @@ boat = NodePath("Boat")
 position = Vector2(320, 180)
 cargo_list = Array[int]([1])
 
-[node name="People" type="Node2D" parent="."]
-z_index = 1
-y_sort_enabled = true
+[node name="Obstacles" type="Node" parent="."]
 
-[node name="CrewMember" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(380, 47)
+[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
+wait_time = 5.0
+autostart = true
 
-[node name="CrewMember2" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(297, 28)
-
-[node name="CrewMember3" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(342, 27)
-
-[node name="CrewMember4" parent="People" instance=ExtResource("1_tnbfu")]
-position = Vector2(269, 47)
+[node name="People" type="Node2D" parent="." groups=["people"]]
 
 [node name="Splish" parent="People" instance=ExtResource("1_vcfar")]
-position = Vector2(320, 201)
+position = Vector2(320, 180)
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)
 script = ExtResource("2_gusxx")
 focus_target = NodePath("../Splish")
 
-[node name="Obstacles" type="Node" parent="."]
-
-[node name="RatHole" parent="Obstacles" instance=ExtResource("8_gg0jf")]
-position = Vector2(320, 10)
-
-[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
-wait_time = 5.0
-autostart = true
-
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_teo1b")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
 [node name="Weather" parent="." instance=ExtResource("10_66vyk")]
-type = 1
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

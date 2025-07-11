@@ -34,13 +34,22 @@ func spawn_leak(spawn_point: Vector2):
 			if new_leak.global_position.x > Globals.boat.global_position.x:
 				new_leak.scale.x *= -1
 			return new_leak
-		else:
-			return null
+	return null
 
 func spawn_puddle(spawn_point: Vector2) -> Puddle:
-	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE)
+	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE) as Puddle
 	Globals.boat.add_obstacle(new_puddle)
 	return new_puddle.spawn(center_point_in_cell(spawn_point))
+
+func spawn_rat_hole(spawn_point: Vector2) -> RatHole:
+	var new_rat_hole = Globals.generate_rat_hole() as RatHole
+	if new_rat_hole is RatHole:
+		Globals.boat.add_obstacle(new_rat_hole)
+		var spawned_rat_hole = new_rat_hole.spawn(center_point_in_cell(spawn_point))
+		if spawned_rat_hole == new_rat_hole:
+			return new_rat_hole
+	new_rat_hole.queue_free()
+	return null
 
 # Point must be global, not local
 func center_point_in_cell(point: Vector2):

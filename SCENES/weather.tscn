@@ -31,6 +31,21 @@ gradient = SubResource("Gradient_516jv")
 width = 640
 height = 360
 
+[sub_resource type="Animation" id="Animation_rngpv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_3gfhg"]
 resource_name = "flash"
 step = 0.01
@@ -59,31 +74,17 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_rngpv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lb7in"]
 _data = {
 "RESET": SubResource("Animation_rngpv"),
 "flash": SubResource("Animation_3gfhg")
 }
 
-[node name="Weather" type="CanvasLayer"]
+[node name="Weather" type="CanvasLayer" groups=["weather"]]
 script = ExtResource("1_x7unc")
 
 [node name="Storm" type="Node2D" parent="."]
+visible = false
 
 [node name="RainTimer" type="Timer" parent="Storm"]
 wait_time = 2.0

@@ -1,30 +1,31 @@
-[gd_scene load_steps=29 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=30 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
-[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_6sa47"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_2bdtw"]
 [ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://SCENES/Cutscenes/cutscene.tscn" id="2_fsg7x"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="2_ow1x7"]
+[ext_resource type="Resource" uid="uid://oldvcmnehasr" path="res://Dialogs/Tutorial/tutorial_overview_dialog.tres" id="3_5kn7a"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="3_6em2h"]
-[ext_resource type="Resource" uid="uid://oldvcmnehasr" path="res://Dialogs/Tutorial/tutorial_overview_dialog.tres" id="3_vuwa0"]
-[ext_resource type="Resource" uid="uid://eh8pyhctavex" path="res://Dialogs/Tutorial/tutorial_movement_dialog.tres" id="4_6hufv"]
+[ext_resource type="Resource" uid="uid://eh8pyhctavex" path="res://Dialogs/Tutorial/tutorial_movement_dialog.tres" id="4_80aas"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="4_wasst"]
-[ext_resource type="Resource" uid="uid://dvhmx2x12ies6" path="res://Dialogs/Tutorial/tutorial_select_dialog.tres" id="5_s5i7o"]
+[ext_resource type="Resource" uid="uid://dvhmx2x12ies6" path="res://Dialogs/Tutorial/tutorial_select_dialog.tres" id="5_1wp2l"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="5_yg4ik"]
 [ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://SCENES/crew_member.tscn" id="6_2hybe"]
-[ext_resource type="Resource" uid="uid://c6n07tf1oeitf" path="res://Dialogs/Tutorial/tutorial_assign_dialog.tres" id="6_a6ib3"]
+[ext_resource type="Resource" uid="uid://c6n07tf1oeitf" path="res://Dialogs/Tutorial/tutorial_assign_dialog.tres" id="6_7wwll"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="6_o4p2q"]
-[ext_resource type="Resource" uid="uid://b1qyidjaep62" path="res://Dialogs/Tutorial/tutorial_act_dialog.tres" id="7_k8oav"]
+[ext_resource type="Resource" uid="uid://b1qyidjaep62" path="res://Dialogs/Tutorial/tutorial_act_dialog.tres" id="7_6844e"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="7_wap1k"]
 [ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="7_xx2yn"]
+[ext_resource type="Resource" uid="uid://cwvc1pc3mparo" path="res://Dialogs/Tutorial/tutorial_rats_dialog.tres" id="8_3xhu5"]
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="8_ds0cc"]
-[ext_resource type="Resource" uid="uid://cwvc1pc3mparo" path="res://Dialogs/Tutorial/tutorial_rats_dialog.tres" id="8_sq6qd"]
-[ext_resource type="Resource" uid="uid://o32tg5wc7qkp" path="res://Dialogs/Tutorial/tutorial_rowing_dialog.tres" id="9_wuwxa"]
-[ext_resource type="Resource" uid="uid://dugy1a2kbetet" path="res://Dialogs/Tutorial/tutorial_distraction_1_dialog.tres" id="10_h8six"]
-[ext_resource type="Resource" uid="uid://sf3jgfa2uafl" path="res://Dialogs/Tutorial/tutorial_distraction_2_dialog.tres" id="11_bcqxx"]
-[ext_resource type="Resource" uid="uid://dc8dw6q2tuwc0" path="res://Dialogs/Tutorial/tutorial_wrap_up_dialog.tres" id="12_etkdc"]
-[ext_resource type="Resource" uid="uid://7cb47q8j6xwg" path="res://Dialogs/Tutorial/tutorial_completed_dialog.tres" id="13_natgs"]
+[ext_resource type="Resource" uid="uid://o32tg5wc7qkp" path="res://Dialogs/Tutorial/tutorial_rowing_dialog.tres" id="9_m4ims"]
+[ext_resource type="Resource" uid="uid://dugy1a2kbetet" path="res://Dialogs/Tutorial/tutorial_distraction_1_dialog.tres" id="10_812v3"]
+[ext_resource type="Resource" uid="uid://sf3jgfa2uafl" path="res://Dialogs/Tutorial/tutorial_distraction_2_dialog.tres" id="11_esu3o"]
+[ext_resource type="Resource" uid="uid://dc8dw6q2tuwc0" path="res://Dialogs/Tutorial/tutorial_wrap_up_dialog.tres" id="12_0cfyp"]
+[ext_resource type="Resource" uid="uid://7cb47q8j6xwg" path="res://Dialogs/Tutorial/tutorial_completed_dialog.tres" id="13_lfmix"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="18_ax4w7"]
 [ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="20_mkeck"]
+[ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="26_th1uk"]
 
 [sub_resource type="AudioStream" id="AudioStream_ce5gk"]
 
@@ -36,15 +37,17 @@ stream_0/stream = ExtResource("20_mkeck")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
 size = Vector2(257, 49)
 
-[node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "dialog_box", "boat")]
+[node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "dialog_box", "weather", "boat")]
 script = ExtResource("1_42opa")
-dialog_files = Array[ExtResource("2_6sa47")]([ExtResource("3_vuwa0"), ExtResource("4_6hufv"), ExtResource("5_s5i7o"), ExtResource("6_a6ib3"), ExtResource("7_k8oav"), ExtResource("8_sq6qd"), ExtResource("9_wuwxa"), ExtResource("10_h8six"), ExtResource("11_bcqxx"), ExtResource("12_etkdc"), ExtResource("13_natgs")])
+original_dialog_files = Array[ExtResource("2_2bdtw")]([ExtResource("3_5kn7a"), ExtResource("4_80aas"), ExtResource("5_1wp2l"), ExtResource("6_7wwll"), ExtResource("7_6844e"), ExtResource("8_3xhu5"), ExtResource("9_m4ims"), ExtResource("10_812v3"), ExtResource("11_esu3o"), ExtResource("12_0cfyp"), ExtResource("13_lfmix")])
 next_scene = ExtResource("2_fsg7x")
 dock_scene = ExtResource("2_ow1x7")
 player = NodePath("People/Splish")
 dialog_box = NodePath("LevelUI/DialogBox")
+weather = NodePath("Weather")
 minimum_seconds = 40
 boat = NodePath("Boat")
+task_list = Array[int]([1, 2])
 
 [node name="Ocean" parent="." instance=ExtResource("3_6em2h")]
 
@@ -63,8 +66,9 @@ flip_h = true
 position = Vector2(320, 180)
 deck_tasks = Array[int]([2, 1, 0, 0, 0])
 cargo_list = Array[int]([1])
+generate_crew = false
 
-[node name="People" type="Node2D" parent="."]
+[node name="People" type="Node2D" parent="." groups=["people"]]
 z_index = 1
 y_sort_enabled = true
 
@@ -72,7 +76,7 @@ y_sort_enabled = true
 position = Vector2(320, 78)
 
 [node name="Splish" parent="People" instance=ExtResource("7_wap1k")]
-position = Vector2(320, 201)
+position = Vector2(320, 180)
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)
@@ -107,6 +111,8 @@ shape = SubResource("RectangleShape2D_qexjr")
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("2_ow1x7")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
+
+[node name="Weather" parent="." instance=ExtResource("26_th1uk")]
 
 [connection signal="dialog_ended" from="LevelUI/DialogBox" to="." method="_on_dialog_ended"]
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]

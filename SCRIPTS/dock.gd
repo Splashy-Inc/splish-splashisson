@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if boat:
 		global_position.y += boat.speed * delta
-		if global_position.y > 0 and boat.global_position.distance_to(global_position) > boat.length:
+		if not is_instance_valid(boat) or (global_position.y > 0 and boat.global_position.distance_to(global_position) > boat.length):
 			queue_free()
 
 func _on_boat_ready(new_boat: Boat):

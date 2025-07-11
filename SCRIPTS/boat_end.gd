@@ -5,6 +5,7 @@ class_name BoatEnd
 signal cargo_set_up
 
 @onready var play_grid: PlayGrid = $PlayGrid
+@onready var sprite: Sprite2D = $Sprite2D
 
 var cargo_type: Cargo.Cargo_type
 var cargo_slots: Array[CargoSlot]
@@ -43,3 +44,6 @@ func is_point_in_play_space(point: Vector2):
 
 func get_play_grid_origin():
 	return play_grid.global_position
+
+func get_size():
+	return sprite.get_rect().size

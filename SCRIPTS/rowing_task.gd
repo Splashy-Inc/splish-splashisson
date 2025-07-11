@@ -8,6 +8,8 @@ var disabled := false
 
 var threats := []
 
+@onready var dismount_point: Marker2D = $DismountPoint
+
 func play_animation(animation_name):
 	if level_completed:
 		if  animation_name == "active":
