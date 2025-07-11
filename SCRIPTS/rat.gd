@@ -26,6 +26,8 @@ var assignee: Node2D
 
 @export var health = 3
 
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+
 func _ready():
 	Globals._on_rat_spawned()
 	died.connect(Globals._on_rat_fixed)
@@ -46,7 +48,7 @@ func _physics_process(delta: float) -> void:
 
 func _move_state(delta: float):
 	if target and worker == null:
-		var direction = global_position.direction_to(target.global_position)
+		var direction = _get_direction()
 		velocity = direction * SPEED
 		_set_state(State.MOVING)
 		$AnimatedSprite2D.play("move")
@@ -55,6 +57,16 @@ func _move_state(delta: float):
 		$AnimatedSprite2D.play("idle")
 	
 	move_and_slide()
+
+func _get_direction() -> Vector2:
+	var direction = Vector2.ZERO
+	if navigation_agent:
+		if navigation_agent.target_position != target.global_position:
+			navigation_agent.set_target_position(target.global_position)
+		direction = global_position.direction_to(navigation_agent.get_next_path_position())
+	else:
+		direction = global_position.direction_to(target.global_position)
+	return direction
 
 func _attack_state():
 	$AnimationPlayer.play("eat")

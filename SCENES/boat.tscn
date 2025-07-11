@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="5_6ih3t"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fso07"]
-vertices = PackedVector2Array(112, -80, 112.5, -80, 112.5, 80, 112, 80, -112, 80, -112.5, 80, -112.5, -80, -112, -80, -80, -172, -34, -194, 34, -194, 80, -172, 112, -144, -112, -144, -80, 172, 112, 144, 80, 172, 34, 194, -34, 194, -112, 144, 127.5, 80, 148, -685, 173, 783, 127, 142, 127.5, -80, 127, -80, 127, -142, 83, -181, 35, -204, -156, -679, -35, -204, -127, -142, -127, -80, -127.5, -80, -127.5, 80, -127, 80, -127, 142, -166, 747, 127, 80, 85, 180, 35, 204, -35, 204, -84, -180, -85, 180)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12, 0, 7, 13), PackedInt32Array(14, 4, 7, 3, 15, 16, 17, 18), PackedInt32Array(14, 19, 4), PackedInt32Array(7, 0, 3), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(21, 20, 24), PackedInt32Array(24, 25, 26, 21), PackedInt32Array(21, 26, 27), PackedInt32Array(21, 27, 28, 29), PackedInt32Array(29, 28, 30), PackedInt32Array(31, 32, 33), PackedInt32Array(34, 35, 36, 37), PackedInt32Array(23, 38, 20), PackedInt32Array(39, 23, 22), PackedInt32Array(40, 39, 22, 37), PackedInt32Array(41, 40, 37), PackedInt32Array(29, 30, 42), PackedInt32Array(43, 41, 37), PackedInt32Array(29, 42, 31), PackedInt32Array(37, 29, 31, 33), PackedInt32Array(37, 33, 34), PackedInt32Array(37, 36, 43)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-156, -679, 148, -685, 173, 783, -166, 747)])
-agent_radius = 0.0
+vertices = PackedVector2Array(112, -80, 112.5, -80, 112.5, 80, 112, 80, -112, 80, -112.5, 80, -112.5, -80, -112, -80, -80, -172, -34, -194, 34, -194, 80, -172, 112, -144, -112, -144, -80, 172, 112, 144, 80, 172, 34, 194, -34, 194, -112, 144, 127.5, 80, 190, -2191, 215, 3155, 127, 142, 127.5, -80, 127, -80, 127, -142, 83, -181, 35, -204, -127, -142, -127, -80, -127.5, -80, -127.5, 80, -127, 80, -127, 142, -254, 3181, 127, 80, 85, 180, 35, 204, -35, 204, -35, -204, -254, -2420, -84, -180, -85, 180)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12, 0, 7, 13), PackedInt32Array(14, 4, 7, 3, 15, 16, 17, 18), PackedInt32Array(14, 19, 4), PackedInt32Array(7, 0, 3), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(21, 20, 24), PackedInt32Array(24, 25, 26, 21), PackedInt32Array(21, 26, 27), PackedInt32Array(21, 27, 28), PackedInt32Array(29, 30, 31), PackedInt32Array(32, 33, 34, 35), PackedInt32Array(23, 36, 20), PackedInt32Array(37, 23, 22), PackedInt32Array(38, 37, 22, 35), PackedInt32Array(39, 38, 35), PackedInt32Array(21, 28, 40, 41), PackedInt32Array(41, 40, 42), PackedInt32Array(43, 39, 35), PackedInt32Array(41, 42, 29), PackedInt32Array(35, 41, 29, 31), PackedInt32Array(35, 31, 32), PackedInt32Array(35, 34, 43)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-254, -2420, 190, -2191, 215, 3155, -254, 3181)])
+parsed_collision_mask = 4294967263
+agent_radius = 5.0
 
 [node name="Boat" type="Node2D" groups=["boat"]]
 script = ExtResource("1_c5j0p")

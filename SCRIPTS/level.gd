@@ -22,6 +22,7 @@ var boat_speed = 0
 @export var boat: Boat
 @export var boat_length := 1
 @export var task_list: Array[Globals.Task_type]
+@export var generate_rat_hole := false
 var finished = false
 
 var end_dock: Dock
@@ -44,7 +45,11 @@ func _ready() -> void:
 		weather.rain_ticked.connect(_on_rain_ticked)
 
 func _level_ready():
-	pass
+	if generate_rat_hole:
+		for node in get_tree().get_nodes_in_group("rat_hole"):
+			if node is RatHole:
+				node.die()
+		boat.spawn_rat_hole()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

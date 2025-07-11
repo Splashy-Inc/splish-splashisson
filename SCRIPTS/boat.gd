@@ -227,7 +227,7 @@ func _check_set_up():
 	if setup_checklist["bow"] <= 0 and setup_checklist["stern"] <= 0 and setup_checklist["deck"] <= 0:
 		get_max_speed()
 		$PlayGrid.global_position = bow_slot.get_children().front().get_play_grid_origin()
-		$NavigationRegion2D.bake_navigation_polygon()
+		$NavigationRegion2D.call_deferred("bake_navigation_polygon")
 		if generate_crew:
 			_generate_crew()
 		set_up.emit()

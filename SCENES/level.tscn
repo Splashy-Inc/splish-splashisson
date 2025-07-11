@@ -18,6 +18,7 @@ dock_scene = ExtResource("8_b63j4")
 player = NodePath("People/Splish")
 minimum_seconds = 30
 boat = NodePath("Boat")
+generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("2_lnmp3")]
 
