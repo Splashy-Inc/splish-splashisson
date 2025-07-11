@@ -5,6 +5,7 @@ class_name Cutscene
 signal start_pressed
 
 @export var boat_length := 0
+@export var deck_tasks : Array[Globals.Task_type]
 @export var level_scene: PackedScene
 
 @export var dialog_box: DialogBox
@@ -16,8 +17,9 @@ func _ready() -> void:
 		var temp_level := level_scene.instantiate()
 		if temp_level is Level:
 			boat_length = temp_level.boat_length
+			deck_tasks = temp_level.task_list
 			temp_level.queue_free()
-	$Boat.initialize(boat_length)
+	$Boat.initialize(boat_length, deck_tasks)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

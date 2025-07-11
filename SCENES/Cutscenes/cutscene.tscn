@@ -33,7 +33,6 @@ dialog_text_json = ExtResource("12_mumyv")
 
 [node name="Cutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_q7fsr")
-boat_length = 1
 level_scene = ExtResource("2_lp0n3")
 dialog_box = NodePath("DialogBox")
 

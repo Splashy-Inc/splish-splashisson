@@ -15,7 +15,6 @@ agent_radius = 5.0
 
 [node name="Boat" type="Node2D" groups=["boat"]]
 script = ExtResource("1_c5j0p")
-deck_length = 1
 deck_scene = ExtResource("2_kxpgr")
 deck_tasks = Array[int]([1, 1, 2, 2])
 cargo_list = Array[int]([0])

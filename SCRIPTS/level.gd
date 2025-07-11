@@ -35,8 +35,7 @@ func _ready() -> void:
 	if task_list.is_empty():
 		for i in boat_length * 4:
 			task_list.append(Globals.Task_type.ROWING_RIGHT)
-	boat.deck_tasks = task_list
-	boat.initialize(boat_length)
+	boat.initialize(boat_length, task_list)
 	level_stats.length_seconds = minimum_seconds
 	weather = get_tree().get_first_node_in_group("weather")
 	if not weather:

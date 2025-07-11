@@ -6,7 +6,7 @@ signal stopped
 signal set_up
 
 # Number of deck segments
-@export var deck_length: int
+@export var deck_length := 1
 @export var deck_scene: PackedScene
 @onready var bow_slot: Node2D = $NavigationRegion2D/BowSlot
 @onready var bow: BoatEnd = $NavigationRegion2D/BowSlot/Bow
@@ -38,7 +38,7 @@ var playable_cells: Array[Vector2i]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	initialize()
+	initialize(deck_length)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,7 +53,9 @@ func _process(delta: float) -> void:
 			speed = int(new_speed)
 			Globals.update_boat_speed(speed)
 
-func initialize(new_deck_length: int = 1, ):
+func initialize(new_deck_length: int = 1, new_deck_tasks: Array[Globals.Task_type] = []):
+	if not new_deck_tasks.is_empty():
+		deck_tasks = new_deck_tasks
 	set_deck_length(new_deck_length)
 	_generate_boat()
 
@@ -93,7 +95,7 @@ func _generate_boat():
 						y_offset += new_deck_segment.get_size().y
 			
 			# Alternate bow and stern, to keep things centered
-			new_deck_segment.position.y = cos(i * PI) * y_offset * global_scale.y
+			new_deck_segment.position.y = cos(i * PI) * y_offset
 			
 			# With deck segments placed, then set up tasks
 			new_deck_segment.tasks_set_up.connect(_on_deck_segment_tasks_set_up)
@@ -162,8 +164,6 @@ func spawn_rat_hole(spawn_point: Vector2 = Vector2.ZERO):
 	for cargo in get_tree().get_nodes_in_group("cargo"):
 		while not (is_point_in_boat(spawn_point) and spawn_point.distance_to(cargo.global_position) < length and spawn_point.distance_to(cargo.global_position) > 256):
 			spawn_point = get_spawn_point()
-		
-		print(spawn_point, " ", spawn_point.distance_to(cargo.global_position), " ", length)
 	var new_rat_hole = $PlayGrid.spawn_rat_hole(spawn_point)
 	if not new_rat_hole:
 		return spawn_rat_hole()
