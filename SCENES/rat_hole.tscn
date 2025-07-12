@@ -36,4 +36,10 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="SelfSpace" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SelfSpace"]
+position = Vector2(-16, 5)
+polygon = PackedVector2Array(0, -21, 32, -21, 32, 11, 0, 11)
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

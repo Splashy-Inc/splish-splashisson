@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5v047lku1gcp"]
+[gd_scene load_steps=10 format=3 uid="uid://b5v047lku1gcp"]
 
 [ext_resource type="Script" path="res://SCRIPTS/level.gd" id="1_mmpq4"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="3_4pxwd"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="4_f1fhx"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="5_755sg"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="6_bs64v"]
-[ext_resource type="PackedScene" uid="uid://djyibeaauqw2f" path="res://SCENES/crew_member.tscn" id="7_d22wg"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="8_ar00b"]
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="9_3v1q5"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="10_rylk5"]
@@ -17,6 +16,7 @@ dock_scene = ExtResource("3_4pxwd")
 player = NodePath("People/Splish")
 minimum_seconds = 30
 boat = NodePath("Boat")
+generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("4_f1fhx")]
 
@@ -26,24 +26,12 @@ boat = NodePath("Boat")
 position = Vector2(320, 180)
 cargo_list = Array[int]([2])
 
-[node name="People" type="Node2D" parent="."]
+[node name="People" type="Node2D" parent="." groups=["people"]]
 z_index = 1
 y_sort_enabled = true
 
-[node name="CrewMember" parent="People" instance=ExtResource("7_d22wg")]
-position = Vector2(380, 47)
-
-[node name="CrewMember2" parent="People" instance=ExtResource("7_d22wg")]
-position = Vector2(297, 28)
-
-[node name="CrewMember3" parent="People" instance=ExtResource("7_d22wg")]
-position = Vector2(342, 27)
-
-[node name="CrewMember4" parent="People" instance=ExtResource("7_d22wg")]
-position = Vector2(269, 47)
-
 [node name="Splish" parent="People" instance=ExtResource("8_ar00b")]
-position = Vector2(320, 201)
+position = Vector2(320, 180)
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)

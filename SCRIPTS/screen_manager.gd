@@ -132,9 +132,9 @@ func _on_tutorial_completed():
 func _on_start_level(new_level_scene: PackedScene):
 	if new_level_scene:
 		level_scene = new_level_scene
-	_restart_level()
-	if cutscene:
+	if level_scene and cutscene:
 		cutscene.queue_free()
+	_restart_level()
 
 func _on_start_cutscene():
 	_clear_screens()

@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://SCENES/Ocean/ocean.gdshader" id="2_d35q1"]
 [ext_resource type="PackedScene" uid="uid://dsdqndjddqni5" path="res://SCENES/Ocean/small_wave.tscn" id="2_x1tu8"]
 [ext_resource type="PackedScene" uid="uid://c57ouj4dasw0q" path="res://SCENES/Ocean/medium_wave.tscn" id="3_g35jv"]
-[ext_resource type="Texture2D" uid="uid://bavciayi5qwtd" path="res://SCENES/Ocean/ocean_noise.tres" id="3_nixjc"]
+[ext_resource type="Texture2D" uid="uid://icxmtx6qyw1x" path="res://SCENES/Ocean/ocean_noise.tres" id="3_nixjc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yre5a"]
 shader = ExtResource("2_d35q1")
