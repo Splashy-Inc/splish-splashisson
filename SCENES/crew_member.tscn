@@ -789,6 +789,7 @@ _data = {
 }
 
 [node name="CrewMember" type="CharacterBody2D" groups=["crew", "selectable"]]
+z_index = 1
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1

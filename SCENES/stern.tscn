@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bevd7w3pl7sal" path="res://SCENES/play_grid.tscn" id="4_sgco4"]
 
 [node name="Stern" type="StaticBody2D"]
+z_index = -2
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_0cbxb")
