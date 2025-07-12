@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/cargo_item.gd" id="1_f8d7r"]
 [ext_resource type="Script" path="res://SCRIPTS/cargo_item_data.gd" id="2_nh6nw"]
 [ext_resource type="Texture2D" uid="uid://8ld8yvec0wq6" path="res://Art/Cargo/Ham/Ham1.png" id="2_u0x3v"]
-[ext_resource type="Texture2D" uid="uid://cht1r5tqivus1" path="res://Art/Cargo/Furs/Fur6.png" id="4_wnx60"]
+[ext_resource type="Texture2D" uid="uid://w8nvemt2qilt" path="res://Art/Cargo/Furs/Fur8.png" id="4_p7iih"]
 
 [sub_resource type="Resource" id="Resource_ddop4"]
 script = ExtResource("2_nh6nw")
@@ -15,7 +15,7 @@ texture = ExtResource("2_u0x3v")
 script = ExtResource("2_nh6nw")
 type = 2
 health = 50
-texture = ExtResource("4_wnx60")
+texture = ExtResource("4_p7iih")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_odnm3"]
 size = Vector2(16, 16)
