@@ -1,7 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cem0d6364g4aq"]
+[gd_scene load_steps=16 format=3 uid="uid://cem0d6364g4aq"]
 
 [ext_resource type="Script" path="res://SCRIPTS/weather.gd" id="1_x7unc"]
 [ext_resource type="Shader" path="res://SCENES/rain.gdshader" id="2_7cicx"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="3_afkid"]
+[ext_resource type="AudioStream" uid="uid://xjxh17wsjap3" path="res://Audio/short_thunder.ogg" id="4_lfd40"]
+[ext_resource type="AudioStream" uid="uid://52gapoy480iy" path="res://Audio/medium_thunder.ogg" id="5_q5bp1"]
+[ext_resource type="AudioStream" uid="uid://bxecuqrehplsw" path="res://Audio/long_thunder.ogg" id="6_rfqyw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qdyci"]
 shader = ExtResource("2_7cicx")
@@ -23,13 +27,15 @@ width = 640
 height = 360
 
 [sub_resource type="Gradient" id="Gradient_516jv"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.87279, 0.77667, 1, 0.811765)
+offsets = PackedFloat32Array(0.423913, 1)
+colors = PackedColorArray(0.873, 0.777, 1, 0, 0.87279, 0.77667, 1, 0.811765)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_t5g7t"]
 gradient = SubResource("Gradient_516jv")
 width = 640
 height = 360
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_rngpv"]
 length = 0.001
@@ -73,12 +79,35 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Thunder"],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lb7in"]
 _data = {
 "RESET": SubResource("Animation_rngpv"),
 "flash": SubResource("Animation_3gfhg")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6lqkm"]
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("4_lfd40")
+stream_0/weight = 5.0
+stream_1/stream = ExtResource("5_q5bp1")
+stream_1/weight = 10.0
+stream_2/stream = ExtResource("6_rfqyw")
 
 [node name="Weather" type="CanvasLayer" groups=["weather"]]
 script = ExtResource("1_x7unc")
@@ -108,6 +137,11 @@ libraries = {
 "": SubResource("AnimationLibrary_lb7in")
 }
 autoplay = "RESET"
+
+[node name="SFXManager" parent="Storm/Lightning" instance=ExtResource("3_afkid")]
+
+[node name="Thunder" type="AudioStreamPlayer" parent="Storm/Lightning/SFXManager"]
+stream = SubResource("AudioStreamRandomizer_6lqkm")
 
 [connection signal="timeout" from="Storm/RainTimer" to="." method="_on_rain_timer_timeout"]
 [connection signal="timeout" from="Storm/LightningTimer" to="." method="_on_lightning_timer_timeout"]

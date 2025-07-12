@@ -14,6 +14,7 @@ shader_parameter/NumDivisions = 128
 shader_parameter/TextureMap = ExtResource("3_nixjc")
 
 [node name="ParallaxOcean" type="Parallax2D"]
+z_index = -5
 scroll_offset = Vector2(320, 0)
 repeat_size = Vector2(0, 1080)
 script = ExtResource("1_h5cl7")

@@ -14,6 +14,7 @@ parsed_collision_mask = 4294967263
 agent_radius = 5.0
 
 [node name="Boat" type="Node2D" groups=["boat"]]
+z_index = -2
 script = ExtResource("1_c5j0p")
 deck_scene = ExtResource("2_kxpgr")
 deck_tasks = Array[int]([1, 1, 2, 2])
