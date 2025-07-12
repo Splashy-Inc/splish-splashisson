@@ -27,15 +27,15 @@
 [ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="20_mkeck"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="26_th1uk"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
+size = Vector2(257, 49)
+
 [sub_resource type="AudioStream" id="AudioStream_ce5gk"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qgyqk"]
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("20_mkeck")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
-size = Vector2(257, 49)
 
 [node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "dialog_box", "weather", "boat")]
 script = ExtResource("1_42opa")
@@ -50,17 +50,6 @@ boat = NodePath("Boat")
 task_list = Array[int]([1, 2])
 
 [node name="Ocean" parent="." instance=ExtResource("3_6em2h")]
-
-[node name="LevelUI" parent="." instance=ExtResource("4_wasst")]
-
-[node name="DialogBox" parent="LevelUI" instance=ExtResource("6_o4p2q")]
-visible = false
-left_texture = null
-right_texture = ExtResource("7_xx2yn")
-speaker_sounds = Array[AudioStream]([SubResource("AudioStream_ce5gk"), SubResource("AudioStreamRandomizer_qgyqk")])
-
-[node name="RightTexture" parent="LevelUI/DialogBox/HBoxContainer/RightPanel" index="0"]
-flip_h = true
 
 [node name="Boat" parent="." instance=ExtResource("5_yg4ik")]
 position = Vector2(320, 180)
@@ -114,9 +103,20 @@ boat = NodePath("../Boat")
 
 [node name="Weather" parent="." instance=ExtResource("26_th1uk")]
 
-[connection signal="dialog_ended" from="LevelUI/DialogBox" to="." method="_on_dialog_ended"]
+[node name="LevelUI" parent="." instance=ExtResource("4_wasst")]
+
+[node name="DialogBox" parent="LevelUI" instance=ExtResource("6_o4p2q")]
+visible = false
+left_texture = null
+right_texture = ExtResource("7_xx2yn")
+speaker_sounds = Array[AudioStream]([SubResource("AudioStream_ce5gk"), SubResource("AudioStreamRandomizer_qgyqk")])
+
+[node name="RightTexture" parent="LevelUI/DialogBox/HBoxContainer/RightPanel" index="0"]
+flip_h = true
+
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
 [connection signal="body_entered" from="DialogTriggers/MovementStage" to="." method="_on_movement_stage_body_entered"]
+[connection signal="dialog_ended" from="LevelUI/DialogBox" to="." method="_on_dialog_ended"]
 
 [editable path="LevelUI/DialogBox"]

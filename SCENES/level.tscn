@@ -23,8 +23,6 @@ generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("2_lnmp3")]
 
-[node name="LevelUI" parent="." instance=ExtResource("3_nmge5")]
-
 [node name="Boat" parent="." instance=ExtResource("4_64cm4")]
 position = Vector2(320, 180)
 cargo_list = Array[int]([1])
@@ -55,6 +53,8 @@ position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
 [node name="Weather" parent="." instance=ExtResource("11_p3ae6")]
+
+[node name="LevelUI" parent="." instance=ExtResource("3_nmge5")]
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
