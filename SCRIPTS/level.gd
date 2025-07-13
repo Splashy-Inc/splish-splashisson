@@ -37,7 +37,8 @@ func _ready() -> void:
 			task_list.append(Globals.Task_type.ROWING_RIGHT)
 	boat.initialize(boat_length, task_list)
 	level_stats.length_seconds = minimum_seconds
-	weather = get_tree().get_first_node_in_group("weather")
+	if not weather:
+		weather = get_tree().get_first_node_in_group("weather")
 	if not weather:
 		print("No weather node assigned, make sure to add one to the level if weather is needed!")
 	else:
