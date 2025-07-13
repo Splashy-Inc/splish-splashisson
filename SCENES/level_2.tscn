@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="10_rylk5"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_ywfqu"]
 
-[node name="Level2" type="Node" node_paths=PackedStringArray("player", "boat")]
+[node name="Level2" type="Node" node_paths=PackedStringArray("player", "weather", "boat")]
 script = ExtResource("1_mmpq4")
 dock_scene = ExtResource("3_4pxwd")
 player = NodePath("People/Splish")
+weather = NodePath("Weather")
 minimum_seconds = 30
 boat = NodePath("Boat")
 generate_rat_hole = true

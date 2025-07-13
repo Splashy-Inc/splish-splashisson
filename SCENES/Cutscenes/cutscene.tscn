@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cs3hpuql1pmvv"]
+[gd_scene load_steps=21 format=3 uid="uid://cs3hpuql1pmvv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/cutscene.gd" id="1_q7fsr"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="2_lp0n3"]
 [ext_resource type="Material" uid="uid://8qyyjypf2djy" path="res://SCENES/Cutscenes/cutscene_ocean_material.tres" id="3_egvar"]
 [ext_resource type="Texture2D" uid="uid://bl1sm8e4lw52b" path="res://Art/MarketCutscene/MarketPlace.png" id="3_ltj1g"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/dialog_box.tscn" id="4_xvmpv"]
+[ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="5_2kq4k"]
 [ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="6_6kicq"]
 [ext_resource type="AudioStream" uid="uid://bha8sf627tah0" path="res://Audio/Shrimp/shrimp_voice_1.ogg" id="7_62ad8"]
 [ext_resource type="AudioStream" uid="uid://be62rbdui7voc" path="res://Audio/Shrimp/shrimp_voice_2.ogg" id="8_1nwsh"]
@@ -34,17 +35,14 @@ dialog_text_json = ExtResource("12_mumyv")
 [node name="Cutscene" type="Node" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_q7fsr")
 level_scene = ExtResource("2_lp0n3")
-dialog_box = NodePath("DialogBox")
+dialog_box = NodePath("CanvasLayer/DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -5
 material = ExtResource("3_egvar")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ltj1g")
-
-[node name="DialogBox" parent="." instance=ExtResource("4_xvmpv")]
-speaker_sounds = Array[AudioStream]([ExtResource("6_6kicq"), SubResource("AudioStreamRandomizer_gacm0")])
-dialog_data = SubResource("Resource_l4urc")
 
 [node name="Boat" parent="." instance=ExtResource("16_ylnku")]
 position = Vector2(211, 142)
@@ -60,11 +58,19 @@ texture = ExtResource("17_yxxjt")
 position = Vector2(273.333, 0)
 texture = ExtResource("18_8peca")
 
+[node name="Weather" parent="." instance=ExtResource("5_2kq4k")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogBox" parent="CanvasLayer" instance=ExtResource("4_xvmpv")]
+speaker_sounds = Array[AudioStream]([ExtResource("6_6kicq"), SubResource("AudioStreamRandomizer_gacm0")])
+dialog_data = SubResource("Resource_l4urc")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_aekk5")
 volume_db = -1.651
 autoplay = true
 
-[connection signal="dialog_ended" from="DialogBox" to="." method="_on_continue_pressed"]
+[connection signal="dialog_ended" from="CanvasLayer/DialogBox" to="." method="_on_continue_pressed"]
 
 [editable path="Boat"]

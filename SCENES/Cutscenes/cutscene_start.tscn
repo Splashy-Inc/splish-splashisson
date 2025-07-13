@@ -27,33 +27,14 @@ tutorial_scene = ExtResource("2_mi8w7")
 level_1_cutscene = ExtResource("3_gol2h")
 boat_length = 1
 level_scene = ExtResource("3_hpspq")
-dialog_box = NodePath("DialogBox")
+dialog_box = NodePath("CanvasLayer/DialogBox")
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -5
 material = ExtResource("5_6cgnb")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_8q681")
-
-[node name="DialogBox" parent="." node_paths=PackedStringArray("end_buttons") instance=ExtResource("5_ryrfn")]
-left_texture = null
-right_texture = ExtResource("6_xooul")
-speaker_sounds = Array[AudioStream]([SubResource("AudioStream_2flov"), SubResource("AudioStreamRandomizer_f3ngf")])
-dialog_data = ExtResource("7_4jhag")
-end_buttons = [NodePath("TutorialButton"), NodePath("SkipButton")]
-
-[node name="RightTexture" parent="DialogBox/HBoxContainer/RightPanel" index="0"]
-flip_h = true
-
-[node name="TutorialButton" parent="DialogBox" instance=ExtResource("6_x1khm")]
-layout_mode = 2
-text = "Yes (tutorial)"
-action_type = 1
-
-[node name="SkipButton" parent="DialogBox" instance=ExtResource("6_x1khm")]
-layout_mode = 2
-text = "No  (skip)"
-action_type = 1
 
 [node name="Boat" parent="." instance=ExtResource("8_dy7yb")]
 position = Vector2(211, 142)
@@ -65,9 +46,31 @@ generate_crew = false
 position = Vector2(226.667, 5.05447e-05)
 texture = ExtResource("9_6n3k4")
 
-[connection signal="dialog_ended" from="DialogBox" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="DialogBox/TutorialButton" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="DialogBox/SkipButton" to="." method="_on_skip_button_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[editable path="DialogBox"]
+[node name="DialogBox" parent="CanvasLayer" node_paths=PackedStringArray("end_buttons") instance=ExtResource("5_ryrfn")]
+left_texture = null
+right_texture = ExtResource("6_xooul")
+speaker_sounds = Array[AudioStream]([SubResource("AudioStream_2flov"), SubResource("AudioStreamRandomizer_f3ngf")])
+dialog_data = ExtResource("7_4jhag")
+end_buttons = [NodePath("TutorialButton"), NodePath("SkipButton")]
+
+[node name="RightTexture" parent="CanvasLayer/DialogBox/HBoxContainer/RightPanel" index="0"]
+flip_h = true
+
+[node name="TutorialButton" parent="CanvasLayer/DialogBox" instance=ExtResource("6_x1khm")]
+layout_mode = 2
+text = "Yes (tutorial)"
+action_type = 1
+
+[node name="SkipButton" parent="CanvasLayer/DialogBox" instance=ExtResource("6_x1khm")]
+layout_mode = 2
+text = "No  (skip)"
+action_type = 1
+
+[connection signal="dialog_ended" from="CanvasLayer/DialogBox" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="CanvasLayer/DialogBox/TutorialButton" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="CanvasLayer/DialogBox/SkipButton" to="." method="_on_skip_button_pressed"]
+
 [editable path="Boat"]
+[editable path="CanvasLayer/DialogBox"]
