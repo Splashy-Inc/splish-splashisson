@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cem0d6364g4aq"]
+[gd_scene load_steps=18 format=3 uid="uid://cem0d6364g4aq"]
 
 [ext_resource type="Script" path="res://SCRIPTS/weather.gd" id="1_x7unc"]
 [ext_resource type="Shader" path="res://SCENES/rain.gdshader" id="2_7cicx"]
 [ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="3_afkid"]
+[ext_resource type="Script" path="res://SCRIPTS/sfx_manager.gd" id="3_ohfv1"]
+[ext_resource type="AudioStream" uid="uid://bff867chk888r" path="res://Audio/rain_muffled_3.ogg" id="4_kl313"]
 [ext_resource type="AudioStream" uid="uid://xjxh17wsjap3" path="res://Audio/short_thunder.ogg" id="4_lfd40"]
 [ext_resource type="AudioStream" uid="uid://52gapoy480iy" path="res://Audio/medium_thunder.ogg" id="5_q5bp1"]
 [ext_resource type="AudioStream" uid="uid://bxecuqrehplsw" path="res://Audio/long_thunder.ogg" id="6_rfqyw"]
@@ -82,7 +84,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
+tracks/2/path = NodePath("ThunderSFXManager")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -123,6 +125,14 @@ material = SubResource("ShaderMaterial_qdyci")
 texture = SubResource("GradientTexture2D_fxc34")
 centered = false
 
+[node name="RainSFXManager" type="Node2D" parent="Storm"]
+script = ExtResource("3_ohfv1")
+
+[node name="Rain" type="AudioStreamPlayer" parent="Storm/RainSFXManager"]
+stream = ExtResource("4_kl313")
+volume_db = -4.0
+pitch_scale = 1.1
+
 [node name="LightningTimer" type="Timer" parent="Storm"]
 wait_time = 5.0
 one_shot = true
@@ -138,9 +148,9 @@ libraries = {
 }
 autoplay = "RESET"
 
-[node name="SFXManager" parent="Storm/Lightning" instance=ExtResource("3_afkid")]
+[node name="ThunderSFXManager" parent="Storm/Lightning" instance=ExtResource("3_afkid")]
 
-[node name="Thunder" type="AudioStreamPlayer" parent="Storm/Lightning/SFXManager"]
+[node name="Thunder" type="AudioStreamPlayer" parent="Storm/Lightning/ThunderSFXManager"]
 stream = SubResource("AudioStreamRandomizer_6lqkm")
 
 [connection signal="timeout" from="Storm/RainTimer" to="." method="_on_rain_timer_timeout"]

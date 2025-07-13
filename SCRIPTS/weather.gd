@@ -15,6 +15,7 @@ enum Type {
 @onready var rain_timer: Timer = $Storm/RainTimer
 @onready var lightning_timer: Timer = $Storm/LightningTimer
 @onready var lightning_animation_player: AnimationPlayer = $Storm/Lightning/AnimationPlayer
+@onready var rain_sfx_manager: SFXManager = $Storm/RainSFXManager
 
 const LIGHTNING_MAX_TIME := 8
 
@@ -30,6 +31,7 @@ func _update_type():
 	match type:
 		Type.STORM:
 			rain_timer.start()
+			rain_sfx_manager.play("Rain")
 			lightning_timer.start()
 			storm.show()
 
