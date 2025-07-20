@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6tdu4r5v8bbs"]
+[gd_scene load_steps=14 format=3 uid="uid://c6tdu4r5v8bbs"]
 
 [ext_resource type="Script" path="res://SCRIPTS/controls_screen.gd" id="1_tvbxo"]
 [ext_resource type="Script" path="res://SCRIPTS/controls_tab_container.gd" id="2_pnoft"]
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_tn6xa"]
+[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://SCENES/GUI/button_box.tres" id="2_tn6xa"]
 [ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_utysg"]
 [ext_resource type="Texture2D" uid="uid://bwbvw6rtb7rfw" path="res://Art/Joystick/Joystick.png" id="3_1l55u"]
+[ext_resource type="LabelSettings" uid="uid://c014bsm5ryfcy" path="res://SCENES/GUI/text_title_format.tres" id="3_sqnjl"]
 [ext_resource type="Texture2D" uid="uid://cw0fyxj6elaof" path="res://Art/arrow_basic_white.png" id="4_6dj2e"]
 [ext_resource type="Shader" path="res://SCRIPTS/highlight.gdshader" id="6_igdal"]
 [ext_resource type="Texture2D" uid="uid://roowlcj4e6pk" path="res://Art/Joystick/Button.png" id="7_sobi0"]
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="10_vdyu8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwyni"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)
@@ -23,9 +25,6 @@ shader = ExtResource("6_igdal")
 shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
 shader_parameter/line_thickness = 1.0
 shader_parameter/on = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6gwa"]
-bg_color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [node name="HowToPlayScreen" type="Control"]
 custom_minimum_size = Vector2(640, 360)
@@ -60,6 +59,7 @@ theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 5
 theme_override_font_sizes/font_size = 36
 text = "How To Play"
+label_settings = ExtResource("3_sqnjl")
 
 [node name="TopicItem" type="VBoxContainer" parent="ScreenRows"]
 layout_mode = 2
@@ -578,8 +578,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(41, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_v6gwa")
+theme = ExtResource("10_vdyu8")
 text = "Back"
 
 [connection signal="visibility_changed" from="ScreenRows/PlayerControl/ControlsTabContainer" to="ScreenRows/PlayerControl/ControlsTabContainer" method="_on_visibility_changed"]

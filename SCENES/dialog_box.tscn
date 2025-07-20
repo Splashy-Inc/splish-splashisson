@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwr6cg26cwtpw"]
+[gd_scene load_steps=16 format=3 uid="uid://cwr6cg26cwtpw"]
 
 [ext_resource type="Script" path="res://SCRIPTS/dialog_box.gd" id="1_q81u0"]
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="1_qenmj"]
 [ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="2_0m27t"]
 [ext_resource type="Texture2D" uid="uid://bh7hha73l5725" path="res://Textures/shrimp_merchat_dialog_texture.tres" id="3_wnvek"]
 [ext_resource type="Resource" uid="uid://oldvcmnehasr" path="res://Dialogs/Tutorial/tutorial_overview_dialog.tres" id="4_coa1i"]
@@ -38,6 +39,7 @@ offset_top = -90.0
 offset_right = 320.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("1_qenmj")
 theme_override_styles/panel = SubResource("StyleBoxFlat_263dt")
 script = ExtResource("1_q81u0")
 left_texture = ExtResource("2_0m27t")
