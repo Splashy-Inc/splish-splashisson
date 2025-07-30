@@ -59,6 +59,7 @@ player=""
 people=""
 boat=""
 weather=""
+distraction=""
 
 [gui]
 

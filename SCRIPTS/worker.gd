@@ -5,6 +5,7 @@ class_name Worker
 @export var current_assignment: Node2D
 
 const SPEED = 150.0
+var speed_mod := 1.0
 
 var is_selected = false
 
@@ -68,17 +69,17 @@ func _idle_state(delta: float):
 		else:
 			state = State.MOVING
 	else:
-		$AnimationPlayer.play("idle_down")
+		if _get_direction() == Vector2.ZERO:
+			$AnimationPlayer.play("idle_down")
+		else:
+			state = State.MOVING
 
 func _move_state(delta: float):
 	if _check_in_range(current_assignment):
 		state = State.IDLE
-		if not current_assignment is Player:
-			_start_assignment()
 	else:
-		if current_assignment:
-			var direction = _get_direction()
-			velocity += direction * SPEED
+		var direction = _get_direction()
+		velocity += direction * SPEED * speed_mod
 		
 		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
 			if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
@@ -87,7 +88,10 @@ func _move_state(delta: float):
 				$AnimationPlayer.play("walking_down")
 
 func _get_direction() -> Vector2:
-	return global_position.direction_to(current_assignment.global_position)
+	if current_assignment:
+		return global_position.direction_to(current_assignment.global_position)
+	
+	return Vector2.ZERO
 
 func _alert_state():
 	$AnimationPlayer.play("alert")
