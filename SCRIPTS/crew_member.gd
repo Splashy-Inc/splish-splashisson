@@ -24,25 +24,28 @@ func _on_distraction_timer_timeout() -> void:
 	_toggle_distracted(true)
 
 func _toggle_distracted(new_is_distracted: bool):
-	if new_is_distracted != is_distracted:
-		is_distracted = new_is_distracted
-		if is_distracted:
-			var distractions = get_tree().get_nodes_in_group("distraction")
-			var new_distraction = null
-			if not distractions.is_empty():
-				for distraction in distractions:
-					if distraction is Node2D:
-						if distraction is CargoItem:
-							if distraction.get_parent() is Cargo:
-								distraction = distraction.get_parent()
-						if not new_distraction or global_position.distance_to(new_distraction.global_position) > global_position.distance_to(distraction.global_position):
-							new_distraction = distraction
-			if new_distraction:
-				set_assignment(new_distraction)
-			else:
-				_toggle_wandering(true)
-		else:
+	is_distracted = new_is_distracted
+	if is_distracted:
+		var new_distraction = get_closest_distraction()
+		if new_distraction:
+			set_assignment(new_distraction)
 			_toggle_wandering(false)
+		else:
+			_toggle_wandering(true)
+	else:
+		_toggle_wandering(false)
+
+func get_closest_distraction():
+	var distractions = get_tree().get_nodes_in_group("distraction")
+	var new_distraction = null
+	if not distractions.is_empty():
+		for distraction in distractions:
+			if distraction is Node2D:
+				if distraction is CargoItem:
+					distraction = distraction.get_host()
+				if not new_distraction or global_position.distance_to(new_distraction.global_position) > global_position.distance_to(distraction.global_position):
+					new_distraction = distraction
+	return new_distraction
 
 func set_assignment(new_assignment: Node2D):
 	if new_assignment != current_assignment:
@@ -106,9 +109,13 @@ func _set_navigation_position(is_random: bool = false, new_position: Vector2 = V
 			false))
 	else:
 		if new_position == Vector2.ZERO:
-			navigation_agent.set_target_position(global_position)
+			if current_assignment:
+				navigation_agent.set_target_position(current_assignment.global_position)
+			else:
+				navigation_agent.set_target_position(global_position)
 		else:
 			navigation_agent.set_target_position(new_position)
 
 func _on_wander_timer_timeout() -> void:
 	_set_navigation_position(true)
+	_toggle_distracted(true)

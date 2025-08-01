@@ -33,7 +33,7 @@ func initialize(new_type: Cargo_type, new_num_items: int):
 	if not is_node_ready():
 		await ready
 	cargo_type = new_type
-	num_items = new_num_items
+	num_items = 2
 	await _spawn_cargo()
 	_update_condition(max_condition)
 	_set_item_info()
@@ -116,6 +116,8 @@ func get_item():
 func add_item(item: CargoItem):
 	if item:
 		item.reparent(items, false)
+		if item.cur_data.is_distraction:
+			item.add_to_group("distraction")
 		item.global_position = _get_item_spawn_point($StackArea/CollisionShape2D.global_position, $StackArea/CollisionShape2D.shape.radius)
 		_update_condition(item_health)
 
@@ -123,6 +125,8 @@ func move_item(destination: Node2D):
 	if destination:
 		var item = get_item()
 		if item:
+			if destination != self:
+				item.remove_from_group("distraction")
 			item.reparent(destination)
 			item.global_position = destination.global_position
 			_update_condition(-item_health)

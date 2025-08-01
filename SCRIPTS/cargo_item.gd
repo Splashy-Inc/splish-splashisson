@@ -48,3 +48,6 @@ func return_to_cargo():
 		host_cargo.add_item(self)
 	else:
 		print("No cargo to return to, make sure this was initialized properly: ", self)
+
+func get_host():
+	return host_cargo
