@@ -866,9 +866,13 @@ one_shot = true
 wait_time = 30.0
 one_shot = true
 
+[node name="WanderTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
 [connection signal="timeout" from="IdleDistractionTimer" to="." method="_on_distraction_timer_timeout"]
 [connection signal="timeout" from="RowingDistractionTimer" to="." method="_on_distraction_timer_timeout"]
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

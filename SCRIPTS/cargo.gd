@@ -116,6 +116,8 @@ func get_item():
 func add_item(item: CargoItem):
 	if item:
 		item.reparent(items, false)
+		if item.cur_data.is_distraction:
+			item.add_to_group("distraction")
 		item.global_position = _get_item_spawn_point($StackArea/CollisionShape2D.global_position, $StackArea/CollisionShape2D.shape.radius)
 		_update_condition(item_health)
 
@@ -123,6 +125,8 @@ func move_item(destination: Node2D):
 	if destination:
 		var item = get_item()
 		if item:
+			if destination != self:
+				item.remove_from_group("distraction")
 			item.reparent(destination)
 			item.global_position = destination.global_position
 			_update_condition(-item_health)

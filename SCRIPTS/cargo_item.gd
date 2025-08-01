@@ -26,6 +26,8 @@ func initialize(cargo: Cargo):
 	for cargo_type_data in cargo_types:
 		if cargo_type_data.type == host_cargo.cargo_type:
 			cur_data = cargo_type_data
+	if cur_data.is_distraction:
+		add_to_group("distraction")
 	sprite.texture = get_sprite_texture()
 
 func die():
@@ -46,3 +48,6 @@ func return_to_cargo():
 		host_cargo.add_item(self)
 	else:
 		print("No cargo to return to, make sure this was initialized properly: ", self)
+
+func get_host():
+	return host_cargo
