@@ -12,6 +12,8 @@ class_name Crew
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
 	$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
+	if navigation_agent:
+		navigation_agent.set_target_position(global_position)
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
@@ -75,12 +77,15 @@ func set_assignment(new_assignment: Node2D):
 			state = State.ACKNOWLEDGING
 		
 		_set_assignment(new_assignment)
+	elif new_assignment == null:
+		_set_navigation_position()
 
 func _get_direction() -> Vector2:
 	var direction = Vector2.ZERO
 	if navigation_agent:
-		if current_assignment and navigation_agent.target_position != current_assignment.global_position:
-			navigation_agent.set_target_position(current_assignment.global_position)
+		if current_assignment:
+			if navigation_agent.target_position != current_assignment.global_position:
+				navigation_agent.set_target_position(current_assignment.global_position)
 		if not navigation_agent.is_target_reached():
 			direction = global_position.direction_to(navigation_agent.get_next_path_position())
 	elif current_assignment:
