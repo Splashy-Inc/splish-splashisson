@@ -86,6 +86,8 @@ func _move_state(delta: float):
 				$AnimationPlayer.play("walking_up")
 			else:
 				$AnimationPlayer.play("walking_down")
+		else:
+			$AnimationPlayer.play("idle_down")
 
 func _get_direction() -> Vector2:
 	if current_assignment:
@@ -116,8 +118,11 @@ func _patch_state():
 
 func _distract_state():
 	if current_assignment is Cargo:
-		if current_assignment.cargo_type == Cargo.Cargo_type.MEAT:
-			$AnimationPlayer.play("eating")
+		if current_assignment.condition <= 0:
+			set_assignment(null)
+		else:
+			if current_assignment.cargo_type == Cargo.Cargo_type.MEAT:
+				$AnimationPlayer.play("eating")
 
 func _attack_state():
 	if current_assignment is Rat:

@@ -49,6 +49,7 @@ func get_closest_distraction():
 
 func set_assignment(new_assignment: Node2D):
 	if new_assignment != current_assignment:
+		_set_assignment(null)
 		state = State.IDLE
 		_toggle_distracted(false)
 		idle_distraction_timer.stop()
@@ -64,7 +65,7 @@ func set_assignment(new_assignment: Node2D):
 			if new_assignment is Task or new_assignment is Rat:
 				if not new_assignment.set_assignee(self):
 					print(self, " unable to set self as assignee of ", new_assignment)
-					current_assignment = null
+					_set_assignment(null)
 					return
 				if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat:
 					new_assignment.died.connect(_on_assignment_died)
@@ -80,7 +81,8 @@ func _get_direction() -> Vector2:
 	if navigation_agent:
 		if current_assignment and navigation_agent.target_position != current_assignment.global_position:
 			navigation_agent.set_target_position(current_assignment.global_position)
-		direction = global_position.direction_to(navigation_agent.get_next_path_position())
+		if not navigation_agent.is_target_reached():
+			direction = global_position.direction_to(navigation_agent.get_next_path_position())
 	elif current_assignment:
 		direction = global_position.direction_to(current_assignment.global_position)
 	return direction
