@@ -33,7 +33,7 @@ func initialize(new_type: Cargo_type, new_num_items: int):
 	if not is_node_ready():
 		await ready
 	cargo_type = new_type
-	num_items = 10
+	num_items = new_num_items
 	await _spawn_cargo()
 	_update_condition(max_condition)
 	_set_item_info()

@@ -22,7 +22,7 @@ generate_rat_hole = true
 
 [node name="Boat" parent="." instance=ExtResource("2_twya3")]
 position = Vector2(320, 180)
-cargo_list = Array[int]([1])
+cargo_list = Array[int]([2])
 
 [node name="Obstacles" type="Node" parent="."]
 
