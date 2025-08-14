@@ -9,6 +9,14 @@ var disabled := false
 var threats := []
 
 @onready var dismount_point: Marker2D = $DismountPoint
+@onready var morale_bar: ProgressBar = $MoraleBar
+
+func _process(delta: float) -> void:
+	if is_instance_valid(worker) and worker is Crew:
+		morale_bar.value = worker.morale
+		morale_bar.visible = true
+	else:
+		morale_bar.visible = false
 
 func play_animation(animation_name):
 	if level_completed:

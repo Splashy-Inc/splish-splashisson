@@ -4,6 +4,7 @@ class_name Task
 
 var assignee: Worker
 var worker: Worker
+@export var morale_modifier := preload("res://Custom Resources/task_morale_modifier.tres")
 
 var is_active = false
 
@@ -80,3 +81,8 @@ func _on_level_completed(level: Level):
 
 func stop():
 	pass
+
+func get_morale_modifier() -> MoraleModifier:
+	if is_instance_valid(morale_modifier):
+		return morale_modifier
+	return MoraleModifier.new()
