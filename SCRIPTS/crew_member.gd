@@ -4,16 +4,27 @@ class_name Crew
 
 @export var is_distracted: bool
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var idle_distraction_timer: Timer = $IdleDistractionTimer
-@onready var rowing_distraction_timer: Timer = $RowingDistractionTimer
 @onready var wander_timer: Timer = $WanderTimer
+@onready var morale_bar: ProgressBar = $MoraleBar
+
+var morale := 1.0
+var morale_modifiers : Array[MoraleModifier]
+var total_morale_modifier := 0.0
+@export var idle_modifier : MoraleModifier
+var disable_morale := false # For tutorial
 
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
 	$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
 	if navigation_agent:
 		navigation_agent.set_target_position(global_position)
+
+func _process(delta: float) -> void:
+	if not disable_morale:
+		change_morale(total_morale_modifier * delta)
+		morale_bar.value = morale
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
@@ -22,7 +33,6 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
 
 func _on_distraction_timer_timeout() -> void:
-	set_assignment(null)
 	_toggle_distracted(true)
 
 func _toggle_distracted(new_is_distracted: bool):
@@ -33,6 +43,7 @@ func _toggle_distracted(new_is_distracted: bool):
 			set_assignment(new_distraction)
 			_toggle_wandering(false)
 		else:
+			set_assignment(null)
 			_toggle_wandering(true)
 	else:
 		_toggle_wandering(false)
@@ -51,28 +62,31 @@ func get_closest_distraction():
 
 func set_assignment(new_assignment: Node2D):
 	if new_assignment != current_assignment:
+		remove_morale_modifier(idle_modifier)
+		if is_instance_valid(current_assignment) and current_assignment.has_method("get_morale_modifier"):
+			remove_morale_modifier(current_assignment.get_morale_modifier())
 		_set_assignment(null)
 		state = State.IDLE
 		_toggle_distracted(false)
-		idle_distraction_timer.stop()
-		rowing_distraction_timer.stop()
 		
 		if new_assignment == null:
 			state = State.ACKNOWLEDGING
-			idle_distraction_timer.start()
+			add_morale_modifier(idle_modifier)
 			_set_navigation_position()
 		elif new_assignment is Player:
 			state = State.ALERTED
+			change_morale(1.0)
 		else:
 			if new_assignment is Task or new_assignment is Rat:
 				if not new_assignment.set_assignee(self):
-					print(self, " unable to set self as assignee of ", new_assignment)
+					print(self, " unable to set self as assignee of ", new_assignment, ". Going idle.")
 					_set_assignment(null)
+					add_morale_modifier(idle_modifier)
 					return
 				if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat:
 					new_assignment.died.connect(_on_assignment_died)
-				if new_assignment is RowingTask:
-					rowing_distraction_timer.start()
+				if new_assignment.has_method("get_morale_modifier"):
+					add_morale_modifier(new_assignment.get_morale_modifier())
 				
 			state = State.ACKNOWLEDGING
 		
@@ -126,3 +140,26 @@ func _set_navigation_position(is_random: bool = false, new_position: Vector2 = V
 func _on_wander_timer_timeout() -> void:
 	_set_navigation_position(true)
 	_toggle_distracted(true)
+	
+func add_morale_modifier(modifier: MoraleModifier):
+	if not modifier in morale_modifiers:
+		morale_modifiers.append(modifier)
+	update_morale_total_modifier()
+
+func remove_morale_modifier(modifier: MoraleModifier):
+	morale_modifiers.erase(modifier)
+	update_morale_total_modifier()
+
+func update_morale_total_modifier():
+	total_morale_modifier = get_total_morale_modifier()
+
+func get_total_morale_modifier() -> float:
+	var total_modifier := 0.0
+	for modifier in morale_modifiers:
+		total_modifier += modifier.rate
+	return total_modifier
+
+func change_morale(change):
+	morale = clamp(morale + change, 0.0, 1.0)
+	if not is_distracted and morale <= 0.0:
+		_on_distraction_timer_timeout()

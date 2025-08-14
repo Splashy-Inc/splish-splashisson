@@ -111,7 +111,9 @@ func _on_level_completed(level: Level):
 	$DamageTickTimer.stop()
 	
 func get_item():
-	return items.get_children().front()
+	if items.get_child_count() > 0:
+		return items.get_children().front()
+	return null
 
 func add_item(item: CargoItem):
 	if item:

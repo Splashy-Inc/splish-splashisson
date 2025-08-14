@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MoraleModifier" load_steps=2 format=3 uid="uid://6eg8s8dmqv2x"]
+
+[ext_resource type="Script" path="res://Custom Resources/MoraleModifier.gd" id="1_t77uf"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_t77uf")
+name = "Rowing"
+rate = -0.05

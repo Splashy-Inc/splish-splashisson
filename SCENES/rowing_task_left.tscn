@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://u5juiu6qbxnd"]
+[gd_scene load_steps=46 format=3 uid="uid://u5juiu6qbxnd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/rowing_task.gd" id="1_xu50v"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_6rxet"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://cnxh4iw8wgy44" path="res://Art/Tasks/Rowing/SplishActive/SplishRowingK.png" id="23_ij7ey"]
 [ext_resource type="AudioStream" uid="uid://2k6yinhs8b4q" path="res://Audio/ho4.mp3" id="23_vc3un"]
 [ext_resource type="Animation" uid="uid://crsp5x4im7uta" path="res://stop_player.res" id="34_5t4bg"]
+[ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="35_yi5rg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8te5t"]
 animations = [{
@@ -345,3 +346,9 @@ polygon = PackedVector2Array(33, 10, -31, 10, -31, -10, 33, -10)
 
 [node name="DismountPoint" type="Marker2D" parent="."]
 position = Vector2(64, 0)
+
+[node name="MoraleBar" parent="." instance=ExtResource("35_yi5rg")]
+offset_left = 1.0
+offset_top = 11.0
+offset_right = 25.0
+offset_bottom = 15.0

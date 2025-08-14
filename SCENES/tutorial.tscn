@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=32 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_2bdtw"]
@@ -24,8 +24,15 @@
 [ext_resource type="Resource" uid="uid://dc8dw6q2tuwc0" path="res://Dialogs/Tutorial/tutorial_wrap_up_dialog.tres" id="12_0cfyp"]
 [ext_resource type="Resource" uid="uid://7cb47q8j6xwg" path="res://Dialogs/Tutorial/tutorial_completed_dialog.tres" id="13_lfmix"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="18_ax4w7"]
+[ext_resource type="Script" path="res://Custom Resources/MoraleModifier.gd" id="19_hrljw"]
 [ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="20_mkeck"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="26_th1uk"]
+
+[sub_resource type="Resource" id="Resource_thoij"]
+resource_local_to_scene = true
+script = ExtResource("19_hrljw")
+name = "Idle"
+rate = -0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
 size = Vector2(257, 49)
@@ -63,6 +70,7 @@ y_sort_enabled = true
 
 [node name="CrewMember" parent="People" instance=ExtResource("6_2hybe")]
 position = Vector2(320, 78)
+idle_modifier = SubResource("Resource_thoij")
 
 [node name="Splish" parent="People" instance=ExtResource("7_wap1k")]
 position = Vector2(320, 180)

@@ -253,7 +253,8 @@ func set_assignment(new_assignment: Node2D):
 	
 	if new_assignment is Task or new_assignment is Rat:
 		if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat:
-			new_assignment.died.connect(_on_assignment_died)
+			if not new_assignment.died.is_connected(_on_assignment_died):
+				new_assignment.died.connect(_on_assignment_died)
 		if not new_assignment.set_assignee(self):
 			print(self, " unable to set self as assignee of ", new_assignment)
 			current_assignment = null
