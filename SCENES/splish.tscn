@@ -1,11 +1,13 @@
-[gd_scene load_steps=55 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=58 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
+[ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/player_base_morale_modifier.tres" id="2_5x42x"]
 [ext_resource type="Texture2D" uid="uid://dv2xu7gwyylr4" path="res://Art/Splish/BailingWater/BailG.png" id="2_605ja"]
 [ext_resource type="Texture2D" uid="uid://kufse2g7u1ey" path="res://Art/Splish/Idle/SplishIdle.png" id="2_fplbu"]
 [ext_resource type="Texture2D" uid="uid://dqr781k77ceq6" path="res://Art/Splish/BailingWater/BailA.png" id="3_82va4"]
 [ext_resource type="Texture2D" uid="uid://dtjdl0s3vvtwi" path="res://Art/Splish/Pointing/SplishPointB.png" id="3_511pc"]
 [ext_resource type="Texture2D" uid="uid://objic60e65pa" path="res://Art/Splish/Walking Down/SplishWalkDownA.png" id="3_etvg6"]
+[ext_resource type="Resource" uid="uid://c5m1tkp5iypmd" path="res://Custom Resources/player_working_morale_modifier.tres" id="3_w7u3g"]
 [ext_resource type="Texture2D" uid="uid://d1fhwln4ofy68" path="res://Art/Splish/Pointing/SplishPointA.png" id="4_6u4r1"]
 [ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/Walking Down/SplishWalkDownB.png" id="4_bdiwf"]
 [ext_resource type="Texture2D" uid="uid://8nfrfdhrlxkh" path="res://Art/Splish/BailingWater/BailB.png" id="4_thdcp"]
@@ -186,6 +188,9 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nx1hd"]
 radius = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b05rl"]
+radius = 112.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kjkt1"]
 streams_count = 2
@@ -471,6 +476,8 @@ z_index = 1
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_34yo7")
+base_morale_modifier = ExtResource("2_5x42x")
+working_morale_modifier = ExtResource("3_w7u3g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
@@ -488,6 +495,14 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_nx1hd")
+
+[node name="MoraleAura" type="Area2D" parent="."]
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoraleAura"]
+shape = SubResource("CircleShape2D_b05rl")
 
 [node name="SFXManager" parent="." instance=ExtResource("9_r3uhy")]
 
@@ -537,3 +552,5 @@ one_shot = true
 
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
+[connection signal="body_entered" from="MoraleAura" to="." method="_on_morale_aura_body_entered"]
+[connection signal="body_exited" from="MoraleAura" to="." method="_on_morale_aura_body_exited"]

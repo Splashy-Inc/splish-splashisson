@@ -13,6 +13,8 @@ var is_selected = false
 
 var level_completed = false
 
+@export var dismount_point : Marker2D
+
 func _ready():
 	Globals.level_completed.connect(_on_level_completed)
 
@@ -40,11 +42,10 @@ func _set_worker(new_worker: Worker) -> bool:
 	elif new_worker == assignee: # Only allow setting worker if not already taken
 		if worker == null:
 			new_worker.hide_self()
-			if not new_worker is Player:
-				if $DismountPoint:
-					new_worker.global_position = $DismountPoint.global_position
-				else:
-					new_worker.global_position = global_position
+			if is_instance_valid(dismount_point):
+				new_worker.global_position = dismount_point.global_position
+			else:
+				new_worker.global_position = global_position
 			toggle_active(true)
 		else:
 			return false
