@@ -46,6 +46,9 @@
 [ext_resource type="AudioStream" uid="uid://cb2x7au43eau4" path="res://Audio/Actions/stomp.wav" id="41_is387"]
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="43_hshio"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b05rl"]
+radius = 112.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_48aad"]
 animations = [{
 "frames": [{
@@ -188,9 +191,6 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nx1hd"]
 radius = 28.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_b05rl"]
-radius = 112.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kjkt1"]
 streams_count = 2
@@ -478,6 +478,15 @@ motion_mode = 1
 script = ExtResource("1_34yo7")
 base_morale_modifier = ExtResource("2_5x42x")
 working_morale_modifier = ExtResource("3_w7u3g")
+morale_color = Color(1, 1, 0, 0.494118)
+
+[node name="MoraleAura" type="Area2D" parent="."]
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoraleAura"]
+shape = SubResource("CircleShape2D_b05rl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
@@ -495,14 +504,6 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_nx1hd")
-
-[node name="MoraleAura" type="Area2D" parent="."]
-position = Vector2(0, -7)
-collision_layer = 0
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MoraleAura"]
-shape = SubResource("CircleShape2D_b05rl")
 
 [node name="SFXManager" parent="." instance=ExtResource("9_r3uhy")]
 
@@ -550,7 +551,7 @@ current = true
 wait_time = 3.0
 one_shot = true
 
-[connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
-[connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
 [connection signal="body_entered" from="MoraleAura" to="." method="_on_morale_aura_body_entered"]
 [connection signal="body_exited" from="MoraleAura" to="." method="_on_morale_aura_body_exited"]
+[connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
+[connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
