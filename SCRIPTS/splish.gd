@@ -34,9 +34,6 @@ var aura_targets : Array[Crew]
 @onready var morale_collision_shape: CollisionShape2D = $MoraleAura/CollisionShape2D
 @onready var interactable_range: Area2D = $InteractableRange
 
-func _draw() -> void:
-	draw_circle(to_local(morale_aura.global_position), morale_collision_shape.shape.radius, morale_color, false)
-
 func _process(delta: float) -> void:
 	if not current_assignment:
 		if not Input.is_action_pressed("act"):
@@ -44,13 +41,11 @@ func _process(delta: float) -> void:
 			_find_selection_target()
 		if morale_aura.global_position != interactable_range.global_position:
 			morale_aura.global_position = interactable_range.global_position
-			queue_redraw()
 	else:
 		if current_assignment is RowingTask:
 			var seat_center = current_assignment.get_seat_center()
 			if seat_center != null and morale_aura.global_position != seat_center:
 				morale_aura.global_position = seat_center
-				queue_redraw()
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO

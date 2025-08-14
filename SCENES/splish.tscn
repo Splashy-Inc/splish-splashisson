@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=62 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/player_base_morale_modifier.tres" id="2_5x42x"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fhwln4ofy68" path="res://Art/Splish/Pointing/SplishPointA.png" id="4_6u4r1"]
 [ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/Walking Down/SplishWalkDownB.png" id="4_bdiwf"]
 [ext_resource type="Texture2D" uid="uid://8nfrfdhrlxkh" path="res://Art/Splish/BailingWater/BailB.png" id="4_thdcp"]
+[ext_resource type="Shader" path="res://Materials/aura.gdshader" id="4_vfcgs"]
 [ext_resource type="Texture2D" uid="uid://dhmncs1vrrnmq" path="res://Art/Splish/BailingWater/BailC.png" id="5_f5d2l"]
 [ext_resource type="Texture2D" uid="uid://cmh83m2yj0glw" path="res://Art/Splish/Walking Up/SplishWalkUpA.png" id="5_ksqji"]
 [ext_resource type="Texture2D" uid="uid://d1w5ctdvu5gry" path="res://Art/Splish/BailingWater/BailD.png" id="6_u1vbr"]
@@ -45,6 +46,24 @@
 [ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="38_tcamb"]
 [ext_resource type="AudioStream" uid="uid://cb2x7au43eau4" path="res://Audio/Actions/stomp.wav" id="41_is387"]
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="43_hshio"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uv2y"]
+shader = ExtResource("4_vfcgs")
+shader_parameter/aura_color = Color(1, 1, 0, 0.247059)
+shader_parameter/fade_distance_from_center = 0.85
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_u8plk"]
+offsets = PackedFloat32Array(0.619565)
+colors = PackedColorArray(1, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_20krg"]
+gradient = SubResource("Gradient_u8plk")
+width = 224
+height = 224
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b05rl"]
 radius = 112.0
@@ -485,7 +504,12 @@ position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 6
 
+[node name="Sprite2D" type="Sprite2D" parent="MoraleAura"]
+material = SubResource("ShaderMaterial_6uv2y")
+texture = SubResource("GradientTexture2D_20krg")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoraleAura"]
+visible = false
 shape = SubResource("CircleShape2D_b05rl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
