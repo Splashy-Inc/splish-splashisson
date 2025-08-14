@@ -13,6 +13,7 @@ var morale := 1.0
 var morale_modifiers : Array[MoraleModifier]
 var total_morale_modifier := 0.0
 @export var idle_modifier : MoraleModifier
+var disable_morale := false # For tutorial
 
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
@@ -21,8 +22,9 @@ func _ready():
 		navigation_agent.set_target_position(global_position)
 
 func _process(delta: float) -> void:
-	change_morale(total_morale_modifier * delta)
-	morale_bar.value = morale
+	if not disable_morale:
+		change_morale(total_morale_modifier * delta)
+		morale_bar.value = morale
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)

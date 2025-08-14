@@ -5,11 +5,11 @@
 			"speaker": 1,
 		},
 		{
-			"line": "Be warned! Your crew will get distracted if left without a task for 5 seconds, or after rowing for 30.",
+			"line": "Be warned! Your crew will get distracted if left without a task for 10 seconds, or after working for 20.",
 			"speaker": 1,
 		},
 		{
-			"line": "When distracted, crew will head over to the cargo and start taking some for themselves, damaging it.",
+			"line": "When distracted, crew will head over to certain cargo and start taking some for themselves, damaging it.",
 			"speaker": 1,
 		},
 		{
