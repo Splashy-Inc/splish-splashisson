@@ -10,13 +10,5 @@ void fragment() {
 		vec4 color = texture(TEXTURE, UV);
 		float fade_amount = (distance(center, UV) - fade_distance_from_center/2.0)/(0.5 - fade_distance_from_center/2.0);
 		COLOR = mix(color, aura_color, fade_amount);
-		
-		//if (COLOR == color) {
-			//float pulse_distance = distance(center, UV) / tan(TIME*pulse_intensity);
-			//fade_amount = (pulse_distance - fade_distance_from_center/2.0)/(0.5 - fade_distance_from_center/2.0);
-			//if (fade_amount <= 1.0) {
-				//COLOR = mix(color, aura_color, fade_amount);
-			//}
-		//}
 	}
 }
