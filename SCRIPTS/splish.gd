@@ -2,6 +2,8 @@ extends Worker
 
 class_name Player
 
+@onready var aura_animation_player: AnimationPlayer = $MoraleAura/AuraAnimationPlayer
+
 # Higher value number takes higher priority
 enum Selection_priority {
 	NONE,
@@ -281,11 +283,14 @@ func set_assignment(new_assignment: Node2D):
 	
 	_set_assignment(new_assignment)
 	if current_assignment:
+		toggle_working_morale_modifier(true)
 		_start_assignment()
 		if current_assignment is RowingTask:
 			_set_action_target(null)
 		else:
 			_set_action_target(current_assignment)
+	else:
+		toggle_working_morale_modifier(false)
 
 func stop_bailing():
 	state = State.IDLE
@@ -319,7 +324,7 @@ func _rowing_state():
 	$AnimationPlayer.play("idle")
 
 func _on_morale_aura_body_entered(body: Node2D) -> void:
-	var crew_member
+	var crew_member : Crew
 	if body is Crew:
 		crew_member = body
 	elif body is RowingTask:
@@ -330,9 +335,11 @@ func _on_morale_aura_body_entered(body: Node2D) -> void:
 		if not crew_member in aura_targets:
 			aura_targets.append(crew_member)
 		crew_member.add_morale_modifier(base_morale_modifier)
+		if current_assignment:
+			crew_member.add_morale_modifier(working_morale_modifier)
 
 func _on_morale_aura_body_exited(body: Node2D) -> void:
-	var crew_member
+	var crew_member : Crew
 	if body is Crew:
 		if body.visible:
 			crew_member = body
@@ -343,6 +350,7 @@ func _on_morale_aura_body_exited(body: Node2D) -> void:
 	if is_instance_valid(crew_member):
 		aura_targets.erase(crew_member)
 		crew_member.remove_morale_modifier(base_morale_modifier)
+		crew_member.remove_morale_modifier(working_morale_modifier)
 
 func hide_self():
 	sprite.hide()
@@ -351,3 +359,15 @@ func hide_self():
 func show_self():
 	sprite.show()
 	$CollisionShape2D.set_deferred("disabled", false)
+
+func toggle_working_morale_modifier(is_active: bool):
+	if is_active:
+		aura_animation_player.play("pulse")
+	else:
+		aura_animation_player.stop()
+	for aura_target in aura_targets:
+		if aura_target is Crew:
+			if is_active:
+				aura_target.add_morale_modifier(working_morale_modifier)
+			else:
+				aura_target.remove_morale_modifier(working_morale_modifier)
