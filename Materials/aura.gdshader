@@ -3,7 +3,6 @@ shader_type canvas_item;
 uniform vec4 aura_color : source_color = vec4(1.0);
 uniform float fade_distance_from_center : hint_range(0, 1.0) = 1.0;
 uniform vec2 center = vec2(0.5);
-uniform float pulse_intensity : hint_range(0.0, 10.0) = 0.0;
 
 void fragment() {
 	if (distance(center, UV) <= 0.5) {
