@@ -8,8 +8,9 @@ var disabled := false
 
 var threats := []
 
-@onready var dismount_point: Marker2D = $DismountPoint
 @onready var morale_bar: ProgressBar = $MoraleBar
+
+@export var collision_shape : CollisionShape2D
 
 func _process(delta: float) -> void:
 	if is_instance_valid(worker) and worker is Crew:
@@ -93,3 +94,8 @@ func _on_threat_died(threat: Node2D):
 
 func is_targetable() -> bool:
 	return threats.is_empty() and not assignee
+
+func get_seat_center():
+	if is_instance_valid(collision_shape):
+		return collision_shape.global_position
+	return null
