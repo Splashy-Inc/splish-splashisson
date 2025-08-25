@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpu38ok10nqie"]
+
+[ext_resource type="Script" path="res://SCRIPTS/pause_menu.gd" id="1_avpks"]
+[ext_resource type="LabelSettings" uid="uid://c014bsm5ryfcy" path="res://SCENES/GUI/text_title_format.tres" id="2_p3f4s"]
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="3_5d3si"]
+[ext_resource type="LabelSettings" uid="uid://cqk21u4pqxciu" path="res://SCENES/GUI/text_subtitle_format.tres" id="3_uuqwr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ss3y7"]
+font_size = 30
+font_color = Color(0.721829, 0.769411, 0.817499, 1)
+outline_size = 4
+outline_color = Color(0.192157, 0.231373, 0.270588, 1)
+shadow_size = 0
+shadow_color = Color(0.368627, 0.427451, 0.490196, 0)
+shadow_offset = Vector2(2, 2)
+
+[node name="WinGameMenu" type="Control"]
+process_mode = 3
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_avpks")
+
+[node name="MenuContent" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 0
+offset_right = 342.0
+offset_bottom = 311.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="MenuContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Congratulations!"
+label_settings = ExtResource("2_p3f4s")
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="MenuContent"]
+layout_mode = 2
+text = "You Beat the Demo"
+label_settings = ExtResource("3_uuqwr")
+horizontal_alignment = 1
+
+[node name="Discription" type="Label" parent="MenuContent"]
+layout_mode = 2
+text = "Follow us on itch for updates
+https://splashy-inc.itch.io/splish-splashisson"
+label_settings = SubResource("LabelSettings_ss3y7")
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_5d3si")
+text = "Main Menu"
+
+[node name="ControlsButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_5d3si")
+text = "Controls"
+
+[connection signal="pressed" from="MenuContent/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
