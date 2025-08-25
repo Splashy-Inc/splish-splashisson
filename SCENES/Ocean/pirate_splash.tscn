@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3ejrjpf5vr4h"]
+
+[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashA.png" id="1_jxjtr"]
+[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashB.png" id="2_166ro"]
+[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashC.png" id="3_pq8wr"]
+[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashD.png" id="4_42l5v"]
+[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashE.png" id="5_ie1yy"]
+[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashF.png" id="6_it8f4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghcrk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jxjtr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_166ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pq8wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_42l5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ie1yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_it8f4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PirateSplash" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ghcrk")
+autoplay = "default"
+frame = 5
+frame_progress = 0.0506964
