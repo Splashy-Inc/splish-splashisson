@@ -1,9 +1,17 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=3 uid="uid://bpu38ok10nqie"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://dhdqouljii5l0"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://SCRIPTS/pause_menu.gd" id="1_avpks"]
 [ext_resource type="LabelSettings" uid="uid://c014bsm5ryfcy" path="res://SCENES/GUI/text_title_format.tres" id="2_p3f4s"]
 [ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="3_5d3si"]
+<<<<<<< Updated upstream
 [ext_resource type="LabelSettings" uid="uid://cqk21u4pqxciu" path="res://SCENES/GUI/text_subtitle_format.tres" id="3_uuqwr"]
+=======
+[ext_resource type="LabelSettings" path="res://SCENES/GUI/text_subtitle_format.tres" id="3_uuqwr"]
+>>>>>>> Stashed changes
 
 [sub_resource type="LabelSettings" id="LabelSettings_ss3y7"]
 font_size = 30
