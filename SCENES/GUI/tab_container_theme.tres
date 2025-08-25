@@ -1,0 +1,87 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bw62pthll8jkl"]
+
+[ext_resource type="Texture2D" uid="uid://w8nor5qeurxl" path="res://Art/GUI/UI_SpriteSheet.png" id="1_p34js"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6lqc"]
+atlas = ExtResource("1_p34js")
+region = Rect2(128, 160, 192, 96)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pr2l"]
+texture = SubResource("AtlasTexture_r6lqc")
+texture_margin_left = 5.0
+texture_margin_top = 4.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 192, 96)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0hy0g"]
+load_path = "res://.godot/imported/UI_SpriteSheet.png-da22e1200a48da55c66dbed24ca1de34.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw7g4"]
+atlas = SubResource("CompressedTexture2D_0hy0g")
+region = Rect2(192, 141, 64, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryorv"]
+texture = SubResource("AtlasTexture_nw7g4")
+texture_margin_left = 8.0
+texture_margin_top = 19.0
+texture_margin_right = 7.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17w4f"]
+atlas = ExtResource("1_p34js")
+region = Rect2(192, 109, 64, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4x5p"]
+texture = SubResource("AtlasTexture_17w4f")
+texture_margin_left = 8.0
+texture_margin_top = 19.0
+texture_margin_right = 7.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4msfx"]
+load_path = "res://.godot/imported/UI_SpriteSheet.png-da22e1200a48da55c66dbed24ca1de34.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1ai3"]
+atlas = SubResource("CompressedTexture2D_4msfx")
+region = Rect2(192, 109, 64, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nd70r"]
+texture = SubResource("AtlasTexture_l1ai3")
+texture_margin_left = 8.0
+texture_margin_top = 19.0
+texture_margin_right = 7.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gyrc"]
+load_path = "res://.godot/imported/UI_SpriteSheet.png-da22e1200a48da55c66dbed24ca1de34.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnqbu"]
+atlas = SubResource("CompressedTexture2D_2gyrc")
+region = Rect2(192, 109, 64, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxlpb"]
+texture = SubResource("AtlasTexture_xnqbu")
+texture_margin_left = 8.0
+texture_margin_top = 19.0
+texture_margin_right = 7.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_126py"]
+atlas = ExtResource("1_p34js")
+region = Rect2(192, 77, 64, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmpbh"]
+texture = SubResource("AtlasTexture_126py")
+texture_margin_left = 8.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 1.0
+
+[resource]
+TabContainer/styles/panel = SubResource("StyleBoxTexture_8pr2l")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxTexture_ryorv")
+TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_i4x5p")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_nd70r")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_xxlpb")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_xmpbh")
