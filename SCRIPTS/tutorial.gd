@@ -56,7 +56,8 @@ var tutorial_puddle: Puddle
 
 func _level_ready():
 	dialog_files = original_dialog_files.duplicate(true)
-	crew_member.idle_distraction_timer.set_paused(true)
+	crew_member.disable_morale = true
+	crew_member.morale_bar.hide()
 	rat_hole.spawn_timer.set_paused(true)
 	leak_spawn_timer.set_paused(true)
 	rat_hole.hide()
@@ -129,10 +130,10 @@ func _show_next_dialog():
 				splish.targeting_group_blacklist.append_array(["crew", "rowing_task"])
 				splish.set_assignment(null)
 				crew_member.set_assignment(null)
+				crew_member.change_morale(1.0)
+				crew_member.morale_bar.show()
 				splish.input_disabled = true
 			"Distraction_2":
-				crew_member.idle_distraction_timer.stop()
-				crew_member.idle_distraction_timer.wait_time = 5.0
 				splish.targeting_group_blacklist.clear()
 
 func _on_dialog_ended() -> void:
@@ -145,8 +146,8 @@ func _on_dialog_ended() -> void:
 		"Rowing":
 			splish.add_follower(crew_member)
 		"Distraction_1":
-			crew_member.idle_distraction_timer.set_paused(false)
-			crew_member.idle_distraction_timer.start(1.0)
+			crew_member.morale = -crew_member.idle_modifier.rate * 2.0
+			crew_member.disable_morale = false
 		"Wrap_up":
 			rat_hole.spawn_timer.set_paused(false)
 			leak_spawn_timer.set_paused(false)

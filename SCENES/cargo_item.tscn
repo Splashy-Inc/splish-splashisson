@@ -10,12 +10,14 @@ script = ExtResource("2_nh6nw")
 type = 1
 health = 30
 texture = ExtResource("2_u0x3v")
+is_distraction = true
 
 [sub_resource type="Resource" id="Resource_5qanm"]
 script = ExtResource("2_nh6nw")
 type = 2
 health = 50
 texture = ExtResource("4_p7iih")
+is_distraction = false
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_odnm3"]
 size = Vector2(16, 16)
@@ -25,6 +27,7 @@ script = ExtResource("2_nh6nw")
 type = 0
 health = 30
 texture = SubResource("PlaceholderTexture2D_odnm3")
+is_distraction = false
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0kxb5"]
 size = Vector2(16, 16)

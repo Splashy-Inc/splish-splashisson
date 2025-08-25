@@ -28,6 +28,8 @@ var assignee: Node2D
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
+@export var morale_modifier : MoraleModifier
+
 func _ready():
 	Globals._on_rat_spawned()
 	died.connect(Globals._on_rat_fixed)
@@ -158,3 +160,8 @@ func set_worker(new_worker: Worker) -> bool:
 		return false
 	worker = new_worker
 	return true
+
+func get_morale_modifier() -> MoraleModifier:
+	if is_instance_valid(morale_modifier):
+		return morale_modifier
+	return MoraleModifier.new()

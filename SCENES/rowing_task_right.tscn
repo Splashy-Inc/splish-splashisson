@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bh2fvow0in3wk"]
+[gd_scene load_steps=46 format=3 uid="uid://bh2fvow0in3wk"]
 
 [ext_resource type="Script" path="res://SCRIPTS/rowing_task.gd" id="1_8m1hv"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_ca2dx"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://cnxh4iw8wgy44" path="res://Art/Tasks/Rowing/SplishActive/SplishRowingK.png" id="23_awcoh"]
 [ext_resource type="AudioStream" uid="uid://2k6yinhs8b4q" path="res://Audio/ho4.mp3" id="23_x6rnt"]
 [ext_resource type="Animation" uid="uid://crsp5x4im7uta" path="res://stop_player.res" id="34_2357h"]
+[ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="35_jaa1w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8te5t"]
 animations = [{
@@ -301,13 +302,15 @@ _data = {
 "stop_player": ExtResource("34_2357h")
 }
 
-[node name="RowingTaskRight" type="StaticBody2D" groups=["impassable", "rowing_task"]]
+[node name="RowingTaskRight" type="StaticBody2D" node_paths=PackedStringArray("collision_shape", "dismount_point") groups=["impassable", "rowing_task"]]
 z_index = 1
 scale = Vector2(1, -1)
 collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_8m1hv")
+collision_shape = NodePath("CollisionShape2D")
 interaction_radius = 5
+dismount_point = NodePath("DismountPoint")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_ca2dx")
@@ -344,3 +347,9 @@ polygon = PackedVector2Array(33, 10, -31, 10, -31, -10, 33, -10)
 
 [node name="DismountPoint" type="Marker2D" parent="."]
 position = Vector2(-64, 0)
+
+[node name="MoraleBar" parent="." instance=ExtResource("35_jaa1w")]
+offset_left = -25.0
+offset_top = 11.0
+offset_right = -1.0
+offset_bottom = 15.0

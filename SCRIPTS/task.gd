@@ -4,6 +4,7 @@ class_name Task
 
 var assignee: Worker
 var worker: Worker
+@export var morale_modifier := preload("res://Custom Resources/task_morale_modifier.tres")
 
 var is_active = false
 
@@ -11,6 +12,8 @@ var is_selected = false
 @export var interaction_radius: int
 
 var level_completed = false
+
+@export var dismount_point : Marker2D
 
 func _ready():
 	Globals.level_completed.connect(_on_level_completed)
@@ -40,8 +43,8 @@ func _set_worker(new_worker: Worker) -> bool:
 		if worker == null:
 			new_worker.hide_self()
 			if not new_worker is Player:
-				if $DismountPoint:
-					new_worker.global_position = $DismountPoint.global_position
+				if is_instance_valid(dismount_point):
+					new_worker.global_position = dismount_point.global_position
 				else:
 					new_worker.global_position = global_position
 			toggle_active(true)
@@ -80,3 +83,8 @@ func _on_level_completed(level: Level):
 
 func stop():
 	pass
+
+func get_morale_modifier() -> MoraleModifier:
+	if is_instance_valid(morale_modifier):
+		return morale_modifier
+	return MoraleModifier.new()

@@ -68,7 +68,8 @@ func _level_process(delta: float):
 func _on_boat_ready() -> void:
 	max_boat_speed = boat.get_max_speed()
 	length = max_boat_speed * minimum_seconds
-	Globals.speed_updated.connect(_boat_speed_updated)
+	if not Globals.speed_updated.is_connected(_boat_speed_updated):
+		Globals.speed_updated.connect(_boat_speed_updated)
 	
 	# Spawn the end dock
 	var viewport_rect = get_viewport().get_visible_rect()

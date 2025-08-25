@@ -5,6 +5,7 @@ class_name Worker
 @export var current_assignment: Node2D
 
 const SPEED = 150.0
+var speed_mod := 1.0
 
 var is_selected = false
 
@@ -68,26 +69,31 @@ func _idle_state(delta: float):
 		else:
 			state = State.MOVING
 	else:
-		$AnimationPlayer.play("idle_down")
+		if _get_direction() == Vector2.ZERO:
+			$AnimationPlayer.play("idle_down")
+		else:
+			state = State.MOVING
 
 func _move_state(delta: float):
 	if _check_in_range(current_assignment):
 		state = State.IDLE
-		if not current_assignment is Player:
-			_start_assignment()
 	else:
-		if current_assignment:
-			var direction = _get_direction()
-			velocity += direction * SPEED
+		var direction = _get_direction()
+		velocity += direction * SPEED * speed_mod
 		
 		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
 			if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
 				$AnimationPlayer.play("walking_up")
 			else:
 				$AnimationPlayer.play("walking_down")
+		else:
+			$AnimationPlayer.play("idle_down")
 
 func _get_direction() -> Vector2:
-	return global_position.direction_to(current_assignment.global_position)
+	if current_assignment:
+		return global_position.direction_to(current_assignment.global_position)
+	
+	return Vector2.ZERO
 
 func _alert_state():
 	$AnimationPlayer.play("alert")
@@ -112,8 +118,11 @@ func _patch_state():
 
 func _distract_state():
 	if current_assignment is Cargo:
-		if current_assignment.cargo_type == Cargo.Cargo_type.MEAT:
-			$AnimationPlayer.play("eating")
+		if current_assignment.condition <= 0:
+			set_assignment(null)
+		else:
+			if current_assignment.cargo_type == Cargo.Cargo_type.MEAT:
+				$AnimationPlayer.play("eating")
 
 func _attack_state():
 	if current_assignment is Rat:
@@ -167,8 +176,6 @@ func reset_highlight():
 func start_rowing():
 	if current_assignment is RowingTask and current_assignment.set_worker(self):
 		state = State.ROWING
-		if $RowingDistractionTimer:
-			$RowingDistractionTimer.start()
 		return true
 	return false
 
