@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bscgor0yf4co0"
-path="res://.godot/imported/SharkBack.png-cee6252a0ef688b5e63c6656225b37eb.ctex"
+uid="uid://b6k6usv0iukrh"
+path="res://.godot/imported/HHSharkJumpR1.png-59c8b5c6dc82d0ad170022128c801b9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Pirates/Shark/Idle/SharkBack.png"
-dest_files=["res://.godot/imported/SharkBack.png-cee6252a0ef688b5e63c6656225b37eb.ctex"]
+source_file="res://Art/Pirates/HHShark/Jump/HHSharkJumpR1.png"
+dest_files=["res://.godot/imported/HHSharkJumpR1.png-59c8b5c6dc82d0ad170022128c801b9c.ctex"]
 
 [params]
 
