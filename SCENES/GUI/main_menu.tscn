@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/main_menu.gd" id="1_vkagb"]
 [ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_w1mmc"]
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_y3ir5"]
-[ext_resource type="StyleBox" uid="uid://cj6q1og1u06dh" path="res://SCENES/GUI/button_hover.tres" id="3_shsu8"]
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="3_32f6x"]
+[ext_resource type="LabelSettings" uid="uid://c014bsm5ryfcy" path="res://SCENES/GUI/text_title_format.tres" id="3_vj6ow"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(640, 360)
@@ -23,16 +23,9 @@ alignment = 1
 
 [node name="Title" type="Label" parent="MenuContent"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.366966, 0.427904, 0.488959, 1)
-theme_override_colors/font_shadow_color = Color(0.192157, 0.231373, 0.270588, 1)
-theme_override_colors/font_outline_color = Color(0.721829, 0.769411, 0.817499, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 8
-theme_override_font_sizes/font_size = 59
 text = "Splish Splashisson
 "
+label_settings = ExtResource("3_vj6ow")
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="MenuContent"]
@@ -53,33 +46,22 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 18
-theme_override_styles/focus = ExtResource("3_shsu8")
-theme_override_styles/hover = ExtResource("3_shsu8")
-theme_override_styles/pressed = ExtResource("3_shsu8")
-theme_override_styles/normal = ExtResource("2_y3ir5")
+theme = ExtResource("3_32f6x")
 text = "Play"
 
 [node name="ControlsButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 18
-theme_override_styles/focus = ExtResource("3_shsu8")
-theme_override_styles/hover = ExtResource("3_shsu8")
-theme_override_styles/pressed = ExtResource("3_shsu8")
-theme_override_styles/normal = ExtResource("2_y3ir5")
+theme = ExtResource("3_32f6x")
 text = "Controls"
 
 [node name="QuitButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("3_32f6x")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/focus = ExtResource("3_shsu8")
-theme_override_styles/hover = ExtResource("3_shsu8")
-theme_override_styles/pressed = ExtResource("3_shsu8")
-theme_override_styles/normal = ExtResource("2_y3ir5")
 text = "Quit"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]

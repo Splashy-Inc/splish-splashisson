@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://v65h1k4msxhb"]
 
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="1_mm3s4"]
+[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://SCENES/GUI/button_box.tres" id="1_mm3s4"]
 [ext_resource type="Script" path="res://SCRIPTS/win_screen.gd" id="1_ypahy"]
 
 [node name="WinScreen" type="Control"]
