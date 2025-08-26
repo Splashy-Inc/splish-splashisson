@@ -1,7 +1,5 @@
-[gd_scene load_steps=31 format=3 uid="uid://he2ienxfwna8"]
+[gd_scene load_steps=24 format=3 uid="uid://he2ienxfwna8"]
 
-[ext_resource type="Script" path="res://SCRIPTS/rat.gd" id="1_i2gpi"]
-[ext_resource type="Resource" uid="uid://6eg8s8dmqv2x" path="res://Custom Resources/task_morale_modifier.tres" id="2_xv844"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_8q1jr"]
 [ext_resource type="Texture2D" uid="uid://b13isd6rnc5jc" path="res://Art/Seagull/dive/seagull_dive_1.png" id="4_j2r0y"]
 [ext_resource type="Texture2D" uid="uid://dx8hu0qjapqbv" path="res://Art/Seagull/dive/seagull_dive_2.png" id="5_4ilj8"]
@@ -17,11 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dqn1mr88h3l1a" path="res://Art/Seagull/pecking/seagull_peckl2.png" id="14_oqiqn"]
 [ext_resource type="Texture2D" uid="uid://dnewd334sbgk1" path="res://Art/Seagull/pecking/seagull_peckr2.png" id="15_ucdl6"]
 [ext_resource type="Texture2D" uid="uid://dmt5r75gypl26" path="res://Art/Seagull/pecking/seagull_peckr1.png" id="16_na6q5"]
-[ext_resource type="AudioStream" uid="uid://dq8kbxsxk1nps" path="res://Audio/Rat/rat_eat.mp3" id="16_nbyqf"]
-[ext_resource type="AudioStream" uid="uid://pku6334frbc6" path="res://Audio/Rat/rat_hit_1.mp3" id="17_a6e1c"]
-[ext_resource type="AudioStream" uid="uid://bemunbh37cf1a" path="res://Audio/Rat/rat_hit_2.mp3" id="18_awwj3"]
 [ext_resource type="AudioStream" uid="uid://j2dhi7db8f4u" path="res://Audio/Seagull/Seagull2.mp3" id="18_mq41i"]
-[ext_resource type="AudioStream" uid="uid://cfqjbcxk4xcp1" path="res://Audio/Rat/rat_dying.mp3" id="19_rbm3p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f7ori"]
 animations = [{
@@ -258,17 +252,9 @@ _data = {
 "eat": SubResource("Animation_04flt")
 }
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_idx6q"]
-streams_count = 2
-stream_0/stream = ExtResource("17_a6e1c")
-stream_1/stream = ExtResource("18_awwj3")
-
 [node name="Seagull" type="CharacterBody2D" groups=["destructable", "rat"]]
 collision_layer = 4
 collision_mask = 8
-script = ExtResource("1_i2gpi")
-interaction_radius = 12
-morale_modifier = ExtResource("2_xv844")
 
 [node name="LootSlot" type="Marker2D" parent="."]
 position = Vector2(0, -4)
@@ -302,23 +288,9 @@ one_shot = true
 
 [node name="SFXManager" parent="." instance=ExtResource("14_dtqqx")]
 
-[node name="Squeak" type="AudioStreamPlayer2D" parent="SFXManager"]
+[node name="Squack" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("18_mq41i")
 max_distance = 730.0
-bus = &"Rats"
-
-[node name="Eat" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("16_nbyqf")
-pitch_scale = 1.7
-bus = &"Rats"
-
-[node name="Hit" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = SubResource("AudioStreamRandomizer_idx6q")
-bus = &"Rats"
-
-[node name="Die" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("19_rbm3p")
-pitch_scale = 0.75
 bus = &"Rats"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
