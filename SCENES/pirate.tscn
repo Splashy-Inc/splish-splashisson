@@ -1,52 +1,51 @@
-[gd_scene load_steps=78 format=3 uid="uid://brfv32x2o2pjh"]
+[gd_scene load_steps=74 format=3 uid="uid://b40oaetqwyltx"]
 
-[ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_tch5y"]
-[ext_resource type="Resource" uid="uid://dc32iot17r1ur" path="res://Custom Resources/idle_morale_modifier.tres" id="2_rs4m8"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_jwnii"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL1.png" id="4_w157y"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Fight/SharkFightL1.png" id="4_ylis3"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL2.png" id="5_7hit2"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Fight/SharkFightL2.png" id="5_jtk3g"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR1.png" id="6_87csm"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Fight/SharkFightR1.png" id="6_ubokm"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR2.png" id="7_imcel"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Fight/SharkFightR2.png" id="7_shvik"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Idle/SharkFront.png" id="8_4c7ld"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Idle/SawSharkFront.png" id="8_lbl4a"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Idle/SharkBack.png" id="9_l7nbj"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Idle/SawSharkBack.png" id="9_nmu7t"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL1.png" id="10_6eb06"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Jump/SharkJumpL1.png" id="10_vk3k2"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL2.png" id="11_a81of"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Jump/SharkJumpL2.png" id="11_o7iqu"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR1.png" id="12_hsdth"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Jump/SharkJumpR1.png" id="12_k4fbo"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR2.png" id="13_jrtxg"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Jump/SharkJumpR2.png" id="13_sgyvs"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontL.png" id="14_4qd8o"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Moving/SharkFrontL.png" id="14_ngin1"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Moving/SharkFrontR.png" id="15_h5h5l"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontR.png" id="15_ieqnw"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Moving/SawSharkBackR.png" id="16_uyq6t"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Moving/SharkBackL.png" id="16_xawdc"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/SawShark/Moving/SawSharkBackL.png" id="17_ef6fk"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/Shark/Moving/SharkBackR.png" id="17_i6lbn"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL1.png" id="18_wj0bh"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL2.png" id="19_5xsyy"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL3.png" id="20_6cms4"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR1.png" id="21_4viyr"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR2.png" id="22_ct5h6"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR3.png" id="23_0227t"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Idle/HHSharkFront.png" id="38_jk1ad"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Idle/HHSharkBack.png" id="39_rf647"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL1.png" id="40_aquq3"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL2.png" id="41_20iu3"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR1.png" id="42_33v81"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR2.png" id="43_56yuu"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontL.png" id="44_fk0pi"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontR.png" id="45_utlys"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Moving/HHSharkBackL.png" id="46_ubxbg"]
-[ext_resource type="Texture2D" path="res://Art/Pirates/HHShark/Moving/HHSharkBackR.png" id="47_wnb0h"]
+[ext_resource type="Texture2D" uid="uid://dpw3230xsh78i" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL1.png" id="4_w157y"]
+[ext_resource type="Texture2D" uid="uid://cac4b7mxro3x6" path="res://Art/Pirates/Shark/Fight/SharkFightL1.png" id="4_ylis3"]
+[ext_resource type="Texture2D" uid="uid://pkex6f0ymctv" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL2.png" id="5_7hit2"]
+[ext_resource type="Texture2D" uid="uid://dscjl1r502m54" path="res://Art/Pirates/Shark/Fight/SharkFightL2.png" id="5_jtk3g"]
+[ext_resource type="Texture2D" uid="uid://dqisuyufa4l3e" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR1.png" id="6_87csm"]
+[ext_resource type="Texture2D" uid="uid://d37h36ivw1xdo" path="res://Art/Pirates/Shark/Fight/SharkFightR1.png" id="6_ubokm"]
+[ext_resource type="Texture2D" uid="uid://c5ov7ssl6ia82" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR2.png" id="7_imcel"]
+[ext_resource type="Texture2D" uid="uid://oh5qkcg5fas6" path="res://Art/Pirates/Shark/Fight/SharkFightR2.png" id="7_shvik"]
+[ext_resource type="Texture2D" uid="uid://x3riy7xc32u6" path="res://Art/Pirates/Shark/Idle/SharkFront.png" id="8_4c7ld"]
+[ext_resource type="Texture2D" uid="uid://6mvcvg6e638b" path="res://Art/Pirates/SawShark/Idle/SawSharkFront.png" id="8_lbl4a"]
+[ext_resource type="Texture2D" uid="uid://bscgor0yf4co0" path="res://Art/Pirates/Shark/Idle/SharkBack.png" id="9_l7nbj"]
+[ext_resource type="Texture2D" uid="uid://bci8ah1p1gq4n" path="res://Art/Pirates/SawShark/Idle/SawSharkBack.png" id="9_nmu7t"]
+[ext_resource type="Texture2D" uid="uid://c6w7sk5jkynh8" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL1.png" id="10_6eb06"]
+[ext_resource type="Texture2D" uid="uid://db15qd2vj6oj8" path="res://Art/Pirates/Shark/Jump/SharkJumpL1.png" id="10_vk3k2"]
+[ext_resource type="Texture2D" uid="uid://cs7lmqcmg3ihi" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL2.png" id="11_a81of"]
+[ext_resource type="Texture2D" uid="uid://gnl6mrrf03ua" path="res://Art/Pirates/Shark/Jump/SharkJumpL2.png" id="11_o7iqu"]
+[ext_resource type="Texture2D" uid="uid://h4kb2e3fwpja" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR1.png" id="12_hsdth"]
+[ext_resource type="Texture2D" uid="uid://bqxktfltp3tsi" path="res://Art/Pirates/Shark/Jump/SharkJumpR1.png" id="12_k4fbo"]
+[ext_resource type="Texture2D" uid="uid://kr74cabbw1a1" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR2.png" id="13_jrtxg"]
+[ext_resource type="Texture2D" uid="uid://ctd5j5a4bjdi1" path="res://Art/Pirates/Shark/Jump/SharkJumpR2.png" id="13_sgyvs"]
+[ext_resource type="Texture2D" uid="uid://b30ixagddwnvj" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontL.png" id="14_4qd8o"]
+[ext_resource type="Texture2D" uid="uid://pc2pi4414smo" path="res://Art/Pirates/Shark/Moving/SharkFrontL.png" id="14_ngin1"]
+[ext_resource type="Texture2D" uid="uid://cvlr5yhgog4n2" path="res://Art/Pirates/Shark/Moving/SharkFrontR.png" id="15_h5h5l"]
+[ext_resource type="Texture2D" uid="uid://cbcv0jd1otrt6" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontR.png" id="15_ieqnw"]
+[ext_resource type="Texture2D" uid="uid://k6cwjp42ni38" path="res://Art/Pirates/SawShark/Moving/SawSharkBackR.png" id="16_uyq6t"]
+[ext_resource type="Texture2D" uid="uid://co2u1mv5y03a0" path="res://Art/Pirates/Shark/Moving/SharkBackL.png" id="16_xawdc"]
+[ext_resource type="Texture2D" uid="uid://b5ithsclju0ce" path="res://Art/Pirates/SawShark/Moving/SawSharkBackL.png" id="17_ef6fk"]
+[ext_resource type="Texture2D" uid="uid://bd1721rthv6ak" path="res://Art/Pirates/Shark/Moving/SharkBackR.png" id="17_i6lbn"]
+[ext_resource type="Texture2D" uid="uid://cngirm52brw6y" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL1.png" id="18_wj0bh"]
+[ext_resource type="Texture2D" uid="uid://bghsy3ylgd653" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL2.png" id="19_5xsyy"]
+[ext_resource type="Texture2D" uid="uid://jvgdkar3ar8v" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL3.png" id="20_6cms4"]
+[ext_resource type="Texture2D" uid="uid://2bdmqms3uyij" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR1.png" id="21_4viyr"]
+[ext_resource type="Texture2D" uid="uid://d2o0tocun5ss6" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR2.png" id="22_ct5h6"]
+[ext_resource type="Texture2D" uid="uid://crm74iy7lcqe" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR3.png" id="23_0227t"]
+[ext_resource type="Texture2D" uid="uid://bm1oem6agd2w5" path="res://Art/Pirates/HHShark/Idle/HHSharkFront.png" id="38_jk1ad"]
+[ext_resource type="Texture2D" uid="uid://coa1lxrvilulp" path="res://Art/Pirates/HHShark/Idle/HHSharkBack.png" id="39_rf647"]
+[ext_resource type="Texture2D" uid="uid://c46ehbi3f7tlj" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL1.png" id="40_aquq3"]
+[ext_resource type="Texture2D" uid="uid://b7vr5ood0fqnb" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL2.png" id="41_20iu3"]
+[ext_resource type="Texture2D" uid="uid://b6k6usv0iukrh" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR1.png" id="42_33v81"]
+[ext_resource type="Texture2D" uid="uid://cnqgiqkn7lgay" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR2.png" id="43_56yuu"]
+[ext_resource type="Texture2D" uid="uid://wnq8k6fv4crs" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontL.png" id="44_fk0pi"]
+[ext_resource type="Texture2D" uid="uid://duq0jjrg3kxyn" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontR.png" id="45_utlys"]
+[ext_resource type="Texture2D" uid="uid://cpy8kva54a2jc" path="res://Art/Pirates/HHShark/Moving/HHSharkBackL.png" id="46_ubxbg"]
+[ext_resource type="Texture2D" uid="uid://daejge5n7rnpv" path="res://Art/Pirates/HHShark/Moving/HHSharkBackR.png" id="47_wnb0h"]
+
 [ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="55_1ky26"]
 [ext_resource type="AudioStream" uid="uid://bj173jpryfuer" path="res://Audio/crew_alert.mp3" id="56_w2408"]
 [ext_resource type="AudioStream" uid="uid://bx0y34nvwegsj" path="res://Audio/crew_acknowledge.mp3" id="57_jewp2"]
@@ -57,8 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://uac7k4tadqyl" path="res://Audio/Actions/Bailing/throwing_water.wav" id="62_vyeu1"]
 [ext_resource type="AudioStream" uid="uid://bqwb8hcnuikap" path="res://Audio/Actions/Eating/munch_1.wav" id="63_hu0k6"]
 [ext_resource type="AudioStream" uid="uid://b83mes7o5r3r5" path="res://Audio/Actions/Eating/munch_2.wav" id="64_qw64h"]
-[ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="65_etnqn"]
-[ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="66_chk86"]
+
 [ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="67_lunvm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rshy2"]
@@ -823,8 +821,7 @@ _data = {
 "eating": SubResource("Animation_aagtk"),
 "idle_down": SubResource("Animation_df2kf"),
 "idle_up": SubResource("Animation_yrpeu"),
-"patch_leak": ExtResource("65_etnqn"),
-"stomping": ExtResource("66_chk86"),
+
 "walking_down": SubResource("Animation_2fgx1"),
 "walking_up": SubResource("Animation_x2nhf")
 }
@@ -834,8 +831,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
-script = ExtResource("1_tch5y")
-idle_modifier = ExtResource("2_rs4m8")
+
 
 [node name="Node" type="Node" parent="."]
 

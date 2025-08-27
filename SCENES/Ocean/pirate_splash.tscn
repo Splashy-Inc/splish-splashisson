@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3ejrjpf5vr4h"]
+[gd_scene load_steps=8 format=3 uid="uid://bspq7smrmeth7"]
 
-[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashA.png" id="1_jxjtr"]
-[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashB.png" id="2_166ro"]
-[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashC.png" id="3_pq8wr"]
-[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashD.png" id="4_42l5v"]
-[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashE.png" id="5_ie1yy"]
-[ext_resource type="Texture2D" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashF.png" id="6_it8f4"]
+[ext_resource type="Texture2D" uid="uid://bg5dpnbshij7x" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashA.png" id="1_jxjtr"]
+[ext_resource type="Texture2D" uid="uid://bpcikrqj0h7c0" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashB.png" id="2_166ro"]
+[ext_resource type="Texture2D" uid="uid://bma5l7cbhb5dy" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashC.png" id="3_pq8wr"]
+[ext_resource type="Texture2D" uid="uid://cyfcmhitqhs41" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashD.png" id="4_42l5v"]
+[ext_resource type="Texture2D" uid="uid://b4y0meghyt822" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashE.png" id="5_ie1yy"]
+[ext_resource type="Texture2D" uid="uid://cej8143kh218e" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashF.png" id="6_it8f4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ghcrk"]
 animations = [{
