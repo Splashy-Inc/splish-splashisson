@@ -1,7 +1,5 @@
-[gd_scene load_steps=78 format=3 uid="uid://b40oaetqwyltx"]
+[gd_scene load_steps=74 format=3 uid="uid://b40oaetqwyltx"]
 
-[ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_tch5y"]
-[ext_resource type="Resource" uid="uid://dc32iot17r1ur" path="res://Custom Resources/idle_morale_modifier.tres" id="2_rs4m8"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_jwnii"]
 [ext_resource type="Texture2D" uid="uid://dpw3230xsh78i" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL1.png" id="4_w157y"]
 [ext_resource type="Texture2D" uid="uid://cac4b7mxro3x6" path="res://Art/Pirates/Shark/Fight/SharkFightL1.png" id="4_ylis3"]
@@ -57,8 +55,6 @@
 [ext_resource type="AudioStream" uid="uid://uac7k4tadqyl" path="res://Audio/Actions/Bailing/throwing_water.wav" id="62_vyeu1"]
 [ext_resource type="AudioStream" uid="uid://bqwb8hcnuikap" path="res://Audio/Actions/Eating/munch_1.wav" id="63_hu0k6"]
 [ext_resource type="AudioStream" uid="uid://b83mes7o5r3r5" path="res://Audio/Actions/Eating/munch_2.wav" id="64_qw64h"]
-[ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="65_etnqn"]
-[ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="66_chk86"]
 [ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="67_lunvm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rshy2"]
@@ -823,8 +819,6 @@ _data = {
 "eating": SubResource("Animation_aagtk"),
 "idle_down": SubResource("Animation_df2kf"),
 "idle_up": SubResource("Animation_yrpeu"),
-"patch_leak": ExtResource("65_etnqn"),
-"stomping": ExtResource("66_chk86"),
 "walking_down": SubResource("Animation_2fgx1"),
 "walking_up": SubResource("Animation_x2nhf")
 }
@@ -834,8 +828,6 @@ z_index = 1
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
-script = ExtResource("1_tch5y")
-idle_modifier = ExtResource("2_rs4m8")
 
 [node name="Node" type="Node" parent="."]
 
