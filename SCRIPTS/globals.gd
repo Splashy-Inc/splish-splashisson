@@ -46,7 +46,7 @@ var cur_controls := ControlsData.AVAILABLE_CONTROLS
 
 var action_color := Color(1, 0.741, 0.196)
 var crew_select_color := Color(0, 0.843, 0.196)
-var disabled_modulate := Color(1, 1, 1, 0.498)
+var disabled_modulate := Color(0.369, 0.69, 0.714, 0.498)
 var modulate_reset := Color(1, 1, 1)
 var joypad_connected := false
 var joystick : JoyStick
