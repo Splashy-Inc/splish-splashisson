@@ -11,6 +11,7 @@ var threats := []
 @onready var morale_bar: ProgressBar = $MoraleBar
 
 @export var collision_shape : CollisionShape2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _process(delta: float) -> void:
 	if is_instance_valid(worker) and worker is Crew:
@@ -78,15 +79,17 @@ func add_threat(body: Node2D):
 	if body is Puddle:
 		body.died.connect(_on_threat_died.bind(body))
 	threats.append(body)
-	modulate = Globals.disabled_modulate
-	if assignee:
-		assignee.set_assignment(null)
+	sprite.modulate = Globals.disabled_modulate
+	if assignee is Crew and body.morale_modifier:
+		assignee.add_morale_modifier(body.morale_modifier)
 	return true
 
 func remove_threat(body: Node2D):
 	threats.erase(body)
+	if assignee is Crew and body.morale_modifier:
+		assignee.remove_morale_modifier(body.morale_modifier)
 	if threats.is_empty():
-		modulate = Globals.modulate_reset
+		sprite.modulate = Globals.modulate_reset
 	return true
 
 func _on_threat_died(threat: Node2D):

@@ -4,7 +4,7 @@ class_name Task
 
 var assignee: Worker
 var worker: Worker
-@export var morale_modifier := preload("res://Custom Resources/task_morale_modifier.tres")
+@export var morale_modifier := preload("res://Custom Resources/Morale Modifiers/task_morale_modifier.tres")
 
 var is_active = false
 
