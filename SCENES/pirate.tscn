@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://duq0jjrg3kxyn" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontR.png" id="45_utlys"]
 [ext_resource type="Texture2D" uid="uid://cpy8kva54a2jc" path="res://Art/Pirates/HHShark/Moving/HHSharkBackL.png" id="46_ubxbg"]
 [ext_resource type="Texture2D" uid="uid://daejge5n7rnpv" path="res://Art/Pirates/HHShark/Moving/HHSharkBackR.png" id="47_wnb0h"]
+
 [ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="55_1ky26"]
 [ext_resource type="AudioStream" uid="uid://bj173jpryfuer" path="res://Audio/crew_alert.mp3" id="56_w2408"]
 [ext_resource type="AudioStream" uid="uid://bx0y34nvwegsj" path="res://Audio/crew_acknowledge.mp3" id="57_jewp2"]
@@ -55,6 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://uac7k4tadqyl" path="res://Audio/Actions/Bailing/throwing_water.wav" id="62_vyeu1"]
 [ext_resource type="AudioStream" uid="uid://bqwb8hcnuikap" path="res://Audio/Actions/Eating/munch_1.wav" id="63_hu0k6"]
 [ext_resource type="AudioStream" uid="uid://b83mes7o5r3r5" path="res://Audio/Actions/Eating/munch_2.wav" id="64_qw64h"]
+
 [ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="67_lunvm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rshy2"]
@@ -819,6 +821,7 @@ _data = {
 "eating": SubResource("Animation_aagtk"),
 "idle_down": SubResource("Animation_df2kf"),
 "idle_up": SubResource("Animation_yrpeu"),
+
 "walking_down": SubResource("Animation_2fgx1"),
 "walking_up": SubResource("Animation_x2nhf")
 }
@@ -828,6 +831,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
+
 
 [node name="Node" type="Node" parent="."]
 

@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://k7ghjsy8g1k0"]
+[gd_scene load_steps=7 format=3 uid="uid://k7ghjsy8g1k0"]
 
 [ext_resource type="Script" path="res://SCRIPTS/main_menu.gd" id="1_vkagb"]
 [ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_w1mmc"]
 [ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="3_32f6x"]
 [ext_resource type="LabelSettings" uid="uid://c014bsm5ryfcy" path="res://SCENES/GUI/text_title_format.tres" id="3_vj6ow"]
+[ext_resource type="FontFile" uid="uid://d1mx7mywxo10e" path="res://Art/Font/m5x7.ttf" id="4_tra3o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hky3s"]
+font = ExtResource("4_tra3o")
+font_size = 30
+font_color = Color(0.956863, 0.870588, 0.647059, 1)
+outline_size = 4
+outline_color = Color(0.329294, 0.289456, 0.177538, 1)
+shadow_size = 4
+shadow_color = Color(0.661717, 0.531066, 0.301422, 0.588235)
+shadow_offset = Vector2(2, 2)
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(640, 360)
@@ -35,6 +46,7 @@ theme_override_colors/font_outline_color = Color(0.192157, 0.231373, 0.270588, 1
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 32
 text = "A Splashy Saga"
+label_settings = SubResource("LabelSettings_hky3s")
 horizontal_alignment = 1
 
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
