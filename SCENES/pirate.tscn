@@ -1,7 +1,7 @@
 [gd_scene load_steps=63 format=3 uid="uid://b40oaetqwyltx"]
 
 [ext_resource type="Script" path="res://SCRIPTS/pirate.gd" id="1_226mg"]
-[ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/pirate_modifier.tres" id="2_i0crg"]
+[ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/attack_modifier.tres" id="2_i0crg"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_jwnii"]
 [ext_resource type="Texture2D" uid="uid://dpw3230xsh78i" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL1.png" id="4_w157y"]
 [ext_resource type="Texture2D" uid="uid://cac4b7mxro3x6" path="res://Art/Pirates/Shark/Fight/SharkFightL1.png" id="4_ylis3"]
@@ -559,15 +559,15 @@ _data = {
 "walking_up": SubResource("Animation_x2nhf")
 }
 
-[node name="Pirate" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["crew", "selectable"]]
+[node name="Pirate" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["pirate"]]
 z_index = 1
 collision_layer = 64
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_226mg")
-morale_modifier = ExtResource("2_i0crg")
 sprite = NodePath("Node/Shark")
 speed = 75.0
+attack_morale_modifier = ExtResource("2_i0crg")
 
 [node name="Node" type="Node2D" parent="."]
 
@@ -600,7 +600,7 @@ shape = SubResource("CircleShape2D_1ojju")
 [node name="InteractableRange" type="Area2D" parent="."]
 position = Vector2(0, -7)
 collision_layer = 0
-collision_mask = 38
+collision_mask = 39
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_j4hgd")

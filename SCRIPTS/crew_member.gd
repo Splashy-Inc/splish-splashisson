@@ -33,7 +33,7 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
 
-func _on_distraction_timer_timeout() -> void:
+func _on_demoralized() -> void:
 	_toggle_distracted(true)
 
 func _toggle_distracted(new_is_distracted: bool):
@@ -79,7 +79,7 @@ func set_assignment(new_assignment: Node2D):
 			state = State.ALERTED
 			change_morale(1.0)
 		else:
-			if new_assignment is Task or new_assignment is Rat:
+			if new_assignment is Task or new_assignment is Rat or new_assignment is Pirate:
 				if not new_assignment.set_assignee(self):
 					print(self, " unable to set self as assignee of ", new_assignment, ". Going idle.")
 					_set_assignment(null)
@@ -164,4 +164,4 @@ func get_total_morale_modifier() -> float:
 func change_morale(change):
 	morale = clamp(morale + change, 0.0, 1.0)
 	if not is_distracted and morale <= 0.0:
-		_on_distraction_timer_timeout()
+		_on_demoralized()
