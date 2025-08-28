@@ -1,5 +1,7 @@
-[gd_scene load_steps=74 format=3 uid="uid://b40oaetqwyltx"]
+[gd_scene load_steps=63 format=3 uid="uid://b40oaetqwyltx"]
 
+[ext_resource type="Script" path="res://SCRIPTS/pirate.gd" id="1_226mg"]
+[ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/pirate_modifier.tres" id="2_i0crg"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_jwnii"]
 [ext_resource type="Texture2D" uid="uid://dpw3230xsh78i" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL1.png" id="4_w157y"]
 [ext_resource type="Texture2D" uid="uid://cac4b7mxro3x6" path="res://Art/Pirates/Shark/Fight/SharkFightL1.png" id="4_ylis3"]
@@ -45,18 +47,8 @@
 [ext_resource type="Texture2D" uid="uid://duq0jjrg3kxyn" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontR.png" id="45_utlys"]
 [ext_resource type="Texture2D" uid="uid://cpy8kva54a2jc" path="res://Art/Pirates/HHShark/Moving/HHSharkBackL.png" id="46_ubxbg"]
 [ext_resource type="Texture2D" uid="uid://daejge5n7rnpv" path="res://Art/Pirates/HHShark/Moving/HHSharkBackR.png" id="47_wnb0h"]
-
 [ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="55_1ky26"]
-[ext_resource type="AudioStream" uid="uid://bj173jpryfuer" path="res://Audio/crew_alert.mp3" id="56_w2408"]
-[ext_resource type="AudioStream" uid="uid://bx0y34nvwegsj" path="res://Audio/crew_acknowledge.mp3" id="57_jewp2"]
 [ext_resource type="AudioStream" uid="uid://c4wwmhh1pltjm" path="res://Audio/boot_step2.mp3" id="58_wp6ys"]
-[ext_resource type="AudioStream" uid="uid://cb2x7au43eau4" path="res://Audio/Actions/stomp.wav" id="59_h54e2"]
-[ext_resource type="AudioStream" uid="uid://dhcjwsj73g2rg" path="res://Audio/Actions/Patching Leak/pitch_squelch.wav" id="60_4ph05"]
-[ext_resource type="AudioStream" uid="uid://dbfvukmpq1mei" path="res://Audio/Actions/Patching Leak/pitch_squelch_2.wav" id="61_k3dhh"]
-[ext_resource type="AudioStream" uid="uid://uac7k4tadqyl" path="res://Audio/Actions/Bailing/throwing_water.wav" id="62_vyeu1"]
-[ext_resource type="AudioStream" uid="uid://bqwb8hcnuikap" path="res://Audio/Actions/Eating/munch_1.wav" id="63_hu0k6"]
-[ext_resource type="AudioStream" uid="uid://b83mes7o5r3r5" path="res://Audio/Actions/Eating/munch_2.wav" id="64_qw64h"]
-
 [ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="67_lunvm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rshy2"]
@@ -129,7 +121,7 @@ animations = [{
 "texture": ExtResource("15_h5h5l")
 }],
 "loop": true,
-"name": &"move_down",
+"name": &"walking_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -140,7 +132,7 @@ animations = [{
 "texture": ExtResource("17_i6lbn")
 }],
 "loop": true,
-"name": &"move_up",
+"name": &"walking_up",
 "speed": 5.0
 }]
 
@@ -214,7 +206,7 @@ animations = [{
 "texture": ExtResource("15_ieqnw")
 }],
 "loop": true,
-"name": &"move_down",
+"name": &"walking_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -225,7 +217,7 @@ animations = [{
 "texture": ExtResource("16_uyq6t")
 }],
 "loop": true,
-"name": &"move_up",
+"name": &"walking_up",
 "speed": 5.0
 }]
 
@@ -305,7 +297,7 @@ animations = [{
 "texture": ExtResource("45_utlys")
 }],
 "loop": true,
-"name": &"move_down",
+"name": &"walking_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -316,7 +308,7 @@ animations = [{
 "texture": ExtResource("47_wnb0h")
 }],
 "loop": true,
-"name": &"move_up",
+"name": &"walking_up",
 "speed": 5.0
 }]
 
@@ -325,17 +317,6 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4hgd"]
 radius = 19.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vaaau"]
-streams_count = 2
-stream_0/stream = ExtResource("60_4ph05")
-stream_1/stream = ExtResource("61_k3dhh")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sv7jv"]
-random_pitch = 1.2
-streams_count = 2
-stream_0/stream = ExtResource("63_hu0k6")
-stream_1/stream = ExtResource("64_qw64h")
 
 [sub_resource type="Animation" id="Animation_bm4pa"]
 resource_name = "new_animation"
@@ -377,10 +358,8 @@ tracks/2/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_3sbtm"]
-resource_name = "acknowledge"
-length = 0.750013
-step = 0.125
+[sub_resource type="Animation" id="Animation_u6o6e"]
+resource_name = "fight"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -391,249 +370,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"acknowledge"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node/Shark:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["AcknowledgeAssignment"],
-"method": &"play"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node/Shark:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.75),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_animation_finished"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_ot4iw"]
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node/Shark:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"alert"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node/Shark:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 5, 6]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["FollowPlayer"],
-"method": &"play"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node/Shark:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_animation_finished"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_lgxjk"]
-resource_name = "bail_water_2"
-length = 1.16668
-loop_mode = 1
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node/Shark:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(0, -6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node/Shark:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"bail_water"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node/Shark:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_bail_puddle"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SFXManager")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.833333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["ThrowWater"],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_aagtk"]
-resource_name = "eating"
-length = 1.60002
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node/Shark:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"eating"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node/Shark:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.6, 1, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": ["Munch"],
-"method": &"play"
-}, {
-"args": ["Munch"],
-"method": &"play"
-}, {
-"args": ["Munch"],
-"method": &"play"
-}, {
-"args": ["Munch"],
-"method": &"play"
-}]
+"values": [&"fight_L"]
 }
 
 [sub_resource type="Animation" id="Animation_df2kf"]
@@ -815,25 +552,24 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_plwr3"]
 _data = {
 "RESET": SubResource("Animation_bm4pa"),
-"acknowledge": SubResource("Animation_3sbtm"),
-"alert": SubResource("Animation_ot4iw"),
-"bail_water": SubResource("Animation_lgxjk"),
-"eating": SubResource("Animation_aagtk"),
+"fight": SubResource("Animation_u6o6e"),
 "idle_down": SubResource("Animation_df2kf"),
 "idle_up": SubResource("Animation_yrpeu"),
-
 "walking_down": SubResource("Animation_2fgx1"),
 "walking_up": SubResource("Animation_x2nhf")
 }
 
-[node name="Pirate" type="CharacterBody2D" groups=["crew", "selectable"]]
+[node name="Pirate" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["crew", "selectable"]]
 z_index = 1
-collision_layer = 2
+collision_layer = 64
 collision_mask = 9
 motion_mode = 1
+script = ExtResource("1_226mg")
+morale_modifier = ExtResource("2_i0crg")
+sprite = NodePath("Node/Shark")
+speed = 75.0
 
-
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node2D" parent="."]
 
 [node name="Shark" type="AnimatedSprite2D" parent="Node"]
 material = ExtResource("3_jwnii")
@@ -847,7 +583,7 @@ visible = false
 material = ExtResource("3_jwnii")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_43lyt")
-animation = &"move_up"
+animation = &"walking_up"
 autoplay = "idle_up"
 
 [node name="HHShark" type="AnimatedSprite2D" parent="Node"]
@@ -855,7 +591,7 @@ visible = false
 material = ExtResource("3_jwnii")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_uddxc")
-animation = &"move_up"
+animation = &"walking_up"
 autoplay = "idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -864,20 +600,12 @@ shape = SubResource("CircleShape2D_1ojju")
 [node name="InteractableRange" type="Area2D" parent="."]
 position = Vector2(0, -7)
 collision_layer = 0
-collision_mask = 36
+collision_mask = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_j4hgd")
 
 [node name="SFXManager" parent="." instance=ExtResource("55_1ky26")]
-
-[node name="FollowPlayer" type="AudioStreamPlayer" parent="SFXManager"]
-stream = ExtResource("56_w2408")
-volume_db = -5.0
-
-[node name="AcknowledgeAssignment" type="AudioStreamPlayer" parent="SFXManager"]
-stream = ExtResource("57_jewp2")
-volume_db = -5.0
 
 [node name="BootStepHigh" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("58_wp6ys")
@@ -887,32 +615,11 @@ pitch_scale = 1.6
 stream = ExtResource("58_wp6ys")
 pitch_scale = 1.4
 
-[node name="Stomp" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("59_h54e2")
-volume_db = -2.5
-pitch_scale = 0.9
-
-[node name="Patching" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = SubResource("AudioStreamRandomizer_vaaau")
-volume_db = 9.0
-pitch_scale = 0.7
-
-[node name="ThrowWater" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("62_vyeu1")
-
-[node name="Munch" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = SubResource("AudioStreamRandomizer_sv7jv")
-volume_db = 10.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_plwr3")
 }
 autoplay = "RESET"
-
-[node name="LeakPatchTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
 
 [node name="WanderTimer" type="Timer" parent="."]
 wait_time = 2.0

@@ -2,9 +2,10 @@ extends Worker
 
 class_name Crew
 
+signal distracted
+
 @export var is_distracted: bool
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var wander_timer: Timer = $WanderTimer
 @onready var morale_bar: ProgressBar = $MoraleBar
@@ -17,7 +18,7 @@ var disable_morale := false # For tutorial
 
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
-	$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
+	sprite.material.set_shader_parameter("line_color", Globals.crew_select_color)
 	if navigation_agent:
 		navigation_agent.set_target_position(global_position)
 
@@ -38,6 +39,7 @@ func _on_distraction_timer_timeout() -> void:
 func _toggle_distracted(new_is_distracted: bool):
 	is_distracted = new_is_distracted
 	if is_distracted:
+		distracted.emit()
 		var new_distraction = get_closest_distraction()
 		if new_distraction:
 			set_assignment(new_distraction)

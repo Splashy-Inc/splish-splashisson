@@ -555,14 +555,15 @@ _data = {
 "walking_up": SubResource("Animation_y4fll")
 }
 
-[node name="Splish" type="CharacterBody2D" groups=["player"]]
+[node name="Splish" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["player"]]
 z_index = 1
-collision_mask = 10
+collision_mask = 72
 motion_mode = 1
 script = ExtResource("1_34yo7")
 base_morale_modifier = ExtResource("2_5x42x")
 working_morale_modifier = ExtResource("3_w7u3g")
 morale_color = Color(1, 1, 0, 0.494118)
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="MoraleAura" type="Area2D" parent="."]
 z_index = -2

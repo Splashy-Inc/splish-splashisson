@@ -3,8 +3,9 @@ extends CharacterBody2D
 class_name Worker
 
 @export var current_assignment: Node2D
+@export var sprite : Node2D
 
-const SPEED = 150.0
+@export var speed = 150.0
 var speed_mod := 1.0
 
 var is_selected = false
@@ -58,7 +59,7 @@ func _physics_process(delta: float) -> void:
 
 func _idle_state(delta: float):
 	if current_assignment:
-		if _check_in_range(current_assignment):
+		if _check_in_range(get_current_target()):
 			if current_assignment is Player:
 				if global_position.direction_to(current_assignment.global_position).y < 0:
 					$AnimationPlayer.play("idle_up")
@@ -75,11 +76,11 @@ func _idle_state(delta: float):
 			state = State.MOVING
 
 func _move_state(delta: float):
-	if _check_in_range(current_assignment):
+	if _check_in_range(get_current_target()):
 		state = State.IDLE
 	else:
 		var direction = _get_direction()
-		velocity += direction * SPEED * speed_mod
+		velocity += direction * speed * speed_mod
 		
 		if velocity != Vector2.ZERO and push_velocity == Vector2.ZERO:
 			if rad_to_deg(velocity.angle()) < -15 and  rad_to_deg(velocity.angle()) > -165:
@@ -171,7 +172,7 @@ func set_highlight(is_enable: bool):
 	reset_highlight()
 
 func reset_highlight():
-	$AnimatedSprite2D.material.set_shader_parameter("on", is_selected)
+	sprite.material.set_shader_parameter("on", is_selected)
 
 func start_rowing():
 	if current_assignment is RowingTask and current_assignment.set_worker(self):
@@ -280,3 +281,6 @@ func stomp():
 func _attack_target(target: Node2D):
 	if target and target.has_method("on_hit"):
 		target.on_hit()
+
+func get_current_target():
+	return current_assignment

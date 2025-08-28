@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=10 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
+[ext_resource type="PackedScene" uid="uid://b40oaetqwyltx" path="res://SCENES/pirate.tscn" id="7_xxhvm"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_teo1b"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
 
@@ -16,7 +17,7 @@ player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 60
 boat = NodePath("Boat")
-boat_length = 2
+boat_length = 5
 generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
@@ -41,12 +42,14 @@ position = Vector2(320, 180)
 script = ExtResource("2_gusxx")
 focus_target = NodePath("../Splish")
 
+[node name="Pirate" parent="People" instance=ExtResource("7_xxhvm")]
+position = Vector2(300, 25)
+
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_teo1b")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
 [node name="Weather" parent="." instance=ExtResource("10_66vyk")]
-type = 1
 
 [node name="LevelUI" parent="." instance=ExtResource("3_75gk2")]
 

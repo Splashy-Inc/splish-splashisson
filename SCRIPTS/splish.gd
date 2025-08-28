@@ -31,7 +31,6 @@ var input_disabled = false
 
 var aura_targets : Array[Crew]
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var morale_aura: Area2D = $MoraleAura
 @onready var morale_collision_shape: CollisionShape2D = $MoraleAura/CollisionShape2D
 @onready var interactable_range: Area2D = $InteractableRange
@@ -81,7 +80,7 @@ func _move_state(delta: float):
 				$AnimationPlayer.play("walking_up")
 			else:
 				$AnimationPlayer.play("walking_down")
-			velocity = direction * SPEED
+			velocity = direction * speed
 		else:
 			$AnimationPlayer.play("idle")
 			velocity = Vector2.ZERO
@@ -90,7 +89,7 @@ func _move_state(delta: float):
 		for i in get_slide_collision_count():
 			var col = get_slide_collision(i)
 			if col.get_collider() is Crew:
-				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
+				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * speed * 2)
 
 func _input(event: InputEvent) -> void:
 	if not input_disabled and not (Globals.is_mobile and event is InputEventMouse):
@@ -139,6 +138,7 @@ func point(target_position: Vector2):
 	
 func add_follower(new_follower: Crew):
 	new_follower.set_assignment(self)
+	new_follower.distracted.connect(_on_follower_distracted.bind(new_follower))
 	followers.append(new_follower)
 	$SFXManager.play("AddFollower")
 	point(new_follower.global_position)
@@ -154,6 +154,10 @@ func assign_follower(follower: Crew, new_assignment: Node2D):
 	point(new_assignment.global_position)
 	followers.erase(follower)
 	_refresh_targets()
+
+func _on_follower_distracted(follower: Crew):
+	follower.distracted.disconnect(_on_follower_distracted)
+	followers.erase(follower)
 
 func _find_action_target():
 	if not action_target in interactables:

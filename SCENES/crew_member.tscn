@@ -790,13 +790,14 @@ _data = {
 "walking_up": SubResource("Animation_x2nhf")
 }
 
-[node name="CrewMember" type="CharacterBody2D" groups=["crew", "selectable"]]
+[node name="CrewMember" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["crew", "selectable"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_ci8gb")
 idle_modifier = ExtResource("2_3cw83")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_5n08l")

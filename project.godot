@@ -175,6 +175,7 @@ pause={
 2d_physics/layer_4="Boundaries"
 2d_physics/layer_5="Puddles"
 2d_physics/layer_6="Cargo"
+2d_physics/layer_7="Pirates"
 
 [rendering]
 
