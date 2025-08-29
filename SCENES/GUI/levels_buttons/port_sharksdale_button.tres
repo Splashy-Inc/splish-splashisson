@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://d2axt0rn6ok78"]
+
+[ext_resource type="Texture2D" uid="uid://n7xjumertdwc" path="res://Art/GUI/levels_menu/port_sharksdale_button_completed.png" id="1_bnvm3"]
+[ext_resource type="Texture2D" uid="uid://cd64js36lt8uu" path="res://Art/GUI/levels_menu/port_sharksdale_button_disabled.png" id="2_ddw32"]
+[ext_resource type="Texture2D" uid="uid://fk56fuwn0eda" path="res://Art/GUI/levels_menu/port_sharksdale_button_selected.png" id="3_u63ko"]
+[ext_resource type="Texture2D" uid="uid://bs2pxsaccqvlj" path="res://Art/GUI/levels_menu/port_sharksdale_button_basic.png" id="4_cyava"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnudd"]
+atlas = ExtResource("1_bnvm3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d1jvn"]
+texture = SubResource("AtlasTexture_vnudd")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm1ma"]
+atlas = ExtResource("2_ddw32")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1pkf4"]
+texture = SubResource("AtlasTexture_fm1ma")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1jhla"]
+load_path = "res://.godot/imported/port_sharksdale_button_selected.png-db6469d7afc7b4653e98077675e9a18c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sm1c"]
+atlas = SubResource("CompressedTexture2D_1jhla")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36pmv"]
+texture = SubResource("AtlasTexture_8sm1c")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhq4v"]
+atlas = ExtResource("3_u63ko")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uirf3"]
+texture = SubResource("AtlasTexture_rhq4v")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw5xs"]
+atlas = ExtResource("4_cyava")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iawly"]
+texture = SubResource("AtlasTexture_mw5xs")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iqx5q"]
+load_path = "res://.godot/imported/port_sharksdale_button_selected.png-db6469d7afc7b4653e98077675e9a18c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0efen"]
+atlas = SubResource("CompressedTexture2D_iqx5q")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27ki6"]
+texture = SubResource("AtlasTexture_0efen")
+
+[resource]
+Button/styles/completed = SubResource("StyleBoxTexture_d1jvn")
+Button/styles/disabled = SubResource("StyleBoxTexture_1pkf4")
+Button/styles/focus = SubResource("StyleBoxTexture_36pmv")
+Button/styles/hover = SubResource("StyleBoxTexture_uirf3")
+Button/styles/normal = SubResource("StyleBoxTexture_iawly")
+Button/styles/pressed = SubResource("StyleBoxTexture_27ki6")

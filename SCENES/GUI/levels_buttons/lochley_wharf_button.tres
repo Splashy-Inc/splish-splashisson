@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://bys2c52trjtla"]
+
+[ext_resource type="Texture2D" uid="uid://bo5us1gq1cn7q" path="res://Art/GUI/levels_menu/lochley_wharf_button_completed.png" id="1_flkjl"]
+[ext_resource type="Texture2D" uid="uid://dqqpr7wqja6dg" path="res://Art/GUI/levels_menu/lochley_wharf_button_disabled.png" id="2_c5c8r"]
+[ext_resource type="Texture2D" uid="uid://be3wgiap3gek4" path="res://Art/GUI/levels_menu/lochley_wharf_button_basic.png" id="3_adwiy"]
+[ext_resource type="Texture2D" uid="uid://6pifwfoe0lnn" path="res://Art/GUI/levels_menu/lochley_wharf_button_selected.png" id="4_nqhib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqgpt"]
+atlas = ExtResource("1_flkjl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jd8oa"]
+texture = SubResource("AtlasTexture_sqgpt")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpg10"]
+atlas = ExtResource("2_c5c8r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tvqk"]
+texture = SubResource("AtlasTexture_rpg10")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lmc47"]
+load_path = "res://.godot/imported/lochley_wharf_button_selected.png-9f4003f721010044d003a5f67c591f95.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvbf6"]
+atlas = SubResource("CompressedTexture2D_lmc47")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrng6"]
+texture = SubResource("AtlasTexture_kvbf6")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_djowv"]
+load_path = "res://.godot/imported/lochley_wharf_button_selected.png-9f4003f721010044d003a5f67c591f95.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frunm"]
+atlas = SubResource("CompressedTexture2D_djowv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sa265"]
+texture = SubResource("AtlasTexture_frunm")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgtkm"]
+atlas = ExtResource("3_adwiy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_20snf"]
+texture = SubResource("AtlasTexture_wgtkm")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkxge"]
+atlas = ExtResource("4_nqhib")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sfpgb"]
+texture = SubResource("AtlasTexture_bkxge")
+
+[resource]
+Button/styles/completed = SubResource("StyleBoxTexture_jd8oa")
+Button/styles/disabled = SubResource("StyleBoxTexture_5tvqk")
+Button/styles/focus = SubResource("StyleBoxTexture_hrng6")
+Button/styles/hover = SubResource("StyleBoxTexture_sa265")
+Button/styles/normal = SubResource("StyleBoxTexture_20snf")
+Button/styles/pressed = SubResource("StyleBoxTexture_sfpgb")
