@@ -1,0 +1,53 @@
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://b72de44aium4s"]
+
+[ext_resource type="Texture2D" uid="uid://dkx50ac81bodq" path="res://Art/GUI/levels_menu/gullmore_crossing_button_basic.png" id="1_5p7nw"]
+[ext_resource type="Texture2D" uid="uid://dwb0fobfsdbl6" path="res://Art/GUI/levels_menu/gullmore_crossing_button_completed.png" id="1_tf3yr"]
+[ext_resource type="Texture2D" uid="uid://bs3oxwe8hdlay" path="res://Art/GUI/levels_menu/gullmore_crossing_button_disabled.png" id="2_7mf0l"]
+[ext_resource type="Texture2D" uid="uid://8xdebejf4k67" path="res://Art/GUI/levels_menu/gullmore_crossing_button_selected.png" id="3_hlwo2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1dkx"]
+atlas = ExtResource("1_tf3yr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6wq5t"]
+texture = SubResource("AtlasTexture_p1dkx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkc4w"]
+atlas = ExtResource("2_7mf0l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gj44k"]
+texture = SubResource("AtlasTexture_pkc4w")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwpgc"]
+atlas = ExtResource("3_hlwo2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5tsw"]
+texture = SubResource("AtlasTexture_cwpgc")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqhcr"]
+atlas = ExtResource("3_hlwo2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jc7e7"]
+texture = SubResource("AtlasTexture_iqhcr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csir7"]
+atlas = ExtResource("1_5p7nw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2tpdo"]
+texture = SubResource("AtlasTexture_csir7")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_np0pp"]
+load_path = "res://.godot/imported/gullmore_crossing_button_selected.png-7e50aa8a98323546f543eaf217c769e0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eokil"]
+atlas = SubResource("CompressedTexture2D_np0pp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yhpj"]
+texture = SubResource("AtlasTexture_eokil")
+
+[resource]
+Button/styles/completed = SubResource("StyleBoxTexture_6wq5t")
+Button/styles/disabled = SubResource("StyleBoxTexture_gj44k")
+Button/styles/focus = SubResource("StyleBoxTexture_e5tsw")
+Button/styles/hover = SubResource("StyleBoxTexture_jc7e7")
+Button/styles/normal = SubResource("StyleBoxTexture_2tpdo")
+Button/styles/pressed = SubResource("StyleBoxTexture_8yhpj")
