@@ -132,7 +132,7 @@ func _attack_state():
 		if current_assignment is Rat:
 			$AnimationPlayer.play("stomping")
 		elif current_assignment is Pirate:
-			$AnimationPlayer.play("stomping")
+			$AnimationPlayer.play("fighting")
 	move_and_slide()
 
 func _on_animation_finished():

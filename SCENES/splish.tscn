@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=70 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/Morale Modifiers/player_base_morale_modifier.tres" id="2_5x42x"]
@@ -27,6 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://c4wwmhh1pltjm" path="res://Audio/boot_step2.mp3" id="12_4oj1e"]
 [ext_resource type="Texture2D" uid="uid://b78mvvf5fel26" path="res://Art/Splish/PatchingLeak/PatchLeakE.png" id="12_g6f3r"]
 [ext_resource type="Texture2D" uid="uid://yhieyongi168" path="res://Art/Splish/PatchingLeak/PatchLeakF.png" id="13_n3dog"]
+[ext_resource type="Texture2D" uid="uid://dic8hhfgpivf1" path="res://Art/Splish/Fight/SplishFightL2.png" id="13_p4cpk"]
+[ext_resource type="Texture2D" uid="uid://dvxhdc1fgdl2i" path="res://Art/Splish/Fight/SplishFightL3.png" id="14_6js6f"]
 [ext_resource type="Texture2D" uid="uid://dgtuwrnav5rqg" path="res://Art/Splish/PatchingLeak/PatchLeakG.png" id="14_bvxsk"]
 [ext_resource type="Texture2D" uid="uid://dp5ysc5cbcn18" path="res://Art/Splish/PatchingLeak/PatchLeakH.png" id="15_prk4k"]
 [ext_resource type="Texture2D" uid="uid://d02ykb3r6b7kx" path="res://Art/Splish/PatchingLeak/PatchLeakI.png" id="16_gar54"]
@@ -160,6 +162,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"bail_water",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_p4cpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6js6f")
+}],
+"loop": true,
+"name": &"fighting",
 "speed": 5.0
 }, {
 "frames": [{
@@ -544,10 +557,41 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_os8pn"]
+resource_name = "fighting"
+length = 0.500025
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fighting"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iikno"]
 _data = {
 "RESET": SubResource("Animation_jr7t7"),
 "bail_water": SubResource("Animation_m7eue"),
+"fighting": SubResource("Animation_os8pn"),
 "idle": SubResource("Animation_0g00q"),
 "patch_leak": ExtResource("38_tcamb"),
 "pointing_right": SubResource("Animation_t3dpn"),

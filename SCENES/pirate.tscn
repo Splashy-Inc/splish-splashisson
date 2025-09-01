@@ -583,16 +583,18 @@ visible = false
 material = ExtResource("3_jwnii")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_43lyt")
-animation = &"walking_up"
+animation = &"idle_up"
 autoplay = "idle_up"
+frame_progress = 0.258742
 
 [node name="HHShark" type="AnimatedSprite2D" parent="Node"]
 visible = false
 material = ExtResource("3_jwnii")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_uddxc")
-animation = &"walking_up"
-autoplay = "idle_up"
+animation = &"idle_down"
+autoplay = "idle_down"
+frame_progress = 0.534113
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1ojju")
