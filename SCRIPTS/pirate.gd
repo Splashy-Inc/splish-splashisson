@@ -9,18 +9,27 @@ var is_defeated := false
 var worker: Node2D
 var assignee: Node2D
 
+@export var defeated_color: Color
+
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
-	sprite.material.set_shader_parameter("line_color", Globals.action_color)
+	set_highlight(false, Globals.action_color)
 	if navigation_agent:
 		navigation_agent.set_target_position(global_position)
 
 func _process(delta: float) -> void:
-	if not disable_morale:
-		change_morale(total_morale_modifier * delta)
-		morale_bar.value = morale
-	if (current_assignment is Crew and current_assignment.morale <= 0.0) or not current_assignment or not _check_in_range(get_current_target()):
-		set_assignment(get_closest_target())
+	if not is_defeated:
+		if not disable_morale:
+			change_morale(total_morale_modifier * delta)
+			morale_bar.value = morale
+
+		if not current_assignment is Player and ((current_assignment is Crew and current_assignment.morale <= 0.0) or not _check_in_range(get_current_target())):
+			set_assignment(get_closest_target())
+
+func _start_assignment_player():
+	_start_assignment()
 
 func _attack_state():
 	if _check_in_range(get_current_target()):
@@ -36,22 +45,31 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
 
 func _on_demoralized():
+	died.emit()
+	set_highlight(true, defeated_color)
+	is_defeated = true
 	remove_from_group("pirate")
 	set_assignment(null)
-	is_defeated = true
-	died.emit()
-	queue_free()
+	collision_shape.disabled = true
+
+func set_highlight(is_enable: bool, new_color: Color = Color.WHITE):
+	if not is_defeated:
+		if new_color != Color.WHITE:
+			sprite.material.set_shader_parameter("line_color", new_color)
+		is_selected = is_enable
+		reset_highlight()
 
 func get_closest_target():
-	var crew_members = get_tree().get_nodes_in_group("crew")
-	var new_target = null
-	if not crew_members.is_empty():
-		for crew_member in crew_members:
-			if crew_member is Crew:
-				if crew_member.morale > 0.05:
-					if not new_target or global_position.distance_to(new_target.global_position) > global_position.distance_to(crew_member.global_position):
-						new_target = crew_member
-	return new_target
+	if not is_defeated:
+		var crew_members = get_tree().get_nodes_in_group("crew")
+		var new_target = null
+		if not crew_members.is_empty():
+			for crew_member in crew_members:
+				if crew_member is Crew:
+					if crew_member.morale > 0.05:
+						if not new_target or global_position.distance_to(new_target.global_position) > global_position.distance_to(crew_member.global_position):
+							new_target = crew_member
+		return new_target
 
 func set_assignment(new_assignment: Node2D):
 	if new_assignment != current_assignment:
@@ -74,8 +92,9 @@ func _start_assignment() -> bool:
 	return false
 
 func start_attacking(target: Node2D):
-	if current_assignment is Crew:
-		current_assignment.add_morale_modifier(attack_morale_modifier)
+	if current_assignment is Worker:
+		if current_assignment is Crew:
+			current_assignment.add_morale_modifier(attack_morale_modifier)
 		state = State.ATTACKING
 		return true
 	

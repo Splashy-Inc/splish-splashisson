@@ -63,10 +63,7 @@ func _idle_state(delta: float):
 	if current_assignment:
 		if _check_in_range(get_current_target()):
 			if current_assignment is Player:
-				if global_position.direction_to(current_assignment.global_position).y < 0:
-					$AnimationPlayer.play("idle_up")
-				else:
-					$AnimationPlayer.play("idle_down")
+				_start_assignment_player()
 			else:
 				_start_assignment()
 		else:
@@ -76,6 +73,12 @@ func _idle_state(delta: float):
 			$AnimationPlayer.play("idle_down")
 		else:
 			state = State.MOVING
+
+func _start_assignment_player():
+	if global_position.direction_to(current_assignment.global_position).y < 0:
+		$AnimationPlayer.play("idle_up")
+	else:
+		$AnimationPlayer.play("idle_down")
 
 func _move_state(delta: float):
 	if _check_in_range(get_current_target()):
@@ -175,7 +178,9 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
 
-func set_highlight(is_enable: bool):
+func set_highlight(is_enable: bool, new_color: Color = Color.WHITE):
+	if new_color != Color.WHITE:
+		sprite.material.set_shader_parameter("line_color", new_color)
 	is_selected = is_enable
 	reset_highlight()
 
