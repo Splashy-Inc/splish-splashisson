@@ -13,6 +13,11 @@ var assignee: Node2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+@onready var splash_sprite: AnimatedSprite2D = $Sprite/Splash
+
+var splash_point: Marker2D
+@export var jump_curve : Curve
+
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
 	set_highlight(false, Globals.action_color)
@@ -20,13 +25,12 @@ func _ready():
 		navigation_agent.set_target_position(global_position)
 
 func _process(delta: float) -> void:
-	if not is_defeated:
-		if not disable_morale:
-			change_morale(total_morale_modifier * delta)
-			morale_bar.value = morale
+	if not disable_morale:
+		change_morale(total_morale_modifier * delta)
+		morale_bar.value = morale
 
-		if not current_assignment is Player and ((current_assignment is Crew and current_assignment.morale <= 0.0) or not _check_in_range(get_current_target())):
-			set_assignment(get_closest_target())
+	if not current_assignment is Player and ((current_assignment is Crew and current_assignment.morale <= 0.0) or not _check_in_range(get_current_target())):
+		set_assignment(get_closest_target())
 
 func _start_assignment_player():
 	_start_assignment()
@@ -38,6 +42,19 @@ func _attack_state():
 		current_assignment.remove_morale_modifier(attack_morale_modifier)
 		state = State.IDLE
 
+func _dying_state(delta: float):
+	if _check_in_range(get_current_target()):
+		if splash_sprite.visible:
+			splash_sprite.offset.y += Globals.boat.speed * delta
+		else:
+			_splash()
+	else:
+		_move_state(delta)
+		if global_position.distance_to(splash_point.global_position) <= 150:
+			if sprite is AnimatedSprite2D:
+				sprite.offset.y = -jump_curve.sample(global_position.distance_to(splash_point.global_position)/150)
+			$AnimationPlayer.play("jump")
+
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	interactables.append(body)
 
@@ -45,12 +62,25 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
 
 func _on_demoralized():
-	died.emit()
-	set_highlight(true, defeated_color)
-	is_defeated = true
-	remove_from_group("pirate")
-	set_assignment(null)
-	collision_shape.disabled = true
+	if not is_defeated:
+		remove_from_group("pirate")
+		died.emit()
+		morale_bar.hide()
+		set_highlight(true, defeated_color)
+		is_defeated = true
+		splash_point = _generate_splash_point()
+		set_assignment(splash_point)
+		state = State.DYING
+		speed = 100
+		collision_shape.disabled = true
+
+func _splash():
+	sprite.hide()
+	splash_sprite.show()
+	splash_sprite.play("splash")
+	await splash_sprite.animation_finished
+	splash_point.queue_free()
+	queue_free()
 
 func set_highlight(is_enable: bool, new_color: Color = Color.WHITE):
 	if not is_defeated:
@@ -60,7 +90,9 @@ func set_highlight(is_enable: bool, new_color: Color = Color.WHITE):
 		reset_highlight()
 
 func get_closest_target():
-	if not is_defeated:
+	if is_defeated:
+		return splash_point
+	else:
 		var crew_members = get_tree().get_nodes_in_group("crew")
 		var new_target = null
 		if not crew_members.is_empty():
@@ -103,7 +135,7 @@ func start_attacking(target: Node2D):
 func _get_direction() -> Vector2:
 	var direction = Vector2.ZERO
 	var current_target = get_current_target()
-	if navigation_agent:
+	if navigation_agent and current_target != splash_point:
 		if current_target:
 			if navigation_agent.target_position != current_target.global_position:
 				navigation_agent.set_target_position(current_target.global_position)
@@ -161,3 +193,9 @@ func set_worker(new_worker: Worker) -> bool:
 	if not is_defeated:
 		set_assignment(new_worker)
 	return not is_defeated
+
+func _generate_splash_point():
+	var new_splash_point = Marker2D.new()
+	get_parent().add_child(new_splash_point)
+	new_splash_point.global_position = Vector2(Globals.boat.global_position.x - 250, global_position.y)
+	return new_splash_point

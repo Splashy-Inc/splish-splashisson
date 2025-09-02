@@ -843,6 +843,7 @@ motion_mode = 1
 script = ExtResource("1_ci8gb")
 idle_modifier = ExtResource("2_3cw83")
 sprite = NodePath("AnimatedSprite2D")
+speed = 125.0
 attack_morale_modifier = ExtResource("3_cqmqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

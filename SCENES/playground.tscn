@@ -60,6 +60,10 @@ focus_target = NodePath("../Splish")
 position = Vector2(300, 25)
 attack_morale_modifier = SubResource("Resource_xl0k7")
 
+[node name="Pirate2" parent="People" instance=ExtResource("7_xxhvm")]
+position = Vector2(350, 268)
+attack_morale_modifier = SubResource("Resource_xl0k7")
+
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_teo1b")]
 position = Vector2(640, 180)
 boat = NodePath("../Boat")

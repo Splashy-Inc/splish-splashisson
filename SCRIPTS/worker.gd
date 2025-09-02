@@ -14,6 +14,7 @@ var is_selected = false
 
 # State order is used in selection priority, highest value being what takes precedence
 enum State {
+	DYING,
 	ALERTED,
 	ACKNOWLEDGING,
 	MOVING, # Don't want to easily interrupt worker on their way to tasks
@@ -56,6 +57,8 @@ func _physics_process(delta: float) -> void:
 			_distract_state()
 		State.ATTACKING:
 			_attack_state()
+		State.DYING:
+			_dying_state(delta)
 	
 	move_and_slide()
 
@@ -94,6 +97,9 @@ func _move_state(delta: float):
 				$AnimationPlayer.play("walking_down")
 		else:
 			$AnimationPlayer.play("idle_down")
+
+func _dying_state(delta: float):
+	pass
 
 func _get_direction() -> Vector2:
 	if current_assignment:
@@ -149,9 +155,7 @@ func _set_assignment(new_assignment: Node2D):
 	current_assignment = new_assignment
 	
 	if old_assignment:
-		if old_assignment is Marker2D:
-			old_assignment.queue_free()
-		elif old_assignment is Task:
+		if old_assignment is Task:
 			old_assignment.set_worker(null)
 		elif old_assignment is Rat:
 			old_assignment.set_worker(null)
