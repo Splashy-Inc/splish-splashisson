@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://SCENES/Ocean/ocean_filter.gdshader" id="2_8hcoo"]
 [ext_resource type="Texture2D" uid="uid://clckvxbkc883k" path="res://Art/BG/MainMenuBG/Water.png" id="2_ex1ft"]
 [ext_resource type="Texture2D" uid="uid://bm4ltcdpb500m" path="res://Art/BG/MainMenuBG/Ship.png" id="3_2jpoj"]
-[ext_resource type="Texture2D" uid="uid://bavciayi5qwtd" path="res://SCENES/Ocean/ocean_noise.tres" id="3_wf683"]
+[ext_resource type="Texture2D" uid="uid://icxmtx6qyw1x" path="res://SCENES/Ocean/ocean_noise.tres" id="3_wf683"]
 [ext_resource type="Texture2D" uid="uid://b8k7xdlt20sog" path="res://Art/BG/MainMenuBG/Clouds.png" id="4_5dny2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjkog"]
