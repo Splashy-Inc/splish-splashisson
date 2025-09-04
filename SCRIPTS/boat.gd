@@ -174,12 +174,15 @@ func get_spawn_point():
 	return $PlayGrid.global_position + Vector2(randi_range(0,220), randi_range(0,length))
 	
 func add_obstacle(new_obstacle: Node2D):
-	if new_obstacle is Puddle:
-		$NavigationRegion2D/Obstacles/Puddles.add_child(new_obstacle)
-	elif new_obstacle is Leak:
-		$NavigationRegion2D/Obstacles/Leaks.add_child(new_obstacle)
+	if new_obstacle.get_parent():
+		new_obstacle.reparent($NavigationRegion2D/Obstacles)
 	else:
 		$NavigationRegion2D/Obstacles.add_child(new_obstacle)
+	
+	if new_obstacle is Puddle:
+		new_obstacle.reparent($NavigationRegion2D/Obstacles/Puddles)
+	elif new_obstacle is Leak:
+		new_obstacle.reparent($NavigationRegion2D/Obstacles/Leaks)
 		
 func is_point_in_boat(point: Vector2):
 	var bow = bow_slot.get_children().front()

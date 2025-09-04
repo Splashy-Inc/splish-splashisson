@@ -15,6 +15,7 @@ var is_selected = false
 # State order is used in selection priority, highest value being what takes precedence
 enum State {
 	DYING,
+	BOARDING,
 	ALERTED,
 	ACKNOWLEDGING,
 	MOVING, # Don't want to easily interrupt worker on their way to tasks
@@ -59,6 +60,8 @@ func _physics_process(delta: float) -> void:
 			_attack_state()
 		State.DYING:
 			_dying_state(delta)
+		State.BOARDING:
+			_boarding_state(delta)
 	
 	move_and_slide()
 
@@ -99,6 +102,9 @@ func _move_state(delta: float):
 			$AnimationPlayer.play("idle_down")
 
 func _dying_state(delta: float):
+	pass
+
+func _boarding_state(delta: float):
 	pass
 
 func _get_direction() -> Vector2:
