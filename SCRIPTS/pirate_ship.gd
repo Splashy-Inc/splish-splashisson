@@ -81,4 +81,4 @@ func _die():
 
 func _on_boarding_timer_timeout() -> void:
 	if not boarding_list.is_empty():
-		boarding_list.pop_front().board_boat(target_boat)
+		boarding_list.pop_front().board_boat(target_boat, (boarding_list.size() % 2 == 0))

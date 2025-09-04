@@ -26,6 +26,7 @@ player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 60
 boat = NodePath("Boat")
+boat_length = 2
 generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]

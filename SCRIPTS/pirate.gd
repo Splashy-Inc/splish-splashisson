@@ -71,10 +71,10 @@ func _dying_state(delta: float):
 
 func _boarding_state(delta: float):
 	if _check_in_range(get_current_target()):
+		speed_mod = 1.0
 		set_assignment(null)
 		add_to_group("pirate")
 		collision_shape.disabled = false
-		target_boat.add_obstacle(self)
 		morale_bar.show()
 		has_boarded = true
 		state = State.IDLE
@@ -100,7 +100,7 @@ func _on_demoralized():
 		splash_point = _generate_jump_marker(Vector2(Globals.boat.global_position.x + 250, global_position.y))
 		set_assignment(splash_point)
 		state = State.DYING
-		speed = 100
+		speed_mod = 1.5
 		collision_shape.disabled = true
 
 func _splash():
@@ -229,10 +229,16 @@ func _generate_jump_marker(jump_point: Vector2):
 	new_jump_point.global_position = jump_point
 	return new_jump_point
 
-func board_boat(boat: Boat):
+func board_boat(boat: Boat, is_right: bool = false):
 	target_boat = boat
-	board_point = _generate_jump_marker(Vector2(target_boat.global_position.x - 64, global_position.y))
+	if is_right:
+		board_point = _generate_jump_marker(Vector2(target_boat.global_position.x + 64, global_position.y))
+		speed_mod = 1.5
+	else:
+		board_point = _generate_jump_marker(Vector2(target_boat.global_position.x - 64, global_position.y))
+		speed_mod = 1.0
 	target_boat.add_obstacle(board_point)
 	jump_distance = abs(global_position.x - board_point.global_position.x)
 	set_assignment(board_point)
+	target_boat.add_obstacle(self)
 	state = State.BOARDING
