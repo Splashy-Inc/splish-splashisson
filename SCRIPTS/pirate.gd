@@ -4,6 +4,14 @@ class_name Pirate
 
 signal died
 
+enum Type {
+	NONE,
+	SAW,
+	HAMMER
+}
+
+@export var type : Type
+
 var is_defeated := false
 
 var worker: Node2D
@@ -15,7 +23,9 @@ var assignee: Node2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-@onready var splash_sprite: AnimatedSprite2D = $Sprite/Splash
+@export var sprite_container: Node2D
+@export var sprite_frame_sets : Array[SpriteFrames]
+@onready var splash_sprite: AnimatedSprite2D = $Sprites/Splash
 
 var splash_point: Marker2D
 var board_point: Marker2D
@@ -37,6 +47,8 @@ func _ready():
 		remove_from_group("pirate")
 		collision_shape.disabled = true
 		morale_bar.hide()
+	
+	set_type(type)
 
 func _process(delta: float) -> void:
 	if not disable_morale:
@@ -243,3 +255,7 @@ func board_boat(boat: Boat, is_right: bool = false):
 	set_assignment(board_point)
 	target_boat.add_obstacle(self)
 	state = State.BOARDING
+
+func set_type(new_type: Type):
+	type = new_type
+	sprite.sprite_frames = sprite_frame_sets[type]

@@ -105,6 +105,7 @@ func spawn_pirate():
 	var new_pirate := pirate_scene.instantiate() as Pirate
 	new_pirate.died.connect(_on_pirate_died.bind(new_pirate))
 	pirate_list.append(new_pirate)
+	new_pirate.set_type(randi_range(Pirate.Type.NONE, Pirate.Type.HAMMER))
 	return new_pirate
 
 func get_pirates() -> Array[Pirate]:

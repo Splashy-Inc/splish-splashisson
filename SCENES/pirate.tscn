@@ -1,52 +1,11 @@
-[gd_scene load_steps=72 format=3 uid="uid://b40oaetqwyltx"]
+[gd_scene load_steps=28 format=3 uid="uid://b40oaetqwyltx"]
 
 [ext_resource type="Script" path="res://SCRIPTS/pirate.gd" id="1_226mg"]
 [ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/attack_modifier.tres" id="2_i0crg"]
+[ext_resource type="SpriteFrames" uid="uid://da2vxfmidmm5s" path="res://Custom Resources/saw_pirate_sprite_frames.tres" id="3_jqkd6"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_jwnii"]
-[ext_resource type="Texture2D" uid="uid://dpw3230xsh78i" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL1.png" id="4_w157y"]
-[ext_resource type="Texture2D" uid="uid://cac4b7mxro3x6" path="res://Art/Pirates/Shark/Fight/SharkFightL1.png" id="4_ylis3"]
-[ext_resource type="Texture2D" uid="uid://pkex6f0ymctv" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL2.png" id="5_7hit2"]
-[ext_resource type="Texture2D" uid="uid://dscjl1r502m54" path="res://Art/Pirates/Shark/Fight/SharkFightL2.png" id="5_jtk3g"]
-[ext_resource type="Texture2D" uid="uid://dqisuyufa4l3e" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR1.png" id="6_87csm"]
-[ext_resource type="Texture2D" uid="uid://d37h36ivw1xdo" path="res://Art/Pirates/Shark/Fight/SharkFightR1.png" id="6_ubokm"]
-[ext_resource type="Texture2D" uid="uid://c5ov7ssl6ia82" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR2.png" id="7_imcel"]
-[ext_resource type="Texture2D" uid="uid://oh5qkcg5fas6" path="res://Art/Pirates/Shark/Fight/SharkFightR2.png" id="7_shvik"]
-[ext_resource type="Texture2D" uid="uid://x3riy7xc32u6" path="res://Art/Pirates/Shark/Idle/SharkFront.png" id="8_4c7ld"]
-[ext_resource type="Texture2D" uid="uid://6mvcvg6e638b" path="res://Art/Pirates/SawShark/Idle/SawSharkFront.png" id="8_lbl4a"]
-[ext_resource type="Texture2D" uid="uid://bscgor0yf4co0" path="res://Art/Pirates/Shark/Idle/SharkBack.png" id="9_l7nbj"]
-[ext_resource type="Texture2D" uid="uid://bci8ah1p1gq4n" path="res://Art/Pirates/SawShark/Idle/SawSharkBack.png" id="9_nmu7t"]
-[ext_resource type="Texture2D" uid="uid://c6w7sk5jkynh8" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL1.png" id="10_6eb06"]
-[ext_resource type="Texture2D" uid="uid://db15qd2vj6oj8" path="res://Art/Pirates/Shark/Jump/SharkJumpL1.png" id="10_vk3k2"]
-[ext_resource type="Texture2D" uid="uid://cs7lmqcmg3ihi" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL2.png" id="11_a81of"]
-[ext_resource type="Texture2D" uid="uid://gnl6mrrf03ua" path="res://Art/Pirates/Shark/Jump/SharkJumpL2.png" id="11_o7iqu"]
-[ext_resource type="Texture2D" uid="uid://h4kb2e3fwpja" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR1.png" id="12_hsdth"]
-[ext_resource type="Texture2D" uid="uid://bqxktfltp3tsi" path="res://Art/Pirates/Shark/Jump/SharkJumpR1.png" id="12_k4fbo"]
-[ext_resource type="Texture2D" uid="uid://kr74cabbw1a1" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR2.png" id="13_jrtxg"]
-[ext_resource type="Texture2D" uid="uid://ctd5j5a4bjdi1" path="res://Art/Pirates/Shark/Jump/SharkJumpR2.png" id="13_sgyvs"]
-[ext_resource type="Texture2D" uid="uid://b30ixagddwnvj" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontL.png" id="14_4qd8o"]
-[ext_resource type="Texture2D" uid="uid://pc2pi4414smo" path="res://Art/Pirates/Shark/Moving/SharkFrontL.png" id="14_ngin1"]
-[ext_resource type="Texture2D" uid="uid://cvlr5yhgog4n2" path="res://Art/Pirates/Shark/Moving/SharkFrontR.png" id="15_h5h5l"]
-[ext_resource type="Texture2D" uid="uid://cbcv0jd1otrt6" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontR.png" id="15_ieqnw"]
-[ext_resource type="Texture2D" uid="uid://k6cwjp42ni38" path="res://Art/Pirates/SawShark/Moving/SawSharkBackR.png" id="16_uyq6t"]
-[ext_resource type="Texture2D" uid="uid://co2u1mv5y03a0" path="res://Art/Pirates/Shark/Moving/SharkBackL.png" id="16_xawdc"]
-[ext_resource type="Texture2D" uid="uid://b5ithsclju0ce" path="res://Art/Pirates/SawShark/Moving/SawSharkBackL.png" id="17_ef6fk"]
-[ext_resource type="Texture2D" uid="uid://bd1721rthv6ak" path="res://Art/Pirates/Shark/Moving/SharkBackR.png" id="17_i6lbn"]
-[ext_resource type="Texture2D" uid="uid://cngirm52brw6y" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL1.png" id="18_wj0bh"]
-[ext_resource type="Texture2D" uid="uid://bghsy3ylgd653" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL2.png" id="19_5xsyy"]
-[ext_resource type="Texture2D" uid="uid://jvgdkar3ar8v" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL3.png" id="20_6cms4"]
-[ext_resource type="Texture2D" uid="uid://2bdmqms3uyij" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR1.png" id="21_4viyr"]
-[ext_resource type="Texture2D" uid="uid://d2o0tocun5ss6" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR2.png" id="22_ct5h6"]
-[ext_resource type="Texture2D" uid="uid://crm74iy7lcqe" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR3.png" id="23_0227t"]
-[ext_resource type="Texture2D" uid="uid://bm1oem6agd2w5" path="res://Art/Pirates/HHShark/Idle/HHSharkFront.png" id="38_jk1ad"]
-[ext_resource type="Texture2D" uid="uid://coa1lxrvilulp" path="res://Art/Pirates/HHShark/Idle/HHSharkBack.png" id="39_rf647"]
-[ext_resource type="Texture2D" uid="uid://c46ehbi3f7tlj" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL1.png" id="40_aquq3"]
-[ext_resource type="Texture2D" uid="uid://b7vr5ood0fqnb" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL2.png" id="41_20iu3"]
-[ext_resource type="Texture2D" uid="uid://b6k6usv0iukrh" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR1.png" id="42_33v81"]
-[ext_resource type="Texture2D" uid="uid://cnqgiqkn7lgay" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR2.png" id="43_56yuu"]
-[ext_resource type="Texture2D" uid="uid://wnq8k6fv4crs" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontL.png" id="44_fk0pi"]
-[ext_resource type="Texture2D" uid="uid://duq0jjrg3kxyn" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontR.png" id="45_utlys"]
-[ext_resource type="Texture2D" uid="uid://cpy8kva54a2jc" path="res://Art/Pirates/HHShark/Moving/HHSharkBackL.png" id="46_ubxbg"]
-[ext_resource type="Texture2D" uid="uid://daejge5n7rnpv" path="res://Art/Pirates/HHShark/Moving/HHSharkBackR.png" id="47_wnb0h"]
+[ext_resource type="SpriteFrames" uid="uid://d08fqlykkmdl6" path="res://Custom Resources/basic_pirate_sprite_frames.tres" id="4_m7fne"]
+[ext_resource type="SpriteFrames" uid="uid://c7fbmx4sog75q" path="res://Custom Resources/hammer_pirate_sprite_frames.tres" id="4_nsorq"]
 [ext_resource type="Texture2D" uid="uid://bg5dpnbshij7x" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashA.png" id="48_28fwu"]
 [ext_resource type="Texture2D" uid="uid://bpcikrqj0h7c0" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashB.png" id="49_iwijb"]
 [ext_resource type="Texture2D" uid="uid://bma5l7cbhb5dy" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashC.png" id="50_weklw"]
@@ -61,267 +20,6 @@
 max_value = 50.0
 _data = [Vector2(0, 0), 0.0, 100.0, 0, 0, Vector2(0.5, 50), 0.0, 0.0, 0, 0, Vector2(1, 0), -100.0, 100.0, 0, 0]
 point_count = 3
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rshy2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_ylis3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_jtk3g")
-}],
-"loop": true,
-"name": &"fight_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_ubokm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_shvik")
-}],
-"loop": true,
-"name": &"fight_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_4c7ld")
-}],
-"loop": true,
-"name": &"idle_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_l7nbj")
-}],
-"loop": true,
-"name": &"idle_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_vk3k2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_o7iqu")
-}],
-"loop": true,
-"name": &"jump_L",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_k4fbo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_sgyvs")
-}],
-"loop": true,
-"name": &"jump_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_ngin1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_h5h5l")
-}],
-"loop": true,
-"name": &"walking_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_xawdc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_i6lbn")
-}],
-"loop": true,
-"name": &"walking_up",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_43lyt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_7hit2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_w157y")
-}],
-"loop": true,
-"name": &"fight_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_87csm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_imcel")
-}],
-"loop": true,
-"name": &"fight_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_lbl4a")
-}],
-"loop": true,
-"name": &"idle_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_nmu7t")
-}],
-"loop": true,
-"name": &"idle_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_6eb06")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_a81of")
-}],
-"loop": true,
-"name": &"jump_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_hsdth")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_jrtxg")
-}],
-"loop": true,
-"name": &"jump_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_4qd8o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_ieqnw")
-}],
-"loop": true,
-"name": &"walking_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_ef6fk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_uyq6t")
-}],
-"loop": true,
-"name": &"walking_up",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uddxc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_wj0bh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_5xsyy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_6cms4")
-}],
-"loop": true,
-"name": &"fight_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_4viyr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_ct5h6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_0227t")
-}],
-"loop": true,
-"name": &"fight_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("38_jk1ad")
-}],
-"loop": true,
-"name": &"idle_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("39_rf647")
-}],
-"loop": true,
-"name": &"idle_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("40_aquq3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_20iu3")
-}],
-"loop": true,
-"name": &"jump_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("42_33v81")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_56yuu")
-}],
-"loop": true,
-"name": &"jump_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("44_fk0pi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_utlys")
-}],
-"loop": true,
-"name": &"walking_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("46_ubxbg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("47_wnb0h")
-}],
-"loop": true,
-"name": &"walking_up",
-"speed": 5.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wnkih"]
 animations = [{
@@ -364,7 +62,7 @@ length = 0.0333367
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Shark:animation")
+tracks/0/path = NodePath("Sprites/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -376,7 +74,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Shark:frame")
+tracks/1/path = NodePath("Sprites/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -388,7 +86,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/Shark:offset")
+tracks/2/path = NodePath("Sprites/Sprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -403,7 +101,7 @@ resource_name = "fight"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Shark:animation")
+tracks/0/path = NodePath("Sprites/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -420,7 +118,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Shark:animation")
+tracks/0/path = NodePath("Sprites/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -432,7 +130,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Shark:offset")
+tracks/1/path = NodePath("Sprites/Sprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -449,7 +147,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Shark:animation")
+tracks/0/path = NodePath("Sprites/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -461,7 +159,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Shark:offset")
+tracks/1/path = NodePath("Sprites/Sprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -479,7 +177,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Shark:animation")
+tracks/0/path = NodePath("Sprites/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -497,7 +195,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Shark:animation")
+tracks/0/path = NodePath("Sprites/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -509,7 +207,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Shark:frame")
+tracks/1/path = NodePath("Sprites/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -538,7 +236,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/Shark:offset")
+tracks/3/path = NodePath("Sprites/Sprite:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -556,7 +254,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite/Shark:animation")
+tracks/0/path = NodePath("Sprites/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -568,7 +266,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite/Shark:frame")
+tracks/1/path = NodePath("Sprites/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -597,7 +295,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite/Shark:offset")
+tracks/3/path = NodePath("Sprites/Sprite:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -618,45 +316,30 @@ _data = {
 "walking_up": SubResource("Animation_x2nhf")
 }
 
-[node name="Pirate" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Pirate" type="CharacterBody2D" node_paths=PackedStringArray("sprite_container", "sprite")]
 z_index = 1
 collision_layer = 64
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_226mg")
 defeated_color = Color(1, 0, 0, 1)
+sprite_container = NodePath("Sprites")
+sprite_frame_sets = Array[SpriteFrames]([ExtResource("4_m7fne"), ExtResource("3_jqkd6"), ExtResource("4_nsorq")])
 jump_curve = SubResource("Curve_hivc8")
-sprite = NodePath("Sprite/Shark")
+sprite = NodePath("Sprites/Sprite")
 speed = 75.0
 attack_morale_modifier = ExtResource("2_i0crg")
 
-[node name="Sprite" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
 
-[node name="Shark" type="AnimatedSprite2D" parent="Sprite"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Sprites"]
 material = ExtResource("3_jwnii")
 position = Vector2(0, -7)
-sprite_frames = SubResource("SpriteFrames_rshy2")
+sprite_frames = ExtResource("4_m7fne")
 animation = &"idle_down"
 autoplay = "idle_up"
 
-[node name="SawShark" type="AnimatedSprite2D" parent="Sprite"]
-visible = false
-material = ExtResource("3_jwnii")
-position = Vector2(0, -7)
-sprite_frames = SubResource("SpriteFrames_43lyt")
-animation = &"idle_up"
-autoplay = "idle_up"
-
-[node name="HHShark" type="AnimatedSprite2D" parent="Sprite"]
-visible = false
-material = ExtResource("3_jwnii")
-position = Vector2(0, -7)
-sprite_frames = SubResource("SpriteFrames_uddxc")
-animation = &"idle_down"
-autoplay = "idle_down"
-frame_progress = 0.545678
-
-[node name="Splash" type="AnimatedSprite2D" parent="Sprite"]
+[node name="Splash" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_wnkih")

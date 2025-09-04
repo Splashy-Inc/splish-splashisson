@@ -10,7 +10,7 @@ signal completed
 
 @export var pirate_ship_scene: PackedScene
 @export var num_pirate_ships : int
-var pirates_per_ship := 1
+@export var start_pirates_per_ship := 1
 
 @export var player: Player
 
@@ -141,6 +141,6 @@ func spawn_pirate_ship():
 	
 	var new_pirate_ship := pirate_ship_scene.instantiate() as PirateShip
 	obstacles.add_child(new_pirate_ship)
-	new_pirate_ship.initialize(boat, pirates_per_ship)
-	pirates_per_ship += 1
+	new_pirate_ship.initialize(boat, start_pirates_per_ship)
+	start_pirates_per_ship += 1
 	remaining_pirate_ships -= 1

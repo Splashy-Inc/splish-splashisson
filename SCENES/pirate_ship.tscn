@@ -23,6 +23,7 @@ animations = [{
 z_index = -2
 script = ExtResource("1_h3rfn")
 pirate_scene = ExtResource("4_waql7")
+num_pirates = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jo46f")
