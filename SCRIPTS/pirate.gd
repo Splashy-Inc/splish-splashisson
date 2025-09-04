@@ -53,7 +53,8 @@ func _attack_state():
 	if _check_in_range(get_current_target()):
 		$AnimationPlayer.play("fight")
 	else:
-		current_assignment.remove_morale_modifier(attack_morale_modifier)
+		if current_assignment.has_method("remove_morale_modifier"):
+			current_assignment.remove_morale_modifier(attack_morale_modifier)
 		state = State.IDLE
 
 func _dying_state(delta: float):

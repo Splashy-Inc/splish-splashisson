@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw7vojdifr8w6"]
+[gd_scene load_steps=6 format=3 uid="uid://cw7vojdifr8w6"]
 
 [ext_resource type="Texture2D" uid="uid://mwb876qy8100" path="res://Art/Pirates/PirateShip/PirateShip2.png" id="1_4lleg"]
 [ext_resource type="Script" path="res://SCRIPTS/pirate_ship.gd" id="1_h3rfn"]
 [ext_resource type="Texture2D" uid="uid://dkfasanoaj2ia" path="res://Art/Pirates/PirateShip/PirateShip3.png" id="2_t6t1j"]
 [ext_resource type="PackedScene" uid="uid://b40oaetqwyltx" path="res://SCENES/pirate.tscn" id="4_waql7"]
-[ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="5_4kvl5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jo46f"]
 animations = [{
@@ -20,35 +19,34 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="Resource" id="Resource_xd0ep"]
-resource_local_to_scene = true
-script = ExtResource("5_4kvl5")
-name = "Attack"
-rate = -0.2
-
-[sub_resource type="Resource" id="Resource_mlyt5"]
-resource_local_to_scene = true
-script = ExtResource("5_4kvl5")
-name = "Attack"
-rate = -0.2
-
 [node name="PirateShip" type="Node2D"]
 z_index = -2
 script = ExtResource("1_h3rfn")
+pirate_scene = ExtResource("4_waql7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jo46f")
 frame_progress = 0.683034
 
-[node name="Pirates" type="Node2D" parent="."]
+[node name="PirateSlots" type="Node2D" parent="."]
 
-[node name="Pirate3" parent="Pirates" instance=ExtResource("4_waql7")]
-position = Vector2(72, -87)
-attack_morale_modifier = SubResource("Resource_xd0ep")
+[node name="Slot" type="Node2D" parent="PirateSlots"]
+position = Vector2(86, 139)
 
-[node name="Pirate" parent="Pirates" instance=ExtResource("4_waql7")]
-position = Vector2(51, 113)
-attack_morale_modifier = SubResource("Resource_mlyt5")
+[node name="Slot2" type="Node2D" parent="PirateSlots"]
+position = Vector2(65, -148)
+
+[node name="Slot3" type="Node2D" parent="PirateSlots"]
+position = Vector2(30, 102)
+
+[node name="Slot4" type="Node2D" parent="PirateSlots"]
+position = Vector2(39, -108)
+
+[node name="Slot5" type="Node2D" parent="PirateSlots"]
+position = Vector2(77, 88)
+
+[node name="Slot6" type="Node2D" parent="PirateSlots"]
+position = Vector2(93, -88)
 
 [node name="BoardingTimer" type="Timer" parent="."]
 wait_time = 2.0

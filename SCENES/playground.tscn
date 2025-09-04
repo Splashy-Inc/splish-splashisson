@@ -24,9 +24,8 @@ pirate_ship_scene = ExtResource("11_nglpg")
 num_pirate_ships = 2
 player = NodePath("People/Splish")
 weather = NodePath("Weather")
-minimum_seconds = 60
+minimum_seconds = 120
 boat = NodePath("Boat")
-boat_length = 2
 generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
