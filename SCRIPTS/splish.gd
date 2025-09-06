@@ -141,7 +141,7 @@ func add_follower(new_follower: Crew):
 	new_follower.set_assignment(self)
 	new_follower.distracted.connect(_on_follower_distracted.bind(new_follower))
 	followers.append(new_follower)
-	$SFXManager.play("AddFollower")
+	sfx_manager.play("AddFollower")
 	point(new_follower.global_position)
 	_refresh_targets()
 	
@@ -151,7 +151,7 @@ func remove_follower(follower: Crew):
 	
 func assign_follower(follower: Crew, new_assignment: Node2D):
 	follower.set_assignment(new_assignment)
-	$SFXManager.play("AssignFollower")
+	sfx_manager.play("AssignFollower")
 	point(new_assignment.global_position)
 	followers.erase(follower)
 	_refresh_targets()

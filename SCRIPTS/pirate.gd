@@ -33,6 +33,8 @@ var board_point: Marker2D
 var jump_distance := 150
 var target_boat : Boat
 
+@onready var ambient_noise_timer: Timer = $AmbientNoiseTimer
+
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
 	set_highlight(false, Globals.action_color)
@@ -76,7 +78,11 @@ func _dying_state(delta: float):
 		else:
 			_splash()
 	else:
+		if $AnimationPlayer.current_animation != "jump" and global_position.distance_to(splash_point.global_position) <= 150:
+			sfx_manager.play("Jump")
+			
 		_move_state(delta)
+		
 		if global_position.distance_to(splash_point.global_position) <= 150:
 			if sprite is AnimatedSprite2D:
 				sprite.offset.y = -jump_curve.sample(global_position.distance_to(splash_point.global_position)/150)
@@ -105,6 +111,7 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 
 func _on_demoralized():
 	if not is_defeated:
+		sfx_manager.play("Demoralized")
 		remove_from_group("pirate")
 		died.emit()
 		morale_bar.hide()
@@ -120,6 +127,7 @@ func _splash():
 	sprite.hide()
 	splash_sprite.show()
 	splash_sprite.play("splash")
+	sfx_manager.play("splash")
 	await splash_sprite.animation_finished
 	splash_point.queue_free()
 	queue_free()
@@ -254,8 +262,16 @@ func board_boat(boat: Boat, is_right: bool = false):
 	jump_distance = abs(global_position.x - board_point.global_position.x)
 	set_assignment(board_point)
 	target_boat.add_obstacle(self)
+	sfx_manager.play("Jump")
 	state = State.BOARDING
 
 func set_type(new_type: Type):
 	type = new_type
 	sprite.sprite_frames = sprite_frame_sets[type]
+
+func _on_ambient_noise_timer_timeout() -> void:
+	sfx_manager.play("AmbientNoise")
+	ambient_noise_timer.set_wait_time(randf_range(2.0, 3.0))
+
+func _on_fight_noise_timer_timeout() -> void:
+	sfx_manager.play("FightNoise")

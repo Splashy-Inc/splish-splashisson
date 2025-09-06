@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Worker
 
+@export var sfx_manager : SFXManager
+
 @export var current_assignment: Node2D
 @export var sprite : Node2D
 
@@ -320,7 +322,7 @@ func _check_in_range(node: Node2D):
 	return false
 
 func stomp():
-	$SFXManager.play("Stomp")
+	sfx_manager.play("Stomp")
 	_attack_target(current_assignment)
 
 func _attack_target(target: Node2D):
