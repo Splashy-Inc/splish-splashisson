@@ -8,10 +8,10 @@
 [ext_resource type="SpriteFrames" uid="uid://c7fbmx4sog75q" path="res://Custom Resources/hammer_pirate_sprite_frames.tres" id="4_nsorq"]
 [ext_resource type="AudioStream" uid="uid://dsl2r5ouyucqa" path="res://Audio/hail_grunt.mp3" id="14_bmk4o"]
 [ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="15_705hw"]
-[ext_resource type="AudioStream" uid="uid://g7mrru42k27p" path="res://Audio/Shrimp/shrimp_voice_5.ogg" id="16_fhtqh"]
-[ext_resource type="AudioStream" uid="uid://cb2x7au43eau4" path="res://Audio/Actions/stomp.wav" id="16_p25fv"]
-[ext_resource type="AudioStream" uid="uid://d27q837a2o3rh" path="res://Audio/Actions/Bailing/bucket_into_water.wav" id="19_tj21n"]
-[ext_resource type="AudioStream" uid="uid://4gl2woji0e4x" path="res://Audio/Actions/grunt_1.wav" id="20_q3os4"]
+[ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="17_v420o"]
+[ext_resource type="AudioStream" uid="uid://n0l7avdqv44i" path="res://Audio/Pirate/demoralized.ogg" id="18_sljar"]
+[ext_resource type="AudioStream" uid="uid://bw0dytcnoie43" path="res://Audio/Pirate/splash.ogg" id="19_0jdhr"]
+[ext_resource type="AudioStream" uid="uid://bjsitw371kru0" path="res://Audio/Pirate/jump.ogg" id="20_668g4"]
 [ext_resource type="Texture2D" uid="uid://bg5dpnbshij7x" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashA.png" id="48_28fwu"]
 [ext_resource type="Texture2D" uid="uid://bpcikrqj0h7c0" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashB.png" id="49_iwijb"]
 [ext_resource type="Texture2D" uid="uid://bma5l7cbhb5dy" path="res://Art/Ocean/Ocean/PirateSplash/PirateSplashC.png" id="50_weklw"]
@@ -69,9 +69,9 @@ stream_0/stream = ExtResource("14_bmk4o")
 stream_1/stream = ExtResource("15_705hw")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xukui"]
-random_pitch = 1.5
+random_pitch = 1.02
 streams_count = 1
-stream_0/stream = ExtResource("16_p25fv")
+stream_0/stream = ExtResource("17_v420o")
 
 [sub_resource type="Animation" id="Animation_bm4pa"]
 resource_name = "new_animation"
@@ -112,23 +112,10 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FightNoiseTimer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_u6o6e"]
 resource_name = "fight"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -144,15 +131,18 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FightNoiseTimer")
+tracks/1/path = NodePath("SFXManager")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [-1],
-"method": &"start"
+"args": ["FightNoise"],
+"method": &"play"
+}, {
+"args": ["FightNoise"],
+"method": &"play"
 }]
 }
 
@@ -420,19 +410,20 @@ pitch_scale = 0.7
 
 [node name="FightNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_xukui")
-volume_db = -2.5
 
 [node name="Demoralized" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("16_fhtqh")
-pitch_scale = 1.5
+stream = ExtResource("18_sljar")
+volume_db = 10.0
+pitch_scale = 0.8
 
 [node name="Splash" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("19_tj21n")
-pitch_scale = 1.5
+stream = ExtResource("19_0jdhr")
+volume_db = 5.0
+attenuation = 0.196146
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("20_q3os4")
-pitch_scale = 0.7
+stream = ExtResource("20_668g4")
+volume_db = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -447,10 +438,6 @@ wait_time = 2.0
 wait_time = 3.0
 autostart = true
 
-[node name="FightNoiseTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="MoraleBar" parent="." instance=ExtResource("67_lunvm")]
@@ -459,4 +446,3 @@ autostart = true
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="AmbientNoiseTimer" to="." method="_on_ambient_noise_timer_timeout"]
-[connection signal="timeout" from="FightNoiseTimer" to="." method="_on_fight_noise_timer_timeout"]

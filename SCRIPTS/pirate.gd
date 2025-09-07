@@ -127,7 +127,7 @@ func _splash():
 	sprite.hide()
 	splash_sprite.show()
 	splash_sprite.play("splash")
-	sfx_manager.play("splash")
+	sfx_manager.play("Splash")
 	await splash_sprite.animation_finished
 	splash_point.queue_free()
 	queue_free()
@@ -272,6 +272,3 @@ func set_type(new_type: Type):
 func _on_ambient_noise_timer_timeout() -> void:
 	sfx_manager.play("AmbientNoise")
 	ambient_noise_timer.set_wait_time(randf_range(2.0, 3.0))
-
-func _on_fight_noise_timer_timeout() -> void:
-	sfx_manager.play("FightNoise")
