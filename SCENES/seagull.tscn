@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://he2ienxfwna8"]
+[gd_scene load_steps=25 format=3 uid="uid://he2ienxfwna8"]
 
+[ext_resource type="Script" path="res://SCRIPTS/seagull.gd" id="1_uhe3b"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_8q1jr"]
 [ext_resource type="Texture2D" uid="uid://b13isd6rnc5jc" path="res://Art/Seagull/dive/seagull_dive_1.png" id="4_j2r0y"]
 [ext_resource type="Texture2D" uid="uid://dx8hu0qjapqbv" path="res://Art/Seagull/dive/seagull_dive_2.png" id="5_4ilj8"]
@@ -252,9 +253,10 @@ _data = {
 "eat": SubResource("Animation_04flt")
 }
 
-[node name="Seagull" type="CharacterBody2D" groups=["destructable", "rat"]]
+[node name="Seagull" type="CharacterBody2D" groups=["destructable", "seagull"]]
 collision_layer = 4
 collision_mask = 8
+script = ExtResource("1_uhe3b")
 
 [node name="LootSlot" type="Marker2D" parent="."]
 position = Vector2(0, -4)

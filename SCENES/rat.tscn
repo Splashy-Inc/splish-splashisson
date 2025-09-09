@@ -230,12 +230,17 @@ streams_count = 2
 stream_0/stream = ExtResource("16_1ulmn")
 stream_1/stream = ExtResource("17_vclga")
 
-[node name="Rat" type="CharacterBody2D" groups=["destructable", "rat"]]
+[node name="Rat" type="CharacterBody2D" node_paths=PackedStringArray("loot_slot", "navigation_agent", "sprite", "animation_player", "sfx_manager", "cargo_timer") groups=["destructable", "rat"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_cvs5m")
-interaction_radius = 12
+loot_slot = NodePath("LootSlot")
+navigation_agent = NodePath("NavigationAgent2D")
 morale_modifier = ExtResource("2_xsipq")
+sprite = NodePath("AnimatedSprite2D")
+animation_player = NodePath("AnimationPlayer")
+sfx_manager = NodePath("SFXManager")
+cargo_timer = NodePath("CargoStealTimer")
 
 [node name="LootSlot" type="Marker2D" parent="."]
 position = Vector2(0, -4)
@@ -269,7 +274,7 @@ one_shot = true
 
 [node name="SFXManager" parent="." instance=ExtResource("13_dps88")]
 
-[node name="Squeak" type="AudioStreamPlayer2D" parent="SFXManager"]
+[node name="SpawnNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("14_lqgkb")
 max_distance = 730.0
 bus = &"Rats"

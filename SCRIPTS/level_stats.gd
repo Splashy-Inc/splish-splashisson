@@ -15,6 +15,8 @@ var leaks_spawned : int
 var leaks_fixed : int
 var rats_spawned : int
 var rats_fixed : int
+var seagulls_spawned : int
+var seagulls_fixed : int
 
 var speed_success_modifier = .75
 const SPEED_SUCCESS_WEIGHT = 1.0

@@ -147,10 +147,16 @@ func _on_leak_fixed():
 	if level:
 		level.level_stats.leaks_fixed += 1
 	
-func _on_rat_spawned():
+func _on_creature_spawned(creature: Creature):
 	if level:
-		level.level_stats.rats_spawned += 1
+		if creature is Rat:
+			level.level_stats.rats_spawned += 1
+		elif creature is Seagull:
+			level.level_stats.seagulls_spawned += 1
 	
-func _on_rat_fixed():
+func _on_creature_died(creature: Creature):
 	if level:
-		level.level_stats.rats_fixed += 1
+		if creature is Rat:
+			level.level_stats.rats_fixed += 1
+		elif creature is Seagull:
+			level.level_stats.seagulls_fixed += 1
