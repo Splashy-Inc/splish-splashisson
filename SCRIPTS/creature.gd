@@ -15,6 +15,7 @@ enum State {
 }
 
 var state = State.IDLE
+var speed_mod := 1.0
 
 var target: Node2D
 @export var interaction_radius = 12
@@ -57,7 +58,7 @@ func _physics_process(delta: float) -> void:
 func _move_state(delta: float):
 	if target and worker == null:
 		var direction = _get_direction()
-		velocity = direction * SPEED
+		velocity = direction * SPEED * speed_mod
 		_set_state(State.MOVING)
 		sprite.play("move")
 	else:
@@ -108,6 +109,7 @@ func die():
 	set_highlight(true, defeated_color)
 	_set_state(State.DEAD)
 	collision_shape.disabled = true
+	speed_mod = 2.0
 	died.emit()
 
 func _die():
