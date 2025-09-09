@@ -65,6 +65,8 @@ func _start_assignment_player():
 
 func _attack_state():
 	if _check_in_range(get_current_target()):
+		if current_assignment and (sprite is Sprite2D or sprite is AnimatedSprite2D):
+			sprite.flip_h = global_position.direction_to(current_assignment.global_position).x > 0
 		$AnimationPlayer.play("fight")
 	else:
 		if current_assignment.has_method("remove_morale_modifier"):

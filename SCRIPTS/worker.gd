@@ -36,7 +36,7 @@ var interactables: Array[Node2D]
 
 var push_velocity = Vector2.ZERO
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	if state != State.DISTRACTED:
 		velocity = push_velocity
 	push_velocity = Vector2.ZERO
@@ -146,6 +146,8 @@ func _distract_state():
 
 func _attack_state():
 	if is_instance_valid(current_assignment):
+		if current_assignment and (sprite is Sprite2D or sprite is AnimatedSprite2D):
+			sprite.flip_h = global_position.direction_to(current_assignment.global_position).x > 0
 		if current_assignment is Rat:
 			$AnimationPlayer.play("stomping")
 		elif current_assignment is Pirate:
