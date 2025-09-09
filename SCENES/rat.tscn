@@ -230,17 +230,18 @@ streams_count = 2
 stream_0/stream = ExtResource("16_1ulmn")
 stream_1/stream = ExtResource("17_vclga")
 
-[node name="Rat" type="CharacterBody2D" node_paths=PackedStringArray("loot_slot", "navigation_agent", "sprite", "animation_player", "sfx_manager", "cargo_timer") groups=["destructable", "rat"]]
+[node name="Rat" type="CharacterBody2D" node_paths=PackedStringArray("loot_slot", "cargo_timer", "navigation_agent", "sprite", "collision_shape", "animation_player", "sfx_manager") groups=["destructable", "rat"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_cvs5m")
 loot_slot = NodePath("LootSlot")
+cargo_timer = NodePath("CargoStealTimer")
 navigation_agent = NodePath("NavigationAgent2D")
 morale_modifier = ExtResource("2_xsipq")
 sprite = NodePath("AnimatedSprite2D")
+collision_shape = NodePath("CollisionShape2D")
 animation_player = NodePath("AnimationPlayer")
 sfx_manager = NodePath("SFXManager")
-cargo_timer = NodePath("CargoStealTimer")
 
 [node name="LootSlot" type="Marker2D" parent="."]
 position = Vector2(0, -4)

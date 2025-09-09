@@ -29,15 +29,16 @@ var assignee: Node2D
 
 @export var morale_modifier : MoraleModifier
 @export var sprite : AnimatedSprite2D
+@export var collision_shape : CollisionShape2D
 @export var animation_player : AnimationPlayer
 @export var sfx_manager : SFXManager
-@export var cargo_timer : Timer
 
 func _ready():
 	Globals._on_creature_spawned(self)
 	died.connect(Globals._on_creature_died.bind(self))
 	sfx_manager.play("SpawnNoise")
 	target_closest_cargo()
+	spawned.emit()
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -65,7 +66,7 @@ func _move_state(delta: float):
 
 func _get_direction() -> Vector2:
 	var direction = Vector2.ZERO
-	if navigation_agent:
+	if is_instance_valid(navigation_agent):
 		if navigation_agent.target_position != target.global_position:
 			navigation_agent.set_target_position(target.global_position)
 		direction = global_position.direction_to(navigation_agent.get_next_path_position())
@@ -100,10 +101,10 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 		_set_state(State.IDLE)
 
 func die():
-	cargo_timer.stop()
 	if target is Cargo:
 		target.remove_threat(self)
 	_set_state(State.DEAD)
+	collision_shape.disabled = true
 	died.emit()
 
 func _die():

@@ -4,6 +4,7 @@ class_name Rat
 
 @export var hole: StaticBody2D
 @export var loot_slot : Marker2D
+@export var cargo_timer : Timer
 
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	if body == target and state != State.DEAD:
@@ -40,4 +41,5 @@ func die():
 		if item is CargoItem:
 			item.return_to_cargo()
 	_set_state(State.DEAD)
+	collision_shape.disabled = true
 	died.emit()

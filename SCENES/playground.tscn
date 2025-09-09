@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=14 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
+[ext_resource type="PackedScene" uid="uid://he2ienxfwna8" path="res://SCENES/seagull.tscn" id="6_2x7mh"]
 [ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="6_872sa"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_teo1b"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
@@ -17,12 +18,18 @@ script = ExtResource("6_872sa")
 name = "Attack"
 rate = -0.2
 
-[node name="Playground" type="Node" node_paths=PackedStringArray("player", "weather", "boat")]
+[sub_resource type="Curve2D" id="Curve2D_w3klh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -700, 0, 0, 0, 0, 640, -700)
+}
+point_count = 2
+
+[node name="Playground" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat")]
 script = ExtResource("1_bs7od")
 dock_scene = ExtResource("8_teo1b")
 pirate_ship_scene = ExtResource("11_nglpg")
-num_pirate_ships = 8
-start_pirates_per_ship = 6
+seagull_scene = ExtResource("6_2x7mh")
+seagull_spawn = NodePath("SeagullSpawnPath/SeagullSpawn")
 player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 120
@@ -39,6 +46,10 @@ cargo_list = Array[int]([1])
 
 [node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
 wait_time = 5.0
+autostart = true
+
+[node name="SeagullSpawnTimer" type="Timer" parent="Obstacles"]
+wait_time = 10.0
 autostart = true
 
 [node name="People" type="Node2D" parent="." groups=["people"]]
@@ -60,5 +71,12 @@ boat = NodePath("../Boat")
 
 [node name="LevelUI" parent="." instance=ExtResource("3_75gk2")]
 
+[node name="SeagullSpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_w3klh")
+
+[node name="SeagullSpawn" type="PathFollow2D" parent="SeagullSpawnPath"]
+position = Vector2(0, -700)
+
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
+[connection signal="timeout" from="Obstacles/SeagullSpawnTimer" to="." method="spawn_seagull"]
