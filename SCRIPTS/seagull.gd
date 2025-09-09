@@ -5,6 +5,7 @@ class_name Seagull
 func _death_state():
 	if target:
 		var direction = -_get_direction()
+		direction = Vector2(direction.x, -.1).normalized()
 		velocity = direction * SPEED
 		_set_state(State.DEAD)
 		sprite.play("move")
