@@ -1,0 +1,130 @@
+[gd_scene load_steps=20 format=3 uid="uid://bvi1wjir3r2mu"]
+
+[ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
+[ext_resource type="Texture2D" uid="uid://cdqho4iih3j7p" path="res://Art/GUI/levels_menu/map_frame_2of8.png" id="2_3wo0w"]
+[ext_resource type="Theme" uid="uid://ctla0k6e4ldrr" path="res://SCENES/GUI/levels_buttons/finbury_button.tres" id="2_tv18r"]
+[ext_resource type="Texture2D" uid="uid://5kpu0n2xjunv" path="res://Art/GUI/levels_menu/map_frame_3of8.png" id="3_2i3yl"]
+[ext_resource type="Theme" uid="uid://b7xde1wjjbopw" path="res://SCENES/GUI/levels_buttons/shrimpsburg_button.tres" id="3_p2xe7"]
+[ext_resource type="Texture2D" uid="uid://b7dknpwf6dn0i" path="res://Art/GUI/levels_menu/map_frame_4of8.png" id="4_87omf"]
+[ext_resource type="Theme" uid="uid://b72de44aium4s" path="res://SCENES/GUI/levels_buttons/gullmore_crossing_button.tres" id="4_wvulb"]
+[ext_resource type="Texture2D" uid="uid://dhg7wf1abbonm" path="res://Art/GUI/levels_menu/map_frame_5of8.png" id="5_5bgbs"]
+[ext_resource type="Theme" uid="uid://cpfwjcsq4g3x2" path="res://SCENES/GUI/levels_buttons/turtleton_button.tres" id="5_g4sc5"]
+[ext_resource type="Theme" uid="uid://c7d3g5gx0w1hp" path="res://SCENES/GUI/levels_buttons/seahorsevilla_button.tres" id="5_ifvpr"]
+[ext_resource type="Theme" uid="uid://d2axt0rn6ok78" path="res://SCENES/GUI/levels_buttons/port_sharksdale_button.tres" id="5_nuxhv"]
+[ext_resource type="Theme" uid="uid://bnk12lgx53pet" path="res://SCENES/GUI/levels_buttons/squid_city_button.tres" id="6_8hnu0"]
+[ext_resource type="Theme" uid="uid://bys2c52trjtla" path="res://SCENES/GUI/levels_buttons/lochley_wharf_button.tres" id="6_csbf7"]
+[ext_resource type="Texture2D" uid="uid://dty781xhblqdf" path="res://Art/GUI/levels_menu/map_frame_6of8.png" id="6_qpkat"]
+[ext_resource type="Theme" uid="uid://x221goe1ahm3" path="res://SCENES/GUI/levels_buttons/flock_haen_button.tres" id="7_2tbrh"]
+[ext_resource type="Texture2D" uid="uid://dncnw8flri1d2" path="res://Art/GUI/levels_menu/map_frame_7of8.png" id="7_pq5f5"]
+[ext_resource type="Texture2D" uid="uid://coldig3mdaiwv" path="res://Art/GUI/levels_menu/map_frame_8of8.png" id="8_smflu"]
+[ext_resource type="Theme" uid="uid://cptjjmuaxu5sc" path="res://SCENES/GUI/levels_buttons/sirensgill_grove_button.tres" id="8_vhicd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m3sgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3wo0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2i3yl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_87omf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5bgbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qpkat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pq5f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_smflu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LevelsMenu" type="Node2D"]
+
+[node name="Map" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 180)
+sprite_frames = SubResource("SpriteFrames_0ngwc")
+autoplay = "default"
+frame_progress = 0.0443577
+
+[node name="finbury_button" type="Button" parent="Map"]
+offset_left = -74.0
+offset_top = -108.0
+offset_right = -35.0
+offset_bottom = -71.0
+theme = ExtResource("2_tv18r")
+
+[node name="shimpsburg_button" type="Button" parent="Map"]
+offset_left = 161.0
+offset_top = -61.0
+offset_right = 225.0
+offset_bottom = -24.0
+theme = ExtResource("3_p2xe7")
+
+[node name="gullmore_crossing_button" type="Button" parent="Map"]
+offset_left = -172.0
+offset_top = -77.0
+offset_right = -125.0
+offset_bottom = -29.0
+theme = ExtResource("4_wvulb")
+
+[node name="turtleton_button" type="Button" parent="Map"]
+offset_left = -13.0
+offset_top = -12.0
+offset_right = 36.0
+offset_bottom = 24.0
+theme = ExtResource("5_g4sc5")
+
+[node name="seahorsevilla_button" type="Button" parent="Map"]
+offset_left = 105.0
+offset_top = -28.0
+offset_right = 174.0
+offset_bottom = 8.0
+theme = ExtResource("5_ifvpr")
+
+[node name="lochley_wharf_button" type="Button" parent="Map"]
+offset_left = -276.0
+offset_top = -70.0
+offset_right = -224.0
+offset_bottom = -21.0
+theme = ExtResource("6_csbf7")
+
+[node name="flock_haven_button" type="Button" parent="Map"]
+offset_left = -111.0
+offset_top = 48.0
+offset_right = -42.0
+offset_bottom = 89.0
+theme = ExtResource("7_2tbrh")
+
+[node name="squid_city_button" type="Button" parent="Map"]
+offset_left = 58.0
+offset_top = 77.0
+offset_right = 111.0
+offset_bottom = 117.0
+theme = ExtResource("6_8hnu0")
+
+[node name="sirensgill_grove_button" type="Button" parent="Map"]
+offset_left = -84.0
+offset_top = 75.0
+offset_right = -2.0
+offset_bottom = 115.0
+theme = ExtResource("8_vhicd")
+
+[node name="port_sharksdale_button" type="Button" parent="Map"]
+offset_left = 147.0
+offset_top = 35.0
+offset_right = 224.0
+offset_bottom = 75.0
+theme = ExtResource("5_nuxhv")
