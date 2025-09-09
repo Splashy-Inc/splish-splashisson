@@ -236,6 +236,7 @@ collision_mask = 8
 script = ExtResource("1_cvs5m")
 loot_slot = NodePath("LootSlot")
 cargo_timer = NodePath("CargoStealTimer")
+defeated_color = Color(1, 0, 0, 1)
 navigation_agent = NodePath("NavigationAgent2D")
 morale_modifier = ExtResource("2_xsipq")
 sprite = NodePath("AnimatedSprite2D")

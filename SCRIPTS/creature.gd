@@ -25,6 +25,8 @@ var assignee: Node2D
 
 @export var health = 3
 
+@export var defeated_color: Color
+
 @export var navigation_agent: NavigationAgent2D
 
 @export var morale_modifier : MoraleModifier
@@ -103,6 +105,7 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 func die():
 	if target is Cargo:
 		target.remove_threat(self)
+	set_highlight(true, defeated_color)
 	_set_state(State.DEAD)
 	collision_shape.disabled = true
 	died.emit()
@@ -116,12 +119,15 @@ func on_hit():
 	if health <= 0:
 		die()
 
-func set_highlight(is_enable: bool):
-	is_selected = is_enable and is_targetable()
-	if sprite.material:
-		sprite.material.set_shader_parameter("on", is_selected)
-	else:
-		print(self, " has no highlight material to activate.")
+func set_highlight(is_enable: bool, new_color: Color = Color.WHITE):
+	if state != State.DEAD:
+		if new_color != Color.WHITE:
+			sprite.material.set_shader_parameter("line_color", new_color)
+		is_selected = is_enable
+		reset_highlight()
+
+func reset_highlight():
+	sprite.material.set_shader_parameter("on", is_selected)
 
 func _set_state(new_state: State):
 	if state != State.DEAD:

@@ -291,7 +291,7 @@ func start_stomping_rat():
 		return true
 	return false
 
-func start_attacking_seagull():
+func start_repelling_seagull():
 	if current_assignment is Seagull and current_assignment.set_worker(self):
 		state = State.ATTACKING
 		return true
@@ -309,7 +309,7 @@ func _start_assignment() -> bool:
 	elif current_assignment is Rat:
 		return start_stomping_rat()
 	elif current_assignment is Seagull:
-		return start_attacking_seagull()
+		return start_repelling_seagull()
 	elif current_assignment is Pirate:
 		return start_fighting()
 	

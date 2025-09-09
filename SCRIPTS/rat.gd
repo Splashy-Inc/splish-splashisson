@@ -40,6 +40,7 @@ func die():
 	for item in loot_slot.get_children():
 		if item is CargoItem:
 			item.return_to_cargo()
+	set_highlight(true, defeated_color)
 	_set_state(State.DEAD)
 	collision_shape.disabled = true
 	died.emit()

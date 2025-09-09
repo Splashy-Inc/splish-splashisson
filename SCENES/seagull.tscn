@@ -235,6 +235,7 @@ _data = {
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_uhe3b")
+defeated_color = Color(1, 0, 0, 1)
 morale_modifier = ExtResource("2_2yeby")
 sprite = NodePath("AnimatedSprite2D")
 collision_shape = NodePath("CollisionShape2D")
