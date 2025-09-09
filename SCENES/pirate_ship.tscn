@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw7vojdifr8w6"]
+
+[ext_resource type="Texture2D" uid="uid://mwb876qy8100" path="res://Art/Pirates/PirateShip/PirateShip2.png" id="1_4lleg"]
+[ext_resource type="Script" path="res://SCRIPTS/pirate_ship.gd" id="1_h3rfn"]
+[ext_resource type="Texture2D" uid="uid://dkfasanoaj2ia" path="res://Art/Pirates/PirateShip/PirateShip3.png" id="2_t6t1j"]
+[ext_resource type="PackedScene" uid="uid://b40oaetqwyltx" path="res://SCENES/pirate.tscn" id="4_waql7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jo46f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4lleg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t6t1j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="PirateShip" type="Node2D"]
+z_index = -2
+script = ExtResource("1_h3rfn")
+pirate_scene = ExtResource("4_waql7")
+num_pirates = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jo46f")
+frame_progress = 0.683034
+
+[node name="PirateSlots" type="Node2D" parent="."]
+
+[node name="Slot" type="Node2D" parent="PirateSlots"]
+position = Vector2(86, 139)
+
+[node name="Slot2" type="Node2D" parent="PirateSlots"]
+position = Vector2(65, -148)
+
+[node name="Slot3" type="Node2D" parent="PirateSlots"]
+position = Vector2(30, 102)
+
+[node name="Slot4" type="Node2D" parent="PirateSlots"]
+position = Vector2(39, -108)
+
+[node name="Slot5" type="Node2D" parent="PirateSlots"]
+position = Vector2(77, 88)
+
+[node name="Slot6" type="Node2D" parent="PirateSlots"]
+position = Vector2(93, -88)
+
+[node name="BoardingTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="BoardingTimer" to="." method="_on_boarding_timer_timeout"]

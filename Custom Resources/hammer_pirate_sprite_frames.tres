@@ -1,0 +1,109 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://c7fbmx4sog75q"]
+
+[ext_resource type="Texture2D" uid="uid://cngirm52brw6y" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL1.png" id="1_vgi1q"]
+[ext_resource type="Texture2D" uid="uid://bghsy3ylgd653" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL2.png" id="2_p7ryv"]
+[ext_resource type="Texture2D" uid="uid://jvgdkar3ar8v" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightL3.png" id="3_rkw51"]
+[ext_resource type="Texture2D" uid="uid://2bdmqms3uyij" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR1.png" id="4_lelu0"]
+[ext_resource type="Texture2D" uid="uid://d2o0tocun5ss6" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR2.png" id="5_5jcdu"]
+[ext_resource type="Texture2D" uid="uid://crm74iy7lcqe" path="res://Art/Pirates/HHShark/Fight/HHeadSharkFightR3.png" id="6_cp7wk"]
+[ext_resource type="Texture2D" uid="uid://bm1oem6agd2w5" path="res://Art/Pirates/HHShark/Idle/HHSharkFront.png" id="7_damph"]
+[ext_resource type="Texture2D" uid="uid://coa1lxrvilulp" path="res://Art/Pirates/HHShark/Idle/HHSharkBack.png" id="8_uo2t4"]
+[ext_resource type="Texture2D" uid="uid://c46ehbi3f7tlj" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL1.png" id="9_j2m8k"]
+[ext_resource type="Texture2D" uid="uid://b7vr5ood0fqnb" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpL2.png" id="10_8eeyi"]
+[ext_resource type="Texture2D" uid="uid://b6k6usv0iukrh" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR1.png" id="11_57b18"]
+[ext_resource type="Texture2D" uid="uid://cnqgiqkn7lgay" path="res://Art/Pirates/HHShark/Jump/HHSharkJumpR2.png" id="12_kh8qd"]
+[ext_resource type="Texture2D" uid="uid://wnq8k6fv4crs" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontL.png" id="13_s4fx5"]
+[ext_resource type="Texture2D" uid="uid://duq0jjrg3kxyn" path="res://Art/Pirates/HHShark/Moving/HHSharkFrontR.png" id="14_mxvdy"]
+[ext_resource type="Texture2D" uid="uid://cpy8kva54a2jc" path="res://Art/Pirates/HHShark/Moving/HHSharkBackL.png" id="15_vnr72"]
+[ext_resource type="Texture2D" uid="uid://daejge5n7rnpv" path="res://Art/Pirates/HHShark/Moving/HHSharkBackR.png" id="16_qdwds"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vgi1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p7ryv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rkw51")
+}],
+"loop": true,
+"name": &"fight_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lelu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5jcdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cp7wk")
+}],
+"loop": true,
+"name": &"fight_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_damph")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_uo2t4")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_j2m8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8eeyi")
+}],
+"loop": true,
+"name": &"jump_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_57b18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kh8qd")
+}],
+"loop": true,
+"name": &"jump_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_s4fx5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mxvdy")
+}],
+"loop": true,
+"name": &"walking_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_vnr72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qdwds")
+}],
+"loop": true,
+"name": &"walking_up",
+"speed": 5.0
+}]

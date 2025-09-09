@@ -14,6 +14,7 @@ enum Selection_priority {
 	PUDDLE,
 	LEAK,
 	RAT,
+	PIRATE,
 }
 
 var followers: Array[Crew]
@@ -31,7 +32,6 @@ var input_disabled = false
 
 var aura_targets : Array[Crew]
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var morale_aura: Area2D = $MoraleAura
 @onready var morale_collision_shape: CollisionShape2D = $MoraleAura/CollisionShape2D
 @onready var interactable_range: Area2D = $InteractableRange
@@ -81,7 +81,7 @@ func _move_state(delta: float):
 				$AnimationPlayer.play("walking_up")
 			else:
 				$AnimationPlayer.play("walking_down")
-			velocity = direction * SPEED
+			velocity = direction * speed
 		else:
 			$AnimationPlayer.play("idle")
 			velocity = Vector2.ZERO
@@ -90,7 +90,7 @@ func _move_state(delta: float):
 		for i in get_slide_collision_count():
 			var col = get_slide_collision(i)
 			if col.get_collider() is Crew:
-				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * SPEED * 2)
+				col.get_collider().push(velocity.normalized().rotated(deg_to_rad(90)) * speed * 2)
 
 func _input(event: InputEvent) -> void:
 	if not input_disabled and not (Globals.is_mobile and event is InputEventMouse):
@@ -103,7 +103,7 @@ func _input(event: InputEvent) -> void:
 			return
 		
 		if event.is_action_pressed("act"):
-			if action_target is Task or action_target is Rat:
+			if action_target is Task or action_target is Rat or action_target is Pirate:
 				if action_target.assignee:
 					print(action_target, " already assigned to ", action_target.assignee, " !")
 				elif not followers.is_empty():
@@ -139,8 +139,9 @@ func point(target_position: Vector2):
 	
 func add_follower(new_follower: Crew):
 	new_follower.set_assignment(self)
+	new_follower.distracted.connect(_on_follower_distracted.bind(new_follower))
 	followers.append(new_follower)
-	$SFXManager.play("AddFollower")
+	sfx_manager.play("AddFollower")
 	point(new_follower.global_position)
 	_refresh_targets()
 	
@@ -150,10 +151,14 @@ func remove_follower(follower: Crew):
 	
 func assign_follower(follower: Crew, new_assignment: Node2D):
 	follower.set_assignment(new_assignment)
-	$SFXManager.play("AssignFollower")
+	sfx_manager.play("AssignFollower")
 	point(new_assignment.global_position)
 	followers.erase(follower)
 	_refresh_targets()
+
+func _on_follower_distracted(follower: Crew):
+	follower.distracted.disconnect(_on_follower_distracted)
+	followers.erase(follower)
 
 func _find_action_target():
 	if not action_target in interactables:
@@ -253,7 +258,9 @@ func _compare_target_priority(target_1: Node, target_2: Node) -> Node:
 
 # TODO: Figure out a better way to do this
 func _get_target_priority(node: Node):
-	if node is Rat:
+	if node is Pirate:
+		return Selection_priority.PIRATE
+	elif node is Rat:
 		return Selection_priority.RAT
 	elif node is Leak:
 		return Selection_priority.LEAK
@@ -272,8 +279,8 @@ func _get_target_priority(node: Node):
 func set_assignment(new_assignment: Node2D):
 	state = State.IDLE
 	
-	if new_assignment is Task or new_assignment is Rat:
-		if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat:
+	if new_assignment is Task or new_assignment is Rat or new_assignment is Pirate:
+		if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat or new_assignment is Pirate:
 			if not new_assignment.died.is_connected(_on_assignment_died):
 				new_assignment.died.connect(_on_assignment_died)
 		if not new_assignment.set_assignee(self):
@@ -319,6 +326,20 @@ func _get_leaks() -> Array:
 		if interactable is Leak:
 			leaks.append(interactable)
 	return leaks
+
+func stop_fighting():
+	state = State.IDLE
+	if current_assignment is Pirate:
+		var closest_pirate = _get_closest(_get_pirates())
+		
+		set_assignment(closest_pirate)
+
+func _get_pirates() -> Array:
+	var pirates = []
+	for interactable in interactables:
+		if interactable is Pirate:
+			pirates.append(interactable)
+	return pirates
 
 func _rowing_state():
 	$AnimationPlayer.play("idle")

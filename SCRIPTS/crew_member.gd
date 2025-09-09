@@ -2,9 +2,10 @@ extends Worker
 
 class_name Crew
 
+signal distracted
+
 @export var is_distracted: bool
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var wander_timer: Timer = $WanderTimer
 @onready var morale_bar: ProgressBar = $MoraleBar
@@ -17,7 +18,7 @@ var disable_morale := false # For tutorial
 
 func _ready():
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
-	$AnimatedSprite2D.material.set_shader_parameter("line_color", Globals.crew_select_color)
+	sprite.material.set_shader_parameter("line_color", Globals.crew_select_color)
 	if navigation_agent:
 		navigation_agent.set_target_position(global_position)
 
@@ -32,12 +33,13 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	interactables.erase(body)
 
-func _on_distraction_timer_timeout() -> void:
+func _on_demoralized() -> void:
 	_toggle_distracted(true)
 
 func _toggle_distracted(new_is_distracted: bool):
 	is_distracted = new_is_distracted
 	if is_distracted:
+		distracted.emit()
 		var new_distraction = get_closest_distraction()
 		if new_distraction:
 			set_assignment(new_distraction)
@@ -77,7 +79,7 @@ func set_assignment(new_assignment: Node2D):
 			state = State.ALERTED
 			change_morale(1.0)
 		else:
-			if new_assignment is Task or new_assignment is Rat:
+			if new_assignment is Task or new_assignment is Rat or new_assignment is Pirate:
 				if not new_assignment.set_assignee(self):
 					print(self, " unable to set self as assignee of ", new_assignment, ". Going idle.")
 					_set_assignment(null)
@@ -162,4 +164,4 @@ func get_total_morale_modifier() -> float:
 func change_morale(change):
 	morale = clamp(morale + change, 0.0, 1.0)
 	if not is_distracted and morale <= 0.0:
-		_on_distraction_timer_timeout()
+		_on_demoralized()

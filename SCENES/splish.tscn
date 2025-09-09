@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=72 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/Morale Modifiers/player_base_morale_modifier.tres" id="2_5x42x"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fhwln4ofy68" path="res://Art/Splish/Pointing/SplishPointA.png" id="4_6u4r1"]
 [ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/Walking Down/SplishWalkDownB.png" id="4_bdiwf"]
 [ext_resource type="Material" uid="uid://dulmrh7p03sid" path="res://Materials/aura_material.tres" id="4_egy3f"]
+[ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/attack_modifier.tres" id="4_r4x6o"]
 [ext_resource type="Texture2D" uid="uid://8nfrfdhrlxkh" path="res://Art/Splish/BailingWater/BailB.png" id="4_thdcp"]
 [ext_resource type="Texture2D" uid="uid://dhmncs1vrrnmq" path="res://Art/Splish/BailingWater/BailC.png" id="5_f5d2l"]
 [ext_resource type="Texture2D" uid="uid://cmh83m2yj0glw" path="res://Art/Splish/Walking Up/SplishWalkUpA.png" id="5_ksqji"]
@@ -26,6 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://c4wwmhh1pltjm" path="res://Audio/boot_step2.mp3" id="12_4oj1e"]
 [ext_resource type="Texture2D" uid="uid://b78mvvf5fel26" path="res://Art/Splish/PatchingLeak/PatchLeakE.png" id="12_g6f3r"]
 [ext_resource type="Texture2D" uid="uid://yhieyongi168" path="res://Art/Splish/PatchingLeak/PatchLeakF.png" id="13_n3dog"]
+[ext_resource type="Texture2D" uid="uid://dic8hhfgpivf1" path="res://Art/Splish/Fight/SplishFightL2.png" id="13_p4cpk"]
+[ext_resource type="Texture2D" uid="uid://dvxhdc1fgdl2i" path="res://Art/Splish/Fight/SplishFightL3.png" id="14_6js6f"]
 [ext_resource type="Texture2D" uid="uid://dgtuwrnav5rqg" path="res://Art/Splish/PatchingLeak/PatchLeakG.png" id="14_bvxsk"]
 [ext_resource type="Texture2D" uid="uid://dp5ysc5cbcn18" path="res://Art/Splish/PatchingLeak/PatchLeakH.png" id="15_prk4k"]
 [ext_resource type="Texture2D" uid="uid://d02ykb3r6b7kx" path="res://Art/Splish/PatchingLeak/PatchLeakI.png" id="16_gar54"]
@@ -46,6 +49,8 @@
 [ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="38_tcamb"]
 [ext_resource type="AudioStream" uid="uid://cb2x7au43eau4" path="res://Audio/Actions/stomp.wav" id="41_is387"]
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="43_hshio"]
+[ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="48_q68ca"]
+[ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="49_wwjj4"]
 
 [sub_resource type="Gradient" id="Gradient_qvjm0"]
 offsets = PackedFloat32Array(1)
@@ -159,6 +164,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"bail_water",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_p4cpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6js6f")
+}],
+"loop": true,
+"name": &"fighting",
 "speed": 5.0
 }, {
 "frames": [{
@@ -280,6 +296,11 @@ radius = 28.0
 streams_count = 2
 stream_0/stream = ExtResource("36_4tf4w")
 stream_1/stream = ExtResource("37_q0330")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cdph5"]
+random_pitch = 1.02
+streams_count = 1
+stream_0/stream = ExtResource("48_q68ca")
 
 [sub_resource type="Animation" id="Animation_jr7t7"]
 length = 0.001
@@ -547,6 +568,7 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_jr7t7"),
 "bail_water": SubResource("Animation_m7eue"),
+"fighting": ExtResource("49_wwjj4"),
 "idle": SubResource("Animation_0g00q"),
 "patch_leak": ExtResource("38_tcamb"),
 "pointing_right": SubResource("Animation_t3dpn"),
@@ -555,14 +577,17 @@ _data = {
 "walking_up": SubResource("Animation_y4fll")
 }
 
-[node name="Splish" type="CharacterBody2D" groups=["player"]]
+[node name="Splish" type="CharacterBody2D" node_paths=PackedStringArray("sfx_manager", "sprite") groups=["player"]]
 z_index = 1
-collision_mask = 10
+collision_mask = 72
 motion_mode = 1
 script = ExtResource("1_34yo7")
 base_morale_modifier = ExtResource("2_5x42x")
 working_morale_modifier = ExtResource("3_w7u3g")
 morale_color = Color(1, 1, 0, 0.494118)
+sfx_manager = NodePath("SFXManager")
+sprite = NodePath("AnimatedSprite2D")
+attack_morale_modifier = ExtResource("4_r4x6o")
 
 [node name="MoraleAura" type="Area2D" parent="."]
 z_index = -2
@@ -602,7 +627,7 @@ shape = SubResource("CircleShape2D_f3ojv")
 [node name="InteractableRange" type="Area2D" parent="."]
 position = Vector2(0, -7)
 collision_layer = 0
-collision_mask = 6
+collision_mask = 70
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableRange"]
 shape = SubResource("CircleShape2D_nx1hd")
@@ -639,6 +664,9 @@ pitch_scale = 0.7
 stream = ExtResource("41_is387")
 volume_db = -2.5
 pitch_scale = 0.9
+
+[node name="FightNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_cdph5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

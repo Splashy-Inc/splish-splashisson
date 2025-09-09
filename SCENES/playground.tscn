@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=12 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
@@ -6,17 +6,27 @@
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
+[ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="6_872sa"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_teo1b"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
+[ext_resource type="PackedScene" uid="uid://cw7vojdifr8w6" path="res://SCENES/pirate_ship.tscn" id="11_nglpg"]
+
+[sub_resource type="Resource" id="Resource_8n2tg"]
+resource_local_to_scene = true
+script = ExtResource("6_872sa")
+name = "Attack"
+rate = -0.2
 
 [node name="Playground" type="Node" node_paths=PackedStringArray("player", "weather", "boat")]
 script = ExtResource("1_bs7od")
 dock_scene = ExtResource("8_teo1b")
+pirate_ship_scene = ExtResource("11_nglpg")
+num_pirate_ships = 8
+start_pirates_per_ship = 6
 player = NodePath("People/Splish")
 weather = NodePath("Weather")
-minimum_seconds = 60
+minimum_seconds = 120
 boat = NodePath("Boat")
-boat_length = 2
 generate_rat_hole = true
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
@@ -35,6 +45,7 @@ autostart = true
 
 [node name="Splish" parent="People" instance=ExtResource("1_vcfar")]
 position = Vector2(320, 180)
+attack_morale_modifier = SubResource("Resource_8n2tg")
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)
@@ -46,7 +57,6 @@ position = Vector2(640, 180)
 boat = NodePath("../Boat")
 
 [node name="Weather" parent="." instance=ExtResource("10_66vyk")]
-type = 1
 
 [node name="LevelUI" parent="." instance=ExtResource("3_75gk2")]
 

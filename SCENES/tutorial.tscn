@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=34 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_2bdtw"]
@@ -33,6 +33,18 @@ resource_local_to_scene = true
 script = ExtResource("19_hrljw")
 name = "Idle"
 rate = -0.1
+
+[sub_resource type="Resource" id="Resource_exmgx"]
+resource_local_to_scene = true
+script = ExtResource("19_hrljw")
+name = "Attack"
+rate = -0.2
+
+[sub_resource type="Resource" id="Resource_2c4a5"]
+resource_local_to_scene = true
+script = ExtResource("19_hrljw")
+name = "Attack"
+rate = -0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
 size = Vector2(257, 49)
@@ -71,9 +83,11 @@ y_sort_enabled = true
 [node name="CrewMember" parent="People" instance=ExtResource("6_2hybe")]
 position = Vector2(320, 78)
 idle_modifier = SubResource("Resource_thoij")
+attack_morale_modifier = SubResource("Resource_exmgx")
 
 [node name="Splish" parent="People" instance=ExtResource("7_wap1k")]
 position = Vector2(320, 180)
+attack_morale_modifier = SubResource("Resource_2c4a5")
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)

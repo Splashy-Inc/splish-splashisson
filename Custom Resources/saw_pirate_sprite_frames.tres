@@ -1,0 +1,101 @@
+[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://da2vxfmidmm5s"]
+
+[ext_resource type="Texture2D" uid="uid://pkex6f0ymctv" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL2.png" id="1_ug4hd"]
+[ext_resource type="Texture2D" uid="uid://dpw3230xsh78i" path="res://Art/Pirates/SawShark/Fight/SawSharkFightL1.png" id="2_nkydg"]
+[ext_resource type="Texture2D" uid="uid://dqisuyufa4l3e" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR1.png" id="3_ogmy0"]
+[ext_resource type="Texture2D" uid="uid://c5ov7ssl6ia82" path="res://Art/Pirates/SawShark/Fight/SawSharkFightR2.png" id="4_tje6o"]
+[ext_resource type="Texture2D" uid="uid://6mvcvg6e638b" path="res://Art/Pirates/SawShark/Idle/SawSharkFront.png" id="5_g1v6l"]
+[ext_resource type="Texture2D" uid="uid://bci8ah1p1gq4n" path="res://Art/Pirates/SawShark/Idle/SawSharkBack.png" id="6_fyolu"]
+[ext_resource type="Texture2D" uid="uid://c6w7sk5jkynh8" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL1.png" id="7_3sjdi"]
+[ext_resource type="Texture2D" uid="uid://cs7lmqcmg3ihi" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpL2.png" id="8_4ey0x"]
+[ext_resource type="Texture2D" uid="uid://h4kb2e3fwpja" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR1.png" id="9_7gomy"]
+[ext_resource type="Texture2D" uid="uid://kr74cabbw1a1" path="res://Art/Pirates/SawShark/Jump/SawSharkJumpR2.png" id="10_sdhgf"]
+[ext_resource type="Texture2D" uid="uid://b30ixagddwnvj" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontL.png" id="11_w8wjt"]
+[ext_resource type="Texture2D" uid="uid://cbcv0jd1otrt6" path="res://Art/Pirates/SawShark/Moving/SawSharkFrontR.png" id="12_os5er"]
+[ext_resource type="Texture2D" uid="uid://b5ithsclju0ce" path="res://Art/Pirates/SawShark/Moving/SawSharkBackL.png" id="13_8sbku"]
+[ext_resource type="Texture2D" uid="uid://k6cwjp42ni38" path="res://Art/Pirates/SawShark/Moving/SawSharkBackR.png" id="14_esd3b"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ug4hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nkydg")
+}],
+"loop": true,
+"name": &"fight_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ogmy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tje6o")
+}],
+"loop": true,
+"name": &"fight_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_g1v6l")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fyolu")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3sjdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ey0x")
+}],
+"loop": true,
+"name": &"jump_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7gomy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sdhgf")
+}],
+"loop": true,
+"name": &"jump_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_w8wjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_os5er")
+}],
+"loop": true,
+"name": &"walking_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_8sbku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_esd3b")
+}],
+"loop": true,
+"name": &"walking_up",
+"speed": 5.0
+}]

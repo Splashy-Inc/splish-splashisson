@@ -8,6 +8,10 @@ signal completed
 
 @export var dock_scene: PackedScene
 
+@export var pirate_ship_scene: PackedScene
+@export var num_pirate_ships : int
+@export var start_pirates_per_ship := 1
+
 @export var player: Player
 
 @export var dialog_box: DialogBox
@@ -29,6 +33,8 @@ var end_dock: Dock
 
 var level_stats := LevelStats.new()
 
+@onready var obstacles: Node = $Obstacles
+@onready var remaining_pirate_ships := num_pirate_ships
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# If no task list, autofill with rowing tasks
@@ -60,6 +66,8 @@ func _process(delta: float) -> void:
 			finished = true
 			boat.stop(end_dock)
 			_on_finished()
+		elif remaining_pirate_ships > 0 and progress >= (length/(num_pirate_ships+1))*(num_pirate_ships - (remaining_pirate_ships - 1)):
+			spawn_pirate_ship()
 		Globals.update_level_progress_percent(clamp(progress/length, 0.0, 1.0))
 
 func _level_process(delta: float):
@@ -121,3 +129,18 @@ func set_finish_seconds(finish_seconds: int):
 
 func _on_rain_ticked():
 	boat.spawn_puddle()
+
+func spawn_pirate_ship():
+	# Disallow spawning pirate ship if one already exists
+	#   This will help keep the player from being overwhelmed by pirates
+	#   Also, that way we don't have to add in handling for multiple pirates ships existing at once
+	for child in obstacles.get_children():
+		if child is PirateShip:
+			remaining_pirate_ships -= 1
+			return
+	
+	var new_pirate_ship := pirate_ship_scene.instantiate() as PirateShip
+	obstacles.add_child(new_pirate_ship)
+	new_pirate_ship.initialize(boat, start_pirates_per_ship)
+	start_pirates_per_ship += 1
+	remaining_pirate_ships -= 1

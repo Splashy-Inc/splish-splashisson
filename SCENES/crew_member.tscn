@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=89 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qahnafwsgcov" path="res://Art/Crew/Animations/Alert/CrewAlertB.png" id="2_4d6of"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_5n08l"]
 [ext_resource type="Texture2D" uid="uid://b08c13okaxak4" path="res://Art/Crew/Animations/Alert/CrewAlertC.png" id="3_78bhc"]
+[ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/attack_modifier.tres" id="3_cqmqi"]
 [ext_resource type="Texture2D" uid="uid://c2lcyr846pcti" path="res://Art/Crew/Animations/Walking Down/CrewWalkingDownA.png" id="3_tolw7"]
 [ext_resource type="Texture2D" uid="uid://dlvev47rk5vgu" path="res://Art/Crew/Animations/Acknowledge/CrewAcknowledgementC.png" id="3_trj6w"]
 [ext_resource type="Texture2D" uid="uid://b6wfhucl4xrla" path="res://Art/Crew/Animations/Idle/CrewBack.png" id="3_uucbp"]
@@ -47,7 +48,9 @@
 [ext_resource type="Texture2D" uid="uid://bxwqkhrf36uu7" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamH.png" id="28_m88c6"]
 [ext_resource type="Texture2D" uid="uid://b6nel85eogr1v" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakI.png" id="29_hdsnq"]
 [ext_resource type="Texture2D" uid="uid://c0gme2eeouc6t" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakJ.png" id="30_xrmfg"]
+[ext_resource type="Texture2D" uid="uid://c4rfybd6d87ud" path="res://Art/Crew/Animations/Fight/CrewFightL3.png" id="31_0key4"]
 [ext_resource type="Texture2D" uid="uid://c6nrrg7d3qhue" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakK.png" id="31_ydoax"]
+[ext_resource type="Texture2D" uid="uid://d1sru32j32j8f" path="res://Art/Crew/Animations/Fight/CrewFightL2.png" id="32_8c1jh"]
 [ext_resource type="Texture2D" uid="uid://b2wkg8jv2rjia" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakL.png" id="32_da2ki"]
 [ext_resource type="Texture2D" uid="uid://co5v52adt2xrk" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakO.png" id="33_w6ixv"]
 [ext_resource type="Texture2D" uid="uid://do5mufyj4l55q" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakP.png" id="34_7d43a"]
@@ -67,6 +70,8 @@
 [ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="64_600am"]
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="65_k7ads"]
 [ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="67_33a2s"]
+[ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="68_6vely"]
+[ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="71_y071s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -176,6 +181,17 @@ animations = [{
 "loop": true,
 "name": &"eating",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_0key4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8c1jh")
+}],
+"loop": true,
+"name": &"fighting",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -299,6 +315,11 @@ random_pitch = 1.2
 streams_count = 2
 stream_0/stream = ExtResource("62_m0d5g")
 stream_1/stream = ExtResource("63_uy82o")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jhftx"]
+random_pitch = 1.02
+streams_count = 1
+stream_0/stream = ExtResource("68_6vely")
 
 [sub_resource type="Animation" id="Animation_bm4pa"]
 resource_name = "new_animation"
@@ -782,6 +803,7 @@ _data = {
 "alert": SubResource("Animation_ot4iw"),
 "bail_water": SubResource("Animation_lgxjk"),
 "eating": SubResource("Animation_aagtk"),
+"fighting": ExtResource("71_y071s"),
 "idle_down": SubResource("Animation_df2kf"),
 "idle_up": SubResource("Animation_yrpeu"),
 "patch_leak": ExtResource("64_600am"),
@@ -790,13 +812,17 @@ _data = {
 "walking_up": SubResource("Animation_x2nhf")
 }
 
-[node name="CrewMember" type="CharacterBody2D" groups=["crew", "selectable"]]
+[node name="CrewMember" type="CharacterBody2D" node_paths=PackedStringArray("sfx_manager", "sprite") groups=["crew", "selectable"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_ci8gb")
 idle_modifier = ExtResource("2_3cw83")
+sfx_manager = NodePath("SFXManager")
+sprite = NodePath("AnimatedSprite2D")
+speed = 125.0
+attack_morale_modifier = ExtResource("3_cqmqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_5n08l")
@@ -850,6 +876,9 @@ stream = ExtResource("62_woguw")
 [node name="Munch" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_sv7jv")
 volume_db = 10.0
+
+[node name="FightNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_jhftx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

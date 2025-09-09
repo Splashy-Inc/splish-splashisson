@@ -9,6 +9,7 @@ bg_color = Color(0, 0, 0, 0.231373)
 bg_color = Color(1, 1, 1, 1)
 
 [node name="MoraleBar" type="ProgressBar"]
+z_index = 10
 offset_left = -12.0
 offset_top = -28.0
 offset_right = 12.0
