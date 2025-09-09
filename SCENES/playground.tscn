@@ -20,7 +20,7 @@ rate = -0.2
 
 [sub_resource type="Curve2D" id="Curve2D_w3klh"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -700, 0, 0, 0, 0, 640, -700)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -300, 0, 0, 0, 0, 640, -300)
 }
 point_count = 2
 
@@ -75,7 +75,7 @@ boat = NodePath("../Boat")
 curve = SubResource("Curve2D_w3klh")
 
 [node name="SeagullSpawn" type="PathFollow2D" parent="SeagullSpawnPath"]
-position = Vector2(0, -700)
+position = Vector2(0, -300)
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

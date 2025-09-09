@@ -148,7 +148,7 @@ func _attack_state():
 	if is_instance_valid(current_assignment):
 		if current_assignment and (sprite is Sprite2D or sprite is AnimatedSprite2D):
 			sprite.flip_h = global_position.direction_to(current_assignment.global_position).x > 0
-		if current_assignment is Rat:
+		if current_assignment is Creature:
 			$AnimationPlayer.play("stomping")
 		elif current_assignment is Pirate:
 			$AnimationPlayer.play("fighting")
@@ -167,7 +167,7 @@ func _set_assignment(new_assignment: Node2D):
 	if old_assignment:
 		if old_assignment is Task:
 			old_assignment.set_worker(null)
-		elif old_assignment is Rat:
+		elif old_assignment is Creature:
 			old_assignment.set_worker(null)
 		elif old_assignment is Cargo:
 			old_assignment.remove_threat(self)
@@ -291,6 +291,12 @@ func start_stomping_rat():
 		return true
 	return false
 
+func start_attacking_seagull():
+	if current_assignment is Seagull and current_assignment.set_worker(self):
+		state = State.ATTACKING
+		return true
+	return false
+
 func _start_assignment() -> bool:
 	if current_assignment is Cargo and state != State.DISTRACTED:
 		return start_distraction()
@@ -302,6 +308,8 @@ func _start_assignment() -> bool:
 		return start_patching()
 	elif current_assignment is Rat:
 		return start_stomping_rat()
+	elif current_assignment is Seagull:
+		return start_attacking_seagull()
 	elif current_assignment is Pirate:
 		return start_fighting()
 	

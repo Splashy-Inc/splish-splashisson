@@ -97,7 +97,7 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	if body == target and state != State.DEAD:
 		if target is Cargo:
-			target.remove_threat()
+			target.remove_threat(self)
 		_set_state(State.IDLE)
 
 func die():
