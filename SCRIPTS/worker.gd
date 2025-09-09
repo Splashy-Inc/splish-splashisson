@@ -239,6 +239,9 @@ func _on_assignment_died():
 		elif current_assignment is Pirate:
 			stop_fighting()
 			return
+		elif current_assignment is Seagull:
+			stop_repelling_seagull()
+			return
 	set_assignment(null)
 	
 func start_patching():
@@ -297,6 +300,16 @@ func start_repelling_seagull():
 		return true
 	return false
 
+func stop_repelling_seagull():
+	state = State.IDLE
+	if current_assignment is Seagull:
+		var closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
+		
+		set_assignment(closest_seagull)
+		
+		if closest_seagull and _check_in_range(closest_seagull):
+			_start_assignment()
+
 func _start_assignment() -> bool:
 	if current_assignment is Cargo and state != State.DISTRACTED:
 		return start_distraction()
@@ -320,9 +333,11 @@ func _get_closest(nodes: Array) -> Node2D:
 	if nodes.is_empty():
 		return null
 	else:
-		var closest_node = nodes.front()
+		var closest_node
 		for node in nodes:
-			if global_position.distance_to(node.global_position) < global_position.distance_to(closest_node.global_position):
+			if node.has_method("is_targetable") and not node.is_targetable():
+				continue
+			if not closest_node or global_position.distance_to(node.global_position) < global_position.distance_to(closest_node.global_position):
 				closest_node = node
 		return closest_node
 

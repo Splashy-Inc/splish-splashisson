@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://he2ienxfwna8"]
+[gd_scene load_steps=27 format=3 uid="uid://he2ienxfwna8"]
 
 [ext_resource type="Script" path="res://SCRIPTS/seagull.gd" id="1_uhe3b"]
 [ext_resource type="Resource" uid="uid://6eg8s8dmqv2x" path="res://Custom Resources/Morale Modifiers/task_morale_modifier.tres" id="2_2yeby"]
@@ -231,6 +231,11 @@ _data = {
 "eat": SubResource("Animation_04flt")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ygf12"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("18_mq41i")
+
 [node name="Seagull" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape", "animation_player", "sfx_manager") groups=["destructable", "seagull"]]
 collision_layer = 4
 collision_mask = 0
@@ -268,13 +273,15 @@ libraries = {
 [node name="SFXManager" parent="." instance=ExtResource("14_dtqqx")]
 
 [node name="SpawnNoise" type="AudioStreamPlayer" parent="SFXManager"]
-stream = ExtResource("18_mq41i")
-volume_db = -10.0
+stream = SubResource("AudioStreamRandomizer_ygf12")
+volume_db = -15.0
+pitch_scale = 0.95
 bus = &"Rats"
 
 [node name="Die" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("18_mq41i")
-pitch_scale = 0.8
+volume_db = -15.0
+pitch_scale = 0.75
 max_distance = 730.0
 bus = &"Rats"
 
