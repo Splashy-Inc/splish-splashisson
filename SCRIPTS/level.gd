@@ -12,6 +12,9 @@ signal completed
 @export var num_pirate_ships : int
 @export var start_pirates_per_ship := 1
 
+@export var seagull_scene: PackedScene
+@export var seagull_spawn: PathFollow2D
+
 @export var player: Player
 
 @export var dialog_box: DialogBox
@@ -35,6 +38,8 @@ var level_stats := LevelStats.new()
 
 @onready var obstacles: Node = $Obstacles
 @onready var remaining_pirate_ships := num_pirate_ships
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# If no task list, autofill with rowing tasks
@@ -144,3 +149,10 @@ func spawn_pirate_ship():
 	new_pirate_ship.initialize(boat, start_pirates_per_ship)
 	start_pirates_per_ship += 1
 	remaining_pirate_ships -= 1
+
+func spawn_seagull():
+	if is_instance_valid(seagull_spawn):
+		seagull_spawn.progress_ratio = randf_range(0.0, 1.0)
+		var new_seagull = seagull_scene.instantiate()
+		new_seagull.global_position = seagull_spawn.global_position
+		obstacles.add_child(new_seagull)

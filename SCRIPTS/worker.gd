@@ -148,7 +148,7 @@ func _attack_state():
 	if is_instance_valid(current_assignment):
 		if current_assignment and (sprite is Sprite2D or sprite is AnimatedSprite2D):
 			sprite.flip_h = global_position.direction_to(current_assignment.global_position).x > 0
-		if current_assignment is Rat:
+		if current_assignment is Creature:
 			$AnimationPlayer.play("stomping")
 		elif current_assignment is Pirate:
 			$AnimationPlayer.play("fighting")
@@ -167,7 +167,7 @@ func _set_assignment(new_assignment: Node2D):
 	if old_assignment:
 		if old_assignment is Task:
 			old_assignment.set_worker(null)
-		elif old_assignment is Rat:
+		elif old_assignment is Creature:
 			old_assignment.set_worker(null)
 		elif old_assignment is Cargo:
 			old_assignment.remove_threat(self)
@@ -239,6 +239,9 @@ func _on_assignment_died():
 		elif current_assignment is Pirate:
 			stop_fighting()
 			return
+		elif current_assignment is Seagull:
+			stop_repelling_seagull()
+			return
 	set_assignment(null)
 	
 func start_patching():
@@ -291,6 +294,22 @@ func start_stomping_rat():
 		return true
 	return false
 
+func start_repelling_seagull():
+	if current_assignment is Seagull and current_assignment.set_worker(self):
+		state = State.ATTACKING
+		return true
+	return false
+
+func stop_repelling_seagull():
+	state = State.IDLE
+	if current_assignment is Seagull:
+		var closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
+		
+		set_assignment(closest_seagull)
+		
+		if closest_seagull and _check_in_range(closest_seagull):
+			_start_assignment()
+
 func _start_assignment() -> bool:
 	if current_assignment is Cargo and state != State.DISTRACTED:
 		return start_distraction()
@@ -302,6 +321,8 @@ func _start_assignment() -> bool:
 		return start_patching()
 	elif current_assignment is Rat:
 		return start_stomping_rat()
+	elif current_assignment is Seagull:
+		return start_repelling_seagull()
 	elif current_assignment is Pirate:
 		return start_fighting()
 	
@@ -312,9 +333,11 @@ func _get_closest(nodes: Array) -> Node2D:
 	if nodes.is_empty():
 		return null
 	else:
-		var closest_node = nodes.front()
+		var closest_node
 		for node in nodes:
-			if global_position.distance_to(node.global_position) < global_position.distance_to(closest_node.global_position):
+			if node.has_method("is_targetable") and not node.is_targetable():
+				continue
+			if not closest_node or global_position.distance_to(node.global_position) < global_position.distance_to(closest_node.global_position):
 				closest_node = node
 		return closest_node
 

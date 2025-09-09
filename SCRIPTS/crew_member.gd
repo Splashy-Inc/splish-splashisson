@@ -79,13 +79,13 @@ func set_assignment(new_assignment: Node2D):
 			state = State.ALERTED
 			change_morale(1.0)
 		else:
-			if new_assignment is Task or new_assignment is Rat or new_assignment is Pirate:
+			if new_assignment is Task or new_assignment is Creature or new_assignment is Pirate:
 				if not new_assignment.set_assignee(self):
 					print(self, " unable to set self as assignee of ", new_assignment, ". Going idle.")
 					_set_assignment(null)
 					add_morale_modifier(idle_modifier)
 					return
-				if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat:
+				if new_assignment is Puddle or new_assignment is Leak or new_assignment is Creature:
 					new_assignment.died.connect(_on_assignment_died)
 				if new_assignment.has_method("get_morale_modifier"):
 					add_morale_modifier(new_assignment.get_morale_modifier())

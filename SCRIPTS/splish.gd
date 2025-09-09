@@ -13,6 +13,7 @@ enum Selection_priority {
 	OBSTACLE,
 	PUDDLE,
 	LEAK,
+	SEAGULL,
 	RAT,
 	PIRATE,
 }
@@ -103,7 +104,7 @@ func _input(event: InputEvent) -> void:
 			return
 		
 		if event.is_action_pressed("act"):
-			if action_target is Task or action_target is Rat or action_target is Pirate:
+			if action_target is Task or action_target is Creature or action_target is Pirate:
 				if action_target.assignee:
 					print(action_target, " already assigned to ", action_target.assignee, " !")
 				elif not followers.is_empty():
@@ -262,6 +263,8 @@ func _get_target_priority(node: Node):
 		return Selection_priority.PIRATE
 	elif node is Rat:
 		return Selection_priority.RAT
+	elif node is Seagull:
+		return Selection_priority.SEAGULL
 	elif node is Leak:
 		return Selection_priority.LEAK
 	elif node is Puddle:
@@ -279,8 +282,8 @@ func _get_target_priority(node: Node):
 func set_assignment(new_assignment: Node2D):
 	state = State.IDLE
 	
-	if new_assignment is Task or new_assignment is Rat or new_assignment is Pirate:
-		if new_assignment is Puddle or new_assignment is Leak or new_assignment is Rat or new_assignment is Pirate:
+	if new_assignment is Task or new_assignment is Creature or new_assignment is Pirate:
+		if new_assignment is Puddle or new_assignment is Leak or new_assignment is Creature or new_assignment is Pirate:
 			if not new_assignment.died.is_connected(_on_assignment_died):
 				new_assignment.died.connect(_on_assignment_died)
 		if not new_assignment.set_assignee(self):

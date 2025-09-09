@@ -1,5 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://he2ienxfwna8"]
+[gd_scene load_steps=27 format=3 uid="uid://he2ienxfwna8"]
 
+[ext_resource type="Script" path="res://SCRIPTS/seagull.gd" id="1_uhe3b"]
+[ext_resource type="Resource" uid="uid://6eg8s8dmqv2x" path="res://Custom Resources/Morale Modifiers/task_morale_modifier.tres" id="2_2yeby"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_8q1jr"]
 [ext_resource type="Texture2D" uid="uid://b13isd6rnc5jc" path="res://Art/Seagull/dive/seagull_dive_1.png" id="4_j2r0y"]
 [ext_resource type="Texture2D" uid="uid://dx8hu0qjapqbv" path="res://Art/Seagull/dive/seagull_dive_2.png" id="5_4ilj8"]
@@ -28,23 +30,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"dive",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_3d18n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_6c4ej")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_u55lt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_6c4ej")
-}],
-"loop": true,
-"name": &"fly",
 "speed": 4.0
 }, {
 "frames": [{
@@ -81,6 +66,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3d18n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6c4ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u55lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6c4ej")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -130,7 +132,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"die"]
+"values": [&"idle"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -149,51 +151,13 @@ tracks/1/keys = {
 resource_name = "die"
 length = 2.33337
 step = 0.333333
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("SFXManager")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"die"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 5, 6, 7]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2.33333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_die"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SFXManager")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -201,10 +165,25 @@ tracks/3/keys = {
 "method": &"play"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"die"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_04flt"]
 resource_name = "eat"
 length = 1.00003
+loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -216,7 +195,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"eat"]
+"values": [&"peck"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -252,18 +231,27 @@ _data = {
 "eat": SubResource("Animation_04flt")
 }
 
-[node name="Seagull" type="CharacterBody2D" groups=["destructable", "rat"]]
-collision_layer = 4
-collision_mask = 8
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ygf12"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("18_mq41i")
 
-[node name="LootSlot" type="Marker2D" parent="."]
-position = Vector2(0, -4)
+[node name="Seagull" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "collision_shape", "animation_player", "sfx_manager") groups=["destructable", "seagull"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_uhe3b")
+defeated_color = Color(1, 0, 0, 1)
+morale_modifier = ExtResource("2_2yeby")
+sprite = NodePath("AnimatedSprite2D")
+collision_shape = NodePath("CollisionShape2D")
+animation_player = NodePath("AnimationPlayer")
+sfx_manager = NodePath("SFXManager")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_8q1jr")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_f7ori")
-animation = &"die"
+animation = &"idle"
 autoplay = "peck"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -282,19 +270,24 @@ libraries = {
 "": SubResource("AnimationLibrary_ndqge")
 }
 
-[node name="CargoStealTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [node name="SFXManager" parent="." instance=ExtResource("14_dtqqx")]
 
-[node name="Squack" type="AudioStreamPlayer2D" parent="SFXManager"]
+[node name="SpawnNoise" type="AudioStreamPlayer" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_ygf12")
+volume_db = -15.0
+pitch_scale = 0.95
+bus = &"Rats"
+
+[node name="Die" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("18_mq41i")
+volume_db = -15.0
+pitch_scale = 0.75
 max_distance = 730.0
 bus = &"Rats"
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-17, -20, 32, 20)
 
 [connection signal="body_entered" from="InteractableRange" to="." method="_on_interactable_range_body_entered"]
 [connection signal="body_exited" from="InteractableRange" to="." method="_on_interactable_range_body_exited"]
-[connection signal="timeout" from="CargoStealTimer" to="." method="_on_cargo_steal_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
