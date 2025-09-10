@@ -4,8 +4,6 @@
 [ext_resource type="Script" path="res://SCRIPTS/condition_segment.gd" id="2_ri7i0"]
 
 [node name="ConditionSegment" type="TextureProgressBar"]
-offset_right = 26.0
-offset_bottom = 16.0
 min_value = 20.0
 step = 0.1
 value = 80.9

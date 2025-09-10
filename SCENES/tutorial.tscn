@@ -73,7 +73,6 @@ task_list = Array[int]([1, 2])
 [node name="Boat" parent="." instance=ExtResource("5_yg4ik")]
 position = Vector2(320, 180)
 deck_tasks = Array[int]([2, 1, 0, 0, 0])
-cargo_list = Array[int]([1])
 generate_crew = false
 
 [node name="People" type="Node2D" parent="." groups=["people"]]

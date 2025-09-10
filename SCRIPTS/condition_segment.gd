@@ -1,5 +1,6 @@
 extends TextureProgressBar
 
+class_name ConditionSegment
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
