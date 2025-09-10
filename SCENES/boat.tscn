@@ -18,7 +18,6 @@ z_index = -2
 script = ExtResource("1_c5j0p")
 deck_scene = ExtResource("2_kxpgr")
 deck_tasks = Array[int]([1, 1, 2, 2])
-cargo_list = Array[int]([0])
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_fso07")

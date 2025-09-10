@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=16 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
 [ext_resource type="PackedScene" uid="uid://he2ienxfwna8" path="res://SCENES/seagull.tscn" id="6_2x7mh"]
 [ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="6_872sa"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="7_hf2gs"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_teo1b"]
+[ext_resource type="Resource" uid="uid://c65k18o4x66kk" path="res://Custom Resources/Cargo/valuables_cargo_item_data.tres" id="8_v1vfh"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
 [ext_resource type="PackedScene" uid="uid://cw7vojdifr8w6" path="res://SCENES/pirate_ship.tscn" id="11_nglpg"]
 
@@ -40,7 +42,7 @@ generate_rat_hole = true
 
 [node name="Boat" parent="." instance=ExtResource("2_twya3")]
 position = Vector2(320, 180)
-cargo_list = Array[int]([1])
+cargo_list = Array[ExtResource("7_hf2gs")]([ExtResource("8_v1vfh")])
 
 [node name="Obstacles" type="Node" parent="."]
 

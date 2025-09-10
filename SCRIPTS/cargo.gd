@@ -6,6 +6,7 @@ enum Cargo_type {
 	NONE,
 	MEAT,
 	FUR,
+	VALUABLES,
 }
 @onready var items: Node2D = $Items
 
@@ -29,11 +30,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func initialize(new_type: Cargo_type, new_num_items: int):
+func initialize(new_data: CargoItemData):
 	if not is_node_ready():
 		await ready
-	cargo_type = new_type
-	num_items = new_num_items
+	cargo_type = new_data.type
+	num_items = new_data.number_items
 	await _spawn_cargo()
 	_update_condition(max_condition)
 	_set_item_info()
@@ -50,7 +51,7 @@ func _spawn_cargo():
 			items.add_child(new_cargo)
 			new_cargo.died.connect(_cargo_item_died.bind(new_cargo))
 			new_cargo.global_position = spawn_point
-		if item_health <= 0:
+		if item_health <= 0 and not items.get_children().is_empty():
 			var item = items.get_children().front()
 			item_health = item.get_health()
 			max_condition = num_items * item_health

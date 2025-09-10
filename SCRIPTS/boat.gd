@@ -17,7 +17,7 @@ signal set_up
 
 # Tasks that should be filled into the deck segments
 @export var deck_tasks: Array[Globals.Task_type]
-@export var cargo_list: Array[Cargo.Cargo_type]
+@export var cargo_list: Array[CargoItemData]
 @export var generate_crew := true
 var rowing_tasks: Array[RowingTask]
 
@@ -114,13 +114,13 @@ func _generate_boat():
 	# Set the cargo
 	var temp_cargo_list := cargo_list.duplicate()
 	if temp_cargo_list.is_empty():
-		stern.set_cargo(Cargo.Cargo_type.NONE)
-		bow.set_cargo(Cargo.Cargo_type.NONE)
+		stern.set_cargo(CargoItemData.new())
+		bow.set_cargo(CargoItemData.new())
 	else:
 		stern.set_cargo(temp_cargo_list.front())
 		temp_cargo_list.pop_front()
 		if temp_cargo_list.is_empty():
-			bow.set_cargo(Cargo.Cargo_type.NONE)
+			bow.set_cargo(CargoItemData.new())
 		else:
 			bow.set_cargo(temp_cargo_list.front())
 	

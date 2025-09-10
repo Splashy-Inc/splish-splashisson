@@ -12,12 +12,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func set_cargo_type(new_type: Cargo.Cargo_type):
+func set_cargo_type(new_data: CargoItemData):
 	if get_children().is_empty():
-		type = new_type
+		type = new_data.type
 		var new_cargo = Globals.generate_cargo()
 		if new_cargo is Cargo:
-			new_cargo.initialize(new_type, 10)
+			new_cargo.initialize(new_data)
 			clear()
 			add_child(new_cargo)
 			return true

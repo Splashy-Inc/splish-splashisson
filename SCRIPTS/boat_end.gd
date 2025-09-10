@@ -7,12 +7,12 @@ signal cargo_set_up
 @onready var play_grid: PlayGrid = $PlayGrid
 @onready var sprite: Sprite2D = $Sprite2D
 
-var cargo_type: Cargo.Cargo_type
+@export var cargo_data := CargoItemData.new()
 var cargo_slots: Array[CargoSlot]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if cargo_type != Cargo.Cargo_type.NONE:
+	if cargo_data.type != Cargo.Cargo_type.NONE:
 		call_deferred("_set_up_cargo")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,13 +25,13 @@ func _set_up_cargo():
 	clear_cargo()
 	# Generate and place new cargo
 	for slot in cargo_slots:
-		if slot.set_cargo_type(cargo_type):
+		if slot.set_cargo_type(cargo_data):
 			break
 	
 	cargo_set_up.emit()
 
-func set_cargo(new_cargo_type: Cargo.Cargo_type):
-	cargo_type = new_cargo_type
+func set_cargo(new_cargo_data: CargoItemData):
+	cargo_data = new_cargo_data
 	call_deferred("_set_up_cargo")
 
 func clear_cargo():
