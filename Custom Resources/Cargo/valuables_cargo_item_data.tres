@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=3 format=3 uid="uid://c65k18o4x66kk"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_27kuu"]
+[ext_resource type="Texture2D" uid="uid://elb4vmj8l3sp" path="res://Art/Cargo/Treasure/SplashyGoldCoin_8px.png" id="2_retj4"]
+
+[resource]
+script = ExtResource("1_27kuu")
+type = 3
+health = 10
+number_items = 50
+texture = ExtResource("2_retj4")
+is_distraction = false

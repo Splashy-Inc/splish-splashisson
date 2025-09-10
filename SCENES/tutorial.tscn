@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=36 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_2bdtw"]
@@ -23,7 +23,9 @@
 [ext_resource type="Resource" uid="uid://sf3jgfa2uafl" path="res://Dialogs/Tutorial/tutorial_distraction_2_dialog.tres" id="11_esu3o"]
 [ext_resource type="Resource" uid="uid://dc8dw6q2tuwc0" path="res://Dialogs/Tutorial/tutorial_wrap_up_dialog.tres" id="12_0cfyp"]
 [ext_resource type="Resource" uid="uid://7cb47q8j6xwg" path="res://Dialogs/Tutorial/tutorial_completed_dialog.tres" id="13_lfmix"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="18_5ae33"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="18_ax4w7"]
+[ext_resource type="Resource" uid="uid://dp77h4fp8pyjt" path="res://Custom Resources/Cargo/meat_cargo_item_data.tres" id="19_b2p88"]
 [ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="19_hrljw"]
 [ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="20_mkeck"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="26_th1uk"]
@@ -73,7 +75,7 @@ task_list = Array[int]([1, 2])
 [node name="Boat" parent="." instance=ExtResource("5_yg4ik")]
 position = Vector2(320, 180)
 deck_tasks = Array[int]([2, 1, 0, 0, 0])
-cargo_list = Array[int]([1])
+cargo_list = Array[ExtResource("18_5ae33")]([ExtResource("19_b2p88")])
 generate_crew = false
 
 [node name="People" type="Node2D" parent="." groups=["people"]]
