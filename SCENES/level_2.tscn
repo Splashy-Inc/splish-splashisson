@@ -1,14 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5v047lku1gcp"]
+[gd_scene load_steps=14 format=3 uid="uid://b5v047lku1gcp"]
 
 [ext_resource type="Script" path="res://SCRIPTS/level.gd" id="1_mmpq4"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="3_4pxwd"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="4_f1fhx"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="5_755sg"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="5_q4t3e"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="6_bs64v"]
+[ext_resource type="Resource" uid="uid://b007vhehgdfqc" path="res://Custom Resources/Cargo/fur_cargo_item_data.tres" id="6_jr0eu"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="8_ar00b"]
+[ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="8_nrerf"]
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="9_3v1q5"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="10_rylk5"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_ywfqu"]
+
+[sub_resource type="Resource" id="Resource_38nvx"]
+resource_local_to_scene = true
+script = ExtResource("8_nrerf")
+name = "Attack"
+rate = -0.2
 
 [node name="Level2" type="Node" node_paths=PackedStringArray("player", "weather", "boat")]
 script = ExtResource("1_mmpq4")
@@ -23,7 +32,7 @@ generate_rat_hole = true
 
 [node name="Boat" parent="." instance=ExtResource("6_bs64v")]
 position = Vector2(320, 180)
-cargo_list = Array[int]([2])
+cargo_list = Array[ExtResource("5_q4t3e")]([ExtResource("6_jr0eu")])
 
 [node name="People" type="Node2D" parent="." groups=["people"]]
 z_index = 1
@@ -31,6 +40,7 @@ y_sort_enabled = true
 
 [node name="Splish" parent="People" instance=ExtResource("8_ar00b")]
 position = Vector2(320, 180)
+attack_morale_modifier = SubResource("Resource_38nvx")
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]
 position = Vector2(320, 180)
