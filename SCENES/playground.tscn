@@ -30,6 +30,7 @@ point_count = 2
 script = ExtResource("1_bs7od")
 dock_scene = ExtResource("8_teo1b")
 pirate_ship_scene = ExtResource("11_nglpg")
+num_pirate_ships = 11
 seagull_scene = ExtResource("6_2x7mh")
 seagull_spawn = NodePath("SeagullSpawnPath/SeagullSpawn")
 player = NodePath("People/Splish")

@@ -153,6 +153,8 @@ func get_closest_target():
 					if crew_member.morale > 0.05:
 						if not new_target or global_position.distance_to(new_target.global_position) > global_position.distance_to(crew_member.global_position):
 							new_target = crew_member
+		if not new_target:
+			new_target = target_closest_cargo()
 		return new_target
 
 func set_assignment(new_assignment: Node2D):
@@ -181,6 +183,9 @@ func start_attacking(target: Node2D):
 			current_assignment.add_morale_modifier(attack_morale_modifier)
 		state = State.ATTACKING
 		return true
+	elif current_assignment is Cargo:
+		current_assignment.add_threat(self)
+		state = State.ATTACKING
 	
 	return false
 
@@ -274,3 +279,13 @@ func set_type(new_type: Type):
 func _on_ambient_noise_timer_timeout() -> void:
 	sfx_manager.play("AmbientNoise")
 	ambient_noise_timer.set_wait_time(randf_range(2.0, 3.0))
+
+func target_closest_cargo():
+	var target = null
+	for cargo in get_tree().get_nodes_in_group("cargo"):
+		if not target:
+			target = cargo
+		elif global_position.distance_to(cargo.global_position) > global_position.distance_to(target.global_position):
+			target = cargo
+	
+	return target
