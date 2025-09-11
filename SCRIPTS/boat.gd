@@ -53,10 +53,11 @@ func _process(delta: float) -> void:
 			speed = int(new_speed)
 			Globals.update_boat_speed(speed)
 
-func initialize(new_deck_length: int = 1, new_deck_tasks: Array[Globals.Task_type] = []):
+func initialize(new_deck_length: int = 1, new_deck_tasks: Array[Globals.Task_type] = [], new_cargo_list: Array[CargoItemData] = []):
 	if not new_deck_tasks.is_empty():
 		deck_tasks = new_deck_tasks
 	set_deck_length(new_deck_length)
+	cargo_list = new_cargo_list
 	_generate_boat()
 
 func _generate_boat():
@@ -157,7 +158,7 @@ func spawn_puddle(spawn_point: Vector2 = Vector2.ZERO):
 		return $PlayGrid.spawn_puddle(spawn_point)
 	return null
 
-func spawn_rat_hole(spawn_point: Vector2 = Vector2.ZERO):
+func spawn_rat_hole(spawn_point: Vector2 = Vector2.ZERO) -> RatHole:
 	if spawn_point == Vector2.ZERO:
 		spawn_point = get_spawn_point()
 	

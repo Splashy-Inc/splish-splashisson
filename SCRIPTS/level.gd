@@ -4,7 +4,7 @@ class_name Level
 
 signal completed
 
-@export var next_scene: PackedScene
+@export var stage_data := StageData.new()
 
 @export var dock_scene: PackedScene
 
@@ -14,6 +14,7 @@ signal completed
 
 @export var seagull_scene: PackedScene
 @export var seagull_spawn: PathFollow2D
+@export var seagull_spawn_interval := 0
 
 @export var player: Player
 
@@ -29,7 +30,9 @@ var boat_speed = 0
 @export var boat: Boat
 @export var boat_length := 1
 @export var task_list: Array[Globals.Task_type]
-@export var generate_rat_hole := false
+@export var cargo_list: Array[CargoItemData]
+@export var num_rat_holes := 0
+@export var rat_spawn_interval := 10
 var finished = false
 
 var end_dock: Dock
@@ -38,29 +41,22 @@ var level_stats := LevelStats.new()
 
 @onready var obstacles: Node = $Obstacles
 @onready var remaining_pirate_ships := num_pirate_ships
+@onready var seagull_spawn_timer: Timer = $Obstacles/SeagullSpawnTimer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# If no task list, autofill with rowing tasks
-	if task_list.is_empty():
-		for i in boat_length * 4:
-			task_list.append(Globals.Task_type.ROWING_RIGHT)
-	boat.initialize(boat_length, task_list)
-	level_stats.length_seconds = minimum_seconds
-	if not weather:
-		weather = get_tree().get_first_node_in_group("weather")
-	if not weather:
-		print("No weather node assigned, make sure to add one to the level if weather is needed!")
-	else:
-		weather.rain_ticked.connect(_on_rain_ticked)
+	load_stage_data(stage_data)
 
 func _level_ready():
-	if generate_rat_hole:
-		for node in get_tree().get_nodes_in_group("rat_hole"):
+	# TODO: Spawn as many rat holes as configured
+	for node in get_tree().get_nodes_in_group("rat_hole"):
 			if node is RatHole:
 				node.die()
-		boat.spawn_rat_hole()
+	if num_rat_holes > 0:
+		var new_rat_hole = boat.spawn_rat_hole()
+		if new_rat_hole:
+			new_rat_hole.initialize(rat_spawn_interval)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -77,6 +73,48 @@ func _process(delta: float) -> void:
 
 func _level_process(delta: float):
 	pass
+
+func load_stage_data(new_stage_data: StageData):
+	minimum_seconds = new_stage_data.length_seconds
+	boat_length = new_stage_data.boat_length
+	task_list = new_stage_data.boat_task_list
+	cargo_list = new_stage_data.cargo_list
+	weather.set_type(new_stage_data.weather)
+	num_rat_holes = new_stage_data.num_rat_holes
+	rat_spawn_interval = new_stage_data.rat_interval_seconds
+	seagull_spawn_interval = new_stage_data.seagull_interval_seconds
+	num_pirate_ships = new_stage_data.num_pirate_ships
+	remaining_pirate_ships = num_pirate_ships
+	start_pirates_per_ship = new_stage_data.start_pirates
+	
+	load_level()
+
+func load_level():
+	# If no task list, autofill with rowing tasks
+	if task_list.is_empty():
+		for i in boat_length * 4:
+			task_list.append(Globals.Task_type.ROWING_RIGHT)
+	boat.initialize(boat_length, task_list, cargo_list)
+	
+	level_stats.length_seconds = minimum_seconds
+	
+	if not weather:
+		weather = get_tree().get_first_node_in_group("weather")
+	if not weather:
+		print("No weather node assigned, make sure to add one to the level if weather is needed!")
+	else:
+		weather.rain_ticked.connect(_on_rain_ticked)
+	
+	if is_instance_valid(seagull_spawn_timer):
+		if seagull_spawn_interval > 0:
+			seagull_spawn_timer.start(seagull_spawn_interval)
+		else:
+			seagull_spawn_timer.stop()
+
+func initialize(new_stage_data: StageData):
+	stage_data = new_stage_data
+	if is_node_ready():
+		load_stage_data(stage_data)
 
 func _on_boat_ready() -> void:
 	max_boat_speed = boat.get_max_speed()

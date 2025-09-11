@@ -37,23 +37,13 @@ player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 120
 boat = NodePath("Boat")
-generate_rat_hole = true
+cargo_list = Array[ExtResource("7_hf2gs")]([ExtResource("8_v1vfh")])
 
 [node name="Ocean" parent="." instance=ExtResource("2_cmo3h")]
 
 [node name="Boat" parent="." instance=ExtResource("2_twya3")]
 position = Vector2(320, 180)
 cargo_list = Array[ExtResource("7_hf2gs")]([ExtResource("8_v1vfh")])
-
-[node name="Obstacles" type="Node" parent="."]
-
-[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
-wait_time = 5.0
-autostart = true
-
-[node name="SeagullSpawnTimer" type="Timer" parent="Obstacles"]
-wait_time = 10.0
-autostart = true
 
 [node name="People" type="Node2D" parent="." groups=["people"]]
 
@@ -65,6 +55,16 @@ attack_morale_modifier = SubResource("Resource_8n2tg")
 position = Vector2(320, 180)
 script = ExtResource("2_gusxx")
 focus_target = NodePath("../Splish")
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="LeakSpawnTimer" type="Timer" parent="Obstacles"]
+wait_time = 5.0
+autostart = true
+
+[node name="SeagullSpawnTimer" type="Timer" parent="Obstacles"]
+wait_time = 10.0
+autostart = true
 
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("8_teo1b")]
 position = Vector2(640, 180)

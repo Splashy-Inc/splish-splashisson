@@ -18,11 +18,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wik3j"]
 radius = 7.0
 
-[node name="RatHole" type="StaticBody2D" groups=["rat_hole"]]
+[node name="RatHole" type="StaticBody2D" node_paths=PackedStringArray("self_space") groups=["rat_hole"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_h4sya")
 rat_scene = ExtResource("2_a6hdb")
+self_space = NodePath("SelfSpace/CollisionPolygon2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

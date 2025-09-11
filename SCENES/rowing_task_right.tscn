@@ -302,7 +302,7 @@ _data = {
 "stop_player": ExtResource("34_2357h")
 }
 
-[node name="RowingTaskRight" type="StaticBody2D" node_paths=PackedStringArray("collision_shape", "dismount_point") groups=["impassable", "rowing_task"]]
+[node name="RowingTaskRight" type="StaticBody2D" node_paths=PackedStringArray("collision_shape", "dismount_point", "self_space") groups=["impassable", "rowing_task"]]
 z_index = 1
 scale = Vector2(1, -1)
 collision_layer = 12
@@ -311,6 +311,7 @@ script = ExtResource("1_8m1hv")
 collision_shape = NodePath("CollisionShape2D")
 interaction_radius = 5
 dismount_point = NodePath("DismountPoint")
+self_space = NodePath("SelfSpace/CollisionPolygon2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_ca2dx")

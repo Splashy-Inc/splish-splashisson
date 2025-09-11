@@ -279,12 +279,13 @@ states/start/node = SubResource("AnimationNodeAnimation_kfqgv")
 states/start/position = Vector2(346, 100)
 transitions = ["Start", "start", SubResource("AnimationNodeStateMachineTransition_fyktv"), "start", "active", SubResource("AnimationNodeStateMachineTransition_hdtsh"), "active", "end", SubResource("AnimationNodeStateMachineTransition_tw351"), "end", "End", SubResource("AnimationNodeStateMachineTransition_vbovt")]
 
-[node name="Leak" type="StaticBody2D" groups=["leak"]]
+[node name="Leak" type="StaticBody2D" node_paths=PackedStringArray("self_space") groups=["leak"]]
 z_index = 1
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_4ykgf")
 interaction_radius = 8
+self_space = NodePath("SelfSpace/CollisionPolygon2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_7wtkj")

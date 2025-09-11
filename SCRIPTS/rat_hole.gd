@@ -38,6 +38,9 @@ func spawn(spawn_point: Vector2):
 				spawned.emit()
 	return spawn_occupant
 
+func initialize(new_rat_spawn_interval: int):
+	spawn_timer.wait_time = new_rat_spawn_interval
+
 func die():
 	for child in get_children():
 		if child is Rat:
