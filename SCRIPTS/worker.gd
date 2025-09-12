@@ -305,9 +305,14 @@ func stop_repelling_seagull():
 	if current_assignment is Seagull:
 		var closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
 		
-		set_assignment(closest_seagull)
+		if self is Crew:
+			set_assignment(closest_seagull)
+		else:
+			set_assignment(null)
 		
 		if closest_seagull and _check_in_range(closest_seagull):
+			if self is Player:
+				set_assignment(closest_seagull)
 			_start_assignment()
 
 func _start_assignment() -> bool:
