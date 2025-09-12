@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=11 format=3 uid="uid://oc21gofoj61j"]
+
+[ext_resource type="Resource" uid="uid://cgh3e1m1cql24" path="res://Dialogs/level_2_cutscene_dialog_data.tres" id="1_4u7jo"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="1_axcua"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_kbncn"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="2_6qxqg"]
+[ext_resource type="Resource" uid="uid://b007vhehgdfqc" path="res://Custom Resources/Cargo/fur_cargo_item_data.tres" id="2_boesh"]
+[ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="3_rxph1"]
+[ext_resource type="AudioStream" uid="uid://cnywnjrimlic0" path="res://Audio/Shrimp/shrimp_sounds.tres" id="4_utawm"]
+[ext_resource type="Texture2D" uid="uid://bh7hha73l5725" path="res://Textures/shrimp_merchat_dialog_texture.tres" id="5_oy8d0"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="6_kgat4"]
+
+[sub_resource type="Resource" id="Resource_l74pf"]
+script = ExtResource("6_kgat4")
+left_texture = ExtResource("3_rxph1")
+left_sound = ExtResource("2_6qxqg")
+right_texture = ExtResource("5_oy8d0")
+right_sound = ExtResource("4_utawm")
+dialog_data = ExtResource("1_4u7jo")
+
+[resource]
+script = ExtResource("1_axcua")
+cutscene_data = SubResource("Resource_l74pf")
+is_tutorial = false
+length_seconds = 60
+boat_length = 1
+boat_task_list = Array[int]([1, 2, 1, 2])
+cargo_list = Array[ExtResource("1_kbncn")]([ExtResource("2_boesh")])
+weather = 1
+num_rat_holes = 1
+rat_interval_seconds = 10
+seagull_interval_seconds = 0
+num_pirate_ships = 0
+start_pirates = 1

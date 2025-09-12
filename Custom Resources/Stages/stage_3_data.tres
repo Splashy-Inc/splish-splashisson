@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=16 format=3 uid="uid://dkbttji6b0itf"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_pnwy3"]
+[ext_resource type="Resource" uid="uid://c65k18o4x66kk" path="res://Custom Resources/Cargo/valuables_cargo_item_data.tres" id="2_a7olw"]
+[ext_resource type="Resource" uid="uid://j6ce8i0bomc0" path="res://Dialogs/level_3_cutscene_dialog_data.tres" id="3_7b5ww"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="4_7gbhl"]
+[ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="5_vj4u6"]
+[ext_resource type="AudioStream" uid="uid://j2k3cemsni4h" path="res://Audio/Turtle/turtle_sounds.tres" id="6_omk2v"]
+[ext_resource type="Texture2D" uid="uid://cpdi0bftt6uny" path="res://Art/Merchants/Turtle/Turtle_01.png" id="7_kfota"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="8_8fe25"]
+[ext_resource type="Texture2D" uid="uid://rlb2oxv2ckar" path="res://Art/Merchants/Turtle/Turtle_02.png" id="8_om3ri"]
+[ext_resource type="Texture2D" uid="uid://brqh1qh4oh3xy" path="res://Art/Merchants/Turtle/Turtle_03.png" id="9_2gms5"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="9_l2gdr"]
+[ext_resource type="Texture2D" uid="uid://l48xph8dwkwb" path="res://Art/Merchants/Turtle/Turtle_04.png" id="10_5wx7x"]
+[ext_resource type="Texture2D" uid="uid://dbi35qpfjw2j2" path="res://Art/Merchants/Turtle/Turtle_05.png" id="11_1htwy"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ropgl"]
+frames = 5
+frame_0/texture = ExtResource("7_kfota")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("8_om3ri")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("9_2gms5")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("10_5wx7x")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("11_1htwy")
+frame_4/duration = 0.5
+
+[sub_resource type="Resource" id="Resource_l74pf"]
+script = ExtResource("8_8fe25")
+left_texture = ExtResource("5_vj4u6")
+left_sound = ExtResource("4_7gbhl")
+right_texture = SubResource("AnimatedTexture_ropgl")
+right_sound = ExtResource("6_omk2v")
+dialog_data = ExtResource("3_7b5ww")
+
+[resource]
+script = ExtResource("9_l2gdr")
+cutscene_data = SubResource("Resource_l74pf")
+is_tutorial = false
+length_seconds = 120
+boat_length = 2
+boat_task_list = Array[int]([1, 2, 1, 2, 1, 2, 1, 2])
+cargo_list = Array[ExtResource("1_pnwy3")]([ExtResource("2_a7olw")])
+weather = 0
+num_rat_holes = 0
+rat_interval_seconds = 10
+seagull_interval_seconds = 10
+num_pirate_ships = 2
+start_pirates = 1

@@ -44,8 +44,9 @@ position = Vector2(0, 142)
 
 [node name="Crew" type="Node" parent="."]
 
-[node name="PlayGrid" parent="." instance=ExtResource("5_6ih3t")]
+[node name="PlayGrid" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("5_6ih3t")]
 position = Vector2(-112, -176)
+boat = NodePath("..")
 
 [connection signal="cargo_set_up" from="NavigationRegion2D/BowSlot/Bow" to="." method="_on_bow_cargo_set_up"]
 [connection signal="tasks_set_up" from="NavigationRegion2D/DeckSlot/Deck" to="." method="_on_deck_segment_tasks_set_up"]

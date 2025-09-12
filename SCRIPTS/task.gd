@@ -14,6 +14,7 @@ var is_selected = false
 var level_completed = false
 
 @export var dismount_point : Marker2D
+@export var self_space : CollisionPolygon2D
 
 func _ready():
 	Globals.level_completed.connect(_on_level_completed)
@@ -75,7 +76,9 @@ func toggle_active(set_active: bool):
 		play_animation("idle")
 
 func get_self_polygon():
-	return Utils.shift_polygon($SelfSpace/CollisionPolygon2D.polygon, global_position)
+	if is_instance_valid(self_space):
+		return Utils.shift_polygon(self_space.polygon, global_position)
+	return null
 	
 func _on_level_completed(level: Level):
 	level_completed = true

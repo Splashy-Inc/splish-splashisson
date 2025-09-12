@@ -25,10 +25,13 @@ func _check_spawn_space_occupied(group: String):
 	var group_nodes = get_tree().get_nodes_in_group(group)
 	group_nodes.erase(self)
 	
+	var self_polygon = get_self_polygon()
 	# Check if attempted self space already overlaps with a puddle
 	for node in group_nodes:
-		if node.has_method("get_self_polygon") and not Geometry2D.intersect_polygons(node.get_self_polygon(), get_self_polygon()).is_empty():
-			return node
-			break
+		if node.has_method("get_self_polygon"):
+			var node_polygon = node.get_self_polygon()
+			if node_polygon and not Geometry2D.intersect_polygons(node_polygon, self_polygon).is_empty():
+				return node
+				break
 	
 	return null

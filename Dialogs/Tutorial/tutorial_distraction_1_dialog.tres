@@ -7,3 +7,4 @@
 script = ExtResource("1_t3ywt")
 label = "Distraction_1"
 dialog_text_json = ExtResource("1_n3qf3")
+end_buttons = Array[PackedScene]([])

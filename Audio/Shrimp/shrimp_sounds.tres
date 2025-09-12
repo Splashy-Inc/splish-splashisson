@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://cnywnjrimlic0"]
+
+[ext_resource type="AudioStream" uid="uid://bha8sf627tah0" path="res://Audio/Shrimp/shrimp_voice_1.ogg" id="1_dsnes"]
+[ext_resource type="AudioStream" uid="uid://be62rbdui7voc" path="res://Audio/Shrimp/shrimp_voice_2.ogg" id="2_0dn33"]
+[ext_resource type="AudioStream" uid="uid://dbk876lewi1od" path="res://Audio/Shrimp/shrimp_voice_3.ogg" id="3_pml3y"]
+[ext_resource type="AudioStream" uid="uid://dxfx0c4foce17" path="res://Audio/Shrimp/shrimp_voice_4.ogg" id="4_hmf80"]
+[ext_resource type="AudioStream" uid="uid://g7mrru42k27p" path="res://Audio/Shrimp/shrimp_voice_5.ogg" id="5_phlg8"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_dsnes")
+stream_1/stream = ExtResource("2_0dn33")
+stream_2/stream = ExtResource("3_pml3y")
+stream_3/stream = ExtResource("4_hmf80")
+stream_4/stream = ExtResource("5_phlg8")

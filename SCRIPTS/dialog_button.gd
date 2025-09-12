@@ -6,7 +6,8 @@ class_name DialogButton
 
 enum Dialog_button_action_type {
 	ADVANCE,
-	CUSTOM
+	SKIP,
+	CUSTOM,
 }
 
 # Called when the node enters the scene tree for the first time.

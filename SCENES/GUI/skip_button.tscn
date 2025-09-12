@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c23gyau3x5myg"]
+
+[ext_resource type="Script" path="res://SCRIPTS/dialog_button.gd" id="1_0omew"]
+
+[node name="SkipButton" type="Button"]
+text = "No (Skip)"
+script = ExtResource("1_0omew")
+action_type = 1

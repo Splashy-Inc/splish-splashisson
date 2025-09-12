@@ -2,6 +2,8 @@ extends TileMapLayer
 
 class_name PlayGrid
 
+@export var boat: Boat
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,7 +30,7 @@ func get_cargo_slots() -> Array[CargoSlot]:
 func spawn_leak(spawn_point: Vector2):
 	var new_leak = Globals.generate_task(Globals.Task_type.LEAK)
 	if new_leak is Leak:
-		Globals.boat.add_obstacle(new_leak)
+		boat.add_obstacle(new_leak)
 		var spawned_leak = new_leak.spawn(center_point_in_cell(spawn_point))
 		if spawned_leak == new_leak:
 			if new_leak.global_position.x > Globals.boat.global_position.x:
@@ -38,13 +40,13 @@ func spawn_leak(spawn_point: Vector2):
 
 func spawn_puddle(spawn_point: Vector2) -> Puddle:
 	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE) as Puddle
-	Globals.boat.add_obstacle(new_puddle)
+	boat.add_obstacle(new_puddle)
 	return new_puddle.spawn(center_point_in_cell(spawn_point))
 
 func spawn_rat_hole(spawn_point: Vector2) -> RatHole:
 	var new_rat_hole = Globals.generate_rat_hole() as RatHole
 	if new_rat_hole is RatHole:
-		Globals.boat.add_obstacle(new_rat_hole)
+		boat.add_obstacle(new_rat_hole)
 		var spawned_rat_hole = new_rat_hole.spawn(center_point_in_cell(spawn_point))
 		if spawned_rat_hole == new_rat_hole:
 			return new_rat_hole

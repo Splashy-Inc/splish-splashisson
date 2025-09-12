@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=33 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_2bdtw"]
-[ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://SCENES/Cutscenes/cutscene.tscn" id="2_fsg7x"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="2_ow1x7"]
 [ext_resource type="Resource" uid="uid://oldvcmnehasr" path="res://Dialogs/Tutorial/tutorial_overview_dialog.tres" id="3_5kn7a"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="3_6em2h"]
@@ -51,17 +50,9 @@ rate = -0.2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qexjr"]
 size = Vector2(257, 49)
 
-[sub_resource type="AudioStream" id="AudioStream_ce5gk"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qgyqk"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("20_mkeck")
-
 [node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "dialog_box", "weather", "boat")]
 script = ExtResource("1_42opa")
 original_dialog_files = Array[ExtResource("2_2bdtw")]([ExtResource("3_5kn7a"), ExtResource("4_80aas"), ExtResource("5_1wp2l"), ExtResource("6_7wwll"), ExtResource("7_6844e"), ExtResource("8_3xhu5"), ExtResource("9_m4ims"), ExtResource("10_812v3"), ExtResource("11_esu3o"), ExtResource("12_0cfyp"), ExtResource("13_lfmix")])
-next_scene = ExtResource("2_fsg7x")
 dock_scene = ExtResource("2_ow1x7")
 player = NodePath("People/Splish")
 dialog_box = NodePath("LevelUI/DialogBox")
@@ -133,7 +124,7 @@ boat = NodePath("../Boat")
 visible = false
 left_texture = null
 right_texture = ExtResource("7_xx2yn")
-speaker_sounds = Array[AudioStream]([SubResource("AudioStream_ce5gk"), SubResource("AudioStreamRandomizer_qgyqk")])
+right_sound = ExtResource("20_mkeck")
 
 [node name="RightTexture" parent="LevelUI/DialogBox/HBoxContainer/RightPanel" index="0"]
 flip_h = true

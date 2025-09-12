@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://j2k3cemsni4h"]
+
+[ext_resource type="AudioStream" uid="uid://3u6g54l68jyb" path="res://Audio/Turtle/turtle_merchant_1.ogg" id="1_fmhlq"]
+[ext_resource type="AudioStream" uid="uid://w62ltq18s510" path="res://Audio/Turtle/turtle_merchant_2.ogg" id="2_dl5om"]
+[ext_resource type="AudioStream" uid="uid://br0rqts3jw1tq" path="res://Audio/Turtle/turtle_merchant_3.ogg" id="3_ff1yr"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_fmhlq")
+stream_1/stream = ExtResource("2_dl5om")
+stream_2/stream = ExtResource("3_ff1yr")

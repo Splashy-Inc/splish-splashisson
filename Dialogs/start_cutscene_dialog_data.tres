@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=3 format=3 uid="uid://cavw65m6hlnw3"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=5 format=3 uid="uid://cavw65m6hlnw3"]
 
 [ext_resource type="JSON" path="res://Dialogs/start_cutscene_dialog.json" id="1_rqlm4"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="1_ryqk6"]
+[ext_resource type="PackedScene" uid="uid://blkig8tntob06" path="res://SCENES/GUI/tutorial_button.tscn" id="2_0rr1j"]
+[ext_resource type="PackedScene" uid="uid://c23gyau3x5myg" path="res://SCENES/GUI/skip_button.tscn" id="3_x72bk"]
 
 [resource]
 script = ExtResource("1_ryqk6")
 label = ""
 dialog_text_json = ExtResource("1_rqlm4")
+end_buttons = Array[PackedScene]([ExtResource("2_0rr1j"), ExtResource("3_x72bk")])

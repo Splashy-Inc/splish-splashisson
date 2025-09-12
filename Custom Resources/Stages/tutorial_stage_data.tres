@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=9 format=3 uid="uid://cdpgjx8jbdyni"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_cg3g1"]
+[ext_resource type="Resource" uid="uid://dp77h4fp8pyjt" path="res://Custom Resources/Cargo/meat_cargo_item_data.tres" id="2_6aecr"]
+[ext_resource type="Resource" uid="uid://cavw65m6hlnw3" path="res://Dialogs/start_cutscene_dialog_data.tres" id="3_vf5mp"]
+[ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="4_3q11p"]
+[ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="5_78lmj"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="8_66h4q"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="9_1x1hs"]
+
+[sub_resource type="Resource" id="Resource_8na8v"]
+script = ExtResource("8_66h4q")
+right_texture = ExtResource("5_78lmj")
+right_sound = ExtResource("4_3q11p")
+dialog_data = ExtResource("3_vf5mp")
+
+[resource]
+script = ExtResource("9_1x1hs")
+cutscene_data = SubResource("Resource_8na8v")
+is_tutorial = true
+length_seconds = 20
+boat_length = 1
+boat_task_list = Array[int]([1, 2])
+cargo_list = Array[ExtResource("1_cg3g1")]([ExtResource("2_6aecr")])
+weather = 0
+num_rat_holes = 0
+rat_interval_seconds = 10
+seagull_interval_seconds = 0
+num_pirate_ships = 0
+start_pirates = 1
