@@ -5,6 +5,7 @@ class_name Seagull
 func _death_state():
 	if is_in_group("seagull"):
 		remove_from_group("seagull")
+		animation_player.play("die")
 	if target:
 		var direction = -_get_direction()
 		direction = Vector2(direction.x, -.1).normalized()
