@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://j6ce8i0bomc0" path="res://Dialogs/level_3_cutscene_dialog_data.tres" id="3_7b5ww"]
 [ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="4_7gbhl"]
 [ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="5_vj4u6"]
-[ext_resource type="AudioStream" uid="uid://cnywnjrimlic0" path="res://Audio/Shrimp/shrimp_sounds.tres" id="6_i236s"]
+[ext_resource type="AudioStream" uid="uid://j2k3cemsni4h" path="res://Audio/Turtle/turtle_sounds.tres" id="6_omk2v"]
 [ext_resource type="Texture2D" uid="uid://cpdi0bftt6uny" path="res://Art/Merchants/Turtle/Turtle_01.png" id="7_kfota"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="8_8fe25"]
 [ext_resource type="Texture2D" uid="uid://rlb2oxv2ckar" path="res://Art/Merchants/Turtle/Turtle_02.png" id="8_om3ri"]
@@ -32,7 +32,7 @@ script = ExtResource("8_8fe25")
 left_texture = ExtResource("5_vj4u6")
 left_sound = ExtResource("4_7gbhl")
 right_texture = SubResource("AnimatedTexture_ropgl")
-right_sound = ExtResource("6_i236s")
+right_sound = ExtResource("6_omk2v")
 dialog_data = ExtResource("3_7b5ww")
 
 [resource]
