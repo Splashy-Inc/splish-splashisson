@@ -147,8 +147,7 @@ func load_stage(new_stage_data: StageData):
 	_clear_screens()
 	var new_cutscene = generate_cutscene()
 	new_cutscene.start_pressed.connect(load_level)
-	if new_cutscene is TutorialCutscene:
-		new_cutscene.skip_pressed.connect(_on_tutorial_skipped)
+	new_cutscene.skip_pressed.connect(_on_tutorial_skipped)
 	add_child(new_cutscene)
 	new_cutscene.initialize(cur_stage_data)
 	cur_screen = new_cutscene

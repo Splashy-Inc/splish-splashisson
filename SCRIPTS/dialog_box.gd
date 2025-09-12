@@ -38,6 +38,7 @@ func initialize():
 	right_sound_player.stream = right_sound
 	
 	if dialog_data and dialog_data.dialog_text_json:
+		end_buttons = dialog_data.end_buttons
 		_set_dialog_text(dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position]["line"])
 		match dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position]["speaker"]:
 			0:
@@ -45,12 +46,14 @@ func initialize():
 			1:
 				right_sound_player.play()
 	
-	for button in end_buttons:
-		button.reparent(dialog_button_section)
+	for button_scene in end_buttons:
+		var new_button = button_scene.instantiate() as DialogButton
+		dialog_button_section.add_child(new_button)
+		new_button.pressed.connect(_on_dialog_button_pressed.bind(new_button))
 	_hide_end_buttons()
 
 func advance_dialog():
-	var next_line_data = _get_next_line()
+	var next_line_data = _get_next_line(true)
 	if next_line_data:
 		_set_dialog_text(next_line_data["line"])
 		var test = next_line_data["speaker"]
@@ -59,13 +62,17 @@ func advance_dialog():
 				left_sound_player.play()
 			"1":
 				right_sound_player.play()
+		if not _get_next_line(false):
+			_show_end_buttons()
 	else:
-		_show_end_buttons()
+		await play_confirmation_sound()
+		dialog_ended.emit()
 
-func _get_next_line():
-	cur_dialog_position += 1
+func _get_next_line(increment: bool = true):
 	if dialog_data.dialog_text_json:
-		if cur_dialog_position < len(dialog_data.dialog_text_json.data["dialog_lines"]):
+		if cur_dialog_position < len(dialog_data.dialog_text_json.data["dialog_lines"]) - 1:
+			if increment:
+				cur_dialog_position += 1
 			return dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position]
 	return null
 
@@ -80,20 +87,18 @@ func _on_dialog_button_pressed(button: DialogButton):
 			skip_pressed.emit()
 
 func _hide_end_buttons():
-	for button in end_buttons:
+	for button in dialog_button_section.get_children():
 		button.hide()
-		dialog_button.show()
+	dialog_button.show()
 
 func _show_end_buttons():
-	if end_buttons.is_empty():
-		await play_confirmation_sound()
-		dialog_ended.emit()
-	else:
-		dialog_button.hide()
-		for button in end_buttons:
+	if len(dialog_button_section.get_children()) > 1:
+		for button in dialog_button_section.get_children():
 			button.show()
-		end_buttons.front().grab_focus()
-			
+			if button != dialog_button:
+				button.grab_focus()
+		dialog_button.hide()
+
 func set_dialog_data(new_dialog_data: DialogData):
 	dialog_data = new_dialog_data
 	cur_dialog_position = -1
