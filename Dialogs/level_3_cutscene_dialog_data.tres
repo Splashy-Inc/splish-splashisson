@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=3 format=3 uid="uid://j6ce8i0bomc0"]
+
+[ext_resource type="JSON" path="res://Dialogs/level_3_cutscene_dialog.json" id="1_h68qp"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_ws2la"]
+
+[resource]
+script = ExtResource("2_ws2la")
+label = ""
+dialog_text_json = ExtResource("1_h68qp")
+end_buttons = Array[PackedScene]([])

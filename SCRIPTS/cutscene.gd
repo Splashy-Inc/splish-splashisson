@@ -13,6 +13,8 @@ signal skip_pressed
 @export var dialog_box : DialogBox
 @export var weather : Weather
 @export var boat : Boat
+@export var splish_on_dock: Sprite2D
+@export var merchant_on_dock: Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,12 +30,17 @@ func load_stage_data(new_stage_data: StageData):
 	boat_length = new_stage_data.boat_length
 	deck_tasks = new_stage_data.boat_task_list
 	boat.initialize(boat_length, deck_tasks)
+	merchant_on_dock.texture = null
+	splish_on_dock.texture = null
 	
 	var cutscene_data = new_stage_data.cutscene_data
 	if cutscene_data:
+		splish_on_dock.texture = cutscene_data.left_texture
 		dialog_box.left_texture = cutscene_data.left_texture
 		dialog_box.left_sound = cutscene_data.left_sound
 
+		if not new_stage_data.is_tutorial:
+			merchant_on_dock.texture = cutscene_data.right_texture
 		dialog_box.right_texture = cutscene_data.right_texture
 		dialog_box.right_sound = cutscene_data.right_sound
 

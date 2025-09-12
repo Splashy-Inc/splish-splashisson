@@ -7,3 +7,4 @@
 script = ExtResource("1_0kwks")
 label = "Rowing"
 dialog_text_json = ExtResource("1_r6f5x")
+end_buttons = Array[PackedScene]([])

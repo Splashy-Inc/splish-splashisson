@@ -18,7 +18,7 @@ script = ExtResource("1_tbvcx")
 level_scene = ExtResource("2_a1dsb")
 cutscene_scene = ExtResource("3_exs45")
 tutorial_scene = ExtResource("4_7tukn")
-stages = Array[ExtResource("4_uh14n")]([ExtResource("5_31ckl"), ExtResource("6_brg1n"), ExtResource("7_yxkbv"), ExtResource("8_j5xc5")])
+stages = Array[ExtResource("4_uh14n")]([ExtResource("8_j5xc5"), ExtResource("5_31ckl"), ExtResource("6_brg1n"), ExtResource("7_yxkbv")])
 
 [node name="HUD" parent="." instance=ExtResource("3_3hcl3")]
 layer = 2

@@ -1,0 +1,24 @@
+{
+	"dialog_lines": [
+		{
+			"line": "Welcome to Gullmore Crossing! We appreciate the fur delivery from Shrimpsburg.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Since you're not from these parts, can I interest you in some work? We need someone to transport funds back home to Turtleton.", 
+			"speaker": 1,
+		},
+		{
+			"line": "It looks like the promised upgrade to your boat is complete, so I can help find some additional crew for the journey.",
+			"speaker": 1,
+		},
+		{
+			"line": "The additional crew should help fend off any pirates roving the trade route. There's also a segull problem right now... It's that time of year...",
+			"speaker": 1,
+		},
+		{
+			"line": "I'll get the funds brought out for your crew to load up before you leave. Good luck!",
+			"speaker": 1,
+		},
+	]
+}
