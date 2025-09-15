@@ -47,6 +47,12 @@ func toggle_pause_menu():
 		else:
 			_resume_play()
 
+func show_end_game_screen():
+	_pause_play()
+	_clear_screens()
+	cur_stage_data = null
+	hud.show_end_game_screen()
+
 func _on_quit_pressed():
 	get_tree().quit()
 
@@ -116,11 +122,11 @@ func _clear_screens():
 
 func _on_next_pressed() -> void:
 	if cur_screen:
+		hud.hide_menus()
 		if cur_screen is Level:
 			load_next_stage()
 		elif cur_screen is Cutscene:
 			load_level(cur_stage_data)
-		hud.hide_menus()
 	else:
 		show_main_menu()
 
@@ -158,6 +164,8 @@ func load_next_stage():
 		var cur_stage_index = stages.find(cur_stage_data)
 		if cur_stage_index < stages.size() - 1:
 			load_stage(stages[cur_stage_index + 1])
+		else:
+			show_end_game_screen()
 	else:
 		show_main_menu()
 
