@@ -15,6 +15,7 @@ signal main_menu_pressed
 @onready var win_screen: WinScreen = $MenuScreens/WinScreen
 @onready var loss_screen: Control = $MenuScreens/LossScreen
 @onready var pause_menu: Control = $MenuScreens/PauseMenu
+@onready var end_game_screen: Control = $MenuScreens/EndGameScreen
 
 enum Menus {
 	NONE,
@@ -23,6 +24,7 @@ enum Menus {
 	WIN,
 	LOSS,
 	PAUSE,
+	END,
 }
 
 var cur_menu := Menus.NONE
@@ -91,6 +93,12 @@ func show_loss_screen():
 	_clear_menu()
 	show_menu_screens()
 	loss_screen.show()
+
+func show_end_game_screen():
+	cur_menu = Menus.END
+	_clear_menu()
+	show_menu_screens()
+	end_game_screen.show()
 
 func _on_game_menu_button_pressed(type: String):
 	match type:

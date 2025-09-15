@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SCRIPTS/main_menu.gd" id="1_vkagb"]
 [ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_w1mmc"]
 [ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="3_32f6x"]
-[ext_resource type="LabelSettings" uid="uid://c014bsm5ryfcy" path="res://SCENES/GUI/text_title_format.tres" id="3_vj6ow"]
+[ext_resource type="LabelSettings" path="res://SCENES/GUI/text_title_format.tres" id="3_vj6ow"]
 [ext_resource type="FontFile" uid="uid://d1mx7mywxo10e" path="res://Art/Font/m5x7.ttf" id="4_tra3o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hky3s"]
@@ -73,7 +73,6 @@ custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("3_32f6x")
-theme_override_font_sizes/font_size = 18
 text = "Quit"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]

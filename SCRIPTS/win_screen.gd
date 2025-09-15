@@ -4,14 +4,14 @@ class_name WinScreen
 
 signal button_pressed
 
-@onready var next_level_button: Button = $MenuContent/MenuButtons/NextLevelButton
-@onready var time_value: Label = $MenuContent/LevelStats/TimeStats/Value
-@onready var percentage_label: Label = $MenuContent/LevelStats/TimeStats/PercentageLabel
-@onready var cargo_value: Label = $MenuContent/LevelStats/CargoStats/Value
-@onready var success_value: Label = $MenuContent/LevelStats/SuccessStats/Value
-@onready var puddle_value: Label = $MenuContent/LevelStats/PuddleStats/Value
-@onready var leak_value: Label = $MenuContent/LevelStats/LeakStats/Value
-@onready var rat_value: Label = $MenuContent/LevelStats/RatStats/Value
+@export var next_level_button: Button
+@export var time_value: Label
+@export var percentage_label: Label
+@export var cargo_value: Label
+@export var success_value: Label
+@export var puddle_value: Label
+@export var leak_value: Label
+@export var rat_value: Label
 
 var level_stats: LevelStats
 
