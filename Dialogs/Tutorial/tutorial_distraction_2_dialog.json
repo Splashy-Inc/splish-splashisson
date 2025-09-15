@@ -1,6 +1,22 @@
 {
 	"dialog_lines": [
 		{
+			"line": "You can positively affect the crew's morale in 3 ways: passively, while working, and by getting their attention.",
+			"speaker": 1,
+		},
+		{
+			"line": "Your passive morale aura is the yellow ring that just appeared around you. It is usually enough to keep the crew around you working, assuming no negative events are happening.",
+			"speaker": 1,
+		},
+		{
+			"line": "Your working morale aura is a pulse that gives an additional positive effect on crew morale in range. This will usually restore crew morale while active.",
+			"speaker": 1,
+		},
+		{
+			"line": "When you get a crew member's attention, they instantly jump to 100% morale. It's motivating to get direct orders from the captain!",
+			"speaker": 1,
+		},
+		{
 			"line": "Ok, go get their attention now.",
 			"speaker": 1,
 		},
