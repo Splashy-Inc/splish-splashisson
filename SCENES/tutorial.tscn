@@ -80,6 +80,7 @@ attack_morale_modifier = SubResource("Resource_exmgx")
 
 [node name="Splish" parent="People" instance=ExtResource("7_wap1k")]
 position = Vector2(320, 180)
+aura_visible = false
 attack_morale_modifier = SubResource("Resource_2c4a5")
 
 [node name="GameCamera" type="Camera2D" parent="People" node_paths=PackedStringArray("focus_target")]

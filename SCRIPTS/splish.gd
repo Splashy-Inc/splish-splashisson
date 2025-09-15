@@ -31,6 +31,7 @@ var input_disabled = false
 @export var working_morale_modifier : MoraleModifier
 @export var morale_color : Color
 
+@export var aura_visible := true
 var aura_targets : Array[Crew]
 
 @onready var morale_aura: Area2D = $MoraleAura
@@ -38,6 +39,7 @@ var aura_targets : Array[Crew]
 @onready var interactable_range: Area2D = $InteractableRange
 
 func _process(delta: float) -> void:
+	morale_aura.visible = aura_visible
 	if not current_assignment:
 		if not Input.is_action_pressed("act"):
 			_find_action_target()

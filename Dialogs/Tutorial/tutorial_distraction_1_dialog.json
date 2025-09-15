@@ -5,7 +5,11 @@
 			"speaker": 1,
 		},
 		{
-			"line": "Be warned! Your crew will get distracted if left without a task for 10 seconds, or after working for 20.",
+			"line": "Be warned! Your crew will get distracted if morale (the green bar above their head) drops to 0%",
+			"speaker": 1,
+		},
+		{
+			"line": "From 100%, crew will get distracted after 10 seconds with no assignment, 20 seconds while working. It's demoralizing to just stand around!",
 			"speaker": 1,
 		},
 		{
@@ -13,11 +17,15 @@
 			"speaker": 1,
 		},
 		{
+			"line": "If there is no distracting cargo present, they will just wander around.",
+			"speaker": 1,
+		},
+		{
 			"line": "To stop them, simply get their attention! If you stop crew before they damage a full unit of cargo, it will be restored.",
 			"speaker": 1,
 		},
 		{
-			"line": "You will be unable to do anything until this crew member gets distracted then I'll let you get their attention.",
+			"line": "You will be unable to do anything until this crew member gets distracted.",
 			"speaker": 1,
 		},
 	]
