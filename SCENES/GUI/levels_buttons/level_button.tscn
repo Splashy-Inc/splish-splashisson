@@ -12,3 +12,5 @@ offset_bottom = -71.0
 theme = ExtResource("1_wb4ve")
 script = ExtResource("2_74t3b")
 stage_data = ExtResource("3_6foij")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

@@ -2,6 +2,8 @@ extends Resource
 
 class_name StageData
 
+@export var unlocked := false
+
 @export var cutscene_data : CutsceneData
 
 @export var is_tutorial := false

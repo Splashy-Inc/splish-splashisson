@@ -20,6 +20,7 @@ dialog_data = ExtResource("1_4u7jo")
 
 [resource]
 script = ExtResource("1_axcua")
+unlocked = false
 cutscene_data = SubResource("Resource_l74pf")
 is_tutorial = false
 length_seconds = 60
