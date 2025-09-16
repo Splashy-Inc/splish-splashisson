@@ -8,11 +8,11 @@ signal stage_selected(stage_data: StageData)
 func _ready() -> void:
 	for child in map.get_children():
 		if child is LevelButton:
-			child.pressed.connect(_on_stage_pressed.bind(child))
+			child.selected.connect(_on_stage_selected.bind(child))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func _on_stage_pressed(button: LevelButton):
+func _on_stage_selected(button: LevelButton):
 	stage_selected.emit("Play", button.stage_data)

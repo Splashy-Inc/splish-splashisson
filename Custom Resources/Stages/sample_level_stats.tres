@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LevelStats" load_steps=2 format=3 uid="uid://bjcvfs7u8xtrs"]
+
+[ext_resource type="Script" path="res://Custom Resources/Stages/level_stats.gd" id="1_c8fd0"]
+
+[resource]
+script = ExtResource("1_c8fd0")
+level_name = "Sample Stats"
+length_seconds = 60.0
+finish_seconds = 90.0
+cargo_max_condition = 100.0
+cargo_finish_condition = 80.0
+puddles_spawned = 10
+puddles_fixed = 5
+leaks_spawned = 5
+leaks_fixed = 3
+rats_spawned = 2
+rats_fixed = 2
+seagulls_spawned = 12
+seagulls_fixed = 8
+speed_success_modifier = 0.75

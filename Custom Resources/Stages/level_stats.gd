@@ -2,14 +2,14 @@ extends Resource
 
 class_name LevelStats
 
-@export var level_data : StageData
+@export var level_name : String
 @export var length_seconds : float
 @export var finish_seconds : float
-@export var speed_percentage : float
+var speed_percentage : float
 @export var cargo_max_condition : float
 @export var cargo_finish_condition : float
-@export var cargo_condition_percentage : float
-@export var success_percentage : float
+var cargo_condition_percentage : float
+var success_percentage : float
 @export var puddles_spawned : int
 @export var puddles_fixed : int
 @export var leaks_spawned : int

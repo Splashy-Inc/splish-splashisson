@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://mhno46fuq66x"]
+[gd_scene load_steps=5 format=3 uid="uid://mhno46fuq66x"]
 
 [ext_resource type="Theme" uid="uid://ctla0k6e4ldrr" path="res://SCENES/GUI/levels_buttons/finbury_button.tres" id="1_wb4ve"]
 [ext_resource type="Script" path="res://SCRIPTS/level_button.gd" id="2_74t3b"]
 [ext_resource type="Resource" uid="uid://cdpgjx8jbdyni" path="res://Custom Resources/Stages/tutorial_stage_data.tres" id="3_6foij"]
+[ext_resource type="PackedScene" uid="uid://1b4oiu8aqd4v" path="res://SCENES/GUI/level_stats_panel.tscn" id="4_0xfp4"]
 
 [node name="LevelButton" type="Button"]
 offset_right = 39.0
 offset_bottom = 37.0
 theme = ExtResource("1_wb4ve")
+toggle_mode = true
 script = ExtResource("2_74t3b")
 stage_data = ExtResource("3_6foij")
 
+[node name="StatsPanelPosition" type="Marker2D" parent="."]
+position = Vector2(60, 16)
+
+[node name="LevelStatsPanel" parent="StatsPanelPosition" instance=ExtResource("4_0xfp4")]
+visible = false
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="play_pressed" from="StatsPanelPosition/LevelStatsPanel" to="." method="_on_play_pressed"]
