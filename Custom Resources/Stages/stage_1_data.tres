@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=11 format=3 uid="uid://0rutsw623na5"]
+[gd_resource type="Resource" script_class="StageData" load_steps=13 format=3 uid="uid://0rutsw623na5"]
 
 [ext_resource type="Resource" uid="uid://du25auqomcjd8" path="res://Dialogs/level_1_cutscene_dialog_data.tres" id="1_8fry4"]
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_bra1a"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bh7hha73l5725" path="res://Textures/shrimp_merchat_dialog_texture.tres" id="5_4d3tn"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="6_6hwyg"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="7_lxwac"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/level_stats.gd" id="9_7gcya"]
 
 [sub_resource type="Resource" id="Resource_pka8k"]
 script = ExtResource("6_6hwyg")
@@ -17,6 +18,23 @@ left_sound = ExtResource("2_4q08b")
 right_texture = ExtResource("5_4d3tn")
 right_sound = ExtResource("4_xyllu")
 dialog_data = ExtResource("1_8fry4")
+
+[sub_resource type="Resource" id="Resource_8kf8u"]
+script = ExtResource("9_7gcya")
+level_name = "Finbury"
+length_seconds = 60.0
+finish_seconds = 90.0
+cargo_max_condition = 100.0
+cargo_finish_condition = 80.0
+puddles_spawned = 10
+puddles_fixed = 5
+leaks_spawned = 5
+leaks_fixed = 3
+rats_spawned = 2
+rats_fixed = 2
+seagulls_spawned = 12
+seagulls_fixed = 8
+speed_success_modifier = 0.75
 
 [resource]
 script = ExtResource("7_lxwac")
@@ -33,3 +51,4 @@ rat_interval_seconds = 10
 seagull_interval_seconds = 0
 num_pirate_ships = 0
 start_pirates = 1
+level_stats = SubResource("Resource_8kf8u")

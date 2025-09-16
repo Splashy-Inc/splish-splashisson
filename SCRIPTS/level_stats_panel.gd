@@ -25,9 +25,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func load_level_stats(new_stats: LevelStats):
+func load_level_stats(new_stats: LevelStats = level_stats):
 	level_stats = new_stats
-	title_label.text = title
+	title_label.text = level_stats.level_name
 	time_value.text = StopWatch.time_string_from_seconds(level_stats.finish_seconds)
 	if level_stats.calculate_speed_percentage() < 1:
 		percentage_label.text = "(Avg. Speed " + str(level_stats.calculate_speed_percentage() * 100).substr(0,4) + "%)"

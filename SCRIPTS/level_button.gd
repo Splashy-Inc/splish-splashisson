@@ -22,6 +22,8 @@ func _process(delta: float) -> void:
 func _on_visibility_changed() -> void:
 	disabled = not stage_data.unlocked
 	button_pressed = false
+	if is_instance_valid(stats_panel):
+		stats_panel.load_level_stats(stage_data.level_stats)
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -42,3 +44,9 @@ func _on_toggled(toggled_on: bool) -> void:
 
 func _on_play_pressed() -> void:
 	selected.emit()
+
+func _on_focus_exited() -> void:
+	button_pressed = false
+
+func _on_mouse_exited() -> void:
+	button_pressed = false
