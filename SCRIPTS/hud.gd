@@ -84,6 +84,7 @@ func show_pause_menu():
 	pause_menu.show()
 
 func show_levels_menu():
+	prev_menu = cur_menu
 	cur_menu = Menus.LEVELS
 	_clear_menu()
 	show_menu_screens()

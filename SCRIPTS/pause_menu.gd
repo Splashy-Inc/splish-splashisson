@@ -16,6 +16,9 @@ func _on_controls_button_pressed() -> void:
 func _on_main_menu_button_pressed() -> void:
 	button_pressed.emit("Main menu")
 
+func _on_level_select_button_pressed() -> void:
+	button_pressed.emit("Level")
+	
 func _on_resume_button_visibility_changed() -> void:
 	if Globals.joypad_connected and visible:
 		resume_button.grab_focus()

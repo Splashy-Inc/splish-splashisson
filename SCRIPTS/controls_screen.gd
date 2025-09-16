@@ -10,10 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func _unhandled_input(event: InputEvent) -> void:
-	if visible and event.is_action_pressed("pause"):
-		exited.emit()
-
 func _on_back_button_pressed() -> void:
 	if visible:
 		exited.emit()
