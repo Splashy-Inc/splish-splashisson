@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=24 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
+[ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
 [ext_resource type="Texture2D" uid="uid://cdqho4iih3j7p" path="res://Art/GUI/levels_menu/map_frame_2of8.png" id="2_3wo0w"]
-[ext_resource type="Theme" uid="uid://ctla0k6e4ldrr" path="res://SCENES/GUI/levels_buttons/finbury_button.tres" id="2_tv18r"]
 [ext_resource type="Texture2D" uid="uid://5kpu0n2xjunv" path="res://Art/GUI/levels_menu/map_frame_3of8.png" id="3_2i3yl"]
 [ext_resource type="Theme" uid="uid://b7xde1wjjbopw" path="res://SCENES/GUI/levels_buttons/shrimpsburg_button.tres" id="3_p2xe7"]
 [ext_resource type="Texture2D" uid="uid://b7dknpwf6dn0i" path="res://Art/GUI/levels_menu/map_frame_4of8.png" id="4_87omf"]
@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://dncnw8flri1d2" path="res://Art/GUI/levels_menu/map_frame_7of8.png" id="7_pq5f5"]
 [ext_resource type="Texture2D" uid="uid://coldig3mdaiwv" path="res://Art/GUI/levels_menu/map_frame_8of8.png" id="8_smflu"]
 [ext_resource type="Theme" uid="uid://cptjjmuaxu5sc" path="res://SCENES/GUI/levels_buttons/sirensgill_grove_button.tres" id="8_vhicd"]
+[ext_resource type="PackedScene" uid="uid://mhno46fuq66x" path="res://SCENES/GUI/levels_buttons/level_button.tscn" id="10_omfh6"]
+[ext_resource type="Resource" uid="uid://0rutsw623na5" path="res://Custom Resources/Stages/stage_1_data.tres" id="11_x1mxj"]
+[ext_resource type="Resource" uid="uid://dkbttji6b0itf" path="res://Custom Resources/Stages/stage_3_data.tres" id="14_ukqbw"]
+[ext_resource type="Resource" uid="uid://oc21gofoj61j" path="res://Custom Resources/Stages/stage_2_data.tres" id="17_d7t84"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
 animations = [{
@@ -48,83 +52,84 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
-[node name="LevelsMenu" type="Node2D"]
+[node name="LevelsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xxpx0")
 
 [node name="Map" type="AnimatedSprite2D" parent="."]
 position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_0ngwc")
 autoplay = "default"
-frame_progress = 0.0443577
+frame_progress = 0.671758
 
-[node name="finbury_button" type="Button" parent="Map"]
-offset_left = -74.0
-offset_top = -108.0
-offset_right = -35.0
-offset_bottom = -71.0
-theme = ExtResource("2_tv18r")
+[node name="FinburyButton" parent="Map" instance=ExtResource("10_omfh6")]
+stage_data = ExtResource("11_x1mxj")
 
-[node name="shimpsburg_button" type="Button" parent="Map"]
+[node name="ShrimpsburgButton2" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 161.0
 offset_top = -61.0
 offset_right = 225.0
 offset_bottom = -24.0
 theme = ExtResource("3_p2xe7")
+stage_data = ExtResource("17_d7t84")
 
-[node name="gullmore_crossing_button" type="Button" parent="Map"]
+[node name="GullmoreCrossingButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -172.0
 offset_top = -77.0
 offset_right = -125.0
 offset_bottom = -29.0
 theme = ExtResource("4_wvulb")
+stage_data = ExtResource("14_ukqbw")
 
-[node name="turtleton_button" type="Button" parent="Map"]
+[node name="TurtletonButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -13.0
 offset_top = -12.0
 offset_right = 36.0
 offset_bottom = 24.0
 theme = ExtResource("5_g4sc5")
 
-[node name="seahorsevilla_button" type="Button" parent="Map"]
+[node name="SeahorsevillaButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 105.0
-offset_top = -28.0
+offset_top = -30.0
 offset_right = 174.0
 offset_bottom = 8.0
 theme = ExtResource("5_ifvpr")
 
-[node name="lochley_wharf_button" type="Button" parent="Map"]
+[node name="LochleyWharfButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -276.0
 offset_top = -70.0
 offset_right = -224.0
 offset_bottom = -21.0
 theme = ExtResource("6_csbf7")
 
-[node name="flock_haven_button" type="Button" parent="Map"]
+[node name="FlockHavenButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -111.0
 offset_top = 48.0
 offset_right = -42.0
 offset_bottom = 89.0
 theme = ExtResource("7_2tbrh")
 
-[node name="squid_city_button" type="Button" parent="Map"]
+[node name="SquidCityButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 58.0
 offset_top = 77.0
 offset_right = 111.0
 offset_bottom = 117.0
 theme = ExtResource("6_8hnu0")
 
-[node name="sirensgill_grove_button" type="Button" parent="Map"]
+[node name="SirensgillGroveButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -84.0
 offset_top = 75.0
 offset_right = -2.0
-offset_bottom = 115.0
+offset_bottom = 113.0
 theme = ExtResource("8_vhicd")
 
-[node name="port_sharksdale_button" type="Button" parent="Map"]
+[node name="PortSharkdaleButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 147.0
 offset_top = 35.0
 offset_right = 224.0
-offset_bottom = 75.0
+offset_bottom = 76.0
 theme = ExtResource("5_nuxhv")

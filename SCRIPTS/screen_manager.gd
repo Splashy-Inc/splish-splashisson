@@ -56,9 +56,11 @@ func show_end_game_screen():
 func _on_quit_pressed():
 	get_tree().quit()
 
-func _on_play_pressed():
-	if not cur_screen:
-		if cur_stage_data:
+func _on_play_pressed(stage_data: StageData = null):
+	if not cur_screen or stage_data:
+		if stage_data:
+			load_stage(stage_data)
+		elif cur_stage_data:
 			load_stage(cur_stage_data)
 		else:
 			load_stage(stages.front())

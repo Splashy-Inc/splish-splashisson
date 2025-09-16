@@ -28,7 +28,6 @@ func _on_quit_button_pressed():
 func _on_level_select_button_pressed():
 	button_pressed.emit("Level")
 
-
 func _on_play_button_visibility_changed() -> void:
 	if visible:
 		if not is_node_ready():

@@ -20,140 +20,140 @@ custom_minimum_size = Vector2(640, 360)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ypahy")
-next_level_button = NodePath("PanelContainer/PanelContainerWood/MenuContent/MenuButtons/NextLevelButton")
-time_value = NodePath("PanelContainer/PanelContainerWood/MenuContent/LevelStats/TimeStats/Value")
-percentage_label = NodePath("PanelContainer/PanelContainerWood/MenuContent/LevelStats/TimeStats/PercentageLabel")
-cargo_value = NodePath("PanelContainer/PanelContainerWood/MenuContent/LevelStats/CargoStats/Value")
-success_value = NodePath("PanelContainer/PanelContainerWood/MenuContent/LevelStats/SuccessStats/Value")
-puddle_value = NodePath("PanelContainer/PanelContainerWood/MenuContent/LevelStats/PuddleStats/Value")
-leak_value = NodePath("PanelContainer/PanelContainerWood/MenuContent/LevelStats/LeakStats/Value")
-rat_value = NodePath("PanelContainer/PanelContainerWood/MenuContent/LevelStats/RatStats/Value")
+next_level_button = NodePath("PanelContainer/LevelStatsPanel/MenuContent/MenuButtons/NextLevelButton")
+time_value = NodePath("PanelContainer/LevelStatsPanel/MenuContent/LevelStats/TimeStats/Value")
+percentage_label = NodePath("PanelContainer/LevelStatsPanel/MenuContent/LevelStats/TimeStats/PercentageLabel")
+cargo_value = NodePath("PanelContainer/LevelStatsPanel/MenuContent/LevelStats/CargoStats/Value")
+success_value = NodePath("PanelContainer/LevelStatsPanel/MenuContent/LevelStats/SuccessStats/Value")
+puddle_value = NodePath("PanelContainer/LevelStatsPanel/MenuContent/LevelStats/PuddleStats/Value")
+leak_value = NodePath("PanelContainer/LevelStatsPanel/MenuContent/LevelStats/LeakStats/Value")
+rat_value = NodePath("PanelContainer/LevelStatsPanel/MenuContent/LevelStats/RatStats/Value")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="PanelContainerWood" type="PanelContainer" parent="PanelContainer"]
+[node name="LevelStatsPanel" type="PanelContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_srbr3")
 
-[node name="MenuContent" type="VBoxContainer" parent="PanelContainer/PanelContainerWood"]
+[node name="MenuContent" type="VBoxContainer" parent="PanelContainer/LevelStatsPanel"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Title" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent"]
+[node name="Title" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "You win!"
 horizontal_alignment = 1
 
-[node name="LevelStats" type="VBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent"]
+[node name="LevelStats" type="VBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="TimeStats" type="HBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats"]
+[node name="TimeStats" type="HBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/TimeStats"]
+[node name="Label" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/TimeStats"]
 layout_mode = 2
 text = "Voyage time: "
 
-[node name="Value" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/TimeStats"]
+[node name="Value" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/TimeStats"]
 layout_mode = 2
 text = "0:00"
 
-[node name="PercentageLabel" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/TimeStats"]
+[node name="PercentageLabel" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/TimeStats"]
 layout_mode = 2
 text = "(Avg. Speed 100%)"
 
-[node name="CargoStats" type="HBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats"]
+[node name="CargoStats" type="HBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/CargoStats"]
+[node name="Label" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/CargoStats"]
 layout_mode = 2
 text = "Cargo condition: "
 
-[node name="Value" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/CargoStats"]
+[node name="Value" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/CargoStats"]
 layout_mode = 2
 text = "100%"
 
-[node name="SuccessStats" type="HBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats"]
+[node name="SuccessStats" type="HBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/SuccessStats"]
+[node name="Label" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/SuccessStats"]
 layout_mode = 2
 text = "Success rating:"
 
-[node name="Value" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/SuccessStats"]
+[node name="Value" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/SuccessStats"]
 layout_mode = 2
 text = "100%"
 
-[node name="PuddleStats" type="HBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats"]
+[node name="PuddleStats" type="HBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/PuddleStats"]
+[node name="Label" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/PuddleStats"]
 layout_mode = 2
 text = "Puddles bailed: "
 
-[node name="Value" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/PuddleStats"]
+[node name="Value" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/PuddleStats"]
 layout_mode = 2
 text = "0/0"
 
-[node name="LeakStats" type="HBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats"]
+[node name="LeakStats" type="HBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/LeakStats"]
+[node name="Label" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/LeakStats"]
 layout_mode = 2
 text = "Leaks patched: "
 
-[node name="Value" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/LeakStats"]
+[node name="Value" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/LeakStats"]
 layout_mode = 2
 text = "0/0"
 
-[node name="RatStats" type="HBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats"]
+[node name="RatStats" type="HBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/RatStats"]
+[node name="Label" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/RatStats"]
 layout_mode = 2
 text = "Rats stomped: "
 
-[node name="Value" type="Label" parent="PanelContainer/PanelContainerWood/MenuContent/LevelStats/RatStats"]
+[node name="Value" type="Label" parent="PanelContainer/LevelStatsPanel/MenuContent/LevelStats/RatStats"]
 layout_mode = 2
 text = "0/0"
 
-[node name="MenuButtons" type="VBoxContainer" parent="PanelContainer/PanelContainerWood/MenuContent"]
+[node name="MenuButtons" type="VBoxContainer" parent="PanelContainer/LevelStatsPanel/MenuContent"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
-[node name="NextLevelButton" type="Button" parent="PanelContainer/PanelContainerWood/MenuContent/MenuButtons"]
+[node name="NextLevelButton" type="Button" parent="PanelContainer/LevelStatsPanel/MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme = ExtResource("3_l666j")
 theme_override_font_sizes/font_size = 18
 text = "Next"
 
-[node name="RestartButton" type="Button" parent="PanelContainer/PanelContainerWood/MenuContent/MenuButtons"]
+[node name="RestartButton" type="Button" parent="PanelContainer/LevelStatsPanel/MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme = ExtResource("3_l666j")
 theme_override_font_sizes/font_size = 18
 text = "Restart Level"
 
-[node name="MainMenu" type="Button" parent="PanelContainer/PanelContainerWood/MenuContent/MenuButtons"]
+[node name="MainMenu" type="Button" parent="PanelContainer/LevelStatsPanel/MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme = ExtResource("3_l666j")
 theme_override_font_sizes/font_size = 18
 text = "Main Menu"
 
-[connection signal="pressed" from="PanelContainer/PanelContainerWood/MenuContent/MenuButtons/NextLevelButton" to="." method="_on_next_level_button_pressed"]
-[connection signal="visibility_changed" from="PanelContainer/PanelContainerWood/MenuContent/MenuButtons/NextLevelButton" to="." method="_on_main_menu_button_visibility_changed"]
-[connection signal="pressed" from="PanelContainer/PanelContainerWood/MenuContent/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="PanelContainer/PanelContainerWood/MenuContent/MenuButtons/MainMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/LevelStatsPanel/MenuContent/MenuButtons/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="visibility_changed" from="PanelContainer/LevelStatsPanel/MenuContent/MenuButtons/NextLevelButton" to="." method="_on_main_menu_button_visibility_changed"]
+[connection signal="pressed" from="PanelContainer/LevelStatsPanel/MenuContent/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/LevelStatsPanel/MenuContent/MenuButtons/MainMenu" to="." method="_on_main_menu_button_pressed"]

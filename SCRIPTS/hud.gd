@@ -12,6 +12,7 @@ signal main_menu_pressed
 @onready var menu_back_ground: ColorRect = $MenuScreens/MenuBackGround
 @onready var main_menu: Control = $MenuScreens/MainMenu
 @onready var controls_screen: Control = $MenuScreens/ControlsScreen
+@onready var levels_menu: Control = $MenuScreens/LevelsMenu
 @onready var win_screen: WinScreen = $MenuScreens/WinScreen
 @onready var loss_screen: Control = $MenuScreens/LossScreen
 @onready var pause_menu: Control = $MenuScreens/PauseMenu
@@ -21,6 +22,7 @@ enum Menus {
 	NONE,
 	MAIN,
 	CONTROLS,
+	LEVELS,
 	WIN,
 	LOSS,
 	PAUSE,
@@ -81,6 +83,12 @@ func show_pause_menu():
 	show_menu_screens()
 	pause_menu.show()
 
+func show_levels_menu():
+	cur_menu = Menus.LEVELS
+	_clear_menu()
+	show_menu_screens()
+	levels_menu.show()
+
 func show_win_screen():
 	cur_menu = Menus.WIN
 	_clear_menu()
@@ -100,10 +108,12 @@ func show_end_game_screen():
 	show_menu_screens()
 	end_game_screen.show()
 
-func _on_game_menu_button_pressed(type: String):
+func _on_game_menu_button_pressed(type: String, stage_data: StageData = null):
 	match type:
 		"Play":
-			play_pressed.emit()
+			play_pressed.emit(stage_data)
+		"Level":
+			show_levels_menu()
 		"Next":
 			next_pressed.emit()
 		"Restart":
