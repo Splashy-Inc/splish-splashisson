@@ -5,10 +5,8 @@
 [ext_resource type="Resource" uid="uid://cdpgjx8jbdyni" path="res://Custom Resources/Stages/tutorial_stage_data.tres" id="3_6foij"]
 
 [node name="LevelButton" type="Button"]
-offset_left = -74.0
-offset_top = -108.0
-offset_right = -35.0
-offset_bottom = -71.0
+offset_right = 39.0
+offset_bottom = 37.0
 theme = ExtResource("1_wb4ve")
 script = ExtResource("2_74t3b")
 stage_data = ExtResource("3_6foij")

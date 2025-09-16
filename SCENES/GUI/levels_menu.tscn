@@ -67,6 +67,10 @@ autoplay = "default"
 frame_progress = 0.671758
 
 [node name="FinburyButton" parent="Map" instance=ExtResource("10_omfh6")]
+offset_left = -74.0
+offset_top = -108.0
+offset_right = -35.0
+offset_bottom = -71.0
 stage_data = ExtResource("11_x1mxj")
 
 [node name="ShrimpsburgButton2" parent="Map" instance=ExtResource("10_omfh6")]
