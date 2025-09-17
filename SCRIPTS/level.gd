@@ -149,6 +149,7 @@ func _on_leak_spawn_timer_timeout() -> void:
 
 func _on_finished():
 	if level_stats.calculate_success_percentage() > stage_data.level_stats.success_percentage:
+		level_stats.level_name = stage_data.level_stats.level_name
 		stage_data.level_stats.overwrite(level_stats)
 	
 	if $Obstacles/LeakSpawnTimer:
