@@ -20,10 +20,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_visibility_changed() -> void:
-	disabled = not stage_data.unlocked
-	button_pressed = false
-	if is_instance_valid(stats_panel):
-		stats_panel.load_level_stats(stage_data.level_stats)
+	if visible:
+		disabled = not stage_data.unlocked
+		button_pressed = false
+		if is_instance_valid(stats_panel):
+			stats_panel.load_level_stats(stage_data.level_stats)
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:
