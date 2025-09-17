@@ -19,6 +19,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 
 [node name="LevelStatsPanel" parent="PanelContainer" instance=ExtResource("2_ihoy1")]
+top_level = false
 layout_mode = 2
 button_scenes = Array[PackedScene]([ExtResource("3_ojjgm"), ExtResource("4_fe6ot"), ExtResource("5_mpqx3")])
 
