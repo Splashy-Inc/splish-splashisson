@@ -18,8 +18,7 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [node name="LevelStatsPanel" type="PanelContainer" node_paths=PackedStringArray("menu_buttons")]
-z_index = 10
-z_as_relative = false
+top_level = true
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_srbr3")
