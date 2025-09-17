@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=11 format=3 uid="uid://oc21gofoj61j"]
+[gd_resource type="Resource" script_class="StageData" load_steps=13 format=3 uid="uid://oc21gofoj61j"]
 
 [ext_resource type="Resource" uid="uid://cgh3e1m1cql24" path="res://Dialogs/level_2_cutscene_dialog_data.tres" id="1_4u7jo"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="1_axcua"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cnywnjrimlic0" path="res://Audio/Shrimp/shrimp_sounds.tres" id="4_utawm"]
 [ext_resource type="Texture2D" uid="uid://bh7hha73l5725" path="res://Textures/shrimp_merchat_dialog_texture.tres" id="5_oy8d0"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="6_kgat4"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/level_stats.gd" id="9_lk4lc"]
 
 [sub_resource type="Resource" id="Resource_l74pf"]
 script = ExtResource("6_kgat4")
@@ -18,8 +19,26 @@ right_texture = ExtResource("5_oy8d0")
 right_sound = ExtResource("4_utawm")
 dialog_data = ExtResource("1_4u7jo")
 
+[sub_resource type="Resource" id="Resource_3sc3g"]
+script = ExtResource("9_lk4lc")
+level_name = "Shrimpsburg"
+length_seconds = 0.0
+finish_seconds = 0.0
+cargo_max_condition = 0.0
+cargo_finish_condition = 0.0
+puddles_spawned = 0
+puddles_fixed = 0
+leaks_spawned = 0
+leaks_fixed = 0
+rats_spawned = 0
+rats_fixed = 0
+seagulls_spawned = 0
+seagulls_fixed = 0
+speed_success_modifier = 0.75
+
 [resource]
 script = ExtResource("1_axcua")
+unlocked = false
 cutscene_data = SubResource("Resource_l74pf")
 is_tutorial = false
 length_seconds = 60
@@ -32,3 +51,4 @@ rat_interval_seconds = 10
 seagull_interval_seconds = 0
 num_pirate_ships = 0
 start_pirates = 1
+level_stats = SubResource("Resource_3sc3g")

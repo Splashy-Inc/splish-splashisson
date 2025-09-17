@@ -4,16 +4,7 @@ class_name WinScreen
 
 signal button_pressed
 
-@export var next_level_button: Button
-@export var time_value: Label
-@export var percentage_label: Label
-@export var cargo_value: Label
-@export var success_value: Label
-@export var puddle_value: Label
-@export var leak_value: Label
-@export var rat_value: Label
-
-var level_stats: LevelStats
+@export var level_stats_panel: LevelStatsPanel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,30 +15,14 @@ func _process(delta):
 	pass
 
 func set_finish_stats(new_level_stats: LevelStats):
-	level_stats = new_level_stats
-	update_finish_stats()
+	level_stats_panel.load_level_stats(new_level_stats)
+	level_stats_panel.title_label.text = "You win!"
 
-func update_finish_stats():
-	time_value.text = StopWatch.time_string_from_seconds(level_stats.finish_seconds)
-	if level_stats.calculate_speed_percentage() < 1:
-		percentage_label.text = "(Avg. Speed " + str(level_stats.calculate_speed_percentage() * 100).substr(0,4) + "%)"
-	else:
-		percentage_label.text = "(Avg. Speed " + str(level_stats.calculate_speed_percentage() * 100).substr(0,3) + "%)"
-	cargo_value.text = str(level_stats.calculate_cargo_percentage()* 100).substr(0,4) + "%"
-	success_value.text = str(level_stats.calculate_success_percentage() * 100).substr(0,4) + "%"
-	puddle_value.text = str(level_stats.puddles_fixed) + "/" + str(level_stats.puddles_spawned)
-	leak_value.text = str(level_stats.leaks_fixed) + "/" + str(level_stats.leaks_spawned)
-	rat_value.text = str(level_stats.rats_fixed) + "/" + str(level_stats.rats_spawned)
-
-func _on_next_level_button_pressed():
-	button_pressed.emit("Next")
-
-func _on_restart_button_pressed():
-	button_pressed.emit("Restart")
-
-func _on_main_menu_button_pressed():
-	button_pressed.emit("Main menu")
-
-func _on_next_level_button_visibility_changed() -> void:
-	if Globals.joypad_connected and visible:
-		next_level_button.grab_focus()
+func _on_button_pressed(button_type: CustomMenuButton.Type):
+	match button_type:
+		CustomMenuButton.Type.NEXT:
+			button_pressed.emit("Next")
+		CustomMenuButton.Type.RESTART:
+			button_pressed.emit("Restart")
+		CustomMenuButton.Type.MAIN_MENU:
+			button_pressed.emit("Main menu")

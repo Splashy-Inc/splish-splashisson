@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=9 format=3 uid="uid://cdpgjx8jbdyni"]
+[gd_resource type="Resource" script_class="StageData" load_steps=11 format=3 uid="uid://cdpgjx8jbdyni"]
 
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_cg3g1"]
 [ext_resource type="Resource" uid="uid://dp77h4fp8pyjt" path="res://Custom Resources/Cargo/meat_cargo_item_data.tres" id="2_6aecr"]
 [ext_resource type="Resource" uid="uid://cavw65m6hlnw3" path="res://Dialogs/start_cutscene_dialog_data.tres" id="3_vf5mp"]
 [ext_resource type="AudioStream" uid="uid://ccbr24i2jqumi" path="res://Audio/Splashy/splashy_voice.ogg" id="4_3q11p"]
 [ext_resource type="Texture2D" uid="uid://da0m05d2wamyj" path="res://Textures/splashy_head_texture.tres" id="5_78lmj"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/level_stats.gd" id="7_yxypk"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="8_66h4q"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="9_1x1hs"]
 
@@ -14,8 +15,26 @@ right_texture = ExtResource("5_78lmj")
 right_sound = ExtResource("4_3q11p")
 dialog_data = ExtResource("3_vf5mp")
 
+[sub_resource type="Resource" id="Resource_4sgnt"]
+script = ExtResource("7_yxypk")
+level_name = "Tutorial"
+length_seconds = 0.0
+finish_seconds = 0.0
+cargo_max_condition = 0.0
+cargo_finish_condition = 0.0
+puddles_spawned = 0
+puddles_fixed = 0
+leaks_spawned = 0
+leaks_fixed = 0
+rats_spawned = 0
+rats_fixed = 0
+seagulls_spawned = 0
+seagulls_fixed = 0
+speed_success_modifier = 0.75
+
 [resource]
 script = ExtResource("9_1x1hs")
+unlocked = true
 cutscene_data = SubResource("Resource_8na8v")
 is_tutorial = true
 length_seconds = 20
@@ -28,3 +47,4 @@ rat_interval_seconds = 10
 seagull_interval_seconds = 0
 num_pirate_ships = 0
 start_pirates = 1
+level_stats = SubResource("Resource_4sgnt")

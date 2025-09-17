@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=16 format=3 uid="uid://dkbttji6b0itf"]
+[gd_resource type="Resource" script_class="StageData" load_steps=18 format=3 uid="uid://dkbttji6b0itf"]
 
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_pnwy3"]
 [ext_resource type="Resource" uid="uid://c65k18o4x66kk" path="res://Custom Resources/Cargo/valuables_cargo_item_data.tres" id="2_a7olw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="9_l2gdr"]
 [ext_resource type="Texture2D" uid="uid://l48xph8dwkwb" path="res://Art/Merchants/Turtle/Turtle_04.png" id="10_5wx7x"]
 [ext_resource type="Texture2D" uid="uid://dbi35qpfjw2j2" path="res://Art/Merchants/Turtle/Turtle_05.png" id="11_1htwy"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/level_stats.gd" id="13_d65i2"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ropgl"]
 frames = 5
@@ -35,8 +36,26 @@ right_texture = SubResource("AnimatedTexture_ropgl")
 right_sound = ExtResource("6_omk2v")
 dialog_data = ExtResource("3_7b5ww")
 
+[sub_resource type="Resource" id="Resource_0bmch"]
+script = ExtResource("13_d65i2")
+level_name = "Gullmore Crossing"
+length_seconds = 0.0
+finish_seconds = 0.0
+cargo_max_condition = 0.0
+cargo_finish_condition = 0.0
+puddles_spawned = 0
+puddles_fixed = 0
+leaks_spawned = 0
+leaks_fixed = 0
+rats_spawned = 0
+rats_fixed = 0
+seagulls_spawned = 0
+seagulls_fixed = 0
+speed_success_modifier = 0.75
+
 [resource]
 script = ExtResource("9_l2gdr")
+unlocked = false
 cutscene_data = SubResource("Resource_l74pf")
 is_tutorial = false
 length_seconds = 120
@@ -49,3 +68,4 @@ rat_interval_seconds = 10
 seagull_interval_seconds = 10
 num_pirate_ships = 2
 start_pirates = 1
+level_stats = SubResource("Resource_0bmch")

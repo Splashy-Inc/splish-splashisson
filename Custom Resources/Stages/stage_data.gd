@@ -2,6 +2,8 @@ extends Resource
 
 class_name StageData
 
+@export var unlocked := false
+
 @export var cutscene_data : CutsceneData
 
 @export var is_tutorial := false
@@ -15,3 +17,5 @@ class_name StageData
 @export var seagull_interval_seconds := 10
 @export var num_pirate_ships := 0
 @export var start_pirates := 1
+
+@export var level_stats := LevelStats.new()

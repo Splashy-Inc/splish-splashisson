@@ -19,3 +19,5 @@ func play(sound_name: String):
 				sound_node.play()
 			else:
 				print("Requested sound ", sound_name, " is either not a child of ", self, ", or not an AudioStreamPlayer/2D")
+			return sound_node
+		return null

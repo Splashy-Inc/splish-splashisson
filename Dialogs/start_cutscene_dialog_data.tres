@@ -2,8 +2,8 @@
 
 [ext_resource type="JSON" path="res://Dialogs/start_cutscene_dialog.json" id="1_rqlm4"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="1_ryqk6"]
-[ext_resource type="PackedScene" uid="uid://blkig8tntob06" path="res://SCENES/GUI/tutorial_button.tscn" id="2_0rr1j"]
-[ext_resource type="PackedScene" uid="uid://c23gyau3x5myg" path="res://SCENES/GUI/skip_button.tscn" id="3_x72bk"]
+[ext_resource type="PackedScene" uid="uid://blkig8tntob06" path="res://SCENES/GUI/Buttons/tutorial_button.tscn" id="2_0rr1j"]
+[ext_resource type="PackedScene" uid="uid://c23gyau3x5myg" path="res://SCENES/GUI/Buttons/skip_button.tscn" id="3_x72bk"]
 
 [resource]
 script = ExtResource("1_ryqk6")

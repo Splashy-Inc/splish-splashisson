@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjbj267cs6s6r"]
+
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="1_c1h0m"]
+[ext_resource type="Script" path="res://SCRIPTS/menu_button.gd" id="2_eu6wv"]
+
+[node name="PlayButton" type="Button"]
+custom_minimum_size = Vector2(100, 20)
+theme = ExtResource("1_c1h0m")
+theme_override_font_sizes/font_size = 18
+text = "Play"
+script = ExtResource("2_eu6wv")
+type = 2

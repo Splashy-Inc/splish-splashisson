@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3 uid="uid://1b4oiu8aqd4v"]
+
+[ext_resource type="Texture2D" uid="uid://ktbkee058cfj" path="res://Art/GUI/winscreenpannel.png" id="1_dcd7p"]
+[ext_resource type="Script" path="res://SCRIPTS/level_stats_panel.gd" id="2_oqa4k"]
+[ext_resource type="Resource" uid="uid://bjcvfs7u8xtrs" path="res://Custom Resources/Stages/sample_level_stats.tres" id="3_o5yrt"]
+[ext_resource type="PackedScene" uid="uid://cboofch0vsmg4" path="res://SCENES/GUI/Buttons/menu_button.tscn" id="4_0gwl8"]
+[ext_resource type="PackedScene" uid="uid://cjbj267cs6s6r" path="res://SCENES/GUI/Buttons/play_button.tscn" id="4_avrau"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_srbr3"]
+texture = ExtResource("1_dcd7p")
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="LevelStatsPanel" type="PanelContainer" node_paths=PackedStringArray("menu_buttons")]
+top_level = true
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_srbr3")
+script = ExtResource("2_oqa4k")
+title = "Level Stats"
+level_stats = ExtResource("3_o5yrt")
+button_scenes = Array[PackedScene]([ExtResource("4_avrau")])
+menu_buttons = NodePath("MenuContent/MenuButtons")
+
+[node name="MenuContent" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Title" type="Label" parent="MenuContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Level Stats"
+horizontal_alignment = 1
+
+[node name="LevelStats" type="VBoxContainer" parent="MenuContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TimeStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/TimeStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Voyage time: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/TimeStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0:00"
+
+[node name="PercentageLabel" type="Label" parent="MenuContent/LevelStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "(Avg. Speed 100%)"
+
+[node name="CargoStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/CargoStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Cargo condition: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/CargoStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "100%"
+
+[node name="SuccessStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/SuccessStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Success rating:"
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/SuccessStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "100%"
+
+[node name="PuddleStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/PuddleStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Puddles bailed: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/PuddleStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0/0"
+
+[node name="LeakStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/LeakStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Leaks patched: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/LeakStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0/0"
+
+[node name="RatStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/RatStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Rats stomped: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/RatStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0/0"
+
+[node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="PlayButton" parent="MenuContent/MenuButtons" instance=ExtResource("4_0gwl8")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Play Level"
+type = 3
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

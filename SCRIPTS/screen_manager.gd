@@ -40,12 +40,19 @@ func show_main_menu():
 	hud.show_main_menu()
 
 func toggle_pause_menu():
-	if hud.cur_menu != HUD.Menus.MAIN and hud.cur_menu != HUD.Menus.CONTROLS:
-		if not paused:
-			_pause_play()
-			hud.show_pause_menu()
-		else:
-			_resume_play()
+	match hud.cur_menu:
+		HUD.Menus.MAIN:
+			pass
+		HUD.Menus.CONTROLS:
+			hud._go_back_screen()
+		HUD.Menus.LEVELS:
+			hud._go_back_screen()
+		_:
+			if not paused:
+				_pause_play()
+				hud.show_pause_menu()
+			else:
+				_resume_play()
 
 func show_end_game_screen():
 	_pause_play()
@@ -56,9 +63,11 @@ func show_end_game_screen():
 func _on_quit_pressed():
 	get_tree().quit()
 
-func _on_play_pressed():
-	if not cur_screen:
-		if cur_stage_data:
+func _on_play_pressed(stage_data: StageData = null):
+	if not cur_screen or stage_data:
+		if stage_data:
+			load_stage(stage_data)
+		elif cur_stage_data:
 			load_stage(cur_stage_data)
 		else:
 			load_stage(stages.front())
@@ -104,6 +113,7 @@ func _on_main_menu_pressed() -> void:
 func _on_level_completed():
 	game_ended = true
 	#_pause_play()
+	unlock_next_stage(cur_stage_data)
 	hud.show_win_screen()
 	
 func _on_tutorial_completed():
@@ -182,3 +192,8 @@ func generate_level(is_tutorial: bool = false) -> Level:
 	else:
 		new_level = level_scene.instantiate().duplicate()
 	return new_level
+
+func unlock_next_stage(cur_stage_data: StageData):
+	var cur_stage_index = stages.find(cur_stage_data)
+	if cur_stage_index < stages.size() - 1:
+		stages[cur_stage_index + 1].unlocked = true
