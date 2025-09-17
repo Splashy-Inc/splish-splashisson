@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=11 format=3 uid="uid://8bwans270knt"]
 
-[ext_resource type="StyleBox" uid="uid://3jo4t8w5ojom" path="res://SCENES/GUI/idle_button.tres" id="1_ec7kb"]
+[ext_resource type="StyleBox" uid="uid://3jo4t8w5ojom" path="res://SCENES/GUI/Buttons/idle_button.tres" id="1_ec7kb"]
 [ext_resource type="Texture2D" uid="uid://w8nor5qeurxl" path="res://Art/GUI/UI_SpriteSheet.png" id="1_i0x5v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxxs7"]

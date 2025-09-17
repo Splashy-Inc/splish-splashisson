@@ -42,11 +42,7 @@ func _on_toggled(toggled_on: bool) -> void:
 	else:
 		stats_panel.hide()
 
-func _on_play_pressed() -> void:
-	selected.emit()
-
-func _on_focus_exited() -> void:
-	button_pressed = false
-
-func _on_mouse_exited() -> void:
-	button_pressed = false
+func _on_level_stats_panel_button_pressed(button_type: CustomMenuButton.Type) -> void:
+	match button_type:
+		CustomMenuButton.Type.PLAY:
+			selected.emit()

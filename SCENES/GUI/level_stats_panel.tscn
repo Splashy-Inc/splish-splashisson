@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://1b4oiu8aqd4v"]
+[gd_scene load_steps=7 format=3 uid="uid://1b4oiu8aqd4v"]
 
 [ext_resource type="Texture2D" uid="uid://ktbkee058cfj" path="res://Art/GUI/winscreenpannel.png" id="1_dcd7p"]
 [ext_resource type="Script" path="res://SCRIPTS/level_stats_panel.gd" id="2_oqa4k"]
 [ext_resource type="Resource" uid="uid://bjcvfs7u8xtrs" path="res://Custom Resources/Stages/sample_level_stats.tres" id="3_o5yrt"]
-[ext_resource type="PackedScene" uid="uid://cboofch0vsmg4" path="res://SCENES/GUI/menu_button.tscn" id="4_0gwl8"]
+[ext_resource type="PackedScene" uid="uid://cboofch0vsmg4" path="res://SCENES/GUI/Buttons/menu_button.tscn" id="4_0gwl8"]
+[ext_resource type="PackedScene" uid="uid://cjbj267cs6s6r" path="res://SCENES/GUI/Buttons/play_button.tscn" id="4_avrau"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_srbr3"]
 texture = ExtResource("1_dcd7p")
@@ -16,7 +17,7 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
-[node name="LevelStatsPanel" type="PanelContainer"]
+[node name="LevelStatsPanel" type="PanelContainer" node_paths=PackedStringArray("menu_buttons")]
 z_index = 10
 z_as_relative = false
 size_flags_horizontal = 4
@@ -25,6 +26,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_srbr3")
 script = ExtResource("2_oqa4k")
 title = "Level Stats"
 level_stats = ExtResource("3_o5yrt")
+button_scenes = Array[PackedScene]([ExtResource("4_avrau")])
+menu_buttons = NodePath("MenuContent/MenuButtons")
 
 [node name="MenuContent" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -136,4 +139,4 @@ theme_override_font_sizes/font_size = 16
 text = "Play Level"
 type = 3
 
-[connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

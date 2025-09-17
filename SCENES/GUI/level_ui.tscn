@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kriuduxnhk54" path="res://SCENES/condition_segment.tscn" id="4_op2fg"]
 [ext_resource type="PackedScene" uid="uid://joi30yc7yge6" path="res://SCENES/clock.tscn" id="5_lajsh"]
 [ext_resource type="PackedScene" uid="uid://b77mh17y84d50" path="res://SCENES/GUI/mobile_controls.tscn" id="6_ip6vt"]
-[ext_resource type="PackedScene" uid="uid://l63bub3q0j7s" path="res://SCENES/GUI/pause_button.tscn" id="7_vln1g"]
+[ext_resource type="PackedScene" uid="uid://l63bub3q0j7s" path="res://SCENES/GUI/Buttons/pause_button.tscn" id="7_vln1g"]
 
 [node name="LevelUI" type="CanvasLayer"]
 script = ExtResource("1_7ovrs")

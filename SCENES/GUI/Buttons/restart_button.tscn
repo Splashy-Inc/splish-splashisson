@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpxvjdefpobty"]
+
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="1_kk1dr"]
+[ext_resource type="Script" path="res://SCRIPTS/menu_button.gd" id="2_q2uhm"]
+
+[node name="RestartButton" type="Button"]
+custom_minimum_size = Vector2(100, 20)
+theme = ExtResource("1_kk1dr")
+theme_override_font_sizes/font_size = 18
+text = "Restart"
+script = ExtResource("2_q2uhm")
+type = 5

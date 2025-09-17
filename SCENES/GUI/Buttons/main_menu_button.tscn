@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ywxne2acu015"]
+
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="1_j7yp7"]
+[ext_resource type="Script" path="res://SCRIPTS/menu_button.gd" id="2_0h584"]
+
+[node name="MainMenuButton" type="Button"]
+custom_minimum_size = Vector2(100, 20)
+theme = ExtResource("1_j7yp7")
+theme_override_font_sizes/font_size = 18
+text = "Main Menu"
+script = ExtResource("2_0h584")
+type = 1
