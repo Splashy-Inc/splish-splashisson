@@ -288,27 +288,27 @@ libraries = {
 stream = SubResource("AudioStreamRandomizer_ygf12")
 volume_db = -15.0
 pitch_scale = 0.95
-bus = &"Rats"
+bus = &"Effects"
 
 [node name="Eat" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_al6gk")
 volume_db = -15.0
 pitch_scale = 1.5
 max_distance = 730.0
-bus = &"Rats"
+bus = &"Effects"
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_30ksj")
 pitch_scale = 0.8
 max_distance = 730.0
-bus = &"Rats"
+bus = &"Effects"
 
 [node name="Die" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("18_mq41i")
 volume_db = -15.0
 pitch_scale = 0.75
 max_distance = 730.0
-bus = &"Rats"
+bus = &"Effects"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-17, -20, 32, 20)

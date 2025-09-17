@@ -331,9 +331,11 @@ position = Vector2(13, 0)
 
 [node name="Heave" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_x4rre")
+bus = &"Effects"
 
 [node name="Ho" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_3ecfv")
+bus = &"Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["rowing_animation"]]
 libraries = {

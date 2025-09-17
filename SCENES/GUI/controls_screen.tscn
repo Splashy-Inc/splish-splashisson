@@ -111,11 +111,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_muobf")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 script = ExtResource("2_pnoft")
 
 [node name="Keyboard + Mouse" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer"]
-visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 0
@@ -514,6 +513,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Mobile" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 2

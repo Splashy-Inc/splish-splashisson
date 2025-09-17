@@ -42,9 +42,11 @@ offset_bottom = 192.0
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_v0s3x")
+bus = &"Effects"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_0b1nm")
+bus = &"Effects"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="toggled" from="." to="." method="_on_toggled"]

@@ -132,6 +132,7 @@ script = ExtResource("3_ohfv1")
 stream = ExtResource("4_kl313")
 volume_db = -4.0
 pitch_scale = 1.1
+bus = &"Effects"
 
 [node name="LightningTimer" type="Timer" parent="Storm"]
 wait_time = 5.0
@@ -152,6 +153,7 @@ autoplay = "RESET"
 
 [node name="Thunder" type="AudioStreamPlayer" parent="Storm/Lightning/ThunderSFXManager"]
 stream = SubResource("AudioStreamRandomizer_6lqkm")
+bus = &"Effects"
 
 [connection signal="timeout" from="Storm/RainTimer" to="." method="_on_rain_timer_timeout"]
 [connection signal="timeout" from="Storm/LightningTimer" to="." method="_on_lightning_timer_timeout"]

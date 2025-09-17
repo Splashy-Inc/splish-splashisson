@@ -141,3 +141,4 @@ theme = ExtResource("5_nuxhv")
 
 [node name="LevelSelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_3c0qp")
+bus = &"Effects"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp3emmjd4oc5b"]
+[gd_scene load_steps=10 format=3 uid="uid://dp3emmjd4oc5b"]
 
 [ext_resource type="Script" path="res://SCRIPTS/hud.gd" id="1_ybf5c"]
 [ext_resource type="PackedScene" uid="uid://k7ghjsy8g1k0" path="res://SCENES/GUI/main_menu.tscn" id="4_f58rm"]
 [ext_resource type="PackedScene" uid="uid://c6tdu4r5v8bbs" path="res://SCENES/GUI/controls_screen.tscn" id="4_sgjn6"]
+[ext_resource type="PackedScene" uid="uid://brvj12tlw7shq" path="res://SCENES/GUI/settings_screen.tscn" id="5_pgwxl"]
 [ext_resource type="PackedScene" uid="uid://c3sldi7g5fcg6" path="res://SCENES/GUI/pause_menu.tscn" id="6_k66bl"]
 [ext_resource type="PackedScene" uid="uid://v65h1k4msxhb" path="res://SCENES/GUI/win_screen.tscn" id="6_s7jfo"]
 [ext_resource type="PackedScene" uid="uid://temjlvcxcb3r" path="res://SCENES/GUI/loss_screen.tscn" id="7_8h0it"]
@@ -31,10 +32,13 @@ visible = false
 offset_right = 640.0
 offset_bottom = 360.0
 
+[node name="LevelsMenu" parent="MenuScreens" instance=ExtResource("8_vpxg0")]
+visible = false
+
 [node name="ControlsScreen" parent="MenuScreens" instance=ExtResource("4_sgjn6")]
 visible = false
 
-[node name="LevelsMenu" parent="MenuScreens" instance=ExtResource("8_vpxg0")]
+[node name="SettingsScreen" parent="MenuScreens" instance=ExtResource("5_pgwxl")]
 visible = false
 
 [node name="PauseMenu" parent="MenuScreens" instance=ExtResource("6_k66bl")]
@@ -66,8 +70,9 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="button_pressed" from="MenuScreens/MainMenu" to="." method="_on_game_menu_button_pressed"]
-[connection signal="exited" from="MenuScreens/ControlsScreen" to="." method="_on_controls_screen_exited"]
 [connection signal="stage_selected" from="MenuScreens/LevelsMenu" to="." method="_on_game_menu_button_pressed"]
+[connection signal="exited" from="MenuScreens/ControlsScreen" to="." method="_on_controls_screen_exited"]
+[connection signal="exited" from="MenuScreens/SettingsScreen" to="." method="_on_controls_screen_exited"]
 [connection signal="button_pressed" from="MenuScreens/PauseMenu" to="." method="_on_game_menu_button_pressed"]
 [connection signal="button_pressed" from="MenuScreens/WinScreen" to="." method="_on_game_menu_button_pressed"]
 [connection signal="button_pressed" from="MenuScreens/LossScreen" to="." method="_on_game_menu_button_pressed"]

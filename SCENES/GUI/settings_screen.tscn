@@ -1,0 +1,152 @@
+[gd_scene load_steps=6 format=3 uid="uid://brvj12tlw7shq"]
+
+[ext_resource type="Script" path="res://SCRIPTS/settings_screen.gd" id="1_yl8s2"]
+[ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_3w5po"]
+[ext_resource type="LabelSettings" path="res://SCENES/GUI/text_title_format.tres" id="3_4qlkh"]
+[ext_resource type="Theme" uid="uid://bw62pthll8jkl" path="res://SCENES/GUI/tab_container_theme.tres" id="4_t5b6p"]
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="11_7yutw"]
+
+[node name="SettingsScreen" type="Control"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("1_yl8s2")
+
+[node name="MainMenuBg" parent="." instance=ExtResource("2_3w5po")]
+
+[node name="ScreenRows" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 339.0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="ScreenTitle" type="BoxContainer" parent="ScreenRows"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="ScreenRows/ScreenTitle"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.557912, 0.649435, 0.745378, 1)
+theme_override_colors/font_shadow_color = Color(0.584314, 0.67451, 0.764706, 0.784314)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+label_settings = ExtResource("3_4qlkh")
+
+[node name="Settings" type="VBoxContainer" parent="ScreenRows"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="SettingsTabContainer" type="TabContainer" parent="ScreenRows/Settings"]
+custom_minimum_size = Vector2(320, 190)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_t5b6p")
+tab_alignment = 1
+current_tab = 0
+
+[node name="Audio" type="HBoxContainer" parent="ScreenRows/Settings/SettingsTabContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 0
+
+[node name="SpacerRight" type="Control" parent="ScreenRows/Settings/SettingsTabContainer/Audio"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/Settings/SettingsTabContainer/Audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="AllLabel" type="Label" parent="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "All
+"
+
+[node name="AllSlider" type="HSlider" parent="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 2.0
+step = 0.01
+
+[node name="MusicLabel" type="Label" parent="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 2.0
+step = 0.01
+
+[node name="EffectsLabel" type="Label" parent="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Effects
+"
+
+[node name="EffectsSlider" type="HSlider" parent="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 2.0
+step = 0.01
+
+[node name="SpacerLeft" type="Control" parent="ScreenRows/Settings/SettingsTabContainer/Audio"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Game" type="HBoxContainer" parent="ScreenRows/Settings/SettingsTabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="SpacerRight" type="Control" parent="ScreenRows/Settings/SettingsTabContainer/Game"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/Settings/SettingsTabContainer/Game"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="MoraleAuraLabel" type="Label" parent="ScreenRows/Settings/SettingsTabContainer/Game/ControlsGrid"]
+layout_mode = 2
+text = "Player Morale Aura"
+
+[node name="MoraleCheckButton" type="CheckButton" parent="ScreenRows/Settings/SettingsTabContainer/Game/ControlsGrid"]
+layout_mode = 2
+
+[node name="SpacerLeft" type="Control" parent="ScreenRows/Settings/SettingsTabContainer/Game"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="ScreenRows"]
+custom_minimum_size = Vector2(41, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("11_7yutw")
+text = "Back"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="value_changed" from="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/AllSlider" to="." method="_on_all_slider_value_changed"]
+[connection signal="value_changed" from="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="pressed" from="ScreenRows/BackButton" to="." method="_on_back_button_pressed"]

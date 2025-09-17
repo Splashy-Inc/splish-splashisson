@@ -33,3 +33,6 @@ func _on_play_button_visibility_changed() -> void:
 		if not is_node_ready():
 			await ready
 		play_button.grab_focus()
+
+func _on_settings_button_pressed() -> void:
+	button_pressed.emit("Settings")

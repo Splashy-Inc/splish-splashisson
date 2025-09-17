@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://k7ghjsy8g1k0"]
+[gd_scene load_steps=8 format=3 uid="uid://k7ghjsy8g1k0"]
 
 [ext_resource type="Script" path="res://SCRIPTS/main_menu.gd" id="1_vkagb"]
 [ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_w1mmc"]
 [ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="3_32f6x"]
 [ext_resource type="LabelSettings" path="res://SCENES/GUI/text_title_format.tres" id="3_vj6ow"]
 [ext_resource type="FontFile" uid="uid://d1mx7mywxo10e" path="res://Art/Font/m5x7.ttf" id="4_tra3o"]
+[ext_resource type="PackedScene" uid="uid://cboofch0vsmg4" path="res://SCENES/GUI/Buttons/menu_button.tscn" id="6_jpql4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hky3s"]
 font = ExtResource("4_tra3o")
@@ -75,6 +76,11 @@ size_flags_horizontal = 0
 theme = ExtResource("3_32f6x")
 text = "Controls"
 
+[node name="SettingsButton" parent="MenuContent/MenuButtons" instance=ExtResource("6_jpql4")]
+layout_mode = 2
+text = "Settings"
+type = 7
+
 [node name="QuitButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
@@ -86,4 +92,5 @@ text = "Quit"
 [connection signal="visibility_changed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_visibility_changed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
