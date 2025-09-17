@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://temjlvcxcb3r"]
 
 [ext_resource type="Script" path="res://SCRIPTS/loss_screen.gd" id="1_ig5wj"]
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://SCENES/GUI/button_box.tres" id="1_kt3cy"]
+[ext_resource type="StyleBox" uid="uid://bqrgama8uwcg6" path="res://SCENES/GUI/Buttons/button_box.tres" id="1_kt3cy"]
 
 [node name="LossScreen" type="Control"]
 custom_minimum_size = Vector2(640, 360)
