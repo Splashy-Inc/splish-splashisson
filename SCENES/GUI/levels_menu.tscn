@@ -95,7 +95,6 @@ offset_top = -12.0
 offset_right = 36.0
 offset_bottom = 24.0
 theme = ExtResource("5_g4sc5")
-stage_data = ExtResource("14_ukqbw")
 
 [node name="SeahorsevillaButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 105.0
@@ -103,7 +102,6 @@ offset_top = -30.0
 offset_right = 174.0
 offset_bottom = 8.0
 theme = ExtResource("5_ifvpr")
-stage_data = ExtResource("14_ukqbw")
 
 [node name="LochleyWharfButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -276.0
@@ -111,7 +109,6 @@ offset_top = -70.0
 offset_right = -224.0
 offset_bottom = -21.0
 theme = ExtResource("6_csbf7")
-stage_data = ExtResource("14_ukqbw")
 
 [node name="FlockHavenButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -111.0
@@ -119,7 +116,6 @@ offset_top = 48.0
 offset_right = -42.0
 offset_bottom = 89.0
 theme = ExtResource("7_2tbrh")
-stage_data = ExtResource("14_ukqbw")
 
 [node name="SquidCityButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 58.0
@@ -127,7 +123,6 @@ offset_top = 77.0
 offset_right = 111.0
 offset_bottom = 117.0
 theme = ExtResource("6_8hnu0")
-stage_data = ExtResource("14_ukqbw")
 
 [node name="SirensgillGroveButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -84.0
@@ -135,7 +130,6 @@ offset_top = 75.0
 offset_right = -2.0
 offset_bottom = 115.0
 theme = ExtResource("8_vhicd")
-stage_data = ExtResource("14_ukqbw")
 
 [node name="PortSharkdaleButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 147.0
@@ -143,4 +137,3 @@ offset_top = 35.0
 offset_right = 224.0
 offset_bottom = 76.0
 theme = ExtResource("5_nuxhv")
-stage_data = ExtResource("14_ukqbw")

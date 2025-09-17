@@ -1,24 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://mhno46fuq66x"]
+[gd_scene load_steps=7 format=3 uid="uid://mhno46fuq66x"]
 
 [ext_resource type="Theme" uid="uid://ctla0k6e4ldrr" path="res://SCENES/GUI/levels_buttons/finbury_button.tres" id="1_wb4ve"]
 [ext_resource type="Script" path="res://SCRIPTS/level_button.gd" id="2_74t3b"]
-[ext_resource type="Resource" uid="uid://cdpgjx8jbdyni" path="res://Custom Resources/Stages/tutorial_stage_data.tres" id="3_6foij"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="3_hs5a3"]
 [ext_resource type="PackedScene" uid="uid://1b4oiu8aqd4v" path="res://SCENES/GUI/level_stats_panel.tscn" id="4_0xfp4"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="4_vj2q8"]
+
+[sub_resource type="Resource" id="Resource_mk5ia"]
+script = ExtResource("4_vj2q8")
+unlocked = false
+is_tutorial = false
+length_seconds = 60
+boat_length = 1
+boat_task_list = Array[int]([])
+cargo_list = Array[ExtResource("3_hs5a3")]([])
+weather = 0
+num_rat_holes = 1
+rat_interval_seconds = 10
+seagull_interval_seconds = 10
+num_pirate_ships = 0
+start_pirates = 1
 
 [node name="LevelButton" type="Button"]
 offset_right = 39.0
 offset_bottom = 37.0
+focus_mode = 0
 theme = ExtResource("1_wb4ve")
 toggle_mode = true
 script = ExtResource("2_74t3b")
-stage_data = ExtResource("3_6foij")
+stage_data = SubResource("Resource_mk5ia")
 
-[node name="StatsPanelPosition" type="Marker2D" parent="."]
-position = Vector2(60, 16)
-
-[node name="LevelStatsPanel" parent="StatsPanelPosition" instance=ExtResource("4_0xfp4")]
+[node name="LevelStatsPanel" parent="." instance=ExtResource("4_0xfp4")]
 visible = false
+layout_mode = 0
+offset_left = 60.0
+offset_top = 16.0
+offset_right = 185.0
+offset_bottom = 192.0
 
 [connection signal="toggled" from="." to="." method="_on_toggled"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="button_pressed" from="StatsPanelPosition/LevelStatsPanel" to="." method="_on_level_stats_panel_button_pressed"]
+[connection signal="button_pressed" from="LevelStatsPanel" to="." method="_on_level_stats_panel_button_pressed"]

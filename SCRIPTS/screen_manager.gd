@@ -113,6 +113,7 @@ func _on_main_menu_pressed() -> void:
 func _on_level_completed():
 	game_ended = true
 	#_pause_play()
+	unlock_next_stage(cur_stage_data)
 	hud.show_win_screen()
 	
 func _on_tutorial_completed():
@@ -191,3 +192,8 @@ func generate_level(is_tutorial: bool = false) -> Level:
 	else:
 		new_level = level_scene.instantiate().duplicate()
 	return new_level
+
+func unlock_next_stage(cur_stage_data: StageData):
+	var cur_stage_index = stages.find(cur_stage_data)
+	if cur_stage_index < stages.size() - 1:
+		stages[cur_stage_index + 1].unlocked = true
