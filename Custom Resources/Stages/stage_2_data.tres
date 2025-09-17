@@ -38,7 +38,7 @@ speed_success_modifier = 0.75
 
 [resource]
 script = ExtResource("1_axcua")
-unlocked = true
+unlocked = false
 cutscene_data = SubResource("Resource_l74pf")
 is_tutorial = false
 length_seconds = 60
