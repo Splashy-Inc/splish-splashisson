@@ -7,6 +7,8 @@ signal selected
 @export var stage_data : StageData
 
 @onready var stats_panel: LevelStatsPanel = $LevelStatsPanel
+@onready var hover_sound: AudioStreamPlayer = $HoverSound
+@onready var click_sound: AudioStreamPlayer = $ClickSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,6 +41,7 @@ func _on_toggled(toggled_on: bool) -> void:
 			stats_panel.global_position.y = mouse_pos.y - stats_panel.size.y
 		
 		stats_panel.show()
+		click_sound.play()
 	else:
 		stats_panel.hide()
 
@@ -46,3 +49,7 @@ func _on_level_stats_panel_button_pressed(button_type: CustomMenuButton.Type) ->
 	match button_type:
 		CustomMenuButton.Type.PLAY:
 			selected.emit()
+
+func _on_mouse_entered() -> void:
+	if not disabled and not button_pressed:
+		hover_sound.play()

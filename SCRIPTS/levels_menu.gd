@@ -3,6 +3,7 @@ extends Control
 signal stage_selected(stage_data: StageData)
 
 @onready var map: AnimatedSprite2D = $Map
+@onready var level_select_sound: AudioStreamPlayer = $LevelSelect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_stage_selected(button: LevelButton):
+	level_select_sound.play()
+	if level_select_sound.playing:
+		await level_select_sound.finished
 	stage_selected.emit("Play", button.stage_data)
 
 func _on_stage_button_toggled(toggled_on: bool, button: LevelButton):
