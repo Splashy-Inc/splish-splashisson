@@ -55,19 +55,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="PlayButton" type="Button" parent="MenuContent/MenuButtons"]
-custom_minimum_size = Vector2(100, 20)
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("3_32f6x")
-text = "Play"
-
 [node name="LevelSelectButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("3_32f6x")
-text = "Level Select"
+text = "Play"
 
 [node name="ControlsButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
@@ -88,8 +81,6 @@ size_flags_horizontal = 0
 theme = ExtResource("3_32f6x")
 text = "Quit"
 
-[connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="visibility_changed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_visibility_changed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]

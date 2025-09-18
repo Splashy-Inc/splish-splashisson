@@ -1,9 +1,12 @@
 extends Control
 
 signal stage_selected(stage_data: StageData)
+signal exited
 
 @onready var map: AnimatedSprite2D = $Map
 @onready var level_select_sound: AudioStreamPlayer = $LevelSelect
+@export var tutorial_button: LevelButton
+@export var tutorial_button_animation_player: AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,3 +31,18 @@ func _on_stage_button_toggled(toggled_on: bool, button: LevelButton):
 			if child is LevelButton:
 				if child != button:
 					child.button_pressed = false
+
+func _on_visibility_changed() -> void:
+	if visible:
+		for child in map.get_children():
+			if child is LevelButton:
+				if child != tutorial_button and child.stage_data.unlocked:
+					tutorial_button_animation_player.play("RESET")
+					return # Skip everything below if any stages unlocked (tutorial already done/skipped)
+		tutorial_button_animation_player.play("pulse")
+	else:
+		tutorial_button_animation_player.play("RESET")
+
+func _on_back_button_pressed() -> void:
+	if visible:
+		exited.emit()

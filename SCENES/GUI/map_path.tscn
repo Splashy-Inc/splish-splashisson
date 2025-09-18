@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://bevqcubs3rkvk"]
+[gd_scene load_steps=7 format=3 uid="uid://bevqcubs3rkvk"]
 
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="1_dyx01"]
 [ext_resource type="Texture2D" uid="uid://debh2pbtm88a2" path="res://Art/ProgressBar/MapDot.png" id="1_vkgdv"]
 [ext_resource type="Script" path="res://SCRIPTS/map_path.gd" id="3_tjolg"]
+
+[sub_resource type="Animation" id="Animation_5u02u"]
+resource_name = "reveal"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rm5no"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuudh"]
+_data = {
+"RESET": SubResource("Animation_rm5no"),
+"reveal": SubResource("Animation_5u02u")
+}
 
 [node name="MapPath" type="Line2D"]
 texture_repeat = 2
@@ -13,3 +50,11 @@ texture = ExtResource("1_vkgdv")
 texture_mode = 1
 joint_mode = 2
 script = ExtResource("3_tjolg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tuudh")
+}
+autoplay = "RESET"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

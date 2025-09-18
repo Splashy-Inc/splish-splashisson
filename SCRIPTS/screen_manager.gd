@@ -39,6 +39,11 @@ func show_main_menu():
 	cur_stage_data = null
 	hud.show_main_menu()
 
+func show_levels_menu():
+	_pause_play()
+	_clear_screens()
+	hud.show_levels_menu()
+
 func toggle_pause_menu():
 	match hud.cur_menu:
 		HUD.Menus.MAIN:
@@ -124,7 +129,8 @@ func _on_tutorial_completed():
 	hud.show_win_screen()
 
 func _on_tutorial_skipped():
-	load_next_stage()
+	unlock_next_stage(cur_stage_data)
+	show_levels_menu()
 
 func _clear_screens():
 	if is_instance_valid(cur_screen):
@@ -136,7 +142,7 @@ func _on_next_pressed() -> void:
 	if cur_screen:
 		hud.hide_menus()
 		if cur_screen is Level:
-			load_next_stage()
+			show_levels_menu()
 		elif cur_screen is Cutscene:
 			load_level(cur_stage_data)
 	else:
@@ -171,6 +177,7 @@ func load_stage(new_stage_data: StageData):
 	cur_screen = new_cutscene
 	Globals.set_level(null)
 
+# Unused, but still keeping this in here in case we end up wanting it again
 func load_next_stage():
 	if cur_stage_data:
 		var cur_stage_index = stages.find(cur_stage_data)
