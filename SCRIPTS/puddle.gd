@@ -43,8 +43,9 @@ var neighbor_puddles = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawned.connect(Globals._on_puddle_spawned)
-	died.connect(Globals._on_puddle_fixed)
+	var level = get_tree().get_nodes_in_group("level").front() as Level
+	spawned.connect(level._on_stat_entity_spawned.bind(self))
+	died.connect(level._on_stat_entity_died.bind(self))
 	if not Globals.boat:
 		Globals.boat_ready.connect(_update_stage)
 	else:

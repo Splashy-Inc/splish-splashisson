@@ -133,36 +133,6 @@ func _on_level_completed():
 func _on_joy_connection_changed(device, connected):
 	joypad_connected = Input.get_connected_joypads().size() > 0
 
-func _on_puddle_spawned():
-	if level:
-		level.level_stats.puddles_spawned += 1
-	
-func _on_puddle_fixed():
-	if level:
-		level.level_stats.puddles_fixed += 1
-
-func _on_leak_spawned():
-	if level:
-		level.level_stats.leaks_spawned += 1
-	
-func _on_leak_fixed():
-	if level:
-		level.level_stats.leaks_fixed += 1
-	
-func _on_creature_spawned(creature: Creature):
-	if level:
-		if creature is Rat:
-			level.level_stats.rats_spawned += 1
-		elif creature is Seagull:
-			level.level_stats.seagulls_spawned += 1
-	
-func _on_creature_died(creature: Creature):
-	if level:
-		if creature is Rat:
-			level.level_stats.rats_fixed += 1
-		elif creature is Seagull:
-			level.level_stats.seagulls_fixed += 1
-
 func update_settings(new_settings: Settings):
 	settings = new_settings
 	settings_updated.emit(settings)

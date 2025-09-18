@@ -27,7 +27,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Level" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat")]
+[node name="Level" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat") groups=["level"]]
 script = ExtResource("1_stx43")
 dock_scene = ExtResource("8_b63j4")
 pirate_ship_scene = ExtResource("3_ax278")

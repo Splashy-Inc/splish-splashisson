@@ -18,6 +18,8 @@ var success_percentage : float
 @export var rats_fixed : int
 @export var seagulls_spawned : int
 @export var seagulls_fixed : int
+@export var pirates_spawned : int
+@export var pirates_fixed : int
 
 @export var speed_success_modifier = .75
 const SPEED_SUCCESS_WEIGHT = 1.0

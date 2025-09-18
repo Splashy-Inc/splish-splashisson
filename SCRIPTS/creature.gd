@@ -37,8 +37,9 @@ var assignee: Node2D
 @export var sfx_manager : SFXManager
 
 func _ready():
-	Globals._on_creature_spawned(self)
-	died.connect(Globals._on_creature_died.bind(self))
+	var level = get_tree().get_nodes_in_group("level").front() as Level
+	level._on_stat_entity_spawned(self)
+	died.connect(level._on_stat_entity_died.bind(self))
 	sfx_manager.play("SpawnNoise")
 	target_closest_cargo()
 	spawned.emit()
