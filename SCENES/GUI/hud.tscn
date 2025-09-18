@@ -70,6 +70,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="button_pressed" from="MenuScreens/MainMenu" to="." method="_on_game_menu_button_pressed"]
+[connection signal="exited" from="MenuScreens/LevelsMenu" to="." method="_on_controls_screen_exited"]
 [connection signal="stage_selected" from="MenuScreens/LevelsMenu" to="." method="_on_game_menu_button_pressed"]
 [connection signal="exited" from="MenuScreens/ControlsScreen" to="." method="_on_controls_screen_exited"]
 [connection signal="exited" from="MenuScreens/SettingsScreen" to="." method="_on_controls_screen_exited"]

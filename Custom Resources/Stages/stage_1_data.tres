@@ -38,10 +38,10 @@ speed_success_modifier = 0.75
 
 [resource]
 script = ExtResource("7_lxwac")
-unlocked = true
+unlocked = false
 cutscene_data = SubResource("Resource_pka8k")
 is_tutorial = false
-length_seconds = 60
+length_seconds = 1
 boat_length = 1
 boat_task_list = Array[int]([1, 2, 1, 2])
 cargo_list = Array[ExtResource("1_bra1a")]([ExtResource("2_mqtco")])
