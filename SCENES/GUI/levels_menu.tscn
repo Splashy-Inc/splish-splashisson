@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=35 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -19,7 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://coldig3mdaiwv" path="res://Art/GUI/levels_menu/map_frame_8of8.png" id="8_smflu"]
 [ext_resource type="Theme" uid="uid://cptjjmuaxu5sc" path="res://SCENES/GUI/levels_buttons/sirensgill_grove_button.tres" id="8_vhicd"]
 [ext_resource type="PackedScene" uid="uid://mhno46fuq66x" path="res://SCENES/GUI/levels_buttons/level_button.tscn" id="10_omfh6"]
+[ext_resource type="Resource" uid="uid://cdpgjx8jbdyni" path="res://Custom Resources/Stages/tutorial_stage_data.tres" id="11_0o030"]
 [ext_resource type="Resource" uid="uid://0rutsw623na5" path="res://Custom Resources/Stages/stage_1_data.tres" id="11_x1mxj"]
+[ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="11_yn2y5"]
 [ext_resource type="PackedScene" uid="uid://bevqcubs3rkvk" path="res://SCENES/GUI/map_path.tscn" id="12_dy3uq"]
 [ext_resource type="Shader" path="res://SCRIPTS/highlight.gdshader" id="13_tjmr1"]
 [ext_resource type="Resource" uid="uid://dkbttji6b0itf" path="res://Custom Resources/Stages/stage_3_data.tres" id="14_ukqbw"]
@@ -58,6 +60,43 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Animation" id="Animation_xxgkk"]
+resource_name = "pulse"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.741176, 0.196078, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gn7h0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ae8ws"]
+_data = {
+"RESET": SubResource("Animation_gn7h0"),
+"pulse": SubResource("Animation_xxgkk")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f8arx"]
 resource_local_to_scene = true
 shader = ExtResource("13_tjmr1")
@@ -79,16 +118,33 @@ shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
 shader_parameter/line_thickness = 1.0
 shader_parameter/on = false
 
-[node name="LevelsMenu" type="Control"]
+[node name="LevelsMenu" type="Control" node_paths=PackedStringArray("tutorial_button", "tutorial_button_animation_player")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_xxpx0")
+tutorial_button = NodePath("Map/TutorialButton")
+tutorial_button_animation_player = NodePath("Map/TutorialButton/AnimationPlayer")
 
 [node name="Map" type="AnimatedSprite2D" parent="."]
 position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_0ngwc")
 autoplay = "default"
 frame_progress = 0.671758
+
+[node name="TutorialButton" parent="Map" instance=ExtResource("10_omfh6")]
+offset_left = -295.0
+offset_top = 65.0
+offset_right = -247.0
+offset_bottom = 102.0
+theme = ExtResource("11_yn2y5")
+text = "Tutorial"
+stage_data = ExtResource("11_0o030")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/TutorialButton"]
+libraries = {
+"": SubResource("AnimationLibrary_ae8ws")
+}
+autoplay = "RESET"
 
 [node name="FinburyButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -74.0
@@ -180,3 +236,17 @@ theme = ExtResource("5_nuxhv")
 [node name="LevelSelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_3c0qp")
 bus = &"Effects"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(41, 0)
+layout_mode = 0
+offset_left = 60.0
+offset_top = 14.0
+offset_right = 127.0
+offset_bottom = 46.0
+size_flags_horizontal = 4
+theme = ExtResource("11_yn2y5")
+text = "Main Menu"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
