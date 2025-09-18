@@ -18,6 +18,8 @@ var success_percentage : float
 @export var rats_fixed : int
 @export var seagulls_spawned : int
 @export var seagulls_fixed : int
+@export var pirates_spawned : int
+@export var pirates_fixed : int
 
 @export var speed_success_modifier = .75
 const SPEED_SUCCESS_WEIGHT = 1.0
@@ -62,5 +64,7 @@ func overwrite(new_stats: LevelStats):
 	rats_fixed = new_stats.rats_fixed
 	seagulls_spawned = new_stats.seagulls_spawned
 	seagulls_fixed = new_stats.seagulls_fixed
+	pirates_spawned = new_stats.pirates_spawned
+	pirates_fixed = new_stats.pirates_fixed
 
-	speed_success_modifier = .75
+	speed_success_modifier = new_stats.speed_success_modifier

@@ -36,6 +36,8 @@ var target_boat : Boat
 @onready var ambient_noise_timer: Timer = $AmbientNoiseTimer
 
 func _ready():
+	var level = get_tree().get_nodes_in_group("level").front() as Level
+	died.connect(level._on_stat_entity_died.bind(self))
 	interaction_distance = $InteractableRange/CollisionShape2D.shape.radius
 	set_highlight(false, Globals.action_color)
 	if navigation_agent:
@@ -97,7 +99,10 @@ func _boarding_state(delta: float):
 		add_to_group("pirate")
 		collision_shape.disabled = false
 		morale_bar.show()
-		has_boarded = true
+		if not has_boarded:
+			has_boarded = true
+			var level = get_tree().get_nodes_in_group("level").front() as Level
+			level._on_stat_entity_spawned(self)
 		state = State.IDLE
 	else:
 		_move_state(delta)

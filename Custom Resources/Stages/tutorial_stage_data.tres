@@ -30,7 +30,9 @@ rats_spawned = 0
 rats_fixed = 0
 seagulls_spawned = 0
 seagulls_fixed = 0
-speed_success_modifier = 0.75
+pirates_spawned = 0
+pirates_fixed = 0
+speed_success_modifier = 0.3
 
 [resource]
 script = ExtResource("9_1x1hs")

@@ -99,11 +99,11 @@ func show_levels_menu():
 	show_menu_screens()
 	levels_menu.show()
 
-func show_win_screen():
+func show_win_screen(level_stats: LevelStats = null):
 	cur_menu = Menus.WIN
 	_clear_menu()
 	show_menu_screens()
-	win_screen.set_finish_stats(Globals.level.level_stats)
+	win_screen.set_finish_stats(level_stats)
 	win_screen.show()
 
 func show_loss_screen():

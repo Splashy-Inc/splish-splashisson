@@ -63,6 +63,7 @@ weather=""
 distraction=""
 pirate=""
 seagull=""
+level=""
 
 [gui]
 

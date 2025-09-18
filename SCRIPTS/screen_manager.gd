@@ -121,7 +121,7 @@ func _on_level_completed():
 	game_ended = true
 	#_pause_play()
 	unlock_next_stage(cur_stage_data)
-	hud.show_win_screen()
+	hud.show_win_screen(cur_stage_data.level_stats)
 	
 func _on_tutorial_completed():
 	game_ended = true

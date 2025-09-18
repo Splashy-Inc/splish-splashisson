@@ -166,10 +166,3 @@ func _on_leak_patched():
 
 func _on_rat_died():
 	_show_next_dialog()
-
-func _on_finished():
-	leak_spawn_timer.stop()
-	rat_hole.die()
-	for rat in get_tree().get_nodes_in_group("rat"):
-		if rat is Rat:
-			rat.die()

@@ -46,6 +46,9 @@ var level_stats := LevelStats.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for level in get_tree().get_nodes_in_group("level"):
+		if level != self:
+			level.queue_free()
 	load_stage_data(stage_data)
 
 func _level_ready():
@@ -96,7 +99,10 @@ func load_level():
 			task_list.append(Globals.Task_type.ROWING_RIGHT)
 	boat.initialize(boat_length, task_list, cargo_list)
 	
+	level_stats = LevelStats.new()
+	level_stats.level_name = stage_data.level_stats.level_name
 	level_stats.length_seconds = minimum_seconds
+	level_stats.speed_success_modifier = stage_data.level_stats.speed_success_modifier
 	
 	if not weather:
 		weather = get_tree().get_first_node_in_group("weather")
@@ -198,3 +204,27 @@ func spawn_seagull():
 		var new_seagull = seagull_scene.instantiate()
 		new_seagull.global_position = seagull_spawn.global_position
 		obstacles.add_child(new_seagull)
+
+func _on_stat_entity_spawned(entity):
+	if entity is Puddle:
+		level_stats.puddles_spawned += 1
+	elif entity is Leak:
+		level_stats.leaks_spawned += 1
+	elif entity is Rat:
+		level_stats.rats_spawned += 1
+	elif entity is Seagull:
+		level_stats.seagulls_spawned += 1
+	elif entity is Pirate:
+		level_stats.pirates_spawned += 1
+
+func _on_stat_entity_died(entity):
+	if entity is Puddle:
+		level_stats.puddles_fixed += 1
+	elif entity is Leak:
+		level_stats.leaks_fixed += 1
+	elif entity is Rat:
+		level_stats.rats_fixed += 1
+	elif entity is Seagull:
+		level_stats.seagulls_fixed += 1
+	elif entity is Pirate:
+		level_stats.pirates_fixed += 1
