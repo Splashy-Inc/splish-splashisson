@@ -35,8 +35,13 @@ var input_disabled = false
 var aura_targets : Array[Crew]
 
 @onready var morale_aura: Area2D = $MoraleAura
+@onready var morale_passive_aura: Sprite2D = $MoraleAura/Aura
 @onready var morale_collision_shape: CollisionShape2D = $MoraleAura/CollisionShape2D
 @onready var interactable_range: Area2D = $InteractableRange
+
+func _ready() -> void:
+	morale_passive_aura.visible = Globals.settings.player_aura_visible
+	Globals.settings_updated.connect(_on_settings_updated)
 
 func _process(delta: float) -> void:
 	morale_aura.visible = aura_visible
@@ -397,3 +402,6 @@ func toggle_working_morale_modifier(is_active: bool):
 				aura_target.add_morale_modifier(working_morale_modifier)
 			else:
 				aura_target.remove_morale_modifier(working_morale_modifier)
+
+func _on_settings_updated(settings: Settings):
+	morale_passive_aura.visible = settings.player_aura_visible
