@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bevqcubs3rkvk"]
+
+[ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="1_dyx01"]
+[ext_resource type="Texture2D" uid="uid://debh2pbtm88a2" path="res://Art/ProgressBar/MapDot.png" id="1_vkgdv"]
+[ext_resource type="Script" path="res://SCRIPTS/map_path.gd" id="3_tjolg"]
+
+[node name="MapPath" type="Line2D"]
+texture_repeat = 2
+material = ExtResource("1_dyx01")
+points = PackedVector2Array(15, 17, 48, 40, 104, 28, 170, 37, 153, 69)
+width = 5.0
+texture = ExtResource("1_vkgdv")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("3_tjolg")
