@@ -1,41 +1,11 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://8bwans270knt"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://8bwans270knt"]
 
 [ext_resource type="StyleBox" uid="uid://3jo4t8w5ojom" path="res://SCENES/GUI/Buttons/idle_button.tres" id="1_ec7kb"]
 [ext_resource type="Texture2D" uid="uid://w8nor5qeurxl" path="res://Art/GUI/UI_SpriteSheet.png" id="1_i0x5v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gxxs7"]
-atlas = ExtResource("1_i0x5v")
-region = Rect2(32, 160, 32, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uu20o"]
-texture = SubResource("AtlasTexture_gxxs7")
-texture_margin_left = 6.0
-texture_margin_top = 9.0
-texture_margin_right = 6.0
-texture_margin_bottom = 9.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_blays"]
-atlas = ExtResource("1_i0x5v")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bmnsl"]
-texture = SubResource("AtlasTexture_blays")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lactg"]
-atlas = ExtResource("1_i0x5v")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsdsw"]
-texture = SubResource("AtlasTexture_lactg")
-texture_margin_left = 4.0
-texture_margin_top = 6.0
-texture_margin_right = 4.0
-texture_margin_bottom = 7.0
-region_rect = Rect2(0, 0, 32, 32)
+[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/disabled_button.tres" id="1_oiyyg"]
+[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/focused_button.tres" id="2_5ncij"]
+[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/hovered_button.tres" id="3_taob1"]
+[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/pressed_button.tres" id="5_vb1li"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3r8lt"]
 atlas = ExtResource("1_i0x5v")
@@ -54,10 +24,11 @@ axis_stretch_vertical = 1
 Button/colors/font_color = Color(0.721829, 0.769411, 0.817499, 1)
 Button/colors/font_outline_color = Color(0.192157, 0.231373, 0.270588, 1)
 Button/constants/outline_size = 4
-Button/styles/disabled = SubResource("StyleBoxTexture_uu20o")
-Button/styles/focus = SubResource("StyleBoxTexture_bmnsl")
-Button/styles/hover = SubResource("StyleBoxTexture_qsdsw")
+Button/styles/disabled = ExtResource("1_oiyyg")
+Button/styles/focus = ExtResource("2_5ncij")
+Button/styles/hover = ExtResource("3_taob1")
 Button/styles/normal = ExtResource("1_ec7kb")
+Button/styles/pressed = ExtResource("5_vb1li")
 LinkButton/colors/font_color = Color(0.721569, 0.768627, 0.815686, 1)
 LinkButton/colors/font_disabled_color = Color(0.192157, 0.231373, 0.270588, 0.231373)
 LinkButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
