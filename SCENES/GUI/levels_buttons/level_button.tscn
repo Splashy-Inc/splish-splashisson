@@ -26,6 +26,8 @@ start_pirates = 1
 [node name="LevelButton" type="Button"]
 offset_right = 39.0
 offset_bottom = 37.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
 theme = ExtResource("1_wb4ve")
 toggle_mode = true
@@ -38,7 +40,7 @@ layout_mode = 0
 offset_left = 60.0
 offset_top = 16.0
 offset_right = 185.0
-offset_bottom = 192.0
+offset_bottom = 106.0
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_v0s3x")

@@ -102,6 +102,7 @@ func load_level():
 	level_stats = LevelStats.new()
 	level_stats.level_name = stage_data.level_stats.level_name
 	level_stats.length_seconds = minimum_seconds
+	level_stats.speed_success_modifier = stage_data.level_stats.speed_success_modifier
 	
 	if not weather:
 		weather = get_tree().get_first_node_in_group("weather")

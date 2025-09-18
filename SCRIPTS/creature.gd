@@ -105,13 +105,14 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 		_set_state(State.IDLE)
 
 func die():
-	if target is Cargo:
-		target.remove_threat(self)
-	set_highlight(true, defeated_color)
-	_set_state(State.DEAD)
-	collision_shape.disabled = true
-	speed_mod = 2.0
-	died.emit()
+	if state != State.DEAD:
+		if target is Cargo:
+			target.remove_threat(self)
+		set_highlight(true, defeated_color)
+		_set_state(State.DEAD)
+		collision_shape.disabled = true
+		speed_mod = 2.0
+		died.emit()
 
 func _die():
 	queue_free()

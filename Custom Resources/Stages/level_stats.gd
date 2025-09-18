@@ -64,5 +64,7 @@ func overwrite(new_stats: LevelStats):
 	rats_fixed = new_stats.rats_fixed
 	seagulls_spawned = new_stats.seagulls_spawned
 	seagulls_fixed = new_stats.seagulls_fixed
+	pirates_spawned = new_stats.pirates_spawned
+	pirates_fixed = new_stats.pirates_fixed
 
-	speed_success_modifier = .75
+	speed_success_modifier = new_stats.speed_success_modifier

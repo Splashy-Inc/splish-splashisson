@@ -19,6 +19,9 @@ expand_margin_bottom = 10.0
 
 [node name="LevelStatsPanel" type="PanelContainer" node_paths=PackedStringArray("menu_buttons")]
 top_level = true
+custom_minimum_size = Vector2(125, 90)
+offset_right = 125.0
+offset_bottom = 90.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_srbr3")
@@ -30,19 +33,28 @@ menu_buttons = NodePath("MenuContent/MenuButtons")
 
 [node name="MenuContent" type="VBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 alignment = 1
 
 [node name="Title" type="Label" parent="MenuContent"]
 layout_mode = 2
+size_flags_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Level Stats"
 horizontal_alignment = 1
 
+[node name="NoAttemptLabel" type="Label" parent="MenuContent"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "Complete a run to see stats"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="LevelStats" type="VBoxContainer" parent="MenuContent"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="TimeStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
 layout_mode = 2
@@ -58,6 +70,7 @@ theme_override_font_sizes/font_size = 16
 text = "0:00"
 
 [node name="PercentageLabel" type="Label" parent="MenuContent/LevelStats"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "(Avg. Speed 100%)"
@@ -127,13 +140,41 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "0/0"
 
+[node name="SeagullStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/SeagullStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Seagulls shooed: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/SeagullStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0/0"
+
+[node name="PirateStats" type="HBoxContainer" parent="MenuContent/LevelStats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContent/LevelStats/PirateStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Pirates defeated: "
+
+[node name="Value" type="Label" parent="MenuContent/LevelStats/PirateStats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0/0"
+
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 10
 theme_override_constants/separation = 10
 
 [node name="PlayButton" parent="MenuContent/MenuButtons" instance=ExtResource("4_0gwl8")]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 16
 text = "Play Level"
 type = 3
