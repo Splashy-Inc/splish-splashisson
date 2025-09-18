@@ -170,7 +170,7 @@ func load_stage(new_stage_data: StageData):
 	_set_stage(new_stage_data)
 	_clear_screens()
 	var new_cutscene = generate_cutscene()
-	new_cutscene.start_pressed.connect(load_level)
+	new_cutscene.start_pressed.connect(_on_cutscene_start_pressed)
 	new_cutscene.skip_pressed.connect(_on_tutorial_skipped)
 	add_child(new_cutscene)
 	new_cutscene.initialize(cur_stage_data)
@@ -206,3 +206,7 @@ func unlock_next_stage(cur_stage_data: StageData):
 	var cur_stage_index = stages.find(cur_stage_data)
 	if cur_stage_index < stages.size() - 1:
 		stages[cur_stage_index + 1].unlocked = true
+
+func _on_cutscene_start_pressed(stage_data: StageData):
+	if cur_screen is Cutscene:
+		load_level(stage_data)
