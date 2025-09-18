@@ -10,6 +10,7 @@ enum Type {
 	NEXT,
 	RESTART,
 	CONTROLS,
+	SETTINGS,
 	QUIT,
 }
 

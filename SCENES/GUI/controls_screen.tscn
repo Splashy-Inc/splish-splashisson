@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/controls_screen.gd" id="1_tvbxo"]
 [ext_resource type="Script" path="res://SCRIPTS/controls_tab_container.gd" id="2_pnoft"]
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://SCENES/GUI/button_box.tres" id="2_tn6xa"]
+[ext_resource type="StyleBox" uid="uid://bqrgama8uwcg6" path="res://SCENES/GUI/Buttons/button_box.tres" id="2_tn6xa"]
 [ext_resource type="PackedScene" uid="uid://c2o4pwngqqe7r" path="res://Art/BG/MainMenuBG/MainMenuBG.tscn" id="2_utysg"]
 [ext_resource type="Texture2D" uid="uid://bwbvw6rtb7rfw" path="res://Art/Joystick/Joystick.png" id="3_1l55u"]
-[ext_resource type="LabelSettings" uid="uid://c014bsm5ryfcy" path="res://SCENES/GUI/text_title_format.tres" id="3_sqnjl"]
+[ext_resource type="LabelSettings" path="res://SCENES/GUI/text_title_format.tres" id="3_sqnjl"]
 [ext_resource type="Texture2D" uid="uid://cw0fyxj6elaof" path="res://Art/arrow_basic_white.png" id="4_6dj2e"]
 [ext_resource type="Theme" uid="uid://bw62pthll8jkl" path="res://SCENES/GUI/tab_container_theme.tres" id="4_muobf"]
 [ext_resource type="Shader" path="res://SCRIPTS/highlight.gdshader" id="6_igdal"]
@@ -111,11 +111,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_muobf")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 script = ExtResource("2_pnoft")
 
 [node name="Keyboard + Mouse" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer"]
-visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 0
@@ -514,6 +513,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Mobile" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 2

@@ -45,6 +45,8 @@ func toggle_pause_menu():
 			pass
 		HUD.Menus.CONTROLS:
 			hud._go_back_screen()
+		HUD.Menus.SETTINGS:
+			hud._go_back_screen()
 		HUD.Menus.LEVELS:
 			hud._go_back_screen()
 		_:

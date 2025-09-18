@@ -422,32 +422,39 @@ shape = SubResource("CircleShape2D_j4hgd")
 [node name="BootStepHigh" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("58_wp6ys")
 pitch_scale = 1.6
+bus = &"Effects"
 
 [node name="BootStepLow" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("58_wp6ys")
 pitch_scale = 1.4
+bus = &"Effects"
 
 [node name="AmbientNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_d47by")
 volume_db = -8.0
 pitch_scale = 0.7
+bus = &"Effects"
 
 [node name="FightNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_xukui")
+bus = &"Effects"
 
 [node name="Demoralized" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("18_sljar")
 volume_db = 10.0
 pitch_scale = 0.8
+bus = &"Effects"
 
 [node name="Splash" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("19_0jdhr")
 volume_db = 5.0
 attenuation = 0.196146
+bus = &"Effects"
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("20_668g4")
 volume_db = 10.0
+bus = &"Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

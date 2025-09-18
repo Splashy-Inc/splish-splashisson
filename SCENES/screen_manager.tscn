@@ -28,6 +28,7 @@ layer = 2
 [node name="MainTheme" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("5_rqqry")
 volume_db = -15.0
+bus = &"Music"
 
 [connection signal="main_menu_pressed" from="HUD" to="." method="_on_main_menu_pressed"]
 [connection signal="next_pressed" from="HUD" to="." method="_on_next_pressed"]

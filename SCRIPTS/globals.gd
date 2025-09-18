@@ -7,11 +7,13 @@ signal cargo_items_updated
 signal level_progress_percent_updated
 signal level_ready
 signal level_completed
+signal settings_updated(settings: Settings)
 
 var boat: Boat
 var boat_speed = 0
 var level: Level
 var level_progress_percent = 0.0
+var settings := Settings.new()
 
 var cargo_info = {
 	"max_condition": 0,
@@ -160,3 +162,7 @@ func _on_creature_died(creature: Creature):
 			level.level_stats.rats_fixed += 1
 		elif creature is Seagull:
 			level.level_stats.seagulls_fixed += 1
+
+func update_settings(new_settings: Settings):
+	settings = new_settings
+	settings_updated.emit(settings)

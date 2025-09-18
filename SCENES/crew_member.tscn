@@ -847,38 +847,47 @@ shape = SubResource("CircleShape2D_j4hgd")
 [node name="FollowPlayer" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("20_ovux8")
 volume_db = -5.0
+bus = &"Effects"
 
 [node name="AcknowledgeAssignment" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("21_mr5gk")
 volume_db = -5.0
+bus = &"Effects"
 
 [node name="BootStepHigh" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("22_jwcoc")
 pitch_scale = 1.6
+bus = &"Effects"
 
 [node name="BootStepLow" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("22_jwcoc")
 pitch_scale = 1.4
+bus = &"Effects"
 
 [node name="Stomp" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("58_rwgi1")
 volume_db = -2.5
 pitch_scale = 0.9
+bus = &"Effects"
 
 [node name="Patching" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_vaaau")
 volume_db = 9.0
 pitch_scale = 0.7
+bus = &"Effects"
 
 [node name="ThrowWater" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = ExtResource("62_woguw")
+bus = &"Effects"
 
 [node name="Munch" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_sv7jv")
 volume_db = 10.0
+bus = &"Effects"
 
 [node name="FightNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_jhftx")
+bus = &"Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
