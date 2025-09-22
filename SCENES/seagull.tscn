@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://he2ienxfwna8"]
+[gd_scene load_steps=32 format=3 uid="uid://he2ienxfwna8"]
 
 [ext_resource type="Script" path="res://SCRIPTS/seagull.gd" id="1_uhe3b"]
 [ext_resource type="Resource" uid="uid://6eg8s8dmqv2x" path="res://Custom Resources/Morale Modifiers/task_morale_modifier.tres" id="2_2yeby"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_8q1jr"]
+[ext_resource type="Texture2D" uid="uid://c1rywgwk23o5n" path="res://Art/Joystick/MobileButtons/seagull.png" id="3_ug48q"]
 [ext_resource type="Texture2D" uid="uid://b13isd6rnc5jc" path="res://Art/Seagull/dive/seagull_dive_1.png" id="4_j2r0y"]
 [ext_resource type="Texture2D" uid="uid://dx8hu0qjapqbv" path="res://Art/Seagull/dive/seagull_dive_2.png" id="5_4ilj8"]
 [ext_resource type="Texture2D" uid="uid://ctydyfl0rf6la" path="res://Art/Seagull/flying/seagull_flying_1.png" id="6_3d18n"]
@@ -258,6 +259,7 @@ sprite = NodePath("AnimatedSprite2D")
 collision_shape = NodePath("CollisionShape2D")
 animation_player = NodePath("AnimationPlayer")
 sfx_manager = NodePath("SFXManager")
+target_sprite = ExtResource("3_ug48q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_8q1jr")

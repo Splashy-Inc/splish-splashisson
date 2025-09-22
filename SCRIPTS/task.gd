@@ -16,6 +16,8 @@ var level_completed = false
 @export var dismount_point : Marker2D
 @export var self_space : CollisionPolygon2D
 
+@export var target_sprite : Texture2D
+
 func _ready():
 	Globals.level_completed.connect(_on_level_completed)
 
@@ -91,3 +93,6 @@ func get_morale_modifier() -> MoraleModifier:
 	if is_instance_valid(morale_modifier):
 		return morale_modifier
 	return MoraleModifier.new()
+
+func get_target_sprite() -> Texture2D:
+	return target_sprite

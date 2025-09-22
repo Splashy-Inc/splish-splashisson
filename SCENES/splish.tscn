@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=73 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/Morale Modifiers/player_base_morale_modifier.tres" id="2_5x42x"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://dulmrh7p03sid" path="res://Materials/aura_material.tres" id="4_egy3f"]
 [ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/attack_modifier.tres" id="4_r4x6o"]
 [ext_resource type="Texture2D" uid="uid://8nfrfdhrlxkh" path="res://Art/Splish/BailingWater/BailB.png" id="4_thdcp"]
+[ext_resource type="Texture2D" uid="uid://ctfeycxq11j6w" path="res://Art/Joystick/MobileButtons/splish.png" id="5_1w65s"]
 [ext_resource type="Texture2D" uid="uid://dhmncs1vrrnmq" path="res://Art/Splish/BailingWater/BailC.png" id="5_f5d2l"]
 [ext_resource type="Texture2D" uid="uid://cmh83m2yj0glw" path="res://Art/Splish/Walking Up/SplishWalkUpA.png" id="5_ksqji"]
 [ext_resource type="Texture2D" uid="uid://d1w5ctdvu5gry" path="res://Art/Splish/BailingWater/BailD.png" id="6_u1vbr"]
@@ -588,6 +589,7 @@ morale_color = Color(1, 1, 0, 0.494118)
 sfx_manager = NodePath("SFXManager")
 sprite = NodePath("AnimatedSprite2D")
 attack_morale_modifier = ExtResource("4_r4x6o")
+target_sprite = ExtResource("5_1w65s")
 
 [node name="MoraleAura" type="Area2D" parent="."]
 z_index = -2

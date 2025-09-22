@@ -36,6 +36,8 @@ var assignee: Node2D
 @export var animation_player : AnimationPlayer
 @export var sfx_manager : SFXManager
 
+@export var target_sprite : Texture2D
+
 func _ready():
 	var level = get_tree().get_nodes_in_group("level").front() as Level
 	level._on_stat_entity_spawned(self)
@@ -162,3 +164,6 @@ func get_morale_modifier() -> MoraleModifier:
 	if is_instance_valid(morale_modifier):
 		return morale_modifier
 	return MoraleModifier.new()
+
+func get_target_sprite() -> Texture2D:
+	return target_sprite

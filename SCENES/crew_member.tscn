@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=90 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c2lcyr846pcti" path="res://Art/Crew/Animations/Walking Down/CrewWalkingDownA.png" id="3_tolw7"]
 [ext_resource type="Texture2D" uid="uid://dlvev47rk5vgu" path="res://Art/Crew/Animations/Acknowledge/CrewAcknowledgementC.png" id="3_trj6w"]
 [ext_resource type="Texture2D" uid="uid://b6wfhucl4xrla" path="res://Art/Crew/Animations/Idle/CrewBack.png" id="3_uucbp"]
+[ext_resource type="Texture2D" uid="uid://cm0b7d82ytxwu" path="res://Art/Joystick/MobileButtons/crew.png" id="4_74l42"]
 [ext_resource type="Texture2D" uid="uid://c8e2rbqeych0i" path="res://Art/Crew/Animations/Alert/CrewAlertD.png" id="4_m0han"]
 [ext_resource type="Texture2D" uid="uid://2sv5fbdgw45p" path="res://Art/Crew/Animations/Walking Down/CrewWalkingDownB.png" id="4_orbvs"]
 [ext_resource type="Texture2D" uid="uid://dw0k1wmxp6d7y" path="res://Art/Crew/Animations/Acknowledge/CrewAcknowledgementD.png" id="4_wdm5l"]
@@ -823,6 +824,7 @@ sfx_manager = NodePath("SFXManager")
 sprite = NodePath("AnimatedSprite2D")
 speed = 125.0
 attack_morale_modifier = ExtResource("3_cqmqi")
+target_sprite = ExtResource("4_74l42")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_5n08l")

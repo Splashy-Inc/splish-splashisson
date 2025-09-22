@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b40oaetqwyltx"]
+[gd_scene load_steps=39 format=3 uid="uid://b40oaetqwyltx"]
 
 [ext_resource type="Script" path="res://SCRIPTS/pirate.gd" id="1_226mg"]
 [ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/attack_modifier.tres" id="2_i0crg"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="3_jwnii"]
 [ext_resource type="SpriteFrames" uid="uid://d08fqlykkmdl6" path="res://Custom Resources/basic_pirate_sprite_frames.tres" id="4_m7fne"]
 [ext_resource type="SpriteFrames" uid="uid://c7fbmx4sog75q" path="res://Custom Resources/hammer_pirate_sprite_frames.tres" id="4_nsorq"]
+[ext_resource type="Texture2D" uid="uid://bwb5t7pjwk33n" path="res://Art/Joystick/MobileButtons/shark.png" id="5_ipvpr"]
+[ext_resource type="Texture2D" uid="uid://dpgp3vwrpn0h4" path="res://Art/Joystick/MobileButtons/sawshark.png" id="6_qmqqk"]
+[ext_resource type="Texture2D" uid="uid://dioagnng4kwvn" path="res://Art/Joystick/MobileButtons/hhshark.png" id="7_mbehu"]
 [ext_resource type="AudioStream" uid="uid://dsl2r5ouyucqa" path="res://Audio/hail_grunt.mp3" id="14_bmk4o"]
 [ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="15_705hw"]
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="17_v420o"]
@@ -384,11 +387,13 @@ script = ExtResource("1_226mg")
 defeated_color = Color(1, 0, 0, 1)
 sprite_container = NodePath("Sprites")
 sprite_frame_sets = Array[SpriteFrames]([ExtResource("4_m7fne"), ExtResource("3_jqkd6"), ExtResource("4_nsorq")])
+target_sprite_options = Array[Texture2D]([ExtResource("5_ipvpr"), ExtResource("6_qmqqk"), ExtResource("7_mbehu")])
 jump_curve = SubResource("Curve_hivc8")
 sfx_manager = NodePath("SFXManager")
 sprite = NodePath("Sprites/Sprite")
 speed = 75.0
 attack_morale_modifier = ExtResource("2_i0crg")
+target_sprite = ExtResource("5_ipvpr")
 
 [node name="Sprites" type="Node2D" parent="."]
 

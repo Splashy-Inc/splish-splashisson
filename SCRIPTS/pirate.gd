@@ -26,6 +26,7 @@ var assignee: Node2D
 @export var sprite_container: Node2D
 @export var sprite_frame_sets : Array[SpriteFrames]
 @onready var splash_sprite: AnimatedSprite2D = $Sprites/Splash
+@export var target_sprite_options : Array[Texture2D]
 
 var splash_point: Marker2D
 var board_point: Marker2D
@@ -280,6 +281,7 @@ func board_boat(boat: Boat, is_right: bool = false):
 func set_type(new_type: Type):
 	type = new_type
 	sprite.sprite_frames = sprite_frame_sets[type]
+	target_sprite = target_sprite_options[type]
 
 func _on_ambient_noise_timer_timeout() -> void:
 	sfx_manager.play("AmbientNoise")
