@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b77mh17y84d50"]
+[gd_scene load_steps=8 format=3 uid="uid://b77mh17y84d50"]
 
 [ext_resource type="Script" path="res://SCRIPTS/mobile_controls.gd" id="1_qatij"]
 [ext_resource type="PackedScene" uid="uid://doayqux8rw3nv" path="res://SCENES/GUI/joystick.tscn" id="1_x3fcn"]
 [ext_resource type="Shader" path="res://SCRIPTS/highlight.gdshader" id="3_p0wpc"]
 [ext_resource type="Texture2D" uid="uid://roowlcj4e6pk" path="res://Art/Joystick/Button.png" id="4_2ejss"]
+[ext_resource type="Texture2D" uid="uid://ctfeycxq11j6w" path="res://Art/Joystick/MobileButtons/splish.png" id="5_0h368"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mo3kn"]
 resource_local_to_scene = true
@@ -39,12 +40,54 @@ position = Vector2(80, 280)
 
 [node name="ActButton" type="TouchScreenButton" parent="."]
 material = SubResource("ShaderMaterial_mo3kn")
-position = Vector2(544, 184)
+position = Vector2(544, 216)
 texture_normal = ExtResource("4_2ejss")
 action = "act"
 
+[node name="Sprite2D" type="Sprite2D" parent="ActButton"]
+position = Vector2(32, 32)
+texture = ExtResource("5_0h368")
+
+[node name="Label" type="Label" parent="ActButton"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 3.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+text = "Act"
+horizontal_alignment = 1
+
 [node name="SelectButton" type="TouchScreenButton" parent="."]
 material = SubResource("ShaderMaterial_pjnom")
-position = Vector2(512, 264)
+position = Vector2(480, 264)
 texture_normal = ExtResource("4_2ejss")
 action = "select"
+
+[node name="Sprite2D" type="Sprite2D" parent="SelectButton"]
+position = Vector2(32, 32)
+texture = ExtResource("5_0h368")
+
+[node name="Label" type="Label" parent="SelectButton"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 3.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+text = "Select"
+horizontal_alignment = 1

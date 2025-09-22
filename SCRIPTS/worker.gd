@@ -14,6 +14,8 @@ var is_selected = false
 
 @export var attack_morale_modifier : MoraleModifier
 
+@export var target_sprite : Texture2D
+
 # State order is used in selection priority, highest value being what takes precedence
 enum State {
 	DYING,
@@ -361,3 +363,6 @@ func _attack_target(target: Node2D):
 
 func get_current_target():
 	return current_assignment
+
+func get_target_sprite() -> Texture2D:
+	return target_sprite

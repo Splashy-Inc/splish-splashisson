@@ -2,10 +2,10 @@
 
 [ext_resource type="StyleBox" uid="uid://3jo4t8w5ojom" path="res://SCENES/GUI/Buttons/idle_button.tres" id="1_ec7kb"]
 [ext_resource type="Texture2D" uid="uid://w8nor5qeurxl" path="res://Art/GUI/UI_SpriteSheet.png" id="1_i0x5v"]
-[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/disabled_button.tres" id="1_oiyyg"]
-[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/focused_button.tres" id="2_5ncij"]
-[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/hovered_button.tres" id="3_taob1"]
-[ext_resource type="StyleBox" path="res://SCENES/GUI/Buttons/pressed_button.tres" id="5_vb1li"]
+[ext_resource type="StyleBox" uid="uid://bdb7it6si40l2" path="res://SCENES/GUI/Buttons/disabled_button.tres" id="1_oiyyg"]
+[ext_resource type="StyleBox" uid="uid://di2m5sr68507s" path="res://SCENES/GUI/Buttons/focused_button.tres" id="2_5ncij"]
+[ext_resource type="StyleBox" uid="uid://52p1pyf7ivdw" path="res://SCENES/GUI/Buttons/hovered_button.tres" id="3_taob1"]
+[ext_resource type="StyleBox" uid="uid://b2e6fi4wn02a2" path="res://SCENES/GUI/Buttons/pressed_button.tres" id="5_vb1li"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3r8lt"]
 atlas = ExtResource("1_i0x5v")

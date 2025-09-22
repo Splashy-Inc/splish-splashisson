@@ -1,6 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://u5juiu6qbxnd"]
+[gd_scene load_steps=47 format=3 uid="uid://u5juiu6qbxnd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/rowing_task.gd" id="1_xu50v"]
+[ext_resource type="Texture2D" uid="uid://cs0jj8twgwfnt" path="res://Art/Joystick/MobileButtons/oar.png" id="2_5lseb"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_6rxet"]
 [ext_resource type="Texture2D" uid="uid://cx41f0jqhv3sw" path="res://Art/Tasks/Rowing/Active/CrewRowingA.png" id="3_uruf0"]
 [ext_resource type="Texture2D" uid="uid://fmeelbgvhga0" path="res://Art/Tasks/Rowing/Active/CrewRowingB.png" id="4_s3h66"]
@@ -312,6 +313,7 @@ collision_shape = NodePath("CollisionShape2D")
 interaction_radius = 5
 dismount_point = NodePath("DismountPoint")
 self_space = NodePath("SelfSpace/CollisionPolygon2D")
+target_sprite = ExtResource("2_5lseb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_6rxet")

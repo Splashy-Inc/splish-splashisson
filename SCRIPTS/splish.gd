@@ -226,20 +226,24 @@ func _find_selection_target():
 
 
 func _set_action_target(new_target):
-	if action_target and action_target.has_method("set_highlight"):
-		action_target.set_highlight(false)
-	if new_target and new_target.has_method("set_highlight"):
-		new_target.set_highlight(true)
-	
-	action_target = new_target
+	if action_target != new_target:
+		if action_target and action_target.has_method("set_highlight"):
+			action_target.set_highlight(false)
+		if new_target and new_target.has_method("set_highlight"):
+			new_target.set_highlight(true)
+		
+		action_target = new_target
+		PlayerEvents.action_target_updated.emit(action_target)
 
 func _set_selection_target(new_target):
-	if selection_target and selection_target.has_method("set_highlight"):
-		selection_target.set_highlight(false)
-	if new_target and new_target.has_method("set_highlight"):
-		new_target.set_highlight(true)
-	
-	selection_target = new_target
+	if selection_target != new_target:
+		if selection_target and selection_target.has_method("set_highlight"):
+			selection_target.set_highlight(false)
+		if new_target and new_target.has_method("set_highlight"):
+			new_target.set_highlight(true)
+		
+		selection_target = new_target
+		PlayerEvents.selection_target_updated.emit(selection_target)
 
 func _refresh_targets():
 	if not current_assignment:

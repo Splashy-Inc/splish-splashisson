@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://c70vjir2dc7r5"]
+[gd_scene load_steps=29 format=3 uid="uid://c70vjir2dc7r5"]
 
 [ext_resource type="Script" path="res://SCRIPTS/rat.gd" id="1_cvs5m"]
 [ext_resource type="Material" uid="uid://cf3tuv5aidq14" path="res://Materials/highlight_material.tres" id="2_onx3l"]
 [ext_resource type="Resource" uid="uid://6eg8s8dmqv2x" path="res://Custom Resources/Morale Modifiers/task_morale_modifier.tres" id="2_xsipq"]
+[ext_resource type="Texture2D" uid="uid://1gwmqhaqsk5f" path="res://Art/Joystick/MobileButtons/rat.png" id="3_bwyq3"]
 [ext_resource type="Texture2D" uid="uid://dw8niig2iqeyh" path="res://Art/Rat/RatDead/RatDeadB.png" id="3_yvk86"]
 [ext_resource type="Texture2D" uid="uid://bpopd62dscek3" path="res://Art/Rat/RatDead/RatDeadC.png" id="4_dg4g8"]
 [ext_resource type="Texture2D" uid="uid://2gc7wldiryj4" path="res://Art/Rat/RatDead/RatDeadD.png" id="5_stud0"]
@@ -243,6 +244,7 @@ sprite = NodePath("AnimatedSprite2D")
 collision_shape = NodePath("CollisionShape2D")
 animation_player = NodePath("AnimationPlayer")
 sfx_manager = NodePath("SFXManager")
+target_sprite = ExtResource("3_bwyq3")
 
 [node name="LootSlot" type="Marker2D" parent="."]
 position = Vector2(0, -4)

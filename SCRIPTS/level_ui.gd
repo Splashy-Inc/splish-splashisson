@@ -20,10 +20,10 @@ func _ready() -> void:
 		await Globals.ready
 	
 	if Globals.is_mobile:
-		mobile_controls.show()
+		#mobile_controls.show()
 		pause_button.show()
 	else:
-		mobile_controls.hide()
+		#mobile_controls.hide()
 		pause_button.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
