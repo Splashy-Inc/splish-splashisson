@@ -44,6 +44,8 @@ func _ready():
 	if navigation_agent:
 		navigation_agent.set_target_position(global_position)
 	
+	morale_bar.set_max(max_morale)
+	
 	if has_boarded:
 		add_to_group("pirate")
 		collision_shape.disabled = false

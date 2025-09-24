@@ -15,6 +15,8 @@ var threats := []
 
 func _process(delta: float) -> void:
 	if is_instance_valid(worker) and worker is Crew:
+		if morale_bar.max_value != worker.max_morale:
+			morale_bar.max_value = worker.max_morale
 		morale_bar.value = worker.morale
 		morale_bar.visible = true
 	else:
