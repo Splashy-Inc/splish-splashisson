@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://joi30yc7yge6"]
+[gd_scene load_steps=7 format=3 uid="uid://joi30yc7yge6"]
 
 [ext_resource type="StyleBox" uid="uid://bcsxb6cfbis3y" path="res://Styles/boat_info_panel.tres" id="1_cplw3"]
+[ext_resource type="Texture2D" uid="uid://w8nor5qeurxl" path="res://Art/GUI/UI_SpriteSheet.png" id="2_o65m7"]
 [ext_resource type="Script" path="res://SCRIPTS/clock.gd" id="2_u0j56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ywbv"]
+atlas = ExtResource("2_o65m7")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sfctq"]
+texture = SubResource("AtlasTexture_6ywbv")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_3tc66"]
 line_spacing = 0.0
@@ -15,6 +27,7 @@ theme_override_styles/panel = ExtResource("1_cplw3")
 
 [node name="ElapsedTime" type="Label" parent="."]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_sfctq")
 text = "00:00"
 label_settings = SubResource("LabelSettings_3tc66")
 horizontal_alignment = 1
