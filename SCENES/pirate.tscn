@@ -389,6 +389,7 @@ sprite_container = NodePath("Sprites")
 sprite_frame_sets = Array[SpriteFrames]([ExtResource("4_m7fne"), ExtResource("3_jqkd6"), ExtResource("4_nsorq")])
 target_sprite_options = Array[Texture2D]([ExtResource("5_ipvpr"), ExtResource("6_qmqqk"), ExtResource("7_mbehu")])
 jump_curve = SubResource("Curve_hivc8")
+max_morale = 1.0
 sfx_manager = NodePath("SFXManager")
 sprite = NodePath("Sprites/Sprite")
 speed = 75.0

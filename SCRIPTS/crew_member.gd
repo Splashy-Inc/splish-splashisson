@@ -10,7 +10,8 @@ signal distracted
 @onready var wander_timer: Timer = $WanderTimer
 @onready var morale_bar: ProgressBar = $MoraleBar
 
-var morale := 1.0
+@export var max_morale := 1.5
+var morale := max_morale
 var morale_modifiers : Array[MoraleModifier]
 var total_morale_modifier := 0.0
 @export var idle_modifier : MoraleModifier
@@ -21,6 +22,8 @@ func _ready():
 	sprite.material.set_shader_parameter("line_color", Globals.crew_select_color)
 	if navigation_agent:
 		navigation_agent.set_target_position(global_position)
+	
+	morale_bar.set_max(max_morale)
 
 func _process(delta: float) -> void:
 	if not disable_morale:
@@ -77,7 +80,7 @@ func set_assignment(new_assignment: Node2D):
 			_set_navigation_position()
 		elif new_assignment is Player:
 			state = State.ALERTED
-			change_morale(1.0)
+			change_morale(max_morale)
 		else:
 			if new_assignment is Task or new_assignment is Creature or new_assignment is Pirate:
 				if not new_assignment.set_assignee(self):
@@ -162,6 +165,6 @@ func get_total_morale_modifier() -> float:
 	return total_modifier
 
 func change_morale(change):
-	morale = clamp(morale + change, 0.0, 1.0)
+	morale = clamp(morale + change, 0.0, max_morale)
 	if not is_distracted and morale <= 0.0:
 		_on_demoralized()
