@@ -127,6 +127,7 @@ func _show_next_dialog():
 			"Rowing":
 				splish.targeting_group_blacklist.clear()
 			"Distraction_1":
+				boat.stern.reset_cargo()
 				splish.targeting_group_blacklist.append_array(["crew", "rowing_task"])
 				splish.set_assignment(null)
 				crew_member.set_assignment(null)
