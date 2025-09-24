@@ -22,11 +22,7 @@ func _process(delta: float) -> void:
 func _set_up_cargo():
 	cargo_slots = play_grid.get_cargo_slots()
 	
-	clear_cargo()
-	# Generate and place new cargo
-	for slot in cargo_slots:
-		if slot.set_cargo_type(cargo_data):
-			break
+	reset_cargo()
 	
 	cargo_set_up.emit()
 
@@ -47,3 +43,11 @@ func get_play_grid_origin():
 
 func get_size():
 	return sprite.get_rect().size
+
+func reset_cargo():
+	clear_cargo()
+	
+	# Generate and place new cargo
+	for slot in cargo_slots:
+		if slot.set_cargo_type(cargo_data):
+			break
