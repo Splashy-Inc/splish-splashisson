@@ -3,7 +3,7 @@ extends Control
 signal stage_selected(stage_data: StageData)
 signal exited
 
-@onready var map: AnimatedSprite2D = $Map
+@export var map: AnimatedSprite2D
 @onready var level_select_sound: AudioStreamPlayer = $LevelSelect
 @export var tutorial_button: LevelButton
 @export var tutorial_button_animation_player: AnimationPlayer
@@ -38,8 +38,10 @@ func _on_visibility_changed() -> void:
 			if child is LevelButton:
 				if child != tutorial_button and child.stage_data.unlocked:
 					tutorial_button_animation_player.play("RESET")
+					child.grab_focus()
 					return # Skip everything below if any stages unlocked (tutorial already done/skipped)
 		tutorial_button_animation_player.play("pulse")
+		tutorial_button.grab_focus()
 	else:
 		tutorial_button_animation_player.play("RESET")
 

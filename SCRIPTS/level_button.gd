@@ -26,20 +26,27 @@ func _on_visibility_changed() -> void:
 		button_pressed = false
 		if is_instance_valid(stats_panel):
 			stats_panel.load_level_stats(stage_data.level_stats)
+		if not disabled:
+			focus_mode = FOCUS_ALL
+		else:
+			focus_mode = FOCUS_NONE
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		# If space, place stats panel to left or right of button, whichever is closer to the middle of screen
 		var viewport_rect = get_viewport_rect()
-		var mouse_pos = get_global_mouse_position()
-		if mouse_pos.x > viewport_rect.get_center().x:
-			stats_panel.global_position = mouse_pos + Vector2(-20 - stats_panel.size.x, 0)
+		if Globals.joypad_connected:
+			stats_panel.global_position = viewport_rect.get_center() - stats_panel.size/2
 		else:
-			stats_panel.global_position = mouse_pos + Vector2(20, 0)
-		
-		if mouse_pos.y > viewport_rect.get_center().y:
-			stats_panel.global_position.y = mouse_pos.y - stats_panel.size.y
-		
+			# If space, place stats panel to left or right of button, whichever is closer to the middle of screen
+			var mouse_pos = get_global_mouse_position()
+			if mouse_pos.x > viewport_rect.get_center().x:
+				stats_panel.global_position = mouse_pos + Vector2(-20 - stats_panel.size.x, 0)
+			else:
+				stats_panel.global_position = mouse_pos + Vector2(20, 0)
+			
+			if mouse_pos.y > viewport_rect.get_center().y:
+				stats_panel.global_position.y = mouse_pos.y - stats_panel.size.y
+			
 		stats_panel.show()
 		click_sound.play()
 	else:
@@ -53,3 +60,8 @@ func _on_level_stats_panel_button_pressed(button_type: CustomMenuButton.Type) ->
 func _on_mouse_entered() -> void:
 	if not disabled and not button_pressed:
 		hover_sound.play()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and button_pressed:
+		button_pressed = false
+		grab_focus()
