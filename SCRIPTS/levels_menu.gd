@@ -34,14 +34,13 @@ func _on_stage_button_toggled(toggled_on: bool, button: LevelButton):
 
 func _on_visibility_changed() -> void:
 	if visible:
+		tutorial_button.grab_focus()
 		for child in map.get_children():
 			if child is LevelButton:
 				if child != tutorial_button and child.stage_data.unlocked:
 					tutorial_button_animation_player.play("RESET")
-					child.grab_focus()
 					return # Skip everything below if any stages unlocked (tutorial already done/skipped)
 		tutorial_button_animation_player.play("pulse")
-		tutorial_button.grab_focus()
 	else:
 		tutorial_button_animation_player.play("RESET")
 
