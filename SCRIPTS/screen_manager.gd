@@ -142,7 +142,10 @@ func _on_next_pressed() -> void:
 	if cur_screen:
 		hud.hide_menus()
 		if cur_screen is Level:
-			show_levels_menu()
+			if cur_stage_data == stages.back():
+				show_end_game_screen()
+			else:
+				show_levels_menu()
 		elif cur_screen is Cutscene:
 			load_level(cur_stage_data)
 	else:
