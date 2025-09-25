@@ -3,7 +3,7 @@ extends Line2D
 class_name MapPath
 
 @export var connected_button : Button
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var animation_player: AnimationPlayer
 
 var is_revealed := false
 

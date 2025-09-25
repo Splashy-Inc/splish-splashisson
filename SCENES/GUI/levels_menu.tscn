@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=42 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -62,14 +62,8 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5wj6a"]
-load_path = "res://.godot/imported/finbury_button_selected.png-66644b4455d44c68dc18316b05516796.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j556r"]
-atlas = SubResource("CompressedTexture2D_5wj6a")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_we3tp"]
-texture = SubResource("AtlasTexture_j556r")
+texture = ExtResource("13_udmjr")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yddv1"]
 texture = ExtResource("13_udmjr")
@@ -145,10 +139,11 @@ shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
 shader_parameter/line_thickness = 1.0
 shader_parameter/on = false
 
-[node name="LevelsMenu" type="Control" node_paths=PackedStringArray("tutorial_button", "tutorial_button_animation_player")]
+[node name="LevelsMenu" type="Control" node_paths=PackedStringArray("map", "tutorial_button", "tutorial_button_animation_player")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_xxpx0")
+map = NodePath("Map")
 tutorial_button = NodePath("Map/TutorialButton")
 tutorial_button_animation_player = NodePath("Map/TutorialButton/AnimationPlayer")
 
@@ -163,6 +158,13 @@ offset_left = -299.0
 offset_top = 70.0
 offset_right = -245.0
 offset_bottom = 101.0
+focus_neighbor_left = NodePath("../../BackButton")
+focus_neighbor_top = NodePath("../FinburyButton")
+focus_neighbor_right = NodePath("../FinburyButton")
+focus_neighbor_bottom = NodePath("../../BackButton")
+focus_next = NodePath("../FinburyButton")
+focus_previous = NodePath("../../BackButton")
+focus_mode = 2
 theme = SubResource("Theme_adres")
 stage_data = ExtResource("11_0o030")
 
@@ -177,6 +179,13 @@ offset_left = -74.0
 offset_top = -108.0
 offset_right = -35.0
 offset_bottom = -71.0
+focus_neighbor_left = NodePath("../TutorialButton")
+focus_neighbor_top = NodePath("../TutorialButton")
+focus_neighbor_right = NodePath("../ShrimpsburgButton")
+focus_neighbor_bottom = NodePath("../ShrimpsburgButton")
+focus_next = NodePath("../ShrimpsburgButton")
+focus_previous = NodePath("../TutorialButton")
+focus_mode = 2
 stage_data = ExtResource("11_x1mxj")
 
 [node name="MapPath" parent="Map/FinburyButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
@@ -189,6 +198,13 @@ offset_left = 161.0
 offset_top = -61.0
 offset_right = 225.0
 offset_bottom = -24.0
+focus_neighbor_left = NodePath("../FinburyButton")
+focus_neighbor_top = NodePath("../FinburyButton")
+focus_neighbor_right = NodePath("../GullmoreCrossingButton")
+focus_neighbor_bottom = NodePath("../GullmoreCrossingButton")
+focus_next = NodePath("../GullmoreCrossingButton")
+focus_previous = NodePath("../FinburyButton")
+focus_mode = 2
 theme = ExtResource("3_p2xe7")
 stage_data = ExtResource("17_d7t84")
 
@@ -202,6 +218,13 @@ offset_left = -172.0
 offset_top = -77.0
 offset_right = -125.0
 offset_bottom = -29.0
+focus_neighbor_left = NodePath("../ShrimpsburgButton")
+focus_neighbor_top = NodePath("../ShrimpsburgButton")
+focus_neighbor_right = NodePath("../TurtletonButton")
+focus_neighbor_bottom = NodePath("../TurtletonButton")
+focus_next = NodePath("../TurtletonButton")
+focus_previous = NodePath("../ShrimpsburgButton")
+focus_mode = 2
 theme = ExtResource("4_wvulb")
 stage_data = ExtResource("14_ukqbw")
 
@@ -215,6 +238,7 @@ offset_left = -13.0
 offset_top = -12.0
 offset_right = 36.0
 offset_bottom = 24.0
+focus_mode = 2
 theme = ExtResource("5_g4sc5")
 
 [node name="SeahorsevillaButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -222,6 +246,7 @@ offset_left = 105.0
 offset_top = -30.0
 offset_right = 174.0
 offset_bottom = 8.0
+focus_mode = 2
 theme = ExtResource("5_ifvpr")
 
 [node name="LochleyWharfButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -229,6 +254,7 @@ offset_left = -276.0
 offset_top = -70.0
 offset_right = -224.0
 offset_bottom = -21.0
+focus_mode = 2
 theme = ExtResource("6_csbf7")
 
 [node name="FlockHavenButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -236,6 +262,7 @@ offset_left = -111.0
 offset_top = 48.0
 offset_right = -42.0
 offset_bottom = 89.0
+focus_mode = 2
 theme = ExtResource("7_2tbrh")
 
 [node name="SquidCityButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -243,6 +270,7 @@ offset_left = 58.0
 offset_top = 77.0
 offset_right = 111.0
 offset_bottom = 117.0
+focus_mode = 2
 theme = ExtResource("6_8hnu0")
 
 [node name="SirensgillGroveButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -250,6 +278,7 @@ offset_left = -84.0
 offset_top = 75.0
 offset_right = -2.0
 offset_bottom = 115.0
+focus_mode = 2
 theme = ExtResource("8_vhicd")
 
 [node name="PortSharkdaleButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -257,6 +286,7 @@ offset_left = 147.0
 offset_top = 35.0
 offset_right = 224.0
 offset_bottom = 76.0
+focus_mode = 2
 theme = ExtResource("5_nuxhv")
 
 [node name="LevelSelect" type="AudioStreamPlayer" parent="."]
@@ -271,6 +301,12 @@ offset_top = 14.0
 offset_right = 127.0
 offset_bottom = 46.0
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../Map/TutorialButton")
+focus_neighbor_top = NodePath("../Map/TutorialButton")
+focus_neighbor_right = NodePath("../Map/TutorialButton")
+focus_neighbor_bottom = NodePath("../Map/TutorialButton")
+focus_next = NodePath("../Map/TutorialButton")
+focus_previous = NodePath("../Map/TutorialButton")
 theme = ExtResource("11_yn2y5")
 text = "Main Menu"
 

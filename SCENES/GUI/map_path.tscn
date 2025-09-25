@@ -41,7 +41,7 @@ _data = {
 "reveal": SubResource("Animation_5u02u")
 }
 
-[node name="MapPath" type="Line2D"]
+[node name="MapPath" type="Line2D" node_paths=PackedStringArray("animation_player")]
 texture_repeat = 2
 material = ExtResource("1_dyx01")
 points = PackedVector2Array(15, 17, 48, 40, 104, 28, 170, 37, 153, 69)
@@ -50,6 +50,7 @@ texture = ExtResource("1_vkgdv")
 texture_mode = 1
 joint_mode = 2
 script = ExtResource("3_tjolg")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

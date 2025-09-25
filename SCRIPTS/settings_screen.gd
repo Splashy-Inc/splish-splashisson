@@ -49,3 +49,8 @@ func load_settings(new_settings):
 	settings = new_settings
 	
 	morale_aura_check_button.button_pressed = settings.player_aura_visible
+
+
+func _on_settings_tab_container_visibility_changed() -> void:
+	if settings_tab_container.visible:
+		settings_tab_container.get_tab_bar().grab_focus()

@@ -3,7 +3,7 @@ extends Control
 signal stage_selected(stage_data: StageData)
 signal exited
 
-@onready var map: AnimatedSprite2D = $Map
+@export var map: AnimatedSprite2D
 @onready var level_select_sound: AudioStreamPlayer = $LevelSelect
 @export var tutorial_button: LevelButton
 @export var tutorial_button_animation_player: AnimationPlayer
@@ -34,6 +34,7 @@ func _on_stage_button_toggled(toggled_on: bool, button: LevelButton):
 
 func _on_visibility_changed() -> void:
 	if visible:
+		tutorial_button.grab_focus()
 		for child in map.get_children():
 			if child is LevelButton:
 				if child != tutorial_button and child.stage_data.unlocked:

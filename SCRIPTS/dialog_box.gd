@@ -92,12 +92,14 @@ func _hide_end_buttons():
 	dialog_button.show()
 
 func _show_end_buttons():
-	if len(dialog_button_section.get_children()) > 1:
-		for button in dialog_button_section.get_children():
-			button.show()
-			if button != dialog_button:
-				button.grab_focus()
+	var end_buttons = dialog_button_section.get_children()
+	end_buttons.erase(dialog_button)
+	if not end_buttons.is_empty():
 		dialog_button.hide()
+		for button in end_buttons:
+			button.show()
+		if Globals.joypad_connected:
+			end_buttons.front().grab_focus()
 
 func set_dialog_data(new_dialog_data: DialogData):
 	dialog_data = new_dialog_data

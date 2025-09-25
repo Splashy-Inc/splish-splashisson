@@ -2,7 +2,7 @@ extends Control
 
 signal button_pressed
 
-@onready var play_button: Button = $MenuContent/MenuButtons/PlayButton
+@onready var play_button: Button = $MenuContent/MenuButtons/LevelSelectButton
 @onready var quit_button: Button = $MenuContent/MenuButtons/QuitButton
 
 # Called when the node enters the scene tree for the first time.
