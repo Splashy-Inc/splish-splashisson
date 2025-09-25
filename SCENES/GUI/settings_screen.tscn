@@ -152,6 +152,7 @@ theme = ExtResource("11_7yutw")
 text = "Back"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="ScreenRows/Settings/SettingsTabContainer" to="." method="_on_settings_tab_container_visibility_changed"]
 [connection signal="value_changed" from="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/AllSlider" to="." method="_on_all_slider_value_changed"]
 [connection signal="value_changed" from="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
