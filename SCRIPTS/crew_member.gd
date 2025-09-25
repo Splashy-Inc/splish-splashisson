@@ -39,6 +39,14 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 func _on_demoralized() -> void:
 	_toggle_distracted(true)
 
+func _on_remoralized() -> void:
+	var rowing_tasks = get_tree().get_nodes_in_group("rowing_task")
+	for rowing_task in rowing_tasks:
+		if rowing_task is RowingTask and set_assignment(rowing_task):
+			return
+	
+	_toggle_wandering(true)
+
 func _toggle_distracted(new_is_distracted: bool):
 	is_distracted = new_is_distracted
 	if is_distracted:
@@ -87,7 +95,7 @@ func set_assignment(new_assignment: Node2D):
 					print(self, " unable to set self as assignee of ", new_assignment, ". Going idle.")
 					_set_assignment(null)
 					add_morale_modifier(idle_modifier)
-					return
+					return false
 				if new_assignment is Puddle or new_assignment is Leak or new_assignment is Creature:
 					new_assignment.died.connect(_on_assignment_died)
 				if new_assignment.has_method("get_morale_modifier"):
@@ -96,6 +104,7 @@ func set_assignment(new_assignment: Node2D):
 			state = State.ACKNOWLEDGING
 		
 		_set_assignment(new_assignment)
+		return true
 	elif new_assignment == null:
 		_set_navigation_position()
 
@@ -168,3 +177,5 @@ func change_morale(change):
 	morale = clamp(morale + change, 0.0, max_morale)
 	if not is_distracted and morale <= 0.0:
 		_on_demoralized()
+	elif is_distracted and morale >= max_morale:
+		_on_remoralized()
