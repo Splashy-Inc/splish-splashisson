@@ -167,6 +167,9 @@ func _set_assignment(new_assignment: Node2D):
 	current_assignment = new_assignment
 	
 	if old_assignment:
+		if old_assignment.is_connected("died", _on_assignment_died):
+			old_assignment.disconnect("died", _on_assignment_died)
+		
 		if old_assignment is Task:
 			old_assignment.set_worker(null)
 		elif old_assignment is Creature:
