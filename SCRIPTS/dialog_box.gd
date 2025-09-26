@@ -5,6 +5,9 @@ class_name DialogBox
 signal dialog_ended
 signal skip_pressed
 
+## Characters per second
+@export var text_speed = 30
+
 @export var left_texture: Texture2D
 @export var right_texture: Texture2D
 
@@ -77,7 +80,11 @@ func _get_next_line(increment: bool = true):
 	return null
 
 func _set_dialog_text(new_text: String):
+	dialog_text_node.visible_characters = 0
 	dialog_text_node.text = Utils.replace_control_string_variables(new_text)
+	while dialog_text_node.visible_characters < dialog_text_node.text.length():
+		dialog_text_node.visible_characters += 1
+		await get_tree().create_timer(1/clamp(text_speed, 1, 200)).timeout
 
 func _on_dialog_button_pressed(button: DialogButton):
 	match button.action_type:

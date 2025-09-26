@@ -5,15 +5,23 @@
 			"speaker": 1,
 		},
 		{
-			"line": "Since you're not from these parts, can I interest you in some work? We need someone to transport funds back home to Turtleton.", 
+			"line": "I heard you're a capable captain, can I interest you in some work? We need someone to transport funds back home to Turtleton.", 
 			"speaker": 1,
 		},
 		{
-			"line": "It looks like the promised upgrade to your boat is complete, so I can help find some additional crew for the journey.",
+			"line": "I thought someone's ship was getting work done. It looks bigger!",
 			"speaker": 1,
 		},
 		{
-			"line": "The additional crew should help fend off any pirates roving the trade route. There's also a seagull problem right now... It's that time of year...",
+			"line": "If you're shorthanded, ask around, there are always dock workers looking for an adventure.",
+			"speaker": 1,
+		},
+		{
+			"line": "The additional crew can help fend off any pirates roving the trade route. Nothing a brave captain like you can’t handle.",
+			"speaker": 1,
+		},
+		{
+			"line": "Also, this area is known for its booming seagull population... so if you look up, keep your mouth closed.",
 			"speaker": 1,
 		},
 		{
