@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=44 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -24,6 +24,7 @@
 [ext_resource type="Theme" uid="uid://8bwans270knt" path="res://SCENES/GUI/UI_theme.tres" id="11_yn2y5"]
 [ext_resource type="Texture2D" uid="uid://dkx78t0o84wvh" path="res://Art/GUI/levels_menu/TutorialButton.png" id="12_8epth"]
 [ext_resource type="PackedScene" uid="uid://bevqcubs3rkvk" path="res://SCENES/GUI/map_path.tscn" id="12_dy3uq"]
+[ext_resource type="Texture2D" uid="uid://7smqaifrai3q" path="res://Art/GUI/levels_menu/TutorialButtonCompleted.png" id="13_5qioi"]
 [ext_resource type="Shader" path="res://SCRIPTS/highlight.gdshader" id="13_tjmr1"]
 [ext_resource type="Texture2D" uid="uid://d213udqwe8aof" path="res://Art/GUI/levels_menu/TutorialButtonSelected.png" id="13_udmjr"]
 [ext_resource type="Resource" uid="uid://dkbttji6b0itf" path="res://Custom Resources/Stages/stage_3_data.tres" id="14_ukqbw"]
@@ -75,12 +76,16 @@ texture = ExtResource("12_8epth")
 texture = ExtResource("13_udmjr")
 modulate_color = Color(0.762404, 0.762404, 0.762404, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_edap8"]
+texture = ExtResource("13_5qioi")
+
 [sub_resource type="Theme" id="Theme_adres"]
 Button/styles/focus = SubResource("StyleBoxTexture_we3tp")
 Button/styles/hover = SubResource("StyleBoxTexture_yddv1")
 Button/styles/normal = SubResource("StyleBoxTexture_nnlxb")
 Button/styles/pressed = SubResource("StyleBoxTexture_o0u1u")
 LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_edap8")
 
 [sub_resource type="Animation" id="Animation_gn7h0"]
 length = 0.001
