@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://joi30yc7yge6"]
 
-[ext_resource type="StyleBox" uid="uid://bcsxb6cfbis3y" path="res://Styles/boat_info_panel.tres" id="1_cplw3"]
 [ext_resource type="Texture2D" uid="uid://w8nor5qeurxl" path="res://Art/GUI/UI_SpriteSheet.png" id="2_o65m7"]
 [ext_resource type="Script" path="res://SCRIPTS/clock.gd" id="2_u0j56"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6k4l1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ywbv"]
 atlas = ExtResource("2_o65m7")
@@ -23,7 +24,7 @@ offset_right = 30.0
 offset_bottom = 13.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = ExtResource("1_cplw3")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6k4l1")
 
 [node name="ElapsedTime" type="Label" parent="."]
 layout_mode = 2
