@@ -1,15 +1,23 @@
 {
 	"dialog_lines": [
 		{
-			"line": "If it isn't Splish Splashisson! Remember how you owe me that favor?", 
+			"line": "If it isn't Splish Splashisson!", 
 			"speaker": 1,
 		},
 		{
-			"line": "I need a shipment of food brought to the next port. It should be an easy delivery this time...", 
+			"line": "A few years back a blueberry pie went missing from my windowsill.", 
 			"speaker": 1,
 		},
 		{
-			"line": "I'll have my lackeys load it on the ship and we can be on our way.",
+			"line": "I could never prove it, but I think we both know who took it...",
+			"speaker": 1,
+		},
+		{
+			"line": "Speaking of food, I need a shipment of meat brought to Shrimpsburg.",
+			"speaker": 1,
+		},
+		{
+			"line": "Do this delivery for me and I'll clear your name.",
 			"speaker": 1,
 		},
 	]
