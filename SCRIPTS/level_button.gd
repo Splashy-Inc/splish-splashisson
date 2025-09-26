@@ -28,6 +28,8 @@ func _on_visibility_changed() -> void:
 			stats_panel.load_level_stats(stage_data.level_stats)
 		if not disabled:
 			focus_mode = FOCUS_ALL
+			if stage_data.level_stats.finish_seconds > 0:
+				theme_type_variation = "LevelButton"
 		else:
 			focus_mode = FOCUS_NONE
 

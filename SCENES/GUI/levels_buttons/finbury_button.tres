@@ -1,15 +1,8 @@
 [gd_resource type="Theme" load_steps=19 format=3 uid="uid://ctla0k6e4ldrr"]
 
-[ext_resource type="Texture2D" uid="uid://cpiddqjkhuqwt" path="res://Art/GUI/levels_menu/finbury_button_completed.png" id="1_8ebl8"]
 [ext_resource type="Texture2D" uid="uid://bounyrnixv46k" path="res://Art/GUI/levels_menu/finbury_button_basic.png" id="1_g6tjt"]
 [ext_resource type="Texture2D" uid="uid://bfl2gpha68mk6" path="res://Art/GUI/levels_menu/finbury_button_disabled.png" id="1_i8prm"]
 [ext_resource type="Texture2D" uid="uid://bqw8u6dvirqu5" path="res://Art/GUI/levels_menu/finbury_button_selected.png" id="2_1kwfj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sq8ic"]
-atlas = ExtResource("1_8ebl8")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efh6n"]
-texture = SubResource("AtlasTexture_sq8ic")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i4nj"]
 atlas = ExtResource("1_i8prm")
@@ -47,10 +40,20 @@ atlas = SubResource("CompressedTexture2D_l6gdy")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t5o44"]
 texture = SubResource("AtlasTexture_6t7wm")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x6i7v"]
+load_path = "res://.godot/imported/finbury_button_completed.png-9f8c5c4a218c90448d272bf2307923fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h6bk"]
+atlas = SubResource("CompressedTexture2D_x6i7v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83ib8"]
+texture = SubResource("AtlasTexture_3h6bk")
+
 [resource]
-Button/styles/completed = SubResource("StyleBoxTexture_efh6n")
 Button/styles/disabled = SubResource("StyleBoxTexture_pn8lj")
 Button/styles/focus = SubResource("StyleBoxTexture_ab1fq")
 Button/styles/hover = SubResource("StyleBoxTexture_1pk3j")
 Button/styles/normal = SubResource("StyleBoxTexture_kuyo1")
 Button/styles/pressed = SubResource("StyleBoxTexture_t5o44")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_83ib8")
