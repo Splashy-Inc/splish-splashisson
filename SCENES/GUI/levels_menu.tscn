@@ -80,6 +80,7 @@ Button/styles/focus = SubResource("StyleBoxTexture_we3tp")
 Button/styles/hover = SubResource("StyleBoxTexture_yddv1")
 Button/styles/normal = SubResource("StyleBoxTexture_nnlxb")
 Button/styles/pressed = SubResource("StyleBoxTexture_o0u1u")
+LevelButton/base_type = &"Button"
 
 [sub_resource type="Animation" id="Animation_gn7h0"]
 length = 0.001

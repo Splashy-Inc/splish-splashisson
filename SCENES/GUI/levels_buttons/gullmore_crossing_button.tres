@@ -5,12 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bs3oxwe8hdlay" path="res://Art/GUI/levels_menu/gullmore_crossing_button_disabled.png" id="2_7mf0l"]
 [ext_resource type="Texture2D" uid="uid://8xdebejf4k67" path="res://Art/GUI/levels_menu/gullmore_crossing_button_selected.png" id="3_hlwo2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1dkx"]
-atlas = ExtResource("1_tf3yr")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6wq5t"]
-texture = SubResource("AtlasTexture_p1dkx")
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pkc4w"]
 atlas = ExtResource("2_7mf0l")
 
@@ -44,10 +38,17 @@ atlas = SubResource("CompressedTexture2D_np0pp")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yhpj"]
 texture = SubResource("AtlasTexture_eokil")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1dkx"]
+atlas = ExtResource("1_tf3yr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5qsq"]
+texture = SubResource("AtlasTexture_p1dkx")
+
 [resource]
-Button/styles/completed = SubResource("StyleBoxTexture_6wq5t")
 Button/styles/disabled = SubResource("StyleBoxTexture_gj44k")
 Button/styles/focus = SubResource("StyleBoxTexture_e5tsw")
 Button/styles/hover = SubResource("StyleBoxTexture_jc7e7")
 Button/styles/normal = SubResource("StyleBoxTexture_2tpdo")
 Button/styles/pressed = SubResource("StyleBoxTexture_8yhpj")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_e5qsq")
