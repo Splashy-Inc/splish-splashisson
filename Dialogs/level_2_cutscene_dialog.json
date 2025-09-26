@@ -1,15 +1,19 @@
 {
 	"dialog_lines": [
 		{
-			"line": "Thanks for making that delivery! We're even now.", 
+			"line": "What a stand up job! There is no way a distinguished captain, such as yourself, could have stolen my pie.", 
 			"speaker": 1,
 		},
 		{
-			"line": "My usual crew is tied up with other jobs and you did get the last job done. Think you can handle another delivery?", 
+			"line": "I'll make sure all know the name Splish Splashisson as a capable captain.", 
 			"speaker": 1,
 		},
 		{
-			"line": "This time we have some furs for the Squid market. Help me with this and I'll upgrade your ship and get you some more crew!",
+			"line": "My usual crew is tied up with other jobs. Think you can handle another delivery?",
+			"speaker": 1,
+		},
+		{
+			"line": "We have some furs for the Gullmore Crossing market. Help me with this and I'll upgrade your ship!",
 			"speaker": 1,
 		},
 	]
