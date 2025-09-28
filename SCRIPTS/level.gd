@@ -164,7 +164,9 @@ func _on_finished():
 		if rat_hole is RatHole:
 			rat_hole.die()
 	player.input_disabled = true
-	completed.emit()
+	
+	if not self is Tutorial:
+		completed.emit()
 
 func pause_play():
 	process_mode = ProcessMode.PROCESS_MODE_DISABLED
