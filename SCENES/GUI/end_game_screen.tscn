@@ -15,7 +15,7 @@ shadow_size = 0
 shadow_color = Color(0.368627, 0.427451, 0.490196, 0)
 shadow_offset = Vector2(2, 2)
 
-[node name="EndGameScreen" type="Control"]
+[node name="EndGameScreen" type="Control" node_paths=PackedStringArray("focus_button")]
 process_mode = 3
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 3
@@ -25,6 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ys36j")
+focus_button = NodePath("MenuContent/MenuButtons/MainMenuButton")
 
 [node name="MainMenuBg" parent="." instance=ExtResource("2_tgfxg")]
 
@@ -76,3 +77,4 @@ theme = ExtResource("5_jugus")
 text = "Main Menu"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="visibility_changed" from="MenuContent/MenuButtons/MainMenuButton" to="." method="_on_resume_button_visibility_changed"]
