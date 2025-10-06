@@ -3,6 +3,7 @@ extends Control
 signal button_pressed
 
 @onready var resume_button: Button = $MenuContent/MenuButtons/ResumeButton
+@export var focus_button: Button
 
 func _on_resume_button_pressed() -> void:
 	button_pressed.emit("Play")
@@ -21,7 +22,10 @@ func _on_level_select_button_pressed() -> void:
 	
 func _on_resume_button_visibility_changed() -> void:
 	if Globals.joypad_connected and visible:
-		resume_button.grab_focus()
+		if is_instance_valid(resume_button):
+			resume_button.grab_focus()
+		elif is_instance_valid(focus_button):
+			focus_button.grab_focus()
 
 func _on_settings_button_pressed() -> void:
 	button_pressed.emit("Settings")
