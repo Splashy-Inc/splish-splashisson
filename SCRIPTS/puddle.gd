@@ -48,7 +48,7 @@ func _ready() -> void:
 	died.connect(level._on_stat_entity_died.bind(self))
 	if not Globals.boat:
 		Globals.boat_ready.connect(_update_stage)
-	else:
+	elif puddle_amount > 0:
 		_update_stage()
 	
 	_update_neighbor_spawn_points()
@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 
 func _update_stage():
 	var old_stage = stage
-	if puddle_amount < 0:
+	if puddle_amount <= 0:
 		die()
 	elif puddle_amount <= stage_thresholds[Stage.SMALL]:
 		stage = Stage.SMALL
@@ -145,6 +145,7 @@ func spawn(spawn_point: Vector2):
 			effect_check_occupant = _check_spawn_space_occupied("rowing_task")
 			if effect_check_occupant is RowingTask:
 				effect_check_occupant.add_threat(self)
+		spread(SPREAD_AMOUNT, self)
 		spawned.emit()
 		
 	_update_neighbor_puddles()
