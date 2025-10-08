@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=3 format=3 uid="uid://cym7lhpvtxchb"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_h350h"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0a0xx"]
+size = Vector2(16, 16)
+
+[resource]
+script = ExtResource("1_h350h")
+type = 4
+health = 50
+number_items = 10
+texture = SubResource("PlaceholderTexture2D_0a0xx")
+is_distraction = false

@@ -7,7 +7,12 @@ enum Cargo_type {
 	MEAT,
 	FUR,
 	VALUABLES,
+	LIVESTOCK,
 }
+
+@onready var standard_sprite: Sprite2D = $StandardSprite
+@onready var corral_sprite: AnimatedSprite2D = $CorralSprite
+
 @onready var items: Node2D = $Items
 
 @export var cargo_item_scene: PackedScene
@@ -56,6 +61,9 @@ func _spawn_cargo():
 			item_health = item.get_health()
 			max_condition = num_items * item_health
 			item_texture = item.get_sprite_texture()
+	
+	standard_sprite.visible = not cargo_type == Cargo_type.LIVESTOCK
+	corral_sprite.visible = cargo_type == Cargo_type.LIVESTOCK
 
 func _cargo_item_died(item: CargoItem):
 	print("Irreparable damage to cargo: ", item)
