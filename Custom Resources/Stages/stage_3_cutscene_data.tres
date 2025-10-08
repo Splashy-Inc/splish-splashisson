@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CutsceneData" load_steps=12 format=3 uid="uid://jsribyy53e8q"]
+
+[ext_resource type="Resource" uid="uid://j6ce8i0bomc0" path="res://Dialogs/level_3_cutscene_dialog_data.tres" id="1_sjptn"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="2_pvpay"]
+[ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="3_ak3tx"]
+[ext_resource type="AudioStream" uid="uid://j2k3cemsni4h" path="res://Audio/Turtle/turtle_sounds.tres" id="4_5jkv4"]
+[ext_resource type="Texture2D" uid="uid://cpdi0bftt6uny" path="res://Art/Merchants/Turtle/Turtle_01.png" id="5_4mnpp"]
+[ext_resource type="Texture2D" uid="uid://rlb2oxv2ckar" path="res://Art/Merchants/Turtle/Turtle_02.png" id="6_uv65y"]
+[ext_resource type="Texture2D" uid="uid://brqh1qh4oh3xy" path="res://Art/Merchants/Turtle/Turtle_03.png" id="7_iu1bv"]
+[ext_resource type="Texture2D" uid="uid://l48xph8dwkwb" path="res://Art/Merchants/Turtle/Turtle_04.png" id="8_ywkd0"]
+[ext_resource type="Texture2D" uid="uid://dbi35qpfjw2j2" path="res://Art/Merchants/Turtle/Turtle_05.png" id="9_bh0g3"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="10_xwmve"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ropgl"]
+frames = 5
+frame_0/texture = ExtResource("5_4mnpp")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("6_uv65y")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("7_iu1bv")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("8_ywkd0")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("9_bh0g3")
+frame_4/duration = 0.5
+
+[resource]
+script = ExtResource("10_xwmve")
+left_texture = ExtResource("3_ak3tx")
+left_sound = ExtResource("2_pvpay")
+right_texture = SubResource("AnimatedTexture_ropgl")
+right_sound = ExtResource("4_5jkv4")
+dialog_data = ExtResource("1_sjptn")

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=5 format=3 uid="uid://drvs8vsltmvyf"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_y8llt"]
+[ext_resource type="Resource" uid="uid://b1sttjjftlde4" path="res://Custom Resources/Stages/stage_4_cutscene_data.tres" id="2_81oir"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="3_fs0mu"]
+[ext_resource type="Resource" uid="uid://bltpqf0bxytdi" path="res://Custom Resources/Stages/stage_4_level_data.tres" id="3_hlafu"]
+
+[resource]
+script = ExtResource("3_fs0mu")
+unlocked = false
+cutscene_data = ExtResource("2_81oir")
+is_tutorial = false
+length_seconds = 120
+boat_length = 2
+boat_task_list = Array[int]([])
+cargo_list = Array[ExtResource("1_y8llt")]([])
+weather = 0
+num_rat_holes = 1
+rat_interval_seconds = 10
+seagull_interval_seconds = 10
+num_pirate_ships = 0
+start_pirates = 1
+level_stats = ExtResource("3_hlafu")
