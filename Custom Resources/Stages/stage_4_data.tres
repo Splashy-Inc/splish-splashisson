@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=5 format=3 uid="uid://drvs8vsltmvyf"]
+[gd_resource type="Resource" script_class="StageData" load_steps=6 format=3 uid="uid://drvs8vsltmvyf"]
 
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_y8llt"]
+[ext_resource type="Resource" uid="uid://dpwyaeilnh262" path="res://Custom Resources/Cargo/livestock_cargo_item_data.tres" id="2_55k5t"]
 [ext_resource type="Resource" uid="uid://b1sttjjftlde4" path="res://Custom Resources/Stages/stage_4_cutscene_data.tres" id="2_81oir"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="3_fs0mu"]
 [ext_resource type="Resource" uid="uid://bltpqf0bxytdi" path="res://Custom Resources/Stages/stage_4_level_data.tres" id="3_hlafu"]
@@ -13,7 +14,7 @@ is_tutorial = false
 length_seconds = 120
 boat_length = 2
 boat_task_list = Array[int]([])
-cargo_list = Array[ExtResource("1_y8llt")]([])
+cargo_list = Array[ExtResource("1_y8llt")]([ExtResource("2_55k5t")])
 weather = 0
 num_rat_holes = 1
 rat_interval_seconds = 10

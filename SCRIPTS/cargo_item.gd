@@ -26,9 +26,13 @@ func initialize(cargo: Cargo):
 	for cargo_type_data in cargo_types:
 		if cargo_type_data.type == host_cargo.cargo_type:
 			cur_data = cargo_type_data
+	
 	if cur_data.is_distraction:
 		add_to_group("distraction")
-	sprite.texture = get_sprite_texture()
+	
+	sprite.texture = get_sprite_texture().duplicate()
+	if sprite.texture is AnimatedTexture:
+		sprite.texture.speed_scale = randf_range(.5, 1.5)
 
 func die():
 	died.emit()

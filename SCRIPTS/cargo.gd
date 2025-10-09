@@ -7,6 +7,7 @@ enum Cargo_type {
 	MEAT,
 	FUR,
 	VALUABLES,
+	LIVESTOCK,
 }
 @onready var items: Node2D = $Items
 
