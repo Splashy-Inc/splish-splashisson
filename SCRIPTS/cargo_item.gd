@@ -32,7 +32,7 @@ func initialize(cargo: Cargo):
 	
 	sprite.texture = get_sprite_texture().duplicate()
 	if sprite.texture is AnimatedTexture:
-		sprite.texture.speed_scale = randf_range(.5, 1.5)
+		sprite.texture.speed_scale = randf_range(.25, 2)
 
 func die():
 	died.emit()

@@ -10,6 +10,7 @@ enum Cargo_type {
 	LIVESTOCK,
 }
 @onready var items: Node2D = $Items
+@onready var sprite: Sprite2D = $Sprite2D
 
 @export var cargo_item_scene: PackedScene
 
@@ -39,6 +40,8 @@ func initialize(new_data: CargoItemData):
 	await _spawn_cargo()
 	_update_condition(max_condition)
 	_set_item_info()
+	
+	sprite.texture = new_data.container_texture
 
 func _spawn_cargo():
 	clear()

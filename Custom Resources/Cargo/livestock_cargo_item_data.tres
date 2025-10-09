@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CargoItemData" load_steps=7 format=3 uid="uid://dpwyaeilnh262"]
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=8 format=3 uid="uid://dpwyaeilnh262"]
 
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_5xses"]
+[ext_resource type="Texture2D" uid="uid://bmy6d8unrutop" path="res://Art/Cargo/corral_closed.png" id="1_e17r6"]
 [ext_resource type="Texture2D" uid="uid://bdbt46esxxhqn" path="res://Art/Cargo/Livestock/PigL.png" id="2_0ull8"]
 [ext_resource type="Texture2D" uid="uid://barxluxgoli8p" path="res://Art/Cargo/Livestock/PigSnootL.png" id="3_le2no"]
 [ext_resource type="Texture2D" uid="uid://dno3fvmsvxnhy" path="res://Art/Cargo/Livestock/PigSnootR.png" id="4_k8fhk"]
@@ -27,4 +28,5 @@ type = 4
 health = 50
 number_items = 10
 texture = SubResource("AnimatedTexture_alytc")
+container_texture = ExtResource("1_e17r6")
 is_distraction = false
