@@ -1,29 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctc55by1vnaav"]
+[gd_scene load_steps=5 format=3 uid="uid://ctc55by1vnaav"]
 
 [ext_resource type="Texture2D" uid="uid://bs1w40vwiefj1" path="res://Art/Cargo/Pallet.png" id="1_ou45g"]
 [ext_resource type="Script" path="res://SCRIPTS/cargo.gd" id="1_w1e3a"]
 [ext_resource type="PackedScene" uid="uid://dsnr7g2gkv5ie" path="res://SCENES/cargo_item.tscn" id="2_uwi3r"]
-[ext_resource type="Texture2D" uid="uid://by36p5flmfhvh" path="res://Art/Cargo/corral_closed.png" id="4_whl1g"]
-[ext_resource type="Texture2D" uid="uid://ulph6d3f2xsl" path="res://Art/Cargo/corral_open.png" id="5_vtdu8"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vtoq1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_whl1g")
-}],
-"loop": true,
-"name": &"closed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_vtdu8")
-}],
-"loop": true,
-"name": &"open",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7kyn7"]
 radius = 33.0
@@ -35,15 +14,9 @@ collision_mask = 0
 script = ExtResource("1_w1e3a")
 cargo_item_scene = ExtResource("2_uwi3r")
 
-[node name="StandardSprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -1)
 texture = ExtResource("1_ou45g")
-
-[node name="CorralSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_vtoq1")
-animation = &"closed"
-autoplay = "closed"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1, -1)

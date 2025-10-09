@@ -5,7 +5,7 @@ class_name CargoItem
 @export var cargo_types: Array[CargoItemData]
 @export var cur_data: CargoItemData
 
-@export var sprite: Node2D
+@onready var sprite: Sprite2D = $Sprite2D
 
 var host_cargo: Cargo
 

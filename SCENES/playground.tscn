@@ -1,19 +1,88 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=33 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
-[ext_resource type="Resource" uid="uid://drvs8vsltmvyf" path="res://Custom Resources/Stages/stage_4_data.tres" id="2_cclbl"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="2_cmo3h"]
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="2_gusxx"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
+[ext_resource type="Resource" uid="uid://dp77h4fp8pyjt" path="res://Custom Resources/Cargo/meat_cargo_item_data.tres" id="3_q4nsl"]
+[ext_resource type="Resource" uid="uid://j6ce8i0bomc0" path="res://Dialogs/level_3_cutscene_dialog_data.tres" id="4_j3cli"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="5_xshgx"]
 [ext_resource type="PackedScene" uid="uid://he2ienxfwna8" path="res://SCENES/seagull.tscn" id="6_2x7mh"]
 [ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="6_872sa"]
+[ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="6_ptk6c"]
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="7_hf2gs"]
+[ext_resource type="AudioStream" uid="uid://j2k3cemsni4h" path="res://Audio/Turtle/turtle_sounds.tres" id="7_pqx3w"]
+[ext_resource type="Texture2D" uid="uid://cpdi0bftt6uny" path="res://Art/Merchants/Turtle/Turtle_01.png" id="8_4bi7n"]
 [ext_resource type="PackedScene" uid="uid://cb85ltydhxs13" path="res://SCENES/dock.tscn" id="8_teo1b"]
 [ext_resource type="Resource" uid="uid://c65k18o4x66kk" path="res://Custom Resources/Cargo/valuables_cargo_item_data.tres" id="8_v1vfh"]
+[ext_resource type="Texture2D" uid="uid://rlb2oxv2ckar" path="res://Art/Merchants/Turtle/Turtle_02.png" id="9_a25np"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
+[ext_resource type="Texture2D" uid="uid://brqh1qh4oh3xy" path="res://Art/Merchants/Turtle/Turtle_03.png" id="10_axctb"]
 [ext_resource type="PackedScene" uid="uid://cw7vojdifr8w6" path="res://SCENES/pirate_ship.tscn" id="11_nglpg"]
+[ext_resource type="Texture2D" uid="uid://l48xph8dwkwb" path="res://Art/Merchants/Turtle/Turtle_04.png" id="11_wnoxt"]
+[ext_resource type="Texture2D" uid="uid://dbi35qpfjw2j2" path="res://Art/Merchants/Turtle/Turtle_05.png" id="12_xgdgr"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="13_py1f2"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/level_stats.gd" id="14_4jskj"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="15_3yttg"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ropgl"]
+frames = 5
+frame_0/texture = ExtResource("8_4bi7n")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("9_a25np")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("10_axctb")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("11_wnoxt")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("12_xgdgr")
+frame_4/duration = 0.5
+
+[sub_resource type="Resource" id="Resource_l74pf"]
+script = ExtResource("13_py1f2")
+left_texture = ExtResource("6_ptk6c")
+left_sound = ExtResource("5_xshgx")
+right_texture = SubResource("AnimatedTexture_ropgl")
+right_sound = ExtResource("7_pqx3w")
+dialog_data = ExtResource("4_j3cli")
+
+[sub_resource type="Resource" id="Resource_0bmch"]
+script = ExtResource("14_4jskj")
+level_name = "Gullmore Crossing"
+length_seconds = 0.0
+finish_seconds = 0.0
+cargo_max_condition = 0.0
+cargo_finish_condition = 0.0
+puddles_spawned = 0
+puddles_fixed = 0
+leaks_spawned = 0
+leaks_fixed = 0
+rats_spawned = 0
+rats_fixed = 0
+seagulls_spawned = 0
+seagulls_fixed = 0
+pirates_spawned = 0
+pirates_fixed = 0
+speed_success_modifier = 0.75
+
+[sub_resource type="Resource" id="Resource_2cd26"]
+script = ExtResource("15_3yttg")
+unlocked = false
+cutscene_data = SubResource("Resource_l74pf")
+is_tutorial = false
+length_seconds = 120
+boat_length = 2
+boat_task_list = Array[int]([1, 2, 1, 2, 1, 2, 1, 2])
+cargo_list = Array[ExtResource("7_hf2gs")]([ExtResource("3_q4nsl")])
+weather = 0
+num_rat_holes = 0
+rat_interval_seconds = 10
+seagull_interval_seconds = 10
+num_pirate_ships = 12
+start_pirates = 6
+level_stats = SubResource("Resource_0bmch")
 
 [sub_resource type="Resource" id="Resource_8n2tg"]
 resource_local_to_scene = true
@@ -29,7 +98,7 @@ point_count = 2
 
 [node name="Playground" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat") groups=["level"]]
 script = ExtResource("1_bs7od")
-stage_data = ExtResource("2_cclbl")
+stage_data = SubResource("Resource_2cd26")
 dock_scene = ExtResource("8_teo1b")
 pirate_ship_scene = ExtResource("11_nglpg")
 num_pirate_ships = 11
