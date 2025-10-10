@@ -11,7 +11,6 @@ var threats := []
 @onready var morale_bar: ProgressBar = $MoraleBar
 
 @export var collision_shape : CollisionShape2D
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _process(delta: float) -> void:
 	if is_instance_valid(worker) and worker is Crew:

@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Task
 
 class_name Cargo
 
@@ -10,7 +10,6 @@ enum Cargo_type {
 	LIVESTOCK,
 }
 @onready var items: Node2D = $Items
-@onready var sprite: Sprite2D = $Sprite2D
 
 @export var cargo_item_scene: PackedScene
 
@@ -24,18 +23,14 @@ var threats = []
 
 var level_complete = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Globals.level_completed.connect(_on_level_completed)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func initialize(new_data: CargoItemData):
 	if not is_node_ready():
 		await ready
+	
 	cargo_type = new_data.type
+	if cargo_type == Cargo_type.LIVESTOCK:
+		collision_layer += 2 # Add to interactable collision layer
+	
 	num_items = new_data.number_items
 	await _spawn_cargo()
 	_update_condition(max_condition)
