@@ -302,6 +302,11 @@ func start_cargo():
 		return true
 	return false
 
+func repair_cargo():
+	if current_assignment is Cargo:
+		if current_assignment.is_targetable():
+			current_assignment.restore_condition()
+
 func start_distraction():
 	if current_assignment.is_in_group("distraction"):
 		if current_assignment.has_method("add_threat"):
