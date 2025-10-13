@@ -151,3 +151,13 @@ func _get_item_spawn_point(spawn_origin, spawn_radius):
 func clear():
 	for item in items.get_children():
 		item.queue_free()
+
+func is_targetable():
+	return cargo_type == Cargo_type.LIVESTOCK and condition > 0
+
+# Override assignee and worker setters since we want multiple to be able to work on a cargo at a time
+func set_assignee(new_assignee: Worker) -> bool:
+	return condition > 0
+
+func set_worker(new_worker: Worker) -> bool:
+	return condition > 0

@@ -27,6 +27,7 @@ enum State {
 	BAILING,
 	PATCHING,
 	ROWING,
+	CARGOING,
 	IDLE,
 	DISTRACTED,
 }
@@ -52,6 +53,8 @@ func _physics_process(delta: float) -> void:
 			_alert_state()
 		State.ACKNOWLEDGING:
 			_acknowledge_state()
+		State.CARGOING:
+			_cargoing_state()
 		State.ROWING:
 			_rowing_state()
 		State.BAILING:
@@ -123,6 +126,12 @@ func _alert_state():
 func _acknowledge_state():
 	$AnimationPlayer.play("acknowledge")
 
+func _cargoing_state():
+	if current_assignment is Cargo:
+		match current_assignment.cargo_type:
+			Cargo.Cargo_type.LIVESTOCK:
+				$AnimationPlayer.play("feed")
+
 func _rowing_state():
 	$AnimationPlayer.play("idle_down")
 
@@ -174,7 +183,7 @@ func _set_assignment(new_assignment: Node2D):
 			old_assignment.set_worker(null)
 		elif old_assignment is Creature:
 			old_assignment.set_worker(null)
-		elif old_assignment is Cargo:
+		elif old_assignment.has_method("remove_threat"):
 			old_assignment.remove_threat(self)
 		elif old_assignment is Pirate:
 			old_assignment.set_worker(null)
@@ -287,8 +296,17 @@ func stop_fighting():
 		if closest_pirate and _check_in_range(closest_pirate):
 			_start_assignment()
 
+func start_cargo():
+	if current_assignment is Cargo and current_assignment.set_worker(self):
+		state = State.CARGOING
+		return true
+	return false
+
 func start_distraction():
-	if current_assignment is Cargo and current_assignment.add_threat(self):
+	if current_assignment.is_in_group("distraction"):
+		if current_assignment.has_method("add_threat"):
+			if not current_assignment.add_threat(self):
+				return false
 		state = State.DISTRACTED
 		return true
 	return false
@@ -321,7 +339,9 @@ func stop_repelling_seagull():
 			_start_assignment()
 
 func _start_assignment() -> bool:
-	if current_assignment is Cargo and state != State.DISTRACTED:
+	if current_assignment is Cargo and current_assignment.is_targetable():
+		return start_cargo()
+	elif current_assignment.is_in_group("distraction"):
 		return start_distraction()
 	elif current_assignment is RowingTask:
 		return start_rowing()
