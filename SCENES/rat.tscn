@@ -274,7 +274,6 @@ libraries = {
 
 [node name="CargoStealTimer" type="Timer" parent="."]
 wait_time = 3.0
-one_shot = true
 
 [node name="SFXManager" parent="." instance=ExtResource("13_dps88")]
 

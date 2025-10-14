@@ -131,6 +131,14 @@ func _update_condition(change: int):
 	CargoEvents.condition_updated.emit(condition, max_condition)
 	return true
 
+func _on_hit(change: int, distributed: bool = false):
+	if distributed and change != 0 and not get_cargo_items().is_empty():
+		var distributed_change = change/get_cargo_items().size()
+		for item in get_cargo_items():
+			item.change_health(distributed_change)
+	else:
+		_update_condition(change)
+
 func get_total_items_health():
 	var total_health = 0
 	for item in get_cargo_items():
@@ -166,7 +174,7 @@ func _on_level_completed(level: Level):
 	for item in get_cargo_items():
 		item.degrade_tick_timer.stop()
 	
-func get_item():
+func get_item() -> CargoItem:
 	return get_cargo_items().front()
 
 func add_item(item: CargoItem):
