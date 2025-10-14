@@ -28,3 +28,7 @@ cur_data = SubResource("Resource_uyp3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_0kxb5")
+
+[node name="DegradeTickTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DegradeTickTimer" to="." method="_on_degrade_tick_timer_timeout"]

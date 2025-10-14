@@ -1,25 +1,8 @@
-[gd_resource type="Resource" script_class="CargoItemData" load_steps=8 format=3 uid="uid://dpwyaeilnh262"]
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=4 format=3 uid="uid://dpwyaeilnh262"]
 
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_5xses"]
 [ext_resource type="Texture2D" uid="uid://bmy6d8unrutop" path="res://Art/Cargo/corral_closed.png" id="1_e17r6"]
-[ext_resource type="Texture2D" uid="uid://bdbt46esxxhqn" path="res://Art/Cargo/Livestock/PigL.png" id="2_0ull8"]
-[ext_resource type="Texture2D" uid="uid://barxluxgoli8p" path="res://Art/Cargo/Livestock/PigSnootL.png" id="3_le2no"]
-[ext_resource type="Texture2D" uid="uid://dno3fvmsvxnhy" path="res://Art/Cargo/Livestock/PigSnootR.png" id="4_k8fhk"]
-[ext_resource type="Texture2D" uid="uid://cnyfyetrp2snf" path="res://Art/Cargo/Livestock/PigR.png" id="5_1biid"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_alytc"]
-frames = 6
-frame_0/texture = ExtResource("2_0ull8")
-frame_1/texture = ExtResource("3_le2no")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("4_k8fhk")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("5_1biid")
-frame_3/duration = 1.0
-frame_4/texture = ExtResource("4_k8fhk")
-frame_4/duration = 1.0
-frame_5/texture = ExtResource("3_le2no")
-frame_5/duration = 1.0
+[ext_resource type="Texture2D" uid="uid://cnvvud0o6e380" path="res://Art/Cargo/Livestock/pig_snooting.tres" id="3_g4l0c"]
 
 [resource]
 resource_local_to_scene = true
@@ -27,6 +10,6 @@ script = ExtResource("1_5xses")
 type = 4
 health = 50
 number_items = 10
-texture = SubResource("AnimatedTexture_alytc")
+texture = ExtResource("3_g4l0c")
 container_texture = ExtResource("1_e17r6")
 is_distraction = false

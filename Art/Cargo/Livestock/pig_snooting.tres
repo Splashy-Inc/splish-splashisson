@@ -1,0 +1,20 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://cnvvud0o6e380"]
+
+[ext_resource type="Texture2D" uid="uid://bdbt46esxxhqn" path="res://Art/Cargo/Livestock/PigL.png" id="1_qwf5t"]
+[ext_resource type="Texture2D" uid="uid://barxluxgoli8p" path="res://Art/Cargo/Livestock/PigSnootL.png" id="2_v8ng8"]
+[ext_resource type="Texture2D" uid="uid://dno3fvmsvxnhy" path="res://Art/Cargo/Livestock/PigSnootR.png" id="3_lguxy"]
+[ext_resource type="Texture2D" uid="uid://cnyfyetrp2snf" path="res://Art/Cargo/Livestock/PigR.png" id="4_sw8us"]
+
+[resource]
+frames = 6
+frame_0/texture = ExtResource("1_qwf5t")
+frame_1/texture = ExtResource("2_v8ng8")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_lguxy")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_sw8us")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("3_lguxy")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("2_v8ng8")
+frame_5/duration = 1.0

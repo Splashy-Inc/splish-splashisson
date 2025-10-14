@@ -305,7 +305,7 @@ func start_cargo():
 func repair_cargo():
 	if current_assignment is Cargo:
 		if current_assignment.is_targetable():
-			current_assignment.restore_condition()
+			current_assignment.repair_item()
 
 func start_distraction():
 	if current_assignment.is_in_group("distraction"):

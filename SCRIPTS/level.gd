@@ -154,6 +154,8 @@ func _on_leak_spawn_timer_timeout() -> void:
 		Globals.boat.spawn_leak()
 
 func _on_finished():
+	level_stats.cargo_finish_condition = CargoEvents.cur_cargo.condition
+	level_stats.cargo_max_condition = CargoEvents.cur_cargo.max_condition
 	if level_stats.calculate_success_percentage() > stage_data.level_stats.success_percentage:
 		level_stats.level_name = stage_data.level_stats.level_name
 		stage_data.level_stats.overwrite(level_stats)
