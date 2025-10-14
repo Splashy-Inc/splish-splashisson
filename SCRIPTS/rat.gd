@@ -28,7 +28,7 @@ func _on_cargo_steal_timer_timeout() -> void:
 			Cargo.Cargo_type.LIVESTOCK:
 				new_loot = null
 				if target.get_item():
-					target._on_hit(-60, true)
+					target._on_hit(-30, true)
 			_:
 				new_loot = target.move_item(loot_slot)
 		

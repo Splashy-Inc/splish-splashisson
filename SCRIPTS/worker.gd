@@ -256,6 +256,9 @@ func _on_assignment_died():
 		elif current_assignment is Seagull:
 			stop_repelling_seagull()
 			return
+		elif current_assignment is Rat:
+			stop_stomping_rat()
+			return
 	set_assignment(null)
 	
 func start_patching():
@@ -321,6 +324,21 @@ func start_stomping_rat():
 		state = State.ATTACKING
 		return true
 	return false
+
+func stop_stomping_rat():
+	state = State.IDLE
+	if current_assignment is Rat:
+		var closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
+		
+		if self is Crew:
+			set_assignment(closest_rat)
+		else:
+			set_assignment(null)
+		
+		if closest_rat and _check_in_range(closest_rat):
+			if self is Player:
+				set_assignment(closest_rat)
+			_start_assignment()
 
 func start_repelling_seagull():
 	if current_assignment is Seagull and current_assignment.set_worker(self):

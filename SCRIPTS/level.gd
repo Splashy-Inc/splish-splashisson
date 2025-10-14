@@ -56,7 +56,7 @@ func _level_ready():
 	for node in get_tree().get_nodes_in_group("rat_hole"):
 			if node is RatHole:
 				node.die()
-	if num_rat_holes > 0:
+	for i in num_rat_holes:
 		var new_rat_hole = boat.spawn_rat_hole()
 		if new_rat_hole:
 			new_rat_hole.initialize(rat_spawn_interval)
