@@ -1,20 +1,40 @@
-[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://cnvvud0o6e380"]
+[gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://cnvvud0o6e380"]
 
-[ext_resource type="Texture2D" uid="uid://bdbt46esxxhqn" path="res://Art/Cargo/Livestock/PigL.png" id="1_qwf5t"]
-[ext_resource type="Texture2D" uid="uid://barxluxgoli8p" path="res://Art/Cargo/Livestock/PigSnootL.png" id="2_v8ng8"]
-[ext_resource type="Texture2D" uid="uid://dno3fvmsvxnhy" path="res://Art/Cargo/Livestock/PigSnootR.png" id="3_lguxy"]
-[ext_resource type="Texture2D" uid="uid://cnyfyetrp2snf" path="res://Art/Cargo/Livestock/PigR.png" id="4_sw8us"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wiu1j"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PigL.png-7fec833fe1967266c54a2dd10388d3fd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ka0qa"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PigSnootL.png-2a6603857f742b01f7e15e90de50f6eb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qvq5p"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PigSnootR.png-841c60359b0d048e2ee3d6f3996fbc05.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x36l8"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PigR.png-45ac60800052973175875e2f532c6d49.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ab7o"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PigSnootR.png-841c60359b0d048e2ee3d6f3996fbc05.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_faaag"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/PigSnootL.png-2a6603857f742b01f7e15e90de50f6eb.ctex"
 
 [resource]
+resource_local_to_scene = true
 frames = 6
-frame_0/texture = ExtResource("1_qwf5t")
-frame_1/texture = ExtResource("2_v8ng8")
+frame_0/texture = SubResource("CompressedTexture2D_wiu1j")
+frame_1/texture = SubResource("CompressedTexture2D_ka0qa")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("3_lguxy")
+frame_2/texture = SubResource("CompressedTexture2D_qvq5p")
 frame_2/duration = 1.0
-frame_3/texture = ExtResource("4_sw8us")
+frame_3/texture = SubResource("CompressedTexture2D_x36l8")
 frame_3/duration = 1.0
-frame_4/texture = ExtResource("3_lguxy")
+frame_4/texture = SubResource("CompressedTexture2D_8ab7o")
 frame_4/duration = 1.0
-frame_5/texture = ExtResource("2_v8ng8")
+frame_5/texture = SubResource("CompressedTexture2D_faaag")
 frame_5/duration = 1.0

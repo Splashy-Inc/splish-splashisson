@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=78 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/Morale Modifiers/player_base_morale_modifier.tres" id="2_5x42x"]
@@ -55,6 +55,7 @@
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="43_hshio"]
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="48_q68ca"]
 [ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="49_wwjj4"]
+[ext_resource type="AudioStream" uid="uid://byvaw8048d6xe" path="res://Audio/Actions/Feed/feed.tres" id="52_ox7fb"]
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="56_relih"]
 
 [sub_resource type="Gradient" id="Gradient_qvjm0"]
@@ -691,6 +692,11 @@ bus = &"Effects"
 stream = ExtResource("41_is387")
 volume_db = -2.5
 pitch_scale = 0.9
+bus = &"Effects"
+
+[node name="Feed" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = ExtResource("52_ox7fb")
+volume_db = 7.0
 bus = &"Effects"
 
 [node name="FightNoise" type="AudioStreamPlayer2D" parent="SFXManager"]

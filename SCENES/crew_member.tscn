@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=95 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -74,6 +74,7 @@
 [ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="64_600am"]
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="65_k7ads"]
 [ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="67_33a2s"]
+[ext_resource type="AudioStream" uid="uid://byvaw8048d6xe" path="res://Audio/Actions/Feed/feed.tres" id="67_ydsit"]
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="68_6vely"]
 [ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="71_y071s"]
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="76_30w3v"]
@@ -889,6 +890,11 @@ bus = &"Effects"
 stream = ExtResource("58_rwgi1")
 volume_db = -2.5
 pitch_scale = 0.9
+bus = &"Effects"
+
+[node name="Feed" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = ExtResource("67_ydsit")
+volume_db = 7.0
 bus = &"Effects"
 
 [node name="Patching" type="AudioStreamPlayer2D" parent="SFXManager"]
