@@ -18,6 +18,8 @@ var level_completed = false
 
 @export var target_sprite : Texture2D
 
+@export var sprite : Node2D
+
 func _ready():
 	Globals.level_completed.connect(_on_level_completed)
 
@@ -58,12 +60,13 @@ func _set_worker(new_worker: Worker) -> bool:
 	return true
 
 func play_animation(animation_name):
-	$AnimatedSprite2D.play(animation_name)
+	if sprite is AnimatedSprite2D:
+		sprite.play(animation_name)
 	
 func set_highlight(is_enable: bool):
 	is_selected = is_enable
-	if $AnimatedSprite2D.material:
-		$AnimatedSprite2D.material.set_shader_parameter("on", is_enable)
+	if sprite.material:
+		sprite.material.set_shader_parameter("on", is_enable)
 	else:
 		print(self, " has no highlight material to activate.")
 

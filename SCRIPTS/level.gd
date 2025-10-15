@@ -56,7 +56,7 @@ func _level_ready():
 	for node in get_tree().get_nodes_in_group("rat_hole"):
 			if node is RatHole:
 				node.die()
-	if num_rat_holes > 0:
+	for i in num_rat_holes:
 		var new_rat_hole = boat.spawn_rat_hole()
 		if new_rat_hole:
 			new_rat_hole.initialize(rat_spawn_interval)
@@ -154,6 +154,8 @@ func _on_leak_spawn_timer_timeout() -> void:
 		Globals.boat.spawn_leak()
 
 func _on_finished():
+	level_stats.cargo_finish_condition = CargoEvents.cur_cargo.condition
+	level_stats.cargo_max_condition = CargoEvents.cur_cargo.max_condition
 	if level_stats.calculate_success_percentage() > stage_data.level_stats.success_percentage:
 		level_stats.level_name = stage_data.level_stats.level_name
 		stage_data.level_stats.overwrite(level_stats)

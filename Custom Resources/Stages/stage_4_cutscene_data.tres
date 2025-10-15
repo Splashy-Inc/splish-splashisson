@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CutsceneData" load_steps=14 format=3 uid="uid://b1sttjjftlde4"]
+
+[ext_resource type="JSON" path="res://Dialogs/level_4_cutscene_dialog.json" id="1_6tu8a"]
+[ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_l0e42"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="3_2une4"]
+[ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="4_nja0j"]
+[ext_resource type="AudioStream" uid="uid://j2k3cemsni4h" path="res://Audio/Turtle/turtle_sounds.tres" id="5_5agxm"]
+[ext_resource type="Texture2D" uid="uid://cpdi0bftt6uny" path="res://Art/Merchants/Turtle/Turtle_01.png" id="6_i3omg"]
+[ext_resource type="Texture2D" uid="uid://rlb2oxv2ckar" path="res://Art/Merchants/Turtle/Turtle_02.png" id="7_gmoh3"]
+[ext_resource type="Texture2D" uid="uid://brqh1qh4oh3xy" path="res://Art/Merchants/Turtle/Turtle_03.png" id="8_3k70a"]
+[ext_resource type="Texture2D" uid="uid://l48xph8dwkwb" path="res://Art/Merchants/Turtle/Turtle_04.png" id="9_unysk"]
+[ext_resource type="Texture2D" uid="uid://dbi35qpfjw2j2" path="res://Art/Merchants/Turtle/Turtle_05.png" id="10_0qf0e"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="11_w2f82"]
+
+[sub_resource type="Resource" id="Resource_oguvs"]
+script = ExtResource("2_l0e42")
+label = ""
+dialog_text_json = ExtResource("1_6tu8a")
+end_buttons = Array[PackedScene]([])
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ropgl"]
+frames = 5
+frame_0/texture = ExtResource("6_i3omg")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("7_gmoh3")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("8_3k70a")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("9_unysk")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("10_0qf0e")
+frame_4/duration = 0.5
+
+[resource]
+script = ExtResource("11_w2f82")
+left_texture = ExtResource("4_nja0j")
+left_sound = ExtResource("3_2une4")
+right_texture = SubResource("AnimatedTexture_ropgl")
+right_sound = ExtResource("5_5agxm")
+dialog_data = SubResource("Resource_oguvs")

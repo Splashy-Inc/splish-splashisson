@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Task
 
 class_name Cargo
 
@@ -7,6 +7,7 @@ enum Cargo_type {
 	MEAT,
 	FUR,
 	VALUABLES,
+	LIVESTOCK,
 }
 @onready var items: Node2D = $Items
 
@@ -22,22 +23,20 @@ var threats = []
 
 var level_complete = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Globals.level_completed.connect(_on_level_completed)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func initialize(new_data: CargoItemData):
 	if not is_node_ready():
 		await ready
+	
 	cargo_type = new_data.type
+	if cargo_type == Cargo_type.LIVESTOCK:
+		collision_layer += 2 # Add to interactable collision layer
+	
 	num_items = new_data.number_items
 	await _spawn_cargo()
 	_update_condition(max_condition)
-	_set_item_info()
+	
+	sprite.texture = new_data.container_texture
+	CargoEvents.cargo_changed.emit(self)
 
 func _spawn_cargo():
 	clear()
@@ -50,9 +49,10 @@ func _spawn_cargo():
 			new_cargo.initialize(self)
 			items.add_child(new_cargo)
 			new_cargo.died.connect(_cargo_item_died.bind(new_cargo))
+			new_cargo.health_changed.connect(_on_cargo_item_health_changed)
 			new_cargo.global_position = spawn_point
-		if item_health <= 0 and not items.get_children().is_empty():
-			var item = items.get_children().front()
+		if item_health <= 0 and not get_cargo_items().is_empty():
+			var item = get_cargo_items().front()
 			item_health = item.get_health()
 			max_condition = num_items * item_health
 			item_texture = item.get_sprite_texture()
@@ -90,31 +90,92 @@ func get_self_polygon():
 
 func _on_damage_tick_timer_timeout() -> void:
 	if not level_complete:
-		if threats.is_empty() and item_health:
-			var remainder = condition % item_health
-			if remainder > 0:
-				_update_condition(clamp(item_health - (condition % item_health), 0, item_health))
+		if threats.is_empty():
+			if cargo_type != Cargo_type.LIVESTOCK:
+				repair_item()
 		else:
 			_update_condition(-threats.size())
 
-func _update_condition(change: int):
-	condition = clamp(condition + change, 0, max_condition)
-	var item_count_diff = clamp(items.get_child_count() - ceili(float(condition) / item_health), 0, num_items)
-	for i in item_count_diff:
-		get_item().die()
-	Globals.update_cargo_condition(condition, max_condition)
+func repair_item():
+	var item_to_repair := get_most_damaged_item()
+	if item_to_repair:
+		item_to_repair.restore_health()
 
-func _set_item_info():
-	Globals.update_cargo_items(num_items, item_health, item_texture)
+func _update_condition(change: int):
+	# Update the most damaged item
+	var item_to_update := get_most_damaged_item()
+	if not item_to_update:
+		return false
+	
+	if change > 0:
+		if item_to_update.health == item_to_update.max_health:
+			return false
+		if change > item_to_update.max_health - item_to_update.health:
+			change -= item_to_update.max_health - item_to_update.health
+			item_to_update.restore_health()
+			_update_condition(change)
+		else:
+			item_to_update.change_health(change)
+	elif change < 0:
+		if item_to_update.health == 0:
+			return false
+		if abs(change) > item_to_update.health:
+			change += item_to_update.health
+			item_to_update.change_health(-item_to_update.health)
+			_update_condition(change)
+		else:
+			item_to_update.change_health(change)
+	
+	condition = get_total_items_health()
+	
+	CargoEvents.condition_updated.emit(condition, max_condition)
+	return true
+
+func _on_hit(change: int, distributed: bool = false):
+	if distributed and change != 0 and not get_cargo_items().is_empty():
+		var distributed_change = change/get_cargo_items().size()
+		for item in get_cargo_items():
+			item.change_health(distributed_change)
+	else:
+		_update_condition(change)
+
+func get_total_items_health():
+	var total_health = 0
+	for item in get_cargo_items():
+		if item is CargoItem:
+			if item.get_type() == Cargo_type.LIVESTOCK:
+				total_health += item.max_health
+			else:
+				total_health += item.health
+	return total_health
+
+func get_most_damaged_item() -> CargoItem:
+	var most_damaged_item: CargoItem
+	for item in get_cargo_items():
+		if item is CargoItem:
+			if not most_damaged_item or item.get_health() <= most_damaged_item.get_health():
+				most_damaged_item = item
+	
+	return most_damaged_item
+
+func _on_cargo_item_health_changed(new_health: int):
+	condition = get_total_items_health()
+
+func get_cargo_items() -> Array[CargoItem]:
+	var items_array: Array[CargoItem]
+	for item in items.get_children():
+		if item is CargoItem:
+			items_array.append(item)
+	return items_array
 
 func _on_level_completed(level: Level):
 	level_complete = true
 	$DamageTickTimer.stop()
+	for item in get_cargo_items():
+		item.degrade_tick_timer.stop()
 	
-func get_item():
-	if items.get_child_count() > 0:
-		return items.get_children().front()
-	return null
+func get_item() -> CargoItem:
+	return get_cargo_items().front()
 
 func add_item(item: CargoItem):
 	if item:
@@ -122,7 +183,6 @@ func add_item(item: CargoItem):
 		if item.cur_data.is_distraction:
 			item.add_to_group("distraction")
 		item.global_position = _get_item_spawn_point($StackArea/CollisionShape2D.global_position, $StackArea/CollisionShape2D.shape.radius)
-		_update_condition(item_health)
 
 func move_item(destination: Node2D):
 	if destination:
@@ -132,7 +192,6 @@ func move_item(destination: Node2D):
 				item.remove_from_group("distraction")
 			item.reparent(destination)
 			item.global_position = destination.global_position
-			_update_condition(-item_health)
 			return item
 	return null
 
@@ -143,5 +202,15 @@ func _get_item_spawn_point(spawn_origin, spawn_radius):
 	return spawn_point
 
 func clear():
-	for item in items.get_children():
+	for item in get_cargo_items():
 		item.queue_free()
+
+func is_targetable():
+	return cargo_type == Cargo_type.LIVESTOCK and condition > 0
+
+# Override assignee and worker setters since we want multiple to be able to work on a cargo at a time
+func set_assignee(new_assignee: Worker) -> bool:
+	return condition > 0
+
+func set_worker(new_worker: Worker) -> bool:
+	return condition > 0

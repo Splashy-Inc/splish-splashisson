@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=4 format=3 uid="uid://dpwyaeilnh262"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_5xses"]
+[ext_resource type="Texture2D" uid="uid://bmy6d8unrutop" path="res://Art/Cargo/corral_closed.png" id="1_e17r6"]
+[ext_resource type="Texture2D" uid="uid://cnvvud0o6e380" path="res://Art/Cargo/Livestock/pig_snooting.tres" id="3_g4l0c"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_5xses")
+type = 4
+health = 50
+number_items = 10
+texture = ExtResource("3_g4l0c")
+container_texture = ExtResource("1_e17r6")
+is_distraction = false

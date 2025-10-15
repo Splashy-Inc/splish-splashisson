@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CutsceneData" load_steps=7 format=3 uid="uid://b3q5uvjl01cq0"]
+
+[ext_resource type="Resource" uid="uid://du25auqomcjd8" path="res://Dialogs/level_1_cutscene_dialog_data.tres" id="1_gp7sa"]
+[ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="2_fra4s"]
+[ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="3_ucigx"]
+[ext_resource type="AudioStream" uid="uid://cnywnjrimlic0" path="res://Audio/Shrimp/shrimp_sounds.tres" id="4_ubu5x"]
+[ext_resource type="Texture2D" uid="uid://bh7hha73l5725" path="res://Textures/shrimp_merchat_dialog_texture.tres" id="5_7omp6"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="6_di6x0"]
+
+[resource]
+script = ExtResource("6_di6x0")
+left_texture = ExtResource("3_ucigx")
+left_sound = ExtResource("2_fra4s")
+right_texture = ExtResource("5_7omp6")
+right_sound = ExtResource("4_ubu5x")
+dialog_data = ExtResource("1_gp7sa")

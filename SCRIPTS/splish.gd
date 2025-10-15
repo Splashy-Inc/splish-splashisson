@@ -65,6 +65,8 @@ func _physics_process(delta: float) -> void:
 			_idle_state(delta)
 		State.MOVING:
 			_move_state(delta)
+		State.CARGOING:
+			_cargoing_state()
 		State.ROWING:
 			_rowing_state()
 		State.BAILING:

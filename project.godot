@@ -22,6 +22,7 @@ config/icon="res://Art/Splish/Idle/SplishIdle.png"
 Globals="*res://SCRIPTS/globals.gd"
 Utils="*res://SCRIPTS/utils.gd"
 PlayerEvents="*res://player_events.gd"
+CargoEvents="*res://cargo_events.gd"
 
 [display]
 

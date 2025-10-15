@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=77 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/Morale Modifiers/player_base_morale_modifier.tres" id="2_5x42x"]
@@ -30,9 +30,12 @@
 [ext_resource type="Texture2D" uid="uid://yhieyongi168" path="res://Art/Splish/PatchingLeak/PatchLeakF.png" id="13_n3dog"]
 [ext_resource type="Texture2D" uid="uid://dic8hhfgpivf1" path="res://Art/Splish/Fight/SplishFightL2.png" id="13_p4cpk"]
 [ext_resource type="Texture2D" uid="uid://dvxhdc1fgdl2i" path="res://Art/Splish/Fight/SplishFightL3.png" id="14_6js6f"]
+[ext_resource type="Texture2D" uid="uid://dc7mnpq4rem62" path="res://Art/Splish/Feed/SplishFeedA.png" id="14_abwe3"]
 [ext_resource type="Texture2D" uid="uid://dgtuwrnav5rqg" path="res://Art/Splish/PatchingLeak/PatchLeakG.png" id="14_bvxsk"]
+[ext_resource type="Texture2D" uid="uid://b2yrd7hiv5rmy" path="res://Art/Splish/Feed/SplishFeedB.png" id="15_g3yjt"]
 [ext_resource type="Texture2D" uid="uid://dp5ysc5cbcn18" path="res://Art/Splish/PatchingLeak/PatchLeakH.png" id="15_prk4k"]
 [ext_resource type="Texture2D" uid="uid://d02ykb3r6b7kx" path="res://Art/Splish/PatchingLeak/PatchLeakI.png" id="16_gar54"]
+[ext_resource type="Texture2D" uid="uid://yl7jjavv18no" path="res://Art/Splish/Feed/SplishFeedC.png" id="16_p7m14"]
 [ext_resource type="Texture2D" uid="uid://cbnfyqfa27wdf" path="res://Art/Splish/PatchingLeak/PatchLeakJ.png" id="17_0rc8d"]
 [ext_resource type="Texture2D" uid="uid://bwy3fqdvi8a7c" path="res://Art/Splish/PatchingLeak/PatchLeakK.png" id="18_4d5iv"]
 [ext_resource type="Texture2D" uid="uid://bwcfkkmlts0mt" path="res://Art/Splish/PatchingLeak/PatchLeakL.png" id="19_kg61x"]
@@ -52,6 +55,7 @@
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="43_hshio"]
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="48_q68ca"]
 [ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="49_wwjj4"]
+[ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="56_relih"]
 
 [sub_resource type="Gradient" id="Gradient_qvjm0"]
 offsets = PackedFloat32Array(1)
@@ -166,6 +170,20 @@ animations = [{
 "loop": true,
 "name": &"bail_water",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_abwe3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_g3yjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_p7m14")
+}],
+"loop": true,
+"name": &"feed",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -569,6 +587,7 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_jr7t7"),
 "bail_water": SubResource("Animation_m7eue"),
+"feed": ExtResource("56_relih"),
 "fighting": ExtResource("49_wwjj4"),
 "idle": SubResource("Animation_0g00q"),
 "patch_leak": ExtResource("38_tcamb"),

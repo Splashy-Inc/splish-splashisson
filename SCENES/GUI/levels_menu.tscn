@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=45 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://d213udqwe8aof" path="res://Art/GUI/levels_menu/TutorialButtonSelected.png" id="13_udmjr"]
 [ext_resource type="Resource" uid="uid://dkbttji6b0itf" path="res://Custom Resources/Stages/stage_3_data.tres" id="14_ukqbw"]
 [ext_resource type="Resource" uid="uid://oc21gofoj61j" path="res://Custom Resources/Stages/stage_2_data.tres" id="17_d7t84"]
+[ext_resource type="Resource" uid="uid://drvs8vsltmvyf" path="res://Custom Resources/Stages/stage_4_data.tres" id="23_6itmb"]
 [ext_resource type="AudioStream" uid="uid://bj5smh5lhvn8t" path="res://Audio/level_select.ogg" id="24_3c0qp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
@@ -246,6 +247,13 @@ offset_right = 36.0
 offset_bottom = 24.0
 focus_mode = 2
 theme = ExtResource("5_g4sc5")
+stage_data = ExtResource("23_6itmb")
+
+[node name="MapPath" parent="Map/TurtletonButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
+material = SubResource("ShaderMaterial_s348g")
+position = Vector2(-159, -65)
+points = PackedVector2Array(197, 64, 218, 67, 231, 65, 243, 63, 253, 59, 262, 57, 271, 55, 285, 55)
+connected_button = NodePath("..")
 
 [node name="SeahorsevillaButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = 105.0
@@ -254,6 +262,12 @@ offset_right = 174.0
 offset_bottom = 8.0
 focus_mode = 2
 theme = ExtResource("5_ifvpr")
+
+[node name="MapPath" parent="Map/SeahorsevillaButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
+material = SubResource("ShaderMaterial_s348g")
+position = Vector2(-277, -47)
+points = PackedVector2Array(288, 51, 275, 36, 259, 37, 242, 47, 223, 46, 206, 47, 187, 47, 171, 51, 158, 56, 142, 56, 124, 56, 108, 53, 84, 59, 54, 69, 37, 77, 17, 86, -9, 91, -39, 91, -62, 91, -85, 88, -96, 83, -100, 72, -99, 60)
+connected_button = NodePath("..")
 
 [node name="LochleyWharfButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -276.0

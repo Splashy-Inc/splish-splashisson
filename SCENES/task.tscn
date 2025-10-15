@@ -67,12 +67,13 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4egum"]
 height = 66.0
 
-[node name="Task" type="StaticBody2D"]
+[node name="Task" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
 scale = Vector2(1.5, 1.5)
 collision_layer = 12
 collision_mask = 0
 script = ExtResource("1_6sp0n")
 interaction_radius = 5
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_ed85x")

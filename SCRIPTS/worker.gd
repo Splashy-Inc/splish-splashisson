@@ -27,6 +27,7 @@ enum State {
 	BAILING,
 	PATCHING,
 	ROWING,
+	CARGOING,
 	IDLE,
 	DISTRACTED,
 }
@@ -52,6 +53,8 @@ func _physics_process(delta: float) -> void:
 			_alert_state()
 		State.ACKNOWLEDGING:
 			_acknowledge_state()
+		State.CARGOING:
+			_cargoing_state()
 		State.ROWING:
 			_rowing_state()
 		State.BAILING:
@@ -123,6 +126,12 @@ func _alert_state():
 func _acknowledge_state():
 	$AnimationPlayer.play("acknowledge")
 
+func _cargoing_state():
+	if current_assignment is Cargo:
+		match current_assignment.cargo_type:
+			Cargo.Cargo_type.LIVESTOCK:
+				$AnimationPlayer.play("feed")
+
 func _rowing_state():
 	$AnimationPlayer.play("idle_down")
 
@@ -174,7 +183,7 @@ func _set_assignment(new_assignment: Node2D):
 			old_assignment.set_worker(null)
 		elif old_assignment is Creature:
 			old_assignment.set_worker(null)
-		elif old_assignment is Cargo:
+		elif old_assignment.has_method("remove_threat"):
 			old_assignment.remove_threat(self)
 		elif old_assignment is Pirate:
 			old_assignment.set_worker(null)
@@ -247,6 +256,9 @@ func _on_assignment_died():
 		elif current_assignment is Seagull:
 			stop_repelling_seagull()
 			return
+		elif current_assignment is Rat:
+			stop_stomping_rat()
+			return
 	set_assignment(null)
 	
 func start_patching():
@@ -287,8 +299,22 @@ func stop_fighting():
 		if closest_pirate and _check_in_range(closest_pirate):
 			_start_assignment()
 
+func start_cargo():
+	if current_assignment is Cargo and current_assignment.set_worker(self):
+		state = State.CARGOING
+		return true
+	return false
+
+func repair_cargo():
+	if current_assignment is Cargo:
+		if current_assignment.is_targetable():
+			current_assignment._on_hit(20, true)
+
 func start_distraction():
-	if current_assignment is Cargo and current_assignment.add_threat(self):
+	if current_assignment.is_in_group("distraction"):
+		if current_assignment.has_method("add_threat"):
+			if not current_assignment.add_threat(self):
+				return false
 		state = State.DISTRACTED
 		return true
 	return false
@@ -298,6 +324,21 @@ func start_stomping_rat():
 		state = State.ATTACKING
 		return true
 	return false
+
+func stop_stomping_rat():
+	state = State.IDLE
+	if current_assignment is Rat:
+		var closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
+		
+		if self is Crew:
+			set_assignment(closest_rat)
+		else:
+			set_assignment(null)
+		
+		if closest_rat and _check_in_range(closest_rat):
+			if self is Player:
+				set_assignment(closest_rat)
+			_start_assignment()
 
 func start_repelling_seagull():
 	if current_assignment is Seagull and current_assignment.set_worker(self):
@@ -321,7 +362,9 @@ func stop_repelling_seagull():
 			_start_assignment()
 
 func _start_assignment() -> bool:
-	if current_assignment is Cargo and state != State.DISTRACTED:
+	if current_assignment is Cargo and current_assignment.is_targetable():
+		return start_cargo()
+	elif current_assignment.is_in_group("distraction"):
 		return start_distraction()
 	elif current_assignment is RowingTask:
 		return start_rowing()

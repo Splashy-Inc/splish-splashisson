@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="LevelStats" load_steps=2 format=3 uid="uid://cnu7wwxdhifcb"]
+
+[ext_resource type="Script" path="res://Custom Resources/Stages/level_stats.gd" id="1_2l30d"]
+
+[resource]
+script = ExtResource("1_2l30d")
+level_name = "Finbury"
+length_seconds = 0.0
+finish_seconds = 0.0
+cargo_max_condition = 0.0
+cargo_finish_condition = 0.0
+puddles_spawned = 0
+puddles_fixed = 0
+leaks_spawned = 0
+leaks_fixed = 0
+rats_spawned = 0
+rats_fixed = 0
+seagulls_spawned = 0
+seagulls_fixed = 0
+pirates_spawned = 0
+pirates_fixed = 0
+speed_success_modifier = 0.75

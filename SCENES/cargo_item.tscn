@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsnr7g2gkv5ie"]
+[gd_scene load_steps=10 format=3 uid="uid://dsnr7g2gkv5ie"]
 
 [ext_resource type="Script" path="res://SCRIPTS/cargo_item.gd" id="1_f8d7r"]
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="2_nh6nw"]
 [ext_resource type="Resource" uid="uid://dp77h4fp8pyjt" path="res://Custom Resources/Cargo/meat_cargo_item_data.tres" id="3_b7d1v"]
 [ext_resource type="Resource" uid="uid://b007vhehgdfqc" path="res://Custom Resources/Cargo/fur_cargo_item_data.tres" id="4_tldxb"]
 [ext_resource type="Resource" uid="uid://c65k18o4x66kk" path="res://Custom Resources/Cargo/valuables_cargo_item_data.tres" id="5_8uoia"]
+[ext_resource type="Resource" uid="uid://dpwyaeilnh262" path="res://Custom Resources/Cargo/livestock_cargo_item_data.tres" id="6_7g0yg"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_odnm3"]
 size = Vector2(16, 16)
@@ -22,8 +23,12 @@ size = Vector2(16, 16)
 
 [node name="CargoItem" type="Node2D"]
 script = ExtResource("1_f8d7r")
-cargo_types = Array[ExtResource("2_nh6nw")]([ExtResource("3_b7d1v"), ExtResource("4_tldxb"), ExtResource("5_8uoia")])
+cargo_types = Array[ExtResource("2_nh6nw")]([ExtResource("3_b7d1v"), ExtResource("4_tldxb"), ExtResource("5_8uoia"), ExtResource("6_7g0yg")])
 cur_data = SubResource("Resource_uyp3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_0kxb5")
+
+[node name="DegradeTickTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DegradeTickTimer" to="." method="_on_degrade_tick_timer_timeout"]

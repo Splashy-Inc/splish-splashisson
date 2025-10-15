@@ -38,7 +38,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ratk"]
 size = Vector2(32, 32)
 
-[node name="Puddle" type="StaticBody2D" node_paths=PackedStringArray("self_space") groups=["puddle"]]
+[node name="Puddle" type="StaticBody2D" node_paths=PackedStringArray("self_space", "sprite") groups=["puddle"]]
 collision_layer = 20
 collision_mask = 0
 script = ExtResource("1_ninmo")
@@ -46,6 +46,7 @@ morale_modifier = ExtResource("2_ek4ms")
 interaction_radius = 24
 self_space = NodePath("SelfSpace/CollisionPolygon2D")
 target_sprite = ExtResource("3_amskc")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_wa86k")

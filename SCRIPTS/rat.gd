@@ -22,12 +22,22 @@ func _on_interactable_range_body_exited(body: Node2D) -> void:
 
 func _on_cargo_steal_timer_timeout() -> void:
 	if target is Cargo:
-		var new_loot = target.move_item(loot_slot)
+		var new_loot
+		
+		match target.cargo_type:
+			Cargo.Cargo_type.LIVESTOCK:
+				new_loot = null
+				if target.get_item():
+					target._on_hit(-30, true)
+			_:
+				new_loot = target.move_item(loot_slot)
+		
 		if new_loot:
 			new_loot.position = Vector2.ZERO
 			sfx_manager.play("SpawnNoise")
-		target = hole
-		_set_state(State.IDLE)
+			cargo_timer.stop()
+			_set_state(State.IDLE)
+			target = hole
 
 func _deposit_loot():
 	for loot in loot_slot.get_children():

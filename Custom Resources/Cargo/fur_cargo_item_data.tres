@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CargoItemData" load_steps=3 format=3 uid="uid://b007vhehgdfqc"]
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=4 format=3 uid="uid://b007vhehgdfqc"]
 
+[ext_resource type="Texture2D" uid="uid://bs1w40vwiefj1" path="res://Art/Cargo/Pallet.png" id="1_bfcws"]
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_t7nmr"]
 [ext_resource type="Texture2D" uid="uid://w8nvemt2qilt" path="res://Art/Cargo/Furs/Fur8.png" id="2_7xmvl"]
 
@@ -9,4 +10,5 @@ type = 2
 health = 50
 number_items = 10
 texture = ExtResource("2_7xmvl")
+container_texture = ExtResource("1_bfcws")
 is_distraction = false

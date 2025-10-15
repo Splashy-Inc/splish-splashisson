@@ -1,0 +1,24 @@
+{
+	"dialog_lines": [
+		{
+			"line": "Wow, so brave! Splish Splashisson is a blueberry pie thief…uh, I mean capable captain.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Awkwaaard. I guess there is still some work to be done to restore your reputation.", 
+			"speaker": 1,
+		},
+		{
+			"line": "The least I can do is offer you another job to help in that restoration.",
+			"speaker": 1,
+		},
+		{
+			"line": "Seahorsevilla, the next port over, ordered a shipment of livestock.",
+			"speaker": 1,
+		},
+		{
+			"line": "This should be a simple delivery, just make sure they don't go hungry.",
+			"speaker": 1,
+		},
+	]
+}

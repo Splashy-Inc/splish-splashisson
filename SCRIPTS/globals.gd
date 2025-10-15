@@ -2,7 +2,6 @@ extends Node
 
 signal speed_updated
 signal boat_ready
-signal cargo_condition_updated
 signal cargo_items_updated
 signal level_progress_percent_updated
 signal level_ready
@@ -14,14 +13,6 @@ var boat_speed = 0
 var level: Level
 var level_progress_percent = 0.0
 var settings := Settings.new()
-
-var cargo_info = {
-	"max_condition": 0,
-	"condition": 0,
-	"max_items": 0,
-	"item_health": 0,
-	"item_texture": CompressedTexture2D.new(),
-}
 
 enum Task_type {
 	NONE,
@@ -106,20 +97,6 @@ func set_level(new_level: Level):
 func update_boat_speed(speed: int):
 	boat_speed = speed
 	speed_updated.emit(speed)
-	
-func update_cargo_condition(condition: int, max_condition: int):
-	cargo_info["max_condition"] = max_condition
-	cargo_info["condition"] = condition
-	if level:
-		level.level_stats.cargo_finish_condition = cargo_info["condition"]
-		level.level_stats.cargo_max_condition = cargo_info["max_condition"]
-	cargo_condition_updated.emit(cargo_info["max_condition"], cargo_info["condition"])
-	
-func update_cargo_items(num_items: int, item_health: int, item_texture: Texture2D):
-	cargo_info["max_items"] = num_items
-	cargo_info["item_health"] = item_health
-	cargo_info["item_texture"] = item_texture
-	cargo_items_updated.emit(cargo_info)
 
 func update_level_progress_percent(percent: float):
 	level_progress_percent = percent
