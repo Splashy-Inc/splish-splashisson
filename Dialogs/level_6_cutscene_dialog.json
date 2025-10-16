@@ -1,0 +1,24 @@
+{
+	"dialog_lines": [
+		{
+			"line": "Thank you for the medicine delivery! I don't think I caught your name.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Ah yes, the name Splish Splashisson will be remembered for years to come.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Now down to business. I have a weapons delivery available for Flock Haven.",
+			"speaker": 1,
+		},
+		{
+			"line": "It should be easy as... pie. Except for the pirates roaming these parts.",
+			"speaker": 1,
+		},
+		{
+			"line": "We will load you up and send you on your way.",
+			"speaker": 1,
+		},
+	]
+}
