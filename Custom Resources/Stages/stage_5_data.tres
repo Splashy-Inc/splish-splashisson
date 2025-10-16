@@ -1,9 +1,21 @@
-[gd_resource type="Resource" script_class="StageData" load_steps=5 format=3 uid="uid://ddqqdxe8s6daq"]
+[gd_resource type="Resource" script_class="StageData" load_steps=8 format=3 uid="uid://ddqqdxe8s6daq"]
 
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_kc5ci"]
+[ext_resource type="Texture2D" uid="uid://bs1w40vwiefj1" path="res://Art/Cargo/Pallet.png" id="2_elrt6"]
 [ext_resource type="Resource" uid="uid://h73pd5jhkwag" path="res://Custom Resources/Stages/stage_5_cutscene_data.tres" id="2_to6ux"]
 [ext_resource type="Resource" uid="uid://b8hgv0loy7352" path="res://Custom Resources/Stages/stage_5_level_data.tres" id="3_sj2t3"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="5_g1ssy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yjwob"]
+
+[sub_resource type="Resource" id="Resource_apxy8"]
+script = ExtResource("1_kc5ci")
+type = 5
+health = 20
+number_items = 20
+texture = SubResource("PlaceholderTexture2D_yjwob")
+container_texture = ExtResource("2_elrt6")
+is_distraction = false
 
 [resource]
 script = ExtResource("5_g1ssy")
@@ -13,7 +25,7 @@ is_tutorial = false
 length_seconds = 120
 boat_length = 3
 boat_task_list = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
-cargo_list = Array[ExtResource("1_kc5ci")]([])
+cargo_list = Array[ExtResource("1_kc5ci")]([SubResource("Resource_apxy8")])
 weather = 0
 num_rat_holes = 2
 rat_interval_seconds = 10
