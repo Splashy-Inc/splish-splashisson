@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=4 format=3 uid="uid://pysx3bb35lex"]
+
+[ext_resource type="Texture2D" uid="uid://bs1w40vwiefj1" path="res://Art/Cargo/Pallet.png" id="1_3eicq"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="2_kprhh"]
+[ext_resource type="Texture2D" uid="uid://bcrfd8kt057nj" path="res://Art/Cargo/Weapons/sword_1.png" id="3_wqi22"]
+
+[resource]
+script = ExtResource("2_kprhh")
+type = 6
+health = 30
+number_items = 15
+texture = ExtResource("3_wqi22")
+container_texture = ExtResource("1_3eicq")
+is_distraction = false
