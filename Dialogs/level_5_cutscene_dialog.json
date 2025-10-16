@@ -1,0 +1,32 @@
+{
+	"dialog_lines": [
+		{
+			"line": "...Splish Splashisson, never heard of him.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Oh hey, you're the guy who delivered the livestock.", 
+			"speaker": 1,
+		},
+		{
+			"line": "I need someone to deliver a shipment of medicine to Lochley Wharf.",
+			"speaker": 1,
+		},
+		{
+			"line": "Is that your ship? How in The Isles did you make it this far in a dinghy?",
+			"speaker": 1,
+		},
+		{
+			"line": "This medicine is too important… but you're the only available ship.",
+			"speaker": 1,
+		},
+		{
+			"line": "I have a cousin that can get your boat stable enough to transport this very important cargo.",
+			"speaker": 1,
+		},
+		{
+			"line": "Find some more crew members, and you'll have yourself a bigger ship.",
+			"speaker": 1,
+		},
+	]
+}

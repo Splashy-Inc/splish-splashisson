@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0c07p4xfekmd"]
+[gd_scene load_steps=15 format=3 uid="uid://d0c07p4xfekmd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/screen_manager.gd" id="1_tbvcx"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="2_a1dsb"]
@@ -13,13 +13,14 @@
 [ext_resource type="Resource" uid="uid://oc21gofoj61j" path="res://Custom Resources/Stages/stage_2_data.tres" id="7_yxkbv"]
 [ext_resource type="Resource" uid="uid://dkbttji6b0itf" path="res://Custom Resources/Stages/stage_3_data.tres" id="8_j5xc5"]
 [ext_resource type="Resource" uid="uid://drvs8vsltmvyf" path="res://Custom Resources/Stages/stage_4_data.tres" id="10_p65eo"]
+[ext_resource type="Resource" uid="uid://ddqqdxe8s6daq" path="res://Custom Resources/Stages/stage_5_data.tres" id="11_vmb0e"]
 
 [node name="ScreenManager" type="Node"]
 script = ExtResource("1_tbvcx")
 level_scene = ExtResource("2_a1dsb")
 cutscene_scene = ExtResource("3_exs45")
 tutorial_scene = ExtResource("4_7tukn")
-stages = Array[ExtResource("4_uh14n")]([ExtResource("5_31ckl"), ExtResource("6_brg1n"), ExtResource("7_yxkbv"), ExtResource("8_j5xc5"), ExtResource("10_p65eo")])
+stages = Array[ExtResource("4_uh14n")]([ExtResource("5_31ckl"), ExtResource("6_brg1n"), ExtResource("7_yxkbv"), ExtResource("8_j5xc5"), ExtResource("10_p65eo"), ExtResource("11_vmb0e")])
 
 [node name="HUD" parent="." instance=ExtResource("3_3hcl3")]
 layer = 2

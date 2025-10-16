@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=6 format=3 uid="uid://ddqqdxe8s6daq"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_kc5ci"]
+[ext_resource type="Resource" uid="uid://qmkb16egb0fc" path="res://Custom Resources/Cargo/medicine_cargo_item_data.tres" id="2_3vtee"]
+[ext_resource type="Resource" uid="uid://h73pd5jhkwag" path="res://Custom Resources/Stages/stage_5_cutscene_data.tres" id="2_to6ux"]
+[ext_resource type="Resource" uid="uid://b8hgv0loy7352" path="res://Custom Resources/Stages/stage_5_level_data.tres" id="3_sj2t3"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="5_g1ssy"]
+
+[resource]
+script = ExtResource("5_g1ssy")
+unlocked = false
+cutscene_data = ExtResource("2_to6ux")
+is_tutorial = false
+length_seconds = 120
+boat_length = 3
+boat_task_list = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+cargo_list = Array[ExtResource("1_kc5ci")]([ExtResource("2_3vtee")])
+weather = 0
+num_rat_holes = 2
+rat_interval_seconds = 10
+seagull_interval_seconds = 10
+num_pirate_ships = 0
+start_pirates = 1
+level_stats = ExtResource("3_sj2t3")
