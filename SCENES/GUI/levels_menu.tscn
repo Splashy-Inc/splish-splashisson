@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=48 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -31,6 +31,7 @@
 [ext_resource type="Resource" uid="uid://oc21gofoj61j" path="res://Custom Resources/Stages/stage_2_data.tres" id="17_d7t84"]
 [ext_resource type="Resource" uid="uid://drvs8vsltmvyf" path="res://Custom Resources/Stages/stage_4_data.tres" id="23_6itmb"]
 [ext_resource type="AudioStream" uid="uid://bj5smh5lhvn8t" path="res://Audio/level_select.ogg" id="24_3c0qp"]
+[ext_resource type="Resource" uid="uid://ddqqdxe8s6daq" path="res://Custom Resources/Stages/stage_5_data.tres" id="25_8tikc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
 animations = [{
@@ -146,6 +147,20 @@ shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
 shader_parameter/line_thickness = 1.0
 shader_parameter/on = false
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48ngv"]
+resource_local_to_scene = true
+shader = ExtResource("13_tjmr1")
+shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/on = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ufmmf"]
+resource_local_to_scene = true
+shader = ExtResource("13_tjmr1")
+shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/on = false
+
 [node name="LevelsMenu" type="Control" node_paths=PackedStringArray("map", "tutorial_button", "tutorial_button_animation_player")]
 layout_mode = 3
 anchors_preset = 0
@@ -250,7 +265,7 @@ theme = ExtResource("5_g4sc5")
 stage_data = ExtResource("23_6itmb")
 
 [node name="MapPath" parent="Map/TurtletonButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
-material = SubResource("ShaderMaterial_s348g")
+material = SubResource("ShaderMaterial_48ngv")
 position = Vector2(-159, -65)
 points = PackedVector2Array(197, 64, 218, 67, 231, 65, 243, 63, 253, 59, 262, 57, 271, 55, 285, 55)
 connected_button = NodePath("..")
@@ -262,9 +277,10 @@ offset_right = 174.0
 offset_bottom = 8.0
 focus_mode = 2
 theme = ExtResource("5_ifvpr")
+stage_data = ExtResource("25_8tikc")
 
 [node name="MapPath" parent="Map/SeahorsevillaButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
-material = SubResource("ShaderMaterial_s348g")
+material = SubResource("ShaderMaterial_ufmmf")
 position = Vector2(-277, -47)
 points = PackedVector2Array(288, 51, 275, 36, 259, 37, 242, 47, 223, 46, 206, 47, 187, 47, 171, 51, 158, 56, 142, 56, 124, 56, 108, 53, 84, 59, 54, 69, 37, 77, 17, 86, -9, 91, -39, 91, -62, 91, -85, 88, -96, 83, -100, 72, -99, 60)
 connected_button = NodePath("..")
