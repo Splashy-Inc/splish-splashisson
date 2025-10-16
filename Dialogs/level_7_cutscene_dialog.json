@@ -1,0 +1,28 @@
+{
+	"dialog_lines": [
+		{
+			"line": "Good to meet ya! After that trip, I bet you can see why we need those weapons.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Flock Haven is known for its mead. No one can resist its sweet honey taste.", 
+			"speaker": 1,
+		},
+		{
+			"line": "We always have shipping demands for our largest export.",
+			"speaker": 1,
+		},
+		{
+			"line": "I believe there was a delivery need for some mead to Squid City. We could even upgrade your ship as payment!",
+			"speaker": 1,
+		},
+		{
+			"line": "I'll double check the roster and hook you up with some work.",
+			"speaker": 1,
+		},
+		{
+			"line": "Oh, and while you are in the city you should check out some of their pie shops. They have apple, peach, cherry, bluuuuueberry.",
+			"speaker": 1,
+		},
+	]
+}

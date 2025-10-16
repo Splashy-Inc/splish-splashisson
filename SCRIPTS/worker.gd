@@ -152,8 +152,11 @@ func _distract_state():
 		if current_assignment.condition <= 0:
 			set_assignment(null)
 		else:
-			if current_assignment.cargo_type == Cargo.Cargo_type.MEAT:
-				$AnimationPlayer.play("eating")
+			match current_assignment.cargo_type:
+				Cargo.Cargo_type.MEAT:
+					$AnimationPlayer.play("eating")
+				Cargo.Cargo_type.MEAD:
+					$AnimationPlayer.play("drinking")
 
 func _attack_state():
 	if is_instance_valid(current_assignment):
@@ -311,10 +314,9 @@ func repair_cargo():
 			current_assignment._on_hit(20, true)
 
 func start_distraction():
-	if current_assignment.is_in_group("distraction"):
-		if current_assignment.has_method("add_threat"):
-			if not current_assignment.add_threat(self):
-				return false
+	if current_assignment is Cargo and current_assignment.has_method("add_threat"):
+		if not current_assignment.add_threat(self):
+			return false
 		state = State.DISTRACTED
 		return true
 	return false
@@ -364,7 +366,7 @@ func stop_repelling_seagull():
 func _start_assignment() -> bool:
 	if current_assignment is Cargo and current_assignment.is_targetable():
 		return start_cargo()
-	elif current_assignment.is_in_group("distraction"):
+	elif current_assignment is Cargo and state != State.DISTRACTED:
 		return start_distraction()
 	elif current_assignment is RowingTask:
 		return start_rowing()

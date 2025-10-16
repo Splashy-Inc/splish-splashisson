@@ -40,7 +40,7 @@ position = Vector2(80, 280)
 
 [node name="ActButton" type="TouchScreenButton" parent="."]
 material = SubResource("ShaderMaterial_mo3kn")
-position = Vector2(544, 216)
+position = Vector2(557, 236)
 texture_normal = ExtResource("4_2ejss")
 action = "act"
 

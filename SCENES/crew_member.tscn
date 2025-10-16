@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=104 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -39,14 +39,19 @@
 [ext_resource type="Texture2D" uid="uid://gmwkr3dg0xbu" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamC.png" id="23_7eqfr"]
 [ext_resource type="Texture2D" uid="uid://dyrujptxbyox4" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamD.png" id="24_7tycb"]
 [ext_resource type="Texture2D" uid="uid://cx3qgwj2vnwhd" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakD.png" id="24_61j12"]
+[ext_resource type="Texture2D" uid="uid://dsq2u1nlnloma" path="res://Art/Crew/Animations/CrewDrinkMead/CrewMeadA.png" id="24_g32mi"]
 [ext_resource type="Texture2D" uid="uid://b41f7x4jh5auh" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakE.png" id="25_1cbpn"]
 [ext_resource type="Texture2D" uid="uid://18ikm8wjkpcd" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamE.png" id="25_ufeav"]
+[ext_resource type="Texture2D" uid="uid://b8ni5idbtfn73" path="res://Art/Crew/Animations/CrewDrinkMead/CrewMeadE.png" id="25_vl86t"]
 [ext_resource type="Texture2D" uid="uid://bvbobmv3hhyfr" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakF.png" id="26_1snwl"]
+[ext_resource type="Texture2D" uid="uid://c15pu4hq1e2td" path="res://Art/Crew/Animations/CrewDrinkMead/CrewMeadF.png" id="26_1w1rh"]
 [ext_resource type="Texture2D" uid="uid://dqeyxretq2bsy" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamF.png" id="26_vpafs"]
 [ext_resource type="Texture2D" uid="uid://jj50j6dppaoe" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakG.png" id="27_ep367"]
 [ext_resource type="Texture2D" uid="uid://bmuiujus0rwp" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamG.png" id="27_irv2q"]
+[ext_resource type="Texture2D" uid="uid://ywrcb1ur6qd8" path="res://Art/Crew/Animations/CrewDrinkMead/CrewMeadB.png" id="27_nfq8m"]
 [ext_resource type="Texture2D" uid="uid://bqrli65g8ra7f" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakH.png" id="28_73qoo"]
 [ext_resource type="Texture2D" uid="uid://bxwqkhrf36uu7" path="res://Art/Crew/Animations/CrewEatFood/CrewEatHamH.png" id="28_m88c6"]
+[ext_resource type="Texture2D" uid="uid://c40f3o5r8wtxy" path="res://Art/Crew/Animations/CrewDrinkMead/CrewMeadC.png" id="28_waqom"]
 [ext_resource type="Texture2D" uid="uid://b6nel85eogr1v" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakI.png" id="29_hdsnq"]
 [ext_resource type="Texture2D" uid="uid://c0gme2eeouc6t" path="res://Art/Crew/Animations/PatchingLeak/PatchLeakJ.png" id="30_xrmfg"]
 [ext_resource type="Texture2D" uid="uid://c4rfybd6d87ud" path="res://Art/Crew/Animations/Fight/CrewFightL3.png" id="31_0key4"]
@@ -78,6 +83,8 @@
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="68_6vely"]
 [ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="71_y071s"]
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="76_30w3v"]
+[ext_resource type="AudioStream" uid="uid://cusikspdi7bb5" path="res://Audio/Actions/Drinking/drink_1.ogg" id="79_bg0xo"]
+[ext_resource type="AudioStream" uid="uid://c4tf7snveor37" path="res://Audio/Actions/Drinking/drink_2.ogg" id="80_hl3jn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -158,6 +165,35 @@ animations = [{
 "loop": true,
 "name": &"bail_water",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_g32mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_vl86t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1w1rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_vl86t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1w1rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_waqom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_nfq8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_waqom")
+}],
+"loop": true,
+"name": &"drinking",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -336,6 +372,12 @@ streams_count = 2
 stream_0/stream = ExtResource("62_m0d5g")
 stream_1/stream = ExtResource("63_uy82o")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5aa2b"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("79_bg0xo")
+stream_1/stream = ExtResource("80_hl3jn")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jhftx"]
 random_pitch = 1.02
 streams_count = 1
@@ -347,14 +389,14 @@ length = 0.0333367
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle_down"]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -365,20 +407,20 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:offset")
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [&"idle_down"]
 }
 
 [sub_resource type="Animation" id="Animation_3sbtm"]
@@ -388,52 +430,52 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"acknowledge"]
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"acknowledge"]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFXManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["AcknowledgeAssignment"],
 "method": &"play"
 }]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -455,52 +497,52 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"alert"]
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 5, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 5, 6]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"alert"]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFXManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["FollowPlayer"],
 "method": &"play"
 }]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -525,14 +567,14 @@ step = 0.166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(0, -6)]
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -543,20 +585,20 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [&"bail_water"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/path = NodePath("AnimatedSprite2D:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -6)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -595,26 +637,26 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"eating"]
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"eating"]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -647,26 +689,26 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle_down"]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:offset")
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [&"idle_down"]
 }
 
 [sub_resource type="Animation" id="Animation_yrpeu"]
@@ -676,26 +718,26 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle_up"]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:offset")
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [&"idle_up"]
 }
 
 [sub_resource type="Animation" id="Animation_2fgx1"]
@@ -706,34 +748,46 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walking_down"]
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 0]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"walking_down"]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFXManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -743,18 +797,6 @@ tracks/2/keys = {
 "args": ["BootStepLow"],
 "method": &"play"
 }]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_x2nhf"]
@@ -765,34 +807,46 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walking_up"]
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"walking_up"]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFXManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -803,17 +857,52 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+
+[sub_resource type="Animation" id="Animation_mc8i8"]
+resource_name = "drinking"
+length = 1.40002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [&"drinking"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Drink"],
+"method": &"play"
+}, {
+"args": ["Drink"],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_plwr3"]
@@ -822,6 +911,7 @@ _data = {
 "acknowledge": SubResource("Animation_3sbtm"),
 "alert": SubResource("Animation_ot4iw"),
 "bail_water": SubResource("Animation_lgxjk"),
+"drinking": SubResource("Animation_mc8i8"),
 "eating": SubResource("Animation_aagtk"),
 "feed": ExtResource("76_30w3v"),
 "fighting": ExtResource("71_y071s"),
@@ -910,6 +1000,11 @@ bus = &"Effects"
 [node name="Munch" type="AudioStreamPlayer2D" parent="SFXManager"]
 stream = SubResource("AudioStreamRandomizer_sv7jv")
 volume_db = 10.0
+bus = &"Effects"
+
+[node name="Drink" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_5aa2b")
+volume_db = 8.0
 bus = &"Effects"
 
 [node name="FightNoise" type="AudioStreamPlayer2D" parent="SFXManager"]
