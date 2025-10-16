@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=4 format=3 uid="uid://qmkb16egb0fc"]
+
+[ext_resource type="Texture2D" uid="uid://bs1w40vwiefj1" path="res://Art/Cargo/Pallet.png" id="1_f5rh0"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="2_uispw"]
+[ext_resource type="Texture2D" uid="uid://ck1xlkfob045u" path="res://Art/Cargo/Medicine/medicine.png" id="3_8j8iu"]
+
+[resource]
+script = ExtResource("2_uispw")
+type = 5
+health = 20
+number_items = 20
+texture = ExtResource("3_8j8iu")
+container_texture = ExtResource("1_f5rh0")
+is_distraction = false
