@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="CutsceneData" load_steps=10 format=3 uid="uid://h73pd5jhkwag"]
+[gd_resource type="Resource" script_class="CutsceneData" load_steps=13 format=3 uid="uid://h73pd5jhkwag"]
 
 [ext_resource type="JSON" path="res://Dialogs/level_5_cutscene_dialog.json" id="1_y1jdn"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_hv6tn"]
 [ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="3_83tlu"]
 [ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="4_541vw"]
 [ext_resource type="Texture2D" uid="uid://3torgr1b2gqi" path="res://Art/Merchants/Seahorse/SeahorseA.png" id="5_oqs1t"]
+[ext_resource type="AudioStream" uid="uid://b1464js1m1vuj" path="res://Audio/Seahorse/seahorse_merchant_1.ogg" id="5_r5grm"]
 [ext_resource type="Texture2D" uid="uid://ccl806rfq5cdv" path="res://Art/Merchants/Seahorse/SeahorseB.png" id="6_45uvl"]
+[ext_resource type="AudioStream" uid="uid://dsvn2khbnqmiv" path="res://Audio/Seahorse/seahorse_merchant_2.ogg" id="6_pckmj"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/cutscene_data.gd" id="7_k6xuu"]
 
 [sub_resource type="Resource" id="Resource_5lo1r"]
@@ -13,6 +15,12 @@ script = ExtResource("2_hv6tn")
 label = ""
 dialog_text_json = ExtResource("1_y1jdn")
 end_buttons = Array[PackedScene]([])
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sro0i"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("5_r5grm")
+stream_1/stream = ExtResource("6_pckmj")
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_mg2my"]
 frames = 2
@@ -25,4 +33,5 @@ script = ExtResource("7_k6xuu")
 left_texture = ExtResource("4_541vw")
 left_sound = ExtResource("3_83tlu")
 right_texture = SubResource("AnimatedTexture_mg2my")
+right_sound = SubResource("AudioStreamRandomizer_sro0i")
 dialog_data = SubResource("Resource_5lo1r")
