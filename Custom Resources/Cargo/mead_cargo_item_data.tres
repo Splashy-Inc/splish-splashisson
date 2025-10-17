@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=4 format=3 uid="uid://dc3vycebblak4"]
+
+[ext_resource type="Texture2D" uid="uid://bs1w40vwiefj1" path="res://Art/Cargo/Pallet.png" id="1_qoeu8"]
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="2_5nc4l"]
+[ext_resource type="Texture2D" uid="uid://culkveppko1uj" path="res://Art/Cargo/Mead/Mead.png" id="3_y18ax"]
+
+[resource]
+script = ExtResource("2_5nc4l")
+type = 7
+health = 10
+number_items = 30
+texture = ExtResource("3_y18ax")
+container_texture = ExtResource("1_qoeu8")
+is_distraction = true
