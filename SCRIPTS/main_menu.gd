@@ -17,7 +17,7 @@ func _process(delta):
 	pass
 
 func _on_story_button_pressed():
-	button_pressed.emit("Play")
+	button_pressed.emit("Story")
 
 func _on_controls_button_pressed():
 	button_pressed.emit("Controls")
@@ -36,3 +36,6 @@ func _on_story_button_visibility_changed() -> void:
 
 func _on_settings_button_pressed() -> void:
 	button_pressed.emit("Settings")
+
+func _on_free_play_button_pressed() -> void:
+	button_pressed.emit("Free Play")

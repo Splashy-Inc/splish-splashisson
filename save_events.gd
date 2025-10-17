@@ -21,8 +21,8 @@ func _ready() -> void:
 	load_requested.connect(_on_load_requested)
 	clear_saves_requested.connect(_on_clear_saves_requested)
 	
-	story_save_resource = copy_save_data_resource(default_save_resource)
-	free_play_save_resource = copy_save_data_resource(default_save_resource)
+	story_save_resource.stages = copy_save_data_resource(default_save_resource).stages
+	free_play_save_resource.stages = copy_save_data_resource(default_save_resource).stages
 	
 	load_requested.emit(Globals.Game_mode.STORY)
 	load_requested.emit(Globals.Game_mode.FREE_PLAY)

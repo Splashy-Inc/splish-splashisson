@@ -64,6 +64,15 @@ focus_next = NodePath("../ControlsButton")
 theme = ExtResource("3_32f6x")
 text = "Story Mode"
 
+[node name="FreePlayButton" type="Button" parent="MenuContent/MenuButtons"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_bottom = NodePath("../ControlsButton")
+focus_next = NodePath("../ControlsButton")
+theme = ExtResource("3_32f6x")
+text = "Free Play"
+
 [node name="ControlsButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
@@ -93,6 +102,7 @@ text = "Quit"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/StoryModeButton" to="." method="_on_story_button_pressed"]
 [connection signal="visibility_changed" from="MenuContent/MenuButtons/StoryModeButton" to="." method="_on_story_button_visibility_changed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/FreePlayButton" to="." method="_on_free_play_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -78,7 +78,6 @@ func _on_play_pressed(stage_data: StageData = null):
 		elif cur_stage_data:
 			load_stage(cur_stage_data)
 		else:
-			game_mode_data = SaveEvents.get_loaded_data(Globals.Game_mode.STORY)
 			load_stage(game_mode_data.stages.front())
 	_resume_play()
 
@@ -217,3 +216,16 @@ func unlock_next_stage(cur_stage_data: StageData):
 func _on_cutscene_start_pressed(stage_data: StageData):
 	if cur_screen is Cutscene:
 		load_level(stage_data)
+
+func _on_story_pressed() -> void:
+	set_game_mode(Globals.Game_mode.STORY)
+
+func _on_free_play_pressed() -> void:
+	set_game_mode(Globals.Game_mode.FREE_PLAY)
+
+func set_game_mode(new_mode: Globals.Game_mode):
+	game_mode_data = SaveEvents.get_loaded_data(new_mode)
+	if new_mode == Globals.Game_mode.STORY and not game_mode_data.stages[1].unlocked:
+		_on_play_pressed(game_mode_data.stages.front())
+		return
+	show_levels_menu()
