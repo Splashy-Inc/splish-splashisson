@@ -3,6 +3,8 @@ extends CanvasLayer
 class_name HUD
 
 signal play_pressed
+signal story_pressed
+signal free_play_pressed
 signal next_pressed
 signal restart_pressed
 signal quit_pressed
@@ -122,6 +124,10 @@ func _on_game_menu_button_pressed(type: String, stage_data: StageData = null):
 	match type:
 		"Play":
 			play_pressed.emit(stage_data)
+		"Story":
+			story_pressed.emit()
+		"Free Play":
+			free_play_pressed.emit()
 		"Level":
 			show_levels_menu()
 		"Next":

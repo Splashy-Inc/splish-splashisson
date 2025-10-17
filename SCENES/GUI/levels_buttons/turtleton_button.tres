@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://cpfwjcsq4g3x2"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://cpfwjcsq4g3x2"]
 
 [ext_resource type="Texture2D" uid="uid://bfi5hs13bjvuw" path="res://Art/GUI/levels_menu/turtleton_button_completed.png" id="1_lhaek"]
 [ext_resource type="Texture2D" uid="uid://fght00mw5wmh" path="res://Art/GUI/levels_menu/turtleton_button_disabled.png" id="2_n73a0"]
@@ -49,6 +49,9 @@ atlas = ExtResource("3_djdau")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0vshu"]
 texture = SubResource("AtlasTexture_dxxn4")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hq6ui"]
+texture = ExtResource("1_lhaek")
+
 [resource]
 Button/styles/completed = SubResource("StyleBoxTexture_60rpq")
 Button/styles/disabled = SubResource("StyleBoxTexture_i4ims")
@@ -56,3 +59,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_4a125")
 Button/styles/hover = SubResource("StyleBoxTexture_mk3ma")
 Button/styles/normal = SubResource("StyleBoxTexture_h2e3o")
 Button/styles/pressed = SubResource("StyleBoxTexture_0vshu")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_hq6ui")

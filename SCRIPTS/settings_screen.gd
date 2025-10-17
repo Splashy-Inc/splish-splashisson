@@ -10,7 +10,9 @@ signal exited
 @onready var music_slider: HSlider = $ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/MusicSlider
 @onready var effects_slider: HSlider = $ScreenRows/Settings/SettingsTabContainer/Audio/ControlsGrid/EffectsSlider
 
-@onready var morale_aura_check_button: CheckButton = $ScreenRows/Settings/SettingsTabContainer/Game/ControlsGrid/MoraleAuraCheckButton
+@onready var morale_aura_check_button: CheckButton = $ScreenRows/Settings/SettingsTabContainer/Game/VBoxContainer/ControlsGrid/MoraleAuraCheckButton
+
+@onready var clear_save_button: Button = $ScreenRows/Settings/SettingsTabContainer/Game/VBoxContainer/ClearSaveButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +33,8 @@ func _on_visibility_changed() -> void:
 		all_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
 		music_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
 		effects_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Effects")))
+		clear_save_button.text = "Clear Save Data"
+		clear_save_button.disabled = false
 
 func _on_all_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))
@@ -50,7 +54,11 @@ func load_settings(new_settings):
 	
 	morale_aura_check_button.button_pressed = settings.player_aura_visible
 
-
 func _on_settings_tab_container_visibility_changed() -> void:
 	if settings_tab_container.visible:
 		settings_tab_container.get_tab_bar().grab_focus()
+
+func _on_clear_save_button_pressed() -> void:
+	SaveEvents.clear_saves_requested.emit()
+	clear_save_button.text = "DATA CLEARD!"
+	clear_save_button.disabled = true

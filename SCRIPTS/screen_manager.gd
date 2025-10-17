@@ -3,8 +3,8 @@ extends Node
 @export var level_scene: PackedScene
 @export var cutscene_scene: PackedScene
 @export var tutorial_scene: PackedScene
-@export var stages : Array[StageData]
-@export var cur_stage_data : StageData 
+@export var game_mode_data : SaveData
+@export var cur_stage_data : StageData
 
 @onready var sfx_manager: SFXManager = $SFXManager
 @onready var hud: HUD = $HUD
@@ -16,6 +16,7 @@ var cur_screen : Node
 func _ready():
 	show_main_menu()
 	sfx_manager.play("MainTheme")
+	game_mode_data = game_mode_data.duplicate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -77,7 +78,7 @@ func _on_play_pressed(stage_data: StageData = null):
 		elif cur_stage_data:
 			load_stage(cur_stage_data)
 		else:
-			load_stage(stages.front())
+			load_stage(game_mode_data.stages.front())
 	_resume_play()
 
 func _input(event):
@@ -121,6 +122,7 @@ func _on_level_completed():
 	game_ended = true
 	#_pause_play()
 	unlock_next_stage(cur_stage_data)
+	SaveEvents.save_requested.emit(game_mode_data.stages, game_mode_data.game_mode)
 	hud.show_win_screen(cur_stage_data.level_stats)
 	
 func _on_tutorial_completed():
@@ -130,6 +132,7 @@ func _on_tutorial_completed():
 
 func _on_tutorial_skipped():
 	unlock_next_stage(cur_stage_data)
+	SaveEvents.save_requested.emit(game_mode_data.stages, game_mode_data.game_mode)
 	show_levels_menu()
 
 func _clear_screens():
@@ -142,7 +145,7 @@ func _on_next_pressed() -> void:
 	if cur_screen:
 		hud.hide_menus()
 		if cur_screen is Level:
-			if cur_stage_data == stages.back():
+			if cur_stage_data == game_mode_data.stages.back():
 				show_end_game_screen()
 			else:
 				show_levels_menu()
@@ -183,9 +186,9 @@ func load_stage(new_stage_data: StageData):
 # Unused, but still keeping this in here in case we end up wanting it again
 func load_next_stage():
 	if cur_stage_data:
-		var cur_stage_index = stages.find(cur_stage_data)
-		if cur_stage_index < stages.size() - 1:
-			load_stage(stages[cur_stage_index + 1])
+		var cur_stage_index = game_mode_data.stages.find(cur_stage_data)
+		if cur_stage_index < game_mode_data.stages.size() - 1:
+			load_stage(game_mode_data.stages[cur_stage_index + 1])
 		else:
 			show_end_game_screen()
 	else:
@@ -206,10 +209,23 @@ func generate_level(is_tutorial: bool = false) -> Level:
 	return new_level
 
 func unlock_next_stage(cur_stage_data: StageData):
-	var cur_stage_index = stages.find(cur_stage_data)
-	if cur_stage_index < stages.size() - 1:
-		stages[cur_stage_index + 1].unlocked = true
+	var cur_stage_index = game_mode_data.stages.find(cur_stage_data)
+	if cur_stage_index < game_mode_data.stages.size() - 1:
+		game_mode_data.stages[cur_stage_index + 1].unlocked = true
 
 func _on_cutscene_start_pressed(stage_data: StageData):
 	if cur_screen is Cutscene:
 		load_level(stage_data)
+
+func _on_story_pressed() -> void:
+	set_game_mode(Globals.Game_mode.STORY)
+
+func _on_free_play_pressed() -> void:
+	set_game_mode(Globals.Game_mode.FREE_PLAY)
+
+func set_game_mode(new_mode: Globals.Game_mode):
+	game_mode_data = SaveEvents.get_loaded_data(new_mode)
+	if new_mode == Globals.Game_mode.STORY and not game_mode_data.stages[1].unlocked:
+		_on_play_pressed(game_mode_data.stages.front())
+		return
+	show_levels_menu()

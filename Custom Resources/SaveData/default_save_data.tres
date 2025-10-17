@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SaveData" load_steps=11 format=3 uid="uid://d3xi3wyu4of20"]
+
+[ext_resource type="Script" path="res://Custom Resources/SaveData/save_data.gd" id="1_tkxhy"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="2_k6kbl"]
+[ext_resource type="Resource" uid="uid://cdpgjx8jbdyni" path="res://Custom Resources/Stages/tutorial_stage_data.tres" id="3_o45dy"]
+[ext_resource type="Resource" uid="uid://0rutsw623na5" path="res://Custom Resources/Stages/stage_1_data.tres" id="4_cwjol"]
+[ext_resource type="Resource" uid="uid://oc21gofoj61j" path="res://Custom Resources/Stages/stage_2_data.tres" id="5_n6vkf"]
+[ext_resource type="Resource" uid="uid://dkbttji6b0itf" path="res://Custom Resources/Stages/stage_3_data.tres" id="6_f52ms"]
+[ext_resource type="Resource" uid="uid://drvs8vsltmvyf" path="res://Custom Resources/Stages/stage_4_data.tres" id="7_kb7ty"]
+[ext_resource type="Resource" uid="uid://ddqqdxe8s6daq" path="res://Custom Resources/Stages/stage_5_data.tres" id="8_exck0"]
+[ext_resource type="Resource" uid="uid://bb034mnapr3eb" path="res://Custom Resources/Stages/stage_6_data.tres" id="9_lvqo3"]
+[ext_resource type="Resource" uid="uid://jo0v2yvpn654" path="res://Custom Resources/Stages/stage_7_data.tres" id="10_841gg"]
+
+[resource]
+script = ExtResource("1_tkxhy")
+stages = Array[ExtResource("2_k6kbl")]([ExtResource("3_o45dy"), ExtResource("4_cwjol"), ExtResource("5_n6vkf"), ExtResource("6_f52ms"), ExtResource("7_kb7ty"), ExtResource("8_exck0"), ExtResource("9_lvqo3"), ExtResource("10_841gg")])
+game_mode = 0

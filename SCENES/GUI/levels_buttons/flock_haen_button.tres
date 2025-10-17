@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://x221goe1ahm3"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://x221goe1ahm3"]
 
 [ext_resource type="Texture2D" uid="uid://bomfpfs6eddji" path="res://Art/GUI/levels_menu/flock_haven_button_completed.png" id="1_ospxh"]
 [ext_resource type="Texture2D" uid="uid://buqhw7v0lx58j" path="res://Art/GUI/levels_menu/flock_haven_button_disabled.png" id="2_o7j75"]
@@ -49,6 +49,9 @@ atlas = SubResource("CompressedTexture2D_vxrvh")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exa1g"]
 texture = SubResource("AtlasTexture_nlgx8")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vnqpb"]
+texture = ExtResource("1_ospxh")
+
 [resource]
 Button/styles/completed = SubResource("StyleBoxTexture_28rsk")
 Button/styles/disabled = SubResource("StyleBoxTexture_dhhds")
@@ -56,3 +59,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_7lpu7")
 Button/styles/hover = SubResource("StyleBoxTexture_pmabv")
 Button/styles/normal = SubResource("StyleBoxTexture_bdrxa")
 Button/styles/pressed = SubResource("StyleBoxTexture_exa1g")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_vnqpb")

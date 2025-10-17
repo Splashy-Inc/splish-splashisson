@@ -23,6 +23,7 @@ Globals="*res://SCRIPTS/globals.gd"
 Utils="*res://SCRIPTS/utils.gd"
 PlayerEvents="*res://player_events.gd"
 CargoEvents="*res://cargo_events.gd"
+SaveEvents="*res://save_events.gd"
 
 [display]
 

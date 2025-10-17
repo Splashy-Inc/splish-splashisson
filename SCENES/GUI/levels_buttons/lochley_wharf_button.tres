@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://bys2c52trjtla"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://bys2c52trjtla"]
 
 [ext_resource type="Texture2D" uid="uid://bo5us1gq1cn7q" path="res://Art/GUI/levels_menu/lochley_wharf_button_completed.png" id="1_flkjl"]
 [ext_resource type="Texture2D" uid="uid://dqqpr7wqja6dg" path="res://Art/GUI/levels_menu/lochley_wharf_button_disabled.png" id="2_c5c8r"]
@@ -47,6 +47,9 @@ atlas = ExtResource("4_nqhib")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sfpgb"]
 texture = SubResource("AtlasTexture_bkxge")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fovt"]
+texture = ExtResource("1_flkjl")
+
 [resource]
 Button/styles/completed = SubResource("StyleBoxTexture_jd8oa")
 Button/styles/disabled = SubResource("StyleBoxTexture_5tvqk")
@@ -54,3 +57,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_hrng6")
 Button/styles/hover = SubResource("StyleBoxTexture_sa265")
 Button/styles/normal = SubResource("StyleBoxTexture_20snf")
 Button/styles/pressed = SubResource("StyleBoxTexture_sfpgb")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_4fovt")
