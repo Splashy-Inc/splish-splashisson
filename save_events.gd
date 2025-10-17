@@ -46,7 +46,7 @@ func _on_save_requested(new_stages_data: Array[StageData], game_mode: Globals.Ga
 	
 	if save_path != "" and save_resource:
 		save_resource = copy_save_data_resource(save_resource)
-		print(ResourceSaver.save(save_resource, save_path))
+		ResourceSaver.save(save_resource, save_path)
 		save_completed.emit(save_resource, game_mode)
 
 func _on_load_requested(game_mode: Globals.Game_mode):
