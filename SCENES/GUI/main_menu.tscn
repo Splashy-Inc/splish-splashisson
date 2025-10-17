@@ -55,23 +55,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="LevelSelectButton" type="Button" parent="MenuContent/MenuButtons"]
+[node name="StoryModeButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_bottom = NodePath("../ControlsButton")
 focus_next = NodePath("../ControlsButton")
 theme = ExtResource("3_32f6x")
-text = "Play"
+text = "Story Mode"
 
 [node name="ControlsButton" type="Button" parent="MenuContent/MenuButtons"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
-focus_neighbor_top = NodePath("../LevelSelectButton")
+focus_neighbor_top = NodePath("../StoryModeButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
 focus_next = NodePath("../SettingsButton")
-focus_previous = NodePath("../LevelSelectButton")
+focus_previous = NodePath("../StoryModeButton")
 theme = ExtResource("3_32f6x")
 text = "Controls"
 
@@ -91,8 +91,8 @@ size_flags_horizontal = 0
 theme = ExtResource("3_32f6x")
 text = "Quit"
 
-[connection signal="pressed" from="MenuContent/MenuButtons/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
-[connection signal="visibility_changed" from="MenuContent/MenuButtons/LevelSelectButton" to="." method="_on_play_button_visibility_changed"]
+[connection signal="pressed" from="MenuContent/MenuButtons/StoryModeButton" to="." method="_on_story_button_pressed"]
+[connection signal="visibility_changed" from="MenuContent/MenuButtons/StoryModeButton" to="." method="_on_story_button_visibility_changed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

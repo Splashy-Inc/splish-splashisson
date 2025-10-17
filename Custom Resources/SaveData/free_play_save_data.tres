@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SaveData" load_steps=3 format=3 uid="uid://xcgykogxexxn"]
+
+[ext_resource type="Script" path="res://Custom Resources/SaveData/save_data.gd" id="1_amd2g"]
+[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="2_4hndx"]
+
+[resource]
+script = ExtResource("1_amd2g")
+stages = Array[ExtResource("2_4hndx")]([])
+game_mode = 1

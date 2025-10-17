@@ -14,6 +14,11 @@ var level: Level
 var level_progress_percent = 0.0
 var settings := Settings.new()
 
+enum Game_mode {
+	STORY,
+	FREE_PLAY,
+}
+
 enum Task_type {
 	NONE,
 	ROWING_RIGHT,

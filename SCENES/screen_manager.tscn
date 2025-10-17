@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0c07p4xfekmd"]
+[gd_scene load_steps=9 format=3 uid="uid://d0c07p4xfekmd"]
 
 [ext_resource type="Script" path="res://SCRIPTS/screen_manager.gd" id="1_tbvcx"]
 [ext_resource type="PackedScene" uid="uid://cfsxn0iyywxs5" path="res://SCENES/level.tscn" id="2_a1dsb"]
@@ -6,23 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cs3hpuql1pmvv" path="res://SCENES/Cutscenes/cutscene.tscn" id="3_exs45"]
 [ext_resource type="PackedScene" uid="uid://q6gx1xcbys3g" path="res://SCENES/tutorial.tscn" id="4_7tukn"]
 [ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="4_r1jld"]
-[ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="4_uh14n"]
-[ext_resource type="Resource" uid="uid://cdpgjx8jbdyni" path="res://Custom Resources/Stages/tutorial_stage_data.tres" id="5_31ckl"]
 [ext_resource type="AudioStream" uid="uid://dbdjuoy0ogrvt" path="res://Audio/Music/splish_main_theme.ogg" id="5_rqqry"]
-[ext_resource type="Resource" uid="uid://0rutsw623na5" path="res://Custom Resources/Stages/stage_1_data.tres" id="6_brg1n"]
-[ext_resource type="Resource" uid="uid://oc21gofoj61j" path="res://Custom Resources/Stages/stage_2_data.tres" id="7_yxkbv"]
-[ext_resource type="Resource" uid="uid://dkbttji6b0itf" path="res://Custom Resources/Stages/stage_3_data.tres" id="8_j5xc5"]
-[ext_resource type="Resource" uid="uid://drvs8vsltmvyf" path="res://Custom Resources/Stages/stage_4_data.tres" id="10_p65eo"]
-[ext_resource type="Resource" uid="uid://ddqqdxe8s6daq" path="res://Custom Resources/Stages/stage_5_data.tres" id="11_vmb0e"]
-[ext_resource type="Resource" uid="uid://bb034mnapr3eb" path="res://Custom Resources/Stages/stage_6_data.tres" id="12_dj2ao"]
-[ext_resource type="Resource" uid="uid://jo0v2yvpn654" path="res://Custom Resources/Stages/stage_7_data.tres" id="13_t1h23"]
+[ext_resource type="Resource" uid="uid://d3xi3wyu4of20" path="res://Custom Resources/SaveData/default_save_data.tres" id="5_tppam"]
 
 [node name="ScreenManager" type="Node"]
 script = ExtResource("1_tbvcx")
 level_scene = ExtResource("2_a1dsb")
 cutscene_scene = ExtResource("3_exs45")
 tutorial_scene = ExtResource("4_7tukn")
-stages = Array[ExtResource("4_uh14n")]([ExtResource("5_31ckl"), ExtResource("6_brg1n"), ExtResource("7_yxkbv"), ExtResource("8_j5xc5"), ExtResource("10_p65eo"), ExtResource("11_vmb0e"), ExtResource("12_dj2ao"), ExtResource("13_t1h23")])
+game_mode_data = ExtResource("5_tppam")
 
 [node name="HUD" parent="." instance=ExtResource("3_3hcl3")]
 layer = 2

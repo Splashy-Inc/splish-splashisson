@@ -10,6 +10,7 @@ signal exited
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SaveEvents.load_completed.connect(_on_load_game_data_completed)
 	for child in map.get_children():
 		if child is LevelButton:
 			child.selected.connect(_on_stage_selected.bind(child))
@@ -47,3 +48,10 @@ func _on_visibility_changed() -> void:
 func _on_back_button_pressed() -> void:
 	if visible:
 		exited.emit()
+
+func _on_load_game_data_completed(loaded_resource: SaveData, game_mode: Globals.Game_mode):
+	for button in map.get_children():
+		if button is LevelButton:
+			for stage in loaded_resource.stages:
+				if stage.level_stats.level_name == button.stage_data.level_stats.level_name:
+					button.stage_data = stage
