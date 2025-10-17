@@ -56,6 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="48_q68ca"]
 [ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="49_wwjj4"]
 [ext_resource type="AudioStream" uid="uid://byvaw8048d6xe" path="res://Audio/Actions/Feed/feed.tres" id="52_ox7fb"]
+[ext_resource type="Animation" uid="uid://2tf5twwq3b4g" path="res://bail_water.res" id="54_h7cb0"]
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="56_relih"]
 
 [sub_resource type="Gradient" id="Gradient_qvjm0"]
@@ -361,76 +362,6 @@ tracks/2/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_m7eue"]
-resource_name = "bail_water_2"
-length = 1.16668
-loop_mode = 1
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(0, -6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"bail_water"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_bail_puddle"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SFXManager")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.833333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["ThrowWater"],
-"method": &"play"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_0g00q"]
 resource_name = "idle"
 length = 0.20002
@@ -587,7 +518,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iikno"]
 _data = {
 "RESET": SubResource("Animation_jr7t7"),
-"bail_water": SubResource("Animation_m7eue"),
+"bail_water": ExtResource("54_h7cb0"),
 "feed": ExtResource("56_relih"),
 "fighting": ExtResource("49_wwjj4"),
 "idle": SubResource("Animation_0g00q"),
