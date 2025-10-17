@@ -40,6 +40,8 @@ func _on_save_requested(new_stages_data: Array[StageData], game_mode: Globals.Ga
 		Globals.Game_mode.FREE_PLAY:
 			save_path = free_play_save_path
 			free_play_save_resource.stages = new_stages_data
+			for stage in free_play_save_resource.stages:
+				stage.unlocked = true
 			save_resource = free_play_save_resource
 	
 	if save_path != "" and save_resource:
@@ -66,14 +68,10 @@ func _on_load_requested(game_mode: Globals.Game_mode):
 
 func _on_clear_saves_requested():
 	if ResourceLoader.exists(story_save_path):
-		story_save_resource = SaveData.new()
-		ResourceSaver.save(story_save_resource, story_save_path)
-		save_completed.emit(story_save_resource, Globals.Game_mode.STORY)
+		save_requested.emit(copy_save_data_resource(default_save_resource).stages, Globals.Game_mode.STORY)
 	
 	if ResourceLoader.exists(free_play_save_path):
-		free_play_save_resource = SaveData.new()
-		ResourceSaver.save(free_play_save_resource, free_play_save_path)
-		save_completed.emit(free_play_save_resource, Globals.Game_mode.FREE_PLAY)
+		save_requested.emit(copy_save_data_resource(default_save_resource).stages, Globals.Game_mode.FREE_PLAY)
 
 func get_loaded_data(game_mode: Globals.Game_mode):
 	var load_resource : SaveData
