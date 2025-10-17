@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://c7d3g5gx0w1hp"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://c7d3g5gx0w1hp"]
 
 [ext_resource type="Texture2D" uid="uid://d3jse0eh3c3gh" path="res://Art/GUI/levels_menu/seahorsevilla_button_completed.png" id="1_xhna0"]
 [ext_resource type="Texture2D" uid="uid://duon8xeivgy1w" path="res://Art/GUI/levels_menu/seahorsevilla_button_disabled.png" id="2_frdoj"]
@@ -47,6 +47,9 @@ atlas = SubResource("CompressedTexture2D_bg2q5")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7iqy8"]
 texture = SubResource("AtlasTexture_q5hah")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mlyup"]
+texture = ExtResource("1_xhna0")
+
 [resource]
 Button/styles/completed = SubResource("StyleBoxTexture_tfjeb")
 Button/styles/disabled = SubResource("StyleBoxTexture_qsa37")
@@ -54,3 +57,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_kjn0e")
 Button/styles/hover = SubResource("StyleBoxTexture_3d6id")
 Button/styles/normal = SubResource("StyleBoxTexture_jr6qt")
 Button/styles/pressed = SubResource("StyleBoxTexture_7iqy8")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_mlyup")

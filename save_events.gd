@@ -23,6 +23,8 @@ func _ready() -> void:
 	
 	story_save_resource.stages = copy_save_data_resource(default_save_resource).stages
 	free_play_save_resource.stages = copy_save_data_resource(default_save_resource).stages
+	for stage in free_play_save_resource.stages:
+		stage.unlocked = true
 	
 	load_requested.emit(Globals.Game_mode.STORY)
 	load_requested.emit(Globals.Game_mode.FREE_PLAY)

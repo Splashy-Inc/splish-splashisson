@@ -30,6 +30,8 @@ func _on_visibility_changed() -> void:
 			focus_mode = FOCUS_ALL
 			if stage_data.level_stats.finish_seconds > 0:
 				theme_type_variation = "LevelButton"
+			else:
+				theme_type_variation = "Button"
 		else:
 			focus_mode = FOCUS_NONE
 

@@ -52,6 +52,9 @@ func _on_back_button_pressed() -> void:
 func _on_load_game_data_completed(loaded_resource: SaveData, game_mode: Globals.Game_mode):
 	for button in map.get_children():
 		if button is LevelButton:
+			for child in button.get_children():
+				if child is MapPath:
+					child.is_revealed = false
 			for stage in loaded_resource.stages:
 				if stage.level_stats.level_name == button.stage_data.level_stats.level_name:
 					button.stage_data = stage
