@@ -85,6 +85,7 @@
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="76_30w3v"]
 [ext_resource type="AudioStream" uid="uid://cusikspdi7bb5" path="res://Audio/Actions/Drinking/drink_1.ogg" id="79_bg0xo"]
 [ext_resource type="AudioStream" uid="uid://c4tf7snveor37" path="res://Audio/Actions/Drinking/drink_2.ogg" id="80_hl3jn"]
+[ext_resource type="Animation" uid="uid://2tf5twwq3b4g" path="res://bail_water.res" id="85_53uab"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -559,11 +560,11 @@ tracks/4/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_lgxjk"]
-resource_name = "bail_water_2"
-length = 1.16668
+[sub_resource type="Animation" id="Animation_mc8i8"]
+resource_name = "drinking"
+length = 1.40002
 loop_mode = 1
-step = 0.166667
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -571,10 +572,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -586,45 +587,22 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [&"bail_water"]
+"values": [&"drinking"]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:offset")
+tracks/2/path = NodePath("SFXManager")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -6)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [],
-"method": &"_bail_puddle"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SFXManager")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.833333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["ThrowWater"],
+"args": ["Drink"],
+"method": &"play"
+}, {
+"args": ["Drink"],
 "method": &"play"
 }]
 }
@@ -858,59 +836,12 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_mc8i8"]
-resource_name = "drinking"
-length = 1.40002
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [&"drinking"]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SFXManager")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": ["Drink"],
-"method": &"play"
-}, {
-"args": ["Drink"],
-"method": &"play"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_plwr3"]
 _data = {
 "RESET": SubResource("Animation_bm4pa"),
 "acknowledge": SubResource("Animation_3sbtm"),
 "alert": SubResource("Animation_ot4iw"),
-"bail_water": SubResource("Animation_lgxjk"),
+"bail_water": ExtResource("85_53uab"),
 "drinking": SubResource("Animation_mc8i8"),
 "eating": SubResource("Animation_aagtk"),
 "feed": ExtResource("76_30w3v"),
