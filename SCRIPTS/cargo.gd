@@ -11,6 +11,7 @@ enum Cargo_type {
 	MEDICINE,
 	WEAPONS,
 	MEAD,
+	SIREN,
 }
 @onready var items: Node2D = $Items
 

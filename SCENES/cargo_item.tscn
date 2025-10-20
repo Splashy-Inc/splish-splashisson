@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsnr7g2gkv5ie"]
+[gd_scene load_steps=14 format=3 uid="uid://dsnr7g2gkv5ie"]
 
 [ext_resource type="Script" path="res://SCRIPTS/cargo_item.gd" id="1_f8d7r"]
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="2_nh6nw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://qmkb16egb0fc" path="res://Custom Resources/Cargo/medicine_cargo_item_data.tres" id="7_jii0q"]
 [ext_resource type="Resource" uid="uid://pysx3bb35lex" path="res://Custom Resources/Cargo/weapons_cargo_item_data.tres" id="8_jq7hk"]
 [ext_resource type="Resource" uid="uid://dc3vycebblak4" path="res://Custom Resources/Cargo/mead_cargo_item_data.tres" id="9_gl716"]
+[ext_resource type="Resource" uid="uid://bo7xcba1ulitw" path="res://Custom Resources/Cargo/siren_cargo_item_data.tres" id="10_k2aqd"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_odnm3"]
 size = Vector2(16, 16)
@@ -26,7 +27,7 @@ size = Vector2(16, 16)
 
 [node name="CargoItem" type="Node2D"]
 script = ExtResource("1_f8d7r")
-cargo_types = Array[ExtResource("2_nh6nw")]([ExtResource("3_b7d1v"), ExtResource("4_tldxb"), ExtResource("5_8uoia"), ExtResource("6_7g0yg"), ExtResource("7_jii0q"), ExtResource("8_jq7hk"), ExtResource("9_gl716")])
+cargo_types = Array[ExtResource("2_nh6nw")]([ExtResource("3_b7d1v"), ExtResource("4_tldxb"), ExtResource("5_8uoia"), ExtResource("6_7g0yg"), ExtResource("7_jii0q"), ExtResource("8_jq7hk"), ExtResource("9_gl716"), ExtResource("10_k2aqd")])
 cur_data = SubResource("Resource_uyp3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
