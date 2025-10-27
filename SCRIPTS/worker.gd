@@ -152,7 +152,7 @@ func _distract_state():
 		if current_assignment.condition <= 0:
 			set_assignment(null)
 		else:
-			match current_assignment.cargo_type:
+			match current_assignment.get_type():
 				Cargo.Cargo_type.MEAT:
 					$AnimationPlayer.play("eating")
 				Cargo.Cargo_type.MEAD:

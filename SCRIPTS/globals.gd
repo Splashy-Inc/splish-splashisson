@@ -37,6 +37,18 @@ var task_dict = {
 var rat_hole_scene := load("res://SCENES/rat_hole.tscn")
 
 var cargo_scene := load("res://SCENES/cargo.tscn")
+var cargo_item_scene := load("res://SCENES/cargo_item.tscn")
+var cargo_item_scenes_dict = {
+	Cargo.Cargo_type.MEAT: cargo_item_scene,
+	Cargo.Cargo_type.FUR: cargo_item_scene,
+	Cargo.Cargo_type.VALUABLES: cargo_item_scene,
+	Cargo.Cargo_type.LIVESTOCK: cargo_item_scene,
+	Cargo.Cargo_type.MEDICINE: cargo_item_scene,
+	Cargo.Cargo_type.WEAPONS: cargo_item_scene,
+	Cargo.Cargo_type.MEAD: cargo_item_scene,
+	Cargo.Cargo_type.SIREN: load("res://SCENES/siren_cargo_item.tscn"),
+}
+
 var crew_scene := load("res://SCENES/crew_member.tscn")
 
 var controls_data := load("res://controls_data.tres") as ControlsData
@@ -84,7 +96,10 @@ func generate_rat_hole() -> RatHole:
 
 func generate_cargo() -> Cargo:
 	return cargo_scene.duplicate().instantiate()
-	
+
+func generate_cargo_item(type: Cargo.Cargo_type) -> CargoItem:
+	return cargo_item_scenes_dict[type].instantiate()
+
 func generate_crew() -> Crew:
 	return crew_scene.duplicate().instantiate()
 
