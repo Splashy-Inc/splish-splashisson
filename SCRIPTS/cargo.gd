@@ -2,6 +2,8 @@ extends Task
 
 class_name Cargo
 
+signal threatened_changed(is_threatened: bool)
+
 enum Cargo_type {
 	NONE,
 	MEAT,
@@ -72,11 +74,15 @@ func add_threat(body: Node2D):
 		return true
 	else:
 		threats.append(body)
+		if threats.size() == 1:
+			threatened_changed.emit(true)
 		return true
 	return false
 	
 func remove_threat(body: Node2D):
 	threats.erase(body)
+	if not is_threatened():
+		threatened_changed.emit(false)
 	return true
 
 func _on_threat_died(threat: Node2D):
@@ -85,6 +91,8 @@ func _on_threat_died(threat: Node2D):
 
 func _on_large_puddle_reached(puddle: Puddle):
 	threats.append(puddle)
+	if threats.size() == 1:
+		threatened_changed.emit(true)
 
 func _on_large_puddle_reversed(puddle: Puddle):
 	remove_threat(puddle)
@@ -221,3 +229,9 @@ func set_worker(new_worker: Worker) -> bool:
 
 func get_type() -> Cargo.Cargo_type:
 	return cargo_data.type
+
+func is_threatened():
+	return not threats.is_empty()
+
+func get_threats() -> Array:
+	return threats
