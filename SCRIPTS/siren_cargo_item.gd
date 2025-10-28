@@ -26,11 +26,10 @@ func set_sprite_texture(new_texture):
 func get_sprite_texture():
 	return cur_data.texture
 
-func _on_host_threatened_changed(is_host_threatened: bool):
-	if is_host_threatened:
-		state = State.SINGING
-		for threat in host_cargo.get_threats():
+func _on_host_threats_changed(threats: Array):
+		state = State.IDLE
+		for threat in threats:
+			state = State.SINGING
 			if not threat is Crew:
 				state = State.SCREAMING
-	else:
-		state = State.IDLE
+				break

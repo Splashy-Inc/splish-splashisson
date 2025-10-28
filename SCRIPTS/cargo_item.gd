@@ -25,10 +25,10 @@ func _process(delta: float) -> void:
 	pass
 
 func initialize(cargo: Cargo):
-	if is_instance_valid(host_cargo) and host_cargo.is_connected("threatened_changed", _on_host_threatened_changed):
-		host_cargo.disconnect("threatened_changed", _on_host_threatened_changed)
+	if is_instance_valid(host_cargo) and host_cargo.is_connected("threats_changed", _on_host_threats_changed):
+		host_cargo.disconnect("threats_changed", _on_host_threats_changed)
 	host_cargo = cargo
-	host_cargo.connect("threatened_changed", _on_host_threatened_changed)
+	host_cargo.connect("threats_changed", _on_host_threats_changed)
 	if not is_node_ready():
 		await ready
 	
@@ -94,5 +94,5 @@ func set_sprite_texture(new_texture):
 	if sprite.texture is AnimatedTexture:
 		sprite.texture.speed_scale = randf_range(.25, 2)
 
-func _on_host_threatened_changed(is_host_threatened: bool):
+func _on_host_threats_changed(threats: Array):
 	pass
