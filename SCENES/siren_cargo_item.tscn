@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://w2v3oyq34t2y"]
+[gd_scene load_steps=20 format=3 uid="uid://w2v3oyq34t2y"]
 
 [ext_resource type="Script" path="res://SCRIPTS/siren_cargo_item.gd" id="1_kkf4j"]
 [ext_resource type="Texture2D" uid="uid://co3lm60ul2ga3" path="res://Art/Cargo/Siren/siren_idle/siren_idle_A.png" id="2_cdyxv"]
 [ext_resource type="Resource" uid="uid://bnpmu008307s4" path="res://Custom Resources/Cargo/placeholder_cargo_item_data.tres" id="2_ip8fl"]
+[ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="2_mbp6i"]
 [ext_resource type="Texture2D" uid="uid://lt51tmt4a7do" path="res://Art/Cargo/Siren/siren_idle/siren_idle_B.png" id="3_aif0v"]
 [ext_resource type="Texture2D" uid="uid://dno06k1docciy" path="res://Art/Cargo/Siren/siren_idle/siren_idle_C.png" id="4_5vi37"]
 [ext_resource type="Texture2D" uid="uid://da8qtgplrjbso" path="res://Art/Cargo/Siren/siren_idle/siren_idle_D.png" id="5_087o3"]
@@ -15,6 +16,16 @@
 [ext_resource type="Texture2D" uid="uid://dm4tpsm2tt4m3" path="res://Art/Cargo/Siren/siren_sing/siren_sing_B.png" id="12_a6kct"]
 [ext_resource type="Texture2D" uid="uid://cgs8tajhh1bka" path="res://Art/Cargo/Siren/siren_sing/siren_sing_C.png" id="13_c7rls"]
 [ext_resource type="Texture2D" uid="uid://dlahuslhaw6ip" path="res://Art/Cargo/Siren/siren_sing/siren_sing_D.png" id="14_5dvbq"]
+
+[sub_resource type="Resource" id="Resource_stli7"]
+script = ExtResource("2_mbp6i")
+name = "Siren Screaming"
+rate = -0.2
+
+[sub_resource type="Resource" id="Resource_paqlv"]
+script = ExtResource("2_mbp6i")
+name = "Siren Singing"
+rate = -0.05
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1jmb3"]
 animations = [{
@@ -96,6 +107,8 @@ animations = [{
 
 [node name="Siren" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_kkf4j")
+screaming_morale_modifier = SubResource("Resource_stli7")
+singing_morale_modifier = SubResource("Resource_paqlv")
 cur_data = ExtResource("2_ip8fl")
 sprite = NodePath("AnimatedSprite2D")
 

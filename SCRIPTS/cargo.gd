@@ -99,11 +99,27 @@ func get_self_polygon():
 
 func _on_damage_tick_timer_timeout() -> void:
 	if not level_complete:
-		if threats.is_empty():
-			if cargo_data.type != Cargo_type.LIVESTOCK:
-				repair_item()
-		else:
-			_update_condition(-threats.size())
+			match cargo_data.type:
+				Cargo_type.LIVESTOCK:
+					if threats.is_empty():
+						pass
+					else:
+						_update_condition(-threats.size())
+				Cargo_type.SIREN:
+					if threats.is_empty():
+						pass
+					else:
+						var num_threats := 0
+						for threat in threats:
+							if not threat is Crew:
+								num_threats += 1
+						_update_condition(-num_threats)
+				_:
+					if threats.is_empty():
+						repair_item()
+					else:
+						_update_condition(-threats.size())
+		
 
 func repair_item():
 	var item_to_repair := get_most_damaged_item()
