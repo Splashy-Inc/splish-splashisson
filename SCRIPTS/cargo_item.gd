@@ -42,7 +42,7 @@ func initialize(cargo: Cargo):
 	
 	set_sprite_texture(cur_data.texture.duplicate())
 	
-	if cur_data.type == Cargo.Cargo_type.LIVESTOCK:
+	if cur_data.type == Cargo.Cargo_type.LIVESTOCK or cur_data.type == Cargo.Cargo_type.SIREN:
 		degrade_tick_timer.start()
 	else:
 		degrade_tick_timer.stop()

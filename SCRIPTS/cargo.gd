@@ -133,14 +133,13 @@ func _update_condition(change: int):
 		return false
 	
 	if change > 0:
-		if item_to_update.health == item_to_update.max_health:
-			return false
-		if change > item_to_update.max_health - item_to_update.health:
-			change -= item_to_update.max_health - item_to_update.health
-			item_to_update.restore_health()
-			_update_condition(change)
-		else:
-			item_to_update.change_health(change)
+		if item_to_update.health != item_to_update.max_health:
+			if change > item_to_update.max_health - item_to_update.health:
+				change -= item_to_update.max_health - item_to_update.health
+				item_to_update.restore_health()
+				_update_condition(change)
+			else:
+				item_to_update.change_health(change)
 	elif change < 0:
 		if item_to_update.health == 0:
 			return false
@@ -151,10 +150,13 @@ func _update_condition(change: int):
 		else:
 			item_to_update.change_health(change)
 	
-	condition = get_total_items_health()
-	
-	CargoEvents.condition_updated.emit(condition, max_condition)
-	return true
+	var new_condition = get_total_items_health()
+	if condition != new_condition:
+		condition = new_condition
+		CargoEvents.condition_updated.emit(condition, max_condition)
+		return true
+	else:
+		return false
 
 func _on_hit(change: int, distributed: bool = false):
 	if distributed and change != 0 and not get_cargo_items().is_empty():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=113 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -79,13 +79,22 @@
 [ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="64_600am"]
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="65_k7ads"]
 [ext_resource type="PackedScene" uid="uid://cctlxmjryldte" path="res://SCENES/morale_bar.tscn" id="67_33a2s"]
+[ext_resource type="Texture2D" uid="uid://7tbsk5xq28js" path="res://Art/Crew/Animations/SirenWorship/siren_worship_A.png" id="67_d6yuh"]
 [ext_resource type="AudioStream" uid="uid://byvaw8048d6xe" path="res://Audio/Actions/Feed/feed.tres" id="67_ydsit"]
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="68_6vely"]
+[ext_resource type="Texture2D" uid="uid://dd62cqu8rj3gv" path="res://Art/Crew/Animations/SirenWorship/siren_worship_B.png" id="68_nmdxx"]
+[ext_resource type="Texture2D" uid="uid://dusygu5xl371w" path="res://Art/Crew/Animations/SirenWorship/siren_worship_C.png" id="69_5f252"]
+[ext_resource type="Texture2D" uid="uid://bejb26lfpo7bc" path="res://Art/Crew/Animations/SirenWorship/siren_worship_D.png" id="70_1pbdk"]
+[ext_resource type="Texture2D" uid="uid://bsjs1n71im87g" path="res://Art/Crew/Animations/SirenWorship/siren_worship_E.png" id="71_milkj"]
 [ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="71_y071s"]
+[ext_resource type="Texture2D" uid="uid://bi1dbc0s3jl8r" path="res://Art/Crew/Animations/SirenWorship/siren_worship_F.png" id="72_fhumt"]
+[ext_resource type="Texture2D" uid="uid://cnu6ywcf5mxu1" path="res://Art/Crew/Animations/SirenWorship/siren_worship_G.png" id="73_f5kv0"]
+[ext_resource type="Texture2D" uid="uid://dhgyk4loocfco" path="res://Art/Crew/Animations/SirenWorship/siren_worship_H.png" id="74_10fyx"]
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="76_30w3v"]
 [ext_resource type="AudioStream" uid="uid://cusikspdi7bb5" path="res://Audio/Actions/Drinking/drink_1.ogg" id="79_bg0xo"]
 [ext_resource type="AudioStream" uid="uid://c4tf7snveor37" path="res://Audio/Actions/Drinking/drink_2.ogg" id="80_hl3jn"]
 [ext_resource type="Animation" uid="uid://2tf5twwq3b4g" path="res://bail_water.res" id="85_53uab"]
+[ext_resource type="Animation" uid="uid://wbva10fflqup" path="res://worshipping.res" id="94_obarr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxg80"]
 animations = [{
@@ -354,6 +363,35 @@ animations = [{
 "loop": true,
 "name": &"walking_up",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_d6yuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_nmdxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_5f252")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_1pbdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_milkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_fhumt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_f5kv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_10fyx")
+}],
+"loop": true,
+"name": &"worshipping",
+"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ojju"]
@@ -574,7 +612,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 tracks/1/type = "value"
@@ -851,7 +889,8 @@ _data = {
 "patch_leak": ExtResource("64_600am"),
 "stomping": ExtResource("65_k7ads"),
 "walking_down": SubResource("Animation_2fgx1"),
-"walking_up": SubResource("Animation_x2nhf")
+"walking_up": SubResource("Animation_x2nhf"),
+"worshipping": ExtResource("94_obarr")
 }
 
 [node name="CrewMember" type="CharacterBody2D" node_paths=PackedStringArray("sfx_manager", "sprite") groups=["crew", "selectable"]]

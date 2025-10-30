@@ -157,6 +157,8 @@ func _distract_state():
 					$AnimationPlayer.play("eating")
 				Cargo.Cargo_type.MEAD:
 					$AnimationPlayer.play("drinking")
+				Cargo.Cargo_type.SIREN:
+					$AnimationPlayer.play("worshipping")
 
 func _attack_state():
 	if is_instance_valid(current_assignment):

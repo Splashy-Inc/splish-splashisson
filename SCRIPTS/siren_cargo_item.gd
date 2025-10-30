@@ -70,3 +70,9 @@ func toggle_screaming(is_enabled: bool):
 				crew.add_morale_modifier(screaming_morale_modifier)
 			else:
 				crew.remove_morale_modifier(screaming_morale_modifier)
+
+func _on_degrade_tick_timer_timeout() -> void:
+	if state == State.SINGING:
+		change_health(audience.size())
+	else:
+		change_health(-1)
