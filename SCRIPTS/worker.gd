@@ -128,9 +128,11 @@ func _acknowledge_state():
 
 func _cargoing_state():
 	if current_assignment is Cargo:
-		match current_assignment.cargo_type:
+		match current_assignment.cargo_data.type:
 			Cargo.Cargo_type.LIVESTOCK:
 				$AnimationPlayer.play("feed")
+			Cargo.Cargo_type.SIREN:
+				$AnimationPlayer.play("worshipping")
 
 func _rowing_state():
 	$AnimationPlayer.play("idle_down")

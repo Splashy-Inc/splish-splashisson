@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://je3j0pd8ickv"]
+[gd_scene load_steps=87 format=3 uid="uid://je3j0pd8ickv"]
 
 [ext_resource type="Script" path="res://SCRIPTS/splish.gd" id="1_34yo7"]
 [ext_resource type="Resource" uid="uid://2e7bp7yb5cvr" path="res://Custom Resources/Morale Modifiers/player_base_morale_modifier.tres" id="2_5x42x"]
@@ -53,11 +53,20 @@
 [ext_resource type="Animation" uid="uid://dqmewiyggtrk" path="res://patch_leak.res" id="38_tcamb"]
 [ext_resource type="AudioStream" uid="uid://cb2x7au43eau4" path="res://Audio/Actions/stomp.wav" id="41_is387"]
 [ext_resource type="Animation" uid="uid://ddfh12rsifb74" path="res://stomping.res" id="43_hshio"]
+[ext_resource type="Texture2D" uid="uid://brrvkgpoucjcw" path="res://Art/Splish/SirenWorship/siren_worship_A.png" id="44_bjfyu"]
+[ext_resource type="Texture2D" uid="uid://jm3ysg4v86c" path="res://Art/Splish/SirenWorship/siren_worship_B.png" id="45_fa6qa"]
+[ext_resource type="Texture2D" uid="uid://cgmvn4xjeshbk" path="res://Art/Splish/SirenWorship/siren_worship_C.png" id="46_y7qev"]
+[ext_resource type="Texture2D" uid="uid://slrbsdiev0m1" path="res://Art/Splish/SirenWorship/siren_worship_D.png" id="47_wsemq"]
+[ext_resource type="Texture2D" uid="uid://dclt02xvm5qh2" path="res://Art/Splish/SirenWorship/siren_worship_E.png" id="48_fqavn"]
 [ext_resource type="AudioStream" uid="uid://bmnryvntjoscm" path="res://Audio/Pirate/fight_sound.ogg" id="48_q68ca"]
 [ext_resource type="Animation" uid="uid://bktf6cta4pgld" path="res://fighting.res" id="49_wwjj4"]
+[ext_resource type="Texture2D" uid="uid://c6c7jifgqayt3" path="res://Art/Splish/SirenWorship/siren_worship_F.png" id="49_xff3x"]
+[ext_resource type="Texture2D" uid="uid://cfa2wrcyslqfw" path="res://Art/Splish/SirenWorship/siren_worship_G.png" id="50_odd87"]
+[ext_resource type="Texture2D" uid="uid://dgxdmvjxxpcv1" path="res://Art/Splish/SirenWorship/siren_worship_H.png" id="51_48ff4"]
 [ext_resource type="AudioStream" uid="uid://byvaw8048d6xe" path="res://Audio/Actions/Feed/feed.tres" id="52_ox7fb"]
 [ext_resource type="Animation" uid="uid://2tf5twwq3b4g" path="res://bail_water.res" id="54_h7cb0"]
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="56_relih"]
+[ext_resource type="Animation" uid="uid://wbva10fflqup" path="res://worshipping.res" id="59_pd5ry"]
 
 [sub_resource type="Gradient" id="Gradient_qvjm0"]
 offsets = PackedFloat32Array(1)
@@ -305,6 +314,35 @@ animations = [{
 "loop": true,
 "name": &"walking_up",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_bjfyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_fa6qa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_y7qev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_wsemq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_fqavn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_xff3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_odd87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_48ff4")
+}],
+"loop": true,
+"name": &"worshipping",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3ojv"]
@@ -526,7 +564,8 @@ _data = {
 "pointing_right": SubResource("Animation_t3dpn"),
 "stomping": ExtResource("43_hshio"),
 "walking_down": SubResource("Animation_uhby7"),
-"walking_up": SubResource("Animation_y4fll")
+"walking_up": SubResource("Animation_y4fll"),
+"worshipping": ExtResource("59_pd5ry")
 }
 
 [node name="Splish" type="CharacterBody2D" node_paths=PackedStringArray("sfx_manager", "sprite") groups=["player"]]

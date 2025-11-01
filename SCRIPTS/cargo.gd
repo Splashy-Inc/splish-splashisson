@@ -34,7 +34,7 @@ func initialize(new_data: CargoItemData):
 		await ready
 	
 	cargo_data = new_data
-	if cargo_data.type == Cargo_type.LIVESTOCK:
+	if cargo_data.type == Cargo_type.LIVESTOCK or cargo_data.type == Cargo_type.SIREN:
 		collision_layer += 2 # Add to interactable collision layer
 	
 	num_items = new_data.number_items
@@ -233,7 +233,7 @@ func clear():
 		item.queue_free()
 
 func is_targetable():
-	return cargo_data.type == Cargo_type.LIVESTOCK and condition > 0
+	return (cargo_data.type == Cargo_type.LIVESTOCK or cargo_data.type == Cargo_type.SIREN) and condition > 0
 
 # Override assignee and worker setters since we want multiple to be able to work on a cargo at a time
 func set_assignee(new_assignee: Worker) -> bool:
