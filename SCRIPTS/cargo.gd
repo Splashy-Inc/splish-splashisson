@@ -51,6 +51,8 @@ func _spawn_cargo():
 		var spawn_radius = $StackArea/CollisionShape2D.shape.radius * global_scale.x
 		for i in num_items:
 			var spawn_point = _get_item_spawn_point(spawn_origin, spawn_radius)
+			if num_items == 1:
+				spawn_point = global_position
 			var new_cargo = Globals.generate_cargo_item(cargo_data.type)
 			new_cargo.initialize(self)
 			items.add_child(new_cargo)

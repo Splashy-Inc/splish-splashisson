@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://w2v3oyq34t2y"]
+[gd_scene load_steps=21 format=3 uid="uid://w2v3oyq34t2y"]
 
 [ext_resource type="Script" path="res://SCRIPTS/siren_cargo_item.gd" id="1_kkf4j"]
 [ext_resource type="Texture2D" uid="uid://co3lm60ul2ga3" path="res://Art/Cargo/Siren/siren_idle/siren_idle_A.png" id="2_cdyxv"]
@@ -105,6 +105,9 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5w736"]
+radius = 98.0
+
 [node name="Siren" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_kkf4j")
 screaming_morale_modifier = SubResource("Resource_stli7")
@@ -120,4 +123,13 @@ frame_progress = 0.889891
 
 [node name="DegradeTickTimer" type="Timer" parent="."]
 
+[node name="SingingArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 66
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SingingArea"]
+shape = SubResource("CircleShape2D_5w736")
+
 [connection signal="timeout" from="DegradeTickTimer" to="." method="_on_degrade_tick_timer_timeout"]
+[connection signal="body_entered" from="SingingArea" to="." method="_on_singing_area_body_entered"]
+[connection signal="body_exited" from="SingingArea" to="." method="_on_singing_area_body_exited"]

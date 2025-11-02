@@ -17,10 +17,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	match state:
 		State.IDLE:
-			sprite.play("idle")
+			if audience.is_empty():
+				sprite.play("idle")
+			else:
+				set_state(State.SINGING)
 		State.SINGING:
-			sprite.play("sing")
-			change_health(int(audience.size() * -singing_morale_modifier.rate * 100 * delta))
+			if audience.is_empty():
+				set_state(State.IDLE)
+			else:
+				sprite.play("sing")
+				change_health(int(audience.size() * -singing_morale_modifier.rate * 100 * delta))
 		State.SCREAMING:
 			sprite.play("scream")
 
@@ -53,15 +59,12 @@ func set_state(new_state: State):
 				toggle_screaming(true)
 
 func toggle_singing(is_enabled: bool):
-	for threat in host_cargo.get_threats():
-		if threat is Crew:
+	for target in audience:
+		if target is Crew:
 			if is_enabled:
-				threat.add_morale_modifier(singing_morale_modifier)
-				audience.append(threat)
+				target.add_morale_modifier(singing_morale_modifier)
 			else:
-				threat.remove_morale_modifier(singing_morale_modifier)
-				if not audience.is_empty():
-					audience.clear()
+				target.remove_morale_modifier(singing_morale_modifier)
 
 func toggle_screaming(is_enabled: bool):
 	for crew in get_tree().get_nodes_in_group("crew"):
@@ -76,3 +79,10 @@ func _on_degrade_tick_timer_timeout() -> void:
 		change_health(audience.size())
 	else:
 		change_health(-1)
+
+func _on_singing_area_body_entered(body: Node2D) -> void:
+	if body is Crew and not body in audience:
+		audience.append(body)
+
+func _on_singing_area_body_exited(body: Node2D) -> void:
+	audience.erase(body)
