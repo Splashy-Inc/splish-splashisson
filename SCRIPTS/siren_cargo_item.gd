@@ -11,6 +11,9 @@ var state := State.IDLE
 @export var singing_morale_modifier : MoraleModifier
 var audience : Array[Crew]
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var aura_animation_player: AnimationPlayer = $SingingArea/AuraAnimationPlayer
+
 func _ready() -> void:
 	sprite = $AnimatedSprite2D
 
@@ -18,17 +21,17 @@ func _process(delta: float) -> void:
 	match state:
 		State.IDLE:
 			if audience.is_empty():
-				sprite.play("idle")
+				animation_player.play("idle")
 			else:
 				set_state(State.SINGING)
 		State.SINGING:
 			if audience.is_empty():
 				set_state(State.IDLE)
 			else:
-				sprite.play("sing")
+				animation_player.play("sing")
 				change_health(int(audience.size() * -singing_morale_modifier.rate * 100 * delta))
 		State.SCREAMING:
-			sprite.play("scream")
+			animation_player.play("scream")
 
 func set_sprite_texture(new_texture):
 	pass

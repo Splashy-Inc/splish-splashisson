@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://w2v3oyq34t2y"]
+[gd_scene load_steps=33 format=3 uid="uid://w2v3oyq34t2y"]
 
 [ext_resource type="Script" path="res://SCRIPTS/siren_cargo_item.gd" id="1_kkf4j"]
 [ext_resource type="Texture2D" uid="uid://co3lm60ul2ga3" path="res://Art/Cargo/Siren/siren_idle/siren_idle_A.png" id="2_cdyxv"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dm4tpsm2tt4m3" path="res://Art/Cargo/Siren/siren_sing/siren_sing_B.png" id="12_a6kct"]
 [ext_resource type="Texture2D" uid="uid://cgs8tajhh1bka" path="res://Art/Cargo/Siren/siren_sing/siren_sing_C.png" id="13_c7rls"]
 [ext_resource type="Texture2D" uid="uid://dlahuslhaw6ip" path="res://Art/Cargo/Siren/siren_sing/siren_sing_D.png" id="14_5dvbq"]
+[ext_resource type="Material" uid="uid://0mn2q2wqx0mm" path="res://Materials/siren_aura_material.tres" id="17_n08to"]
 
 [sub_resource type="Resource" id="Resource_stli7"]
 script = ExtResource("2_mbp6i")
@@ -105,8 +106,255 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_2qmps"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hypas"]
+gradient = SubResource("Gradient_2qmps")
+width = 196
+height = 196
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5w736"]
 radius = 98.0
+
+[sub_resource type="Animation" id="Animation_h4mcy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pulse:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pulse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jh50j"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pulse:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pulse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xjmvq"]
+resource_name = "pulse_reverse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pulse:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pulse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vt56"]
+_data = {
+"RESET": SubResource("Animation_h4mcy"),
+"pulse": SubResource("Animation_jh50j"),
+"pulse_reverse": SubResource("Animation_xjmvq")
+}
+
+[sub_resource type="Animation" id="Animation_lrmy7"]
+resource_name = "idle"
+length = 2.00005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RESET"]
+}
+
+[sub_resource type="Animation" id="Animation_dyqy2"]
+resource_name = "sing"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"pulse_reverse"]
+}
+
+[sub_resource type="Animation" id="Animation_afdtj"]
+resource_name = "scream"
+length = 3.00003
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"scream"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RESET"]
+}
+
+[sub_resource type="Animation" id="Animation_kmcr4"]
+length = 1.00003
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"RESET", &"RESET"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08nke"]
+_data = {
+"RESET": SubResource("Animation_kmcr4"),
+"idle": SubResource("Animation_lrmy7"),
+"scream": SubResource("Animation_afdtj"),
+"sing": SubResource("Animation_dyqy2")
+}
 
 [node name="Siren" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_kkf4j")
@@ -119,7 +367,6 @@ sprite = NodePath("AnimatedSprite2D")
 sprite_frames = SubResource("SpriteFrames_1jmb3")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.889891
 
 [node name="DegradeTickTimer" type="Timer" parent="."]
 
@@ -127,8 +374,25 @@ frame_progress = 0.889891
 collision_layer = 0
 collision_mask = 66
 
+[node name="Pulse" type="Sprite2D" parent="SingingArea"]
+visible = false
+material = ExtResource("17_n08to")
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("GradientTexture2D_hypas")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SingingArea"]
 shape = SubResource("CircleShape2D_5w736")
+
+[node name="AuraAnimationPlayer" type="AnimationPlayer" parent="SingingArea"]
+libraries = {
+"": SubResource("AnimationLibrary_2vt56")
+}
+autoplay = "RESET"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_08nke")
+}
 
 [connection signal="timeout" from="DegradeTickTimer" to="." method="_on_degrade_tick_timer_timeout"]
 [connection signal="body_entered" from="SingingArea" to="." method="_on_singing_area_body_entered"]

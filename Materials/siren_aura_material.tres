@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0mn2q2wqx0mm"]
+
+[ext_resource type="Shader" path="res://Materials/aura.gdshader" id="1_u6w7s"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_u6w7s")
+shader_parameter/aura_color = Color(1, 0, 0, 0.247059)
+shader_parameter/fade_distance_from_center = 0.85
+shader_parameter/center = Vector2(0.5, 0.5)

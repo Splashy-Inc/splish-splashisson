@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://c5m1tkp5iypmd" path="res://Custom Resources/Morale Modifiers/player_working_morale_modifier.tres" id="3_w7u3g"]
 [ext_resource type="Texture2D" uid="uid://d1fhwln4ofy68" path="res://Art/Splish/Pointing/SplishPointA.png" id="4_6u4r1"]
 [ext_resource type="Texture2D" uid="uid://gfa5b1feeydk" path="res://Art/Splish/Walking Down/SplishWalkDownB.png" id="4_bdiwf"]
-[ext_resource type="Material" uid="uid://dulmrh7p03sid" path="res://Materials/aura_material.tres" id="4_egy3f"]
+[ext_resource type="Material" uid="uid://dulmrh7p03sid" path="res://Materials/splish_aura_material.tres" id="4_egy3f"]
 [ext_resource type="Resource" uid="uid://bj15kx4oohkq5" path="res://Custom Resources/Morale Modifiers/attack_modifier.tres" id="4_r4x6o"]
 [ext_resource type="Texture2D" uid="uid://8nfrfdhrlxkh" path="res://Art/Splish/BailingWater/BailB.png" id="4_thdcp"]
 [ext_resource type="Texture2D" uid="uid://ctfeycxq11j6w" path="res://Art/Joystick/MobileButtons/splish.png" id="5_1w65s"]
@@ -68,12 +68,12 @@
 [ext_resource type="Animation" uid="uid://dxcv5mc54ru8r" path="res://feed.res" id="56_relih"]
 [ext_resource type="Animation" uid="uid://wbva10fflqup" path="res://worshipping.res" id="59_pd5ry"]
 
-[sub_resource type="Gradient" id="Gradient_qvjm0"]
+[sub_resource type="Gradient" id="Gradient_jvau3"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_a3ci6"]
-gradient = SubResource("Gradient_qvjm0")
+gradient = SubResource("Gradient_jvau3")
 width = 224
 height = 224
 
