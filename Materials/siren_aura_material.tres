@@ -5,6 +5,6 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_u6w7s")
-shader_parameter/aura_color = Color(1, 0, 0, 0.247059)
+shader_parameter/aura_color = Color(1, 0, 0, 0.392157)
 shader_parameter/fade_distance_from_center = 0.85
 shader_parameter/center = Vector2(0.5, 0.5)
