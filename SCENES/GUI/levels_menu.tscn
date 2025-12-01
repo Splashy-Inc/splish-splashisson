@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=53 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -34,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://ddqqdxe8s6daq" path="res://Custom Resources/Stages/stage_5_data.tres" id="25_8tikc"]
 [ext_resource type="Resource" uid="uid://bb034mnapr3eb" path="res://Custom Resources/Stages/stage_6_data.tres" id="27_cp4r3"]
 [ext_resource type="Resource" uid="uid://jo0v2yvpn654" path="res://Custom Resources/Stages/stage_7_data.tres" id="29_pser8"]
+[ext_resource type="Resource" uid="uid://by62v3qd7i5bf" path="res://Custom Resources/Stages/stage_8_data.tres" id="31_d8ror"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
 animations = [{
@@ -338,6 +339,13 @@ offset_right = 111.0
 offset_bottom = 117.0
 focus_mode = 2
 theme = ExtResource("6_8hnu0")
+stage_data = ExtResource("31_d8ror")
+
+[node name="MapPath" parent="Map/SquidCityButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
+material = SubResource("ShaderMaterial_joh2l")
+position = Vector2(-153, -2)
+points = PackedVector2Array(160, 41, 145, 38, 140, 29, 132, 27, 116, 26, 107, 33, 101, 40, 90, 45, 76, 51, 67, 47, 61, 44)
+connected_button = NodePath("..")
 
 [node name="SirensgillGroveButton" parent="Map" instance=ExtResource("10_omfh6")]
 offset_left = -84.0
