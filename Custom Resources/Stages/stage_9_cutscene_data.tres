@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_nx6xl"]
 [ext_resource type="AudioStream" uid="uid://djsabwgbhue80" path="res://Audio/assign_grunt.mp3" id="3_yfajd"]
 [ext_resource type="Texture2D" uid="uid://bx4xmpbupc8kg" path="res://Textures/splish_dialog_texture.tres" id="4_rqtdw"]
-[ext_resource type="AudioStream" uid="uid://cfey6tofoq4g0" path="res://Audio/Squid/squid_merchant_1.ogg" id="5_lj3qi"]
-[ext_resource type="AudioStream" uid="uid://orsg8iua3fj7" path="res://Audio/Squid/squid_merchant_2.ogg" id="6_p0nip"]
+[ext_resource type="AudioStream" uid="uid://dfvja6hsn3wb1" path="res://Audio/Starfish/starfish_merchant_1.ogg" id="5_sq0ob"]
+[ext_resource type="AudioStream" uid="uid://cuok5s546jglt" path="res://Audio/Starfish/starfish_merchant_2.ogg" id="6_dmn5i"]
 [ext_resource type="Texture2D" uid="uid://b7c4uv1oc6qgv" path="res://Art/Merchants/Starfish/StarfishA.png" id="7_4rb88"]
 [ext_resource type="Texture2D" uid="uid://hletvfju53kv" path="res://Art/Merchants/Starfish/StarfishB.png" id="8_5w7e5"]
 [ext_resource type="Texture2D" uid="uid://3mrpqhcp342c" path="res://Art/Merchants/Starfish/StarfishC.png" id="9_piho1"]
@@ -21,8 +21,8 @@ end_buttons = Array[PackedScene]([])
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t5w0g"]
 random_pitch = 1.05
 streams_count = 2
-stream_0/stream = ExtResource("5_lj3qi")
-stream_1/stream = ExtResource("6_p0nip")
+stream_0/stream = ExtResource("5_sq0ob")
+stream_1/stream = ExtResource("6_dmn5i")
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_bkatm"]
 frames = 4
