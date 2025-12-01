@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bnk12lgx53pet"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://bnk12lgx53pet"]
 
 [ext_resource type="Texture2D" uid="uid://8bo04rjobmxn" path="res://Art/GUI/levels_menu/squid_city_button_completed.png" id="1_a6txm"]
 [ext_resource type="Texture2D" uid="uid://77br8b56vvt4" path="res://Art/GUI/levels_menu/squid_city_button_disabled.png" id="2_qs0ua"]
@@ -44,6 +44,9 @@ atlas = SubResource("CompressedTexture2D_b51ao")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rqcs8"]
 texture = SubResource("AtlasTexture_wbfms")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fxyg"]
+texture = ExtResource("1_a6txm")
+
 [resource]
 Button/styles/completed = SubResource("StyleBoxTexture_bl8cq")
 Button/styles/disabled = SubResource("StyleBoxTexture_1qi1h")
@@ -51,3 +54,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_02abp")
 Button/styles/hover = SubResource("StyleBoxTexture_vo6h2")
 Button/styles/normal = SubResource("StyleBoxTexture_mb1t6")
 Button/styles/pressed = SubResource("StyleBoxTexture_rqcs8")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_4fxyg")
