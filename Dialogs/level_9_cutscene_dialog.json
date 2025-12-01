@@ -1,0 +1,24 @@
+{
+	"dialog_lines": [
+		{
+			"line": "I see you have enjoyed the city and are looking for your next adventure.", 
+			"speaker": 1,
+		},
+		{
+			"line": "I have a client who was a special guest singer at the city's opera house.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Because of her unique needs... We have been struggling to acquire transport for her travels back home.",
+			"speaker": 1,
+		},
+		{
+			"line": "Sailors tend to find her a bit distracting, to put it simply.",
+			"speaker": 1,
+		},
+		{
+			"line": "The compensation will be worth your time.",
+			"speaker": 1,
+		},
+	]
+}
