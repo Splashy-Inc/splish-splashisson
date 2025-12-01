@@ -1,0 +1,20 @@
+{
+	"dialog_lines": [
+		{
+			"line": "Splish Splashisson, I heard you got your start transporting food.", 
+			"speaker": 1,
+		},
+		{
+			"line": "There is a shrimp merchant speaking highly of you in the food shipment industry.", 
+			"speaker": 1,
+		},
+		{
+			"line": "I'm one lucky star that you came along. The Chieftain of Port Sharkdale has been pushy about his food delivery.",
+			"speaker": 1,
+		},
+		{
+			"line": "What do you say, a quick food delivery for old time's sake?",
+			"speaker": 1,
+		},
+	]
+}

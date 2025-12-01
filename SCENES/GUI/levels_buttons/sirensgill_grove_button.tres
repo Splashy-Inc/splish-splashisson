@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://cptjjmuaxu5sc"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://cptjjmuaxu5sc"]
 
 [ext_resource type="Texture2D" uid="uid://deat1ygxbbc0w" path="res://Art/GUI/levels_menu/sirensgill_grove_button_basic.png" id="1_c80rp"]
 [ext_resource type="Texture2D" uid="uid://ktiavn5u741b" path="res://Art/GUI/levels_menu/sirensgill_grove_button_completed.png" id="1_jhalg"]
@@ -47,6 +47,9 @@ atlas = ExtResource("4_uvoao")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m21mq"]
 texture = SubResource("AtlasTexture_p8s1y")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b4tmj"]
+texture = ExtResource("1_jhalg")
+
 [resource]
 Button/styles/completed = SubResource("StyleBoxTexture_flifa")
 Button/styles/disabled = SubResource("StyleBoxTexture_ys826")
@@ -54,3 +57,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_aqvyv")
 Button/styles/hover = SubResource("StyleBoxTexture_mum6d")
 Button/styles/normal = SubResource("StyleBoxTexture_u8vg7")
 Button/styles/pressed = SubResource("StyleBoxTexture_m21mq")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_b4tmj")
