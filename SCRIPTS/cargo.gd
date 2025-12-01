@@ -2,6 +2,8 @@ extends Task
 
 class_name Cargo
 
+signal threats_changed(threats: Array)
+
 enum Cargo_type {
 	NONE,
 	MEAT,
@@ -11,12 +13,13 @@ enum Cargo_type {
 	MEDICINE,
 	WEAPONS,
 	MEAD,
+	SIREN,
 }
 @onready var items: Node2D = $Items
 
 @export var cargo_item_scene: PackedScene
 
-@export var cargo_type: Cargo_type
+@export var cargo_data: CargoItemData
 var num_items = 10
 var item_health = 0
 var item_texture: Texture2D
@@ -30,8 +33,8 @@ func initialize(new_data: CargoItemData):
 	if not is_node_ready():
 		await ready
 	
-	cargo_type = new_data.type
-	if cargo_type == Cargo_type.LIVESTOCK:
+	cargo_data = new_data
+	if cargo_data.type == Cargo_type.LIVESTOCK or cargo_data.type == Cargo_type.SIREN:
 		collision_layer += 2 # Add to interactable collision layer
 	
 	num_items = new_data.number_items
@@ -48,7 +51,9 @@ func _spawn_cargo():
 		var spawn_radius = $StackArea/CollisionShape2D.shape.radius * global_scale.x
 		for i in num_items:
 			var spawn_point = _get_item_spawn_point(spawn_origin, spawn_radius)
-			var new_cargo = cargo_item_scene.instantiate() as CargoItem
+			if num_items == 1:
+				spawn_point = global_position
+			var new_cargo = Globals.generate_cargo_item(cargo_data.type)
 			new_cargo.initialize(self)
 			items.add_child(new_cargo)
 			new_cargo.died.connect(_cargo_item_died.bind(new_cargo))
@@ -71,11 +76,13 @@ func add_threat(body: Node2D):
 		return true
 	else:
 		threats.append(body)
+		threats_changed.emit(threats)
 		return true
 	return false
 	
 func remove_threat(body: Node2D):
 	threats.erase(body)
+	threats_changed.emit(threats)
 	return true
 
 func _on_threat_died(threat: Node2D):
@@ -84,6 +91,7 @@ func _on_threat_died(threat: Node2D):
 
 func _on_large_puddle_reached(puddle: Puddle):
 	threats.append(puddle)
+	threats_changed.emit(threats)
 
 func _on_large_puddle_reversed(puddle: Puddle):
 	remove_threat(puddle)
@@ -93,11 +101,27 @@ func get_self_polygon():
 
 func _on_damage_tick_timer_timeout() -> void:
 	if not level_complete:
-		if threats.is_empty():
-			if cargo_type != Cargo_type.LIVESTOCK:
-				repair_item()
-		else:
-			_update_condition(-threats.size())
+			match cargo_data.type:
+				Cargo_type.LIVESTOCK:
+					if threats.is_empty():
+						pass
+					else:
+						_update_condition(-threats.size())
+				Cargo_type.SIREN:
+					if threats.is_empty():
+						pass
+					else:
+						var num_threats := 0
+						for threat in threats:
+							if not threat is Crew:
+								num_threats += 1
+						_update_condition(-num_threats)
+				_:
+					if threats.is_empty():
+						repair_item()
+					else:
+						_update_condition(-threats.size())
+		
 
 func repair_item():
 	var item_to_repair := get_most_damaged_item()
@@ -111,14 +135,13 @@ func _update_condition(change: int):
 		return false
 	
 	if change > 0:
-		if item_to_update.health == item_to_update.max_health:
-			return false
-		if change > item_to_update.max_health - item_to_update.health:
-			change -= item_to_update.max_health - item_to_update.health
-			item_to_update.restore_health()
-			_update_condition(change)
-		else:
-			item_to_update.change_health(change)
+		if item_to_update.health != item_to_update.max_health:
+			if change > item_to_update.max_health - item_to_update.health:
+				change -= item_to_update.max_health - item_to_update.health
+				item_to_update.restore_health()
+				_update_condition(change)
+			else:
+				item_to_update.change_health(change)
 	elif change < 0:
 		if item_to_update.health == 0:
 			return false
@@ -129,10 +152,13 @@ func _update_condition(change: int):
 		else:
 			item_to_update.change_health(change)
 	
-	condition = get_total_items_health()
-	
-	CargoEvents.condition_updated.emit(condition, max_condition)
-	return true
+	var new_condition = get_total_items_health()
+	if condition != new_condition:
+		condition = new_condition
+		CargoEvents.condition_updated.emit(condition, max_condition)
+		return true
+	else:
+		return false
 
 func _on_hit(change: int, distributed: bool = false):
 	if distributed and change != 0 and not get_cargo_items().is_empty():
@@ -209,7 +235,7 @@ func clear():
 		item.queue_free()
 
 func is_targetable():
-	return cargo_type == Cargo_type.LIVESTOCK and condition > 0
+	return (cargo_data.type == Cargo_type.LIVESTOCK or cargo_data.type == Cargo_type.SIREN) and condition > 0
 
 # Override assignee and worker setters since we want multiple to be able to work on a cargo at a time
 func set_assignee(new_assignee: Worker) -> bool:
@@ -217,3 +243,12 @@ func set_assignee(new_assignee: Worker) -> bool:
 
 func set_worker(new_worker: Worker) -> bool:
 	return condition > 0
+
+func get_type() -> Cargo.Cargo_type:
+	return cargo_data.type
+
+func is_threatened():
+	return not threats.is_empty()
+
+func get_threats() -> Array:
+	return threats

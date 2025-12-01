@@ -128,9 +128,11 @@ func _acknowledge_state():
 
 func _cargoing_state():
 	if current_assignment is Cargo:
-		match current_assignment.cargo_type:
+		match current_assignment.cargo_data.type:
 			Cargo.Cargo_type.LIVESTOCK:
 				$AnimationPlayer.play("feed")
+			Cargo.Cargo_type.SIREN:
+				$AnimationPlayer.play("worshipping")
 
 func _rowing_state():
 	$AnimationPlayer.play("idle_down")
@@ -152,11 +154,13 @@ func _distract_state():
 		if current_assignment.condition <= 0:
 			set_assignment(null)
 		else:
-			match current_assignment.cargo_type:
+			match current_assignment.get_type():
 				Cargo.Cargo_type.MEAT:
 					$AnimationPlayer.play("eating")
 				Cargo.Cargo_type.MEAD:
 					$AnimationPlayer.play("drinking")
+				Cargo.Cargo_type.SIREN:
+					$AnimationPlayer.play("worshipping")
 
 func _attack_state():
 	if is_instance_valid(current_assignment):

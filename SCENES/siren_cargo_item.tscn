@@ -1,0 +1,493 @@
+[gd_scene load_steps=45 format=3 uid="uid://w2v3oyq34t2y"]
+
+[ext_resource type="Script" path="res://SCRIPTS/siren_cargo_item.gd" id="1_kkf4j"]
+[ext_resource type="Texture2D" uid="uid://co3lm60ul2ga3" path="res://Art/Cargo/Siren/siren_idle/siren_idle_A.png" id="2_cdyxv"]
+[ext_resource type="Resource" uid="uid://bnpmu008307s4" path="res://Custom Resources/Cargo/placeholder_cargo_item_data.tres" id="2_ip8fl"]
+[ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="2_mbp6i"]
+[ext_resource type="Texture2D" uid="uid://lt51tmt4a7do" path="res://Art/Cargo/Siren/siren_idle/siren_idle_B.png" id="3_aif0v"]
+[ext_resource type="Texture2D" uid="uid://dno06k1docciy" path="res://Art/Cargo/Siren/siren_idle/siren_idle_C.png" id="4_5vi37"]
+[ext_resource type="Texture2D" uid="uid://da8qtgplrjbso" path="res://Art/Cargo/Siren/siren_idle/siren_idle_D.png" id="5_087o3"]
+[ext_resource type="Texture2D" uid="uid://bfstgelb5jgrd" path="res://Art/Cargo/Siren/siren_scream/siren_scream_A.png" id="6_fec5e"]
+[ext_resource type="Texture2D" uid="uid://di2t63cte7o78" path="res://Art/Cargo/Siren/siren_scream/siren_scream_B.png" id="7_v778r"]
+[ext_resource type="Texture2D" uid="uid://buu76e7hb4ynk" path="res://Art/Cargo/Siren/siren_scream/siren_scream_C.png" id="8_p1rux"]
+[ext_resource type="Texture2D" uid="uid://cekxn5q7b2cm0" path="res://Art/Cargo/Siren/siren_scream/siren_scream_E.png" id="9_cbk4e"]
+[ext_resource type="Texture2D" uid="uid://bra02efymu6a1" path="res://Art/Cargo/Siren/siren_scream/siren_scream_F.png" id="10_qc0ga"]
+[ext_resource type="Texture2D" uid="uid://dcqvd2ppxm12i" path="res://Art/Cargo/Siren/siren_sing/siren_sing_A.png" id="11_m80dx"]
+[ext_resource type="Texture2D" uid="uid://dm4tpsm2tt4m3" path="res://Art/Cargo/Siren/siren_sing/siren_sing_B.png" id="12_a6kct"]
+[ext_resource type="Texture2D" uid="uid://cgs8tajhh1bka" path="res://Art/Cargo/Siren/siren_sing/siren_sing_C.png" id="13_c7rls"]
+[ext_resource type="Texture2D" uid="uid://dlahuslhaw6ip" path="res://Art/Cargo/Siren/siren_sing/siren_sing_D.png" id="14_5dvbq"]
+[ext_resource type="Material" uid="uid://0mn2q2wqx0mm" path="res://Materials/siren_aura_material.tres" id="17_n08to"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="18_h2y32"]
+[ext_resource type="AudioStream" uid="uid://bsifjdivyi41c" path="res://Audio/Siren/siren_singing_1.ogg" id="19_amvb4"]
+[ext_resource type="AudioStream" uid="uid://chkr584jpv7id" path="res://Audio/Siren/siren_singing_2.ogg" id="20_i7c86"]
+[ext_resource type="AudioStream" uid="uid://5d0otj1hi1y6" path="res://Audio/Siren/siren_singing_3.ogg" id="21_r0abv"]
+[ext_resource type="AudioStream" uid="uid://c1kiclh7gna8b" path="res://Audio/Siren/siren_singing_4.ogg" id="22_jxo6g"]
+[ext_resource type="AudioStream" uid="uid://dkpbnt21571fp" path="res://Audio/Siren/siren_singing_5.ogg" id="23_c2xr6"]
+[ext_resource type="AudioStream" uid="uid://cakjaitkxpcih" path="res://Audio/Siren/siren_singing_6.ogg" id="24_1qhtk"]
+[ext_resource type="AudioStream" uid="uid://c7g5f2is0xq46" path="res://Audio/Siren/siren_singing_7.ogg" id="25_86jnl"]
+[ext_resource type="AudioStream" uid="uid://cf8w1xkxs6uim" path="res://Audio/Siren/siren_singing_8.ogg" id="26_hsbxi"]
+[ext_resource type="AudioStream" uid="uid://dmhbyoelylrt1" path="res://Audio/Siren/siren_screaming_mixed.ogg" id="27_ag7gb"]
+
+[sub_resource type="Resource" id="Resource_stli7"]
+script = ExtResource("2_mbp6i")
+name = "Siren Screaming"
+rate = -0.1
+
+[sub_resource type="Resource" id="Resource_paqlv"]
+script = ExtResource("2_mbp6i")
+name = "Siren Singing"
+rate = -0.05
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jmb3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cdyxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aif0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5vi37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_087o3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fec5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v778r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p1rux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cbk4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qc0ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cbk4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qc0ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cbk4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qc0ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cbk4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qc0ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p1rux")
+}],
+"loop": true,
+"name": &"scream",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_m80dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_a6kct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c7rls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5dvbq")
+}],
+"loop": true,
+"name": &"sing",
+"speed": 4.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_2qmps"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hypas"]
+gradient = SubResource("Gradient_2qmps")
+width = 196
+height = 196
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5w736"]
+radius = 98.0
+
+[sub_resource type="Animation" id="Animation_h4mcy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pulse:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pulse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jh50j"]
+resource_name = "pulse"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pulse:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(10, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pulse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xjmvq"]
+resource_name = "pulse_reverse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pulse:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pulse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vt56"]
+_data = {
+"RESET": SubResource("Animation_h4mcy"),
+"pulse": SubResource("Animation_jh50j"),
+"pulse_reverse": SubResource("Animation_xjmvq")
+}
+
+[sub_resource type="Animation" id="Animation_kmcr4"]
+length = 1.00003
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"RESET", &"RESET"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lrmy7"]
+resource_name = "idle"
+length = 2.00005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"RESET"]
+}
+
+[sub_resource type="Animation" id="Animation_afdtj"]
+resource_name = "scream"
+length = 3.00003
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"scream"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"pulse"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Scream"],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFXManager/Sing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dyqy2"]
+resource_name = "sing"
+length = 2.00003
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SingingArea/AuraAnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"pulse_reverse"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Sing"],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08nke"]
+_data = {
+"RESET": SubResource("Animation_kmcr4"),
+"idle": SubResource("Animation_lrmy7"),
+"scream": SubResource("Animation_afdtj"),
+"sing": SubResource("Animation_dyqy2")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_20x3l"]
+streams_count = 8
+stream_0/stream = ExtResource("19_amvb4")
+stream_1/stream = ExtResource("20_i7c86")
+stream_2/stream = ExtResource("21_r0abv")
+stream_3/stream = ExtResource("22_jxo6g")
+stream_4/stream = ExtResource("23_c2xr6")
+stream_5/stream = ExtResource("24_1qhtk")
+stream_6/stream = ExtResource("25_86jnl")
+stream_7/stream = ExtResource("26_hsbxi")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vyfhc"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("27_ag7gb")
+
+[node name="Siren" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_kkf4j")
+screaming_morale_modifier = SubResource("Resource_stli7")
+singing_morale_modifier = SubResource("Resource_paqlv")
+cur_data = ExtResource("2_ip8fl")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1jmb3")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="DegradeTickTimer" type="Timer" parent="."]
+
+[node name="SingingArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 66
+
+[node name="Pulse" type="Sprite2D" parent="SingingArea"]
+visible = false
+material = ExtResource("17_n08to")
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("GradientTexture2D_hypas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SingingArea"]
+shape = SubResource("CircleShape2D_5w736")
+
+[node name="AuraAnimationPlayer" type="AnimationPlayer" parent="SingingArea"]
+libraries = {
+"": SubResource("AnimationLibrary_2vt56")
+}
+autoplay = "RESET"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_08nke")
+}
+
+[node name="SFXManager" parent="." instance=ExtResource("18_h2y32")]
+
+[node name="Sing" type="AudioStreamPlayer" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_20x3l")
+volume_db = 4.0
+
+[node name="Scream" type="AudioStreamPlayer" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_vyfhc")
+volume_db = -5.0
+
+[connection signal="timeout" from="DegradeTickTimer" to="." method="_on_degrade_tick_timer_timeout"]
+[connection signal="body_entered" from="SingingArea" to="." method="_on_singing_area_body_entered"]
+[connection signal="body_exited" from="SingingArea" to="." method="_on_singing_area_body_exited"]

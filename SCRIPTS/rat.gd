@@ -24,7 +24,7 @@ func _on_cargo_steal_timer_timeout() -> void:
 	if target is Cargo:
 		var new_loot
 		
-		match target.cargo_type:
+		match target.get_type():
 			Cargo.Cargo_type.LIVESTOCK:
 				new_loot = null
 				if target.get_item():

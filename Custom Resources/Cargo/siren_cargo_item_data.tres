@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CargoItemData" load_steps=4 format=3 uid="uid://bo7xcba1ulitw"]
+
+[ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="2_mh6ol"]
+[ext_resource type="Texture2D" uid="uid://co3lm60ul2ga3" path="res://Art/Cargo/Siren/siren_idle/siren_idle_A.png" id="2_qbwh6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcesb"]
+atlas = ExtResource("2_qbwh6")
+region = Rect2(1, 9, 32, 56)
+
+[resource]
+script = ExtResource("2_mh6ol")
+type = 8
+health = 200
+number_items = 1
+texture = SubResource("AtlasTexture_wcesb")
+is_distraction = true

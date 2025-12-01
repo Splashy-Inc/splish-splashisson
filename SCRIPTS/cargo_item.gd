@@ -5,11 +5,10 @@ class_name CargoItem
 signal died
 signal health_changed(new_health: int)
 
-@export var cargo_types: Array[CargoItemData]
 @export var cur_data: CargoItemData
 
 @onready var degrade_tick_timer: Timer = $DegradeTickTimer
-@onready var sprite: Sprite2D = $Sprite2D
+@export var sprite: Node2D
 
 var type: Cargo.Cargo_type
 
@@ -26,12 +25,14 @@ func _process(delta: float) -> void:
 	pass
 
 func initialize(cargo: Cargo):
+	if is_instance_valid(host_cargo) and host_cargo.is_connected("threats_changed", _on_host_threats_changed):
+		host_cargo.disconnect("threats_changed", _on_host_threats_changed)
 	host_cargo = cargo
+	host_cargo.connect("threats_changed", _on_host_threats_changed)
 	if not is_node_ready():
 		await ready
-	for cargo_type_data in cargo_types:
-		if cargo_type_data.type == host_cargo.cargo_type:
-			cur_data = cargo_type_data
+	
+	cur_data = host_cargo.cargo_data
 	
 	max_health = cur_data.health
 	health = cur_data.health
@@ -39,11 +40,9 @@ func initialize(cargo: Cargo):
 	if cur_data.is_distraction:
 		add_to_group("distraction")
 	
-	sprite.texture = cur_data.texture.duplicate()
-	if sprite.texture is AnimatedTexture:
-		sprite.texture.speed_scale = randf_range(.25, 2)
+	set_sprite_texture(cur_data.texture.duplicate())
 	
-	if cur_data.type == Cargo.Cargo_type.LIVESTOCK:
+	if cur_data.type == Cargo.Cargo_type.LIVESTOCK or cur_data.type == Cargo.Cargo_type.SIREN:
 		degrade_tick_timer.start()
 	else:
 		degrade_tick_timer.stop()
@@ -89,3 +88,11 @@ func restore_health():
 
 func _on_degrade_tick_timer_timeout() -> void:
 	change_health(-1)
+
+func set_sprite_texture(new_texture):
+	sprite.texture = new_texture
+	if sprite.texture is AnimatedTexture:
+		sprite.texture.speed_scale = randf_range(.25, 2)
+
+func _on_host_threats_changed(threats: Array):
+	pass
