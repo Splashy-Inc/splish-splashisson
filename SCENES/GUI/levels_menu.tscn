@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=56 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -186,6 +186,13 @@ shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
 shader_parameter/line_thickness = 1.0
 shader_parameter/on = false
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wj08l"]
+resource_local_to_scene = true
+shader = ExtResource("13_tjmr1")
+shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/on = false
+
 [node name="LevelsMenu" type="Control" node_paths=PackedStringArray("map", "tutorial_button", "tutorial_button_animation_player")]
 layout_mode = 3
 anchors_preset = 0
@@ -365,7 +372,7 @@ theme = ExtResource("8_vhicd")
 stage_data = ExtResource("33_4jirp")
 
 [node name="MapPath" parent="Map/SirensgillGroveButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
-material = SubResource("ShaderMaterial_sddjc")
+material = SubResource("ShaderMaterial_wj08l")
 position = Vector2(-11, 0)
 points = PackedVector2Array(46, 43, 48, 59, 58, 66, 70, 67, 87, 67, 108, 67, 125, 67, 137, 69, 152, 74, 166, 83, 183, 86, 201, 86, 228, 85, 258, 84, 285, 78, 305, 62, 317, 50, 317, 38, 311, 28, 307, 22, 297, 14, 289, 6)
 connected_button = NodePath("..")

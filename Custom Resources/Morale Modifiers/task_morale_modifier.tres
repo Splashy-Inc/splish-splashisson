@@ -5,5 +5,5 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_t77uf")
-name = "Rowing"
-rate = -0.05
+name = "Task"
+rate = -0.02

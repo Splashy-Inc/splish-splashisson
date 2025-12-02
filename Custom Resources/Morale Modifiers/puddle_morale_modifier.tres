@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_vef8w")
 name = "Puddle"
-rate = -0.1
+rate = -0.02
