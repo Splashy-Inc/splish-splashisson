@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SaveData" load_steps=13 format=3 uid="uid://d3xi3wyu4of20"]
+[gd_resource type="Resource" script_class="SaveData" load_steps=14 format=3 uid="uid://d3xi3wyu4of20"]
 
 [ext_resource type="Script" path="res://Custom Resources/SaveData/save_data.gd" id="1_tkxhy"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="2_k6kbl"]
@@ -12,8 +12,9 @@
 [ext_resource type="Resource" uid="uid://jo0v2yvpn654" path="res://Custom Resources/Stages/stage_7_data.tres" id="10_841gg"]
 [ext_resource type="Resource" uid="uid://by62v3qd7i5bf" path="res://Custom Resources/Stages/stage_8_data.tres" id="11_c84cx"]
 [ext_resource type="Resource" uid="uid://dq780da12m0vl" path="res://Custom Resources/Stages/stage_9_data.tres" id="12_nei7w"]
+[ext_resource type="Resource" uid="uid://dyt7qu6b0b6x2" path="res://Custom Resources/Stages/stage_10_data.tres" id="13_ahj1i"]
 
 [resource]
 script = ExtResource("1_tkxhy")
-stages = Array[ExtResource("2_k6kbl")]([ExtResource("3_o45dy"), ExtResource("4_cwjol"), ExtResource("5_n6vkf"), ExtResource("6_f52ms"), ExtResource("7_kb7ty"), ExtResource("8_exck0"), ExtResource("9_lvqo3"), ExtResource("10_841gg"), ExtResource("11_c84cx"), ExtResource("12_nei7w")])
+stages = Array[ExtResource("2_k6kbl")]([ExtResource("3_o45dy"), ExtResource("4_cwjol"), ExtResource("5_n6vkf"), ExtResource("6_f52ms"), ExtResource("7_kb7ty"), ExtResource("8_exck0"), ExtResource("9_lvqo3"), ExtResource("10_841gg"), ExtResource("11_c84cx"), ExtResource("12_nei7w"), ExtResource("13_ahj1i")])
 game_mode = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=57 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -36,6 +36,7 @@
 [ext_resource type="Resource" uid="uid://jo0v2yvpn654" path="res://Custom Resources/Stages/stage_7_data.tres" id="29_pser8"]
 [ext_resource type="Resource" uid="uid://by62v3qd7i5bf" path="res://Custom Resources/Stages/stage_8_data.tres" id="31_d8ror"]
 [ext_resource type="Resource" uid="uid://dq780da12m0vl" path="res://Custom Resources/Stages/stage_9_data.tres" id="33_4jirp"]
+[ext_resource type="Resource" uid="uid://dyt7qu6b0b6x2" path="res://Custom Resources/Stages/stage_10_data.tres" id="35_fjj7v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
 animations = [{
@@ -244,7 +245,7 @@ stage_data = ExtResource("11_x1mxj")
 
 [node name="MapPath" parent="Map/FinburyButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
 material = SubResource("ShaderMaterial_f8arx")
-points = PackedVector2Array(23, 38, 50, 57, 62, 59, 92, 60, 117, 59, 139, 52, 156, 42, 169, 26, 187, 14, 213, 8, 231, 11, 244, 22, 256, 41)
+points = PackedVector2Array(22, 35, 35, 56, 64, 64, 93, 62, 117, 59, 139, 52, 156, 42, 169, 26, 187, 14, 213, 8, 231, 11, 244, 22, 256, 41)
 connected_button = NodePath("..")
 
 [node name="ShrimpsburgButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -374,7 +375,7 @@ stage_data = ExtResource("33_4jirp")
 [node name="MapPath" parent="Map/SirensgillGroveButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
 material = SubResource("ShaderMaterial_wj08l")
 position = Vector2(-11, 0)
-points = PackedVector2Array(46, 43, 48, 59, 58, 66, 70, 67, 87, 67, 108, 67, 125, 67, 137, 69, 152, 74, 166, 83, 183, 86, 201, 86, 228, 85, 258, 84, 285, 78, 305, 62, 317, 50, 317, 38, 311, 28, 307, 22, 297, 14, 289, 6)
+points = PackedVector2Array(46, 43, 48, 59, 58, 66, 70, 67, 87, 67, 108, 67, 125, 67, 137, 69, 152, 74, 166, 83, 183, 86, 201, 86, 228, 85, 258, 84, 285, 78, 305, 62, 317, 50, 317, 38, 311, 28, 307, 22, 297, 14, 293, 7)
 connected_button = NodePath("..")
 
 [node name="PortSharkdaleButton" parent="Map" instance=ExtResource("10_omfh6")]
@@ -384,6 +385,13 @@ offset_right = 224.0
 offset_bottom = 76.0
 focus_mode = 2
 theme = ExtResource("5_nuxhv")
+stage_data = ExtResource("35_fjj7v")
+
+[node name="MapPath" parent="Map/PortSharkdaleButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
+material = SubResource("ShaderMaterial_wj08l")
+position = Vector2(-242, 40)
+points = PackedVector2Array(298, 2, 319, 6, 333, 5, 353, 0, 369, -12, 372, -36, 370, -74, 365, -92, 354, -113, 337, -136, 322, -163, 317, -178, 301, -197, 271, -205, 240, -199, 212, -186, 183, -168, 154, -145, 137, -135, 98, -130, 74, -131, 55, -141)
+connected_button = NodePath("..")
 
 [node name="LevelSelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_3c0qp")

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
+[ext_resource type="Resource" uid="uid://dyt7qu6b0b6x2" path="res://Custom Resources/Stages/stage_10_data.tres" id="2_61wxk"]
 [ext_resource type="PackedScene" uid="uid://dv0x4vv0fkbd2" path="res://SCENES/Ocean/ocean.tscn" id="2_cmo3h"]
 [ext_resource type="Script" path="res://SCRIPTS/game_camera.gd" id="2_gusxx"]
-[ext_resource type="Resource" uid="uid://dq780da12m0vl" path="res://Custom Resources/Stages/stage_9_data.tres" id="2_mdtqo"]
 [ext_resource type="PackedScene" uid="uid://ptto4146phwg" path="res://SCENES/boat.tscn" id="2_twya3"]
 [ext_resource type="PackedScene" uid="uid://co8iy1he6fkwa" path="res://SCENES/GUI/level_ui.tscn" id="3_75gk2"]
 [ext_resource type="PackedScene" uid="uid://he2ienxfwna8" path="res://SCENES/seagull.tscn" id="6_2x7mh"]
@@ -29,7 +29,7 @@ point_count = 2
 
 [node name="Playground" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat") groups=["level"]]
 script = ExtResource("1_bs7od")
-stage_data = ExtResource("2_mdtqo")
+stage_data = ExtResource("2_61wxk")
 dock_scene = ExtResource("8_teo1b")
 pirate_ship_scene = ExtResource("11_nglpg")
 num_pirate_ships = 11

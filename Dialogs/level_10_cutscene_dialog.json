@@ -1,0 +1,32 @@
+{
+	"dialog_lines": [
+		{
+			"line": "Well isn't it my good friend Splish! I hear you have carved out a name for yourself in our little isles.", 
+			"speaker": 1,
+		},
+		{
+			"line": "Have the boys been bothering you? I'll give them a talking to and they shouldn’t bother you anymore.", 
+			"speaker": 1,
+		},
+		{
+			"line": "When was the last time you visited home, Finbury? I have some valuables that I may have borrowed without permission.",
+			"speaker": 1,
+		},
+		{
+			"line": "I need a place to store them, for safe keeping, so would you help a friend out?",
+			"speaker": 1,
+		},
+		{
+			"line": "Oh, do you remember when we were little tikes and my family forgot my birthday?",
+			"speaker": 1,
+		},
+		{
+			"line": "But you remembered. You bright me that pie. I never did thank you.",
+			"speaker": 1,
+		},
+		{
+			"line": "Where did you get it from anyway? Oh it doesn’t matter. Blueberry is my favorite.",
+			"speaker": 1,
+		},
+	]
+}
