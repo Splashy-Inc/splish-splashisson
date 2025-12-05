@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=18 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
@@ -26,6 +26,12 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, -300, 0, 0, 0, 0, 640, -300)
 }
 point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_flnhg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 110, -560, 0, 0, 0, 0, 530, -560, 0, 0, 0, 0, 530, 920, 0, 0, 0, 0, 110, 920, 0, 0, 0, 0, 110, -560)
+}
+point_count = 5
 
 [node name="Playground" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat") groups=["level"]]
 script = ExtResource("1_bs7od")
@@ -81,6 +87,9 @@ curve = SubResource("Curve2D_w3klh")
 
 [node name="SeagullSpawn" type="PathFollow2D" parent="SeagullSpawnPath"]
 position = Vector2(0, -300)
+
+[node name="SeaSerpentPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_flnhg")
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

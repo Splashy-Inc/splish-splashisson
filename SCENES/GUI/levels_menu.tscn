@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=58 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -188,6 +188,13 @@ shader_parameter/line_thickness = 1.0
 shader_parameter/on = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wj08l"]
+resource_local_to_scene = true
+shader = ExtResource("13_tjmr1")
+shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/on = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8f81v"]
 resource_local_to_scene = true
 shader = ExtResource("13_tjmr1")
 shader_parameter/line_color = Color(1, 0.741176, 0.196078, 1)
@@ -388,7 +395,7 @@ theme = ExtResource("5_nuxhv")
 stage_data = ExtResource("35_fjj7v")
 
 [node name="MapPath" parent="Map/PortSharkdaleButton" node_paths=PackedStringArray("connected_button") instance=ExtResource("12_dy3uq")]
-material = SubResource("ShaderMaterial_wj08l")
+material = SubResource("ShaderMaterial_8f81v")
 position = Vector2(-242, 40)
 points = PackedVector2Array(298, 2, 319, 6, 333, 5, 353, 0, 369, -12, 372, -36, 370, -74, 365, -92, 354, -113, 337, -136, 322, -163, 317, -178, 301, -197, 271, -205, 240, -199, 212, -186, 183, -168, 154, -145, 137, -135, 98, -130, 74, -131, 55, -141)
 connected_button = NodePath("..")
