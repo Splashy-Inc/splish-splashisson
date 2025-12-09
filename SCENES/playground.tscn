@@ -94,8 +94,8 @@ position = Vector2(0, -300)
 curve = SubResource("Curve2D_flnhg")
 
 [node name="SeaSerpentSpawn" type="PathFollow2D" parent="SeaSerpentPath"]
-position = Vector2(640, 210.225)
-progress = 1410.22
+position = Vector2(640, 203.441)
+progress = 1403.44
 rotates = false
 
 [node name="SeaSerpent" parent="SeaSerpentPath/SeaSerpentSpawn" instance=ExtResource("15_sl73s")]
