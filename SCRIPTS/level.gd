@@ -16,6 +16,8 @@ signal completed
 @export var seagull_spawn: PathFollow2D
 @export var seagull_spawn_interval := 0
 
+@export var serpent_spawn: PathFollow2D
+
 @export var player: Player
 
 @export var dialog_box: DialogBox

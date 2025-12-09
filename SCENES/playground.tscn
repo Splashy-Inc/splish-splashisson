@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=19 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://c65k18o4x66kk" path="res://Custom Resources/Cargo/valuables_cargo_item_data.tres" id="8_v1vfh"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
 [ext_resource type="PackedScene" uid="uid://cw7vojdifr8w6" path="res://SCENES/pirate_ship.tscn" id="11_nglpg"]
+[ext_resource type="PackedScene" uid="uid://cweprpfn71rah" path="res://SCENES/sea_serpent.tscn" id="15_sl73s"]
 
 [sub_resource type="Resource" id="Resource_8n2tg"]
 resource_local_to_scene = true
@@ -29,11 +30,11 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_flnhg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 110, -560, 0, 0, 0, 0, 530, -560, 0, 0, 0, 0, 530, 920, 0, 0, 0, 0, 110, 920, 0, 0, 0, 0, 110, -560)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -560, 0, 0, 0, 0, 640, -560, 0, 0, 0, 0, 640, 920, 0, 0, 0, 0, 0, 920, 0, 0, 0, 0, 0, -560)
 }
 point_count = 5
 
-[node name="Playground" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat") groups=["level"]]
+[node name="Playground" type="Node" node_paths=PackedStringArray("seagull_spawn", "serpent_spawn", "player", "weather", "boat") groups=["level"]]
 script = ExtResource("1_bs7od")
 stage_data = ExtResource("2_61wxk")
 dock_scene = ExtResource("8_teo1b")
@@ -41,6 +42,7 @@ pirate_ship_scene = ExtResource("11_nglpg")
 num_pirate_ships = 11
 seagull_scene = ExtResource("6_2x7mh")
 seagull_spawn = NodePath("SeagullSpawnPath/SeagullSpawn")
+serpent_spawn = NodePath("SeaSerpentPath/SeaSerpentSpawn")
 player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 120
@@ -90,6 +92,13 @@ position = Vector2(0, -300)
 
 [node name="SeaSerpentPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_flnhg")
+
+[node name="SeaSerpentSpawn" type="PathFollow2D" parent="SeaSerpentPath"]
+position = Vector2(640, 210.225)
+progress = 1410.22
+rotates = false
+
+[node name="SeaSerpent" parent="SeaSerpentPath/SeaSerpentSpawn" instance=ExtResource("15_sl73s")]
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
