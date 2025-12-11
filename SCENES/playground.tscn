@@ -89,8 +89,8 @@ position = Vector2(0, -300)
 curve = ExtResource("15_al0py")
 
 [node name="SeaSerpentSpawn" type="PathFollow2D" parent="SeaSerpentPath"]
-position = Vector2(640, -96.5595)
-progress = 1403.44
+position = Vector2(640, -843.26)
+progress = 656.607
 rotates = false
 
 [node name="SeaSerpent" parent="SeaSerpentPath/SeaSerpentSpawn" node_paths=PackedStringArray("path_follow_node", "target") instance=ExtResource("15_sl73s")]

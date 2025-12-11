@@ -1016,6 +1016,9 @@ states/chomp_right/position = Vector2(351, 190.104)
 transitions = ["Start", "chomp_left", SubResource("AnimationNodeStateMachineTransition_boqqf"), "Start", "chomp_right", SubResource("AnimationNodeStateMachineTransition_cu4aa"), "chomp_right", "End", SubResource("AnimationNodeStateMachineTransition_kmkwg"), "chomp_left", "End", SubResource("AnimationNodeStateMachineTransition_jjnwa")]
 graph_offset = Vector2(0, -73.8957)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_if32o"]
+animation = &"hidden"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f271g"]
 animation = &"idle_left"
 
@@ -1163,9 +1166,6 @@ states/swim_up/node = SubResource("AnimationNodeAnimation_8bd66")
 states/swim_up/position = Vector2(372, 34)
 transitions = ["Start", "swim_up", SubResource("AnimationNodeStateMachineTransition_ogeup"), "Start", "swim_down", SubResource("AnimationNodeStateMachineTransition_bjigo"), "swim_up", "End", SubResource("AnimationNodeStateMachineTransition_6kpfn"), "swim_down", "End", SubResource("AnimationNodeStateMachineTransition_ggnta"), "swim_up", "swim_down", SubResource("AnimationNodeStateMachineTransition_aucby"), "swim_down", "swim_up", SubResource("AnimationNodeStateMachineTransition_8iip5")]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_if32o"]
-animation = &"hidden"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lrfh8"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_svavo"]
@@ -1205,6 +1205,8 @@ advance_mode = 2
 states/Chomp/node = SubResource("AnimationNodeStateMachine_xb6r7")
 states/Chomp/position = Vector2(273, 20)
 states/End/position = Vector2(1179, 138)
+states/Hidden/node = SubResource("AnimationNodeAnimation_if32o")
+states/Hidden/position = Vector2(498, 275.582)
 states/Idle/node = SubResource("AnimationNodeStateMachine_lf0qs")
 states/Idle/position = Vector2(445, -51)
 states/Jump/node = SubResource("AnimationNodeStateMachine_nw1rg")
@@ -1216,10 +1218,8 @@ states/Sink/position = Vector2(750, 137)
 states/Start/position = Vector2(119, 138)
 states/Swim/node = SubResource("AnimationNodeStateMachine_ebgkf")
 states/Swim/position = Vector2(445, 87)
-states/hidden/node = SubResource("AnimationNodeAnimation_if32o")
-states/hidden/position = Vector2(498, 275.582)
-transitions = ["Rise", "Swim", SubResource("AnimationNodeStateMachineTransition_lrfh8"), "Swim", "Idle", SubResource("AnimationNodeStateMachineTransition_svavo"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mysdk"), "Rise", "Chomp", SubResource("AnimationNodeStateMachineTransition_vk87i"), "Chomp", "Idle", SubResource("AnimationNodeStateMachineTransition_3h52x"), "Idle", "Chomp", SubResource("AnimationNodeStateMachineTransition_yi0so"), "hidden", "Rise", SubResource("AnimationNodeStateMachineTransition_k3roe"), "Jump", "hidden", SubResource("AnimationNodeStateMachineTransition_shf16"), "Sink", "hidden", SubResource("AnimationNodeStateMachineTransition_3uchm"), "Idle", "Sink", SubResource("AnimationNodeStateMachineTransition_f70xx"), "Rise", "Idle", SubResource("AnimationNodeStateMachineTransition_fakgt"), "Start", "hidden", SubResource("AnimationNodeStateMachineTransition_dxr3x")]
-graph_offset = Vector2(0, -53.6721)
+transitions = ["Rise", "Swim", SubResource("AnimationNodeStateMachineTransition_lrfh8"), "Swim", "Idle", SubResource("AnimationNodeStateMachineTransition_svavo"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mysdk"), "Rise", "Chomp", SubResource("AnimationNodeStateMachineTransition_vk87i"), "Chomp", "Idle", SubResource("AnimationNodeStateMachineTransition_3h52x"), "Idle", "Chomp", SubResource("AnimationNodeStateMachineTransition_yi0so"), "Hidden", "Rise", SubResource("AnimationNodeStateMachineTransition_k3roe"), "Jump", "Hidden", SubResource("AnimationNodeStateMachineTransition_shf16"), "Sink", "Hidden", SubResource("AnimationNodeStateMachineTransition_3uchm"), "Idle", "Sink", SubResource("AnimationNodeStateMachineTransition_f70xx"), "Rise", "Idle", SubResource("AnimationNodeStateMachineTransition_fakgt"), "Start", "Hidden", SubResource("AnimationNodeStateMachineTransition_dxr3x")]
+graph_offset = Vector2(0, 88.2624)
 
 [node name="SeaSerpent" type="Node2D"]
 script = ExtResource("1_o5hrg")
