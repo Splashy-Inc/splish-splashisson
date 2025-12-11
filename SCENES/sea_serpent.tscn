@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://cweprpfn71rah"]
+[gd_scene load_steps=128 format=3 uid="uid://cweprpfn71rah"]
 
 [ext_resource type="Texture2D" uid="uid://dm1dcn64x1l0r" path="res://Art/Serpent/Chomp/SerpentChompA.png" id="1_4cd6t"]
 [ext_resource type="Script" path="res://SCRIPTS/sea_serpent.gd" id="1_o5hrg"]
@@ -1146,12 +1146,22 @@ advance_expression = "flip == false"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ggnta"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aucby"]
+switch_mode = 1
+advance_mode = 2
+advance_expression = "flip == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8iip5"]
+switch_mode = 1
+advance_mode = 2
+advance_expression = "flip == true"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ebgkf"]
 states/swim_down/node = SubResource("AnimationNodeAnimation_gshyr")
 states/swim_down/position = Vector2(372, 178)
 states/swim_up/node = SubResource("AnimationNodeAnimation_8bd66")
 states/swim_up/position = Vector2(372, 34)
-transitions = ["Start", "swim_up", SubResource("AnimationNodeStateMachineTransition_ogeup"), "Start", "swim_down", SubResource("AnimationNodeStateMachineTransition_bjigo"), "swim_up", "End", SubResource("AnimationNodeStateMachineTransition_6kpfn"), "swim_down", "End", SubResource("AnimationNodeStateMachineTransition_ggnta")]
+transitions = ["Start", "swim_up", SubResource("AnimationNodeStateMachineTransition_ogeup"), "Start", "swim_down", SubResource("AnimationNodeStateMachineTransition_bjigo"), "swim_up", "End", SubResource("AnimationNodeStateMachineTransition_6kpfn"), "swim_down", "End", SubResource("AnimationNodeStateMachineTransition_ggnta"), "swim_up", "swim_down", SubResource("AnimationNodeStateMachineTransition_aucby"), "swim_down", "swim_up", SubResource("AnimationNodeStateMachineTransition_8iip5")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_if32o"]
 animation = &"hidden"
@@ -1209,7 +1219,7 @@ states/Swim/position = Vector2(445, 87)
 states/hidden/node = SubResource("AnimationNodeAnimation_if32o")
 states/hidden/position = Vector2(498, 275.582)
 transitions = ["Rise", "Swim", SubResource("AnimationNodeStateMachineTransition_lrfh8"), "Swim", "Idle", SubResource("AnimationNodeStateMachineTransition_svavo"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mysdk"), "Rise", "Chomp", SubResource("AnimationNodeStateMachineTransition_vk87i"), "Chomp", "Idle", SubResource("AnimationNodeStateMachineTransition_3h52x"), "Idle", "Chomp", SubResource("AnimationNodeStateMachineTransition_yi0so"), "hidden", "Rise", SubResource("AnimationNodeStateMachineTransition_k3roe"), "Jump", "hidden", SubResource("AnimationNodeStateMachineTransition_shf16"), "Sink", "hidden", SubResource("AnimationNodeStateMachineTransition_3uchm"), "Idle", "Sink", SubResource("AnimationNodeStateMachineTransition_f70xx"), "Rise", "Idle", SubResource("AnimationNodeStateMachineTransition_fakgt"), "Start", "hidden", SubResource("AnimationNodeStateMachineTransition_dxr3x")]
-graph_offset = Vector2(0, -82.7868)
+graph_offset = Vector2(0, -53.6721)
 
 [node name="SeaSerpent" type="Node2D"]
 script = ExtResource("1_o5hrg")

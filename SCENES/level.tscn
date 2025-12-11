@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="9_i66pm"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="11_p3ae6"]
 [ext_resource type="PackedScene" uid="uid://cweprpfn71rah" path="res://SCENES/sea_serpent.tscn" id="16_7vlt0"]
+[ext_resource type="Curve2D" uid="uid://d0hxacofh3yss" path="res://serpent_path.tres" id="16_uyf8p"]
 
 [sub_resource type="Resource" id="Resource_yeen7"]
 resource_local_to_scene = true
@@ -28,12 +29,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, -300, 0, 0, 0, 0, 640, -300)
 }
 point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_jyure"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -560, 0, 0, 0, 0, 640, -560, 0, 0, 0, 0, 640, 920, 0, 0, 0, 0, 0, 920, 0, 0, 0, 0, 0, -560)
-}
-point_count = 5
 
 [node name="Level" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat") groups=["level"]]
 script = ExtResource("1_stx43")
@@ -95,14 +90,16 @@ curve = SubResource("Curve2D_54joc")
 position = Vector2(0, -300)
 
 [node name="SeaSerpentPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_jyure")
+curve = ExtResource("16_uyf8p")
 
 [node name="SeaSerpentSpawn" type="PathFollow2D" parent="SeaSerpentPath"]
-position = Vector2(640, 210.22)
+position = Vector2(640, -89.7795)
 progress = 1410.22
 rotates = false
 
-[node name="SeaSerpent" parent="SeaSerpentPath/SeaSerpentSpawn" instance=ExtResource("16_7vlt0")]
+[node name="SeaSerpent" parent="SeaSerpentPath/SeaSerpentSpawn" node_paths=PackedStringArray("path_follow_node", "target") instance=ExtResource("16_7vlt0")]
+path_follow_node = NodePath("..")
+target = NodePath("../../../People/Splish")
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
