@@ -149,13 +149,13 @@ func spawn_leak(spawn_point: Vector2 = Vector2.ZERO):
 	else:
 		return new_leak
 
-func spawn_puddle(spawn_point: Vector2 = Vector2.ZERO):
+func spawn_puddle(spawn_point: Vector2 = Vector2.ZERO, add_to_puddle: bool = false):
 	if spawn_point == Vector2.ZERO:
 		spawn_point = get_spawn_point()
 		while not is_point_in_boat(spawn_point):
 			spawn_point = get_spawn_point()
 	if is_point_in_boat(spawn_point):
-		return $PlayGrid.spawn_puddle(spawn_point)
+		return $PlayGrid.spawn_puddle(spawn_point, add_to_puddle)
 	return null
 
 func spawn_rat_hole(spawn_point: Vector2 = Vector2.ZERO) -> RatHole:

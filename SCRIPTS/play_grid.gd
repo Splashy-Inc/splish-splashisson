@@ -38,10 +38,10 @@ func spawn_leak(spawn_point: Vector2):
 			return new_leak
 	return null
 
-func spawn_puddle(spawn_point: Vector2) -> Puddle:
+func spawn_puddle(spawn_point: Vector2, add_to_puddle: bool = false) -> Puddle:
 	var new_puddle = Globals.generate_task(Globals.Task_type.PUDDLE) as Puddle
 	boat.add_obstacle(new_puddle)
-	return new_puddle.spawn(center_point_in_cell(spawn_point))
+	return new_puddle.spawn(center_point_in_cell(spawn_point), add_to_puddle)
 
 func spawn_rat_hole(spawn_point: Vector2) -> RatHole:
 	var new_rat_hole = Globals.generate_rat_hole() as RatHole

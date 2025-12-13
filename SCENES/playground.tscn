@@ -89,7 +89,7 @@ position = Vector2(0, -300)
 curve = ExtResource("15_al0py")
 
 [node name="SeaSerpentSpawn" type="PathFollow2D" parent="SeaSerpentPath"]
-position = Vector2(640, -843.26)
+position = Vector2(640, -843.261)
 progress = 656.607
 rotates = false
 

@@ -11,6 +11,7 @@ scenes/3/scene = ExtResource("1_5trjl")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_befmc"]
 resource_name = "CargoSlots"
 scenes/1/scene = ExtResource("2_dftv2")
+scenes/1/display_placeholder = ExtResource("2_dftv2")
 
 [sub_resource type="TileSet" id="TileSet_4jfd3"]
 tile_size = Vector2i(32, 32)

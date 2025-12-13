@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw0jbvn8xrnb4"]
+
+[ext_resource type="Script" path="res://SCRIPTS/serpent_wave.gd" id="1_8dfke"]
+[ext_resource type="PackedScene" uid="uid://piconrw3mcsj" path="res://SCENES/Ocean/big_wave.tscn" id="2_e7pu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk4xp"]
+size = Vector2(80, 80)
+
+[node name="SerpentWave" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_8dfke")
+
+[node name="Sprite" parent="." instance=ExtResource("2_e7pu3")]
+scale = Vector2(0.25, 0.25)
+frame_progress = 0.931702
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rk4xp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

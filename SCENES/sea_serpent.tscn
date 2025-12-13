@@ -1,7 +1,8 @@
-[gd_scene load_steps=128 format=3 uid="uid://cweprpfn71rah"]
+[gd_scene load_steps=129 format=3 uid="uid://cweprpfn71rah"]
 
 [ext_resource type="Texture2D" uid="uid://dm1dcn64x1l0r" path="res://Art/Serpent/Chomp/SerpentChompA.png" id="1_4cd6t"]
 [ext_resource type="Script" path="res://SCRIPTS/sea_serpent.gd" id="1_o5hrg"]
+[ext_resource type="PackedScene" uid="uid://cw0jbvn8xrnb4" path="res://SCENES/serpent_wave.tscn" id="2_q17g2"]
 [ext_resource type="Texture2D" uid="uid://d3t717lejdj77" path="res://Art/Serpent/Chomp/SerpentChompB.png" id="2_rkxyy"]
 [ext_resource type="Texture2D" uid="uid://db7gsaucya5hb" path="res://Art/Serpent/Chomp/SerpentChompC.png" id="3_7qsc0"]
 [ext_resource type="Texture2D" uid="uid://cuvehghbshl15" path="res://Art/Serpent/Chomp/SerpentChompD.png" id="4_bfbpb"]
@@ -1223,6 +1224,7 @@ graph_offset = Vector2(0, 88.2624)
 
 [node name="SeaSerpent" type="Node2D"]
 script = ExtResource("1_o5hrg")
+wave_scene = ExtResource("2_q17g2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)

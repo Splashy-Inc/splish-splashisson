@@ -128,7 +128,7 @@ func spread(amount: int, source: Puddle):
 					else:
 						neighbor["puddle"] = Globals.boat.spawn_puddle(neighbor["spawn_point"])
 
-func spawn(spawn_point: Vector2):
+func spawn(spawn_point: Vector2, add_to_puddle: bool = false):
 	var spawn_occupant = _spawn("puddle", spawn_point)
 	if spawn_occupant == self:
 		_update_neighbor_spawn_points()
@@ -147,7 +147,9 @@ func spawn(spawn_point: Vector2):
 				effect_check_occupant.add_threat(self)
 		spread(SPREAD_AMOUNT, self)
 		spawned.emit()
-		
+	elif add_to_puddle:
+		if spawn_occupant is Puddle:
+			spawn_occupant.increase_stage()
 	_update_neighbor_puddles()
 	
 	return spawn_occupant

@@ -6,6 +6,8 @@ extends Node2D
 
 @export var speed := 200
 
+@export var wave_scene : PackedScene
+
 @onready var animation_tree: AnimationTree = $AnimationPlayer/AnimationTree
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -16,6 +18,8 @@ enum Actions {
 }
 
 var current_action := Actions.SWIM
+
+var last_wave_spawn : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,4 +66,19 @@ func _process(delta: float) -> void:
 				if path_follow_node.progress_ratio > 0 and path_follow_node.progress_ratio < .05:
 					state_machine.travel("Hidden")
 					target = get_tree().get_nodes_in_group("rowing_task").pick_random()
+					return
+				
 				path_follow_node.progress += speed * delta
+				
+				spawn_wave(global_position)
+
+func spawn_wave(spawn_point: Vector2):
+	if abs(spawn_point.y - last_wave_spawn.y) >= 32:
+		var new_wave = wave_scene.instantiate() as SerpentWave
+		Globals.boat.add_child(new_wave)
+		if not flip:
+			new_wave.initialize(Vector2.LEFT, spawn_point)
+		else:
+			new_wave.initialize(Vector2.RIGHT, spawn_point)
+		new_wave.scale = Vector2.ONE
+		last_wave_spawn = spawn_point
