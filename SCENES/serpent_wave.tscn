@@ -1,10 +1,183 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw0jbvn8xrnb4"]
+[gd_scene load_steps=19 format=3 uid="uid://cw0jbvn8xrnb4"]
 
 [ext_resource type="Script" path="res://SCRIPTS/serpent_wave.gd" id="1_8dfke"]
 [ext_resource type="PackedScene" uid="uid://piconrw3mcsj" path="res://SCENES/Ocean/big_wave.tscn" id="2_e7pu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rk4xp"]
 size = Vector2(80, 80)
+
+[sub_resource type="Animation" id="Animation_2ileg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_alaci"]
+resource_name = "start"
+length = 1.16668
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_xfjl7"]
+resource_name = "crash"
+length = 0.500025
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_3w4bm"]
+resource_name = "crash"
+length = 0.500025
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [9, 10, 0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"crash"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mkk3"]
+_data = {
+"RESET": SubResource("Animation_2ileg"),
+"crash": SubResource("Animation_3w4bm"),
+"peak": SubResource("Animation_xfjl7"),
+"start": SubResource("Animation_alaci")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2272s"]
+animation = &"crash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_737ns"]
+animation = &"peak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jhluq"]
+animation = &"start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_agl3s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xklma"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_07mbp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_frywr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bebyt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vt5wa"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3qgjo"]
+states/crash/node = SubResource("AnimationNodeAnimation_2272s")
+states/crash/position = Vector2(587, 147)
+states/peak/node = SubResource("AnimationNodeAnimation_737ns")
+states/peak/position = Vector2(363, 147)
+states/start/node = SubResource("AnimationNodeAnimation_jhluq")
+states/start/position = Vector2(312, 21)
+transitions = ["Start", "start", SubResource("AnimationNodeStateMachineTransition_agl3s"), "start", "peak", SubResource("AnimationNodeStateMachineTransition_xklma"), "peak", "crash", SubResource("AnimationNodeStateMachineTransition_07mbp"), "crash", "End", SubResource("AnimationNodeStateMachineTransition_frywr"), "peak", "start", SubResource("AnimationNodeStateMachineTransition_bebyt"), "crash", "start", SubResource("AnimationNodeStateMachineTransition_vt5wa")]
+graph_offset = Vector2(0, -73.5574)
 
 [node name="SerpentWave" type="Area2D"]
 collision_layer = 0
@@ -13,9 +186,20 @@ script = ExtResource("1_8dfke")
 
 [node name="Sprite" parent="." instance=ExtResource("2_e7pu3")]
 scale = Vector2(0.25, 0.25)
-frame_progress = 0.931702
+frame_progress = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rk4xp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4mkk3")
+}
+autoplay = "start"
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_3qgjo")
+anim_player = NodePath("..")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

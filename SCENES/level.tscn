@@ -81,7 +81,6 @@ boat = NodePath("../Boat")
 [node name="Weather" parent="." instance=ExtResource("11_p3ae6")]
 
 [node name="LevelUI" parent="." instance=ExtResource("3_nmge5")]
-visible = false
 
 [node name="SeagullSpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_54joc")
