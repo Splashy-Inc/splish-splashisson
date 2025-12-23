@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="1_w1m8h"]
 [ext_resource type="Resource" uid="uid://c65k18o4x66kk" path="res://Custom Resources/Cargo/valuables_cargo_item_data.tres" id="2_aboqh"]
 [ext_resource type="Resource" uid="uid://it10h1dwbmn8" path="res://Custom Resources/Stages/stage_10_cutscene_data.tres" id="3_xsu8e"]
-[ext_resource type="Resource" uid="uid://cjge56v5wx0jr" path="res://Custom Resources/Stages/stage_10_level_data.tres" id="8_188r8"]
+[ext_resource type="Resource" path="res://Custom Resources/Stages/stage_10_level_data.tres" id="8_188r8"]
 [ext_resource type="Script" path="res://Custom Resources/Stages/stage_data.gd" id="9_73quv"]
 
 [resource]

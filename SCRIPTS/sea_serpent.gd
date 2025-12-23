@@ -82,3 +82,8 @@ func spawn_wave(spawn_point: Vector2):
 			new_wave.initialize(Vector2.RIGHT, spawn_point)
 		new_wave.scale = Vector2.ONE
 		last_wave_spawn = spawn_point
+
+func spawn_puddle_strip():
+	if is_instance_valid(Globals.boat):
+		for cell_center in Globals.boat.get_horizontal_cell_centers(global_position.y):
+			Globals.boat.spawn_puddle(cell_center, true)

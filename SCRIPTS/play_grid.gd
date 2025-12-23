@@ -54,8 +54,8 @@ func spawn_rat_hole(spawn_point: Vector2) -> RatHole:
 	return null
 
 # Point must be global, not local
-func center_point_in_cell(point: Vector2):
-	return to_global(map_to_local(local_to_map(to_local(point))))
+func center_point_in_cell(global_point: Vector2):
+	return to_global(map_to_local(local_to_map(to_local(global_point))))
 
 func _sort_slots(a: TaskSlot, b: TaskSlot):
 	if a.global_position.y == b.global_position.y: # Same row
@@ -64,3 +64,7 @@ func _sort_slots(a: TaskSlot, b: TaskSlot):
 	elif a.global_position.y < b.global_position.y: # A is below B, should be later in list
 		return true
 	return false
+
+func get_neighbor_cell_center(global_point: Vector2, neighbor: TileSet.CellNeighbor):
+	var cell_coords = local_to_map(to_local(global_point))
+	return to_global(map_to_local(get_neighbor_cell(cell_coords, neighbor)))
