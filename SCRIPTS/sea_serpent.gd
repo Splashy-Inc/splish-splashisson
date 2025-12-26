@@ -97,7 +97,8 @@ func start_chomp():
 
 func chomp_target():
 	if target is RowingTask:
-		target.set_worker(null)
+		if is_instance_valid(target.worker):
+			target.worker.set_assignment(null)
 
 func start_jump():
 	target = get_tree().get_nodes_in_group("rowing_task").pick_random()
