@@ -365,6 +365,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"chomp_target"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_07lrw"]
 resource_name = "chomp_right"
@@ -417,6 +431,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"chomp_target"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_vvwgx"]
@@ -602,9 +630,15 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.75, 4.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.75, 2.75, 3.75, 4.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"spawn_puddle_strip"
+}, {
+"args": [],
+"method": &"spawn_puddle_strip"
+}, {
 "args": [],
 "method": &"spawn_puddle_strip"
 }, {
@@ -672,9 +706,15 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.75, 4.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.75, 2.75, 3.75, 4.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"spawn_puddle_strip"
+}, {
+"args": [],
+"method": &"spawn_puddle_strip"
+}, {
 "args": [],
 "method": &"spawn_puddle_strip"
 }, {
@@ -1258,8 +1298,6 @@ graph_offset = Vector2(0, 88.2624)
 
 [node name="SeaSerpent" type="Node2D"]
 script = ExtResource("1_o5hrg")
-flip = null
-speed = null
 wave_scene = ExtResource("2_q17g2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

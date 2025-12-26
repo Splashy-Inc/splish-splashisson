@@ -87,3 +87,7 @@ func spawn_puddle_strip():
 	if is_instance_valid(Globals.boat):
 		for cell_center in Globals.boat.get_horizontal_cell_centers(global_position.y):
 			Globals.boat.spawn_puddle(cell_center, true)
+
+func chomp_target():
+	if target is RowingTask:
+		target.set_worker(null)
