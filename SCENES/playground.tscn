@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnfqgy4gm7wmu"]
+[gd_scene load_steps=18 format=3 uid="uid://dnfqgy4gm7wmu"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_bs7od"]
 [ext_resource type="PackedScene" uid="uid://je3j0pd8ickv" path="res://SCENES/splish.tscn" id="1_vcfar"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="10_66vyk"]
 [ext_resource type="PackedScene" uid="uid://cw7vojdifr8w6" path="res://SCENES/pirate_ship.tscn" id="11_nglpg"]
 [ext_resource type="Curve2D" uid="uid://d0hxacofh3yss" path="res://serpent_path.tres" id="15_al0py"]
-[ext_resource type="PackedScene" uid="uid://cweprpfn71rah" path="res://SCENES/sea_serpent.tscn" id="15_sl73s"]
 
 [sub_resource type="Resource" id="Resource_8n2tg"]
 resource_local_to_scene = true
@@ -92,10 +91,6 @@ curve = ExtResource("15_al0py")
 position = Vector2(640, -843.261)
 progress = 656.607
 rotates = false
-
-[node name="SeaSerpent" parent="SeaSerpentPath/SeaSerpentSpawn" node_paths=PackedStringArray("path_follow_node", "target") instance=ExtResource("15_sl73s")]
-path_follow_node = NodePath("..")
-target = NodePath("../../../People/Splish")
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]

@@ -17,5 +17,6 @@ class_name StageData
 @export var seagull_interval_seconds := 10
 @export var num_pirate_ships := 0
 @export var start_pirates := 1
+@export var has_serpent := false
 
 @export var level_stats := LevelStats.new()

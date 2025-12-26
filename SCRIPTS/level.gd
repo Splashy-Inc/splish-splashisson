@@ -118,6 +118,12 @@ func load_level():
 			seagull_spawn_timer.start(seagull_spawn_interval)
 		else:
 			seagull_spawn_timer.stop()
+	
+	for serpent in get_tree().get_nodes_in_group("sea_serpent"):
+		serpent.queue_free()
+	if stage_data.has_serpent and is_instance_valid(serpent_spawn):
+		var new_serpent := Globals.generate_sea_serpent()
+		new_serpent.initialize(serpent_spawn)
 
 func initialize(new_stage_data: StageData):
 	stage_data = new_stage_data

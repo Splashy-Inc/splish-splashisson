@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name SeaSerpent
+
 @export var path_follow_node : PathFollow2D
 @export var target : Node2D
 @export var flip := false
@@ -24,7 +26,6 @@ var last_wave_spawn : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine = animation_tree.get("parameters/playback")
-	state_machine.travel("Swim")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -54,6 +55,9 @@ func _process(delta: float) -> void:
 		"Sink":
 			pass
 		"Swim":
+			if target == null:
+				target = Globals.boat
+			
 			if path_follow_node:
 				if path_follow_node.progress_ratio > 0 and path_follow_node.progress_ratio < .05:
 					state_machine.travel("Hidden")
@@ -62,6 +66,11 @@ func _process(delta: float) -> void:
 				path_follow_node.progress += speed * delta
 				
 				spawn_wave(global_position)
+
+func initialize(new_path_follow_node: PathFollow2D):
+	path_follow_node = new_path_follow_node
+	path_follow_node.add_child(self)
+	start_swim()
 
 func spawn_wave(spawn_point: Vector2):
 	if abs(spawn_point.y - last_wave_spawn.y) >= 32:
