@@ -38,19 +38,11 @@ func _process(delta: float) -> void:
 			
 			match current_action:
 				Actions.SWIM:
-					if target is RowingTask and abs(global_position.y - target.global_position.y) < 4:
-						global_position.y = target.global_position.y + 24
-						state_machine.travel("Chomp")
-						current_action = Actions.CHOMP
+					start_chomp()
 				Actions.CHOMP:
-					if target is RowingTask and abs(global_position.y - target.global_position.y) < 4:
-						global_position.y = target.global_position.y + 24
-						state_machine.travel("Jump")
-						current_action = Actions.JUMP
+					start_jump()
 				Actions.JUMP:
-					path_follow_node.progress_ratio = .12
-					state_machine.travel("Swim")
-					current_action = Actions.SWIM
+					start_swim()
 		"Chomp":
 			pass
 		"Idle":
@@ -65,7 +57,6 @@ func _process(delta: float) -> void:
 			if path_follow_node:
 				if path_follow_node.progress_ratio > 0 and path_follow_node.progress_ratio < .05:
 					state_machine.travel("Hidden")
-					target = get_tree().get_nodes_in_group("rowing_task").pick_random()
 					return
 				
 				path_follow_node.progress += speed * delta
@@ -88,6 +79,29 @@ func spawn_puddle_strip():
 		for cell_center in Globals.boat.get_horizontal_cell_centers(global_position.y):
 			Globals.boat.spawn_puddle(cell_center, true)
 
+func start_swim():
+	path_follow_node.progress_ratio = .12
+	state_machine.travel("Swim")
+	current_action = Actions.SWIM
+
+func start_chomp():
+	target = get_tree().get_nodes_in_group("rowing_task").pick_random()
+	if target is RowingTask and abs(global_position.y - target.global_position.y) < 4:
+		if target.global_position.x > Globals.boat.global_position.x:
+			global_position.x = Globals.boat.global_position.x + 320
+		else:
+			global_position.x = Globals.boat.global_position.x - 320
+		global_position.y = target.global_position.y + 24
+		state_machine.travel("Chomp")
+		current_action = Actions.CHOMP
+
 func chomp_target():
 	if target is RowingTask:
 		target.set_worker(null)
+
+func start_jump():
+	target = get_tree().get_nodes_in_group("rowing_task").pick_random()
+	if target is RowingTask and abs(global_position.y - target.global_position.y) < 4:
+		global_position.y = target.global_position.y + 24
+		state_machine.travel("Jump")
+		current_action = Actions.JUMP
