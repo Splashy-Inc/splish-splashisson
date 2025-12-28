@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfsxn0iyywxs5"]
+[gd_scene load_steps=19 format=3 uid="uid://cfsxn0iyywxs5"]
 
 [ext_resource type="Script" path="res://SCRIPTS/level.gd" id="1_stx43"]
 [ext_resource type="Resource" uid="uid://dyt7qu6b0b6x2" path="res://Custom Resources/Stages/stage_10_data.tres" id="2_5y4d3"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="8_mfs7h"]
 [ext_resource type="Script" path="res://Custom Resources/Morale Modifiers/MoraleModifier.gd" id="9_i66pm"]
 [ext_resource type="PackedScene" uid="uid://cem0d6364g4aq" path="res://SCENES/weather.tscn" id="11_p3ae6"]
-[ext_resource type="PackedScene" uid="uid://cweprpfn71rah" path="res://SCENES/sea_serpent.tscn" id="16_7vlt0"]
 [ext_resource type="Curve2D" uid="uid://d0hxacofh3yss" path="res://serpent_path.tres" id="16_uyf8p"]
 
 [sub_resource type="Resource" id="Resource_yeen7"]
@@ -30,13 +29,14 @@ _data = {
 }
 point_count = 2
 
-[node name="Level" type="Node" node_paths=PackedStringArray("seagull_spawn", "player", "weather", "boat") groups=["level"]]
+[node name="Level" type="Node" node_paths=PackedStringArray("seagull_spawn", "serpent_spawn", "player", "weather", "boat") groups=["level"]]
 script = ExtResource("1_stx43")
 stage_data = ExtResource("2_5y4d3")
 dock_scene = ExtResource("8_b63j4")
 pirate_ship_scene = ExtResource("3_ax278")
 seagull_scene = ExtResource("4_kcig5")
 seagull_spawn = NodePath("SeagullSpawnPath/SeagullSpawn")
+serpent_spawn = NodePath("SeaSerpentPath/SeaSerpentSpawn")
 player = NodePath("People/Splish")
 weather = NodePath("Weather")
 minimum_seconds = 30
@@ -95,10 +95,6 @@ curve = ExtResource("16_uyf8p")
 position = Vector2(640, -89.7795)
 progress = 1410.22
 rotates = false
-
-[node name="SeaSerpent" parent="SeaSerpentPath/SeaSerpentSpawn" node_paths=PackedStringArray("path_follow_node", "target") instance=ExtResource("16_7vlt0")]
-path_follow_node = NodePath("..")
-target = NodePath("../../../People/Splish")
 
 [connection signal="set_up" from="Boat" to="." method="_on_boat_ready"]
 [connection signal="timeout" from="Obstacles/LeakSpawnTimer" to="." method="_on_leak_spawn_timer_timeout"]
