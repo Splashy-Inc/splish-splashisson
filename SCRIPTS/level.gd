@@ -45,6 +45,8 @@ var level_stats := LevelStats.new()
 @onready var remaining_pirate_ships := num_pirate_ships
 @onready var seagull_spawn_timer: Timer = $Obstacles/SeagullSpawnTimer
 
+var has_serpent := false
+var serpent : SeaSerpent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -74,6 +76,11 @@ func _process(delta: float) -> void:
 			_on_finished()
 		elif remaining_pirate_ships > 0 and progress >= (length/(num_pirate_ships+1))*(num_pirate_ships - (remaining_pirate_ships - 1)):
 			spawn_pirate_ship()
+		
+		if not is_instance_valid(serpent) and has_serpent and progress >= 1000:
+			spawn_serpent()
+		if is_instance_valid(serpent) and progress > length - 1000:
+			serpent.die()
 		Globals.update_level_progress_percent(clamp(progress/length, 0.0, 1.0))
 
 func _level_process(delta: float):
@@ -91,6 +98,7 @@ func load_stage_data(new_stage_data: StageData):
 	num_pirate_ships = new_stage_data.num_pirate_ships
 	remaining_pirate_ships = num_pirate_ships
 	start_pirates_per_ship = new_stage_data.start_pirates
+	has_serpent = new_stage_data.has_serpent
 	
 	load_level()
 
@@ -119,11 +127,7 @@ func load_level():
 		else:
 			seagull_spawn_timer.stop()
 	
-	for serpent in get_tree().get_nodes_in_group("sea_serpent"):
-		serpent.queue_free()
-	if stage_data.has_serpent and is_instance_valid(serpent_spawn):
-		var new_serpent := Globals.generate_sea_serpent()
-		new_serpent.initialize(serpent_spawn)
+	spawn_serpent()
 
 func initialize(new_stage_data: StageData):
 	stage_data = new_stage_data
@@ -209,6 +213,14 @@ func spawn_pirate_ship():
 	new_pirate_ship.initialize(boat, start_pirates_per_ship)
 	start_pirates_per_ship += 1
 	remaining_pirate_ships -= 1
+
+func spawn_serpent():
+	for node in get_tree().get_nodes_in_group("sea_serpent"):
+		if node is SeaSerpent:
+			node.queue_free()
+	if has_serpent and is_instance_valid(serpent_spawn):
+		serpent = Globals.generate_sea_serpent()
+		serpent.initialize(serpent_spawn)
 
 func spawn_seagull():
 	if is_instance_valid(seagull_spawn):

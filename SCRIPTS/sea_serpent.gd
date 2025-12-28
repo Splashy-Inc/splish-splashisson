@@ -17,6 +17,7 @@ enum Actions {
 	SWIM,
 	CHOMP,
 	JUMP,
+	DIE,
 }
 
 var current_action := Actions.SWIM
@@ -51,6 +52,9 @@ func _process(delta: float) -> void:
 						start_jump()
 				Actions.JUMP:
 					start_swim()
+				Actions.DIE:
+					if not state_machine.is_playing():
+						queue_free()
 		"Chomp":
 			pass
 		"Idle":
@@ -132,3 +136,7 @@ func start_jump():
 		global_position.y = target.global_position.y + 24
 		state_machine.travel("Jump")
 		current_action = Actions.JUMP
+
+func die():
+	state_machine.travel("Hidden")
+	current_action = Actions.DIE

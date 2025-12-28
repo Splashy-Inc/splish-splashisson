@@ -108,7 +108,7 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"hidden",
 "speed": 5.0
 }, {
@@ -1294,7 +1294,7 @@ states/Start/position = Vector2(119, 138)
 states/Swim/node = SubResource("AnimationNodeStateMachine_ebgkf")
 states/Swim/position = Vector2(445, 87)
 transitions = ["Rise", "Swim", SubResource("AnimationNodeStateMachineTransition_lrfh8"), "Swim", "Idle", SubResource("AnimationNodeStateMachineTransition_svavo"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mysdk"), "Rise", "Chomp", SubResource("AnimationNodeStateMachineTransition_vk87i"), "Chomp", "Idle", SubResource("AnimationNodeStateMachineTransition_3h52x"), "Idle", "Chomp", SubResource("AnimationNodeStateMachineTransition_yi0so"), "Hidden", "Rise", SubResource("AnimationNodeStateMachineTransition_k3roe"), "Jump", "Hidden", SubResource("AnimationNodeStateMachineTransition_shf16"), "Sink", "Hidden", SubResource("AnimationNodeStateMachineTransition_3uchm"), "Idle", "Sink", SubResource("AnimationNodeStateMachineTransition_f70xx"), "Rise", "Idle", SubResource("AnimationNodeStateMachineTransition_fakgt"), "Start", "Hidden", SubResource("AnimationNodeStateMachineTransition_dxr3x")]
-graph_offset = Vector2(0, 88.2624)
+graph_offset = Vector2(0, 51.869)
 
 [node name="SeaSerpent" type="Node2D" groups=["sea_serpent"]]
 script = ExtResource("1_o5hrg")
