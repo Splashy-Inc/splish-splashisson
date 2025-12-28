@@ -133,6 +133,10 @@ func chomp_target():
 func start_jump():
 	target = get_tree().get_nodes_in_group("rowing_task").pick_random()
 	if target is RowingTask:
+		if target.global_position.x > Globals.boat.global_position.x:
+			global_position.x = Globals.boat.global_position.x + 320
+		else:
+			global_position.x = Globals.boat.global_position.x - 320
 		global_position.y = target.global_position.y + 24
 		state_machine.travel("Jump")
 		current_action = Actions.JUMP

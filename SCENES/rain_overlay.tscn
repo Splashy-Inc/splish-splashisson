@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4dx6fvp7csvc"]
+
+[ext_resource type="Shader" path="res://SCENES/rain.gdshader" id="1_1ffce"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdyci"]
+shader = ExtResource("1_1ffce")
+shader_parameter/a = 89.3
+shader_parameter/b = 2.55
+shader_parameter/c = 69.9
+shader_parameter/d = 5.0
+shader_parameter/speed = 0.1
+shader_parameter/threshold = 0.9
+shader_parameter/rain_color = Color(1, 1, 1, 0.00784314)
+
+[sub_resource type="Gradient" id="Gradient_hubgg"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0.203922)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fxc34"]
+gradient = SubResource("Gradient_hubgg")
+width = 640
+height = 360
+
+[node name="RainOverlay" type="Sprite2D"]
+material = SubResource("ShaderMaterial_qdyci")
+texture = SubResource("GradientTexture2D_fxc34")
+centered = false
