@@ -23,6 +23,9 @@ var current_action := Actions.SWIM
 
 var last_wave_spawn : Vector2
 
+const CHOMPS_PER_ACTION = 3
+var remaining_chomps := CHOMPS_PER_ACTION
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine = animation_tree.get("parameters/playback")
@@ -39,9 +42,13 @@ func _process(delta: float) -> void:
 			
 			match current_action:
 				Actions.SWIM:
+					remaining_chomps = CHOMPS_PER_ACTION
 					start_chomp()
 				Actions.CHOMP:
-					start_jump()
+					if remaining_chomps > 0:
+						start_chomp()
+					else:
+						start_jump()
 				Actions.JUMP:
 					start_swim()
 		"Chomp":
@@ -95,15 +102,24 @@ func start_swim():
 	current_action = Actions.SWIM
 
 func start_chomp():
-	target = get_tree().get_nodes_in_group("rowing_task").pick_random()
-	if target is RowingTask and abs(global_position.y - target.global_position.y) < 4:
+	var valid_targets : Array[RowingTask]
+	for rowing_task in get_tree().get_nodes_in_group("rowing_task"):
+		if rowing_task is RowingTask and is_instance_valid(rowing_task.worker):
+			valid_targets.append(rowing_task)
+	
+	if valid_targets.is_empty():
+		remaining_chomps = 0
+	else:
+		remaining_chomps -= 1
+		target = valid_targets.pick_random()
 		if target.global_position.x > Globals.boat.global_position.x:
 			global_position.x = Globals.boat.global_position.x + 320
 		else:
 			global_position.x = Globals.boat.global_position.x - 320
 		global_position.y = target.global_position.y + 24
 		state_machine.travel("Chomp")
-		current_action = Actions.CHOMP
+	
+	current_action = Actions.CHOMP
 
 func chomp_target():
 	if target is RowingTask:
@@ -112,7 +128,7 @@ func chomp_target():
 
 func start_jump():
 	target = get_tree().get_nodes_in_group("rowing_task").pick_random()
-	if target is RowingTask and abs(global_position.y - target.global_position.y) < 4:
+	if target is RowingTask:
 		global_position.y = target.global_position.y + 24
 		state_machine.travel("Jump")
 		current_action = Actions.JUMP
