@@ -126,8 +126,6 @@ func load_level():
 			seagull_spawn_timer.start(seagull_spawn_interval)
 		else:
 			seagull_spawn_timer.stop()
-	
-	spawn_serpent()
 
 func initialize(new_stage_data: StageData):
 	stage_data = new_stage_data
