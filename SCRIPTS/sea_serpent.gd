@@ -89,6 +89,7 @@ func spawn_puddle_strip():
 			Globals.boat.spawn_puddle(cell_center, true)
 
 func start_swim():
+	position = Vector2.ZERO
 	path_follow_node.progress_ratio = .12
 	state_machine.travel("Swim")
 	current_action = Actions.SWIM
