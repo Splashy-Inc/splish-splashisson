@@ -1,7 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cw0jbvn8xrnb4"]
+[gd_scene load_steps=26 format=3 uid="uid://cw0jbvn8xrnb4"]
 
 [ext_resource type="Script" path="res://SCRIPTS/serpent_wave.gd" id="1_8dfke"]
 [ext_resource type="PackedScene" uid="uid://piconrw3mcsj" path="res://SCENES/Ocean/big_wave.tscn" id="2_e7pu3"]
+[ext_resource type="PackedScene" uid="uid://dbwv6ry1wdjpo" path="res://SCENES/sfx_manager.tscn" id="3_84q1i"]
+[ext_resource type="AudioStream" uid="uid://uac7k4tadqyl" path="res://Audio/Actions/Bailing/throwing_water.wav" id="4_w57l6"]
+[ext_resource type="AudioStream" uid="uid://qndvaeowcfaq" path="res://Audio/Leak/water_leak.ogg" id="5_ehm4s"]
+[ext_resource type="AudioStream" uid="uid://bw0dytcnoie43" path="res://Audio/Pirate/splash.ogg" id="5_i1fqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rk4xp"]
 size = Vector2(80, 80)
@@ -31,65 +35,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_alaci"]
-resource_name = "start"
-length = 1.16668
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-
-[sub_resource type="Animation" id="Animation_xfjl7"]
-resource_name = "crash"
-length = 0.500025
-loop_mode = 1
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [7, 8]
 }
 
 [sub_resource type="Animation" id="Animation_3w4bm"]
@@ -132,6 +77,107 @@ tracks/2/keys = {
 "values": [{
 "args": [],
 "method": &"crash"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SFXManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Crash"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xfjl7"]
+resource_name = "crash"
+length = 0.500025
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Peak"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_alaci"]
+resource_name = "start"
+length = 1.16668
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Spawn"],
+"method": &"play"
 }]
 }
 
@@ -179,6 +225,21 @@ states/start/position = Vector2(312, 21)
 transitions = ["Start", "start", SubResource("AnimationNodeStateMachineTransition_agl3s"), "start", "peak", SubResource("AnimationNodeStateMachineTransition_xklma"), "peak", "crash", SubResource("AnimationNodeStateMachineTransition_07mbp"), "crash", "End", SubResource("AnimationNodeStateMachineTransition_frywr"), "peak", "start", SubResource("AnimationNodeStateMachineTransition_bebyt"), "crash", "start", SubResource("AnimationNodeStateMachineTransition_vt5wa")]
 graph_offset = Vector2(0, -73.5574)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j7sy8"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_w57l6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_igqgs"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_ehm4s")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_js1r4"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_i1fqi")
+
 [node name="SerpentWave" type="Area2D"]
 collision_layer = 0
 collision_mask = 8
@@ -201,5 +262,29 @@ autoplay = "start"
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeStateMachine_3qgjo")
 anim_player = NodePath("..")
+
+[node name="SFXManager" parent="." instance=ExtResource("3_84q1i")]
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_j7sy8")
+volume_db = 10.0
+pitch_scale = 0.4
+max_distance = 5000.0
+attenuation = 0.1
+bus = &"Effects"
+
+[node name="Peak" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_igqgs")
+volume_db = 0.4
+pitch_scale = 0.4
+max_distance = 5000.0
+attenuation = 0.1
+
+[node name="Crash" type="AudioStreamPlayer2D" parent="SFXManager"]
+stream = SubResource("AudioStreamRandomizer_js1r4")
+volume_db = 10.0
+pitch_scale = 0.7
+max_distance = 5000.0
+attenuation = 0.1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

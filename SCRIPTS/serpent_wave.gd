@@ -7,6 +7,7 @@ var direction : Vector2
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var animation_tree: AnimationTree = $AnimationPlayer/AnimationTree
 var animation_sate_machine : AnimationNodeStateMachinePlayback
+@onready var sfx_manager: SFXManager = $SFXManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,6 +29,7 @@ func initialize(new_direction: Vector2, spawn: Vector2):
 
 func _on_body_entered(body: Node2D) -> void:
 	animation_sate_machine.travel("crash")
+	sfx_manager.play("Crash")
 
 func crash():
 	var puddle_spawn_point = global_position
