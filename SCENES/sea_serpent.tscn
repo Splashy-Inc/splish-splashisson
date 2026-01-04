@@ -816,6 +816,23 @@ tracks/10/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SFXManager")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Rain"],
+"method": &"play"
+}, {
+"args": ["Rain"],
+"method": &"stop"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_30aqn"]
 resource_name = "jump_right"
@@ -963,6 +980,23 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SFXManager")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Rain"],
+"method": &"play"
+}, {
+"args": ["Rain"],
+"method": &"stop"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_e2akf"]
@@ -1649,6 +1683,6 @@ pitch_scale = 0.5
 
 [node name="Rain" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("58_dp7p4")
-volume_db = -4.0
+volume_db = -10.0
 pitch_scale = 2.0
 bus = &"Effects"
