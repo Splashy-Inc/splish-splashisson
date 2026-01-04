@@ -12,6 +12,7 @@ class_name SeaSerpent
 
 @onready var animation_tree: AnimationTree = $AnimationPlayer/AnimationTree
 var state_machine : AnimationNodeStateMachinePlayback
+@export var sfx_manager : SFXManager
 
 enum Actions {
 	SWIM,
@@ -79,6 +80,7 @@ func _process(delta: float) -> void:
 				spawn_wave(global_position)
 
 func initialize(new_path_follow_node: PathFollow2D):
+	sfx_manager.call_deferred("play", "Spawn")
 	path_follow_node = new_path_follow_node
 	path_follow_node.add_child(self)
 	start_swim()
