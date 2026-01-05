@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://cweprpfn71rah"]
+[gd_scene load_steps=142 format=3 uid="uid://cweprpfn71rah"]
 
 [ext_resource type="Texture2D" uid="uid://dm1dcn64x1l0r" path="res://Art/Serpent/Chomp/SerpentChompA.png" id="1_4cd6t"]
 [ext_resource type="Script" path="res://SCRIPTS/sea_serpent.gd" id="1_o5hrg"]
@@ -60,6 +60,8 @@
 [ext_resource type="AudioStream" uid="uid://bw0dytcnoie43" path="res://Audio/Pirate/splash.ogg" id="57_upkso"]
 [ext_resource type="AudioStream" uid="uid://bff867chk888r" path="res://Audio/rain_muffled_3.ogg" id="58_dp7p4"]
 [ext_resource type="AudioStream" uid="uid://w8ssfbpbhcxa" path="res://Audio/SeaSerpent/chomp.ogg" id="59_cwjqj"]
+[ext_resource type="AudioStream" uid="uid://bjsitw371kru0" path="res://Audio/Pirate/jump.ogg" id="61_yf800"]
+[ext_resource type="AudioStream" uid="uid://dk2dnqh4hhrx6" path="res://Audio/SeaSerpent/serpent_jump_out_splash.ogg" id="62_hu5px"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_togl1"]
 animations = [{
@@ -874,6 +876,43 @@ tracks/11/keys = {
 "method": &"stop"
 }]
 }
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SFXManager")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Jump"],
+"method": &"play"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SFXManager")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(1, 2.5, 4, 5.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["JumpSplashOut"],
+"method": &"play"
+}, {
+"args": ["JumpSplashOut"],
+"method": &"play"
+}, {
+"args": ["JumpSplashOut"],
+"method": &"play"
+}, {
+"args": ["JumpSplashOut"],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_30aqn"]
 resource_name = "jump_right"
@@ -1037,6 +1076,43 @@ tracks/11/keys = {
 }, {
 "args": ["Rain"],
 "method": &"stop"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SFXManager")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Jump"],
+"method": &"play"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SFXManager")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(1, 2.5, 4, 5.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["JumpSplashOut"],
+"method": &"play"
+}, {
+"args": ["JumpSplashOut"],
+"method": &"play"
+}, {
+"args": ["JumpSplashOut"],
+"method": &"play"
+}, {
+"args": ["JumpSplashOut"],
+"method": &"play"
 }]
 }
 
@@ -1730,6 +1806,15 @@ stream = SubResource("AudioStreamRandomizer_1vkgt")
 
 [node name="Rain" type="AudioStreamPlayer" parent="SFXManager"]
 stream = ExtResource("58_dp7p4")
-volume_db = -10.0
+volume_db = -5.0
 pitch_scale = 2.0
 bus = &"Effects"
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("61_yf800")
+volume_db = 5.0
+pitch_scale = 0.5
+
+[node name="JumpSplashOut" type="AudioStreamPlayer" parent="SFXManager"]
+stream = ExtResource("62_hu5px")
+volume_db = 5.0

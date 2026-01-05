@@ -45,14 +45,14 @@ func _process(delta: float) -> void:
 			match current_action:
 				Actions.SWIM:
 					remaining_chomps = CHOMPS_PER_ACTION
-					start_chomp()
+					start_jump()
 				Actions.CHOMP:
 					if remaining_chomps > 0:
-						start_chomp()
+						start_jump()
 					else:
 						start_jump()
 				Actions.JUMP:
-					start_swim()
+					start_jump()
 				Actions.DIE:
 					if not state_machine.is_playing():
 						queue_free()
