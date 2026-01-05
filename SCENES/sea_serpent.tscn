@@ -565,6 +565,26 @@ tracks/4/keys = {
 "method": &"chomp_target"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SFXManager")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.25, 1.75, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["Chomp"],
+"method": &"play"
+}, {
+"args": ["Chomp"],
+"method": &"play"
+}, {
+"args": ["Chomp"],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vvwgx"]
 resource_name = "hidden"
