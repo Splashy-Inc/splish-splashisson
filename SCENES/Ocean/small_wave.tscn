@@ -55,7 +55,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="SmallWave" type="AnimatedSprite2D"]

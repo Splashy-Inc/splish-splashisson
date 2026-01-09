@@ -51,10 +51,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="BigWave" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_cxds1")
-frame_progress = 0.584985
+autoplay = "default"
+frame_progress = 0.362427
 script = ExtResource("12_qssx8")

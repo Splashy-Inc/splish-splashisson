@@ -55,11 +55,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="MediumWave" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_qg3gn")
 autoplay = "default"
-frame_progress = 0.817117
+frame_progress = 0.949002
 script = ExtResource("13_qeyjs")

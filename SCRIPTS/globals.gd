@@ -51,6 +51,8 @@ var cargo_item_scenes_dict = {
 
 var crew_scene := load("res://SCENES/crew_member.tscn")
 
+var serpent_scene := load("res://SCENES/sea_serpent.tscn")
+
 var controls_data := load("res://controls_data.tres") as ControlsData
 var cur_controls := ControlsData.AVAILABLE_CONTROLS
 
@@ -102,6 +104,9 @@ func generate_cargo_item(type: Cargo.Cargo_type) -> CargoItem:
 
 func generate_crew() -> Crew:
 	return crew_scene.duplicate().instantiate()
+
+func generate_sea_serpent() -> SeaSerpent:
+	return serpent_scene.duplicate().instantiate()
 
 func set_boat(new_boat: Boat):
 	if boat != new_boat:

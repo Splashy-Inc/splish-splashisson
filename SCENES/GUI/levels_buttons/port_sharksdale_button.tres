@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://d2axt0rn6ok78"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://d2axt0rn6ok78"]
 
 [ext_resource type="Texture2D" uid="uid://n7xjumertdwc" path="res://Art/GUI/levels_menu/port_sharksdale_button_completed.png" id="1_bnvm3"]
 [ext_resource type="Texture2D" uid="uid://cd64js36lt8uu" path="res://Art/GUI/levels_menu/port_sharksdale_button_disabled.png" id="2_ddw32"]
@@ -47,6 +47,9 @@ atlas = SubResource("CompressedTexture2D_iqx5q")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27ki6"]
 texture = SubResource("AtlasTexture_0efen")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vao0f"]
+texture = ExtResource("1_bnvm3")
+
 [resource]
 Button/styles/completed = SubResource("StyleBoxTexture_d1jvn")
 Button/styles/disabled = SubResource("StyleBoxTexture_1pkf4")
@@ -54,3 +57,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_36pmv")
 Button/styles/hover = SubResource("StyleBoxTexture_uirf3")
 Button/styles/normal = SubResource("StyleBoxTexture_iawly")
 Button/styles/pressed = SubResource("StyleBoxTexture_27ki6")
+LevelButton/base_type = &"Button"
+LevelButton/styles/normal = SubResource("StyleBoxTexture_vao0f")

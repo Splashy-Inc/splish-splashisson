@@ -21,4 +21,5 @@ rat_interval_seconds = 10
 seagull_interval_seconds = 10
 num_pirate_ships = 0
 start_pirates = 1
+has_serpent = false
 level_stats = ExtResource("3_sj2t3")

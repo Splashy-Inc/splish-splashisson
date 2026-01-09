@@ -21,3 +21,10 @@ func play(sound_name: String):
 				print("Requested sound ", sound_name, " is either not a child of ", self, ", or not an AudioStreamPlayer/2D")
 			return sound_node
 		return null
+
+func stop(sound_name: String = ""):
+	var sound_node = get_node(sound_name)
+	if sound_node is AudioStreamPlayer or sound_node is AudioStreamPlayer2D:
+		sound_node.stop()
+	else:
+		print("Requested sound ", sound_name, " is either not a child of ", self, ", or not an AudioStreamPlayer/2D")

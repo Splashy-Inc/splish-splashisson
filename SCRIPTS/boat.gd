@@ -149,13 +149,13 @@ func spawn_leak(spawn_point: Vector2 = Vector2.ZERO):
 	else:
 		return new_leak
 
-func spawn_puddle(spawn_point: Vector2 = Vector2.ZERO):
+func spawn_puddle(spawn_point: Vector2 = Vector2.ZERO, add_to_puddle: bool = false):
 	if spawn_point == Vector2.ZERO:
 		spawn_point = get_spawn_point()
 		while not is_point_in_boat(spawn_point):
 			spawn_point = get_spawn_point()
 	if is_point_in_boat(spawn_point):
-		return $PlayGrid.spawn_puddle(spawn_point)
+		return $PlayGrid.spawn_puddle(spawn_point, add_to_puddle)
 	return null
 
 func spawn_rat_hole(spawn_point: Vector2 = Vector2.ZERO) -> RatHole:
@@ -259,3 +259,24 @@ func _set_crew_assignment(crew: Crew, assignment: Task):
 	await get_tree().create_timer(.5).timeout
 	if is_instance_valid(crew):
 		crew.set_assignment(assignment)
+
+func get_horizontal_cell_centers(at_y: float) -> Array[Vector2]:
+	var cell_center_list : Array[Vector2]
+	
+	# Get all cells from center to right
+	var cur_location = Vector2(global_position.x, at_y)
+	while is_point_in_boat(cur_location):
+		var cell_center = $PlayGrid.center_point_in_cell(cur_location)
+		if not cell_center in cell_center_list:
+			cell_center_list.append(cell_center)
+		cur_location = $PlayGrid.get_neighbor_cell_center(cur_location, TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
+	
+	# Get all cells from center to left
+	cur_location = Vector2(global_position.x, at_y)
+	while is_point_in_boat(cur_location):
+		var cell_center = $PlayGrid.center_point_in_cell(cur_location)
+		if not cell_center in cell_center_list:
+			cell_center_list.append(cell_center)
+		cur_location = $PlayGrid.get_neighbor_cell_center(cur_location, TileSet.CELL_NEIGHBOR_LEFT_SIDE)
+	
+	return cell_center_list

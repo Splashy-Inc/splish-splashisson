@@ -43,7 +43,7 @@ shape = SubResource("RectangleShape2D_cgofq")
 [node name="PlayArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayArea"]
-polygon = PackedVector2Array(-112, -80, 112, -80, 112, 80, -112, 80)
+polygon = PackedVector2Array(-112, -80, 111, -80, 111, 80, -112, 80)
 
 [node name="PlayGrid" parent="." instance=ExtResource("4_ds1m8")]
 position = Vector2(-112, -80)
