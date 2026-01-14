@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bb034mnapr3eb" path="res://Custom Resources/Stages/stage_6_data.tres" id="9_lvqo3"]
 [ext_resource type="Resource" uid="uid://jo0v2yvpn654" path="res://Custom Resources/Stages/stage_7_data.tres" id="10_841gg"]
 [ext_resource type="Resource" uid="uid://by62v3qd7i5bf" path="res://Custom Resources/Stages/stage_8_data.tres" id="11_c84cx"]
-[ext_resource type="Resource" path="res://Custom Resources/Stages/stage_9_data.tres" id="12_nei7w"]
+[ext_resource type="Resource" uid="uid://dq780da12m0vl" path="res://Custom Resources/Stages/stage_9_data.tres" id="12_nei7w"]
 [ext_resource type="Resource" uid="uid://dyt7qu6b0b6x2" path="res://Custom Resources/Stages/stage_10_data.tres" id="13_ahj1i"]
 
 [resource]

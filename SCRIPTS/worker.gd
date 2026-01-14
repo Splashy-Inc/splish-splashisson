@@ -186,12 +186,14 @@ func _set_assignment(new_assignment: Node2D):
 		if old_assignment.is_connected("died", _on_assignment_died):
 			old_assignment.disconnect("died", _on_assignment_died)
 		
+		
+		if old_assignment.has_method("remove_threat"):
+			old_assignment.remove_threat(self)
+		
 		if old_assignment is Task:
 			old_assignment.set_worker(null)
 		elif old_assignment is Creature:
 			old_assignment.set_worker(null)
-		elif old_assignment.has_method("remove_threat"):
-			old_assignment.remove_threat(self)
 		elif old_assignment is Pirate:
 			old_assignment.set_worker(null)
 			old_assignment.remove_morale_modifier(attack_morale_modifier)
