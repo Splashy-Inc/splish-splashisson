@@ -56,20 +56,23 @@ func initialize():
 	_hide_end_buttons()
 
 func advance_dialog():
-	var next_line_data = _get_next_line(true)
-	if next_line_data:
-		_set_dialog_text(next_line_data["line"])
-		var test = next_line_data["speaker"]
-		match str(next_line_data["speaker"]):
-			"0":
-				left_sound_player.play()
-			"1":
-				right_sound_player.play()
-		if not _get_next_line(false):
-			_show_end_buttons()
+	if dialog_text_node.visible_characters < dialog_text_node.text.length():
+		dialog_text_node.visible_characters = dialog_text_node.text.length()
 	else:
-		await play_confirmation_sound()
-		dialog_ended.emit()
+		var next_line_data = _get_next_line(true)
+		if next_line_data:
+			_set_dialog_text(next_line_data["line"])
+			var test = next_line_data["speaker"]
+			match str(next_line_data["speaker"]):
+				"0":
+					left_sound_player.play()
+				"1":
+					right_sound_player.play()
+			if not _get_next_line(false):
+				_show_end_buttons()
+		else:
+			await play_confirmation_sound()
+			dialog_ended.emit()
 
 func _get_next_line(increment: bool = true):
 	if dialog_data.dialog_text_json:
