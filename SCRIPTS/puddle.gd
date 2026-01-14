@@ -114,7 +114,7 @@ func set_worker(new_worker: Worker) -> bool:
 #[4] [0] [2]
 	#[3]
 # Split spread amount to each 
-func spread(amount: int, source: Puddle):
+func spread(amount: int, source: Puddle, remaining_spread: int = 16):
 	if can_spread:
 		if amount >= neighbor_puddles.size():
 			if stage < Stage.LARGE:
@@ -123,8 +123,8 @@ func spread(amount: int, source: Puddle):
 			else:
 				_update_neighbor_puddles()
 				for neighbor in neighbor_puddles.values():
-					if neighbor["puddle"] and neighbor["puddle"] != source:
-						neighbor["puddle"].spread(amount/neighbor_puddles.size(), self)
+					if neighbor["puddle"] and neighbor["puddle"] != source and remaining_spread > 0:
+						neighbor["puddle"].spread(amount/neighbor_puddles.size(), self, remaining_spread - 1)
 					else:
 						neighbor["puddle"] = Globals.boat.spawn_puddle(neighbor["spawn_point"])
 
