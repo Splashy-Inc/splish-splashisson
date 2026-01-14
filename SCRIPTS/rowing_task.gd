@@ -86,12 +86,15 @@ func add_threat(body: Node2D):
 	return true
 
 func remove_threat(body: Node2D):
-	threats.erase(body)
-	if assignee is Crew and body.morale_modifier:
-		assignee.remove_morale_modifier(body.morale_modifier)
-	if threats.is_empty():
-		sprite.modulate = Globals.modulate_reset
-	return true
+	if body in threats:
+		threats.erase(body)
+		if assignee is Crew and body.morale_modifier:
+			assignee.remove_morale_modifier(body.morale_modifier)
+		if threats.is_empty():
+			sprite.modulate = Globals.modulate_reset
+		return true
+	
+	return false
 
 func _on_threat_died(threat: Node2D):
 	remove_threat(threat)
