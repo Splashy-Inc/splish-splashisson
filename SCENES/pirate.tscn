@@ -392,7 +392,7 @@ jump_curve = SubResource("Curve_hivc8")
 max_morale = 1.0
 sfx_manager = NodePath("SFXManager")
 sprite = NodePath("Sprites/Sprite")
-speed = 75.0
+speed = 50.0
 attack_morale_modifier = ExtResource("2_i0crg")
 target_sprite = ExtResource("5_ipvpr")
 
