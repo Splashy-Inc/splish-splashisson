@@ -902,7 +902,7 @@ script = ExtResource("1_ci8gb")
 idle_modifier = ExtResource("2_3cw83")
 sfx_manager = NodePath("SFXManager")
 sprite = NodePath("AnimatedSprite2D")
-speed = 125.0
+speed = 100.0
 attack_morale_modifier = ExtResource("3_cqmqi")
 target_sprite = ExtResource("4_74l42")
 
