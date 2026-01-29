@@ -22,6 +22,7 @@ rat_interval_seconds = 10
 seagull_interval_seconds = 10
 num_pirate_ships = 0
 start_pirates = 1
+has_serpent = false
 
 [node name="LevelButton" type="Button"]
 offset_right = 39.0
