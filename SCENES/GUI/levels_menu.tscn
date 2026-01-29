@@ -37,7 +37,7 @@
 [ext_resource type="Resource" uid="uid://by62v3qd7i5bf" path="res://Custom Resources/Stages/stage_8_data.tres" id="31_d8ror"]
 [ext_resource type="Resource" uid="uid://dq780da12m0vl" path="res://Custom Resources/Stages/stage_9_data.tres" id="33_4jirp"]
 [ext_resource type="Resource" uid="uid://dyt7qu6b0b6x2" path="res://Custom Resources/Stages/stage_10_data.tres" id="35_fjj7v"]
-[ext_resource type="PackedScene" uid="uid://bsyxkn4fmgjok" path="res://SCENES/stage_label.tscn" id="38_aeo1a"]
+[ext_resource type="PackedScene" uid="uid://dp5sibi1fpfb4" path="res://SCENES/stage_label.tscn" id="38_aeo1a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
 animations = [{
