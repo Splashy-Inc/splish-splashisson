@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://djyibeaauqw2f"]
+[gd_scene load_steps=115 format=3 uid="uid://djyibeaauqw2f"]
 
 [ext_resource type="Script" path="res://SCRIPTS/crew_member.gd" id="1_ci8gb"]
 [ext_resource type="Texture2D" uid="uid://ykb8akgxv8rg" path="res://Art/Crew/Animations/Idle/CrewIdle.png" id="1_fr6qd"]
@@ -399,6 +399,16 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4hgd"]
 radius = 19.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1xl3p"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("22_jwcoc")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xg7lc"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("22_jwcoc")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vaaau"]
 streams_count = 2
@@ -937,12 +947,12 @@ volume_db = -5.0
 bus = &"Effects"
 
 [node name="BootStepHigh" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("22_jwcoc")
-pitch_scale = 1.6
+stream = SubResource("AudioStreamRandomizer_1xl3p")
+pitch_scale = 1.7
 bus = &"Effects"
 
 [node name="BootStepLow" type="AudioStreamPlayer2D" parent="SFXManager"]
-stream = ExtResource("22_jwcoc")
+stream = SubResource("AudioStreamRandomizer_xg7lc")
 pitch_scale = 1.4
 bus = &"Effects"
 
