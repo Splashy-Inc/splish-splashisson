@@ -73,7 +73,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _idle_state(delta: float):
-	if current_assignment:
+	if is_instance_valid(current_assignment):
 		if _check_in_range(get_current_target()):
 			if current_assignment is Player:
 				_start_assignment_player()
@@ -182,7 +182,7 @@ func _set_assignment(new_assignment: Node2D):
 	var old_assignment = current_assignment
 	current_assignment = new_assignment
 	
-	if old_assignment:
+	if is_instance_valid(old_assignment):
 		if old_assignment.is_connected("died", _on_assignment_died):
 			old_assignment.disconnect("died", _on_assignment_died)
 		
@@ -288,7 +288,7 @@ func stop_patching():
 			_start_assignment()
 
 func _patch_leak() -> void:
-	if current_assignment and current_assignment is Leak:
+	if is_instance_valid(current_assignment) and current_assignment is Leak:
 		current_assignment.patch()
 
 func start_fighting():

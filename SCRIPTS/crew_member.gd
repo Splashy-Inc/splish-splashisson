@@ -114,8 +114,8 @@ func _get_direction() -> Vector2:
 		if current_assignment:
 			if navigation_agent.target_position != current_assignment.global_position:
 				navigation_agent.set_target_position(current_assignment.global_position)
-		if not navigation_agent.is_target_reached():
-			direction = global_position.direction_to(navigation_agent.get_next_path_position())
+			if not navigation_agent.is_target_reached():
+				direction = global_position.direction_to(navigation_agent.get_next_path_position())
 	elif current_assignment:
 		direction = global_position.direction_to(current_assignment.global_position)
 	return direction
@@ -179,3 +179,100 @@ func change_morale(change):
 		_on_demoralized()
 	elif is_distracted and morale >= max_morale:
 		_on_remoralized()
+
+# TODO: Definitely a way to consolidate the "stop_X" functions, but not worth the effort right now
+
+func stop_patching():
+	_set_assignment(null)
+	state = State.IDLE
+	
+	var closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
+	
+	while not is_instance_valid(closest_leak) and state == State.IDLE:
+		if morale > 0:
+			await get_tree().create_timer(.1).timeout
+			closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
+		else:
+			break
+	
+	if not is_instance_valid(current_assignment):
+		set_assignment(closest_leak)
+	
+	if closest_leak and _check_in_range(closest_leak):
+		_start_assignment()
+
+func stop_bailing():
+	_set_assignment(null)
+	state = State.IDLE
+	
+	var closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
+	
+	while not is_instance_valid(closest_puddle) and state == State.IDLE:
+		if morale > 0:
+			await get_tree().create_timer(.1).timeout
+			closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
+		else:
+			break
+	
+	if not is_instance_valid(current_assignment):
+		set_assignment(closest_puddle)
+		
+	if closest_puddle and _check_in_range(closest_puddle):
+		_start_assignment()
+
+func stop_fighting():
+	_set_assignment(null)
+	state = State.IDLE
+	
+	var closest_pirate = _get_closest(get_tree().get_nodes_in_group("pirate"))
+	
+	while not is_instance_valid(closest_pirate) and state == State.IDLE:
+		if morale > 0:
+			await get_tree().create_timer(.1).timeout
+			closest_pirate = _get_closest(get_tree().get_nodes_in_group("pirate"))
+		else:
+			break
+	
+	if not is_instance_valid(current_assignment):
+		set_assignment(closest_pirate)
+	
+	if closest_pirate and _check_in_range(closest_pirate):
+		_start_assignment()
+
+func stop_stomping_rat():
+	_set_assignment(null)
+	state = State.IDLE
+	
+	var closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
+	
+	while not is_instance_valid(closest_rat) and state == State.IDLE:
+		if morale > 0:
+			await get_tree().create_timer(.1).timeout
+			closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
+		else:
+			break
+	
+	if not is_instance_valid(current_assignment):
+		set_assignment(closest_rat)
+	
+	if closest_rat and _check_in_range(closest_rat):
+		_start_assignment()
+
+func stop_repelling_seagull():
+	_set_assignment(null)
+	state = State.IDLE
+	
+	var closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
+	
+	while not is_instance_valid(closest_seagull) and state == State.IDLE:
+		if morale > 0:
+			await get_tree().create_timer(.1).timeout
+			closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
+		else:
+			break
+	
+	if not is_instance_valid(current_assignment):
+		set_assignment(closest_seagull)
+	
+	if closest_seagull and _check_in_range(closest_seagull):
+		_start_assignment()
