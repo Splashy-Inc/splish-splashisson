@@ -19,7 +19,7 @@ var stages := {
 		"objective": "None"
 	},
 	"Movement": {
-		"objective": "Move to the bow (<movement>)"
+		"objective": "Move to the yellow X on the bow (<movement>)"
 	},
 	"Select": {
 		"objective": "Select a nearby crew member (<select>)"
@@ -62,6 +62,7 @@ func _level_ready():
 	leak_spawn_timer.set_paused(true)
 	rat_hole.hide()
 	splish.targeting_group_blacklist = ["crew", "leak", "puddle", "rat", "rowing_task"]
+	movement_stage_area.hide()
 	_show_next_dialog()
 
 func _level_process(delta: float):
@@ -100,6 +101,8 @@ func _show_next_dialog():
 			level_ui.set_objective(Utils.replace_control_string_variables(stages[dialog_box.dialog_data.label]["objective"]))
 		
 		match dialog_box.dialog_data.label:
+			"Movement":
+				movement_stage_area.show()
 			"Select":
 				splish.targeting_group_blacklist.erase("crew")
 			"Assign":

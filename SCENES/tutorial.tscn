@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://q6gx1xcbys3g"]
+[gd_scene load_steps=34 format=3 uid="uid://q6gx1xcbys3g"]
 
 [ext_resource type="Script" path="res://SCRIPTS/tutorial.gd" id="1_42opa"]
 [ext_resource type="Script" path="res://SCRIPTS/dialog_data.gd" id="2_2bdtw"]
@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://sf3jgfa2uafl" path="res://Dialogs/Tutorial/tutorial_distraction_2_dialog.tres" id="11_esu3o"]
 [ext_resource type="Resource" uid="uid://dc8dw6q2tuwc0" path="res://Dialogs/Tutorial/tutorial_wrap_up_dialog.tres" id="12_0cfyp"]
 [ext_resource type="Resource" uid="uid://7cb47q8j6xwg" path="res://Dialogs/Tutorial/tutorial_completed_dialog.tres" id="13_lfmix"]
+[ext_resource type="Resource" uid="uid://cdpgjx8jbdyni" path="res://Custom Resources/Stages/tutorial_stage_data.tres" id="14_6c01w"]
 [ext_resource type="Script" path="res://Custom Resources/Cargo/cargo_item_data.gd" id="18_5ae33"]
 [ext_resource type="PackedScene" uid="uid://qotgv1kx4jwd" path="res://SCENES/rat_hole.tscn" id="18_ax4w7"]
 [ext_resource type="Resource" uid="uid://dp77h4fp8pyjt" path="res://Custom Resources/Cargo/meat_cargo_item_data.tres" id="19_b2p88"]
@@ -53,6 +54,7 @@ size = Vector2(257, 49)
 [node name="Tutorial" type="Node" node_paths=PackedStringArray("player", "dialog_box", "weather", "boat") groups=["level"]]
 script = ExtResource("1_42opa")
 original_dialog_files = Array[ExtResource("2_2bdtw")]([ExtResource("3_5kn7a"), ExtResource("4_80aas"), ExtResource("5_1wp2l"), ExtResource("6_7wwll"), ExtResource("7_6844e"), ExtResource("8_3xhu5"), ExtResource("9_m4ims"), ExtResource("10_812v3"), ExtResource("11_esu3o"), ExtResource("12_0cfyp"), ExtResource("13_lfmix")])
+stage_data = ExtResource("14_6c01w")
 dock_scene = ExtResource("2_ow1x7")
 player = NodePath("People/Splish")
 dialog_box = NodePath("LevelUI/DialogBox")
@@ -112,6 +114,17 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogTriggers/MovementStage"]
 shape = SubResource("RectangleShape2D_qexjr")
+
+[node name="MovementX" type="Label" parent="DialogTriggers/MovementStage"]
+self_modulate = Color(1, 1, 0.0235294, 1)
+offset_left = -22.0
+offset_top = -32.0
+offset_right = 18.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartDock" parent="." node_paths=PackedStringArray("boat") instance=ExtResource("2_ow1x7")]
 position = Vector2(640, 180)
