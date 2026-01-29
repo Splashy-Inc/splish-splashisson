@@ -5,7 +5,7 @@ class_name Creature
 signal spawned
 signal died
 
-const SPEED = 50.0
+const SPEED = 40.0
 
 enum State {
 	IDLE,
