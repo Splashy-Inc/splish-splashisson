@@ -1,12 +1,18 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://ig8iafx3kjns"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://ig8iafx3kjns"]
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_epv8b"]
 resource_name = "Compressor"
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_k03bf"]
+resource_name = "Limiter"
+ceiling_db = -5.0
 
 [resource]
 bus/0/volume_db = 0.0672607
 bus/0/effect/0/effect = SubResource("AudioEffectCompressor_epv8b")
 bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectLimiter_k03bf")
+bus/0/effect/1/enabled = true
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
