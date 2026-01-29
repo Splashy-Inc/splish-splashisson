@@ -252,3 +252,6 @@ func is_threatened():
 
 func get_threats() -> Array:
 	return threats
+
+func _on_threats_changed(threats: Array) -> void:
+	CargoEvents.threats_changed.emit(threats)

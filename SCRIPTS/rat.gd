@@ -9,6 +9,8 @@ class_name Rat
 func _on_interactable_range_body_entered(body: Node2D) -> void:
 	if body == target and state != State.DEAD:
 		if target is Cargo:
+			if target.get_type() == Cargo.Cargo_type.LIVESTOCK:
+				target.add_threat(self)
 			cargo_timer.start()
 			_set_state(State.ATTACKING)
 		if target == hole:
@@ -17,6 +19,7 @@ func _on_interactable_range_body_entered(body: Node2D) -> void:
 func _on_interactable_range_body_exited(body: Node2D) -> void:
 	if body == target and state != State.DEAD:
 		if target is Cargo:
+			target.remove_threat(self)
 			cargo_timer.stop()
 		_set_state(State.IDLE)
 
@@ -46,6 +49,8 @@ func _deposit_loot():
 	target_closest_cargo()
 
 func die():
+	if target is Cargo:
+		target.remove_threat(self)
 	cargo_timer.stop()
 	for item in loot_slot.get_children():
 		if item is CargoItem:

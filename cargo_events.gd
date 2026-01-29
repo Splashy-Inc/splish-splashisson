@@ -2,6 +2,7 @@ extends Node
 
 signal cargo_changed(new_cargo: Cargo)
 signal condition_updated(new_condition: int, max_condition: int)
+signal threats_changed(threats: Array)
 
 var cur_cargo: Cargo
 

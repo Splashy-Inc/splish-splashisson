@@ -1,7 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://kriuduxnhk54"]
+[gd_scene load_steps=6 format=3 uid="uid://kriuduxnhk54"]
 
 [ext_resource type="Texture2D" uid="uid://8ld8yvec0wq6" path="res://Art/Cargo/Ham/Ham1.png" id="1_67w08"]
 [ext_resource type="Script" path="res://SCRIPTS/condition_segment.gd" id="2_ri7i0"]
+
+[sub_resource type="Animation" id="Animation_djnr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eurj6"]
+resource_name = "take damage"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 0.568627), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdbrk"]
+_data = {
+"RESET": SubResource("Animation_djnr7"),
+"take_damage": SubResource("Animation_eurj6")
+}
 
 [node name="ConditionSegment" type="TextureProgressBar"]
 min_value = 20.0
@@ -12,3 +49,9 @@ texture_under = ExtResource("1_67w08")
 texture_progress = ExtResource("1_67w08")
 tint_under = Color(0, 0, 0, 1)
 script = ExtResource("2_ri7i0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vdbrk")
+}
+autoplay = "RESET"

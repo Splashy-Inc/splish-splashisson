@@ -37,4 +37,5 @@ shape = SubResource("CircleShape2D_7kyn7")
 [node name="DamageTickTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="threats_changed" from="." to="." method="_on_threats_changed"]
 [connection signal="timeout" from="DamageTickTimer" to="." method="_on_damage_tick_timer_timeout"]

@@ -4,8 +4,12 @@ class_name ConditionSegment
 
 @export var cargo_item: CargoItem
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	CargoEvents.threats_changed.connect(_on_cargo_threats_changed)
+	
 	if is_instance_valid(cargo_item):
 		initialize(cargo_item)
 
@@ -31,3 +35,9 @@ func set_texture(new_texture: Texture2D):
 
 func _on_item_health_changed(new_health: int):
 	value = new_health
+
+func _on_cargo_threats_changed(threats: Array):
+	if threats.is_empty():
+		animation_player.play("RESET")
+	else:
+		animation_player.play("take_damage")
