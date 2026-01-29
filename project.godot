@@ -63,6 +63,7 @@ distraction=""
 pirate=""
 seagull=""
 level=""
+stage_label=""
 
 [gui]
 

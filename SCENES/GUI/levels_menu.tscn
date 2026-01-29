@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bvi1wjir3r2mu"]
+[gd_scene load_steps=59 format=3 uid="uid://bvi1wjir3r2mu"]
 
 [ext_resource type="Texture2D" uid="uid://rnrrorglbst4" path="res://Art/GUI/levels_menu/map_frame_1of8.png" id="1_m3sgw"]
 [ext_resource type="Script" path="res://SCRIPTS/levels_menu.gd" id="1_xxpx0"]
@@ -35,8 +35,9 @@
 [ext_resource type="Resource" uid="uid://bb034mnapr3eb" path="res://Custom Resources/Stages/stage_6_data.tres" id="27_cp4r3"]
 [ext_resource type="Resource" uid="uid://jo0v2yvpn654" path="res://Custom Resources/Stages/stage_7_data.tres" id="29_pser8"]
 [ext_resource type="Resource" uid="uid://by62v3qd7i5bf" path="res://Custom Resources/Stages/stage_8_data.tres" id="31_d8ror"]
-[ext_resource type="Resource" path="res://Custom Resources/Stages/stage_9_data.tres" id="33_4jirp"]
+[ext_resource type="Resource" uid="uid://dq780da12m0vl" path="res://Custom Resources/Stages/stage_9_data.tres" id="33_4jirp"]
 [ext_resource type="Resource" uid="uid://dyt7qu6b0b6x2" path="res://Custom Resources/Stages/stage_10_data.tres" id="35_fjj7v"]
+[ext_resource type="PackedScene" uid="uid://bsyxkn4fmgjok" path="res://SCENES/stage_label.tscn" id="38_aeo1a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ngwc"]
 animations = [{
@@ -211,6 +212,7 @@ tutorial_button_animation_player = NodePath("Map/TutorialButton/AnimationPlayer"
 
 [node name="Map" type="AnimatedSprite2D" parent="."]
 position = Vector2(320, 180)
+rotation = -1.09433e-05
 sprite_frames = SubResource("SpriteFrames_0ngwc")
 autoplay = "default"
 frame_progress = 0.671758
@@ -420,6 +422,79 @@ focus_next = NodePath("../Map/TutorialButton")
 focus_previous = NodePath("../Map/TutorialButton")
 theme = ExtResource("11_yn2y5")
 text = "Main Menu"
+
+[node name="NumberedStagesGrid" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 240.0
+offset_right = 186.0
+offset_bottom = 287.0
+
+[node name="Finbury" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+layout_mode = 2
+button = NodePath("../../Map/FinburyButton")
+highlights = [NodePath("."), NodePath("../Shrimpsburg"), NodePath("../Gullmore Crossing")]
+
+[node name="Shrimpsburg" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+layout_mode = 2
+text = "2. Shrimpsburg"
+button = NodePath("../../Map/ShrimpsburgButton")
+highlights = [NodePath("../Finbury"), NodePath("."), NodePath("../Gullmore Crossing")]
+
+[node name="Gullmore Crossing" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+layout_mode = 2
+text = "3. Gullmore Crossing"
+button = NodePath("../../Map/GullmoreCrossingButton")
+highlights = [NodePath("../Shrimpsburg"), NodePath("."), NodePath("../Turtleton")]
+
+[node name="Turtleton" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+visible = false
+layout_mode = 2
+text = "4. Turtleton"
+button = NodePath("../../Map/TurtletonButton")
+highlights = [NodePath("../Gullmore Crossing"), NodePath("."), NodePath("../Seahorsevilla")]
+
+[node name="Seahorsevilla" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+visible = false
+layout_mode = 2
+text = "5. Seahorsevilla"
+button = NodePath("../../Map/SeahorsevillaButton")
+highlights = [NodePath("../Turtleton"), NodePath("."), NodePath("../Lochley Wharf")]
+
+[node name="Lochley Wharf" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+visible = false
+layout_mode = 2
+text = "6. Lochley Wharf"
+button = NodePath("../../Map/LochleyWharfButton")
+highlights = [NodePath("../Seahorsevilla"), NodePath("."), NodePath("../Flock Haven")]
+
+[node name="Flock Haven" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+visible = false
+layout_mode = 2
+text = "7. Flock Haven"
+button = NodePath("../../Map/FlockHavenButton")
+highlights = [NodePath("../Lochley Wharf"), NodePath("."), NodePath("../Squid City")]
+
+[node name="Squid City" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+visible = false
+layout_mode = 2
+text = "8. Squid City"
+button = NodePath("../../Map/SquidCityButton")
+highlights = [NodePath("../Flock Haven"), NodePath("."), NodePath("../Sirensgill Grove")]
+
+[node name="Sirensgill Grove" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+visible = false
+layout_mode = 2
+text = "9. Sirensgill Grove"
+button = NodePath("../../Map/SirensgillGroveButton")
+highlights = [NodePath("../Squid City"), NodePath("."), NodePath("../Port Sharkdale")]
+
+[node name="Port Sharkdale" parent="NumberedStagesGrid" node_paths=PackedStringArray("button", "highlights") groups=["stage_label"] instance=ExtResource("38_aeo1a")]
+visible = false
+layout_mode = 2
+text = "10. Port Sharkdale"
+button = NodePath("../../Map/PortSharkdaleButton")
+highlights = [NodePath("../Squid City"), NodePath("../Sirensgill Grove"), NodePath(".")]
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
