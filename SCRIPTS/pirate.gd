@@ -165,7 +165,7 @@ func get_closest_target():
 			new_target = target_closest_cargo()
 		return new_target
 
-func set_assignment(new_assignment: Node2D):
+func set_assignment(new_assignment: Node2D, is_silent: bool = false):
 	if new_assignment != current_assignment:
 		if current_assignment is Crew and attack_morale_modifier:
 			current_assignment.remove_morale_modifier(attack_morale_modifier)
