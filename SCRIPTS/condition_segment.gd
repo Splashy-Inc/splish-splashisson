@@ -19,7 +19,8 @@ func _process(delta: float) -> void:
 
 func initialize(new_cargo_item: CargoItem):
 	cargo_item = new_cargo_item
-	cargo_item.health_changed.connect(_on_item_health_changed)
+	if not cargo_item.health_changed.is_connected(_on_item_health_changed):
+		cargo_item.health_changed.connect(_on_item_health_changed)
 	max_value = cargo_item.max_health
 	min_value = max_value - cargo_item.max_health
 	value = max_value

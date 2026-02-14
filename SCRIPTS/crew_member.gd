@@ -73,7 +73,7 @@ func get_closest_distraction():
 					new_distraction = distraction
 	return new_distraction
 
-func set_assignment(new_assignment: Node2D):
+func set_assignment(new_assignment: Node2D, is_silent: bool = false):
 	if new_assignment != current_assignment:
 		remove_morale_modifier(idle_modifier)
 		if is_instance_valid(current_assignment) and current_assignment.has_method("get_morale_modifier"):
@@ -83,7 +83,7 @@ func set_assignment(new_assignment: Node2D):
 		_toggle_distracted(false)
 		
 		if new_assignment == null:
-			state = State.ACKNOWLEDGING
+			state = State.IDLE
 			add_morale_modifier(idle_modifier)
 			_set_navigation_position()
 		elif new_assignment is Player:
@@ -101,7 +101,10 @@ func set_assignment(new_assignment: Node2D):
 				if new_assignment.has_method("get_morale_modifier"):
 					add_morale_modifier(new_assignment.get_morale_modifier())
 				
-			state = State.ACKNOWLEDGING
+			if is_silent:
+				state = State.IDLE
+			else:
+				state = State.ACKNOWLEDGING
 		
 		_set_assignment(new_assignment)
 		return true
@@ -183,7 +186,7 @@ func change_morale(change):
 # TODO: Definitely a way to consolidate the "stop_X" functions, but not worth the effort right now
 
 func stop_patching():
-	_set_assignment(null)
+	set_assignment(null, true)
 	state = State.IDLE
 	
 	var closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
@@ -196,13 +199,13 @@ func stop_patching():
 			break
 	
 	if not is_instance_valid(current_assignment):
-		set_assignment(closest_leak)
+		set_assignment(closest_leak, true)
 	
 	if closest_leak and _check_in_range(closest_leak):
 		_start_assignment()
 
 func stop_bailing():
-	_set_assignment(null)
+	set_assignment(null, true)
 	state = State.IDLE
 	
 	var closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
@@ -215,13 +218,13 @@ func stop_bailing():
 			break
 	
 	if not is_instance_valid(current_assignment):
-		set_assignment(closest_puddle)
+		set_assignment(closest_puddle, true)
 		
 	if closest_puddle and _check_in_range(closest_puddle):
 		_start_assignment()
 
 func stop_fighting():
-	_set_assignment(null)
+	set_assignment(null, true)
 	state = State.IDLE
 	
 	var closest_pirate = _get_closest(get_tree().get_nodes_in_group("pirate"))
@@ -234,13 +237,13 @@ func stop_fighting():
 			break
 	
 	if not is_instance_valid(current_assignment):
-		set_assignment(closest_pirate)
+		set_assignment(closest_pirate, true)
 	
 	if closest_pirate and _check_in_range(closest_pirate):
 		_start_assignment()
 
 func stop_stomping_rat():
-	_set_assignment(null)
+	set_assignment(null, true)
 	state = State.IDLE
 	
 	var closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
@@ -253,13 +256,13 @@ func stop_stomping_rat():
 			break
 	
 	if not is_instance_valid(current_assignment):
-		set_assignment(closest_rat)
+		set_assignment(closest_rat, true)
 	
 	if closest_rat and _check_in_range(closest_rat):
 		_start_assignment()
 
 func stop_repelling_seagull():
-	_set_assignment(null)
+	set_assignment(null, true)
 	state = State.IDLE
 	
 	var closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
@@ -272,7 +275,7 @@ func stop_repelling_seagull():
 			break
 	
 	if not is_instance_valid(current_assignment):
-		set_assignment(closest_seagull)
+		set_assignment(closest_seagull, true)
 	
 	if closest_seagull and _check_in_range(closest_seagull):
 		_start_assignment()
