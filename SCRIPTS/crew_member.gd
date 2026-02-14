@@ -187,7 +187,6 @@ func change_morale(change):
 
 func stop_patching():
 	set_assignment(null, true)
-	state = State.IDLE
 	
 	var closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
 	
@@ -206,7 +205,6 @@ func stop_patching():
 
 func stop_bailing():
 	set_assignment(null, true)
-	state = State.IDLE
 	
 	var closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
 	
@@ -225,7 +223,6 @@ func stop_bailing():
 
 func stop_fighting():
 	set_assignment(null, true)
-	state = State.IDLE
 	
 	var closest_pirate = _get_closest(get_tree().get_nodes_in_group("pirate"))
 	
@@ -244,7 +241,6 @@ func stop_fighting():
 
 func stop_stomping_rat():
 	set_assignment(null, true)
-	state = State.IDLE
 	
 	var closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
 	
@@ -263,7 +259,6 @@ func stop_stomping_rat():
 
 func stop_repelling_seagull():
 	set_assignment(null, true)
-	state = State.IDLE
 	
 	var closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
 	
