@@ -117,8 +117,8 @@ func _get_direction() -> Vector2:
 		if current_assignment:
 			if navigation_agent.target_position != current_assignment.global_position:
 				navigation_agent.set_target_position(current_assignment.global_position)
-			if not navigation_agent.is_target_reached():
-				direction = global_position.direction_to(navigation_agent.get_next_path_position())
+		if not navigation_agent.is_target_reached():
+			direction = global_position.direction_to(navigation_agent.get_next_path_position())
 	elif current_assignment:
 		direction = global_position.direction_to(current_assignment.global_position)
 	return direction
@@ -191,7 +191,7 @@ func stop_patching():
 	
 	var closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
 	
-	while not is_instance_valid(closest_leak) and state == State.IDLE:
+	while not is_instance_valid(closest_leak) and current_assignment == null:
 		if morale > 0:
 			await get_tree().create_timer(.1).timeout
 			closest_leak = _get_closest(get_tree().get_nodes_in_group("leak"))
@@ -210,7 +210,7 @@ func stop_bailing():
 	
 	var closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
 	
-	while not is_instance_valid(closest_puddle) and state == State.IDLE:
+	while not is_instance_valid(closest_puddle) and current_assignment == null:
 		if morale > 0:
 			await get_tree().create_timer(.1).timeout
 			closest_puddle = _get_closest(get_tree().get_nodes_in_group("puddle"))
@@ -229,7 +229,7 @@ func stop_fighting():
 	
 	var closest_pirate = _get_closest(get_tree().get_nodes_in_group("pirate"))
 	
-	while not is_instance_valid(closest_pirate) and state == State.IDLE:
+	while not is_instance_valid(closest_pirate) and current_assignment == null:
 		if morale > 0:
 			await get_tree().create_timer(.1).timeout
 			closest_pirate = _get_closest(get_tree().get_nodes_in_group("pirate"))
@@ -248,7 +248,7 @@ func stop_stomping_rat():
 	
 	var closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
 	
-	while not is_instance_valid(closest_rat) and state == State.IDLE:
+	while not is_instance_valid(closest_rat) and current_assignment == null:
 		if morale > 0:
 			await get_tree().create_timer(.1).timeout
 			closest_rat = _get_closest(get_tree().get_nodes_in_group("rat"))
@@ -267,7 +267,7 @@ func stop_repelling_seagull():
 	
 	var closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
 	
-	while not is_instance_valid(closest_seagull) and state == State.IDLE:
+	while not is_instance_valid(closest_seagull) and current_assignment == null:
 		if morale > 0:
 			await get_tree().create_timer(.1).timeout
 			closest_seagull = _get_closest(get_tree().get_nodes_in_group("seagull"))
