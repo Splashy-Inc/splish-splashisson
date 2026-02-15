@@ -139,6 +139,8 @@ func _show_next_dialog():
 				splish.input_disabled = true
 			"Distraction_2":
 				splish.aura_visible = true
+				splish.targeting_group_blacklist.erase("crew")
+			"Wrap_up":
 				splish.targeting_group_blacklist.clear()
 
 func _on_dialog_ended() -> void:
