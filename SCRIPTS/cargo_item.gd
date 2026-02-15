@@ -89,7 +89,7 @@ func restore_health():
 func _on_degrade_tick_timer_timeout() -> void:
 	change_health(-1)
 
-func set_sprite_texture(new_texture: Texture2D):
+func set_sprite_texture(new_texture):
 	sprite.texture = new_texture.duplicate(true)
 	if sprite.texture is AnimatedTexture:
 		sprite.texture.speed_scale = randf_range(.25, 2)
