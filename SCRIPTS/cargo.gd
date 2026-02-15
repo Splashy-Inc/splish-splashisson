@@ -42,6 +42,7 @@ func initialize(new_data: CargoItemData):
 	_update_condition(max_condition)
 	
 	sprite.texture = new_data.container_texture
+	target_sprite = new_data.action_button_icon
 	CargoEvents.cargo_changed.emit(self)
 
 func _spawn_cargo():
