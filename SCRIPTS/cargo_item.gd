@@ -40,7 +40,7 @@ func initialize(cargo: Cargo):
 	if cur_data.is_distraction:
 		add_to_group("distraction")
 	
-	set_sprite_texture(cur_data.texture.duplicate())
+	set_sprite_texture(cur_data.texture)
 	
 	if cur_data.type == Cargo.Cargo_type.LIVESTOCK or cur_data.type == Cargo.Cargo_type.SIREN:
 		degrade_tick_timer.start()
@@ -90,7 +90,7 @@ func _on_degrade_tick_timer_timeout() -> void:
 	change_health(-1)
 
 func set_sprite_texture(new_texture):
-	sprite.texture = new_texture
+	sprite.texture = new_texture.duplicate(true)
 	if sprite.texture is AnimatedTexture:
 		sprite.texture.speed_scale = randf_range(.25, 2)
 
